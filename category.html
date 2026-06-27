@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Work — Misha Graphics</title>
+  <meta name="description" content="Selected work by Misha Kerch.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-mk.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body data-active="work">
+  <div id="site-header"></div>
+
+  <div class="page-head">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;">
+      <div>
+        <a class="back-link" href="index.html">← All work</a>
+        <h1 class="page-title" id="cat-name"></h1>
+        <div class="page-desc" id="cat-desc"></div>
+      </div>
+      <div class="cat-toolbar">
+        <span class="count-label" id="count-label"></span>
+        <div class="toggle">
+          <button id="view-new" class="is-on">Newest</button>
+          <button id="view-client">By client</button>
+        </div>
+      </div>
+    </div>
+    <div class="subfilter" id="subfilter" hidden></div>
+  </div>
+
+  <main class="cat-body">
+    <div class="wrap" id="cat-content"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- The lightbox is injected by gallery.js -->
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/site.js"></script>
+  <script src="assets/js/gallery.js"></script>
+  <script src="assets/js/category.js"></script>
+</body>
+</html>

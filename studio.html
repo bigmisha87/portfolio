@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Studio — Misha Graphics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-studio.svg">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="assets/css/studio.css">
+</head>
+<body class="studio">
+  <header class="st-top">
+    <div class="st-top__left">
+      <span class="st-logo">◆ Studio</span>
+      <span class="st-sub">live editor</span>
+    </div>
+    <nav class="st-pages" id="st-pages">
+      <button data-page="home" class="is-on">Home</button>
+      <button data-page="work">Work</button>
+      <button data-page="about">About</button>
+      <button data-page="blog">Blog</button>
+    </nav>
+    <div class="st-top__right">
+      <span class="st-folder" id="st-folder">not connected</span>
+      <button class="st-btn" id="st-connect">Connect folder</button>
+      <div class="st-history-wrap">
+        <button class="st-btn st-btn--icon" id="st-history" title="History — undo / redo" aria-label="History" aria-haspopup="true" aria-expanded="false">↺</button>
+        <div class="st-history-pop" id="st-history-pop" hidden>
+          <div class="st-history-pop__head">History</div>
+          <button class="st-hist-item" id="st-undo" disabled><span>↶</span> Undo</button>
+          <button class="st-hist-item" id="st-redo" disabled><span>↷</span> Redo</button>
+          <div class="st-history-pop__hint">Ctrl+Z · Ctrl+Y</div>
+        </div>
+      </div>
+      <button class="st-btn st-btn--primary" id="st-save" disabled>Save</button>
+      <a class="st-btn st-btn--ghost" id="st-preview" href="index.html" target="_blank" rel="noopener">Preview ↗</a>
+    </div>
+  </header>
+
+  <div class="st-banner" id="st-banner" hidden></div>
+  <div class="st-subbar" id="st-subbar" hidden></div>
+
+  <div class="st-main">
+    <div class="st-canvas-wrap">
+      <div class="st-canvas" id="canvas"></div>
+    </div>
+    <aside class="st-inspector" id="inspector"></aside>
+  </div>
+
+  <div class="st-status" id="st-status" hidden></div>
+
+  <!-- Full-screen, focused blog-post editor (Wix-style). Filled in by studio.js. -->
+  <div class="st-postedit" id="postedit" hidden></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/studio.js"></script>
+</body>
+</html>
