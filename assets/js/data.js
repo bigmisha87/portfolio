@@ -1359,15 +1359,44 @@ window.SITE = {
     ],
     "after-effects": [
       {
-        "en": "To what point",
+        "en": "מערך הדיגיטל - מתארגנים מחדש",
         "he": "",
-        "client": "",
-        "sub": "לקוחות",
-        "ratio": "16 / 9",
+        "client": "מערך הדיגיטל",
+        "sub": "מערך הדיגיטל",
+        "ratio": "9 / 16",
         "tags": [
-          "After Effects"
+          "After Effects",
+          "Explainer"
         ],
-        "video": "https://youtu.be/TQ1CPjNpC4Y",
+        "video": "https://youtube.com/shorts/uYaRTgt0dig",
+        "poster": "",
+        "body": ""
+      },
+      {
+        "en": "מערך הדיגיטל - סרט חירום 1",
+        "he": "",
+        "client": "מערך הדיגיטל",
+        "sub": "מערך הדיגיטל",
+        "ratio": "9 / 16",
+        "tags": [
+          "After Effects",
+          "Explainer"
+        ],
+        "video": "https://youtube.com/shorts/uHHBME2w4zc",
+        "poster": "",
+        "body": ""
+      },
+      {
+        "en": "מערך הדיגיטל - קורסים לחוסן ובריאות נפשית",
+        "he": "",
+        "client": "מערך הדיגיטל",
+        "sub": "מערך הדיגיטל",
+        "ratio": "9 / 16",
+        "tags": [
+          "After Effects",
+          "Explainer"
+        ],
+        "video": "https://youtube.com/shorts/r4O3igpOTG0",
         "poster": "",
         "body": ""
       },
@@ -1410,6 +1439,19 @@ window.SITE = {
           "Ad"
         ],
         "video": "https://youtube.com/shorts/yd-O7ENgapw",
+        "poster": "",
+        "body": ""
+      },
+      {
+        "en": "To what point",
+        "he": "",
+        "client": "",
+        "sub": "לקוחות",
+        "ratio": "16 / 9",
+        "tags": [
+          "After Effects"
+        ],
+        "video": "https://youtu.be/TQ1CPjNpC4Y",
         "poster": "",
         "body": ""
       },
@@ -1844,48 +1886,6 @@ window.SITE = {
           "Music"
         ],
         "video": "https://youtu.be/SGF7VeoMp78",
-        "poster": "",
-        "body": ""
-      },
-      {
-        "en": "מערך הדיגיטל - סרט חירום 1",
-        "he": "",
-        "client": "מערך הדיגיטל",
-        "sub": "מערך הדיגיטל",
-        "ratio": "9 / 16",
-        "tags": [
-          "After Effects",
-          "Explainer"
-        ],
-        "video": "https://youtube.com/shorts/uHHBME2w4zc",
-        "poster": "",
-        "body": ""
-      },
-      {
-        "en": "מערך הדיגיטל - קורסים לחוסן ובריאות נפשית",
-        "he": "",
-        "client": "מערך הדיגיטל",
-        "sub": "מערך הדיגיטל",
-        "ratio": "9 / 16",
-        "tags": [
-          "After Effects",
-          "Explainer"
-        ],
-        "video": "https://youtube.com/shorts/r4O3igpOTG0",
-        "poster": "",
-        "body": ""
-      },
-      {
-        "en": "מערך הדיגיטל - מתארגנים מחדש",
-        "he": "",
-        "client": "מערך הדיגיטל",
-        "sub": "מערך הדיגיטל",
-        "ratio": "9 / 16",
-        "tags": [
-          "After Effects",
-          "Explainer"
-        ],
-        "video": "https://youtube.com/shorts/uYaRTgt0dig",
         "poster": "",
         "body": ""
       },
