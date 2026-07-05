@@ -41,6 +41,7 @@ body.studio { display: block; height: 100vh; overflow: hidden; background: #0b0b
 .st-btn:disabled:hover { border-color: var(--line-2); color: var(--text); }
 .st-history-wrap { position: relative; display: inline-flex; }
 .st-history-wrap .st-btn.is-open { border-color: var(--accent); color: #fff; }
+.st-history-pop[hidden] { display: none; }
 .st-history-pop {
   position: absolute; top: calc(100% + 8px); right: 0; z-index: 200;
   min-width: 184px; padding: 8px; display: flex; flex-direction: column; gap: 3px;

@@ -1538,6 +1538,28 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !pop.hidden) close(); });
   })();
 
+  // "Update Git" — asks the local server (serve.ps1) to upload everything
+  // saved in this folder to GitHub in one click. Only works when the Studio
+  // was opened through Start-Studio, since that's what runs the server.
+  (function gitPush() {
+    var btn = el("st-gitpush");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      if (btn.disabled) return;
+      var label = btn.textContent;
+      btn.disabled = true; btn.textContent = "Uploading…";
+      fetch("/api/git-push", { method: "POST" })
+        .then(function (r) { if (!r.ok) throw new Error("no-endpoint"); return r.json(); })
+        .then(function (res) {
+          if (res.ok && res.message === "pushed") status("Uploaded to GitHub ✓", "ok");
+          else if (res.ok) status("GitHub is already up to date", "ok");
+          else status("GitHub upload failed: " + res.message, "err");
+        })
+        .catch(function () { status("Couldn't upload — open the Studio with Start-Studio", "err"); })
+        .finally(function () { btn.disabled = false; btn.textContent = label; });
+    });
+  })();
+
   /* ---------- boot ---------------------------------------------------- */
   if (!FS_SUPPORTED || location.protocol === "file:") {
     var banner = el("st-banner"); banner.hidden = false;
