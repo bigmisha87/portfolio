@@ -73,6 +73,13 @@ while ($true) {
           $cOut = cmd /c "$git commit -m ""Studio update $stamp"" 2>&1"
           if ($LASTEXITCODE -ne 0) { throw ([string]::Join("`n", @($cOut))) }
         }
+        # GitHub sometimes has commits made elsewhere (e.g. its own CNAME file
+        # for the custom domain) — bring those in first so the push is accepted.
+        $rOut = cmd /c "$git pull --rebase origin main 2>&1"
+        if ($LASTEXITCODE -ne 0) {
+          cmd /c "$git rebase --abort 2>&1" | Out-Null
+          throw ([string]::Join("`n", @($rOut)))
+        }
         $pOut = cmd /c "$git push origin HEAD 2>&1"
         if ($LASTEXITCODE -ne 0) { throw ([string]::Join("`n", @($pOut))) }
         $ok = $true
