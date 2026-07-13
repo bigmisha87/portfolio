@@ -182,7 +182,7 @@ window.SITE = {
         "he": "",
         "client": "",
         "sub": "נדל\"ן",
-        "ratio": "9 / 16",
+        "ratio": "1 / 1",
         "tags": [],
         "poster": "",
         "video": "https://youtube.com/shorts/Hj3AG6-MwgY",
