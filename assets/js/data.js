@@ -178,10 +178,98 @@ window.SITE = {
   "works": {
     "ai-video-ads": [
       {
+        "en": "נחלת בינימין תל אביב",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/Hj3AG6-MwgY",
+        "body": ""
+      },
+      {
+        "en": "מצלאוי   רובע הדר   SITE CLIP 03",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "1 / 1",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/Tfpensf4G7Y?feature=share",
+        "body": ""
+      },
+      {
+        "en": "גרופית בלוך",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "1 / 1",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/ZPw2Lt-d-wc?feature=share",
+        "body": ""
+      },
+      {
+        "en": "אמפא הכרם   כרמי גת",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "1 / 1",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/kZT_BubgRJ8?feature=share",
+        "body": ""
+      },
+      {
+        "en": "שזת נופי תהילה באר יעקב 2",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/_sfHE8wTdoE?feature=share",
+        "body": ""
+      },
+      {
+        "en": "more חריש",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/UzG1Q1_tL_A?feature=share",
+        "body": ""
+      },
+      {
+        "en": "LIV",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/Psu4Ydnj1bk?feature=share",
+        "body": ""
+      },
+      {
+        "en": "ARC",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/0YNUn7bm4-Q?feature=share",
+        "body": ""
+      },
+      {
         "en": "החתול החופשי האחרון",
         "he": "",
         "client": "",
-        "sub": "",
+        "sub": "CONCEPTS FOR FUN",
         "ratio": "16 / 9",
         "tags": [],
         "poster": "",
@@ -192,7 +280,7 @@ window.SITE = {
         "en": "סיפורו של סנאי - חלק 1",
         "he": "",
         "client": "",
-        "sub": "",
+        "sub": "CONCEPTS FOR FUN",
         "ratio": "16 / 9",
         "tags": [],
         "poster": "",
