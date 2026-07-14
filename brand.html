@@ -27,7 +27,13 @@
 
   <main class="cat-body">
     <div class="wrap">
-      <div class="count-label" id="brand-count" style="margin-bottom:18px;"></div>
+      <div class="brand-mobile-bar">
+        <div class="count-label" id="brand-count"></div>
+        <div class="mobile-gallery-views" aria-label="Mobile gallery layout">
+          <button class="is-on" data-mobile-view="grid" aria-label="Instagram grid view" title="Grid"><span class="view-icon view-icon--grid" aria-hidden="true"></span></button>
+          <button data-mobile-view="single" aria-label="Single column view" title="Single column"><span class="view-icon view-icon--single" aria-hidden="true"></span></button>
+        </div>
+      </div>
       <div id="brand-content"></div>
     </div>
   </main>

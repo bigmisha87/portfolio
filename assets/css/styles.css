@@ -457,6 +457,24 @@ main { flex: 1 0 auto; }
 }
 .toggle button.is-on { background: #fff; color: #0a0a0c; }
 
+/* Visitor-facing gallery layout switch. It appears on phones only. */
+.mobile-gallery-views { display: none; }
+.brand-mobile-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.view-icon { display: block; width: 16px; height: 16px; }
+.view-icon--grid {
+  background: linear-gradient(currentColor 0 0) 0 0/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 6px 0/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 12px 0/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 0 6px/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 6px 6px/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 12px 6px/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 0 12px/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 6px 12px/4px 4px no-repeat,
+              linear-gradient(currentColor 0 0) 12px 12px/4px 4px no-repeat;
+}
+.view-icon--single { border-top: 4px solid currentColor; border-bottom: 4px solid currentColor; position: relative; }
+.view-icon--single::after { content: ""; position: absolute; left: 0; right: 0; top: 2px; border-top: 4px solid currentColor; }
+
 /* Sub-category filter chips (Category page). Only shown when a category has
    2+ sub-categories defined on its works. "All" + one chip per sub. */
 .subfilter { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
@@ -828,6 +846,32 @@ main { flex: 1 0 auto; }
 }
 /* Phones: let the video fill the screen, float the arrows over it */
 @media (max-width: 640px) {
+  .mobile-gallery-views { display: inline-flex; flex: 0 0 auto; padding: 2px; border: 1px solid var(--line-2); border-radius: 9px; background: rgba(12,12,16,.78); }
+  .mobile-gallery-views button { width: 38px; height: 34px; display: grid; place-items: center; border: 0; border-radius: 7px; background: transparent; color: var(--muted); cursor: pointer; }
+  .mobile-gallery-views button.is-on { background: #fff; color: #09090c; }
+  .brand-views { display: none; }
+  .brand-mobile-bar { margin-bottom: 14px; }
+  .cat-body { padding-left: 0; padding-right: 0; }
+  .page-head { padding-left: 16px; padding-right: 16px; }
+
+  /* Instagram mode: compact, edge-to-edge, square three-up tiles. */
+  .mobile-gallery-grid .cat-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px; height: auto !important; }
+  .mobile-gallery-grid .cat-grid .work { position: static !important; width: 100% !important; }
+  .mobile-gallery-grid .work__frame { aspect-ratio: 1 / 1 !important; border: 0; border-radius: 0; }
+  .mobile-gallery-grid .work__row, .mobile-gallery-grid .work__client { display: none; }
+  .mobile-gallery-grid .client-group__head { margin: 22px 12px 10px; }
+
+  /* Single mode keeps each artwork's natural shape and its caption. */
+  .mobile-gallery-single .cat-grid { display: grid; grid-template-columns: 1fr; gap: 28px; height: auto !important; padding: 0 12px; }
+  .mobile-gallery-single .cat-grid .work { position: static !important; width: 100% !important; }
+
+  .mobile-gallery-grid .pg-gallery { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 2px !important; height: auto !important; }
+  .mobile-gallery-grid .pg-gallery .pg-gmedia { position: static !important; width: 100% !important; height: auto !important; aspect-ratio: 1 / 1 !important; border-radius: 0; }
+  .mobile-gallery-grid .pg-gallery .pg-gmedia img { width: 100%; height: 100%; object-fit: cover; }
+  .mobile-gallery-grid .pg-gspan { grid-column: 1 / -1; padding: 0 16px; }
+  .mobile-gallery-single .pg-gallery { margin-left: 12px; margin-right: 12px; }
+  .mobile-gallery-single .pg-stack { padding-left: 12px; padding-right: 12px; }
+
   .lb-top { padding: 12px 14px; }
   .lb-stage { gap: 0; padding: 0 6px; }
   .lb-player { max-width: 94vw; max-height: 74vh; }

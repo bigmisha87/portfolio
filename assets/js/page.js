@@ -29,6 +29,7 @@ window.PAGE_INIT = function () {
   var c = el("page-content");
   var sw = page.stackWidth || 1100;
   var galleryLists = [];               // media lists per gallery, for the lightbox
+  var mobileView = "grid";
   function textAttrs(b) {
     var dir = (b.dir && b.dir !== "auto") ? b.dir : "auto";
     var st = (b.align ? "text-align:" + b.align + ";" : "") + (b.size ? "font-size:" + b.size + "px;" : "") + (b.bold ? "font-weight:700;" : "") + (b.italic ? "font-style:italic;" : "") + (b.underline ? "text-decoration:underline;" : "") + (b.color ? "color:" + b.color + ";" : "");
@@ -82,7 +83,8 @@ window.PAGE_INIT = function () {
   // item's known aspect ratio (data-ar) so it lays out before images load.
   function layoutGalleries() {
     [].forEach.call(c.querySelectorAll('.pg-gallery--masonry'), function (gal) {
-      var cols = Math.max(1, parseInt(gal.style.getPropertyValue('--cols'), 10) || 3);
+      var isPhone = matchMedia('(max-width: 640px)').matches;
+      var cols = isPhone ? (mobileView === 'single' ? 1 : 3) : Math.max(1, parseInt(gal.style.getPropertyValue('--cols'), 10) || 3);
       var gap = parseInt(gal.style.getPropertyValue('--gap'), 10) || 8;
       var items = [].slice.call(gal.children);
       if (!items.length) { gal.style.height = ''; return; }
@@ -153,12 +155,20 @@ window.PAGE_INIT = function () {
   }
   function render() {
     galleryLists = [];
-    c.innerHTML = (page.view === "grid")
+    // On phones the visitor's switch takes precedence over the editor's
+    // desktop page layout: Grid flattens all media, Single restores the stack.
+    var phoneGrid = matchMedia('(max-width: 640px)').matches && mobileView === 'grid';
+    c.innerHTML = (page.view === "grid" || phoneGrid)
       ? pageGridHTML()
       : '<div class="pg-stack" style="max-width:' + sw + 'px">' + body.map(blockHTML).join("") + '</div>';
     layoutGalleries();
     [].forEach.call(c.querySelectorAll('.pg-gallery--masonry img'), function (img) { if (!img.complete) img.addEventListener('load', relayoutSoon, { once: true }); });
   }
+
+  G.bindMobileView(document.body, function (view) {
+    mobileView = view;
+    render();
+  });
 
   /* ---- hover-autoplay for gallery videos ----------------------------- */
   function hoverIn(btn) {

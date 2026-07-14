@@ -224,6 +224,14 @@ window.Gallery = (function () {
     if (!grid) return;
     var items = [].filter.call(grid.children, function (c) { return c.matches && c.matches(".work, .cv-add"); });
     if (!items.length) { grid.style.height = ""; return; }
+    // Phones use a CSS-driven Instagram grid / single-column switch. Clear the
+    // desktop masonry's inline coordinates so both mobile modes stay fluid.
+    var mobileScope = grid.closest(".mobile-gallery-grid, .mobile-gallery-single");
+    if (matchMedia("(max-width: 640px)").matches && mobileScope) {
+      grid.style.height = "";
+      items.forEach(function (c) { c.style.position = ""; c.style.width = ""; c.style.left = ""; c.style.top = ""; });
+      return;
+    }
     var rs = getComputedStyle(document.documentElement);
     var gapX = parseFloat(rs.getPropertyValue("--card-gap")) || 22;
     var gapY = parseFloat(rs.getPropertyValue("--card-row-gap")) || 22;
@@ -248,8 +256,25 @@ window.Gallery = (function () {
   function masonryAll(root) {
     [].forEach.call((root || document).querySelectorAll(".cat-grid"), function (g) { masonryGrid(g); });
   }
+  function bindMobileView(scope, onChange) {
+    if (!scope || scope.__mobileViewBound) return;
+    scope.__mobileViewBound = true;
+    scope.classList.add("mobile-gallery-grid");
+    scope.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-mobile-view]");
+      if (!b || !scope.contains(b)) return;
+      var view = b.getAttribute("data-mobile-view") === "single" ? "single" : "grid";
+      scope.classList.toggle("mobile-gallery-grid", view === "grid");
+      scope.classList.toggle("mobile-gallery-single", view === "single");
+      [].forEach.call(scope.querySelectorAll("[data-mobile-view]"), function (x) {
+        x.classList.toggle("is-on", x.getAttribute("data-mobile-view") === view);
+      });
+      if (onChange) onChange(view);
+      masonryAll(scope);
+    });
+  }
   var _mzTimer;
   window.addEventListener("resize", function () { clearTimeout(_mzTimer); _mzTimer = setTimeout(function () { masonryAll(); }, 120); });
 
-  return { tileHTML: tileHTML, open: open, openZoom: openZoom, bindGrid: bindGrid, RATIO_LABEL: RATIO_LABEL, masonryGrid: masonryGrid, masonryAll: masonryAll };
+  return { tileHTML: tileHTML, open: open, openZoom: openZoom, bindGrid: bindGrid, bindMobileView: bindMobileView, RATIO_LABEL: RATIO_LABEL, masonryGrid: masonryGrid, masonryAll: masonryAll };
 })();

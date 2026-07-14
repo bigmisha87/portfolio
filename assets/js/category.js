@@ -23,6 +23,7 @@ window.PAGE_INIT = function () {
   });
   var desc = (S.categoryDesc && S.categoryDesc[slug]) || "Selected pieces.";
   var state = { view: "new", filter: "__all__" };
+  window.Gallery.bindMobileView(document.body);
 
   // client name -> brand slug (for the case-study links)
   var brandByName = {};

@@ -35,6 +35,10 @@ window.PAGE_INIT = function () {
   var c = el("brand-content");
   var G = window.Gallery;
   var view = "grid"; // "grid" (masonry) or "stack" (Behance single column)
+  G.bindMobileView(document.body, function (mobileView) {
+    view = mobileView === "single" ? "stack" : "grid";
+    render();
+  });
 
   function tile(i) { return G.tileHTML(works[i], i, false); }
 
