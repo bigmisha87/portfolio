@@ -178,6 +178,17 @@ window.SITE = {
   "works": {
     "ai-video-ads": [
       {
+        "en": "No country for mynas - western short",
+        "he": "",
+        "client": "",
+        "sub": "CONCEPTS FOR FUN",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtu.be/UD0iPBkNJec",
+        "body": ""
+      },
+      {
         "en": "נחלת בינימין תל אביב",
         "he": "",
         "client": "",
