@@ -27,7 +27,7 @@
   // real file lives locally as assets/img/blog/<mediaId>.<ext>. Resolve it so
   // the Studio shows the same image the live site does.
   function localImg(u) { if (!u) return ""; if (u.indexOf("assets/") === 0) return u; var m = u.match(/\/media\/([^~\/?]+)~mv2[^.?\/]*\.(\w+)/i); return m ? "assets/img/blog/" + m[1] + "." + m[2].toLowerCase() : u; }
-  function blkImg(b) { return b.src || localImg(b.url) || ""; }
+  function blkImg(b) { return localImg(b.src || b.url) || ""; }
   function firstBodyImg(body) { var f = (body || []).filter(function (x) { return x.type === "img"; })[0]; return f ? blkImg(f) : ""; }
   function ytId(v) { var m = (v || "").match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/); return m ? m[1] : ""; }
   function ytThumb(v) { var id = ytId(v); return id ? "https://img.youtube.com/vi/" + id + "/hqdefault.jpg" : ""; }
@@ -550,13 +550,13 @@
   }
 
   /* ---------- canvas per page ---------------------------------------- */
-  var page = "home", workCat = (D.categories[0] || {}).slug || "", workSub = "__all__", openPage = null, openPost = null;
+  var page = "homepage", workCat = (D.categories[0] || {}).slug || "", workSub = "__all__", openPage = null, openPost = null;
 
   function renderCanvas() {
     var c = el("canvas"), h;
     applyLayoutVars();
     if (page === "home") {
-      h = '<div class="cv-hint">Home — click a tile to open it · ✎ edits its name &amp; cover.</div><div class="home-grid">' +
+      h = '<div class="cv-hint">Disciplines — the tiles on the Work page (works.html) · click one to open it · ✎ edits its name &amp; cover.</div><div class="home-grid">' +
         D.categories.map(function (c, i) { return c.parent ? "" : catCard(c, i); }).join("") + '<div class="cv-add" data-act="add-cat">+ Add discipline</div></div>';
     } else if (page === "work") {
       var curCat = D.categories.filter(function (x) { return x.slug === workCat; })[0] || {};
@@ -589,8 +589,22 @@
     } else if (page === "brands") {
       h = '<div class="cv-hint">Brands — each one becomes a clickable case-study page. Its name must match the “Client” on the work.</div><div class="cv-brandgrid">' +
         (D.brands || []).map(brandCard).join("") + '<div class="cv-add" data-act="add-brand" style="min-height:160px">+ Add brand</div></div>';
-    } else if (page === "design") { h = renderDesignCanvas(); }
+    } else if (page === "homepage") { h = hppShell("index.html", "תצוגה חיה — עמוד הבית"); }
+    else if (page === "contact") { h = hppShell("contact.html", "תצוגה חיה — צור קשר"); }
+    else if (page === "services") {
+      svcSlug = (D.services && D.services[svcSlug]) ? svcSlug : Object.keys(D.services || {})[0] || "";
+      h = hppShell("service.html?s=" + encodeURIComponent(svcSlug), "תצוגה חיה — עמוד שירות");
+    }
+    else if (page === "design") { h = renderDesignCanvas(); }
     else { h = renderAboutCanvas(); }
+    var wrapEl = c.closest(".st-canvas-wrap");
+    if (wrapEl) wrapEl.classList.toggle("st-canvas-wrap--preview", isPreviewPage());
+    if (isPreviewPage()) {
+      // the live preview fills the canvas edge-to-edge — no cv-screen padding
+      c.innerHTML = h;
+      hppMount();
+      return;
+    }
     c.innerHTML = '<div class="cv-screen">' + h + "</div>";
     studioMasonry();
   }
@@ -610,9 +624,407 @@
       "</div></div></div>";
   }
 
+  /* ---------- Home page & Contact editors ------------------------------
+     WordPress-style: the canvas shows a LIVE preview of the real page in an
+     iframe, and all the editing fields live in the right-hand panel, grouped
+     into collapsible sections. Every keystroke is pushed straight into the
+     preview (the same-origin iframe is handed the Studio's working copy D). */
+
+  var hppDevice = "desktop";              // desktop (1440) / mobile (390)
+  var hppOpen = { hero: true };           // which panel sections are open
+  var hppTimer = null;
+  var svcSlug = Object.keys((D.services) || {})[0] || "";   // which service page is being edited
+  function isPreviewPage() { return page === "homepage" || page === "contact" || page === "services"; }
+
+  function hppShell(src, title) {
+    return '<div class="hpp-bar">' +
+      '<span class="hpp-bar__t">' + esc(title) + "</span>" +
+      '<span class="hpp-bar__sp"></span>' +
+      '<button class="hpp-dev' + (hppDevice === "desktop" ? " is-on" : "") + '" data-hppdev="desktop">🖥 Desktop</button>' +
+      '<button class="hpp-dev' + (hppDevice === "mobile" ? " is-on" : "") + '" data-hppdev="mobile">📱 Mobile</button>' +
+      '<button class="hpp-dev" data-hpprefresh title="Reload the preview">↻</button>' +
+      '</div><div class="hpp-wrap" id="hpp-wrap"><iframe id="hpp-frame" src="' + src + '"></iframe></div>';
+  }
+  function hppMount() {
+    var f = el("hpp-frame"); if (!f) return;
+    f.addEventListener("load", function () { syncPreview(); hppScale(); });
+    hppScale();
+  }
+  function hppScale() {
+    var wrap = el("hpp-wrap"), f = el("hpp-frame"); if (!wrap || !f) return;
+    // The canvas has no fixed height, so size the preview from the viewport —
+    // otherwise the percentage chain collapses and the iframe becomes a strip.
+    var top = wrap.getBoundingClientRect().top;
+    var wrapH = Math.max(320, Math.round(window.innerHeight - top - 20));
+    wrap.style.height = wrapH + "px";
+    // Desktop = fill the available width 1:1 (the site is responsive, so this
+    // behaves like a real browser window). Mobile = a phone-width frame.
+    var Wl = hppDevice === "mobile" ? 390 : wrap.clientWidth;
+    var s = Math.min(1, wrap.clientWidth / Wl);   // 1 except when the canvas is narrower than a phone
+    f.style.width = Wl + "px";
+    f.style.height = Math.round(wrapH / s) + "px";
+    f.style.transform = s === 1 ? "" : "scale(" + s + ")";
+    f.style.marginLeft = Math.max(0, Math.round((wrap.clientWidth - Wl * s) / 2)) + "px";
+  }
+  window.addEventListener("resize", function () { if (isPreviewPage()) hppScale(); });
+
+  // Hand the Studio's working copy to the iframe and re-render it in place.
+  function syncPreview() {
+    var f = el("hpp-frame"); if (!f) return;
+    var w = f.contentWindow;
+    if (!w || !w.DC) return;
+    try {
+      w.SITE = D; w.DC.data = D;
+      if (w.DC.rerenderChrome) w.DC.rerenderChrome();
+      if (typeof w.PAGE_INIT === "function") w.PAGE_INIT();
+    } catch (err) { /* preview only — must never break the editor */ }
+  }
+  function scheduleSync() { clearTimeout(hppTimer); hppTimer = setTimeout(syncPreview, 220); }
+  function hppJump(sel) {
+    var f = el("hpp-frame"); var w = f && f.contentWindow; if (!w) return;
+    try {
+      if (sel === "top") w.scrollTo({ top: 0, behavior: "smooth" });
+      else { var t = w.document.querySelector(sel); if (t) t.scrollIntoView({ behavior: "smooth" }); }
+    } catch (err) {}
+  }
+
+  /* --- panel building blocks --- */
+  function hppSec(key, icon, title, jump, body) {
+    return '<details class="hpp-sec"' + (hppOpen[key] ? " open" : "") + ' data-key="' + key + '"' + (jump ? ' data-jump="' + jump + '"' : "") + ">" +
+      '<summary><span class="hpp-sec__ico">' + icon + '</span><span class="hpp-sec__t">' + esc(title) + '</span><span class="hpp-sec__chev">›</span></summary>' +
+      '<div class="hpp-sec__b">' + body + "</div></details>";
+  }
+  function hpRowCtl(path, i, len) {
+    return '<span class="hp-ctl">' +
+      '<button class="st-mini" data-hact="up" data-hpath="' + path + '" data-hidx="' + i + '"' + (i === 0 ? " disabled" : "") + '>↑</button>' +
+      '<button class="st-mini" data-hact="down" data-hpath="' + path + '" data-hidx="' + i + '"' + (i === len - 1 ? " disabled" : "") + '>↓</button>' +
+      '<button class="st-mini st-mini--danger" data-hact="del" data-hpath="' + path + '" data-hidx="' + i + '">✕</button>' +
+      "</span>";
+  }
+  function hpAdd(path, label) {
+    return '<button class="st-addpiece" data-hact="add" data-hpath="' + path + '">+ ' + esc(label) + "</button>";
+  }
+
+  function renderHomepagePanel() {
+    var H = D.home || (D.home = {});
+    var hero = H.hero || (H.hero = {});
+    var out = '<div class="hpp-head">עמוד הבית<span>כל שינוי מופיע מיד בתצוגה · Save שומר לאתר</span></div>';
+
+    var teaser = hero.teaser || (hero.teaser = []);
+    out += hppSec("hero", "🎬", "פתיח ושוריל", "top",
+      field("כותרת ראשית", "home.hero.title", hero.title, { rtl: true }) +
+      field("טקסט משנה", "home.hero.copy", hero.copy, { rtl: true, textarea: true }) +
+      mediaField("סרטון השוריל", "home.hero.showreelUrl", hero.showreelUrl, "video") +
+      '<div class="hpp-sub">כפתורים</div>' +
+      field("כפתור ראשי", "home.hero.primary.label", (hero.primary || {}).label, { rtl: true }) +
+      field("קישור הכפתור הראשי", "home.hero.primary.href", (hero.primary || {}).href) +
+      field("כפתור משני", "home.hero.secondary.label", (hero.secondary || {}).label, { rtl: true }) +
+      field("קישור הכפתור המשני", "home.hero.secondary.href", (hero.secondary || {}).href) +
+      '<div class="hpp-sub">תמונות מתחלפות (' + teaser.length + ")</div>" +
+      teaser.map(function (src, i) {
+        return '<div class="hp-row"><span class="hp-thumb">' + (src ? '<img src="' + esc(src) + '">' : "—") + "</span>" +
+          '<span class="hp-row__name">' + esc((src || "").split("/").pop() || "ריק") + "</span>" +
+          '<button class="st-mini" data-upload="home.hero.teaser.' + i + '" data-kind="image" title="החלפת תמונה">📁</button>' +
+          hpRowCtl("home.hero.teaser", i, teaser.length) + "</div>";
+      }).join("") + hpAdd("home.hero.teaser", "הוספת תמונה"));
+
+    var sv = H.services || (H.services = {}), svItems = sv.items || (sv.items = []);
+    out += hppSec("services", "🧰", "שירותים", "#services",
+      field("כותרת", "home.services.title", sv.title, { rtl: true }) +
+      field("שורת פתיחה", "home.services.intro", sv.intro, { rtl: true }) +
+      svItems.map(function (it, i) {
+        var b = "home.services.items." + i;
+        return '<div class="hp-item"><div class="hp-item__h">כרטיס ' + (i + 1) + hpRowCtl("home.services.items", i, svItems.length) + "</div>" +
+          field("כותרת", b + ".title", it.title, { rtl: true }) +
+          field("טקסט", b + ".body", it.body, { rtl: true, textarea: true }) +
+          field("שורה קטנה מתחת", b + ".extra", it.extra, { rtl: true }) +
+          mediaField("תמונה", b + ".image", it.image, "image") + "</div>";
+      }).join("") + hpAdd("home.services.items", "הוספת כרטיס"));
+
+    var wk = H.works || (H.works = {}), wkItems = wk.items || (wk.items = []);
+    out += hppSec("works", "⭐", "עבודות נבחרות", "#works",
+      field("כותרת", "home.works.title", wk.title, { rtl: true }) +
+      field("שורת פתיחה", "home.works.intro", wk.intro, { rtl: true }) +
+      field("כפתור", "home.works.moreLabel", wk.moreLabel, { rtl: true }) +
+      field("הכפתור מוביל אל", "home.works.moreHref", wk.moreHref) +
+      '<div class="hpp-sub">הפרויקטים המוצגים (' + wkItems.length + ") — בחירה מהגלריות, בלי הקלדה</div>" +
+      wkItems.map(function (r, i) {
+        var b = "home.works.items." + i;
+        var list = (D.works[r.cat] || []).filter(function (w) { return w.type !== "page" && w.en; });
+        var found = list.filter(function (w) { return String(w.en).trim().toLowerCase() === String(r.title || "").trim().toLowerCase(); })[0];
+        var thumb = found ? (found.poster || ytThumb(found.video)) : "";
+        return '<div class="hp-item"><div class="hp-item__h"><span class="hp-thumb hp-thumb--sm">' +
+          (thumb ? '<img src="' + esc(thumb) + '">' : '<span class="hp-miss">?</span>') + "</span>פרויקט " + (i + 1) +
+          (found ? "" : ' <span class="hp-warn">לא נמצא</span>') +
+          hpRowCtl("home.works.items", i, wkItems.length) + "</div>" +
+          '<div class="st-field"><label>גלריה</label><select data-path="' + b + '.cat">' + D.categories.map(function (c) {
+            return '<option value="' + esc(c.slug) + '"' + (c.slug === r.cat ? " selected" : "") + ">" + esc(c.name) + "</option>";
+          }).join("") + "</select></div>" +
+          '<div class="st-field"><label>עבודה</label><select data-path="' + b + '.title">' + list.map(function (w) {
+            return '<option value="' + esc(w.en) + '"' + (found && w.en === found.en ? " selected" : "") + ">" + esc(w.en) + "</option>";
+          }).join("") + "</select></div></div>";
+      }).join("") + hpAdd("home.works.items", "הוספת פרויקט"));
+
+    var pr = H.process || (H.process = {}), steps = pr.steps || (pr.steps = []);
+    out += hppSec("process", "🛠", "איך זה עובד", "#process",
+      field("כותרת", "home.process.title", pr.title, { rtl: true }) +
+      field("שורת פתיחה", "home.process.intro", pr.intro, { rtl: true }) +
+      steps.map(function (s, i) {
+        var b = "home.process.steps." + i;
+        return '<div class="hp-item"><div class="hp-item__h">שלב ' + (i + 1) + hpRowCtl("home.process.steps", i, steps.length) + "</div>" +
+          field("מספר", b + ".num", s.num) +
+          field("כותרת", b + ".title", s.title, { rtl: true }) +
+          field("טקסט", b + ".copy", s.copy, { rtl: true, textarea: true }) +
+          mediaField("אייקון", b + ".icon", s.icon, "image") + "</div>";
+      }).join("") + hpAdd("home.process.steps", "הוספת שלב"));
+
+    var ab = H.about || (H.about = {}), stats = ab.stats || (ab.stats = []), copy = ab.copy || (ab.copy = []);
+    out += hppSec("about", "👤", "אודות", "#about",
+      field("כותרת", "home.about.heading", ab.heading, { rtl: true }) +
+      '<div class="hpp-sub">מספרים</div>' +
+      stats.map(function (s, i) {
+        var b = "home.about.stats." + i;
+        return '<div class="hp-row">' + field("מספר", b + ".num", s.num) + field("תווית", b + ".label", s.label, { rtl: true }) +
+          hpRowCtl("home.about.stats", i, stats.length) + "</div>";
+      }).join("") + hpAdd("home.about.stats", "הוספת מספר") +
+      '<div class="hpp-sub">פסקאות · שורה חדשה = שבירת שורה · הדגשה בסגול עם {{ }}</div>' +
+      copy.map(function (t, i) {
+        return '<div class="hp-item"><div class="hp-item__h">פסקה ' + (i + 1) + hpRowCtl("home.about.copy", i, copy.length) + "</div>" +
+          '<textarea data-path="home.about.copy.' + i + '" dir="rtl" rows="4">' + esc(t) + "</textarea></div>";
+      }).join("") + hpAdd("home.about.copy", "הוספת פסקה") +
+      mediaField("תמונה", "home.about.image", ab.image, "image"));
+
+    var cta = H.cta || (H.cta = {});
+    out += hppSec("cta", "📣", "באנר סיום", "#contact",
+      field("כותרת", "home.cta.heading", cta.heading, { rtl: true }) +
+      field("טקסט", "home.cta.copy", cta.copy, { rtl: true, textarea: true }) +
+      field("כפתור", "home.cta.button.label", (cta.button || {}).label, { rtl: true }) +
+      field("הכפתור מוביל אל", "home.cta.button.href", (cta.button || {}).href));
+
+    var nav = H.nav || (H.nav = []);
+    out += hppSec("nav", "🧭", "תפריט ניווט — כל האתר", "top",
+      '<div class="hpp-sub"># מוביל למקטע בעמוד הבית · שם קובץ כמו works.html מוביל לעמוד</div>' +
+      nav.map(function (n, i) {
+        var b = "home.nav." + i;
+        return '<div class="hp-row">' + field("שם", b + ".label", n.label, { rtl: true }) + field("קישור", b + ".href", n.href) +
+          hpRowCtl("home.nav", i, nav.length) + "</div>";
+      }).join("") + hpAdd("home.nav", "הוספת פריט") +
+      '<div class="hpp-sub">הכפתור בראש העמוד</div>' +
+      field("שם", "home.ctaButton.label", (H.ctaButton || {}).label, { rtl: true }) +
+      field("קישור", "home.ctaButton.href", (H.ctaButton || {}).href));
+
+    return out;
+  }
+
+  function renderContactPanel() {
+    var C = D.contact || (D.contact = {});
+    var subs = C.subjects || (C.subjects = []);
+    var keyState = (C.accessKey || "").trim()
+      ? '<div class="hp-ok">הטופס מחובר — הודעות מגיעות לתיבה.</div>'
+      : '<div class="hp-warnbox">אין עדיין מפתח, אז הודעות לא יישלחו. מפתח חינמי מ־web3forms.com.</div>';
+    return '<div class="hpp-head">צור קשר<span>כל שינוי מופיע מיד בתצוגה · Save שומר לאתר</span></div>' +
+      hppSec("ctext", "✏️", "טקסט העמוד", "top",
+        field("כותרת", "contact.title", C.title, { rtl: true }) +
+        field("טקסט מתחתיה", "contact.intro", C.intro, { rtl: true, textarea: true })) +
+      hppSec("ckey", "📮", "לאן מגיעות ההודעות", null,
+        keyState + field("מפתח Web3Forms", "contact.accessKey", C.accessKey)) +
+      hppSec("csubj", "🏷", "אפשרויות הנושא", null,
+        subs.map(function (s, i) {
+          return '<div class="hp-row">' + field("אפשרות " + (i + 1), "contact.subjects." + i, s, { rtl: true }) +
+            hpRowCtl("contact.subjects", i, subs.length) + "</div>";
+        }).join("") + hpAdd("contact.subjects", "הוספת אפשרות")) +
+      hppSec("cmsg", "💬", "הודעות למבקר", null,
+        field("כפתור שליחה", "contact.submitLabel", C.submitLabel, { rtl: true }) +
+        field("בזמן שליחה", "contact.sendingLabel", C.sendingLabel, { rtl: true }) +
+        field("כותרת הצלחה", "contact.successTitle", C.successTitle, { rtl: true }) +
+        field("טקסט הצלחה", "contact.successBody", C.successBody, { rtl: true, textarea: true }) +
+        field("טקסט שגיאה", "contact.errorBody", C.errorBody, { rtl: true, textarea: true }));
+  }
+
+  function renderServicesPanel() {
+    var all = D.services || (D.services = {});
+    if (!all[svcSlug]) svcSlug = Object.keys(all)[0] || "";
+    var V = all[svcSlug]; if (!V) return '<div class="hpp-head">אין עמודי שירות</div>';
+    var b = "services." + svcSlug + ".";
+
+    var picker = '<div class="hpp-picker"><label>עמוד שירות</label><select data-svcslug>' +
+      Object.keys(all).map(function (k) {
+        return '<option value="' + esc(k) + '"' + (k === svcSlug ? " selected" : "") + ">" + esc(all[k].title || k) + "</option>";
+      }).join("") + "</select></div>";
+
+    var out = '<div class="hpp-head">עמוד שירות<span>כל שינוי מופיע מיד בתצוגה · Save שומר לאתר</span></div>' + picker;
+
+    out += hppSec("shero", "🏷", "כותרת ראשית", "top",
+      field("כותרת", b + "title", V.title, { rtl: true }) +
+      field("שורת מחץ", b + "lead", V.lead, { rtl: true }) +
+      field("פסקת פתיחה", b + "intro", V.intro, { rtl: true, textarea: true }) +
+      mediaField("תמונת רקע", b + "image", V.image, "image") +
+      '<div class="hpp-sub">כפתורים</div>' +
+      field("כפתור ראשי", b + "primary.label", (V.primary || {}).label, { rtl: true }) +
+      field("קישור ראשי", b + "primary.href", (V.primary || {}).href) +
+      field("כפתור משני", b + "secondary.label", (V.secondary || {}).label, { rtl: true }) +
+      field("קישור משני", b + "secondary.href", (V.secondary || {}).href));
+
+    var bn = V.benefits || (V.benefits = { items: [] }), bi = bn.items || (bn.items = []);
+    out += hppSec("sben", "⭐", "יתרונות", ".svc-benefits",
+      field("כותרת מקטע", b + "benefits.title", bn.title, { rtl: true }) +
+      bi.map(function (it, i) {
+        var p = b + "benefits.items." + i;
+        return '<div class="hp-item"><div class="hp-item__h">יתרון ' + (i + 1) + hpRowCtl(b + "benefits.items", i, bi.length) + "</div>" +
+          field("כותרת", p + ".title", it.title, { rtl: true }) +
+          field("טקסט", p + ".body", it.body, { rtl: true, textarea: true }) +
+          mediaField("אייקון", p + ".iconImg", it.iconImg, "image") + "</div>";
+      }).join("") + hpAdd(b + "benefits.items", "הוספת יתרון"));
+
+    var pb = V.problem || (V.problem = { items: [] }), pbi = pb.items || (pb.items = []);
+    out += hppSec("sprob", "🎯", "מתי פונים אליי", ".svc-problem",
+      field("כותרת מקטע", b + "problem.title", pb.title, { rtl: true }) +
+      pbi.map(function (t, i) {
+        return '<div class="hp-row">' + field("שורה " + (i + 1), b + "problem.items." + i, t, { rtl: true }) +
+          hpRowCtl(b + "problem.items", i, pbi.length) + "</div>";
+      }).join("") + hpAdd(b + "problem.items", "הוספת שורה"));
+
+    var inc = V.includes || (V.includes = { items: [] }), ici = inc.items || (inc.items = []);
+    out += hppSec("sinc", "📦", "מה כלול", ".svc-includes",
+      field("כותרת מקטע", b + "includes.title", inc.title, { rtl: true }) +
+      ici.map(function (it, i) {
+        var p = b + "includes.items." + i;
+        return '<div class="hp-item"><div class="hp-item__h">פריט ' + (i + 1) + hpRowCtl(b + "includes.items", i, ici.length) + "</div>" +
+          field("כותרת", p + ".title", it.title, { rtl: true }) +
+          field("טקסט", p + ".body", it.body, { rtl: true, textarea: true }) + "</div>";
+      }).join("") + hpAdd(b + "includes.items", "הוספת פריט"));
+
+    if (V.audience) {
+      var au = V.audience, aui = au.items || (au.items = []);
+      out += hppSec("saud", "👥", "למי זה מתאים", ".svc-audience",
+        field("כותרת מקטע", b + "audience.title", au.title, { rtl: true }) +
+        aui.map(function (t, i) {
+          return '<div class="hp-row">' + field("סוג " + (i + 1), b + "audience.items." + i, t, { rtl: true }) +
+            hpRowCtl(b + "audience.items", i, aui.length) + "</div>";
+        }).join("") + hpAdd(b + "audience.items", "הוספת סוג"));
+    }
+
+    var pr = V.process || (V.process = { steps: [] }), prs = pr.steps || (pr.steps = []);
+    out += hppSec("sproc", "🛠", "התהליך", ".svc-process",
+      field("כותרת מקטע", b + "process.title", pr.title, { rtl: true }) +
+      prs.map(function (s, i) {
+        var p = b + "process.steps." + i;
+        return '<div class="hp-item"><div class="hp-item__h">שלב ' + (i + 1) + hpRowCtl(b + "process.steps", i, prs.length) + "</div>" +
+          field("מספר", p + ".num", s.num) +
+          field("כותרת", p + ".title", s.title, { rtl: true }) +
+          field("טקסט", p + ".copy", s.copy, { rtl: true, textarea: true }) +
+          mediaField("אייקון", p + ".icon", s.icon, "image") + "</div>";
+      }).join("") + hpAdd(b + "process.steps", "הוספת שלב"));
+
+    if (V.works) {
+      var wk = V.works, wki = wk.items || (wk.items = []);
+      out += hppSec("swork", "🎬", "עבודות נבחרות", ".svc-works",
+        field("כותרת מקטע", b + "works.title", wk.title, { rtl: true }) +
+        field("שורת פתיחה", b + "works.intro", wk.intro, { rtl: true }) +
+        wki.map(function (r, i) {
+          var p = b + "works.items." + i;
+          var list = (D.works[r.cat] || []).filter(function (w) { return w.type !== "page" && w.en; });
+          var found = list.filter(function (w) { return String(w.en).trim().toLowerCase() === String(r.title || "").trim().toLowerCase(); })[0];
+          var thumb = found ? (found.poster || ytThumb(found.video)) : "";
+          return '<div class="hp-item"><div class="hp-item__h"><span class="hp-thumb hp-thumb--sm">' +
+            (thumb ? '<img src="' + esc(thumb) + '">' : '<span class="hp-miss">?</span>') + "</span>עבודה " + (i + 1) +
+            (found ? "" : ' <span class="hp-warn">לא נמצא</span>') + hpRowCtl(b + "works.items", i, wki.length) + "</div>" +
+            '<div class="st-field"><label>גלריה</label><select data-path="' + p + '.cat">' + D.categories.map(function (c) {
+              return '<option value="' + esc(c.slug) + '"' + (c.slug === r.cat ? " selected" : "") + ">" + esc(c.name) + "</option>";
+            }).join("") + "</select></div>" +
+            '<div class="st-field"><label>עבודה</label><select data-path="' + p + '.title">' + list.map(function (w) {
+              return '<option value="' + esc(w.en) + '"' + (found && w.en === found.en ? " selected" : "") + ">" + esc(w.en) + "</option>";
+            }).join("") + "</select></div></div>";
+        }).join("") + hpAdd(b + "works.items", "הוספת עבודה"));
+    }
+
+    var fq = V.faq || (V.faq = { items: [] }), fqi = fq.items || (fq.items = []);
+    out += hppSec("sfaq", "❓", "שאלות נפוצות", ".svc-faq",
+      field("כותרת מקטע", b + "faq.title", fq.title, { rtl: true }) +
+      fqi.map(function (f, i) {
+        var p = b + "faq.items." + i;
+        return '<div class="hp-item"><div class="hp-item__h">שאלה ' + (i + 1) + hpRowCtl(b + "faq.items", i, fqi.length) + "</div>" +
+          field("שאלה", p + ".q", f.q, { rtl: true }) +
+          '<textarea data-path="' + p + '.a" dir="rtl" rows="3">' + esc(f.a || "") + "</textarea></div>";
+      }).join("") + hpAdd(b + "faq.items", "הוספת שאלה"));
+
+    var cta = V.cta || (V.cta = {});
+    out += hppSec("scta", "📣", "קריאה לפעולה", ".svc-cta",
+      field("כותרת", b + "cta.heading", cta.heading, { rtl: true }) +
+      field("טקסט", b + "cta.copy", cta.copy, { rtl: true, textarea: true }) +
+      field("כפתור", b + "cta.button.label", (cta.button || {}).label, { rtl: true }) +
+      field("קישור", b + "cta.button.href", (cta.button || {}).href));
+
+    return out;
+  }
+
+  // add / delete / reorder a row inside one of the arrays above
+  function hpArrayAction(act, path, idx) {
+    var arr = getPath(D, path);
+    if (!Array.isArray(arr)) return;
+    if (act === "add") {
+      if (/(\.hero\.teaser|\.about\.copy|contact\.subjects|\.problem\.items|\.audience\.items)$/.test(path)) arr.push("");
+      else if (path === "home.nav") arr.push({ label: "פריט חדש", href: "#" });
+      else if (path === "home.about.stats") arr.push({ num: "0", label: "" });
+      else if (/\.process\.steps$/.test(path)) arr.push({ num: String(arr.length + 1).padStart(2, "0"), title: "", copy: "", icon: "" });
+      else if (path === "home.services.items") arr.push({ title: "", body: "", extra: "", image: "" });
+      else if (/\.benefits\.items$/.test(path)) arr.push({ icon: "⭐", title: "", body: "" });
+      else if (/\.includes\.items$/.test(path)) arr.push({ title: "", body: "" });
+      else if (/\.faq\.items$/.test(path)) arr.push({ q: "", a: "" });
+      else if (/\.works\.items$/.test(path)) {
+        var c0 = (D.categories[0] || {}).slug || "";
+        var f0 = (D.works[c0] || []).filter(function (w) { return w.type !== "page" && w.en; })[0];
+        arr.push({ cat: c0, title: f0 ? f0.en : "", size: "third" });
+      } else arr.push("");
+    } else if (act === "del") arr.splice(idx, 1);
+    else reorder(arr, idx, act);
+    renderInspector(); scheduleSync(); pushHistory();
+  }
+
+  /* --- panel events (bound once; #inspector is in the static shell) --- */
+  el("inspector").addEventListener("click", function (e) {
+    var hact = e.target.closest("[data-hact]");
+    if (hact && !hact.disabled) hpArrayAction(hact.getAttribute("data-hact"), hact.getAttribute("data-hpath"), +hact.getAttribute("data-hidx"));
+  });
+  el("inspector").addEventListener("input", function (e) {
+    if (isPreviewPage() && e.target.getAttribute && e.target.getAttribute("data-path")) scheduleSync();
+  });
+  el("inspector").addEventListener("change", function (e) {
+    if (!isPreviewPage()) return;
+    var t = e.target;
+    // switch which service page is being edited → reload the preview to it
+    if (t.getAttribute("data-svcslug") != null) { svcSlug = t.value; renderCanvas(); renderInspector(); return; }
+    if (t.tagName === "SELECT" && t.getAttribute("data-path")) {
+      liveUpdate(t);
+      var p = t.getAttribute("data-path");
+      // Switching a featured piece's gallery: snap to that gallery's first
+      // piece so the row never points at nothing. (home + service works alike)
+      if (/\.works\.items\.\d+\.cat$/.test(p)) {
+        var row = getPath(D, p.replace(/\.cat$/, ""));
+        var first = (D.works[row.cat] || []).filter(function (w) { return w.type !== "page" && w.en; })[0];
+        row.title = first ? first.en : "";
+      }
+      renderInspector(); scheduleSync(); pushHistory();
+    }
+  });
+  // remember which sections are open + jump the preview to that section
+  el("inspector").addEventListener("toggle", function (e) {
+    var d = e.target;
+    if (!d.classList || !d.classList.contains("hpp-sec")) return;
+    hppOpen[d.getAttribute("data-key")] = d.open;
+    var jump = d.getAttribute("data-jump");
+    if (d.open && jump) hppJump(jump);
+  }, true);
+
   /* ---------- inspector ---------------------------------------------- */
   function renderInspector() {
     var box = el("inspector"), h;
+    // Home page / Contact: WordPress-style — live preview on the canvas,
+    // all fields in a wide, collapsible panel here.
+    box.classList.toggle("st-insp--wide", isPreviewPage());
+    if (page === "homepage") { box.innerHTML = renderHomepagePanel(); return; }
+    if (page === "contact") { box.innerHTML = renderContactPanel(); return; }
+    if (page === "services") { box.innerHTML = renderServicesPanel(); return; }
     if (page === "about") h = inspAbout();
     else if (page === "design") h = inspDesign();
     else if (page === "work" && openPage != null) {
@@ -1208,6 +1620,12 @@
   el("st-subbar").addEventListener("input", function (e) { if (e.target.type === "range") liveUpdate(e.target); });
 
   el("canvas").addEventListener("click", function (e) {
+    // Live-preview toolbar (Home page / Contact tabs)
+    var dev = e.target.closest("[data-hppdev]");
+    if (dev) { hppDevice = dev.getAttribute("data-hppdev"); renderCanvas(); return; }
+    var refr = e.target.closest("[data-hpprefresh]");
+    if (refr) { var fr = el("hpp-frame"); if (fr) fr.contentWindow.location.reload(); return; }
+
     var subChip = e.target.closest("[data-worksub]");
     if (subChip) { workSub = subChip.getAttribute("data-worksub"); renderCanvas(); return; }
     // Clicking into editable text: let the browser place the caret, select the
@@ -1568,7 +1986,7 @@
       : "Open the Studio with the <b>Start-Studio</b> launcher (it runs at <code>http://localhost</code>). Opened as a file, saving is blocked.";
   }
   restore();
-  setPage("home");
+  setPage("homepage");
   pushHistory(true);
   History.init();
 })();

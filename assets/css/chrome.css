@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Shared site chrome — the header and footer that appear on EVERY page.
+   Rendered by site.js (which also injects this stylesheet), so this is the
+   ONE place to change the navigation or footer. Any new page that loads
+   site.js gets them automatically.
+
+   Colours are written literally on purpose: this file is loaded alongside
+   both styles.css and home.css, and must not fight their :root variables.
+   ========================================================================== */
+
+.hp-wrap { width: min(calc(100% - 64px), 1920px); margin: 0 auto; }
+
+/* ---------- background glow (every page) ----------
+   The motion is driven by site.js: it trails the cursor with a soft delay and
+   a gentle wobble. Sits behind all content and ignores pointer events. */
+.bg-glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
+.bg-glow__orb {
+  position: absolute; top: 0; left: 0;
+  width: 65vmax; height: 65vmax; border-radius: 50%;
+  margin-left: -32.5vmax; margin-top: -32.5vmax;   /* so transform targets the orb's CENTRE */
+  background: radial-gradient(circle, rgba(155,123,255,0.26), rgba(124,90,255,0.12) 42%, transparent 70%);
+  filter: blur(70px);
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-glow__orb { transform: translate3d(50vw, 42vh, 0); }
+}
+
+/* ---------- header ---------- */
+.hp-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(10,10,10,.9);
+  backdrop-filter: blur(16px);
+  direction: rtl;
+  font-family: "Heebo", "Assistant", Arial, Helvetica, sans-serif;
+}
+.hp-nav {
+  min-height: 84px;
+  display: flex; align-items: center;
+  /* Grouped together rather than pinned to opposite edges — across a 1920px
+     header, space-between flings the three apart. */
+  justify-content: center; gap: 46px;
+}
+.hp-logo { font-weight: 800; font-size: 22px; letter-spacing: -.04em; direction: ltr; }
+.hp-logo a { color: #f4f4f4; text-decoration: none; transition: color .2s ease; }
+.hp-logo a:hover { color: #9b7bff; }                /* brand purple */
+.hp-menu { display: flex; gap: 30px; align-items: center; font-size: 16px; }
+.hp-menu a { color: #cfcfcf; text-decoration: none; transition: color .2s ease; }
+.hp-menu a:hover { color: #9b7bff; }                /* brand purple */
+.hp-menu a.is-active { color: #fff; }               /* current page stays white */
+.hp-actions { display: flex; align-items: center; gap: 12px; }
+
+/* hamburger — only on small screens */
+.hp-burger {
+  display: none; width: 46px; height: 46px; padding: 0; cursor: pointer;
+  background: transparent; border: 1px solid #444;
+  flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+}
+.hp-burger span { display: block; width: 20px; height: 2px; background: #fff; }
+
+/* ---------- buttons (shared by the chrome and the home page) ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0 24px; font-weight: 700; font-size: 15px;
+  transition: .2s ease; cursor: pointer; border: 0; text-decoration: none;
+  font-family: "Heebo", "Assistant", Arial, Helvetica, sans-serif;
+}
+.btn--primary { border: 1px solid #fff; background: #fff; color: #050505; }
+/* purple on hover — applies everywhere this button is used (header, hero, CTA) */
+.btn--primary:hover { background: #9b7bff; border-color: #9b7bff; color: #fff; }
+.btn--secondary { border: 1px solid #444; color: #fff; background: transparent; }
+.btn--secondary:hover { border-color: #fff; }
+
+/* ---------- footer ---------- */
+.hp-footer {
+  padding: 44px 0; color: #9b9b9b; border-top: 1px solid #242424;
+  direction: rtl;
+  font-family: "Heebo", "Assistant", Arial, Helvetica, sans-serif;
+}
+.footer-row { display: flex; justify-content: space-between; gap: 30px; align-items: center; flex-wrap: wrap; }
+.footer-socials { display: flex; flex-wrap: wrap; gap: 12px 20px; direction: ltr; font-size: 14px; }
+.footer-socials a { color: inherit; text-decoration: none; }
+.footer-socials a:hover { color: #fff; }
+.footer-copy { direction: ltr; font-size: 14px; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .hp-wrap { width: min(calc(100% - 36px), 1920px); }
+  /* on a narrow screen the pair should sit at the two edges again */
+  .hp-nav { justify-content: space-between; gap: 20px; }
+  .hp-burger { display: flex; }
+  .hp-menu {
+    display: none; position: absolute; top: 100%; inset-inline: 0;
+    flex-direction: column; align-items: stretch; gap: 0; padding: 6px 0;
+    background: rgba(10,10,10,.98); border-top: 1px solid #242424;
+  }
+  .hp-menu.is-open { display: flex; }
+  .hp-menu a { padding: 15px 28px; font-size: 17px; }
+}
+@media (max-width: 560px) {
+  .hp-wrap { width: min(calc(100% - 28px), 1920px); }
+  .footer-row { flex-direction: column; align-items: flex-start; }
+}

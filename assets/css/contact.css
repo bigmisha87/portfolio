@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Contact page. Loaded alongside home.css (which supplies the shared Hebrew
+   page base: colours, typography, .wrap) and chrome.css (header/footer/.btn).
+   ========================================================================== */
+
+.contact-wrap { padding: 76px 0 110px; }
+
+.contact-head { text-align: center; margin-bottom: 54px; }
+.contact-head h1 {
+  font-size: clamp(38px, 5vw, 78px); line-height: 1.12;
+  letter-spacing: normal; font-weight: 800; margin: 0 0 18px;
+}
+.contact-head p { margin: 0 auto; max-width: 620px; color: var(--muted); font-size: 19px; }
+
+/* the form stands on its own, centred — it shouldn't stretch across 1920px */
+.contact-body { max-width: 780px; margin: 0 auto; }
+
+/* ---------- form ---------- */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { margin-bottom: 18px; }
+.field label {
+  display: block; font-size: 14px; color: #c4c4c4; margin-bottom: 8px; font-weight: 500;
+}
+.field .req { color: #9b7bff; }
+.field input,
+.field select,
+.field textarea {
+  width: 100%; background: #101010; color: var(--text);
+  border: 1px solid #2a2a2a; padding: 14px 16px;
+  font-family: inherit; font-size: 16px; line-height: 1.4;
+  transition: border-color .2s ease, background .2s ease;
+}
+.field textarea { min-height: 168px; resize: vertical; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none; border-color: #9b7bff; background: #141414;
+}
+.field input::placeholder, .field textarea::placeholder { color: #5f5f5f; }
+.field select { appearance: none; cursor: pointer; }
+
+/* validation */
+.field.is-invalid input,
+.field.is-invalid textarea { border-color: #ff6b6b; }
+.field__error { display: none; color: #ff8a8a; font-size: 13px; margin-top: 6px; }
+.field.is-invalid .field__error { display: block; }
+
+/* keep bots out — never shown to people */
+.hp-hidden { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+.form-actions { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 6px; }
+.form-actions .btn[disabled] { opacity: .55; cursor: default; }
+
+/* result banners */
+.form-note { margin-top: 20px; padding: 16px 18px; border: 1px solid #2a2a2a; display: none; }
+.form-note.is-on { display: block; }
+.form-note--ok { border-color: #9b7bff; background: rgba(155,123,255,.08); }
+.form-note--err { border-color: #ff6b6b; background: rgba(255,107,107,.07); }
+.form-note strong { display: block; margin-bottom: 4px; font-size: 17px; }
+.form-note span { color: #bdbdbd; font-size: 15px; }
+
+/* setup warning shown only while no access key is configured */
+.form-setup {
+  margin-bottom: 26px; padding: 16px 18px;
+  border: 1px dashed #4a4a4a; background: #0f0f0f; color: #b9b9b9; font-size: 15px; line-height: 1.7;
+}
+.form-setup b { color: #fff; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .contact-wrap { padding: 52px 0 84px; }
+}
+@media (max-width: 560px) {
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+}

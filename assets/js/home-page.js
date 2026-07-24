@@ -12,21 +12,18 @@ window.PAGE_INIT = function () {
     return '<a class="btn btn--' + kind + '" href="' + esc(b.href || "#") + '">' + esc(b.label) + '</a>';
   }
 
-  /* ---------- header ---------- */
-  var nav = (H.nav || []).map(function (n) {
-    return '<a href="' + esc(n.href) + '">' + esc(n.label) + '</a>';
-  }).join("");
-  var header =
-    '<header class="hp-header"><div class="wrap hp-nav">' +
-      '<div class="hp-logo">' + esc(S.profile.brand) + '</div>' +
-      '<nav class="hp-menu">' + nav + '</nav>' +
-      btn(H.ctaButton, "primary") +
-    '</div></header>';
+  /* The header and footer are NOT built here — site.js renders the shared
+     chrome into #site-header / #site-footer on every page. */
 
   /* ---------- hero ---------- */
   var hero = H.hero || {};
+  // Only the first frame is fetched up front. The rest are attached to
+  // data-src and pulled in after load, so the page doesn't pay for ~2MB of
+  // teaser frames before it can show anything.
   var slides = (hero.teaser || []).map(function (src, i) {
-    return '<img src="' + esc(src) + '" alt=""' + (i === 0 ? ' class="is-on"' : '') + '>';
+    return i === 0
+      ? '<img src="' + esc(src) + '" alt="" class="is-on" fetchpriority="high">'
+      : '<img data-src="' + esc(src) + '" alt="" decoding="async">';
   }).join("");
   var heroHTML =
     '<section class="hero"><div class="wrap">' +
@@ -47,15 +44,17 @@ window.PAGE_INIT = function () {
   var svc = H.services || {};
   var svcCards = (svc.items || []).map(function (it) {
     return '' +
-      '<a class="service-card" href="' + esc(it.href || "#") + '">' +
-        (it.image ? '<img class="service-card__img" src="' + esc(it.image) + '" alt="">' : '') +
+      // Clickable only when the service actually has a page behind it.
+      (it.href ? '<a class="service-card is-link" href="' + esc(it.href) + '">' : '<div class="service-card">') +
+        (it.image ? '<img class="service-card__img" src="' + esc(it.image) + '" alt="' + esc(it.title || "") + '">' : '') +
         '<div class="service-card__body">' +
-          '<div class="service-number">' + esc(it.number || "") + '</div>' +
+          (it.number ? '<div class="service-number">' + esc(it.number) + '</div>' : "") +
           '<h3>' + esc(it.title || "") + '</h3>' +
           '<p>' + esc(it.body || "") + '</p>' +
           (it.extra ? '<div class="service-extra">' + esc(it.extra) + '</div>' : '') +
+          (it.href ? '<span class="service-more">לפרטים ←</span>' : '') +
         '</div>' +
-      '</a>';
+      (it.href ? '</a>' : '</div>');
   }).join("");
   var servicesHTML =
     '<section id="services"><div class="wrap">' +
@@ -63,22 +62,39 @@ window.PAGE_INIT = function () {
       '<div class="services">' + svcCards + '</div>' +
     '</div></section>';
 
-  /* ---------- works ---------- */
+  /* ---------- works ----------
+     Each entry only REFERENCES a real project in SITE.works (by category +
+     title), so the title, thumbnail and video always follow whatever the
+     Studio holds — nothing is duplicated here. */
   var wk = H.works || {};
-  var workCards = (wk.items || []).map(function (it) {
-    var media = it.image
-      ? '<img class="work-card__img" src="' + esc(it.image) + '" alt="">'
+  function findWork(ref) {
+    var list = (S.works && S.works[ref.cat]) || [];
+    var want = String(ref.title || "").trim().toLowerCase();
+    for (var i = 0; i < list.length; i++) {
+      if (String(list[i].en || "").trim().toLowerCase() === want) return list[i];
+    }
+    return null;
+  }
+  var workCards = (wk.items || []).map(function (ref) {
+    var w = findWork(ref);
+    var title = w ? (w.he || w.en) : (ref.title || "");
+    var meta = w ? (w.client || w.sub || "") : "לא נמצא בגלריה";
+    var video = w ? (w.video || "") : "";
+    var poster = w && w.poster ? w.poster : window.DC.videoThumbHi(video);
+    var fallback = window.DC.videoThumb(video);
+    var media = poster
+      ? '<img class="work-card__img" src="' + esc(poster) + '" alt="' + esc(title) + '" loading="lazy"' +
+        (fallback ? ' onerror="this.onerror=null;this.src=\'' + esc(fallback) + '\'"' : '') + '>'
       : '<div class="work-card__ph">PROJECT IMAGE</div>';
-    var go = (it.size === "large" || it.size === "medium")
-      ? '<span class="wgo">לצפייה ←</span>' : '';
     return '' +
-      '<a class="work-card ' + esc(it.size || "third") + '" href="' + esc(it.href || "#") + '">' +
+      '<button type="button" class="work-card ' + esc(ref.size || "third") + '"' +
+        ' data-video="' + esc(video) + '">' +
         media +
         '<div class="work-meta">' +
-          '<div><h4>' + esc(it.title || "") + '</h4><span class="wmeta">' + esc(it.meta || "") + '</span></div>' +
-          go +
+          '<div><h4>' + esc(title) + '</h4><span class="wmeta">' + esc(meta) + '</span></div>' +
+          (video ? '<span class="wgo">לצפייה ←</span>' : '') +
         '</div>' +
-      '</a>';
+      '</button>';
   }).join("");
   var worksHTML =
     '<section id="works"><div class="wrap">' +
@@ -123,7 +139,7 @@ window.PAGE_INIT = function () {
         // accentize() turns {{ ... }} into the purple accent span; \n → line break
         (ab.copy || []).map(function (p) { return '<p>' + accentize(p).replace(/\n/g, "<br>") + '</p>'; }).join("") +
       '</div>' +
-      '<div class="about-img-wrap">' + (ab.image ? '<img src="' + esc(ab.image) + '" alt="">' : '') + '</div>' +
+      '<div class="about-img-wrap">' + (ab.image ? '<img src="' + esc(ab.image) + '" alt="' + esc(S.profile.name || "מישה קרץ׳") + '">' : '') + '</div>' +
     '</div></section>';
 
   /* ---------- cta ---------- */
@@ -135,16 +151,6 @@ window.PAGE_INIT = function () {
       btn(cta.button, "primary") +
     '</div></section>';
 
-  /* ---------- footer ---------- */
-  var socials = (S.socials || []).map(function (s) {
-    return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>';
-  }).join("");
-  var footer =
-    '<footer class="hp-footer"><div class="wrap footer-row">' +
-      '<div class="footer-socials">' + socials + '</div>' +
-      '<div class="footer-copy">' + esc(S.profile.copyright || "") + '</div>' +
-    '</div></footer>';
-
   /* ---------- lightbox ---------- */
   var lightbox =
     '<div class="lightbox" id="lightbox" aria-hidden="true">' +
@@ -154,7 +160,7 @@ window.PAGE_INIT = function () {
       '</div>' +
     '</div>';
 
-  app.innerHTML = header + '<main>' + heroHTML + servicesHTML + worksHTML + processHTML + aboutHTML + ctaHTML + '</main>' + footer + lightbox;
+  app.innerHTML = '<main>' + heroHTML + servicesHTML + worksHTML + processHTML + aboutHTML + ctaHTML + '</main>' + lightbox;
 
   function sectionHead(title, intro) {
     return '<div class="section-head"><h2>' + esc(title || "") + '</h2>' +
@@ -165,22 +171,49 @@ window.PAGE_INIT = function () {
 
   /* hero teaser rotation */
   var imgs = app.querySelectorAll(".hero-slides img");
+
+  // Pull the remaining frames in only once the page itself has finished
+  // loading, and one at a time so they never compete with anything visible.
+  function warmTeasers() {
+    var queue = [].filter.call(imgs, function (im) { return im.getAttribute("data-src"); });
+    (function next() {
+      var im = queue.shift();
+      if (!im) return;
+      im.addEventListener("load", next, { once: true });
+      im.addEventListener("error", next, { once: true });
+      im.src = im.getAttribute("data-src");
+      im.removeAttribute("data-src");
+    })();
+  }
+  if (document.readyState === "complete") warmTeasers();
+  else window.addEventListener("load", warmTeasers, { once: true });
+
+  // PAGE_INIT can run again (the Studio's live preview re-renders on every
+  // edit), so the rotation timer is stored globally and cleared first, and
+  // document/app-level listeners are bound only once with DOM lookups instead
+  // of captured elements.
+  if (window.__heroRot) clearInterval(window.__heroRot);
   if (imgs.length > 1) {
     var idx = 0;
-    setInterval(function () {
+    window.__heroRot = setInterval(function () {
+      // don't rotate onto a frame that hasn't arrived yet
+      var next = (idx + 1) % imgs.length;
+      if (imgs[next].getAttribute("data-src")) return;
       imgs[idx].classList.remove("is-on");
-      idx = (idx + 1) % imgs.length;
+      idx = next;
       imgs[idx].classList.add("is-on");
     }, 4200);
   }
 
-  /* showreel lightbox */
+  /* video lightbox — used by the hero showreel AND by the featured works */
   var stage = document.getElementById("hero-stage");
   var lb = document.getElementById("lightbox");
-  var mount = document.getElementById("lb-mount");
-  var embed = videoEmbed(hero.showreelUrl || "");
 
-  function openLB() {
+  function openLB(url) {
+    var box = document.getElementById("lightbox");
+    var mount = document.getElementById("lb-mount");
+    if (!box || !mount) return;
+    var embed = videoEmbed(url || "");
     if (embed) {
       var sep = embed.indexOf("?") >= 0 ? "&" : "?";
       mount.innerHTML = '<iframe src="' + esc(embed) + sep + 'autoplay=1&rel=0&modestbranding=1&playsinline=1" ' +
@@ -188,26 +221,45 @@ window.PAGE_INIT = function () {
     } else {
       mount.innerHTML = '<div class="lightbox__empty">כאן ייכנס השוריל שלך.<br>הדביקו קישור יוטיוב בשדה showreelUrl (בהמשך — דרך הסטודיו).</div>';
     }
-    lb.classList.add("is-open");
-    lb.setAttribute("aria-hidden", "false");
+    box.classList.add("is-open");
+    box.setAttribute("aria-hidden", "false");
   }
   function closeLB() {
-    lb.classList.remove("is-open");
-    lb.setAttribute("aria-hidden", "true");
+    var box = document.getElementById("lightbox");
+    var mount = document.getElementById("lb-mount");
+    if (!box || !mount) return;
+    box.classList.remove("is-open");
+    box.setAttribute("aria-hidden", "true");
     mount.innerHTML = "";   // stop the video
+  }
+
+  // featured works — each card plays its own video in the same lightbox
+  if (!app.__worksBound) {
+    app.__worksBound = true;
+    app.addEventListener("click", function (e) {
+      var card = e.target.closest(".work-card");
+      if (!card) return;
+      var v = card.getAttribute("data-video");
+      if (v) openLB(v);
+    });
   }
 
   if (stage) {
     stage.addEventListener("click", function (e) {
       if (e.target.closest("a")) return;   // hero action buttons navigate normally, don't open the showreel
-      openLB();
+      openLB(hero.showreelUrl);
     });
     stage.addEventListener("keydown", function (e) {
       if (e.target !== stage) return;      // only the stage itself opens the showreel via keyboard
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLB(); }
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openLB(hero.showreelUrl); }
     });
   }
   document.getElementById("lb-close").addEventListener("click", closeLB);
   lb.addEventListener("click", function (e) { if (e.target === lb) closeLB(); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLB(); });
+  if (!window.__lbEscBound) {
+    window.__lbEscBound = true;
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeLB(); });
+  }
+
+  /* The background glow is shared by every page — see site.js. */
 };

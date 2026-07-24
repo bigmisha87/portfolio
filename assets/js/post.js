@@ -17,7 +17,7 @@ window.PAGE_INIT = function () {
   el("pv-meta").innerHTML =
     '<span class="post__date">' + esc(post.d || "") + "</span>";
 
-  el("pv-cover").innerHTML = post.cover ? '<img src="' + esc(post.cover) + '" alt="">' : "";
+  el("pv-cover").innerHTML = post.cover ? '<img src="' + esc(window.DC.localImg(post.cover)) + '" alt="">' : "";
 
   var body = post.body || [];
   if (!body.length) {

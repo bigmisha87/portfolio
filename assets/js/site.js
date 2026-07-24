@@ -29,9 +29,12 @@
     var m = url.match(/\/media\/([^~\/?]+)~mv2[^.?\/]*\.(\w+)/i);
     return m ? "assets/img/blog/" + m[1] + "." + m[2].toLowerCase() : url;
   }
-  function imgSrc(block) { return block.src || localImg(block.url); }
+  // Map to the local copy whether the original Wix URL was stored in .src OR
+  // .url — some migrated blocks kept it in .src, which would otherwise load
+  // remotely from Wix. localImg() passes through anything already local.
+  function imgSrc(block) { return localImg(block.src || block.url); }
   function coverOf(post) {
-    if (post.cover) return post.cover;
+    if (post.cover) return localImg(post.cover);
     var f = (post.body || []).filter(function (b) { return b.type === "img"; })[0];
     return f ? imgSrc(f) : "";
   }
@@ -65,51 +68,166 @@
   }
 
   // Expose helpers for the page scripts.
-  window.DC = { esc: esc, accentize: accentize, el: el, data: S, localImg: localImg, imgSrc: imgSrc, coverOf: coverOf, videoEmbed: videoEmbed, videoThumb: videoThumb, videoThumbHi: videoThumbHi };
+  window.DC = { esc: esc, accentize: accentize, el: el, data: S, localImg: localImg, imgSrc: imgSrc, coverOf: coverOf, videoEmbed: videoEmbed, videoThumb: videoThumb, videoThumbHi: videoThumbHi, rerenderChrome: rerenderChrome };
 
-  /* --- header ---------------------------------------------------------- */
-  function renderHeader(active) {
-    var cats = S.categories.map(function (c) {
-      return '<a class="work-drop__item" href="category.html?cat=' + esc(c.slug) + '">' +
-               '<span class="t">' + esc(c.name) + '</span>' +
-               '<span class="k">' + esc(c.kind) + '</span>' +
-             '</a>';
-    }).join("");
+  /* --- shared chrome: header + footer -----------------------------------
+     Defined ONCE here, so every page — existing or new — shows the same
+     navigation and footer. A page only needs an empty <div id="site-header">
+     and <div id="site-footer">, plus this script. The stylesheet and the
+     Hebrew font are injected below, so no page ever needs editing for this. */
 
-    var isWork = active === "work";
-    return '' +
-    '<header class="site-header">' +
-      '<div class="site-header__inner">' +
-        '<a class="brand" href="index.html">' +
-          '<span class="brand__name">' + esc(S.profile.brand) + '</span>' +
-        '</a>' +
-        '<button class="nav-toggle" aria-label="Menu" aria-expanded="false">☰</button>' +
-        '<nav class="nav">' +
-          '<div class="work-menu">' +
-            '<a class="nav__link work-menu__toggle' + (isWork ? ' is-active' : '') + '" href="index.html">' +
-              'Work <span class="work-menu__caret">▾</span>' +
-            '</a>' +
-            '<div class="work-drop"><div class="work-drop__panel">' + cats + '</div></div>' +
-          '</div>' +
-          '<a class="nav__link' + (active === "about" ? ' is-active' : '') + '" href="about.html">About</a>' +
-          '<a class="nav__link' + (active === "blog" ? ' is-active' : '') + '" href="blog.html">Blog</a>' +
-        '</nav>' +
-      '</div>' +
-    '</header>';
+  function currentFile() { return location.pathname.split("/").pop() || "index.html"; }
+  function isHome() { return currentFile() === "index.html"; }
+
+  // "#services" only resolves on the home page, so elsewhere it has to
+  // become "index.html#services".
+  function navHref(href) {
+    href = href || "#";
+    return (href.charAt(0) === "#" && !isHome()) ? "index.html" + href : href;
   }
 
-  /* --- footer ---------------------------------------------------------- */
+  function injectChromeAssets() {
+    function link(id, href) {
+      if (document.getElementById(id)) return;
+      var l = document.createElement("link");
+      l.id = id; l.rel = "stylesheet"; l.href = href;
+      document.head.appendChild(l);
+    }
+    link("chrome-css", "assets/css/chrome.css");
+    link("chrome-font", "https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap");
+  }
+  injectChromeAssets();
+
+  function renderHeader() {
+    var H = S.home || {};
+    var here = currentFile();
+    var items = (H.nav || []).map(function (n) {
+      var on = (n.href === here) ? ' class="is-active"' : "";
+      return '<a href="' + esc(navHref(n.href)) + '"' + on + '>' + esc(n.label) + '</a>';
+    }).join("");
+    var cta = (H.ctaButton && H.ctaButton.label)
+      ? '<a class="btn btn--primary" href="' + esc(navHref(H.ctaButton.href)) + '">' + esc(H.ctaButton.label) + '</a>'
+      : "";
+    return '' +
+    '<header class="hp-header"><div class="hp-wrap hp-nav">' +
+      '<div class="hp-logo"><a href="index.html">' + esc(S.profile.brand) + '</a></div>' +
+      '<nav class="hp-menu" id="hp-menu">' + items + '</nav>' +
+      '<div class="hp-actions">' + cta +
+        '<button class="hp-burger" id="hp-burger" aria-label="תפריט" aria-expanded="false">' +
+          '<span></span><span></span><span></span>' +
+        '</button>' +
+      '</div>' +
+    '</div></header>';
+  }
+
   function renderFooter() {
-    var links = S.socials.map(function (s) {
+    var links = (S.socials || []).map(function (s) {
       return '<a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.label) + '</a>';
     }).join("");
     return '' +
-    '<footer class="site-footer">' +
-      '<div class="site-footer__inner">' +
-        '<div class="socials">' + links + '</div>' +
-        '<div class="copyright">' + esc(S.profile.copyright) + '</div>' +
-      '</div>' +
-    '</footer>';
+    '<footer class="hp-footer"><div class="hp-wrap footer-row">' +
+      '<div class="footer-socials">' + links + '</div>' +
+      '<div class="footer-copy">' + esc(S.profile.copyright || "") + '</div>' +
+    '</div></footer>';
+  }
+
+  /* --- background glow (every page) ------------------------------------
+     One purple orb behind all content. It follows the cursor through TWO
+     stages of easing: a lagging "goal" point chases the pointer, and the orb
+     then eases toward that goal. Two soft stages read as a gentle delayed
+     trail rather than something glued to the cursor. A slow wobble rides on
+     top so it never sits perfectly still, and the easing is scaled by real
+     frame time so it feels identical on 60Hz and 120Hz screens. */
+  function startGlow() {
+    var host = document.querySelector(".bg-glow");
+    if (!host) {
+      host = document.createElement("div");
+      host.className = "bg-glow";
+      host.setAttribute("aria-hidden", "true");
+      document.body.insertBefore(host, document.body.firstChild);
+    }
+    if (host.querySelector(".bg-glow__orb")) return;   // already running
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var orb = document.createElement("div");
+    orb.className = "bg-glow__orb";
+    host.appendChild(orb);
+
+    var W = window.innerWidth, H = window.innerHeight;
+    var x = W * 0.5, y = H * 0.42;            // the orb itself
+    var gx = x, gy = y;                        // the lagging goal it trails
+    var mx = x, my = y, hasPointer = false;    // the cursor
+    var t0 = performance.now(), last = t0;
+
+    // Position it immediately: a throttled tab can delay the first frame.
+    orb.style.transform = "translate3d(" + x + "px," + y + "px,0)";
+
+    window.addEventListener("resize", function () { W = window.innerWidth; H = window.innerHeight; });
+    window.addEventListener("pointermove", function (e) {
+      mx = e.clientX; my = e.clientY; hasPointer = true;
+    }, { passive: true });
+
+    // Turn a "per 60fps frame" easing factor into one for this frame's real
+    // duration, so the feel doesn't change with refresh rate.
+    function easeK(perFrame, dt) { return 1 - Math.pow(1 - perFrame, dt / 16.667); }
+
+    function frame(now) {
+      var dt = Math.min(now - last, 64) || 16.667;   // clamp after a tab switch
+      last = now;
+      var t = now - t0;
+
+      // gentle wobble — layered frequencies so it never repeats obviously
+      var wx = Math.sin(t * 0.00061) * 90 + Math.sin(t * 0.00033 + 2.1) * 55;
+      var wy = Math.cos(t * 0.00047 + 1.1) * 80 + Math.sin(t * 0.00072) * 45;
+
+      var tx, ty;
+      if (hasPointer) { tx = mx; ty = my; }
+      else {                                   // no cursor yet (or touch) — drift on its own
+        tx = W * (0.5 + 0.34 * Math.sin(t * 0.000123));
+        ty = H * (0.45 + 0.30 * Math.sin(t * 0.000167 + 1.3));
+      }
+
+      var k1 = easeK(0.018, dt);               // stage 1 — creates the delay
+      gx += (tx - gx) * k1;
+      gy += (ty - gy) * k1;
+
+      var k2 = easeK(0.050, dt);               // stage 2 — smooths the trail
+      x += ((gx + wx) - x) * k2;
+      y += ((gy + wy) - y) * k2;
+
+      var s = 1 + 0.13 * Math.sin(t * 0.000209);   // slow breathing
+      orb.style.transform =
+        "translate3d(" + x.toFixed(1) + "px," + y.toFixed(1) + "px,0) scale(" + s.toFixed(3) + ")";
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Re-render the header + footer from the CURRENT DC.data. Used by the
+  // Studio's live preview so nav/footer edits show without a full reload.
+  function rerenderChrome() {
+    S = window.DC.data || S;
+    var h = document.querySelector("header.hp-header");
+    if (h) h.outerHTML = renderHeader();
+    var f = document.querySelector("footer.hp-footer");
+    if (f) f.outerHTML = renderFooter();
+    wireBurger();
+  }
+
+  // Hamburger, wired once for whichever page rendered the header.
+  function wireBurger() {
+    var burger = el("hp-burger"), menu = el("hp-menu");
+    if (!burger || !menu) return;
+    burger.addEventListener("click", function () {
+      var open = menu.classList.toggle("is-open");
+      burger.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+    menu.addEventListener("click", function (e) {
+      if (e.target.closest("a")) {
+        menu.classList.remove("is-open");
+        burger.setAttribute("aria-expanded", "false");
+      }
+    });
   }
 
   /* --- gallery layout (Studio "Design" tab) ---------------------------- */
@@ -129,28 +247,15 @@
   /* --- mount on load --------------------------------------------------- */
   function mount() {
     applyLayout();
-    // animated purple glow behind everything
-    if (!document.querySelector(".bg-glow")) {
-      document.body.insertAdjacentHTML("afterbegin", '<div class="bg-glow" aria-hidden="true"></div>');
-    }
-    var active = document.body.getAttribute("data-active") || "";
+    startGlow();
     var head = el("site-header");
     var foot = el("site-footer");
-    if (head) head.outerHTML = renderHeader(active);
+    if (head) head.outerHTML = renderHeader();
     if (foot) foot.outerHTML = renderFooter();
+    wireBurger();
 
     // Set the document title from the brand if not already specific.
     if (!document.title) document.title = S.profile.brand;
-
-    // Mobile nav toggle (delegated, since header was just injected).
-    document.addEventListener("click", function (e) {
-      var btn = e.target.closest && e.target.closest(".nav-toggle");
-      if (!btn) return;
-      var nav = document.querySelector(".nav");
-      if (!nav) return;
-      var open = nav.classList.toggle("is-open");
-      btn.setAttribute("aria-expanded", open ? "true" : "false");
-    });
 
     // Let each page run after chrome is in place.
     if (typeof window.PAGE_INIT === "function") window.PAGE_INIT();

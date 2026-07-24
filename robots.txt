@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# The Studio is a private editor, not for search engines.
+Disallow: /studio.html
+
+Sitemap: https://www.misha.co.il/sitemap.xml

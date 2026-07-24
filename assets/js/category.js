@@ -125,7 +125,7 @@ window.PAGE_INIT = function () {
     var path = [], cur = meta;
     while (cur) { path.unshift(cur); cur = cur.parent ? byslug[cur.parent] : null; }
     if (path.length < 2) return "";
-    return '<nav class="cat-crumbs"><a href="index.html">Home</a>' + path.map(function (c, i) {
+    return '<nav class="cat-crumbs"><a href="works.html">Work</a>' + path.map(function (c, i) {
       return ' <span class="cat-crumbs__sep">/</span> ' + (i === path.length - 1
         ? '<span>' + esc(c.name) + '</span>'
         : '<a href="category.html?cat=' + esc(c.slug) + '">' + esc(c.name) + '</a>');

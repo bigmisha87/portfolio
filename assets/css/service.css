@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Service pages (service.html?s=…). Loaded alongside home.css, which supplies
+   the shared Hebrew base — colours, type, .wrap, .section-head, .process,
+   .works/.work-card and .lightbox are all reused from there.
+   ========================================================================== */
+
+/* ---------- hero ---------- */
+.svc-hero {
+  position: relative; overflow: hidden;
+  padding: 96px 0 88px;
+  border-bottom: 1px solid var(--line);
+}
+.svc-hero__bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; opacity: .28;
+}
+.svc-hero::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--bg) 6%, rgba(10,10,10,.72) 55%, rgba(10,10,10,.5));
+}
+.svc-hero__in { position: relative; z-index: 2; max-width: 900px; }
+.svc-back {
+  display: inline-block; margin-bottom: 26px;
+  font-size: 14px; color: #b9b9b9; transition: color .2s ease;
+}
+.svc-back:hover { color: #9b7bff; }
+.svc-hero h1 {
+  font-size: clamp(40px, 5.6vw, 84px); line-height: 1.08;
+  letter-spacing: normal; font-weight: 800; margin: 0 0 20px;
+}
+.svc-lead {
+  font-size: clamp(20px, 2.2vw, 30px); line-height: 1.35;
+  color: #fff; margin: 0 0 18px; font-weight: 500;
+}
+.svc-intro { font-size: 18px; line-height: 1.75; color: #c4c4c4; margin: 0 0 34px; max-width: 700px; }
+.svc-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ---------- benefits ---------- */
+.svc-bgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.svc-bcard {
+  border: 1px solid var(--line); background: #000;   /* full black so the 3D icons blend in */
+  padding: 30px 26px 34px; text-align: center;
+}
+.svc-bcard__ico { font-size: 30px; display: block; margin-bottom: 16px; }
+.svc-bcard__img {
+  width: 128px; height: 128px; object-fit: contain; margin: 0 auto 14px;
+  mix-blend-mode: lighten;            /* dissolves the icon's black background into the card */
+}
+.svc-bcard h3 { margin: 0 0 12px; font-size: 24px; font-weight: 700; letter-spacing: normal; }
+.svc-bcard p { margin: 0; color: #b4b4b4; font-size: 16px; line-height: 1.7; }
+
+/* ---------- the problem ---------- */
+.svc-problem { background: #070707; }
+.svc-plist { list-style: none; margin: 0 auto; padding: 0; max-width: 860px; }
+.svc-plist li {
+  position: relative; padding: 18px 42px 18px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 18px; line-height: 1.65; color: #d2d2d2;
+}
+.svc-plist li:last-child { border-bottom: 0; }
+.svc-plist li::before {
+  content: "✓"; position: absolute; inset-inline-start: 0; top: 18px;
+  color: #9b7bff; font-weight: 700;
+}
+
+/* ---------- what's included ---------- */
+.svc-igrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.svc-icard { background: var(--bg); padding: 28px 26px 30px; }
+.svc-icard__n { display: block; font-size: 13px; color: #9b7bff; margin-bottom: 12px; }
+.svc-icard h3 { margin: 0 0 10px; font-size: 20px; font-weight: 700; letter-spacing: normal; }
+.svc-icard p { margin: 0; color: #a9a9a9; font-size: 15.5px; line-height: 1.65; }
+
+/* ---------- who it's for ---------- */
+.svc-audience { background: #070707; }
+.svc-tags { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.svc-tag {
+  border: 1px solid #333; border-radius: 999px;
+  padding: 12px 24px; font-size: 16px; color: #d8d8d8;
+}
+
+/* ---------- FAQ ---------- */
+.svc-faqlist { max-width: 900px; margin: 0 auto; border-top: 1px solid var(--line); }
+.svc-q { border-bottom: 1px solid var(--line); }
+.svc-q summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  cursor: pointer; list-style: none; padding: 24px 0;
+  font-size: clamp(18px, 2vw, 22px); font-weight: 700; color: #f0f0f0;
+  transition: color .2s ease;
+}
+.svc-q summary::-webkit-details-marker { display: none; }
+.svc-q summary:hover { color: #9b7bff; }
+.svc-q__i {
+  flex: none; width: 30px; height: 30px; border: 1px solid #3a3a3a; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 400; font-size: 20px; color: #9b7bff;
+  transition: transform .25s ease;
+}
+.svc-q[open] .svc-q__i { transform: rotate(45deg); }
+.svc-q__a { padding: 0 0 26px; color: #b2b2b2; font-size: 17px; line-height: 1.8; max-width: 780px; }
+
+/* ---------- closing CTA ---------- */
+.svc-cta { border-top: 1px solid var(--line); }
+.svc-cta h2 { white-space: normal; }   /* these headings are longer than the home one */
+
+.svc-empty { padding: 140px 0; text-align: center; }
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .svc-hero { padding: 60px 0 56px; }
+  .svc-bgrid { grid-template-columns: 1fr; }
+  .svc-igrid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+  .svc-igrid { grid-template-columns: 1fr; }
+  .svc-plist li { font-size: 16.5px; }
+  .svc-tags { justify-content: flex-start; }
+}

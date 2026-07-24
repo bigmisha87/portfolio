@@ -14,8 +14,8 @@
   --accent-glow: rgba(124, 90, 255, 0.20);
 
   /* Surfaces */
-  --bg: #0a0a0c;            /* near-black page background */
-  --bg-alt: #08080a;        /* slightly darker band (e.g. "What I do") */
+  --bg: #0a0a0a;            /* near-black page background — matches the home page */
+  --bg-alt: #080808;        /* slightly darker band (e.g. "What I do") */
   --surface-menu: #141419;  /* dropdown / popover */
   --surface-tile: #101015;  /* gallery tile background */
   --card-from: #1d1d24;     /* card gradient start */
@@ -55,9 +55,9 @@
   --gallery-pad-x: 48px;               /* outer side margin of the work galleries (every page) */
 
   /* Type */
-  --font-display: 'Space Grotesk', 'Assistant', sans-serif;
-  --font-body: 'Manrope', 'Assistant', sans-serif;
-  --font-mono: 'Space Mono', 'Assistant', monospace;
+  --font-display: 'Heebo', 'Assistant', sans-serif;
+  --font-body: 'Heebo', 'Assistant', sans-serif;
+  --font-mono: 'Heebo', 'Assistant', sans-serif;
 }
 
 /* ---- Reset ------------------------------------------------------------- */
@@ -89,25 +89,8 @@ button { font-family: inherit; }
 
 ::selection { background: var(--accent); color: #0a0a0c; }
 
-/* Animated purple glow drifting in the background (injected by site.js) */
-.bg-glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; overflow: hidden; }
-.bg-glow::before {
-  content: "";
-  position: absolute;
-  width: 65vmax; height: 65vmax; border-radius: 50%;
-  left: 0; top: 0;
-  background: radial-gradient(circle, rgba(155,123,255,0.26), rgba(124,90,255,0.12) 42%, transparent 70%);
-  filter: blur(70px);
-  will-change: transform;
-  animation: glow-drift 26s ease-in-out infinite;
-}
-@keyframes glow-drift {
-  0%   { transform: translate(-10vw, -12vh) scale(1); }
-  25%  { transform: translate(38vw, 6vh) scale(1.18); }
-  50%  { transform: translate(60vw, 30vh) scale(0.92); }
-  75%  { transform: translate(20vw, 16vh) scale(1.1); }
-  100% { transform: translate(-10vw, -12vh) scale(1); }
-}
+/* The purple background glow now lives in chrome.css and is animated by
+   site.js (cursor-following), shared across every page. */
 
 .wrap { max-width: var(--maxw); margin: 0 auto; width: 100%; }
 
