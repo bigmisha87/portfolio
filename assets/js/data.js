@@ -369,6 +369,39 @@ window.SITE = {
   "works": {
     "ai-video-ads": [
       {
+        "en": "ראשון לציון - ציון 144 שנה",
+        "he": "",
+        "client": "",
+        "sub": "",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/065edizv4XY?feature=share",
+        "body": ""
+      },
+      {
+        "en": "BST TOWERS - הקריה האקדמית פתח תקווה - אירוע מכירות",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/KNaMI71dTgw?feature=share",
+        "body": ""
+      },
+      {
+        "en": "שריקי גרופ - בסתניא",
+        "he": "",
+        "client": "",
+        "sub": "נדל\"ן",
+        "ratio": "9 / 16",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtube.com/shorts/KNZ9w8Mxf60?feature=share",
+        "body": ""
+      },
+      {
         "en": "מערך הדיגיטל - חכם סיני",
         "he": "",
         "client": "",
