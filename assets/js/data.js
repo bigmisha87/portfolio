@@ -6460,8 +6460,17 @@ window.SITE = {
       "body": [
         {
           "type": "p",
-          "text": "אז החלטתם ללמוד עיצוב גרפי או ארט דיירקשן — ועכשיו צריך מחשב. בואו נעשה סדר, בלי לשרוף כסף מיותר.<br>הנחת העבודה שלי: פוטושופ, אילוסטרייטור, אינדיזיין, דפדפן עם המון טאבים, וקצת אפטר אפקטס או פרמייר ברמת לימודים. הרשימה הזו מכוונת למחשב ללימודים — לא לתחנת עבודה כבדה. היא לא מכוונת לבלנדר או לעריכת וידאו כבדה; אם בהמשך יתפתח אצלכם צורך מקצועי כבד, עדיף פשוט לשדרג אז ולא לשלם על זה עכשיו.<br>כל המחירים כאן נבדקו ב־01.09.2026, ושמות החנויות מקושרים ישירות לאתרים שלהן.",
+          "text": "אז החלטתם ללמוד עיצוב גרפי או ארט דיירקשן — ועכשיו צריך מחשב. בואו נעשה סדר, בלי לשרוף כסף מיותר.<br>הנחת העבודה שלי: פוטושופ, אילוסטרייטור, אינדיזיין, דפדפן עם המון טאבים, וקצת אפטר אפקטס או פרמייר ברמת לימודים. הרשימה הזו מכוונת למחשב ללימודים — לא לתחנת עבודה כבדה. היא לא מכוונת לבלנדר או לעריכת וידאו כבדה; אם בהמשך יתפתח אצלכם צורך מקצועי כבד, עדיף פשוט לשדרג אז ולא לשלם על זה עכשיו.<br>כל המחירים כאן נבדקו ב־01.09.2026.",
           "dir": "rtl"
+        },
+        {
+          "type": "h",
+          "text": "החנויות שבדקתי"
+        },
+        {
+          "type": "p",
+          "dir": "rtl",
+          "text": "כל המחירים בהמשך נבדקו בחמש החנויות האלה. כל קישור פותח ישר את מדור המקבוקים של אותה חנות, כדי שתוכלו לוודא מחיר ומלאי ביום הקנייה:<br><a href=\"https://ksp.co.il/web/cat/41070..271\" target=\"_blank\" rel=\"noopener\">KSP</a><br><a href=\"https://www.ivory.co.il/Apple_Macbook.html\" target=\"_blank\" rel=\"noopener\">Ivory</a><br><a href=\"https://www.bug.co.il/laptops/?filter=,-1_73_108,\" target=\"_blank\" rel=\"noopener\">BUG</a><br><a href=\"https://www.istoreil.co.il/mac\" target=\"_blank\" rel=\"noopener\">iStore</a><br><a href=\"https://www.idigital.co.il/mac\" target=\"_blank\" rel=\"noopener\">iDigital</a>"
         },
         {
           "type": "h",
@@ -6474,7 +6483,7 @@ window.SITE = {
         },
         {
           "type": "p",
-          "text": "טווח מחירים: 5,465 ₪ עד 5,899 ₪ · ממוצע 5,556 ₪<br><a href=\"https://www.ivory.co.il\" target=\"_blank\" rel=\"noopener\">Ivory</a> — 5,465 ₪<br><a href=\"https://ksp.co.il\" target=\"_blank\" rel=\"noopener\">KSP</a> — 5,469 ₪<br><a href=\"https://www.bug.co.il\" target=\"_blank\" rel=\"noopener\">BUG</a> — 5,469 ₪<br><a href=\"https://www.istoreil.co.il\" target=\"_blank\" rel=\"noopener\">iStore</a> — 5,479 ₪<br><a href=\"https://www.idigital.co.il\" target=\"_blank\" rel=\"noopener\">iDigital</a> — 5,899 ₪",
+          "text": "טווח מחירים: 5,465 ₪ עד 5,899 ₪ · ממוצע 5,556 ₪<br>Ivory — 5,465 ₪<br>KSP — 5,469 ₪<br>BUG — 5,469 ₪<br>iStore — 5,479 ₪<br>iDigital — 5,899 ₪",
           "dir": "rtl"
         },
         {
@@ -6498,7 +6507,7 @@ window.SITE = {
         },
         {
           "type": "p",
-          "text": "טווח מחירים: 6,669 ₪ עד 7,179 ₪ · ממוצע 6,799 ₪<br><a href=\"https://ksp.co.il\" target=\"_blank\" rel=\"noopener\">KSP</a> — 6,669 ₪<br><a href=\"https://www.bug.co.il\" target=\"_blank\" rel=\"noopener\">BUG</a> — 6,669 ₪<br><a href=\"https://www.istoreil.co.il\" target=\"_blank\" rel=\"noopener\">iStore</a> — 6,679 ₪<br><a href=\"https://www.idigital.co.il\" target=\"_blank\" rel=\"noopener\">iDigital</a> — 7,179 ₪",
+          "text": "טווח מחירים: 6,669 ₪ עד 7,179 ₪ · ממוצע 6,799 ₪<br>KSP — 6,669 ₪<br>BUG — 6,669 ₪<br>iStore — 6,679 ₪<br>iDigital — 7,179 ₪",
           "dir": "rtl"
         },
         {
@@ -6512,7 +6521,7 @@ window.SITE = {
         },
         {
           "type": "p",
-          "text": "טווח מחירים: 7,499 ₪ עד 8,009 ₪ · ממוצע 7,629 ₪<br><a href=\"https://ksp.co.il\" target=\"_blank\" rel=\"noopener\">KSP</a> — 7,499 ₪<br><a href=\"https://www.bug.co.il\" target=\"_blank\" rel=\"noopener\">BUG</a> — 7,499 ₪<br><a href=\"https://www.istoreil.co.il\" target=\"_blank\" rel=\"noopener\">iStore</a> — 7,509 ₪<br><a href=\"https://www.idigital.co.il\" target=\"_blank\" rel=\"noopener\">iDigital</a> — 8,009 ₪",
+          "text": "טווח מחירים: 7,499 ₪ עד 8,009 ₪ · ממוצע 7,629 ₪<br>KSP — 7,499 ₪<br>BUG — 7,499 ₪<br>iStore — 7,509 ₪<br>iDigital — 8,009 ₪",
           "dir": "rtl"
         },
         {
@@ -6526,7 +6535,7 @@ window.SITE = {
         },
         {
           "type": "p",
-          "text": "טווח מחירים: 11,099 ₪ עד 11,699 ₪ · ממוצע 11,257 ₪<br><a href=\"https://ksp.co.il\" target=\"_blank\" rel=\"noopener\">KSP</a> — 11,099 ₪<br><a href=\"https://www.istoreil.co.il\" target=\"_blank\" rel=\"noopener\">iStore</a> — 11,109 ₪<br><a href=\"https://www.bug.co.il\" target=\"_blank\" rel=\"noopener\">BUG</a> — 11,119 ₪<br><a href=\"https://www.idigital.co.il\" target=\"_blank\" rel=\"noopener\">iDigital</a> — 11,699 ₪",
+          "text": "טווח מחירים: 11,099 ₪ עד 11,699 ₪ · ממוצע 11,257 ₪<br>KSP — 11,099 ₪<br>iStore — 11,109 ₪<br>BUG — 11,119 ₪<br>iDigital — 11,699 ₪",
           "dir": "rtl"
         },
         {
@@ -6661,12 +6670,12 @@ window.SITE = {
         },
         {
           "type": "p",
-          "text": "• החנויות שנבדקו: <a href=\"https://ksp.co.il\" target=\"_blank\" rel=\"noopener\">KSP</a>, <a href=\"https://www.ivory.co.il\" target=\"_blank\" rel=\"noopener\">Ivory</a>, <a href=\"https://www.bug.co.il\" target=\"_blank\" rel=\"noopener\">BUG</a>, <a href=\"https://www.istoreil.co.il\" target=\"_blank\" rel=\"noopener\">iStore</a> ו-<a href=\"https://www.idigital.co.il\" target=\"_blank\" rel=\"noopener\">iDigital</a>. לא בכל חנות הופיעה כל קונפיגורציה בדיוק, ולכן בכל שורה נכללו רק החנויות שבהן נמצא המפרט המתאים.<br>• iDigital יקרה בחלק מהדגמים, אבל בעמודי המוצר הנוכחיים היא מציגה חבילת Mac Pack עם 3 שנות אחריות ושירות. כדאי להשוות גם תנאי אחריות ולא רק מחיר.<br>• צפי השנים הוא הערכה פרקטית לשימושי עיצוב ולימודים — לא התחייבות רשמית של Apple ולא הערכה למשך תמיכת מערכת ההפעלה. מצב הסוללה, עומס העבודה ודרישות תוכנות עתידיות ישפיעו.",
+          "text": "• החנויות שנבדקו: KSP, Ivory, BUG, iStore ו-iDigital. לא בכל חנות הופיעה כל קונפיגורציה בדיוק, ולכן בכל שורה נכללו רק החנויות שבהן נמצא המפרט המתאים.<br>• iDigital יקרה בחלק מהדגמים, אבל בעמודי המוצר הנוכחיים היא מציגה חבילת Mac Pack עם 3 שנות אחריות ושירות. כדאי להשוות גם תנאי אחריות ולא רק מחיר.<br>• צפי השנים הוא הערכה פרקטית לשימושי עיצוב ולימודים — לא התחייבות רשמית של Apple ולא הערכה למשך תמיכת מערכת ההפעלה. מצב הסוללה, עומס העבודה ודרישות תוכנות עתידיות ישפיעו.",
           "dir": "rtl"
         },
         {
           "type": "p",
-          "text": "מקורות: Apple ישראל (דור M5, שנת 2026) ודפי מוצר וקטלוג עדכניים של <a href=\"https://ksp.co.il\" target=\"_blank\" rel=\"noopener\">KSP</a>, <a href=\"https://www.ivory.co.il\" target=\"_blank\" rel=\"noopener\">Ivory</a>, <a href=\"https://www.bug.co.il\" target=\"_blank\" rel=\"noopener\">BUG</a>, <a href=\"https://www.istoreil.co.il\" target=\"_blank\" rel=\"noopener\">iStore</a> ו-<a href=\"https://www.idigital.co.il\" target=\"_blank\" rel=\"noopener\">iDigital</a>. תאריך בדיקה: 01.09.2026.",
+          "text": "מקורות: Apple ישראל (דור M5, שנת 2026) ודפי מוצר וקטלוג עדכניים של KSP, Ivory, BUG, iStore ו-iDigital. תאריך בדיקה: 01.09.2026.",
           "dir": "rtl"
         }
       ]
