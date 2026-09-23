@@ -3,11 +3,15 @@
    of the site (the "canvas"); the right side is a panel for whatever you
    selected. Reuses the design tokens + component styles from styles.css.
    ========================================================================== */
-body.studio { display: block; height: 100vh; overflow: hidden; background: #0b0b0e; }
+/* Column layout: top bar / banner / sub-bar take their natural height and the
+   editor fills exactly what's left. Nothing is taller than the window, so the
+   page itself can never scroll — the top bar (Save etc.) always stays put. */
+body.studio { display: flex; flex-direction: column; height: 100vh; overflow: hidden; background: #0b0b0e; }
+body.studio > .st-top, body.studio > .st-banner, body.studio > .st-subbar { flex: none; }
 
 /* ---- top bar ------------------------------------------------------- */
 .st-top {
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  display: flex; align-items: center; gap: 16px; flex-wrap: nowrap;
   padding: 12px clamp(14px, 2.5vw, 26px);
   background: rgba(10, 10, 12, 0.92); border-bottom: 1px solid var(--line);
 }
@@ -77,7 +81,7 @@ body.studio { display: block; height: 100vh; overflow: hidden; background: #0b0b
 .st-subctl input[type="range"] { width: 120px; accent-color: var(--accent); cursor: pointer; }
 
 /* ---- main split: canvas | inspector -------------------------------- */
-.st-main { display: flex; height: 100%; min-height: 0; }
+.st-main { display: flex; flex: 1; min-height: 0; }
 .st-canvas-wrap { flex: 1; min-width: 0; overflow: auto; padding: clamp(16px, 3vw, 40px); padding-bottom: 180px; }
 .st-canvas {
   background: var(--bg); border: 1px solid var(--line); border-radius: 16px;
@@ -173,13 +177,37 @@ body.studio { display: block; height: 100vh; overflow: hidden; background: #0b0b
 .cv-brand__name { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: #fff; }
 .cv-brand__intro { font-size: 13px; color: var(--muted); line-height: 1.55; margin-top: 6px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
-.st-status { position: fixed; top: 60px; right: 22px; z-index: 9000; padding: 10px 18px; border-radius: 12px; font-size: 14px; font-weight: 600; background: #16161c; border: 1px solid var(--line-2); color: #fff; box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+/* Toast — bottom-centre, so it never covers the Save / Connect buttons. */
+.st-status { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 9000; display: flex; align-items: center; gap: 14px; max-width: min(640px, calc(100vw - 32px)); padding: 10px 12px 10px 18px; border-radius: 12px; font-size: 14px; font-weight: 600; background: #16161c; border: 1px solid var(--line-2); color: #fff; box-shadow: 0 16px 40px rgba(0,0,0,0.5); }
+.st-status[hidden] { display: none; }
 .st-status.ok { border-color: #2f9e5f; color: #9be8b8; }
 .st-status.err { border-color: #b5474a; color: #ffb0b0; }
+.st-status__act { flex: none; font: inherit; font-size: 13px; color: #0a0a0c; background: var(--accent); border: 0; border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+.st-status__act:hover { filter: brightness(1.1); }
+.st-status__x { flex: none; width: 26px; height: 26px; border: 0; border-radius: 7px; background: transparent; color: var(--dim); cursor: pointer; font-size: 13px; }
+.st-status__x:hover { color: #fff; background: rgba(255,255,255,.08); }
+
+/* Unsaved-changes state on every Save button (main bar + post editor). */
+.st-btn--primary.is-dirty { box-shadow: 0 0 0 3px rgba(155,123,255,.28); }
+.st-btn--primary.is-dirty::after { content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 8px; border-radius: 50%; background: #0a0a0c; vertical-align: 1px; }
+.st-folder.is-dirty { color: #f0c48a; }
+
+/* Compact top bar — keep it on ONE row on a normal laptop screen. */
+@media (max-width: 1500px) {
+  .st-top { gap: 12px; padding-top: 10px; padding-bottom: 10px; }
+  .st-sub { display: none; }
+  .st-pages button { font-size: 13px; padding: 7px 11px; }
+  .st-top__right { gap: 7px; }
+  .st-top__right .st-btn { padding: 8px 12px; }
+}
+.st-top__right { flex-wrap: nowrap; }
+@media (max-width: 1200px) {
+  .st-top, .st-top__right { flex-wrap: wrap; }
+}
 
 /* ---- responsive ---------------------------------------------------- */
 @media (max-width: 880px) {
-  body.studio { height: auto; overflow: auto; }
+  body.studio { display: block; height: auto; overflow: auto; }
   .st-main { flex-direction: column; height: auto; }
   .st-inspector { width: auto; border-left: 0; border-top: 1px solid var(--line); }
   .st-pages { order: 3; width: 100%; justify-content: center; margin: 6px 0 0; }

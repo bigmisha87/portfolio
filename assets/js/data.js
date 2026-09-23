@@ -100,17 +100,17 @@ window.SITE = {
       "items": [
         {
           "cat": "ai-video-ads",
-          "title": "מערך הדיגיטל - חכם סיני",
-          "size": "third"
-        },
-        {
-          "cat": "ai-video-ads",
           "title": "No country for mynas - western short",
           "size": "third"
         },
         {
           "cat": "ai-video-ads",
           "title": "החתול החופשי האחרון",
+          "size": "third"
+        },
+        {
+          "cat": "ai-video-ads",
+          "title": "Its all about the story",
           "size": "third"
         },
         {
@@ -368,6 +368,17 @@ window.SITE = {
   ],
   "works": {
     "ai-video-ads": [
+      {
+        "en": "Its all about the story",
+        "he": "",
+        "client": "",
+        "sub": "",
+        "ratio": "16 / 9",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtu.be/J3JytaDF7ak",
+        "body": ""
+      },
       {
         "en": "ראשון לציון - ציון 144 שנה",
         "he": "",
