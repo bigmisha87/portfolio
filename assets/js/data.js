@@ -369,14 +369,14 @@ window.SITE = {
   "works": {
     "ai-video-ads": [
       {
-        "en": "Blackbeak",
+        "en": "OLD SPICE - Ai",
         "he": "",
         "client": "",
         "sub": "CONCEPTS FOR FUN",
         "ratio": "16 / 9",
         "tags": [],
         "poster": "",
-        "video": "https://youtu.be/tMhNsuBalvo?si=WLPXzeLWbGNgy9H5",
+        "video": "https://youtu.be/yvMEFMIkBJ8",
         "body": ""
       },
       {
@@ -388,6 +388,17 @@ window.SITE = {
         "tags": [],
         "poster": "",
         "video": "https://youtu.be/J3JytaDF7ak",
+        "body": ""
+      },
+      {
+        "en": "Blackbeak",
+        "he": "",
+        "client": "",
+        "sub": "CONCEPTS FOR FUN",
+        "ratio": "16 / 9",
+        "tags": [],
+        "poster": "",
+        "video": "https://youtu.be/tMhNsuBalvo?si=WLPXzeLWbGNgy9H5",
         "body": ""
       },
       {
