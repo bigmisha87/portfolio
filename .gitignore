@@ -1,0 +1,17 @@
+# Kept on this computer only: the admin (quick manual edits), its local server, tools and try-out pages.
+admin.html
+assets/js/admin.js
+assets/css/admin.css
+Start-Admin.bat
+serve.ps1
+_tools/
+lab.html
+gallery-lab.html
+assets/js/lab.js
+assets/js/lab-galaxy.js
+assets/js/gallery-lab.js
+assets/css/lab.css
+assets/css/gallery-lab.css
+DESIGN.md
+README.md
+_backups/

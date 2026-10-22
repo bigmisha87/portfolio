@@ -1,64 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Work — Misha Graphics</title>
-  <meta name="description" content="Selected work by Misha Kerch.">
-  <!-- social share card (must be static: WhatsApp/Facebook crawlers do not run JS) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Misha Graphics">
-  <meta property="og:locale" content="he_IL">
-  <meta property="og:title" content="עבודות — Misha Graphics">
-  <meta property="og:description" content="מבחר העבודות של מישה קרץ׳.">
-  <meta property="og:url" content="https://www.misha.co.il/category.html">
-  <meta property="og:image" content="https://www.misha.co.il/assets/img/share-card.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.misha.co.il/assets/img/share-card.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-mk.svg">
-  <link rel="stylesheet" href="assets/css/styles.css">
+<meta charset="utf-8">
+<title>גלריה | מישה קרץ'</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://misha.co.il/">
+<!-- An address from the old site; it forwards to the same thing on the new one. -->
+<script>var c=new URLSearchParams(location.search).get("cat")||"";location.replace("index.html#"+({"branding":"branding","after-effects":"motion","ai-video-ads":"ai","3d-renders":"3d","photoshop":"concepts"}[c]||"work"));</script>
+<meta http-equiv="refresh" content="1; url=index.html#work">
+<style>html{background:#0b0b0c;color:#f2efe9;font-family:system-ui,sans-serif}a{color:inherit}</style>
 </head>
-<body data-active="work">
-  <div id="site-header"></div>
-
-  <div class="page-head">
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;">
-      <div>
-        <a class="back-link" href="works.html">← All work</a>
-        <h1 class="page-title" id="cat-name"></h1>
-        <div class="page-desc" id="cat-desc"></div>
-      </div>
-      <div class="cat-toolbar">
-        <span class="count-label" id="count-label"></span>
-        <div class="mobile-gallery-views" aria-label="Mobile gallery layout">
-          <button class="is-on" data-mobile-view="grid" aria-label="Instagram grid view" title="Grid"><span class="view-icon view-icon--grid" aria-hidden="true"></span></button>
-          <button data-mobile-view="single" aria-label="Single column view" title="Single column"><span class="view-icon view-icon--single" aria-hidden="true"></span></button>
-        </div>
-        <div class="toggle">
-          <button id="view-new" class="is-on">Newest</button>
-          <button id="view-client">By client</button>
-        </div>
-      </div>
-    </div>
-    <div class="subfilter" id="subfilter" hidden></div>
-  </div>
-
-  <main class="cat-body">
-    <div class="wrap" id="cat-content"></div>
-  </main>
-
-  <div id="site-footer"></div>
-
-  <!-- The lightbox is injected by gallery.js -->
-
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/gallery.js"></script>
-  <script src="assets/js/category.js"></script>
-</body>
+<body><p><a href="index.html#work">המשך לאתר</a></p></body>
 </html>

@@ -1,45 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Post — Misha Graphics</title>
-  <!-- social share card (must be static: WhatsApp/Facebook crawlers do not run JS) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Misha Graphics">
-  <meta property="og:locale" content="he_IL">
-  <meta property="og:title" content="בלוג — Misha Graphics">
-  <meta property="og:description" content="כתיבה על מושן, AI, תלת־ממד וכלים לעיצוב.">
-  <meta property="og:url" content="https://www.misha.co.il/post.html">
-  <meta property="og:image" content="https://www.misha.co.il/assets/img/share-card.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.misha.co.il/assets/img/share-card.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-mk.svg">
-  <link rel="stylesheet" href="assets/css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>בלוג | מישה קרץ'</title>
+<meta name="description" content="פוסט מהבלוג של מישה קרץ'.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="בלוג | מישה קרץ'">
+<meta property="og:description" content="פוסט מהבלוג של מישה קרץ'.">
+<meta property="og:image" content="https://misha.co.il/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=26">
+<script>(function(h){h.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('motion');try{if(sessionStorage.getItem('mg-curtain')){h.classList.add('curtain-in');setTimeout(function(){h.classList.remove('curtain-in')},2600)}}catch(e){}})(document.documentElement)</script>
 </head>
-<body data-active="blog">
-  <div id="site-header"></div>
+<body data-page="post">
+<a class="skip" href="#main">דלגו לתוכן</a>
+<div class="curtain" aria-hidden="true"></div><div class="curtain__scan" aria-hidden="true"></div>
 
-  <main>
-    <article class="post-view">
-      <a class="back-link" href="blog.html">← All posts</a>
-      <div class="post-view__tag" id="pv-tag"></div>
-      <h1 class="post-view__title" id="pv-title" dir="auto"></h1>
-      <div class="post-view__meta" id="pv-meta"></div>
-      <div class="post-view__cover" id="pv-cover"></div>
-      <div class="post-view__body" id="pv-body"></div>
-    </article>
-  </main>
+<header class="hdr" id="hdr">
+  <a class="brand" href="index.html" aria-label="מישה קרץ', לדף הבית"><span class="brand__he">מישה קרץ'</span><span class="brand__en">MISHA GRAPHICS</span></a>
+  <nav class="nav" aria-label="ראשי">
+    <a class="nav__link draw" href="index.html#work">עבודות</a>
+    <a class="nav__link draw" href="index.html#about">אודות ושירותים</a>
+    <a class="nav__link draw" href="blog.html" aria-current="page">בלוג</a>
+    <a class="btn" data-fill href="index.html#contact">דברו איתי</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mmenu"><span class="menu-btn__label">תפריט</span><span class="menu-btn__lines" aria-hidden="true"><i></i><i></i></span></button>
+  </nav>
+</header>
+<div class="mmenu" id="mmenu">
+  <nav aria-label="תפריט נייד">
+    <ul class="mmenu__list">
+      <li><a class="mmenu__link" href="index.html#work"><span>עבודות</span></a></li>
+      <li><a class="mmenu__link" href="index.html#about"><span>אודות ושירותים</span></a></li>
+      <li><a class="mmenu__link" href="blog.html"><span>בלוג</span></a></li>
+      <li><a class="mmenu__link" href="index.html#contact"><span>דברו איתי</span></a></li>
+    </ul>
+  </nav>
+  <div class="mmenu__foot"></div>
+</div>
 
-  <div id="site-footer"></div>
+<main id="main" tabindex="-1">
+  <article class="post" id="post"></article>
+</main>
 
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/post.js"></script>
+<footer class="ftr" id="ftr"></footer>
+
+<script src="assets/js/content.js?v=12"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<script src="assets/js/site.js?v=16" defer></script>
 </body>
 </html>

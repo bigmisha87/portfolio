@@ -1,35 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Misha Graphics — קריאייטיב פרודקשן</title>
-  <meta name="description" content="מישה קרץ — Creative Production המשלב AI, Motion וכלים מתקדמים להפקת סרטוני פרסום, קמפיינים ותוכן.">
-  <!-- social share card (must be static: WhatsApp/Facebook crawlers do not run JS) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Misha Graphics">
-  <meta property="og:locale" content="he_IL">
-  <meta property="og:title" content="Misha Graphics — קריאייטיב פרודקשן">
-  <meta property="og:description" content="קריאייטיב פרודקשן שמשלב AI, Motion וכלים מתקדמים — מרעיון ועד סרט מוכן לפרסום.">
-  <meta property="og:url" content="https://www.misha.co.il/">
-  <meta property="og:image" content="https://www.misha.co.il/assets/img/share-card.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://www.misha.co.il/assets/img/share-card.jpg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon-mk.svg">
-  <link rel="stylesheet" href="assets/css/home.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מישה קרץ' | סרטי AI, מושן ותלת מימד למותגים</title>
+<meta name="description" content="מישה קרץ', ארט דירקטור ומעצב תנועה. שואוריל ומעל 100 סרטוני AI: פרסומות, קליפים ותוכן למותגים, מהרעיון ועד הקובץ הסופי.">
+<link rel="canonical" href="https://misha.co.il/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="מישה קרץ' | סרטי AI, מושן ותלת מימד למותגים">
+<meta property="og:description" content="שואוריל ומעל 100 סרטוני AI: פרסומות, קליפים ותוכן למותגים, מהרעיון ועד הקובץ הסופי.">
+<meta property="og:url" content="https://misha.co.il/">
+<meta property="og:image" content="https://misha.co.il/assets/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://i.ytimg.com">
+<link rel="preload" as="image" href="media/reel/frame-01.jpg" fetchpriority="high">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="assets/css/site.css?v=26">
+<script>(function(h){h.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('motion');try{if(sessionStorage.getItem('mg-curtain')){h.classList.add('curtain-in');setTimeout(function(){h.classList.remove('curtain-in')},2600)}}catch(e){}})(document.documentElement)</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Misha Kerch","alternateName":"מישה קרץ'","jobTitle":"Art Director & Motion Designer","url":"https://misha.co.il/","brand":{"@type":"Brand","name":"Misha Graphics"},"sameAs":["https://www.youtube.com/c/mishagraphics","https://www.instagram.com/bigmisha/","https://www.behance.net/mishagraphics"]}</script>
 </head>
-<body>
-  <div id="site-header"></div>
-  <div id="app"></div>
-  <div id="site-footer"></div>
+<body data-page="home">
+<a class="skip" href="#main">דלגו לתוכן</a>
+<div class="curtain" aria-hidden="true"></div><div class="curtain__scan" aria-hidden="true"></div>
 
-  <script src="assets/js/data.js"></script>
-  <script src="assets/js/site.js"></script>
-  <script src="assets/js/home-page.js"></script>
+<header class="hdr" id="hdr">
+  <a class="brand" href="index.html" aria-label="מישה קרץ', לדף הבית"><span class="brand__he">מישה קרץ'</span><span class="brand__en">MISHA GRAPHICS</span></a>
+  <nav class="nav" aria-label="ראשי">
+    <a class="nav__link draw" href="#work">עבודות</a>
+    <a class="nav__link draw" href="#about">אודות ושירותים</a>
+    <a class="nav__link draw" href="blog.html">בלוג</a>
+    <a class="btn" data-fill href="#contact">דברו איתי</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mmenu"><span class="menu-btn__label">תפריט</span><span class="menu-btn__lines" aria-hidden="true"><i></i><i></i></span></button>
+  </nav>
+</header>
+<div class="mmenu" id="mmenu">
+  <nav aria-label="תפריט נייד">
+    <ul class="mmenu__list">
+      <li><a class="mmenu__link" href="#work"><span>עבודות</span></a></li>
+      <li><a class="mmenu__link" href="#about"><span>אודות ושירותים</span></a></li>
+      <li><a class="mmenu__link" href="blog.html"><span>בלוג</span></a></li>
+      <li><a class="mmenu__link" href="#contact"><span>דברו איתי</span></a></li>
+    </ul>
+  </nav>
+  <div class="mmenu__foot"></div>
+</div>
+
+<main id="main" tabindex="-1">
+  <section class="hero" aria-label="שואוריל">
+    <div class="hero__top">
+      <h1 class="hero__title display" data-mg="headline">סרטים שנראים כמו הפקה גדולה.</h1>
+      <div class="hero__aside">
+        <p class="hero__who"><span class="rec" aria-hidden="true"></span>מישה קרץ', ארט דירקטור ומעצב תנועה</p>
+        <p class="hero__sub" data-mg="sub">פרסומות, קליפים ותוכן למותגים. AI, מושן ותלת מימד, מהרעיון ועד הקובץ הסופי.</p>
+      </div>
+    </div>
+    <div class="hero__frame">
+      <div class="hero__frames" data-frames>
+        <img class="hero__still is-on" src="media/reel/frame-01.jpg" alt="פריים מתוך השואוריל של מישה קרץ'" width="1600" height="900" fetchpriority="high">
+      </div>
+      <div class="hero__media" aria-hidden="true"></div>
+      <span class="hero__scan" aria-hidden="true"></span>
+      <div class="hero__scrim"></div>
+      <div class="hero__ui">
+        <button class="btn reel-btn" type="button" data-fill data-reel-open><span class="reel-btn__icon" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span><span data-mg="reelButton">שואוריל עם סאונד</span></button>
+        <button class="icon-btn hero__pause" type="button" aria-pressed="false" aria-label="עצירת הווידאו ברקע" hidden><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M1 0h3.5v12H1zM7.5 0H11v12H7.5z"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="works" id="work" aria-labelledby="work-title">
+    <div class="works__head">
+      <h2 class="works__title display" id="work-title" data-split>עבודות</h2>
+    </div>
+    <div class="works__tabs"><div class="tabs" id="tabs" role="tablist" aria-label="תחומים"></div></div>
+    <div class="gal-body" id="gal-body" role="tabpanel"></div>
+  </section>
+
+  <section class="about-hero" id="about" aria-labelledby="about-title">
+    <div class="about-hero__text">
+      <h2 class="about-hero__title display" id="about-title" data-mg="aboutTitle" data-split>נעים מאוד, מישה.</h2>
+      <p class="about-hero__lead" data-mg="aboutLead"></p>
+    </div>
+    <div class="about-hero__media"><div class="frame-media" data-reveal><img id="portrait" src="media/site/portrait.jpg" alt="מישה קרץ'" width="900" height="1125" loading="lazy"></div></div>
+  </section>
+
+  <section class="chap" aria-labelledby="l-bio">
+    <h2 class="chap__label" id="l-bio">קצת עליי</h2>
+    <div class="chap__body bio">
+      <div class="bio__text" id="bio"></div>
+      <ul class="facts" id="facts" aria-label="במספרים"></ul>
+    </div>
+  </section>
+
+  <div id="services"></div>
+
+  <section class="chap" aria-labelledby="process-title">
+    <h2 class="chap__label" id="process-title" data-mg="processTitle">איך זה עובד</h2>
+    <div class="chap__body"><ol class="steps" id="steps"></ol></div>
+  </section>
+
+  <section class="chap" aria-labelledby="clients-title">
+    <h2 class="chap__label" id="clients-title" data-mg="clientsTitle">עבדתי עם</h2>
+    <div class="chap__body"><ul class="credits__list" id="clients" data-reveal></ul></div>
+  </section>
+
+  <section class="lens-block" id="all-works" aria-labelledby="lens-title">
+    <div class="lens-block__head">
+      <h2 class="lens-block__title display" id="lens-title" data-split>כל העבודות</h2>
+      <p class="lens-block__lead" data-reveal>גררו כדי לנוע בין כולן. לחיצה פותחת עבודה.</p>
+    </div>
+    <div class="ln ln--3d"><div class="ln__view"></div><div class="ln__chips"></div></div>
+  </section>
+
+  <section class="chap" id="contact" aria-labelledby="l-contact">
+    <p class="chap__label" id="l-contact">יצירת קשר</p>
+    <div class="chap__body contact">
+    <div class="contact__side">
+      <h2 class="contact__title display" id="contact-title" data-mg="contactTitle" data-split>בואו נדבר</h2>
+      <p class="contact__intro" data-mg="contactIntro" data-reveal></p>
+      <div class="contact__direct" id="direct"></div>
+    </div>
+    <form class="form" id="contact-form" novalidate data-reveal>
+      <input class="form__hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="field"><label for="f-name">שם</label><input id="f-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">דוא"ל</label><input id="f-email" name="email" type="email" autocomplete="email" dir="ltr" inputmode="email"></div>
+      <div class="field"><label for="f-phone">טלפון (לא חובה)</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" dir="ltr" inputmode="tel"></div>
+      <fieldset class="field"><legend>על מה מדובר?</legend><div class="chips" id="subjects"></div></fieldset>
+      <div class="field"><label for="f-msg">ספרו לי על הפרויקט</label><textarea id="f-msg" name="message" required></textarea></div>
+      <p class="form__status" role="status" aria-live="polite"></p>
+      <button class="btn btn--solid" data-fill type="submit">שליחה <span class="btn__arrow" aria-hidden="true">←</span></button>
+    </form>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr" id="ftr"></footer>
+
+<script src="assets/js/content.js?v=12"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
+<script src="assets/js/site.js?v=16" defer></script>
 </body>
 </html>
