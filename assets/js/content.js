@@ -5828,6 +5828,17 @@ window.MG = {
  ],
  "posts": [
   {
+   "slug": "ain-brief",
+   "title": "אין בריף · איך בנינו קליפ טיפוגרפי עם Claude",
+   "excerpt": "קליפ של 4 דקות, מצלמה אחת שמטיילת על ניירות משרד, וכל מילה נוחתת בדיוק על הצליל. כל התהליך, צעד אחרי צעד.",
+   "tag": "AI",
+   "date": "28.10.2026",
+   "read": "תיעוד תהליך",
+   "cover": "blog/ain-brief/img/hero.jpg",
+   "href": "blog/ain-brief/index.html",
+   "body": []
+  },
+  {
    "slug": "tips-and-tricks",
    "title": "Tips & Tricks",
    "excerpt": "אוסף מדריכים מהירים ודפי עזר — מאפטר אפקטס ופוטושופ ועד תדריכי לקוח ותהליכי עבודה.",

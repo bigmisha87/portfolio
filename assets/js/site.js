@@ -1034,7 +1034,8 @@
      The addresses are the old site's, so links from search and social keep working. */
   const TAG_HE = { Design: "עיצוב", AI: "AI", "3D": "תלת מימד", Gear: "ציוד", Resources: "משאבים", Inspiration: "השראה" };
   const tagLabel = (t) => TAG_HE[t] || t;
-  const postHref = (p) => `post.html?slug=${encodeURIComponent(p.slug)}`;
+  // a post with its own designed page (href) opens that page instead of the shared post template
+  const postHref = (p) => p.href || `post.html?slug=${encodeURIComponent(p.slug)}`;
   const postCover = (p) => p.cover || ((p.body || []).find((b) => b.type === "img") || {}).src || "";
 
   function renderBlog() {
@@ -1092,6 +1093,7 @@
       return;
     }
     const p = posts[k], next = posts[(k + 1) % posts.length];
+    if (p.href) { location.replace(p.href); return; }
     document.title = `${p.title} | ${D.site.name || ""}`;
     // the text styling chosen per block in the old editor (alignment, size, weight, colour)
     const look = (b) => esc([b.align && `text-align:${b.align}`, b.size && `font-size:${+b.size}px`, b.bold && "font-weight:700",

@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>אין בריף · איך בנינו קליפ טיפוגרפי עם Claude</title>
+<meta name="description" content="תיעוד מלא של קליפ טיפוגרפי בלי קאט אחד: הפרומפט, הרפרנסים, ה-Skill, שיטת התזמון, הבדיקות ושיטת האישור בסטוריבורד על פריימים מרכזיים.">
+<meta property="og:title" content="אין בריף · איך בנינו קליפ טיפוגרפי עם Claude">
+<meta property="og:description" content="קליפ של 4 דקות, מצלמה אחת שמטיילת על ניירות משרד, וכל מילה נוחתת בדיוק על הצליל. כל התהליך, צעד אחרי צעד.">
+<meta property="og:image" content="https://www.misha.co.il/blog/ain-brief/img/hero.jpg">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<script>try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=Secular+One&display=swap">
+<style>
+/* One visual world: an office wall of paper. Ink black for the lead, red marker for notes, ballpoint blue for doodles. */
+:root {
+  /* dark by default (the office at night); light only when the viewer picks it */
+  --paper: #121214; --sheet: #1c1c20; --ink: #ecebe6; --muted: #a3a2a8; --line: #33333a; --rule: #ecebe6;
+  --red: #ff6a5c; --blue: #93a8ff; --yellow: #f2d43c; --green: #7fc7a4; --pink: #f08bb0;
+  --panel: #08080a; --panel-ink: #f1f0eb; --frame: #000; --btn-bg: #ecebe6; --btn-fg: #121214; --code-bg: #2a2a30;
+  --bg-img: none; --shadow: rgba(0,0,0,.55); --note-ink: #17171a;
+  --display: "Secular One", "Heebo", Arial, sans-serif; --body: "Heebo", Arial, sans-serif;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --paper: #efeee9; --sheet: #fbfbf8; --ink: #17171a; --muted: #66656c; --line: #d8d6ce; --rule: #17171a;
+  --red: #c8231a; --blue: #1d3fa8;
+  --panel: #17171a; --panel-ink: #f1f0eb; --frame: #17171a; --btn-bg: #17171a; --btn-fg: #ffffff; --code-bg: #e6e4dc;
+  --bg-img: url(img/paper-bg.jpg); --shadow: rgba(0,0,0,.16);
+  color-scheme: light;
+}
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+body { margin: 0; background-color: var(--paper); background-image: var(--bg-img); background-repeat: repeat; background-size: 900px; color: var(--ink); font: 400 17px/1.7 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+img, video { max-width: 100%; display: block }
+a { color: var(--blue); text-underline-offset: 3px }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 2px }
+.wrap { max-width: 1180px; margin: 0 auto }
+.prose { max-width: 68ch }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.12; text-wrap: balance; margin: 0 }
+h2 { font-size: clamp(30px, 4.6vw, 48px) }
+h3 { font-size: 24px }
+p { margin: 0 }
+.stack { display: grid; gap: 18px }
+section { padding-block: 72px; border-top: 2px solid var(--rule) }
+.eyebrow { font: 700 13px/1 var(--body); letter-spacing: .12em; color: var(--red); text-transform: uppercase }
+.lead { font-size: 20px; color: var(--ink) }
+.muted { color: var(--muted) }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block }
+
+/* hero */
+header.hero { padding-block: 56px 40px; display: grid; gap: 26px }
+.title { font-family: var(--display); font-size: clamp(64px, 13vw, 150px); line-height: .9; display: flex; flex-wrap: wrap; align-items: center; gap: .18em }
+.cut { display: inline-flex; gap: .04em; direction: ltr; font-family: "Heebo", Arial, sans-serif; font-weight: 800; font-size: .62em }
+.cut span { display: inline-block; padding: .02em .12em .06em; box-shadow: 2px 4px 8px rgba(0,0,0,.18) }
+.cut span:nth-child(1) { background: var(--green); transform: rotate(-6deg) }
+.cut span:nth-child(2) { background: var(--yellow); transform: rotate(4deg) translateY(.06em) }
+.cut span:nth-child(3) { background: #e2dccd; transform: rotate(-3deg) }
+.cut span:nth-child(4) { background: var(--blue); color: #fff; transform: rotate(5deg) translateY(-.04em) }
+.cut span:nth-child(5) { background: var(--pink); transform: rotate(-4deg) }
+.cut span:nth-child(6) { background: var(--red); color: #fff; transform: rotate(6deg) translateY(.05em) }
+.sub { font-size: clamp(19px, 2.2vw, 23px); max-width: 60ch }
+.player { background: var(--frame); padding: 10px; box-shadow: 0 18px 40px var(--shadow) }
+.player video { width: 100%; aspect-ratio: 16 / 9; background: #000 }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border: 2px solid var(--rule); background: var(--sheet) }
+.stats div { padding: 14px 16px; border-inline-start: 1px solid var(--line) }
+.stats div:first-child { border-inline-start: 0 }
+.stats b { display: block; font: 400 34px/1.1 var(--display); font-variant-numeric: tabular-nums }
+.stats span { color: var(--muted); font-size: 14px }
+nav.toc { display: flex; flex-wrap: wrap; gap: 8px 10px; padding-block: 8px 0 }
+nav.toc a { text-decoration: none; color: var(--ink); background: var(--sheet); border: 1px solid var(--line); padding: 4px 12px; font-size: 15px }
+nav.toc a:hover { border-color: var(--rule) }
+
+/* paper cards and notes */
+.sheet { background: var(--sheet); padding: 22px 24px; box-shadow: 0 2px 0 var(--line), 0 10px 26px var(--shadow) }
+.quote { white-space: pre-wrap; font-size: 16.5px; line-height: 1.75; border-inline-start: 5px solid var(--ink) }
+.note { background: #fff7a8; color: var(--note-ink, #17171a); padding: 14px 16px; box-shadow: 2px 6px 14px rgba(0,0,0,.14); transform: rotate(-.6deg); font-size: 16px }
+.note:nth-child(even) { background: #ffd0e0; transform: rotate(.7deg) }
+.note:nth-child(3n) { background: #cdeedd; transform: rotate(-.3deg) }
+.note small { display: block; color: #55545a; font-size: 13px; margin-top: 6px }
+.notes { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px }
+.marker { color: var(--red); font-weight: 700 }
+figure { margin: 0; display: grid; gap: 8px }
+figcaption { font-size: 14.5px; color: var(--muted) }
+.shot { box-shadow: 0 10px 28px var(--shadow); background: var(--sheet) }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px }
+.pair figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover }
+.tag { font: 700 13px/1 var(--body); padding: 4px 8px; display: inline-block; justify-self: start }
+.tag.before { background: var(--btn-bg); color: var(--btn-fg) }
+.tag.after { background: var(--red); color: #fff }
+
+/* the process: a real sequence, so it is numbered */
+ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px; counter-reset: step }
+ol.steps > li { counter-increment: step; display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 18px }
+ol.steps > li::before { content: counter(step); font: 400 54px/1 var(--display); color: var(--red) }
+.steps h3 { margin-bottom: 8px }
+ul.ticks { margin: 0; padding-inline-start: 1.1em; display: grid; gap: 6px }
+code, pre { font-family: Consolas, "Courier New", monospace; font-size: 14px }
+code { background: var(--code-bg); padding: 1px 6px; direction: ltr; unicode-bidi: isolate }
+pre { direction: ltr; text-align: left; background: #1d1d21; color: #e9e8e3; padding: 16px 18px; overflow-x: auto; margin: 0; line-height: 1.5; white-space: pre }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 15px }
+.legend i { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-inline-end: 6px }
+
+/* the trick */
+.trick { background: var(--panel); color: var(--panel-ink); border: 1px solid var(--line); padding: 34px clamp(18px, 4vw, 44px); display: grid; gap: 22px }
+.trick h2 { color: #fff }
+.trick .rule { font: 400 clamp(26px, 3.6vw, 40px)/1.25 var(--display) }
+.trick .rule em { font-style: normal; color: #ff6a5c }
+.trick ul { margin: 0; padding-inline-start: 1.1em; display: grid; gap: 8px; max-width: 72ch }
+.fixes { display: grid; gap: 26px }
+.fix { display: grid; gap: 10px }
+.fix .who { font-size: 15px }
+
+/* film strip */
+.strip { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px }
+.strip figure { position: relative }
+.strip img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover }
+.strip figcaption { position: absolute; bottom: 4px; left: 4px; background: rgba(0,0,0,.6); color: #fff; font-size: 11px; padding: 0 5px; direction: ltr; font-variant-numeric: tabular-nums }
+
+.yt { position: relative; display: block; background: var(--frame); box-shadow: 0 10px 28px var(--shadow) }
+.yt img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; opacity: .82; transition: opacity .2s }
+.yt span { position: absolute; inset: auto 50% 50% auto; transform: translate(50%, 50%); background: var(--red); color: #fff; font-weight: 700; padding: 10px 18px; white-space: nowrap }
+.yt span::before { content: "▶"; margin-inline-end: 8px }
+.yt:hover img, .yt:focus-visible img { opacity: 1 }
+details { background: var(--sheet); border: 1px solid var(--line) }
+/* theme switch: dark is the default, light is a choice that is remembered */
+.theme { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); left: calc(12px + env(safe-area-inset-left, 0px)); z-index: 20;
+  background: var(--sheet); color: var(--ink); border: 1px solid var(--line); font: 700 14px/1 var(--body); padding: 9px 12px; cursor: pointer; box-shadow: 0 4px 14px var(--shadow) }
+.theme:hover { border-color: var(--rule) }
+.only-light { display: none }
+:root[data-theme="light"] .only-light { display: block }
+:root[data-theme="light"] .only-dark { display: none }
+details summary { cursor: pointer; padding: 12px 16px; font-weight: 700 }
+details pre { max-height: 560px; overflow: auto; white-space: pre-wrap }
+.dl { display: flex; flex-wrap: wrap; gap: 12px }
+.btn { display: inline-flex; align-items: center; gap: 8px; background: var(--btn-bg); color: var(--btn-fg); text-decoration: none; padding: 10px 16px; font-weight: 700 }
+.btn.alt { background: var(--sheet); color: var(--ink); border: 2px solid var(--rule) }
+.btn:hover { background: var(--red); color: #fff; border-color: var(--red) }
+.back { justify-self: start; display: inline-flex; gap: 8px; align-items: center; color: var(--muted); text-decoration: none; font-size: 15px; border: 1px solid var(--line); background: var(--sheet); padding: 6px 12px }
+.back:hover { color: var(--ink); border-color: var(--rule) }
+footer { padding-block: 40px 70px; border-top: 2px solid var(--rule); color: var(--muted); font-size: 15px }
+
+@media (max-width: 760px) {
+  .two, .pair { grid-template-columns: minmax(0, 1fr) }
+  ol.steps > li { grid-template-columns: minmax(0, 1fr) }
+  ol.steps > li::before { font-size: 40px }
+  .stats div { border-inline-start: 0; border-top: 1px solid var(--line) }
+  section { padding-block: 52px }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+</style>
+</head>
+<body>
+<button class="theme" id="themeBtn" type="button" aria-label="החלפת מצב תצוגה"></button>
+<div class="wrap">
+
+<header class="hero">
+  <a class="back" href="../../blog.html"><span aria-hidden="true">→</span> לכל הפוסטים בבלוג</a>
+  <div class="eyebrow">תיעוד תהליך · 28.10.2026</div>
+  <h1 class="title" aria-label="אין brief">אין <span class="cut" aria-hidden="true"><span>b</span><span>r</span><span>i</span><span>e</span><span>f</span><span>!</span></span></h1>
+  <p class="sub">קליפ טיפוגרפי של ארבע דקות בלי קאט אחד. מצלמה תלת־ממדית אחת מטיילת על קיר של ניירות משרד, וכל מילה נוחתת בדיוק כשהיא מושרת. כתבתי את הבריף, נתתי הערות ואישרתי. Claude בנה, תזמן ובדק. כאן כל התהליך, כדי שתוכלו לעשות את זה בעצמכם.</p>
+  <div class="player"><video controls preload="metadata" poster="img/hero.jpg" src="media/ain-brief.mp4"></video></div>
+  <div class="stats">
+    <div><b>4:02</b><span>אורך הקליפ</span></div>
+    <div><b>0</b><span>קאטים</span></div>
+    <div><b>142</b><span>שורות שירה מתוזמנות</span></div>
+    <div><b>292</b><span>מילים נבדקו מול השירה</span></div>
+    <div><b>40</b><span>סצנות על 9 ניירות</span></div>
+    <div><b>9</b><span>גרסאות עד הסופית</span></div>
+  </div>
+  <nav class="toc" aria-label="תוכן העניינים">
+    <a href="#prompt">הפרומפט</a><a href="#refs">רפרנסים</a><a href="#skill">ה-Skill</a><a href="#process">התהליך</a>
+    <a href="#trick">הטריק: אישור על פריימים</a><a href="#evolution">מגרסה 1 לגרסה 9</a><a href="#lessons">לקחים</a><a href="#diy">איך לעשות בעצמכם</a><a href="#downloads">הורדות</a>
+  </nav>
+</header>
+
+<section id="prompt" class="stack">
+  <div class="eyebrow">01 · מאיפה התחלנו</div>
+  <h2>הפרומפט</h2>
+  <p class="prose lead">ההודעה הראשונה, מילה במילה. איתה צירפתי את מסמך המילים (שורות בסוגריים הן המקהלה), את השיר המלא, שני ערוצי שירה נפרדים (סולן ומקהלה) ושני קליפי רפרנס. בתחילת ההודעה הפעלתי את ה-Skill שלי, <code>/lyric-motion-director</code>.</p>
+  <div class="sheet quote"><span dir="ltr">/lyric-motion-director</span>
+
+יש לנו פה שיר נוסף.
+המילים בתוך סוגריים עגולים זה המקהלה.
+
+הכנתי לך פה STEMS.
+
+תעבור פה על הקליפ הזה:
+The Rolling Stones - Sympathy For The Devil (Official Lyric Video) [1080p]
+
+הרעיון שלי שתשתמש ב HIGGSFIELD וצור לך תמונות רקע של מרקמים של נייר שונים, תחשוב עבודה משרדית. השתמש במודל תמונה של GPT 2.5 ב 4K.
+
+צור לך איקונים שונים עם רקע לבן ככה שיהיה אפשר להשתמש במצב מיזוג כמו MULTIPLY או שתצרוב בעצמך אם אתה יכול - על מנת לשלב עם הרקע את האיקונים.
+
+לא להשתמש במודלים של וידאו ללא רשות.
+
+מותר לך לצייר אלמנטים ווקטורים ולהנפיש אותם.
+הרעיון מצלמה תלת מימדית מטיילת על ניירות שונים. הטיפוגרפיה מופיעה על הנייר. כמו בסרטון רפרנס. להוסיף אלמנטים גרפיים מסביב בשפה עיצובית אחידה של סגנון שרבוטים (כמו בתיכון או כאשר משעמם בעבודה משרדית או כשמעצבים מקשקשים על פתקים ומחברות וכו&#x27;.)
+
+הקונספט הוא חוסר סדר במשרד או בארגון או לקוחות מפוזרים וכו&#x27;.
+
+תצפה בסרטון ותקח ממנו השראה. המטרה סרטון ללא קאטים, רק מצלמה שנעה בין ניירות שונים. אפשר נייר על נייר. העיקר לא להראות רקע שחור או לבן, תמיד יש איזה נייר. והרעיון שכל האלמנטים מצויירים ואין משהו שיושב מעל אז ללא גרפיקה 3D הפעם. רק תנועלת המצלמה היא 3D.
+
+כניסה יצירתית של טקסטים עם מסכות והנפשות וכו&#x27;.
+
+אפשר לשלב סימולציות פיזיקה כמו טקסט מתפוצץ, נשבר, נמאך, נמס, מתפזר, נופל וכו&#x27;... כל זה זורם לגמרי.
+
+קליפ נוסף שאני עשיתי זה
+רעיון - קליפ טיפוגרפי [1080p60]
+
+אתה יכול ללמוד ממנו על תנועות מצלמה מדוייקות.
+
+הדבר הכי הכי חשוב זה התזמונים!! אז מבחינתי לפני שאתה אומר לי שסיימת אתה עושה בדיקות עד שזה יושב בול מושלם.
+
+הניירות בגדול לבנים, אפור בהיר ואפשר צבעוני אבל מעולם ה POST IT וכו&#x27;.
+אולי קצת בריסטולים. אפשר עיתונים ואותיות גזורות מתוך מגזינים ועיתונים. תחשוב דפוס ועולם הפרסום. גרפיקה ועיצוב גרפי.
+
+הפעם אני רוצה עולם אנלוגי ולא דיגיטל.</div>
+  <h3>ההערות שלי בדרך</h3>
+  <p class="prose muted">כאן נמצא רוב הערך. כל הערה קצרה שינתה כלל בכל הקליפ, לא רק סצנה אחת.</p>
+  <div class="notes">
+    <div class="note">"אני לא רוצה יותר מדי חילופים של רקעים. אני רוצה להחליף רקעים לפי ההתקדמות של הסיפור. לא בכל מילה."<small>אחרי צילומי המסך הראשונים. התוצאה: נייר אחד לכל חלק בשיר.</small></div>
+    <div class="note">"כשאתה מסיים תעשה בדיקה שיש הגיון. למשל ראיתי את העיתון, זה נראה שסתם זרוק שם ואין קשר או סיבה לזה."<small>התוצאה: לכל חפץ בקליפ יש סיבה מתוך המילים.</small></div>
+    <div class="note">"את הרנדרים הראשונים תעשה ב-Full HD. מקסימום בסוף אבקש 4K."<small>רינדור בדיקה לוקח כחמש דקות, אז אפשר לעשות הרבה סבבים.</small></div>
+    <div class="note">"יש לך אישור גורף לעשות מה שאתה צריך ולסיים את המשימה הזו על הצד הטוב ביותר."<small>ואחר כך: "אני הולך לישון". Claude המשיך לבד: רינדר, בדק ותיקן.</small></div>
+  </div>
+</section>
+
+<section id="refs" class="stack">
+  <div class="eyebrow">02 · ממה לקחנו השראה</div>
+  <h2>הרפרנסים</h2>
+  <div class="two">
+    <div class="stack">
+      <h3>Sympathy For The Devil, Lyric Video</h3>
+      <a class="yt" href="https://youtu.be/GgnClrx8N2k" target="_blank" rel="noopener"><img src="https://i.ytimg.com/vi/GgnClrx8N2k/hqdefault.jpg" alt="The Rolling Stones · Sympathy For The Devil (Official Lyric Video)" loading="lazy"><span>לצפייה ביוטיוב</span></a>
+      <p>הקליפ הרשמי של הרולינג סטונס.</p>
+      <p><b>מה לקחנו ממנו:</b></p>
+      <ul class="ticks">
+        <li>קיר אחד רציף, בלי קאטים. המצלמה נודדת עליו בזווית מוטה.</li>
+        <li>האותיות נכתבות על הקיר ברגע שהן מושרות.</li>
+        <li>טקסט ישן נשאר על הקיר, והקיר מתמלא ככל שהשיר מתקדם.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>רעיון · קליפ טיפוגרפי שלי</h3>
+      <a class="yt" href="https://youtu.be/m5wX3PSRxoA" target="_blank" rel="noopener"><img src="img/ref_raayon_poster.jpg" alt="רעיון · קליפ טיפוגרפי" loading="lazy"><span>לצפייה ביוטיוב</span></a>
+      <p><b>מה לקחנו ממנו:</b></p>
+      <ul class="ticks">
+        <li>נייר מקומט לבן ודפוס שחור בהיררכיה ברורה.</li>
+        <li>תנועות מצלמה מדויקות, עם הטיות קטנות בתלת־ממד.</li>
+        <li>שורות קודמות שהופכות לאפורות כשהשורה הבאה נכנסת.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="skill" class="stack">
+  <div class="eyebrow">03 · השיטה שלי, ארוזה</div>
+  <h2>ה-Skill: במאי תנועה לקליפ מילים</h2>
+  <p class="prose lead">Skill הוא קובץ הוראות ש-Claude טוען לפני העבודה. כתבתי אותו אחרי הקליפ הקודם שלי, "רחמים", מתוך כל ההערות שחזרו על עצמן. הוא מלמד את Claude את הטעם ואת שיטת העבודה שלי, כך שלא צריך להסביר הכל מחדש בכל פרויקט.</p>
+  <div class="two">
+    <div class="sheet stack">
+      <h3>מה כתוב בו, בקצרה</h3>
+      <ul class="ticks">
+        <li><b>תזמון:</b> מפרידים ערוצי שירה ובודקים כל מילה מול השירה. הכניסה של מילה <span class="marker">מסתיימת</span> עליה, לא מתחילה עליה.</li>
+        <li><b>רעיון אחד לכל שורה,</b> בלי לחזור על אותה אנימציה. שורות קצרות מאחדים לסצנה אחת שחיה.</li>
+        <li><b>מצלמה:</b> תנועה אחת רציפה, בלי קפיצות, בלי גימיקים מסתובבים.</li>
+        <li><b>אף פעם</b> לא פריים שחור ולא פריים קפוא, גם באמצע מעבר.</li>
+        <li><b>הטקסט תמיד שלם בפריים,</b> טיפוגרפיה צפופה, ועברית מימין לשמאל.</li>
+        <li><b>תנועה פיזית אמיתית:</b> נפילה ישר למטה, ושום דבר לא עובר דרך הרצפה.</li>
+        <li><b>בדיקה עצמית</b> של כל רינדור לפני שמראים לי משהו.</li>
+        <li><b>סבב הערות</b> עם סטוריבורד. הערה = לתקן, ריק = מאושר.</li>
+      </ul>
+    </div>
+    <div class="stack">
+      <h3>התקנה</h3>
+      <p>מורידים את הקובץ <code>lyric-motion-director.skill</code>.</p>
+      <p><b>ב-claude.ai:</b> הגדרות, ואז יכולות, ואז העלאת Skill, ובוחרים את הקובץ.</p>
+      <p><b>ב-Claude Code:</b> פותחים את הקובץ כמו זיפ ומעתיקים את התיקייה <code>lyric-motion-director</code> אל <code>~/.claude/skills/</code>.</p>
+      <p>מה צריך במחשב: <span class="ltr">ffmpeg</span> לבדיקות פריים אחרי פריים, ו-<span class="ltr">Python + Whisper</span> לתזמון אוטומטי. בלי אלה ה-Skill עדיין עובד ומבקש את מה שחסר.</p>
+      <div class="dl"><a class="btn" href="skill/lyric-motion-director.skill" download>הורדת ה-Skill</a><a class="btn alt" href="skill/README.he.md" download>הסבר בעברית</a></div>
+    </div>
+  </div>
+  <details><summary>הטקסט המלא של ה-Skill (באנגלית, כמו ש-Claude קורא אותו)</summary><pre>---
+name: lyric-motion-director
+description: A senior motion director&#x27;s method and taste for kinetic-typography lyric videos and music clips, in any tool (After Effects, three.js/code, Blender, Premiere, AI video). Covers timing text to the sung word, planning one idea per line, motion and typography rules (smooth camera, no gimmicks, tight type, never-cut backdrops, RTL Hebrew), self-QA on rendered frames before showing anything, and a storyboard review loop where a written note means &quot;fix&quot; and an empty note means &quot;approved&quot;. Use this whenever someone is making or fixing a lyric video, kinetic typography, animated text to music, a typographic music clip, title animation synced to a song, or is reviewing / giving notes on rendered motion frames, even if they don&#x27;t say &quot;lyric video&quot; (e.g. &quot;make the words land on the beat&quot;, &quot;the camera feels jumpy&quot;, &quot;build me a storyboard so I can write notes&quot;).
+---
+
+# Lyric Motion Director
+
+This is the working method of a senior art director / motion designer, distilled from real review
+rounds on a 3D kinetic-typography clip that went from &quot;same thing again&quot; to &quot;perfect&quot;. It is
+tool-agnostic: apply it in After Effects, in code (three.js, canvas, Remotion), in Blender, or when
+directing AI video. The rules come with their reasons, so you can judge new situations instead of
+following them blindly.
+
+The director is usually not a programmer. Talk about what changes **on screen**, not in code.
+
+## The loop
+
+1. **Time the text to the voice** (see &quot;Timing&quot;).
+2. **Plan one idea per line** (see &quot;Planning&quot;).
+3. **Build.**
+4. **Watch it yourself before showing anything** (see &quot;Self-QA&quot;). This is the step that most often gets
+   skipped and it is the one that costs the most trust: sending a render you did not watch, and that
+   turns out stale or broken, makes every later round harder.
+5. **Review round with a storyboard** (see &quot;Review loop&quot;). Read the notes, fix exactly what was flagged,
+   render a new version, QA again, publish the next round.
+6. When the director says it is done, **write down what was learned** (taste rules, failure modes) so
+   the next project starts from it. If this skill is installed from a master folder (see `CHANGELOG.md`),
+   add the general lessons to the skill itself, add a version entry, and repackage the `.skill` file.
+
+## Timing: text lands ON the sung word
+
+- Separate the vocals into stems if you can (lead / backing). Timing from the full mix is worse.
+- **Lead vocal:** speech-to-text with word timestamps (e.g. Whisper large-v3 with VAD) on the isolated
+  lead stem is very accurate.
+- **Choir / backing vocals:** transcription fails on polyphonic singing. Take phrase boundaries from the
+  stem&#x27;s energy and word positions from its onsets.
+- **Verify every word against the singing, not against an earlier pipeline&#x27;s numbers.** Onsets lie when
+  something else sounds there (an ad-lib, a held previous word, bleed): in the source project a stray sound
+  put a verse 2 s early, a choir hook sat 3 s late, and the closing phrase was sung twice at times nobody
+  had marked. Run `scripts/audit_words.py` (flags any word placed where its singer is silent) and check
+  doubtful starts by ear-substitute: stem loudness every 0.05 s, and Whisper on that single phrase.
+- **The director&#x27;s ear beats the machine on choir lines.** When they name a time and the words they hear
+  there, trust it and check the stems around that time.
+- **Forced alignment** (aligning known lyrics to audio) drifts badly if the text assigned to a stem is
+  even slightly wrong. Use it only when the per-stem text is exactly right.
+- **Entrances must finish on the word, not start on it.** A text that starts animating when the word is
+  sung reads as late. Shift word times ~0.2 s earlier, start letter animations ~0.25 s before the word,
+  and cut to a new scene ~0.2 s before its first word.
+
+Details and a ready Whisper recipe: `references/lyric-timing.md`.
+
+## Planning: one idea per line
+
+- **One visual idea per lyric line, and no repeats.** The same animation on every line is the fastest way
+  to make a clip feel cheap. Make each idea come from the words (a stamp for &quot;approved&quot;, a wrecking ball
+  for &quot;destroy&quot;, a clock for &quot;all day&quot;).
+- **Call and response gets a visual code**, e.g. lead = white, choir = orange. Keep it consistent.
+- **Short lines that pass too fast to read: merge, don&#x27;t speed up.** Put consecutive lines in one longer
+  scene where ONE object keeps living: it gets painted on the beat by a moving mask, squashes and
+  stretches, inflates, spins, shrinks. The eye doesn&#x27;t have to re-read new text each time and the song
+  feels connected. This was the single best fix in the source project.
+- **Real, recognizable objects that physically act on the words** land better than abstract props: an
+  iPhone that shows the message, phones circling the sung line, a grand piano whose keys play the song&#x27;s
+  actual notes, sheets crumpled into paper balls and thrown in a bin, a wrecking ball that breaks the
+  TEXT, letters that drop into a heap. What gets rejected is a prop that replaces or hides the words.
+- **When an idea works, keep its set alive** across the next lines (the piano carried three scenes)
+  instead of cutting to a new concept.
+- **Show only what is sung.** No decorative extra words, and nothing that reads as extra text (a shadow
+  of the lyrics on a surface reads as a second copy).
+- **Prefer a continuous camera journey to hard cuts when the music flows.** Scenes laid out side by side
+  in reading direction; the camera glides from one to the next with real motion blur. Keep a cut
+  version too and let the director compare.
+
+## Motion and typography taste
+
+Each rule here came from a note that kept coming back until it was respected.
+
+- **The camera never jumps.** One continuous, eased move per shot. Things that read as &quot;the camera went
+  crazy&quot;: a camera that steps per beat or per letter, a look-at target that snaps, a fly-through that
+  changes direction, a move right then left. If a move is needed, ease in and out and go one way.
+- **No spinning gimmicks.** A cube doing quarter-turns on every beat was hated: identical faces turning
+  fast read as flicker and jumping. Instead, animate the letters into place on each sung word (rise out
+  of the floor, flip up from lying flat, drop and land).
+- **Never a static frame, never a black frame** (&quot;it&#x27;s a rule in animation&quot;). After the entrance keep
+  something alive through the hold: slow push, drift, sway, a punch on the next word, things that keep
+  falling. And no empty frame between scenes either: see &quot;Scene changes&quot; below.
+- **Physical motion must look physical.** Something that &quot;loses its grip&quot; trembles, then drops straight
+  down under gravity (no arcs), lands, bounces once, settles. Nothing passes through the floor or through
+  another object (rest each piece on its lowest point). Debris that lands on a surface stays there.
+- **Type is always whole in frame.** If a layout grows (rows added, words squeezing in), frame the camera
+  for the finished layout from the start, and cap how big a lone word may grow.
+- **No plates or planes behind text.** A surface behind type shows its edge or a lit band (&quot;the lighting
+  broke again&quot;). Light the type instead. A floor under a scene must fade out softly before the frame edge.
+- **Tight typography.** Small word spacing and line spacing on display type, especially condensed faces.
+  Default font spacing is usually too loose.
+- **Secondary elements fade in; only the hero cuts in.** A wall of repeated phrases should fade up around
+  the main phrase, not pop.
+- **One colour family per scene.** Vary with light, not with mixed materials. Two rows in a different
+  colour from the rest looks like a mistake.
+- **A backdrop never shows its edge in frame, and neither does a wall/floor seam.** Make backgrounds far
+  bigger than the view at every camera position, or remove the floor where it would meet a wall.
+  Objects meant to be objects (a sheet of paper, a clock face) may show their edges.
+- **A held shot shows only the current idea.** Text from a neighbouring scene in frame is wrong, even
+  far away in a corner. Neighbours may appear only while the camera is travelling.
+- **Things that must stay visible long enough:** the whole phrase must be readable and complete for a
+  beat before the cut. &quot;Disappears too fast&quot; means the phrase was complete for well under a second.
+- **Avoid:** noise/grain, flicker, gimmicky glow, the same animation repeated, people/characters made of
+  primitives in code.
+- **Before restructuring, understand why the approved look works.** In the source project the later
+  scenes had no floor only because they happened to sit past the floor&#x27;s edge; a restructure put them on
+  a floor and broke the approved look. Keep approved looks deliberately.
+
+### Scene changes in a camera journey
+
+- Halfway through a move the camera points at the empty space between two scenes: that is a black
+  frame. Leave the old scene only ~0.3 s before the next scene&#x27;s first word (so it is already rising),
+  pull the camera back a little mid-move so both scenes are in view, keep the old scene drawn until the
+  camera has nearly arrived.
+- Let the next scene&#x27;s non-text graphics (a grid being drawn, falling documents, phones) be there on
+  arrival; words still appear only when sung.
+- When two scenes belong together, build them in the same place and let the old text recede into the
+  dark slowly while the new one draws in, instead of travelling.
+- Endings: one strong final image (letters dropping into a heap, then black), not a recap of the journey.
+
+### Hebrew and other RTL text
+
+- Words read right to left: letter-by-letter animations run from the rightmost letter; punctuation
+  (&quot;!!!&quot;, &quot;...&quot;) sits on the **left**; a prefix word (&quot;רק&quot;) joins on the **right**.
+- Build words from glyphs in logical order and place them right to left; never trust a tool to shape
+  RTL for you without checking a rendered frame.
+- Check every Hebrew word in a rendered frame: reversed, mirrored or unshaped text is invisible in data
+  and obvious on screen.
+- Spelling matters to the director (e.g. &quot;הכל&quot; vs &quot;הכול&quot;): use the spelling from the lyrics they gave.
+
+## Self-QA: watch it before you show it
+
+Stills lie about motion. Do all three:
+
+1. **Whole clip, contact sheet every 0.25-0.5 s.** Is every sung word fully visible at the moment it is
+   sung? Anything empty, clipped, black, unreadable?
+2. **Every changed scene at 12 fps.** This is where camera jumps, fast turns, flicker, pops and
+   one-frame glitches show up. Lay the frames out in a grid and compare positions frame to frame.
+3. **After any structural change** (new transitions, merged scenes, moved layouts): the whole clip again,
+   not only the scenes you touched. Structural changes have side effects (a light reflecting on a floor
+   that wasn&#x27;t there before, a neighbour drifting into frame).
+
+4. **Machine audits** before you look: `scripts/audit_clip.py clip.mp4` lists black frames, still holds
+   and one-frame jumps with their times; `scripts/audit_words.py` lists words placed where nobody sings.
+   They find in seconds what is easy to miss in sheets; then look at each hit.
+
+Fix what you find before the director sees it, then tell them what you caught. Commands:
+`references/qa-and-storyboard.md`, helpers: `scripts/contact_sheet.py`, `scripts/audit_clip.py`,
+`scripts/audit_words.py`.
+
+When the director asks you to be critical and polish (&quot;surprise me&quot;), run the audits, watch the whole
+clip, and fix systemic causes (one engine rule for all transitions) before one-off patches. Report what
+you found that they had not flagged, and which approved scenes your fixes touched.
+
+## Review loop: storyboard with notes
+
+- Build **one storyboard page per project, same link every round**: per scene 3-4 key frames (entrance,
+  all words in, end of scene; a 4th for long scenes), the lyric, the scene idea, timecodes. Click a frame
+  to enlarge it; click a frame&#x27;s timecode to insert it into the note.
+- **The director&#x27;s rule: a note with text = fix, an empty note = approved.** No per-scene buttons to
+  click. Each round starts empty; show last round&#x27;s note greyed above each box so they can verify it.
+- Notes should save themselves where you can read them back (a shared store, a doc, a sheet), so the
+  director never has to paste notes into chat.
+- Pick key frames with `scripts/keyframes.py` (frames from the timing data, not at random).
+
+## Versions and scope
+
+- Every render is a new file (v3, v4, ...). Keep previous versions for comparison.
+- A new concept (e.g. &quot;no cuts, one camera journey&quot;) is a separate source and output. Never overwrite
+  the approved version to try an idea.
+- **Fix exactly what was flagged.** Don&#x27;t restyle approved scenes. If a global change (spacing,
+  lighting) touches them, say so explicitly.
+- Keep a short handoff file next to the project: what changed in each version and why.
+- Don&#x27;t run paid AI generation without asking first.
+
+## Talking to the director
+
+- Short answers, in their language. No jargon: say what they will see (&quot;the camera now only moves
+  left&quot;), not what the code does.
+- They often send one frame with a timecode and one line. Find that exact frame, see what they see,
+  then fix it.
+- They give direction, not specs (&quot;smoother&quot;, &quot;merge these&quot;, &quot;try it without cuts&quot;). Make the design
+  decisions, then say in a sentence what you chose and why.
+- When something you changed is a judgment call, or touches approved work, say so in one line.
+
+## Common failure modes
+
+| What the director says | Usual cause | Fix |
+|---|---|---|
+| &quot;Text comes in late&quot; | animation starts on the word | finish the entrance on the word (shift ~0.2 s earlier) |
+| &quot;Disappears too fast&quot; | short line, slow entrance, early cut | faster entrance, later move-out, or merge lines into one evolving scene |
+| &quot;Camera goes crazy / jumps&quot; | stepped camera target, direction change, snapping look-at | one eased move in one direction; check at 12 fps |
+| &quot;It flickers&quot; | fast identical rotations, popping elements | remove the spin; animate letters instead |
+| &quot;Background is cut&quot; | backdrop smaller than the view, wall/floor seam | huge backdrop, hide the seam |
+| &quot;Still see the previous scene&quot; | neighbours in frame during a hold | show neighbours only while travelling |
+| &quot;Too static&quot; | nothing moves after the entrance | slow drift / swell / turn through the hold |
+| &quot;Same thing again&quot; | stale render / wrong version | check the version banner and watch the output before sending |
+| &quot;The word is there before he sings it&quot; | timing taken from a stray onset or an early pipeline | re-check against the stem (`audit_words.py`, loudness every 0.05 s) |
+| &quot;A black moment between scenes&quot; | mid-move the camera sees the gap; the new scene is empty on arrival | leave ~0.3 s before the next word, pull back mid-move, keep the old scene drawn |
+| &quot;Nothing happens here / a static frame&quot; | a hold with no motion | slow push, drift, sway, continuous falling objects |
+| &quot;Falls in a weird arc / goes through the floor&quot; | fake easing instead of gravity; pivot not on the lowest point | straight drop under gravity, rest on the lowest point, one bounce |
+| &quot;The text is cut&quot; | a layout that grows after the camera framed it | frame for the final layout from the start |
+| &quot;The lighting broke&quot; | a plate or plane behind the text, a floor with an edge | remove it; soft-fading floor |
+</pre></details>
+</section>
+
+<section id="process" class="stack">
+  <div class="eyebrow">04 · מה קרה בפועל</div>
+  <h2>התהליך, שלב אחרי שלב</h2>
+  <ol class="steps">
+    <li><div class="stack">
+      <h3>ערוצי שירה נפרדים</h3>
+      <p class="prose">את השיר יצרתי ב-Suno. עם מנוי Pro אפשר לפרק שיר לערוצים (Stems), וכך הוצאתי שני קבצים נפרדים: שירת הסולן לבד, והמקהלה לבד. זה הבסיס לכל התזמון. מהערוץ אפשר לדעת בדיוק מי שר כל שורה. ככה גילינו ש"למחר!" ו"כבר מאוחר!" בפזמון הראשון מושרים בקול של הסולן, למרות שבמסמך הם בסוגריים.</p>
+    </div></li>
+    <li><div class="stack">
+      <h3>תזמון של כל מילה</h3>
+      <p class="prose">Whisper (תמלול אוטומטי, רץ על המחשב) זיהה את המילים של הסולן עם זמנים. המקהלה לא מתמללת טוב, אז הגבולות שלה נלקחו מהעוצמה של הערוץ. אחר כך כל שורה יושרה לבד בחלון הזמן שלה, ובסוף כלי בדיקה עבר על כל 292 המילים ובדק שאף מילה לא מופיעה כשאף אחד לא שר. בסבב הראשון הוא מצא מילה אחת מוקדמת ב-0.2 שנייה, ותיקנו.</p>
+      <figure><img class="shot only-dark" src="img/timing_chart_dark.png" alt="גרף עוצמת השירה בפזמון הראשון: סולן למעלה, מקהלה באדום למטה, עם קו לכל מילה"><img class="shot only-light" src="img/timing_chart.png" alt="גרף עוצמת השירה בפזמון הראשון: סולן בשחור למעלה, מקהלה באדום למטה, עם קו לכל מילה"><figcaption>הפזמון הראשון (0:23–0:41). למעלה עוצמת הסולן, למטה באדום עוצמת המקהלה. כל קו מנוקד הוא מילה, והיא נוחתת בדיוק בתחילת ההרמה.</figcaption></figure>
+      <p class="prose">ועוד כלל מה-Skill: כל מילה מסיימת להיכנס כ-0.2 שנייה <b>לפני</b> שהיא מושרת. אם האנימציה רק מתחילה על המילה, העין קולטת את המילה מאוחר.</p>
+    </div></li>
+    <li><div class="stack">
+      <h3>תכנון: קוד צבעים ונייר לכל חלק</h3>
+      <div class="legend"><span><i style="background:#17171a;outline:1px solid var(--line)"></i>סולן = דפוס שחור</span><span><i style="background:var(--red)"></i>מקהלה = טוש אדום</span><span><i style="background:linear-gradient(90deg,var(--green),var(--yellow),var(--pink))"></i>מילים באנגלית = אותיות גזורות ממגזין</span><span><i style="background:var(--blue)"></i>שרבוטים = עט כדורי</span></div>
+      <p class="prose">40 סצנות, ולכל אחת רעיון אחד שיוצא מהמילים: לוח שנה שהימים בו נמחקים ב-X ב"יש deadline", פתקים דביקים שיורדים כמו גשם ב"המון הערות", רוזטה שמשוכפלת בצבעים ב"כמו המתחרים", ודף שנקרע לשניים ב"זה לא זה!". הנייר מתחלף רק כשהשיר עובר חלק: פתיחה, פזמון, בית, גשר, שבירה וסיום.</p>
+    </div></li>
+    <li><div class="stack">
+      <h3>חומרים: ניירות ואיורים</h3>
+      <p class="prose">ל-Claude היה חיבור ישיר ל-Higgsfield דרך MCP (חיבור שמאפשר לו להפעיל כלים חיצוניים בעצמו), ולכן הוא יצר את כל התמונות לבד: כתב את הפרומפטים, הריץ אותם, הוריד את התוצאות והכין אותן לקליפ. בפרומפט ביקשתי ממנו להשתמש ב-GPT Image 2.5 ב-4K. יצאו 12 מרקמי נייר (מקומט, מקופל, בריסטול, מחברת, מילימטרי, עיתון, פתקים) ו-18 איורי חריטה בסגנון קטלוג ישן על רקע לבן. את הלבן הפכנו לשקיפות, כך שהאיור "מודפס" על הנייר כמו במצב מיזוג Multiply. בסך הכל 30 תמונות, כ-130 קרדיטים. לא השתמשנו בשום מודל וידאו.</p>
+      <div class="two"><figure><img class="shot" src="img/papers_grid.jpg" alt="12 מרקמי הנייר"><figcaption>12 הניירות</figcaption></figure><figure><img class="shot" src="img/icons_grid.jpg" alt="18 איורי החריטה מונחים על נייר"><figcaption>18 האיורים, מודפסים על הנייר</figcaption></figure></div>
+    </div></li>
+    <li><div class="stack">
+      <h3>המנוע: הכל שטוח, רק המצלמה בתלת־ממד</h3>
+      <p class="prose">הקליפ נכתב כקוד: עולם three.js בתוך HyperFrames (כלי קוד פתוח שהופך עמוד אינטרנט לווידאו). כל דבר בו הוא דף שטוח: הנייר, האותיות, השרבוטים שמצוירים מעצמם והאיורים. רק המצלמה זזה בתלת־ממד, עם טשטוש תנועה במעברים. בתוך סצנה המצלמה עוקבת אחרי השורה שנשמעת עכשיו, ומשאירה בפריים את השורה שהיא עונה לה. רינדור של גרסה שלמה לוקח כחמש דקות.</p>
+    </div></li>
+    <li><div class="stack">
+      <h3>בדיקה עצמית, לפני שאני רואה משהו</h3>
+      <ul class="ticks prose">
+        <li><b>דף פריימים של כל הקליפ,</b> פריים כל חצי שנייה: האם כל מילה נראית במלואה ברגע שהיא מושרת?</li>
+        <li><b>12 פריימים בשנייה</b> בכל מקום שהשתנה. כאן רואים קפיצות מצלמה, הבהובים וקפיצות פתאומיות.</li>
+        <li><b>בדיקות אוטומטיות:</b> פריים שחור, רגע קפוא, קפיצה של פריים אחד. בנוסף, בדיקה שכל שורה נכנסת במלואה לפריים ולא עולה על שורה אחרת, ושכל שורה אחרונה נשארת על המסך לפחות חצי שנייה לפני שהמצלמה זזה.</li>
+      </ul>
+      <figure><img class="shot" src="img/qa12fps.jpg" alt="18 פריימים ברצף מתוך שנייה וחצי של הקליפ"><figcaption>שנייה וחצי ב-12 פריימים בשנייה. עוקבים אחרי מילה אחת לאורך הפריימים: אם היא זזה בצורה חלקה, המצלמה לא קופצת.</figcaption></figure>
+      <pre>DARK  (frames under 0.4% lit) .......... none
+STILL (no motion for 0.75 s or more) .... none
+WORDS placed where nobody sings ......... 0 of 292
+LINES outside the frame / overlapping ... 0 of 142</pre>
+    </div></li>
+  </ol>
+</section>
+
+<section id="trick">
+  <div class="trick">
+    <div class="eyebrow" style="color:#ff6a5c">05 · הטריק שהמצאתי</div>
+    <h2>אישור סטוריבורד על פריימים מרכזיים</h2>
+    <p class="rule">לכל סצנה יש תיבת הערה. <em>כתבת הערה = לתקן.</em> השארת ריק = מאושר.</p>
+    <ul>
+      <li><b>אין כפתורים.</b> לא לוחצים "מאושר" על 40 סצנות. מה שלא נגעת בו מאושר.</li>
+      <li><b>הפריימים נבחרים מהתזמון,</b> לא באקראי: הכניסה של המילה הראשונה, הרגע שכל המילים בפנים, והסוף של הסצנה. ככה אפשר להשוות בין גרסאות.</li>
+      <li><b>לחיצה על זמן</b> שמתחת לפריים מכניסה אותו להערה, כדי ש-Claude ימצא בדיוק את הרגע.</li>
+      <li><b>ההערות נשמרות לבד</b> בעמוד עצמו, ו-Claude קורא אותן ישירות. לא מעתיקים ולא מדביקים כלום לצ'אט.</li>
+      <li><b>בכל סבב חדש</b> ההערה מהסבב הקודם מופיעה באפור מעל התיבה, כדי לוודא שהיא תוקנה.</li>
+    </ul>
+    <figure><img src="img/storyboard.jpg" alt="צילום מסך של עמוד הסטוריבורד: לכל סצנה מילים, רעיון, ארבעה פריימים ותיבת הערה. בסצנה 4 כתובה הערה והיא מסומנת באדום."><figcaption style="color:#b9b8b2">עמוד הסטוריבורד של הקליפ. בסצנה 4 כתבתי הערה, והיא מסומנת אוטומטית באדום.</figcaption></figure>
+    <p class="rule" style="font-size:clamp(20px,2.4vw,26px)">סבב 1: 36 מתוך 40 סצנות אושרו בלי לכתוב מילה. 4 הערות, ו-4 תיקונים:</p>
+  </div>
+  <div class="fixes" style="margin-top:30px">
+    <div class="fix"><p class="who"><span class="marker">"לשים את העיגול על אחת המשבצות, כרגע זה יושב סתם על קו בין משבצות."</span></p>
+      <div class="pair"><figure><span class="tag before">לפני</span><img class="shot" src="img/r1before_14.0.jpg" alt="העיגול על קו בין משבצות"></figure><figure><span class="tag after">אחרי</span><img class="shot" src="img/r1after_14.0.jpg" alt="העיגול בתוך משבצת"></figure></div></div>
+    <div class="fix"><p class="who"><span class="marker">"החלק של 'כבר מאוחר' שייכנס מתחת לפתקים ושהמצלמה תתקרב אליו."</span></p>
+      <div class="pair"><figure><span class="tag before">לפני</span><img class="shot" src="img/r1before_29.0.jpg" alt="כבר מאוחר למעלה, קטן"></figure><figure><span class="tag after">אחרי</span><img class="shot" src="img/r1after_29.0.jpg" alt="כבר מאוחר מתחת לפתקים, קרוב"></figure></div></div>
+    <div class="fix"><p class="who"><span class="marker">"הרוזטות: שיהיו בצבעים שונים ולא שקופים."</span></p>
+      <div class="pair"><figure><span class="tag before">לפני</span><img class="shot" src="img/r1before_62.5.jpg" alt="רוזטות אפורות שקופות"></figure><figure><span class="tag after">אחרי</span><img class="shot" src="img/r1after_62.5.jpg" alt="רוזטות מלאות בשבעה צבעים"></figure></div></div>
+    <div class="fix"><p class="who"><span class="marker">"לצמצם רווח בין שורות."</span></p>
+      <div class="pair"><figure><span class="tag before">לפני</span><img class="shot" src="img/r1before_164.0.jpg" alt="רווח גדול בין השורה לתשובת המקהלה"></figure><figure><span class="tag after">אחרי</span><img class="shot" src="img/r1after_164.0.jpg" alt="השורה ותשובת המקהלה קרובות"></figure></div></div>
+  </div>
+</section>
+
+<section id="evolution" class="stack">
+  <div class="eyebrow">06 · מה השתנה בדרך</div>
+  <h2>מגרסה 1 לגרסה 9</h2>
+  <p class="prose lead">הגרסה הראשונה עבדה, אבל הייתה מוקטנת ומבולגנת. רוב השיפור הגיע מכללים חדשים שחלים על כל הקליפ, לא מתיקון סצנה אחרי סצנה.</p>
+  <div class="fixes">
+    <div class="fix"><h3>נייר לכל חלק בשיר, לא לכל שורה</h3><p class="prose">בגרסה 1 כל שורה קיבלה נייר משלה, והעין התעייפה. בגרסאות האחרונות יש נייר אחד לכל חלק, וחפצים כמו פתקים וגזירי עיתון יושבים עליו.</p>
+      <div class="pair"><figure><span class="tag before">גרסה 1</span><img class="shot" src="img/v1_sheet.jpg" alt="דף פריימים מגרסה 1, נייר אחר בכל סצנה" style="aspect-ratio:auto"></figure><figure><span class="tag after">גרסה 8</span><img class="shot" src="img/v8_sheet.jpg" alt="דף פריימים מגרסה 8, נייר אחד לכל חלק" style="aspect-ratio:auto"></figure></div></div>
+    <div class="fix"><h3>המצלמה עוקבת אחרי השורה</h3><p class="prose">בגרסה 1 המצלמה צילמה את כל הדף מרחוק, והטקסט יצא קטן. בגרסה 9 היא נוסעת בתנועה רכה לשורה שנשמעת, והשורות שעברו דוהות.</p>
+      <div class="pair"><figure><span class="tag before">גרסה 1</span><img class="shot" src="img/v1_31.jpg" alt=""></figure><figure><span class="tag after">גרסה 9</span><img class="shot" src="img/v9_31.jpg" alt=""></figure></div></div>
+    <div class="fix"><h3>לכל חפץ יש סיבה, וכל מילה קריאה</h3><p class="prose">העיתון נוחת עכשיו בדיוק עם "אבל עממי!", והמילים מודפסות עליו ככותרת על פס נקי. הגופן של העיתון לא היה קריא, אז החלפנו אותו.</p>
+      <div class="pair"><figure><span class="tag before">גרסה 1</span><img class="shot" src="img/v1_56.jpg" alt=""></figure><figure><span class="tag after">גרסה 9</span><img class="shot" src="img/v9_56.jpg" alt=""></figure></div></div>
+    <div class="fix"><h3>כתב יד שקוראים בלי לחשוב</h3><p class="prose">גופן הטוש הראשון היה כתב יד רהוט, ובו ז נראית כמו צ: "זה לא זה" נקרא "צה לא צה". השווינו 14 גופנים ובחרנו כתב טוש בדפוס.</p>
+      <div class="pair"><figure><span class="tag before">לפני</span><img class="shot" src="img/lesson_font_before.jpg" alt=""></figure><figure><span class="tag after">אחרי</span><img class="shot" src="img/lesson_font_after.jpg" alt=""></figure></div></div>
+  </div>
+  <h3>כל הקליפ, פריים כל כמה שניות</h3>
+  <div class="strip"><figure><img src="img/s_4.6.jpg" alt="" loading="lazy"><figcaption>0:04</figcaption></figure><figure><img src="img/s_8.3.jpg" alt="" loading="lazy"><figcaption>0:08</figcaption></figure><figure><img src="img/s_11.6.jpg" alt="" loading="lazy"><figcaption>0:11</figcaption></figure><figure><img src="img/s_22.0.jpg" alt="" loading="lazy"><figcaption>0:22</figcaption></figure><figure><img src="img/s_26.6.jpg" alt="" loading="lazy"><figcaption>0:26</figcaption></figure><figure><img src="img/s_33.4.jpg" alt="" loading="lazy"><figcaption>0:33</figcaption></figure><figure><img src="img/s_39.4.jpg" alt="" loading="lazy"><figcaption>0:39</figcaption></figure><figure><img src="img/s_45.4.jpg" alt="" loading="lazy"><figcaption>0:45</figcaption></figure><figure><img src="img/s_50.9.jpg" alt="" loading="lazy"><figcaption>0:50</figcaption></figure><figure><img src="img/s_55.7.jpg" alt="" loading="lazy"><figcaption>0:55</figcaption></figure><figure><img src="img/s_62.6.jpg" alt="" loading="lazy"><figcaption>1:02</figcaption></figure><figure><img src="img/s_68.2.jpg" alt="" loading="lazy"><figcaption>1:08</figcaption></figure><figure><img src="img/s_72.6.jpg" alt="" loading="lazy"><figcaption>1:12</figcaption></figure><figure><img src="img/s_78.9.jpg" alt="" loading="lazy"><figcaption>1:18</figcaption></figure><figure><img src="img/s_84.6.jpg" alt="" loading="lazy"><figcaption>1:24</figcaption></figure><figure><img src="img/s_90.7.jpg" alt="" loading="lazy"><figcaption>1:30</figcaption></figure><figure><img src="img/s_95.9.jpg" alt="" loading="lazy"><figcaption>1:35</figcaption></figure><figure><img src="img/s_102.4.jpg" alt="" loading="lazy"><figcaption>1:42</figcaption></figure><figure><img src="img/s_112.8.jpg" alt="" loading="lazy"><figcaption>1:52</figcaption></figure><figure><img src="img/s_118.9.jpg" alt="" loading="lazy"><figcaption>1:58</figcaption></figure><figure><img src="img/s_124.9.jpg" alt="" loading="lazy"><figcaption>2:04</figcaption></figure><figure><img src="img/s_132.9.jpg" alt="" loading="lazy"><figcaption>2:12</figcaption></figure><figure><img src="img/s_139.6.jpg" alt="" loading="lazy"><figcaption>2:19</figcaption></figure><figure><img src="img/s_146.2.jpg" alt="" loading="lazy"><figcaption>2:26</figcaption></figure><figure><img src="img/s_151.8.jpg" alt="" loading="lazy"><figcaption>2:31</figcaption></figure><figure><img src="img/s_157.5.jpg" alt="" loading="lazy"><figcaption>2:37</figcaption></figure><figure><img src="img/s_159.4.jpg" alt="" loading="lazy"><figcaption>2:39</figcaption></figure><figure><img src="img/s_170.6.jpg" alt="" loading="lazy"><figcaption>2:50</figcaption></figure><figure><img src="img/s_176.9.jpg" alt="" loading="lazy"><figcaption>2:56</figcaption></figure><figure><img src="img/s_183.2.jpg" alt="" loading="lazy"><figcaption>3:03</figcaption></figure><figure><img src="img/s_188.8.jpg" alt="" loading="lazy"><figcaption>3:08</figcaption></figure><figure><img src="img/s_196.5.jpg" alt="" loading="lazy"><figcaption>3:16</figcaption></figure><figure><img src="img/s_199.9.jpg" alt="" loading="lazy"><figcaption>3:19</figcaption></figure><figure><img src="img/s_206.0.jpg" alt="" loading="lazy"><figcaption>3:26</figcaption></figure><figure><img src="img/s_214.6.jpg" alt="" loading="lazy"><figcaption>3:34</figcaption></figure><figure><img src="img/s_218.3.jpg" alt="" loading="lazy"><figcaption>3:38</figcaption></figure><figure><img src="img/s_224.9.jpg" alt="" loading="lazy"><figcaption>3:44</figcaption></figure><figure><img src="img/s_233.9.jpg" alt="" loading="lazy"><figcaption>3:53</figcaption></figure><figure><img src="img/s_236.6.jpg" alt="" loading="lazy"><figcaption>3:56</figcaption></figure><figure><img src="img/s_241.5.jpg" alt="" loading="lazy"><figcaption>4:01</figcaption></figure></div>
+</section>
+
+<section id="lessons" class="stack">
+  <div class="eyebrow">07 · מה לקחתי מהפרויקט הזה</div>
+  <h2>לקחים</h2>
+  <div class="notes">
+    <div class="note"><b>להחליף רקע לפי הסיפור.</b> נייר חדש = חלק חדש בשיר. בתוך חלק, רק חפצים חדשים.</div>
+    <div class="note"><b>לכל חפץ סיבה מתוך המילים.</b> אם אי אפשר להסביר למה הוא שם, הוא יוצא.</div>
+    <div class="note"><b>המצלמה עוקבת אחרי מה שנשמע.</b> שורה שעברה דוהה, כמו בעיתון שהכותרת הבאה כבר עליו.</div>
+    <div class="note"><b>שורה אחרונה נשארת לפחות חצי שנייה</b> לפני שהמצלמה זזה. בפזמונים צפופים זה הדבר הראשון שנשבר.</div>
+    <div class="note"><b>קריאות לפני סטייל.</b> גופן שצריך לפענח פוגע בשיר. בודקים על פריים אמיתי, לא על שם של גופן.</div>
+    <div class="note"><b>בדיקה אוטומטית של כל שורה:</b> שהיא בתוך הפריים ולא עולה על שורה אחרת. 142 שורות לא בודקים בעין.</div>
+    <div class="note"><b>Full HD לסבבים, 4K רק בסוף.</b> חמש דקות לרינדור זה מה שמאפשר תשעה סבבים בלילה אחד.</div>
+    <div class="note"><b>להגדיר הרשאות מראש.</b> בלי זה, Claude עוצר ושואל על כל רינדור, והעבודה נתקעת כשאתם ישנים.</div>
+  </div>
+</section>
+
+<section id="diy" class="stack">
+  <div class="eyebrow">08 · עכשיו תורכם</div>
+  <h2>איך לעשות את זה בעצמכם</h2>
+  <ol class="steps">
+    <li><div class="stack"><h3>מכינים חומרים</h3><p class="prose">שיר, ובנפרד ערוץ סולן וערוץ מקהלה. אם השיר נוצר ב-Suno, מנוי Pro מאפשר לפרק אותו לערוצים. מסמך מילים, ובו כל מה שהמקהלה שרה בסוגריים. קליפ רפרנס אחד או שניים שאתם אוהבים.</p></div></li>
+    <li><div class="stack"><h3>מתקינים את ה-Skill</h3><p class="prose">ב-Claude Code (אפליקציית הדסקטופ) או ב-claude.ai. בדסקטופ אפשר להריץ רינדור על המחשב ולבדוק פריימים, ולכן זה מה שהשתמשנו בו.</p></div></li>
+    <li><div class="stack"><h3>כותבים בריף כמו לבמאי</h3><p class="prose">קונספט במשפט אחד, מה מותר ומה אסור (למשל "בלי מודלי וידאו בלי רשות"), מאיזה עולם הניירות והחומרים, ומה הכי חשוב. אצלי זה היה התזמון. הפרומפט שלי למעלה הוא תבנית טובה.</p></div></li>
+    <li><div class="stack"><h3>מגדירים הרשאות</h3><p class="prose">מבקשים מ-Claude להוסיף כללי אישור קבועים לכלים של הפרויקט: רינדור, ffmpeg, Python וסקריפטי הבדיקה. פעולות שעולות כסף, כמו יצירת תמונות, נשארות באישור שלכם.</p></div></li>
+    <li><div class="stack"><h3>נותנים הערות קצרות על צילומי מסך</h3><p class="prose">לא צריך לחכות לסוף. הערה כמו "לא להחליף רקע בכל שורה" מוקדם בתהליך חוסכת סבב שלם.</p></div></li>
+    <li><div class="stack"><h3>סבבים בסטוריבורד</h3><p class="prose">מבקשים: "תבנה לי סטוריבורד להערות". כותבים רק על מה שצריך לתקן, ואומרים "כתבתי הערות, תקרא ותתקן". חוזרים על זה עד שאין הערות.</p></div></li>
+    <li><div class="stack"><h3>מסיימים</h3><p class="prose">כשהכל מאושר, מבקשים רינדור סופי ב-4K, ומבקשים מ-Claude לכתוב את הלקחים בתוך ה-Skill, כדי שהפרויקט הבא יתחיל משם.</p></div></li>
+  </ol>
+</section>
+
+<section id="downloads" class="stack">
+  <div class="eyebrow">09 · הכל במקום אחד</div>
+  <h2>הורדות</h2>
+  <div class="dl">
+    <a class="btn" href="skill/lyric-motion-director.skill" download>ה-Skill (קובץ התקנה)</a>
+    <a class="btn alt" href="skill/SKILL.md" download>SKILL.md</a>
+    <a class="btn alt" href="skill/README.he.md" download>הסבר בעברית</a>
+    <a class="btn alt" href="downloads/prompt.txt" download>הפרומפט המקורי</a>
+    <a class="btn alt" href="media/ain-brief.mp4" download>הקליפ (Full HD)</a>
+  </div>
+  <p class="prose muted">בתיקייה <code>skill/scripts</code> נמצאים כלי הבדיקה: דף פריימים, בדיקת קליפ (פריים שחור, רגע קפוא, קפיצה) ובדיקת מילים מול השירה.</p>
+</section>
+
+<footer>
+  <p><a href="../../blog.html">חזרה לבלוג</a> · <a href="../../index.html">לאתר של מישה</a></p>
+  <p>אין בריף · קליפ טיפוגרפי · 28.10.2026</p>
+  <p>בריף, הערות ו-Skill: מישה. בנייה, תזמון ובדיקות: Claude ב-Claude Code. תמונות: Higgsfield, GPT Image 2.5. מנוע: three.js ו-HyperFrames.</p>
+</footer>
+
+</div>
+<script>
+(function () {
+  const b = document.getElementById('themeBtn'), root = document.documentElement;
+  const paint = () => { const light = root.getAttribute('data-theme') === 'light'; b.textContent = light ? '☾ מצב כהה' : '☀ מצב בהיר'; };
+  b.addEventListener('click', () => {
+    const light = root.getAttribute('data-theme') !== 'light';
+    if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+    try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
+    paint();
+  });
+  paint();
+})();
+</script>
+</body>
+</html>
