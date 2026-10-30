@@ -830,7 +830,8 @@
     const p = $("#portrait"); if (p && a.portrait) { p.src = a.portrait; p.alt = `${D.site.name || ""}`; }
     // where the bio mentions the YouTube channel, the words link to it (the address comes from the site's socials)
     const ytUrl = ((D.site.socials || []).find((x) => /youtube/i.test(x.label + x.url)) || {}).url;
-    const linkChannel = (h) => (ytUrl ? h.replace("ערוץ היוטיוב", `<a class="yt-link" href="${esc(ytUrl)}" target="_blank" rel="noopener"><span class="yt-link__icon" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>ערוץ היוטיוב<span class="yt-link__arrow" aria-hidden="true">↗</span></a>`) : h);
+    // a joined prefix letter ("ב") gets a hyphen and stays on the same line as the badge
+    const linkChannel = (h) => (ytUrl ? h.replace(/([בלמהוכש]?)ערוץ היוטיוב/, (_, pre) => `<span class="yt-wrap">${pre ? pre + "-" : ""}<a class="yt-link" href="${esc(ytUrl)}" target="_blank" rel="noopener"><span class="yt-link__icon" aria-hidden="true"><svg viewBox="0 0 10 12"><path d="M0 0l10 6-10 6z"/></svg></span>ערוץ היוטיוב<span class="yt-link__arrow" aria-hidden="true">↗</span></a></span>`) : h);
     const bio = $("#bio"); if (bio) bio.innerHTML = (a.bio || []).map((t) => `<p data-reveal>${linkChannel(esc(t))}</p>`).join("");
     const facts = $("#facts"); if (facts) facts.innerHTML = (a.stats || []).map((s, i) => `<li class="fact" data-reveal style="--d:${i * 0.08}s"><span class="fact__label">${esc(s.label)}</span><span class="fact__num">${esc(s.num)}</span></li>`).join("");
     const svcs = $("#services");

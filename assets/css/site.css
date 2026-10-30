@@ -791,3 +791,8 @@ html { font-size: clamp(100%, 0.45vw + 9px, 175%); }
 @media (max-width: 699px) {
   .lb .lb__prev, .lb .lb__next { top: auto; bottom: calc(18px + env(safe-area-inset-bottom)); translate: none; width: 52px; height: 52px; }
 }
+
+/* bio: the prefix letter, its hyphen and the YouTube badge stay together */
+.yt-wrap { white-space: nowrap; }
+/* the line-reveal masks only need to clip top and bottom; a one-line title that runs wider than its column must not lose its last letters */
+.sl-mask { overflow: visible clip !important; }
