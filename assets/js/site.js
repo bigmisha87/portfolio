@@ -368,7 +368,7 @@
       </div>
       <div class="grid" data-grid aria-live="polite"></div>
       <div class="grid__sentinel" aria-hidden="true"></div>
-      <div class="more-btn" hidden><button class="btn" type="button" data-fill data-more></button></div>`;
+      <div class="more-btn" hidden><button class="btn" type="button" data-fill data-more><span data-more-label></span> <span class="btn__arrow" aria-hidden="true">↓</span></button></div>`;
     const tokens = $("[data-tokens]", root);
     const grid = $("[data-grid]", root);
     const sentinel = $(".grid__sentinel", root);
@@ -479,7 +479,8 @@
     function syncMore() {
       const left = state.list.length - state.shown;
       moreWrap.hidden = infinite || left <= 0;
-      if (!moreWrap.hidden) moreWrap.querySelector("button").innerHTML = `עוד ${isVideo ? "סרטונים" : "עבודות"} <span class="btn__arrow" aria-hidden="true">↓</span>`;
+      // only the label changes: rewriting the whole button would drop its hover fill
+      if (!moreWrap.hidden) $("[data-more-label]", moreWrap).textContent = `עוד ${isVideo ? "סרטונים" : "עבודות"}`;
     }
     function refresh(user) {
       drawTokens();
@@ -1148,7 +1149,7 @@
     const t = $(".hero__title, .proj__title, .blog-head__title, .post-head__title, .nf__title");
     if (t) splitIn(t, { intro: true, delay: 0.15 });
     const after = $(".hero__aside, .hero__frame, .about-hero__lead, .tabs");
-    if (after.length) gsap.from(after, { opacity: 0, y: 18, duration: 1, ease: "expo.out", stagger: 0.08, delay: 0.45 });
+    if (after && after.length) gsap.from(after, { opacity: 0, y: 18, duration: 1, ease: "expo.out", stagger: 0.08, delay: 0.45 });
     $$("[data-split]").forEach((el) => { if (el !== t) splitIn(el); });
   }
 

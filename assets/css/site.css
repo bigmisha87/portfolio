@@ -116,6 +116,9 @@ html.hdr-away .hdr { translate: 0 -105%; }
 .brand { display: inline-flex; align-items: baseline; gap: 10px; white-space: nowrap; }
 .brand__he { font-family: var(--f-display); font-weight: 700; font-size: 2.6rem; line-height: 1; }
 .brand__en { font-family: var(--f-mono); font-size: 0.74rem; color: var(--muted); letter-spacing: 0.08em; }
+.brand__he, .brand__en { transition: color 0.3s var(--ease-soft); }
+@media (hover: hover) { .brand:hover .brand__he { color: var(--accent); } .brand:hover .brand__en { color: var(--ink); } }
+.brand:focus-visible .brand__he { color: var(--accent); }
 @media (max-width: 699px) { .brand__he { font-size: 2.1rem; } }
 @media (max-width: 420px) { .brand__en { display: none; } }
 
@@ -665,6 +668,15 @@ fieldset.field legend { margin-bottom: 14px; }
 
 /* the contact form sits in its own frame */
 .form { padding: clamp(24px, 3vw, 48px); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); background: rgba(242, 239, 233, 0.02); }
+
+/* the contact form, a size smaller: less air between fields, smaller chips and message box */
+.form { gap: clamp(20px, 1.8vw, 28px); padding: clamp(20px, 2.2vw, 36px); }
+fieldset.field legend { margin-bottom: 10px; }
+.chips { gap: 8px; }
+.chip span { min-height: 40px; padding: 0 16px; font-size: 0.92rem; }
+.field input:not([type=radio]):not([type=checkbox]), .field textarea { font-size: 1rem; padding: 7px 0; }
+.field textarea { min-height: 96px; }
+.form .btn { min-height: 48px; padding-inline: 26px; }
 
 /* about intro, after the owner's sketch: portrait on the right, title and lead beside it, centred as a pair */
 .about-hero {

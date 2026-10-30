@@ -5828,6 +5828,17 @@ window.MG = {
  ],
  "posts": [
   {
+   "slug": "midot-media",
+   "title": "מידות מדיה · מדריך לסטודנטים",
+   "excerpt": "כל המידות, היחסים והכללים שכדאי לדעת לפני שפותחים מסמך חדש — בדפוס, בשילוט ובדיגיטל. כולל PDF להורדה.",
+   "tag": "Resources",
+   "date": "30.10.2026",
+   "read": "מדריך + PDF",
+   "cover": "blog/midot-media/img/citylight-photo.jpg",
+   "href": "blog/midot-media/index.html",
+   "body": []
+  },
+  {
    "slug": "ain-brief",
    "title": "אין בריף · איך בנינו קליפ טיפוגרפי עם Claude",
    "excerpt": "קליפ של 4 דקות, מצלמה אחת שמטיילת על ניירות משרד, וכל מילה נוחתת בדיוק על הצליל. כל התהליך, צעד אחרי צעד.",

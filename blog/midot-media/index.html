@@ -1,0 +1,1055 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מידות מדיה · מדריך לסטודנטים | מישה</title>
+<meta name="description" content="כל המידות, היחסים והכללים שכדאי לדעת לפני שפותחים מסמך חדש — בדפוס, בשילוט ובדיגיטל. כולל PDF להורדה.">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&family=Karantina:wght@400;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+
+/* ---------- tokens: dark is the default on screen ---------- */
+:root {
+  color-scheme: dark;
+  --bg: #0c0c0c;
+  --paper: #171716;
+  --ink: #efede8;
+  --muted: #a5a29b;
+  --line: #3b3936;
+  --soft: #21201f;
+  --fill: #2c2b29;
+  --accent: #f5b800;
+  --accent-soft: #3a2f0c;
+  --on-accent: #141414;
+  --warn: #ff5c61;
+  --warn-soft: #3b1d1f;
+  --ok: #4fd18b;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #e6e3dc;
+  --paper: #ffffff;
+  --ink: #161616;
+  --muted: #5d5b57;
+  --line: #d9d5cc;
+  --soft: #f5f3ee;
+  --fill: #ebe8e1;
+  --accent: #f5b800;
+  --accent-soft: #fdf3d2;
+  --on-accent: #141414;
+  --warn: #d42a31;
+  --warn-soft: #fdeced;
+  --ok: #138a4c;
+}
+/* paper is always printed light — dark pages waste ink */
+@media print {
+  :root, :root[data-theme] {
+    color-scheme: light;
+    --bg: #ffffff; --paper: #ffffff; --ink: #161616; --muted: #5d5b57;
+    --line: #d9d5cc; --soft: #f5f3ee; --fill: #ebe8e1;
+    --accent: #f5b800; --accent-soft: #fdf3d2; --on-accent: #141414;
+    --warn: #d42a31; --warn-soft: #fdeced; --ok: #138a4c;
+  }
+  body { background: #fff !important; }
+  .theme-toggle { display: none !important; }
+  .page { margin: 0 !important; box-shadow: none !important; }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Assistant", sans-serif;
+  font-size: 9.6pt;
+  line-height: 1.45;
+}
+
+/* ---------- page frame ---------- */
+.page {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  margin: 10mm auto;
+  padding: 15mm 15mm 18mm;
+  background: var(--paper);
+  overflow: hidden;
+  box-shadow: 0 2px 30px rgba(0,0,0,.35);
+  break-after: page;
+  display: flex;
+  flex-direction: column;
+}
+.page::before { /* yellow edge tab */
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 15mm; height: 4mm;
+  background: var(--accent);
+}
+.pf {
+  position: absolute;
+  left: 15mm; right: 15mm; bottom: 8mm;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 7.5pt; color: var(--muted);
+  border-top: 0.3mm solid var(--line);
+  padding-top: 2mm;
+}
+.pf .n { font-size: 7.5pt; }
+
+/* ---------- type ---------- */
+.n {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 500;
+  direction: ltr;
+  unicode-bidi: isolate;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+.en { direction: ltr; unicode-bidi: isolate; }
+h2, .display { font-family: "Karantina", sans-serif; font-weight: 700; line-height: .85; }
+h3 { font-size: 12pt; font-weight: 800; margin-bottom: 1.5mm; }
+h4 { font-size: 10pt; font-weight: 800; margin-bottom: 1mm; }
+p + p { margin-top: 1.6mm; }
+.muted { color: var(--muted); }
+.small { font-size: 8pt; line-height: 1.4; }
+b, strong { font-weight: 800; }
+.hl { background: var(--accent); color: var(--on-accent); padding: 0 1mm; }
+
+.sec {
+  display: flex; align-items: flex-end; gap: 5mm;
+  padding-bottom: 4mm;
+  margin-bottom: 5mm;
+  border-bottom: 0.6mm solid var(--ink);
+}
+.sec-num {
+  font-family: "IBM Plex Mono", monospace; font-weight: 600;
+  font-size: 10pt;
+  background: var(--accent); color: var(--on-accent);
+  padding: 1mm 2mm; margin-bottom: 2.5mm;
+}
+.sec h2 { font-size: 58pt; white-space: nowrap; }
+.sec .lead { font-size: 10.5pt; max-width: 100mm; flex: 1; min-width: 0; margin-inline-start: auto; margin-bottom: 1mm; color: var(--muted); }
+
+/* ---------- shared blocks ---------- */
+.box { background: var(--soft); padding: 4mm 4.5mm; }
+.box-accent { background: var(--accent-soft); border-inline-start: 1.2mm solid var(--accent); padding: 4mm 4.5mm; }
+.box-warn { background: var(--warn-soft); border-inline-start: 1.2mm solid var(--warn); padding: 4mm 4.5mm; }
+.box-warn .big { color: var(--warn); }
+.cols { display: grid; gap: 6mm; }
+.c2 { grid-template-columns: 1fr 1fr; }
+ul.dots { list-style: none; }
+ul.dots li { position: relative; padding-inline-start: 4mm; margin-top: 1.3mm; }
+ul.dots li::before { content: ""; position: absolute; right: 0; top: 1.9mm; width: 1.6mm; height: 1.6mm; background: var(--accent); }
+
+table { width: 100%; border-collapse: collapse; }
+th { text-align: right; font-size: 8pt; font-weight: 700; color: var(--muted); padding: 1.4mm 2mm; border-bottom: 0.4mm solid var(--ink); }
+td { padding: 1.15mm 2mm; border-bottom: 0.25mm solid var(--line); vertical-align: middle; }
+tr.star td { background: var(--accent-soft); }
+tr.star td:first-child { font-weight: 800; }
+
+/* ---------- cover ---------- */
+.cover { padding-top: 20mm; }
+.cover .kickers { display: flex; justify-content: space-between; font-size: 8.5pt; color: var(--muted); }
+.cover h1 {
+  font-family: "Karantina", sans-serif; font-weight: 700;
+  font-size: 150pt; line-height: .74;
+  margin-top: 14mm;
+}
+.cover h1 span { display: block; }
+.cover h1 .y { color: var(--accent); }
+.cover .sub { margin-bottom: 10mm; font-size: 14pt; line-height: 1.35; max-width: 120mm; margin-top: 8mm; font-weight: 600; }
+.shapes { display: flex; align-items: flex-end; gap: 7mm; margin-top: auto; }
+.shape { display: flex; flex-direction: column; gap: 2mm; }
+.shape i { display: block; border: 0.5mm solid var(--ink); }
+.shape i.y { background: var(--accent); border-color: var(--accent); }
+.shape span { font-size: 7.5pt; color: var(--muted); }
+.shape span .n { color: var(--ink); font-size: 8pt; }
+.rules { margin-top: 16mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+.rule { border-top: 0.6mm solid var(--ink); padding-top: 3mm; }
+.rule .num { font-family: "Karantina"; font-weight: 700; font-size: 34pt; line-height: .8; color: var(--accent); }
+.rule p { font-size: 9.6pt; margin-top: 2mm; }
+.realms { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.realm { border: 0.5mm solid var(--ink); display: flex; flex-direction: column; }
+.realm-head { display: flex; justify-content: space-between; align-items: center; padding: 2.5mm 4mm 2mm; }
+.realm-head .display { font-size: 34pt; }
+.realm-head .chip { font-family: "IBM Plex Mono"; font-weight: 600; font-size: 9pt; letter-spacing: .12em; border: 0.4mm solid currentColor; padding: .6mm 2mm; }
+.realm.print .realm-head { background: var(--accent); color: var(--on-accent); }
+.realm.web .realm-head { background: var(--ink); color: var(--paper); }
+.realm-in { padding: 4mm 4mm 3mm; display: flex; flex-direction: column; gap: 3mm; }
+.realm .shapes { margin: 0; gap: 3.5mm; height: 34mm; }
+.realm .env-body { padding: 0; }
+.realm-note { font-size: 8.4pt; font-weight: 700; }
+.realm-note.warn { color: var(--warn); }
+.realm-toc { font-size: 8.4pt; border-top: 0.25mm solid var(--line); padding-top: 1.5mm; }
+.realm-toc div { padding: .5mm 0; }
+.realm-toc .n { color: var(--muted); margin-inline-end: 1.5mm; }
+.realm-foot { margin-top: 5mm; display: flex; justify-content: space-between; align-items: center; gap: 6mm; font-size: 9pt; }
+.realm-toc.both { display: flex; gap: 4mm; border-top: 0; padding: 0; white-space: nowrap; }
+.toc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1mm 5mm; margin-top: 9mm; font-size: 8.5pt; }
+.toc div { display: flex; gap: 2mm; border-bottom: 0.25mm solid var(--line); padding: 1mm 0; }
+.toc .n { color: var(--muted); }
+
+/* ---------- print: A series ---------- */
+.aseries { display: grid; grid-template-columns: 64mm 1fr; gap: 7mm; align-items: start; }
+.aseries svg { width: 64mm; height: auto; display: block; }
+.a4hero { display: flex; align-items: baseline; gap: 3mm; margin: 2mm 0 3mm; }
+.a4hero .display { font-size: 64pt; }
+.a4hero .n { font-size: 17pt; font-weight: 600; }
+
+/* bleed diagram */
+.bleed { display: grid; grid-template-columns: 30mm 1fr; gap: 5mm; align-items: center; }
+
+/* ---------- signage photo rows ---------- */
+.signrows { display: flex; flex-direction: column; gap: 3.2mm; }
+.signrow { display: grid; grid-template-columns: 36mm 1fr 1fr; gap: 3mm; align-items: center; }
+.signrow img { width: 100%; height: var(--ih, 44mm); object-fit: cover; display: block; }
+.signrow .lbl h4 { font-size: 11pt; }
+.signrow .lbl p { font-size: 8pt; color: var(--muted); line-height: 1.35; }
+.caps { display: grid; grid-template-columns: 36mm 1fr 1fr; gap: 3mm; font-size: 7.5pt; color: var(--muted); margin-bottom: 1mm; }
+
+.ratio-tag { display: inline-block; font-family: "IBM Plex Mono"; font-weight: 600; background: var(--ink); color: var(--paper); padding: .5mm 1.8mm; font-size: 10pt; direction: ltr; }
+
+/* ---------- digital shapes (drawn to scale) ---------- */
+.scale { --s: .03mm; display: flex; align-items: flex-end; gap: 6mm; }
+.px {
+  width: calc(var(--w) * var(--s)); height: calc(var(--h) * var(--s));
+  border: 0.45mm solid var(--ink);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  text-align: center; position: relative; flex: none;
+}
+.px.y { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.px b { font-size: 10pt; }
+.px .n { font-size: 8.5pt; }
+.px small { font-size: 7pt; opacity: .75; }
+
+/* ---------- phones ---------- */
+.phones { display: flex; justify-content: space-between; }
+.phone { width: 30mm; display: flex; flex-direction: column; align-items: center; gap: 2mm; }
+.phone .body {
+  width: 30mm; height: 60mm; border: 0.4mm solid var(--ink); border-radius: 4.5mm;
+  padding: 6mm 1.8mm 6mm; position: relative;
+}
+.phone .body::before { content: ""; position: absolute; top: 2.4mm; left: 50%; transform: translateX(-50%); width: 7mm; height: .8mm; border-radius: 1mm; background: var(--line); }
+.phone .screen { width: 100%; height: 100%; border: 0.25mm solid var(--line); position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1mm; }
+.phone .ad { width: calc(var(--w) / 360 * 100%); height: calc(var(--h) / 740 * 100%); background: var(--accent); }
+.phone .ad.mid { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.phone .cap { text-align: center; font-size: 7.5pt; color: var(--muted); line-height: 1.25; }
+.phone .cap .n { display: block; color: var(--ink); font-size: 10pt; font-weight: 600; }
+
+/* ---------- google banners (to scale) ---------- */
+.gmap { --s: .105mm; }
+.gb {
+  width: calc(var(--w) * var(--s)); height: calc(var(--h) * var(--s));
+  border: 0.35mm solid var(--ink);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; line-height: 1.1; flex: none; position: relative;
+}
+.gb .n { font-size: 7.4pt; font-weight: 600; }
+.gb .en { font-size: 6.4pt; color: var(--muted); }
+.gb.top { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.gb.top .en { color: var(--on-accent); opacity: .75; }
+.gb.row { flex-direction: row; gap: 2mm; }
+.ghead { font-family: "IBM Plex Mono"; font-weight: 600; font-size: 8pt; letter-spacing: .08em; color: var(--muted); margin-bottom: 1.5mm; direction: ltr; text-align: right; }
+
+/* ---------- colour ---------- */
+.mix { display: grid; grid-template-columns: 1fr 1fr; gap: 5mm; }
+.mixcard { display: grid; grid-template-columns: 36mm 1fr; gap: 4mm; align-items: center; padding: 4mm; }
+.mixcard.rgb { background: #0b0b0b; color: #f1f1f1; }
+.mixcard.cmyk { background: #ffffff; color: #161616; border: 0.3mm solid var(--line); }
+.mixcard svg { width: 36mm; height: 34mm; display: block; }
+.mixcard h3 { font-size: 15pt; }
+.mixcard p { font-size: 8.4pt; }
+.swatches { display: flex; gap: 2mm; margin-top: 2mm; }
+.sw { flex: 1; }
+.sw i { display: block; height: 9mm; }
+.sw span { font-size: 7pt; color: var(--muted); }
+
+.formula { display: flex; align-items: center; gap: 3mm; flex-wrap: wrap; font-size: 11pt; font-weight: 700; }
+.formula .n { font-size: 11pt; }
+
+/* new-document environment */
+.env { display: grid; grid-template-columns: 1fr 44mm 44mm; gap: 4mm; margin-top: 5mm; padding-top: 4mm; border-top: 0.6mm solid var(--ink); align-items: start; }
+.env-card { border: 0.4mm solid var(--ink); }
+.env-tabs { display: flex; direction: ltr; border-bottom: 0.4mm solid var(--ink); font-family: "IBM Plex Mono"; font-size: 7.5pt; font-weight: 600; }
+.env-tabs span { flex: 1; text-align: center; padding: 1.2mm 0; color: var(--muted); }
+.env-tabs span.on { background: var(--accent); color: var(--on-accent); }
+.env-body { padding: 1mm 3mm 1.5mm; }
+.env-body div { display: flex; justify-content: space-between; gap: 2mm; padding: 1mm 0; border-bottom: 0.25mm solid var(--line); font-size: 8.4pt; }
+.env-body div:last-child { border-bottom: 0; }
+.env-body .k { color: var(--muted); }
+
+/* more print sizes */
+.chips { display: flex; flex-wrap: wrap; gap: 1.5mm; margin-top: 1.5mm; }
+.chips span { font-family: "IBM Plex Mono"; font-weight: 500; font-size: 8.4pt; border: 0.3mm solid var(--ink); padding: .6mm 2mm; direction: ltr; }
+.chips span.y { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.grp + .grp { margin-top: 5mm; }
+.grp table td:last-child { text-align: left; }
+.grp .why { font-size: 7.6pt; color: var(--muted); display: block; line-height: 1.25; }
+
+/* ---------- files & checklists ---------- */
+.files { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+.file { border: 0.3mm solid var(--line); padding: 3mm; }
+.file .ext { font-family: "IBM Plex Mono"; font-weight: 600; font-size: 13pt; direction: ltr; text-align: right; }
+.file .ext small { font-size: 8pt; color: var(--muted); }
+.file p { font-size: 8pt; line-height: 1.35; margin-top: 1mm; }
+.file .tag { display: inline-block; font-size: 7pt; font-weight: 700; padding: .3mm 1.5mm; margin-top: 1.5mm; background: var(--fill); }
+.file .tag.y { background: var(--accent); color: var(--on-accent); }
+.check { list-style: none; }
+.check li { display: flex; gap: 2.5mm; align-items: flex-start; padding: 1.6mm 0; border-bottom: 0.25mm solid var(--line); }
+.check li::before { content: ""; flex: none; width: 3.6mm; height: 3.6mm; border: 0.4mm solid var(--ink); margin-top: .5mm; }
+.check li b { font-weight: 800; }
+
+/* theme toggle (screen only) */
+.theme-toggle {
+  position: fixed; top: 14px; left: 14px; z-index: 10;
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink);
+  font-size: 18px; cursor: pointer; display: grid; place-items: center;
+}
+@media screen and (max-width: 820px) {
+  .page { transform-origin: top center; }
+}
+
+/* ---------- blog chrome (screen only) ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.topbar .back { color: var(--ink); text-decoration: none; font-weight: 600; white-space: nowrap; }
+.topbar .back:hover { color: var(--accent); }
+.topbar .tools { display: flex; align-items: center; gap: 10px; }
+.topbar .theme-toggle { position: static; }
+.dl-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: var(--on-accent);
+  font: 700 15px/1 "Assistant", sans-serif; text-decoration: none;
+  padding: 11px 18px; border-radius: 999px; white-space: nowrap;
+}
+.dl-btn:hover { filter: brightness(1.08); }
+.dl-btn svg { width: 18px; height: 18px; flex: none; }
+.dl-btn .sz { font-family: "IBM Plex Mono", monospace; font-weight: 500; font-size: 12px; opacity: .75; direction: ltr; unicode-bidi: isolate; }
+.dl-end { text-align: center; padding: 24px 16px 60px; font-size: 16px; color: var(--muted); }
+.dl-end p { margin-bottom: 14px; }
+.dl-end .dl-btn { font-size: 17px; padding: 14px 24px; }
+.dl-end .links { margin-top: 22px; font-size: 14px; }
+.dl-end .links a { color: var(--muted); }
+@media screen and (max-width: 520px) {
+  .topbar .dl-btn .lbl-long, .topbar .dl-btn .sz { display: none; }
+}
+@media print { .topbar, .dl-end { display: none !important; } }
+</style>
+<script>
+  try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}
+</script>
+</head>
+<body>
+
+<header class="topbar">
+  <a class="back" href="../../blog.html"><span aria-hidden="true">→</span> לבלוג</a>
+  <div class="tools">
+    <a class="dl-btn" href="midot-media.pdf" download="מידות מדיה - מדריך לסטודנטים.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>הורדת <span class="lbl-long">המדריך ב-</span>PDF</span> <span class="sz">1.8 MB</span></a>
+    <button class="theme-toggle" type="button" aria-label="החלפת מצב תצוגה" onclick="toggleTheme()">☀</button>
+  </div>
+</header>
+
+<!-- ============ 01 COVER ============ -->
+<section class="page cover">
+  <div class="kickers">
+    <span>חומר עזר לסטודנטים · לארט</span>
+    <span>עודכן <span class="n">30.10.2026</span></span>
+  </div>
+
+  <h1><span>מידות</span><span class="y">מדיה.</span></h1>
+
+  <p class="sub">כל המידות, היחסים והכללים שכדאי לדעת לפני שפותחים מסמך חדש — בדפוס, בשילוט ובדיגיטל.</p>
+
+  <div class="realms">
+    <div class="realm print">
+      <div class="realm-head"><span class="display">דפוס</span><span class="chip">PRINT</span></div>
+      <div class="realm-in">
+        <div class="shapes">
+          <div class="shape"><i style="width:17.7mm;height:25mm"></i><span><span class="n">A4</span> · דף</span></div>
+          <div class="shape"><i style="width:22.7mm;height:17mm"></i><span><span class="n">4:3</span> · שלט</span></div>
+          <div class="shape"><i style="width:28.5mm;height:9.5mm"></i><span><span class="n">6:2</span> · חוצות</span></div>
+        </div>
+        <div class="env-body">
+          <div><span class="k">במסמך חדש בוחרים</span><b class="n">Print</b></div>
+          <div><span class="k">יחידות</span><b>מ"מ · ס"מ · אינץ'</b></div>
+          <div><span class="k">צבע</span><b class="n">CMYK</b></div>
+          <div><span class="k">רזולוציה</span><b class="n">300 dpi</b></div>
+        </div>
+        <p class="realm-note warn">שלט גדול? מסמך מוקטן. לעולם לא במטרים.</p>
+        <div class="realm-toc">
+          <div><span class="n">01</span> דפוס וסדרת <span class="n">A</span></div>
+          <div><span class="n">02</span> שילוט בעיר</div>
+          <div><span class="n">03</span> שילוט חוצות</div>
+        </div>
+      </div>
+    </div>
+    <div class="realm web">
+      <div class="realm-head"><span class="display">דיגיטל</span><span class="chip">WEB</span></div>
+      <div class="realm-in">
+        <div class="shapes">
+          <div class="shape"><i style="width:20mm;height:20mm"></i><span><span class="n">1:1</span> · פוסט</span></div>
+          <div class="shape"><i style="width:15.75mm;height:28mm"></i><span><span class="n">9:16</span> · סטורי</span></div>
+          <div class="shape"><i style="width:32mm;height:18mm"></i><span><span class="n">16:9</span> · מסך</span></div>
+        </div>
+        <div class="env-body">
+          <div><span class="k">במסמך חדש בוחרים</span><b class="n">Web · Mobile</b></div>
+          <div><span class="k">יחידות</span><b>פיקסלים</b></div>
+          <div><span class="k">צבע</span><b class="n">RGB</b></div>
+          <div><span class="k">רזולוציה</span><b>רק הפיקסלים נחשבים</b></div>
+        </div>
+        <p class="realm-note">רוב הרשתות: רוחב <span class="n">1080</span> פיקסלים.</p>
+        <div class="realm-toc">
+          <div><span class="n">04</span> דיגיטל ורשתות</div>
+          <div><span class="n">05</span> מובייל וסטורי</div>
+          <div><span class="n">06</span> באנרים של גוגל</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="realm-foot">
+    <p><b>בוחרים סביבה בחלון „מסמך חדש" — והתוכנה מגדירה לבד את היחידות ואת הצבע.</b> <span class="muted">בפוטושופ בודקים גם את <span class="n">Color Mode</span>.</span></p>
+    <div class="realm-toc both"><span class="muted">לשניהם:</span><div><span class="n">07</span> צבע ורזולוציה</div><div><span class="n">08</span> קבצים וצ'קליסט</div></div>
+  </div>
+</section>
+
+<!-- ============ 02 PRINT ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">01</div><h2>דפוס</h2></div>
+    <p class="lead">בדפוס עובדים ביחידות של העולם האמיתי: מילימטרים או סנטימטרים. <span class="n">1</span> ס"מ = <span class="n">10</span> מ"מ.</p>
+  </header>
+
+  <div class="aseries">
+    <svg viewBox="-2 -2 301 424" aria-label="סדרת A: כל גודל הוא חצי מהקודם">
+      <rect x="0" y="0" width="297" height="420" fill="none" stroke="var(--ink)" stroke-width="2"/>
+      <rect x="0" y="210" width="297" height="210" fill="var(--accent)"/>
+      <line x1="0" y1="210" x2="297" y2="210" stroke="var(--ink)" stroke-width="2"/>
+      <line x1="148.5" y1="210" x2="148.5" y2="420" stroke="var(--on-accent)" stroke-width="1.6"/>
+      <line x1="148.5" y1="315" x2="297" y2="315" stroke="var(--on-accent)" stroke-width="1.4"/>
+      <line x1="222.75" y1="315" x2="222.75" y2="420" stroke="var(--on-accent)" stroke-width="1.2"/>
+      <line x1="222.75" y1="367.5" x2="297" y2="367.5" stroke="var(--on-accent)" stroke-width="1"/>
+      <g font-family="Karantina" font-weight="700" text-anchor="middle">
+        <text x="148.5" y="128" font-size="80" fill="var(--ink)">A3</text>
+        <text x="148.5" y="160" font-size="20" fill="var(--muted)" font-family="IBM Plex Mono" font-weight="500">297×420</text>
+        <text x="74" y="330" font-size="58" fill="var(--on-accent)">A4</text>
+        <text x="74" y="352" font-size="14" fill="var(--on-accent)" font-family="IBM Plex Mono" font-weight="500">210×297</text>
+        <text x="185" y="276" font-size="44" fill="var(--on-accent)">A5</text>
+        <text x="260" y="276" font-size="44" fill="var(--on-accent)">A5</text>
+        <text x="185" y="380" font-size="30" fill="var(--on-accent)">A6</text>
+        <text x="260" y="350" font-size="22" fill="var(--on-accent)">A7</text>
+        <text x="260" y="405" font-size="22" fill="var(--on-accent)">A7</text>
+      </g>
+    </svg>
+    <div>
+      <h3>סדרת A — כל גודל הוא בדיוק חצי מהקודם</h3>
+      <p>מקפלים <span class="n">A4</span> לשניים — מקבלים <span class="n">A5</span>. מחברים שני <span class="n">A4</span> — מקבלים <span class="n">A3</span>. הפרופורציה נשארת זהה לאורך כל הסדרה, ולכן עיצוב שעובד ב-<span class="n">A4</span> יעבוד גם ב-<span class="n">A3</span> וגם ב-<span class="n">A0</span>, בלי לשנות כלום — רק להגדיל.</p>
+      <div class="a4hero"><span class="display">A4</span><span class="n">210 × 297 mm</span></div>
+      <p class="muted small">המידה שהכי כדאי לזכור בעל-פה. דף רגיל, מכתב, מגזין, פלייר — וגם נקודת הפתיחה לרוב השילוט העירוני (עמוד <span class="n">04</span>).</p>
+      <div class="box-accent" style="margin-top:4mm">
+        <p class="small"><b>טיפ:</b> לפני שמתחילים — בודקים אם מקבלים את המידה במ"מ או בס"מ. <span class="n">50×70</span> בס"מ זה פוסטר; <span class="n">50×70</span> במ"מ זה בול.</p>
+      </div>
+    </div>
+  </div>
+
+  <table style="margin-top:5mm">
+    <thead><tr><th>גודל</th><th>מ"מ</th><th>ס"מ</th><th>פיקסלים ב-<span class="n">300 dpi</span></th><th>שימוש נפוץ</th></tr></thead>
+    <tbody>
+      <tr><td class="n">A0</td><td class="n">841 × 1189</td><td class="n">84.1 × 118.9</td><td class="n">9933 × 14043</td><td>פוסטר גדול, תערוכה</td></tr>
+      <tr><td class="n">A1</td><td class="n">594 × 841</td><td class="n">59.4 × 84.1</td><td class="n">7016 × 9933</td><td>פוסטר, כרזה</td></tr>
+      <tr><td class="n">A2</td><td class="n">420 × 594</td><td class="n">42 × 59.4</td><td class="n">4961 × 7016</td><td>פוסטר קטן</td></tr>
+      <tr><td class="n">A3</td><td class="n">297 × 420</td><td class="n">29.7 × 42</td><td class="n">3508 × 4961</td><td>פוסטר קטן, תפריט, הדמיות</td></tr>
+      <tr class="star"><td class="n">A4</td><td class="n">210 × 297</td><td class="n">21 × 29.7</td><td class="n">2480 × 3508</td><td>דף, מגזין, פלייר, שילוט עירוני</td></tr>
+      <tr><td class="n">A5</td><td class="n">148 × 210</td><td class="n">14.8 × 21</td><td class="n">1748 × 2480</td><td>פלייר, חוברת, הזמנה</td></tr>
+      <tr><td class="n">A6</td><td class="n">105 × 148</td><td class="n">10.5 × 14.8</td><td class="n">1240 × 1748</td><td>גלויה, כרטיס</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cols c2" style="margin-top:6mm">
+    <div>
+      <h3>עוד מידות שתפגשו</h3>
+      <table>
+        <tbody>
+          <tr><td>כרטיס ביקור</td><td class="n">90 × 50 mm</td></tr>
+          <tr><td>פלייר <span class="n">DL</span> (שליש <span class="n">A4</span>)</td><td class="n">99 × 210 mm</td></tr>
+          <tr><td>גלויה / תמונה</td><td class="n">10 × 15 cm</td></tr>
+          <tr><td>פוסטר</td><td class="n">50 × 70 cm</td></tr>
+          <tr><td>פוסטר גדול</td><td class="n">70 × 100 cm</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3>גלישה ושוליים בטוחים</h3>
+      <div class="bleed">
+        <svg viewBox="0 0 76 96" style="width:30mm">
+          <rect x="1" y="1" width="74" height="94" fill="var(--accent-soft)" stroke="var(--warn)" stroke-width=".8" stroke-dasharray="2 1.5"/>
+          <rect x="6" y="6" width="64" height="84" fill="var(--paper)" stroke="var(--ink)" stroke-width="1"/>
+          <rect x="13" y="13" width="50" height="70" fill="none" stroke="var(--muted)" stroke-width=".6" stroke-dasharray="1.5 1.5"/>
+          <text x="38" y="50" font-size="7" text-anchor="middle" fill="var(--muted)" font-family="Assistant">אזור בטוח</text>
+        </svg>
+        <div class="small">
+          <p><b style="color:var(--warn)">גלישה (<span class="en">Bleed</span>) — <span class="n">3</span> מ"מ:</b> רקע ותמונות שמגיעים עד הקצה, מותחים <span class="n">3</span> מ"מ מעבר לקו החיתוך מכל צד. <span class="n">A4</span> עם גלישה = <span class="n">216×303</span> מ"מ.</p>
+          <p><b>אזור בטוח — <span class="n">5</span> מ"מ:</b> טקסט ולוגו שומרים לפחות <span class="n">5</span> מ"מ מהקצה. החיתוך אף פעם לא מדויק במילימטר.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">02</span></footer>
+</section>
+
+<!-- ============ 03 MORE PRINT SIZES ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">01</div><h2>עוד מידות דפוס</h2></div>
+    <p class="lead">המידות שחוזרות שוב ושוב בעבודות מלקוחות ומבתי דפוס.</p>
+  </header>
+
+  <div class="cols c2" style="gap:5mm">
+    <div class="box-warn" style="display:grid; grid-template-columns:30mm 1fr; gap:4mm; align-items:center">
+      <svg viewBox="-2 -2 222 302" style="width:30mm; display:block">
+        <rect x="0" y="0" width="210" height="297" fill="none" stroke="var(--ink)" stroke-width="3"/>
+        <rect x="0" y="0" width="215.9" height="279.4" fill="var(--warn)" fill-opacity=".18" stroke="var(--warn)" stroke-width="3" stroke-dasharray="9 6"/>
+        <text x="105" y="150" text-anchor="middle" font-family="Karantina" font-weight="700" font-size="64" fill="var(--ink)">A4</text>
+        <text x="105" y="200" text-anchor="middle" font-family="IBM Plex Mono" font-size="20" fill="var(--warn)">Letter</text>
+      </svg>
+      <div class="small">
+        <p class="display big" style="font-size:22pt">זהירות: <span class="en">Letter</span></p>
+        <p style="margin-top:1.5mm">הרבה תוכנות פותחות מסמך חדש בגודל הדף האמריקאי <span class="n">Letter</span> — <span class="n">216×279</span> מ"מ. הוא רחב ונמוך יותר מ-<span class="n">A4</span>. <b>בודקים שהמסמך באמת <span class="n">A4</span> לפני שמתחילים.</b></p>
+      </div>
+    </div>
+    <div class="box">
+      <h4>ברושור שמתקפל לשלושה</h4>
+      <svg viewBox="0 0 297 120" style="width:100%; display:block; margin-top:1mm">
+        <rect x="1" y="1" width="295" height="88" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"/>
+        <line x1="97" y1="1" x2="97" y2="89" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="197" y1="1" x2="197" y2="89" stroke="var(--ink)" stroke-width="1" stroke-dasharray="4 3"/>
+        <rect x="1" y="1" width="96" height="88" fill="var(--accent)" fill-opacity=".55"/>
+        <g font-family="IBM Plex Mono" font-size="12" text-anchor="middle" fill="var(--ink)">
+          <text x="49" y="50">97</text><text x="147" y="50">100</text><text x="247" y="50">100</text>
+        </g>
+        <text x="148.5" y="108" font-family="IBM Plex Mono" font-size="11" text-anchor="middle" fill="var(--muted)">A4 · 297 × 210 mm</text>
+      </svg>
+      <p class="small">דף <span class="n">A4</span> לרוחב, שלושה חלקים. <b>החלק שמתקפל פנימה (בצהוב) צר יותר</b> — אחרת הדף לא נסגר יפה.</p>
+    </div>
+  </div>
+
+  <div class="cols c2" style="margin-top:6mm; gap:8mm">
+    <div>
+      <div class="grp">
+        <h3>כרטיסים ופליירים</h3>
+        <table><tbody>
+          <tr class="star"><td>כרטיס ביקור (ישראל)</td><td class="n">90 × 50 mm</td></tr>
+          <tr><td>כרטיס ביקור (אירופה)</td><td class="n">85 × 55 mm</td></tr>
+          <tr class="star"><td>פלייר <span class="n">A5</span></td><td class="n">148 × 210 mm</td></tr>
+          <tr><td>פלייר קטן / גלויה <span class="n">A6</span></td><td class="n">105 × 148 mm</td></tr>
+          <tr><td>פלייר צר <span class="n">DL</span></td><td class="n">99 × 210 mm</td></tr>
+        </tbody></table>
+      </div>
+      <div class="grp">
+        <h3>מעטפות</h3>
+        <table><tbody>
+          <tr><td>מעטפה <span class="n">DL</span><span class="why">ל-<span class="n">A4</span> מקופל לשלושה</span></td><td class="n">110 × 220 mm</td></tr>
+          <tr><td>מעטפה <span class="n">C6</span><span class="why">ל-<span class="n">A6</span></span></td><td class="n">114 × 162 mm</td></tr>
+          <tr><td>מעטפה <span class="n">C5</span><span class="why">ל-<span class="n">A5</span>, או <span class="n">A4</span> מקופל לחצי</span></td><td class="n">162 × 229 mm</td></tr>
+          <tr><td>מעטפה <span class="n">C4</span><span class="why">ל-<span class="n">A4</span> שלם, בלי לקפל</span></td><td class="n">229 × 324 mm</td></tr>
+        </tbody></table>
+      </div>
+      <div class="grp">
+        <h3>מוזיקה</h3>
+        <table><tbody>
+          <tr><td>עטיפת דיסק</td><td class="n">12 × 12 cm</td></tr>
+          <tr><td>עטיפת תקליט</td><td class="n">31.5 × 31.5 cm</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div>
+      <div class="grp">
+        <h3>פוסטרים ותמונות</h3>
+        <p class="small muted">מידות נפוצות בבתי דפוס ובמסגריות, בס"מ:</p>
+        <div class="chips"><span>10×15</span><span>13×18</span><span>20×30</span><span>30×40</span><span>40×60</span><span class="y">50×70</span><span>70×100</span></div>
+        <p class="small" style="margin-top:2mm">שימו לב: אלה <b>לא</b> בפרופורציה של <span class="n">A</span>. עיצוב <span class="n">A3</span> לא ייכנס בדיוק למסגרת <span class="n">30×40</span>.</p>
+      </div>
+      <div class="grp">
+        <h3>ספרים וחוברות</h3>
+        <table><tbody>
+          <tr><td>ספר — מידות נפוצות</td><td class="n">14×21 · 15×23 cm</td></tr>
+          <tr><td>חוברת / קטלוג</td><td class="n">A5 · A4</td></tr>
+        </tbody></table>
+        <p class="small" style="margin-top:2mm"><b>חוברת עם סיכות:</b> מספר העמודים חייב להתחלק ב-<span class="n">4</span>, למשל <span class="n">8 · 12 · 16</span>. כל דף מקופל הוא ארבעה עמודים.</p>
+      </div>
+      <div class="grp">
+        <h3>שלטים עומדים ותערוכות</h3>
+        <table><tbody>
+          <tr class="star"><td>רול-אפ (שלט שנגלל לתוך מעמד)</td><td class="n">85 × 200 cm</td></tr>
+          <tr><td>רול-אפ רחב</td><td class="n">100 × 200 cm</td></tr>
+          <tr><td>איקס-באנר</td><td class="n">60 × 160 cm</td></tr>
+        </tbody></table>
+        <p class="small muted" style="margin-top:2mm">גם כאן לא פותחים מסמך במטרים. שואלים את בית הדפוס באיזה קנה מידה לעבוד, ושומרים את המסר בחלק העליון — התחתית קרובה לרצפה.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">03</span></footer>
+</section>
+
+<!-- ============ 03 CITY SIGNAGE ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">02</div><h2>שילוט בעיר</h2></div>
+    <p class="lead">רוב הגרפיקות שתפגשו ברחוב הן בפרופורציה של סדרת <span class="n">A</span>. כלומר — אפשר להתחיל ב-<span class="n">A4</span>.</p>
+  </header>
+
+  <p style="max-width:150mm">מגזינים, כריכות ספרים, שלטים בתחנות אוטובוס ושלטי „מכווני תנועה" בין הנתיבים — כולם קרובים מאוד לפרופורציה של <span class="n">A4</span>. פותחים מסמך <span class="n">A4</span> או <span class="n">A3</span>, מעצבים, ובית הדפוס מגדיל לגודל האמיתי. <span class="muted">יש חריגות, ואת המידה הסופית תמיד מקבלים מבית הדפוס — אבל זו נקודת פתיחה מצוינת לעיצוב ולהדמיה.</span></p>
+
+  <div style="margin-top:5mm">
+    <div class="caps"><span></span><span>הפרופורציה</span><span>בעולם האמיתי</span></div>
+    <div class="signrows">
+      <div class="signrow">
+        <div class="lbl"><h4>מגזינים ועיתונים</h4><p>כל עמוד הוא <span class="n">A4</span> (או קרוב אליו). כפולה = <span class="n">A3</span> לרוחב.</p></div>
+        <img src="img/magazine-grid.jpg" alt=""><img src="img/magazine-photo.jpg" alt="">
+      </div>
+      <div class="signrow">
+        <div class="lbl"><h4>כריכות ספרים</h4><p>לרוב מעט צרות יותר מ-<span class="n">A4</span> — אבל מתחילים משם.</p></div>
+        <img src="img/books-grid.jpg" alt=""><img src="img/books-photo.jpg" alt="">
+      </div>
+      <div class="signrow">
+        <div class="lbl"><h4>שילוט בתחנת אוטובוס</h4><p>שלט מואר לגובה, בפרופורציה של <span class="n">A</span>.</p></div>
+        <img src="img/busstop-grid.jpg" alt=""><img src="img/busstop-photo.jpg" alt="">
+      </div>
+      <div class="signrow">
+        <div class="lbl"><h4>מכווני תנועה</h4><p>השלטים שעומדים בתוך העיר, בין נתיבי התנועה.</p></div>
+        <img src="img/citylight-grid.jpg" alt=""><img src="img/citylight-photo.jpg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="box-accent" style="margin-top:5mm">
+    <p><b>למה זה עובד?</b> כל גודל בסדרת <span class="n">A</span> הוא אותה צורה בדיוק. עיצוב ב-<span class="n">A4</span> „גדל" ל-<span class="n">A0</span> או לשלט בתחנה בלי לחתוך שום דבר. רק תוודאו שהתמונות שלכם באיכות מספקת (עמוד <span class="n">09</span>).</p>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">04</span></footer>
+</section>
+
+<!-- ============ 04 BILLBOARDS ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">03</div><h2>שילוט חוצות</h2></div>
+    <p class="lead">לשלטי חוצות יש פרופורציות קבועות. מכירים את היחס — יודעים איזה מסמך לפתוח.</p>
+  </header>
+
+  <div class="signrows" style="--ih:38mm">
+    <div class="signrow">
+      <div class="lbl"><span class="ratio-tag">4:3</span> <span class="ratio-tag">3:2</span><h4 style="margin-top:2mm">שלטים „טלוויזיה"</h4><p>שלטים שנראים כמו טלוויזיה ישנה. עומדים על עמוד אחד, לרוב בתוך העיר.</p></div>
+      <img src="img/bb43-grid.jpg" alt=""><img src="img/bb43-photo.jpg" alt="">
+    </div>
+    <div class="signrow">
+      <div class="lbl"><span class="ratio-tag">6:2</span><h4 style="margin-top:2mm">שלטים רחבים</h4><p>לרוב קרובים לכביש. לפעמים כמה שלטים צמודים בשורה.</p></div>
+      <img src="img/bb62-row-grid.jpg" alt=""><img src="img/bb62-row-photo.jpg" alt="">
+    </div>
+    <div class="signrow">
+      <div class="lbl"><span class="ratio-tag">6:2</span> <span class="ratio-tag">6:3</span><h4 style="margin-top:2mm">בילבורד גדול</h4><p>שלטי ענק ליד כבישים מהירים.</p></div>
+      <img src="img/bb62-grid.jpg" alt=""><img src="img/bb62-photo.jpg" alt="">
+    </div>
+  </div>
+
+  <h3 style="margin-top:6mm">איזה מסמך פותחים?</h3>
+  <table>
+    <thead><tr><th>יחס</th><th>שלט אמיתי, לדוגמה</th><th>פותחים מסמך של</th><th>קנה מידה</th></tr></thead>
+    <tbody>
+      <tr class="star"><td class="n">4:3</td><td class="n">4 × 3 m</td><td class="n">40 × 30 cm</td><td class="n">1:10</td></tr>
+      <tr><td class="n">3:2</td><td class="n">3 × 2 m</td><td class="n">45 × 30 cm</td><td class="n">≈ 1:6.7</td></tr>
+      <tr><td class="n">6:3</td><td class="n">6 × 3 m</td><td class="n">60 × 30 cm</td><td class="n">1:10</td></tr>
+      <tr><td class="n">6:2</td><td class="n">6 × 2 m · 12 × 4 m</td><td class="n">60 × 20 cm</td><td class="n">1:10 · 1:20</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cols c2" style="margin-top:6mm; flex:1">
+    <div class="box-warn">
+      <p class="display big" style="font-size:30pt">בשום פנים ואופן לא פותחים מסמך בגודל של מטרים!</p>
+      <p class="small" style="margin-top:2mm">שלט <span class="n">4×3</span> מ' ב-<span class="n">300 dpi</span> הוא <span class="n">47,244×35,433</span> פיקסלים — קובץ של <b>כ-<span class="n">6.7</span> ג'יגה</b>. המחשב נתקע, והקובץ לא יישלח לאף אחד.<br>אותו שלט כמסמך <span class="n">40×30</span> ס"מ: <b>כ-<span class="n">67</span> מגה</b>. פי <span class="n">100</span> פחות.</p>
+    </div>
+    <div class="box">
+      <h4>למה מסמך מוקטן מספיק?</h4>
+      <ul class="dots small">
+        <li>שלט חוצות רואים ממרחק של <span class="n">20–50</span> מטר. אף אחד לא רואה פיקסלים.</li>
+        <li>מסמך <span class="n">40×30</span> ס"מ ב-<span class="n">300 dpi</span>, כשמגדילים אותו פי <span class="n">10</span>, נותן כ-<span class="n">30 dpi</span> בגודל האמיתי — בדיוק מה ששלט צריך.</li>
+        <li>הנהג רואה את השלט <span class="n">2–3</span> שניות. <b>עד <span class="n">7</span> מילים</b>, אות גדולה, ניגודיות חזקה.</li>
+        <li>תמיד מבקשים מבית הדפוס מפרט: מידה מדויקת, קנה מידה, גלישה ופורמט קובץ.</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">05</span></footer>
+</section>
+
+<!-- ============ 05 DIGITAL ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">04</div><h2>דיגיטל</h2></div>
+    <p class="lead">על מסך אין סנטימטרים. הכל בפיקסלים: רוחב × גובה. מסמך דיגיטלי פותחים תמיד בפיקסלים ובמצב <span class="n">RGB</span>.</p>
+  </header>
+
+  <h3>שלוש המידות שהכי שימושיות</h3>
+  <p class="muted small" style="margin-bottom:4mm">מצוירות כאן ביחס אמיתי זו לזו.</p>
+  <div class="scale" style="--s:.031mm; justify-content:space-between">
+    <div class="shape"><div class="px y" style="--w:1080;--h:1080"><b>פוסט</b><span class="n">1080×1080</span><small class="n">1:1</small></div></div>
+    <div class="shape"><div class="px y" style="--w:1080;--h:1920"><b>סטורי</b><span class="n">1080×1920</span><small class="n">9:16</small></div></div>
+    <div class="shape"><div class="px y" style="--w:1920;--h:1080"><b>מסך רחב</b><span class="n">1920×1080</span><small class="n">16:9</small></div></div>
+    <div class="shape"><div class="px" style="--w:1080;--h:1350"><b>פוסט לאורך</b><span class="n">1080×1350</span><small class="n">4:5</small></div></div>
+  </div>
+
+  <h3 style="margin-top:7mm">עוד מידות שכדאי להכיר</h3>
+  <table>
+    <thead><tr><th>שימוש</th><th>פיקסלים</th><th>יחס</th><th>הערה</th></tr></thead>
+    <tbody>
+      <tr class="star"><td>אינסטגרם / פייסבוק — פוסט ריבועי</td><td class="n">1080 × 1080</td><td class="n">1:1</td><td class="small">הבטוח ביותר — עובד בכל מקום</td></tr>
+      <tr><td>אינסטגרם — פוסט לאורך</td><td class="n">1080 × 1350</td><td class="n">4:5</td><td class="small">תופס יותר מסך בפיד</td></tr>
+      <tr class="star"><td>סטורי / רילס / טיקטוק / שורטס</td><td class="n">1080 × 1920</td><td class="n">9:16</td><td class="small">מסך מלא בטלפון</td></tr>
+      <tr><td>פייסבוק — פוסט קישור / מודעה</td><td class="n">1200 × 628</td><td class="n">1.91:1</td><td class="small">גם לינקדאין</td></tr>
+      <tr><td>תמונת כיסוי בפייסבוק</td><td class="n">1640 × 624</td><td class="n">≈ 2.6:1</td><td class="small">במובייל נחתכים הצדדים</td></tr>
+      <tr><td>יוטיוב — תמונה ממוזערת</td><td class="n">1280 × 720</td><td class="n">16:9</td><td class="small">טקסט גדול, נקרא גם בקטן</td></tr>
+      <tr><td>יוטיוב — באנר ערוץ</td><td class="n">2560 × 1440</td><td class="n">16:9</td><td class="small">התוכן במרכז, <span class="n">1546×423</span></td></tr>
+      <tr><td>לינקדאין — באנר פרופיל</td><td class="n">1584 × 396</td><td class="n">4:1</td><td class="small">התמונה העגולה מכסה צד אחד</td></tr>
+      <tr class="star"><td>מסך רחב / מצגת / וידאו <span class="n">Full HD</span></td><td class="n">1920 × 1080</td><td class="n">16:9</td><td class="small">מצגות, וידאו, מסכים</td></tr>
+      <tr><td>וידאו <span class="n">4K</span></td><td class="n">3840 × 2160</td><td class="n">16:9</td><td class="small">פי <span class="n">2</span> בכל כיוון</td></tr>
+      <tr><td>ניוזלטר בדוא"ל</td><td class="n">600 px</td><td>רוחב</td><td class="small">גובה חופשי</td></tr>
+    </tbody>
+  </table>
+
+  <div class="cols c2" style="margin-top:6mm">
+    <div class="box-accent small">
+      <p><b>זכרו את <span class="n">1080</span>.</b> רוב המידות לרשתות מתחילות ברוחב <span class="n">1080</span> פיקסלים. משנים רק את הגובה: <span class="n">1080</span> ריבוע, <span class="n">1350</span> לאורך, <span class="n">1920</span> מסך מלא.</p>
+    </div>
+    <div class="box small">
+      <p><b>המידות ברשתות משתנות מדי פעם.</b> לפני עבודה חשובה, בדקו את ההנחיות העדכניות של הפלטפורמה. היחסים <span class="n">1:1</span>, <span class="n">4:5</span>, <span class="n">9:16</span> ו-<span class="n">16:9</span> נשארים.</p>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">06</span></footer>
+</section>
+
+<!-- ============ 06 MOBILE ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">05</div><h2>מובייל וסטורי</h2></div>
+    <p class="lead">רוב הצפייה היא בטלפון. ככה המידות נראות על המסך שבכיס.</p>
+  </header>
+
+  <h3>באנרים למובייל</h3>
+  <p class="muted small" style="margin-bottom:4mm">הצהוב הוא הבאנר, ביחס אמיתי למסך טלפון ברוחב <span class="n">360</span> פיקסלים.</p>
+  <div class="phones">
+    <div class="phone"><div class="body"><div class="screen"><div class="ad" style="--w:300;--h:50"></div></div></div><div class="cap"><span class="n">300×50</span>באנר מובייל</div></div>
+    <div class="phone"><div class="body"><div class="screen"><div class="ad" style="--w:320;--h:50"></div></div></div><div class="cap"><span class="n">320×50</span>לידרבורד מובייל</div></div>
+    <div class="phone"><div class="body"><div class="screen"><div class="ad" style="--w:320;--h:100"></div></div></div><div class="cap"><span class="n">320×100</span>באנר מובייל גדול</div></div>
+    <div class="phone"><div class="body"><div class="screen"><div class="ad mid" style="--w:300;--h:250"></div></div></div><div class="cap"><span class="n">300×250</span>מלבן בתוך תוכן</div></div>
+    <div class="phone"><div class="body"><div class="screen"><div class="ad mid" style="--w:320;--h:480"></div></div></div><div class="cap"><span class="n">320×480</span>מסך מלא קופץ</div></div>
+  </div>
+
+  <div class="cols" style="grid-template-columns: 62mm 1fr; margin-top:9mm; gap:8mm">
+    <div>
+      <h3>האזור הבטוח בסטורי</h3>
+      <svg viewBox="0 0 108 192" style="width:52mm;display:block;margin-top:2mm">
+        <rect x="0" y="0" width="108" height="192" fill="var(--accent)"/>
+        <rect x="0" y="0" width="108" height="25" fill="var(--warn)" opacity=".85"/>
+        <rect x="0" y="158" width="108" height="34" fill="var(--warn)" opacity=".85"/>
+        <rect x="0.5" y="0.5" width="107" height="191" fill="none" stroke="var(--ink)" stroke-width="1"/>
+        <g font-family="Assistant" font-weight="700" text-anchor="middle">
+          <text x="54" y="15" font-size="7" fill="#fff">שם משתמש, פס התקדמות</text>
+          <text x="54" y="88" font-size="10" fill="#141414">כאן התוכן</text>
+          <text x="54" y="101" font-size="6" fill="#141414" font-family="IBM Plex Mono">1080 × 1920</text>
+          <text x="54" y="177" font-size="7" fill="#fff">תגובה, כפתורים</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <ul class="dots">
+        <li><b>למעלה ולמטה — בלי טקסט.</b> בערך <span class="n">250</span> פיקסלים למעלה ו-<span class="n">340</span> למטה מכוסים בשם המשתמש, בכפתורים ובשורת התגובה.</li>
+        <li><b>ברילס ובטיקטוק</b> גם הצד הימני תפוס (לייק, תגובה, שיתוף) והכיתוב יושב למטה. מרכזים את המסר.</li>
+        <li><b>פוסט <span class="n">4:5</span> בגריד של הפרופיל</b> מוצג חתוך למעלה ולמטה. שמים את העיקר במרכז.</li>
+      </ul>
+
+      <h3 style="margin-top:7mm">קרוסלה</h3>
+      <p class="small">כמה תמונות זו לצד זו, שמחליקים ביניהן. בפייסבוק עד <span class="n">10</span> כרטיסים, כל אחד <span class="n">1080×1080</span>.</p>
+      <svg viewBox="0 0 330 82" style="width:100%;display:block;margin-top:3mm">
+        <g fill="var(--fill)" stroke="var(--ink)" stroke-width="1">
+          <rect x="1" y="1" width="80" height="80"/><rect x="83" y="1" width="80" height="80"/><rect x="165" y="1" width="80" height="80"/><rect x="247" y="1" width="80" height="80"/>
+        </g>
+        <path d="M 330 60 C 280 10, 230 75, 170 35 S 60 20, 0 50" fill="none" stroke="var(--accent)" stroke-width="6"/>
+        <g font-family="IBM Plex Mono" font-size="8" fill="var(--muted)" text-anchor="middle"><text x="287" y="76">1</text><text x="205" y="76">2</text><text x="123" y="76">3</text><text x="41" y="76">4</text></g>
+      </svg>
+      <p class="small muted" style="margin-top:2mm"><b>טריק:</b> לעיצוב רציף שממשיך מתמונה לתמונה — פותחים מסמך אחד של <span class="n">4320×1080</span> (<span class="n">4</span> ריבועים) וחותכים אותו לחלקים.</p>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">07</span></footer>
+</section>
+
+<!-- ============ 07 GOOGLE ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">06</div><h2>באנרים של גוגל</h2></div>
+    <p class="lead">הבאנרים שמופיעים באתרים. קטנים, צפופים — וצריכים לעבוד במבט אחד.</p>
+  </header>
+
+  <div class="cols" style="grid-template-columns: 1.25fr 1fr; gap:5mm">
+    <div class="box-accent small">
+      <p><b>מה נכנס לבאנר?</b> כותרת מכירתית ומעניינת + כמה מילים + כפתור + לוגו. זהו. <b>כמה שפחות תוכן — כך זה ייראה טוב יותר.</b></p>
+    </div>
+    <div class="box small">
+      <p><b>משקל:</b> עד <span class="n">150KB</span> לקובץ. <b>בימינו</b> מעלים לגוגל גם תמונה רוחבית <span class="n">1200×628</span>, ריבועית <span class="n">1200×1200</span> ולוגו, והמערכת מרכיבה מהן באנרים לבד.</p>
+    </div>
+  </div>
+
+  <p class="small muted" style="margin:4mm 0 3mm">כל הבאנרים בעמוד הזה בקנה מידה אחד — אפשר להשוות ביניהם בעין. <span class="hl">צהוב</span> = הכי נפוצים.</p>
+
+  <div class="gmap" style="display:flex; gap:8mm; align-items:flex-start">
+    <div>
+      <div class="ghead">TOWER</div>
+      <div style="display:flex; gap:3mm; align-items:flex-start">
+        <div class="gb" style="--w:300;--h:1050"><span class="n">300×1050</span><span class="en">Portrait</span></div>
+        <div class="gb top" style="--w:300;--h:600"><span class="n">300×600</span><span class="en">Half page</span></div>
+        <div class="gb top" style="--w:160;--h:600"><span class="n">160×600</span><span class="en">Wide sky&shy;scraper</span></div>
+        <div class="gb" style="--w:120;--h:600"><span class="n">120×600</span><span class="en">Sky&shy;scraper</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="ghead">SQUARE</div>
+      <div style="display:flex; flex-direction:column; gap:3mm; align-items:flex-start">
+        <div class="gb" style="--w:336;--h:280"><span class="n">336×280</span><span class="en">Large rectangle</span></div>
+        <div class="gb top" style="--w:300;--h:250"><span class="n">300×250</span><span class="en">Medium rectangle</span></div>
+        <div class="gb" style="--w:250;--h:250"><span class="n">250×250</span><span class="en">Square</span></div>
+        <div class="gb" style="--w:200;--h:200"><span class="n">200×200</span><span class="en">Small square</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="gmap" style="margin-top:5mm">
+    <div class="ghead">SKYLINE</div>
+    <div style="display:flex; flex-direction:column; gap:3mm">
+      <div class="gb" style="--w:970;--h:250"><span class="n">970×250</span><span class="en">Billboard</span></div>
+      <div class="gb row" style="--w:970;--h:90"><span class="n">970×90</span><span class="en">Large leaderboard</span></div>
+      <div style="display:flex; gap:3mm; align-items:flex-start">
+        <div class="gb row top" style="--w:728;--h:90"><span class="n">728×90</span><span class="en">Leaderboard</span></div>
+        <div class="gb row" style="--w:468;--h:60"><span class="n">468×60</span><span class="en">Banner</span></div>
+      </div>
+      <div style="display:flex; gap:3mm; align-items:flex-start">
+        <div class="gb" style="--w:320;--h:100"><span class="n">320×100</span><span class="en">Large mobile</span></div>
+        <div class="gb row top" style="--w:320;--h:50"><span class="n">320×50</span><span class="en">Mobile</span></div>
+        <div class="gb row" style="--w:300;--h:50"><span class="n">300×50</span><span class="en">Mobile</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">08</span></footer>
+</section>
+
+<!-- ============ 08 COLOUR & RESOLUTION ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">07</div><h2>צבע ורזולוציה</h2></div>
+    <p class="lead">שתי החלטות שעושים לפני שמציירים קו אחד. טעות כאן מתגלה רק בהדפסה — כשכבר מאוחר.</p>
+  </header>
+
+  <div class="mix">
+    <div class="mixcard rgb">
+      <svg viewBox="0 0 100 94">
+        <g style="mix-blend-mode:screen; isolation:isolate">
+          <circle cx="36" cy="34" r="27" fill="#ff0000" style="mix-blend-mode:screen"/>
+          <circle cx="64" cy="34" r="27" fill="#00ff00" style="mix-blend-mode:screen"/>
+          <circle cx="50" cy="59" r="27" fill="#0000ff" style="mix-blend-mode:screen"/>
+        </g>
+      </svg>
+      <div>
+        <h3 class="en">RGB</h3>
+        <p><b>אור. למסכים.</b> אדום, ירוק וכחול — וכולם יחד נותנים לבן. לכל מה שנראה על מסך: רשתות, אתרים, וידאו, מצגות.</p>
+      </div>
+    </div>
+    <div class="mixcard cmyk">
+      <svg viewBox="0 0 100 94">
+        <circle cx="36" cy="34" r="27" fill="#00aeef" style="mix-blend-mode:multiply"/>
+        <circle cx="64" cy="34" r="27" fill="#ec008c" style="mix-blend-mode:multiply"/>
+        <circle cx="50" cy="59" r="27" fill="#fff200" style="mix-blend-mode:multiply"/>
+      </svg>
+      <div>
+        <h3 class="en">CMYK</h3>
+        <p><b>דיו. לדפוס.</b> ציאן, מג'נטה, צהוב ושחור — ככל שמוסיפים, הצבע כהה יותר. לכל מה שמודפס: פלייר, פוסטר, שלט, אריזה.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols c2" style="margin-top:5mm">
+    <div>
+      <h3>טיפים לצבע</h3>
+      <ul class="dots small">
+        <li><b>פותחים במצב הנכון.</b> דפוס → <span class="n">CMYK</span>. מסך → <span class="n">RGB</span> (<span class="n">sRGB</span>). המרה בסוף משנה צבעים.</li>
+        <li><b>לצבעים זוהרים אין דיו.</b> ירוק ניאון, כחול חשמלי וכתום בוהק ייצאו דהויים בהדפסה:</li>
+      </ul>
+      <div class="swatches">
+        <div class="sw"><i style="background:#00ff66"></i><span>על המסך</span></div>
+        <div class="sw"><i style="background:#3cb46e"></i><span>בהדפסה</span></div>
+        <div class="sw"><i style="background:#0055ff"></i><span>על המסך</span></div>
+        <div class="sw"><i style="background:#2f5fb3"></i><span>בהדפסה</span></div>
+      </div>
+      <ul class="dots small">
+        <li><b>שחור עשיר לשטחים גדולים:</b> <span class="n">C60 M40 Y40 K100</span>. שחור רגיל (<span class="n">K100</span>) יוצא אפור-דהוי על שטח גדול.</li>
+        <li><b>טקסט קטן — רק <span class="n">K100</span>.</b> שחור עשיר בטקסט קטן יוצא מטושטש.</li>
+        <li><b>המסך משקר.</b> כל מסך מציג צבע אחרת. בעבודה חשובה מבקשים הדפסת ניסיון.</li>
+      </ul>
+    </div>
+    <div>
+      <h3>רזולוציה</h3>
+      <p class="small"><b><span class="n">DPI</span></b> = כמה נקודות יש בכל אינץ' (<span class="n">2.54</span> ס"מ). זה חשוב <b>רק בדפוס</b>. על מסך סופרים רק פיקסלים — המספר <span class="n">72</span> לא אומר שם כלום.</p>
+      <table style="margin-top:2mm">
+        <thead><tr><th>מה מדפיסים</th><th>מרחק צפייה</th><th><span class="n">DPI</span> בגודל אמיתי</th></tr></thead>
+        <tbody>
+          <tr><td>כרטיס, פלייר, ספר</td><td>ביד</td><td class="n">300</td></tr>
+          <tr><td>פוסטר, שלט בתחנה</td><td class="n">1–3 m</td><td class="n">150</td></tr>
+          <tr><td>רול-אפ, שלט גדול</td><td class="n">3–10 m</td><td class="n">72–100</td></tr>
+          <tr><td>שלט חוצות</td><td class="n">20 m+</td><td class="n">20–50</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:5mm">
+    <h4>כמה פיקסלים צריך? הנוסחה</h4>
+    <div class="formula" style="margin-top:1.5mm">
+      <span>פיקסלים</span><span>=</span><span>ס"מ</span><span>÷</span><span class="n">2.54</span><span>×</span><span class="n">300</span>
+      <span class="small muted" style="font-weight:400; margin-inline-start:4mm">דוגמה: <span class="n">10</span> ס"מ → <span class="n">10 ÷ 2.54 × 300 = 1181</span> פיקסלים</span>
+    </div>
+  </div>
+
+  <div class="cols c2" style="margin-top:4mm">
+    <div class="box-warn small">
+      <p><b>הגדלה לא מוסיפה פרטים.</b> תמונה של <span class="n">500</span> פיקסלים שמותחים ל-<span class="n">A4</span> תצא מטושטשת, גם אם כתוב <span class="n">300 dpi</span>. בודקים את גודל התמונה <b>לפני</b> שמתחילים.</p>
+    </div>
+    <div class="box-accent small">
+      <p><b>תמונה מוואטסאפ או מאתר</b> כמעט תמיד דחוסה וקטנה. מבקשים מהלקוח את הקובץ המקורי — מהמצלמה, מהצלם, מהמחשב.</p>
+    </div>
+  </div>
+
+  <div class="env">
+    <div class="env-text">
+      <h4>הדרך הקלה: בוחרים סביבה במסמך חדש</h4>
+      <p class="small">באינדיזיין, באילוסטרייטור ובפוטושופ — חלון „מסמך חדש" מתחיל בבחירת סביבה. בוחרים נכון, והתוכנה מגדירה <b>לבד</b> את היחידות ואת הצבע.</p>
+      <p class="small muted" style="margin-top:1.5mm"><b>שימו לב:</b> בפוטושופ גם סביבת <span class="n">Print</span> נפתחת ב-<span class="n">RGB</span>. משנים ידנית ל-<span class="n">CMYK</span> בשדה <span class="n">Color Mode</span>.</p>
+    </div>
+    <div class="env-card">
+      <div class="env-tabs"><span class="on">Print</span><span>Web</span><span>Mobile</span></div>
+      <div class="env-body">
+        <div><span class="k">יחידות</span><b>מ"מ · ס"מ · אינץ'</b></div>
+        <div><span class="k">צבע</span><b class="n">CMYK</b></div>
+        <div><span class="k">למה</span><b>כל מה שמודפס</b></div>
+      </div>
+    </div>
+    <div class="env-card">
+      <div class="env-tabs"><span>Print</span><span class="on">Web</span><span class="on">Mobile</span></div>
+      <div class="env-body">
+        <div><span class="k">יחידות</span><b>פיקסלים</b></div>
+        <div><span class="k">צבע</span><b class="n">RGB</b></div>
+        <div><span class="k">למה</span><b>כל מה שעל מסך</b></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">09</span></footer>
+</section>
+
+<!-- ============ 09 FILES & CHECKLISTS ============ -->
+<section class="page">
+  <header class="sec">
+    <div><div class="sec-num">08</div><h2>קבצים וצ'קליסט</h2></div>
+    <p class="lead">באיזה פורמט לשמור, ומה לבדוק לפני שמתחילים — ולפני ששולחים.</p>
+  </header>
+
+  <div class="files">
+    <div class="file"><div class="ext">PSD <small>· AI · INDD</small></div><p>קבצים פתוחים לעבודה (פוטושופ, אילוסטרייטור, אינדיזיין). אפשר לשנות בהם הכל.</p><span class="tag">לשמור תמיד</span></div>
+    <div class="file"><div class="ext">PDF</div><p>הקובץ שנשלח לדפוס. איכותי, יכול להכיל הרבה עמודים, הגופנים נשמרים בתוכו.</p><span class="tag y">לדפוס</span></div>
+    <div class="file"><div class="ext">JPG</div><p>תמונה „סגורה". אי אפשר לערוך את התוכן, ואין שקיפות. אפשר להוריד משקל על חשבון איכות.</p><span class="tag y">לרשתות</span></div>
+    <div class="file"><div class="ext">PNG</div><p>תמונה עם רקע שקוף. איכותית מאוד, ושוקלת יותר מ-<span class="n">JPG</span>.</p><span class="tag">לוגו, אלמנטים</span></div>
+    <div class="file"><div class="ext">SVG</div><p>וקטור — אפשר להגדיל בלי סוף בלי לאבד איכות. לאייקונים ולוגואים באתרים.</p><span class="tag">לוגו, אייקון</span></div>
+    <div class="file"><div class="ext">MP4</div><p>וידאו ואנימציה לרשתות ולמסכים.</p><span class="tag">וידאו</span></div>
+    <div class="file"><div class="ext">GIF</div><p>אנימציה קצרה וחוזרת, בלי סאונד. מוגבלת בצבעים.</p><span class="tag">באנר מונפש</span></div>
+    <div class="file"><div class="ext">שם קובץ</div><p class="en" style="font-family:'IBM Plex Mono'; font-size:7.4pt; text-align:right">client_poster_A3_v03.pdf</p><p>לקוח, מה, מידה, גרסה. לא „סופי-סופי-באמת".</p></div>
+  </div>
+
+  <div class="cols c2" style="margin-top:7mm; gap:8mm">
+    <div>
+      <h3>לפני שמתחילים לעצב</h3>
+      <ul class="check">
+        <li><span><b>מה התוכן?</b> מילים, כותרות, מידע — מה חייב להופיע.</span></li>
+        <li><span><b>מה הגודל, ואיזו מדיה?</b> דפוס, שילוט, רשתות, באנרים.</span></li>
+        <li><span><b>יש תמונות מוכנות מראש?</b> באיזה גודל ובאיזו איכות?</span></li>
+        <li><span><b>יש קונספט קיים</b> (מיתוג, קמפיין) שצריך להמשיך?</span></li>
+        <li><span><b>צריך להחליט על קונספט חדש?</b></span></li>
+        <li><span><b>הנעה לפעולה</b> — מה הצופה צריך לעשות? צריך כפתור, טלפון, כתובת?</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>לפני ששולחים</h3>
+      <ul class="check">
+        <li><span><b>מידה ויחידות</b> — המסמך בגודל שביקשו? מ"מ / ס"מ / פיקסלים?</span></li>
+        <li><span><b>מצב צבע</b> — <span class="n">CMYK</span> לדפוס, <span class="n">RGB</span> למסך.</span></li>
+        <li><span><b>רזולוציה</b> — התמונות מספיק גדולות לגודל הסופי?</span></li>
+        <li><span><b>גלישה ושוליים</b> — <span class="n">3</span> מ"מ גלישה, טקסט רחוק מהקצה.</span></li>
+        <li><span><b>גופנים</b> — מוטמעים ב-<span class="n">PDF</span> או הפכו לקווים.</span></li>
+        <li><span><b>סטורי ובאנרים</b> — הטקסט באזור הבטוח? המשקל מתחת למגבלה?</span></li>
+        <li><span><b>הגהה</b> — קראו כל מילה. מספר טלפון, תאריך, שם — פעמיים.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box-accent" style="margin-top:auto; margin-bottom:4mm; display:flex; gap:6mm; align-items:center">
+    <span class="display" style="font-size:40pt; color:var(--accent)">?</span>
+    <p><b>לא בטוחים במידה? שואלים.</b> בית הדפוס, הלקוח או ההנחיות של הפלטפורמה — שאלה של דקה חוסכת הדפסה חוזרת.</p>
+  </div>
+
+  <footer class="pf"><span>מידות מדיה · מדריך לסטודנטים</span><span class="n">10</span></footer>
+</section>
+
+<section class="dl-end">
+  <p>רוצים את המדריך אצלכם במחשב, להדפסה או לשיתוף עם הכיתה?</p>
+  <a class="dl-btn" href="midot-media.pdf" download="מידות מדיה - מדריך לסטודנטים.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg><span>הורדת המדריך ב-PDF</span> <span class="sz">1.8 MB</span></a>
+  <p class="links"><a href="../../blog.html">חזרה לבלוג</a> · <a href="../../index.html">לאתר של מישה</a></p>
+</section>
+
+<script>
+function toggleTheme() {
+  var root = document.documentElement;
+  var light = root.getAttribute("data-theme") === "light";
+  if (light) root.removeAttribute("data-theme"); else root.setAttribute("data-theme", "light");
+  try { localStorage.setItem("theme", light ? "dark" : "light"); } catch (e) {}
+  syncIcon();
+}
+function syncIcon() {
+  var b = document.querySelector(".theme-toggle");
+  if (b) b.textContent = document.documentElement.getAttribute("data-theme") === "light" ? "☾" : "☀";
+}
+syncIcon();
+</script>
+<script>
+/* on narrow screens, shrink the A4 pages to fit the width */
+(function () {
+  function fit() {
+    var w = document.documentElement.clientWidth, page = 793.7 + 16;
+    var z = w < page ? (w - 16) / 793.7 : 1;
+    document.querySelectorAll(".page").forEach(function (p) { p.style.zoom = z === 1 ? "" : z; });
+  }
+  fit(); addEventListener("resize", fit);
+})();
+</script>
+</body>
+</html>
