@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>סטוריבורד מהיר | כלים | מישה קרץ'</title>
+<meta name="description" content="כלי חינמי שמסדר הרבה תמונות על לוח אחד ומייצא אותו כתמונה אחת ברזולוציה גבוהה. רץ בדפדפן, בלי העלאה לשרת.">
+<meta name="theme-color" content="#16181d">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<style>
+  :root{
+    --bg:#16181d; --panel:#1f2229; --panel2:#262a33; --line:#343945;
+    --text:#e8eaf0; --muted:#9aa1af; --accent:#4f8cff; --accent2:#3a6fd8;
+    --danger:#e05656;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{height:100%;}
+  body{
+    font-family:"Segoe UI", Arial, sans-serif;
+    background:var(--bg); color:var(--text);
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  header{
+    display:flex; align-items:center; gap:14px;
+    padding:10px 16px; background:var(--panel); border-bottom:1px solid var(--line);
+    flex:0 0 auto;
+  }
+  header h1{font-size:16px; font-weight:600;}
+  .back{color:var(--muted); font-size:13px; text-decoration:none; white-space:nowrap; padding:6px 10px; border:1px solid var(--line); border-radius:8px;}
+  .back:hover{color:var(--text); background:var(--panel2);}
+  header .hint{color:var(--muted); font-size:12px;}
+  header .spacer{flex:1;}
+  button{
+    font-family:inherit; font-size:13px; color:var(--text);
+    background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+    padding:7px 14px; cursor:pointer;
+  }
+  button:hover{background:#2e3340;}
+  button.primary{background:var(--accent); border-color:var(--accent); font-weight:600;}
+  button.primary:hover{background:var(--accent2);}
+  main{flex:1; display:flex; min-height:0;}
+
+  /* ---- side panel ---- */
+  aside{
+    width:320px; flex:0 0 auto; background:var(--panel);
+    border-inline-start:1px solid var(--line);
+    display:flex; flex-direction:column; min-height:0;
+  }
+  .controls{padding:8px 12px; border-bottom:1px solid var(--line); overflow:visible; flex:0 0 auto;}
+  .ctrl{margin-bottom:6px;}
+  .ctrl label{display:block; font-size:11px; color:var(--muted); margin-bottom:2px;}
+  .ctrl select, .ctrl input[type=number], .ctrl input[type=text]{
+    width:100%; background:var(--panel2); color:var(--text);
+    border:1px solid var(--line); border-radius:6px; padding:4px 7px; font-size:12px;
+    font-family:inherit;
+  }
+  .ctrl input[type=text]::placeholder{color:#727987;}
+  .ctrl .subrow{display:grid; grid-template-columns:minmax(0, 1fr) 78px; gap:6px; margin-top:4px;}
+  .ctrl .subrow label{margin:0;}
+  .ctrl .subrow span{display:block; font-size:9px; color:var(--muted); margin-bottom:1px;}
+  .ctrl .row{display:flex; gap:8px;}
+  .ctrl .row > *{flex:1;}
+  .ctrl input[type=range]{width:100%; accent-color:var(--accent);}
+  .ctrl .val{font-size:11px; color:var(--muted); float:left;}
+  .seg{display:flex; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .seg button{flex:1; border:none; border-radius:0; padding:4px; font-size:11px; background:var(--panel2);}
+  .seg button.on{background:var(--accent); color:#fff; font-weight:600;}
+  .colorbtns{display:flex; gap:6px; align-items:center;}
+  .colorbtns .sw{
+    width:23px; height:23px; border-radius:6px; border:2px solid var(--line); cursor:pointer; padding:0;
+  }
+  .colorbtns .sw.on{border-color:var(--accent);}
+  .colorbtns input[type=color]{width:30px; height:25px; border:none; background:none; cursor:pointer; padding:0;}
+
+  /* ---- image list ---- */
+  .listwrap{flex:1; display:flex; flex-direction:column; min-height:0;}
+  .listhead{
+    display:flex; align-items:center; padding:8px 14px; font-size:12px; color:var(--muted);
+    border-bottom:1px solid var(--line);
+  }
+  .listhead .spacer{flex:1;}
+  .listhead button{font-size:11px; padding:3px 8px;}
+  #list{flex:1; overflow-y:auto; padding:6px;}
+  .item{
+    display:flex; align-items:center; gap:8px;
+    background:var(--panel2); border:1px solid var(--line); border-radius:8px;
+    padding:5px 7px; margin-bottom:5px; cursor:grab;
+  }
+  .item.dragging{opacity:.35;}
+  .item .num{
+    flex:0 0 auto; min-width:20px; text-align:center; font-size:11px; color:var(--muted);
+  }
+  .item img{
+    width:46px; height:34px; object-fit:cover; border-radius:4px; flex:0 0 auto;
+    background:#000; pointer-events:none;
+  }
+  .item .meta{flex:1; min-width:0;}
+  .item input.nm{
+    width:100%; background:transparent; border:1px solid transparent; border-radius:4px;
+    color:var(--text); font-size:12.5px; padding:2px 4px; font-family:inherit;
+  }
+  .item input.nm:hover{border-color:var(--line);}
+  .item input.nm:focus{border-color:var(--accent); outline:none; background:var(--panel);}
+  .item .fn{font-size:10px; color:var(--muted); padding:0 4px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; direction:ltr; text-align:right;}
+  .item .del{
+    flex:0 0 auto; border:none; background:none; color:var(--muted); font-size:15px; padding:2px 6px; cursor:pointer;
+  }
+  .item .del:hover{color:var(--danger);}
+
+  /* ---- preview ---- */
+  #stage{
+    flex:1; display:flex; align-items:center; justify-content:center;
+    min-width:0; padding:18px; position:relative;
+  }
+  #preview{
+    max-width:100%; max-height:100%;
+    box-shadow:0 4px 30px rgba(0,0,0,.5); border-radius:4px;
+  }
+  #empty{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:10px; color:var(--muted);
+    pointer-events:none; text-align:center;
+  }
+  #empty .big{font-size:22px; color:var(--text);}
+  #empty .icon{font-size:52px;}
+  body.dragover::after{
+    content:"שחרר כאן את התמונות";
+    position:fixed; inset:0; background:rgba(79,140,255,.18);
+    border:3px dashed var(--accent); border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:28px; color:#fff; z-index:99; pointer-events:none;
+  }
+  #busy{
+    position:fixed; bottom:14px; inset-inline-start:14px; background:var(--panel2);
+    border:1px solid var(--line); border-radius:8px; padding:8px 14px; font-size:13px;
+    display:none; z-index:50;
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="back" href="../../tools.html" data-back>→ לכל הכלים</a>
+  <h1>🎬 סטוריבורד מהיר</h1>
+  <span class="hint">גרור תמונות לכל מקום בחלון, או הדבק (Ctrl+V)</span>
+  <span class="spacer"></span>
+  <button id="addBtn">➕ הוסף תמונות</button>
+  <button id="exportBtn" class="primary">⬇️ ייצוא JPEG</button>
+</header>
+
+<main>
+  <div id="stage">
+    <canvas id="preview"></canvas>
+    <div id="empty">
+      <div class="icon">🖼️</div>
+      <div class="big">גרור לכאן תמונות</div>
+      <div>או לחץ על "הוסף תמונות" למעלה · אפשר גם להדביק עם Ctrl+V</div>
+    </div>
+  </div>
+
+  <aside>
+    <div class="controls">
+      <div class="ctrl">
+        <label>גודל קנבס</label>
+        <select id="canvasPreset">
+          <option value="7680x4320">‎8K רוחבי — 7680×4320</option>
+          <option value="4320x7680">‎8K אנכי — 4320×7680</option>
+          <option value="4320x4320">‎8K ריבוע — 4320×4320</option>
+          <option value="3840x2160" selected>‎4K רוחבי — 3840×2160</option>
+          <option value="2160x3840">‎4K אנכי — 2160×3840</option>
+          <option value="2160x2160">ריבוע — 2160×2160</option>
+          <option value="1920x1080">‎Full HD — 1920×1080</option>
+          <option value="custom">מותאם אישית…</option>
+        </select>
+        <div class="row" id="customSize" style="display:none; margin-top:6px;">
+          <input type="number" id="cw" value="3840" min="200" max="16000" title="רוחב">
+          <input type="number" id="ch" value="2160" min="200" max="16000" title="גובה">
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label for="titleText">כותרת</label>
+        <input type="text" id="titleText" placeholder="הקלד כותרת…">
+        <div class="subrow">
+          <label><span>גופן</span><select id="titleFont" class="font-select"></select></label>
+          <label><span>גודל</span><input type="number" id="titleSize" min="20" max="500" value="160"></label>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label for="subtitleText">כותרת משנה</label>
+        <input type="text" id="subtitleText" placeholder="הקלד כותרת משנה…">
+        <div class="subrow">
+          <label><span>גופן</span><select id="subtitleFont" class="font-select"></select></label>
+          <label><span>גודל</span><input type="number" id="subtitleSize" min="12" max="350" value="82"></label>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>שם ליד כל תמונה</label>
+        <div class="seg" id="nameSeg">
+          <button data-v="none">בלי שם</button>
+          <button data-v="file" class="on">שם הקובץ</button>
+          <button data-v="custom">שם שלי</button>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>מספור</label>
+        <div class="seg" id="numSeg">
+          <button data-v="none" class="on">בלי</button>
+          <button data-v="digits">1 2 3</button>
+          <button data-v="letters">A B C</button>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>עיצוב שמות התמונות</label>
+        <div class="subrow" style="margin-top:0;">
+          <label><span>גופן</span><select id="nameFont" class="font-select"></select></label>
+          <label><span>גודל</span><input type="number" id="nameSize" min="10" max="250" value="54"></label>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>עיצוב המספור</label>
+        <div class="subrow" style="margin-top:0;">
+          <label><span>גופן</span><select id="numFont" class="font-select"></select></label>
+          <label><span>גודל</span><input type="number" id="numSize" min="10" max="250" value="54"></label>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>עמודות</label>
+        <select id="colsSel">
+          <option value="0" selected>אוטומטי</option>
+          <option value="1">1</option><option value="2">2</option>
+          <option value="3">3</option><option value="4">4</option>
+          <option value="5">5</option><option value="6">6</option>
+          <option value="7">7</option><option value="8">8</option>
+        </select>
+      </div>
+
+      <div class="ctrl">
+        <label>רקע</label>
+        <div class="colorbtns" id="bgBtns">
+          <button class="sw" data-c="#ffffff" style="background:#fff;" title="לבן"></button>
+          <button class="sw on" data-c="#111111" style="background:#111;" title="שחור"></button>
+          <button class="sw" data-c="#808080" style="background:#808080;" title="אפור"></button>
+          <input type="color" id="bgPick" value="#111111" title="צבע חופשי">
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <label>רווח בין תמונות <span class="val" id="spacingVal">20</span></label>
+        <input type="range" id="spacing" min="0" max="120" value="20">
+      </div>
+
+      <div class="ctrl">
+        <label>איכות JPEG <span class="val" id="qVal">90</span></label>
+        <input type="range" id="quality" min="50" max="100" value="90">
+      </div>
+
+      <div class="ctrl">
+        <label>רזולוציית ייבוא (צד ארוך מקסימלי לכל תמונה)</label>
+        <select id="importRes">
+          <option value="4096" selected>אוטומטי — עד 4096 (מומלץ)</option>
+          <option value="8192">‎עד 8192 — מומלץ לקנבס 8K</option>
+          <option value="0">מקורי — בלי הקטנה</option>
+          <option value="2048">עד 2048 — חוסך זיכרון</option>
+          <option value="1024">עד 1024 — טיוטה מהירה</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="listwrap">
+      <div class="listhead">
+        <span id="count">0 תמונות</span>
+        <span class="spacer"></span>
+        <button id="clearBtn">🗑️ נקה הכל</button>
+      </div>
+      <div id="list"></div>
+    </div>
+  </aside>
+</main>
+
+<div id="busy"></div>
+<input type="file" id="fileInput" accept="image/*" multiple style="display:none">
+
+<script>
+'use strict';
+
+/* ---------------- state ---------------- */
+const state = {
+  images: [],          // {id, fileName, name, bitmap, w, h, thumbURL}
+  canvasW: 3840, canvasH: 2160,
+  nameMode: 'file',    // none | file | custom
+  numMode: 'none',     // none | digits | letters
+  cols: 0,             // 0 = auto
+  bg: '#111111',
+  spacing: 20,
+  title: '', subtitle: '',
+  titleFont: 'Segoe UI', subtitleFont: 'Segoe UI',
+  nameFont: 'Segoe UI', numFont: 'Segoe UI',
+  titleSize: 160, subtitleSize: 82,
+  nameSize: 54, numSize: 54,
+  quality: 0.9,
+  importMax: 4096,
+};
+let nextId = 1;
+
+const $ = id => document.getElementById(id);
+const previewCanvas = $('preview');
+
+/* ---------------- import ---------------- */
+async function addFiles(fileList){
+  const files = [...fileList].filter(f => f.type.startsWith('image/') || /\.(png|jpe?g|webp|gif|bmp|avif)$/i.test(f.name));
+  if (!files.length) return;
+  const busy = $('busy');
+  busy.style.display = 'block';
+  let done = 0;
+  for (const f of files){
+    busy.textContent = `טוען תמונות… ${++done} מתוך ${files.length}`;
+    try {
+      const img = await loadOne(f);
+      state.images.push(img);
+    } catch(e){
+      console.error('failed to load', f.name, e);
+    }
+    renderList(); render();
+  }
+  busy.style.display = 'none';
+}
+
+async function loadOne(file){
+  let bmp = await createImageBitmap(file).catch(async () => {
+    // fallback for formats createImageBitmap dislikes
+    const url = URL.createObjectURL(file);
+    try {
+      const el = await new Promise((res, rej) => {
+        const i = new Image();
+        i.onload = () => res(i); i.onerror = rej; i.src = url;
+      });
+      return await createImageBitmap(el);
+    } finally { URL.revokeObjectURL(url); }
+  });
+  const max = state.importMax;
+  if (max > 0 && Math.max(bmp.width, bmp.height) > max){
+    const k = max / Math.max(bmp.width, bmp.height);
+    const w = Math.round(bmp.width * k), h = Math.round(bmp.height * k);
+    const off = document.createElement('canvas');
+    off.width = w; off.height = h;
+    off.getContext('2d').drawImage(bmp, 0, 0, w, h);
+    bmp.close();
+    bmp = await createImageBitmap(off);
+  }
+  // thumbnail for the side list
+  const tw = 92, th = Math.max(1, Math.round(tw * bmp.height / bmp.width));
+  const tc = document.createElement('canvas');
+  tc.width = tw; tc.height = th;
+  tc.getContext('2d').drawImage(bmp, 0, 0, tw, th);
+  const thumbURL = tc.toDataURL('image/jpeg', 0.7);
+  const base = file.name.replace(/\.[^.]+$/, '');
+  return { id: nextId++, fileName: base, name: base, bitmap: bmp, w: bmp.width, h: bmp.height, thumbURL };
+}
+
+/* ---------------- layout + draw ---------------- */
+function labelParts(i){
+  const img = state.images[i];
+  let number = '';
+  let name = '';
+  if (state.numMode === 'digits') number = String(i + 1);
+  if (state.numMode === 'letters') number = toLetters(i);
+  if (state.nameMode === 'file') name = img.fileName;
+  if (state.nameMode === 'custom') name = img.name;
+  return { number, name };
+}
+function toLetters(i){
+  let s = '';
+  i++;
+  while (i > 0){ i--; s = String.fromCharCode(65 + (i % 26)) + s; i = Math.floor(i / 26); }
+  return s;
+}
+
+function computeLayout(W, H){
+  const n = state.images.length;
+  if (!n) return null;
+  const s = state.spacing;
+  const sizeScale = Math.min(W, H) / 2160;
+  const namePx = Math.max(8, Math.round(state.nameSize * sizeScale));
+  const numPx = Math.max(8, Math.round(state.numSize * sizeScale));
+  const titlePx = Math.max(10, Math.round(state.titleSize * sizeScale));
+  const subtitlePx = Math.max(8, Math.round(state.subtitleSize * sizeScale));
+  const hasLabels = state.nameMode !== 'none' || state.numMode !== 'none';
+  const labelH = hasLabels ? Math.round(Math.max(
+    state.nameMode !== 'none' ? namePx : 0,
+    state.numMode !== 'none' ? numPx : 0
+  ) * 1.65) : 0;
+  let headerH = 0;
+  if (state.title.trim()) headerH += Math.round(titlePx * 1.25);
+  if (state.subtitle.trim()) headerH += Math.round(subtitlePx * 1.35);
+  if (headerH) headerH += Math.max(s, Math.round(18 * sizeScale));
+  const gridH = H - headerH;
+
+  let best = null;
+  const maxC = state.cols > 0 ? state.cols : n;
+  const minC = state.cols > 0 ? state.cols : 1;
+  for (let c = minC; c <= maxC; c++){
+    const rows = Math.ceil(n / c);
+    const cellW = (W - s * (c + 1)) / c;
+    const cellH = (gridH - s * (rows + 1)) / rows - labelH;
+    if (cellW <= 4 || cellH <= 4) continue;
+    let score = 0;
+    for (const img of state.images){
+      const k = Math.min(cellW / img.w, cellH / img.h);
+      score += (k * img.w) * (k * img.h);
+    }
+    if (!best || score > best.score) best = { c, rows, cellW, cellH, score };
+  }
+  if (!best) return null;
+  return { ...best, s, labelH, namePx, numPx, titlePx, subtitlePx, headerH };
+}
+
+function fontSpec(size, family){
+  return `${size}px "${family}", "Segoe UI", Arial, sans-serif`;
+}
+
+function fitText(ctx, text, maxWidth){
+  if (ctx.measureText(text).width <= maxWidth) return text;
+  let result = text;
+  while (result.length > 1 && ctx.measureText(result + '…').width > maxWidth) result = result.slice(0, -1);
+  return result.length ? result + '…' : '';
+}
+
+function drawHeading(ctx, W, L){
+  if (!L.headerH) return;
+  const color = textColorForBackground();
+  let y = Math.max(L.s, Math.round(10 * Math.min(W, state.canvasH) / 2160));
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  ctx.direction = 'rtl';
+  if (state.title.trim()){
+    ctx.font = fontSpec(L.titlePx, state.titleFont);
+    ctx.fillText(fitText(ctx, state.title.trim(), W - L.s * 2), W / 2, y, W - L.s * 2);
+    y += Math.round(L.titlePx * 1.25);
+  }
+  if (state.subtitle.trim()){
+    ctx.font = fontSpec(L.subtitlePx, state.subtitleFont);
+    ctx.globalAlpha = 0.82;
+    ctx.fillText(fitText(ctx, state.subtitle.trim(), W - L.s * 2), W / 2, y, W - L.s * 2);
+    ctx.globalAlpha = 1;
+  }
+}
+
+function textColorForBackground(){
+  const rgb = state.bg.match(/\w\w/g).map(x => parseInt(x, 16));
+  const lum = 0.299 * rgb[0] + 0.587 * rgb[1] + 0.114 * rgb[2];
+  return lum > 140 ? '#222222' : '#f2f2f2';
+}
+
+function drawLabel(ctx, x, y, width, L, i){
+  const { number, name } = labelParts(i);
+  if (!number && !name) return;
+  const gap = number && name ? Math.max(8, Math.round(L.numPx * 0.35)) : 0;
+  ctx.font = fontSpec(L.numPx, state.numFont);
+  const numberW = number ? ctx.measureText(number).width : 0;
+  const maxNameW = Math.max(0, width - numberW - gap);
+  ctx.font = fontSpec(L.namePx, state.nameFont);
+  const fittedName = name ? fitText(ctx, name, maxNameW) : '';
+  const nameW = fittedName ? ctx.measureText(fittedName).width : 0;
+  const totalW = numberW + gap + nameW;
+  let cursor = x + (width - totalW) / 2;
+  const baseline = y + L.labelH * 0.52;
+  ctx.textBaseline = 'middle';
+  if (number){
+    ctx.font = fontSpec(L.numPx, state.numFont);
+    ctx.direction = 'ltr';
+    ctx.textAlign = 'left';
+    ctx.fillText(number, cursor, baseline);
+    cursor += numberW + gap;
+  }
+  if (fittedName){
+    ctx.font = fontSpec(L.namePx, state.nameFont);
+    const isRtl = /[\u0590-\u08ff]/.test(fittedName);
+    ctx.direction = isRtl ? 'rtl' : 'ltr';
+    ctx.textAlign = isRtl ? 'right' : 'left';
+    ctx.fillText(fittedName, isRtl ? cursor + nameW : cursor, baseline, maxNameW);
+  }
+}
+
+function draw(ctx, W, H){
+  ctx.fillStyle = state.bg;
+  ctx.fillRect(0, 0, W, H);
+  const L = computeLayout(W, H);
+  if (!L) return;
+  const { c, cellW, cellH, s, labelH, headerH } = L;
+  const n = state.images.length;
+
+  drawHeading(ctx, W, L);
+  ctx.fillStyle = textColorForBackground();
+
+  for (let i = 0; i < n; i++){
+    const row = Math.floor(i / c), col = i % c;
+    const inRow = Math.min(c, n - row * c);
+    const x0 = (W - (inRow * cellW + (inRow - 1) * s)) / 2;
+    const x = x0 + col * (cellW + s);
+    const y = headerH + s + row * (cellH + labelH + s);
+    const img = state.images[i];
+    const k = Math.min(cellW / img.w, cellH / img.h);
+    const dw = img.w * k, dh = img.h * k;
+    ctx.drawImage(img.bitmap, x + (cellW - dw) / 2, y + (cellH - dh) / 2, dw, dh);
+    if (labelH > 0){
+      ctx.save();
+      drawLabel(ctx, x, y + cellH, cellW, L, i);
+      ctx.restore();
+    }
+  }
+}
+
+function render(){
+  $('empty').style.display = state.images.length ? 'none' : 'flex';
+  const stage = $('stage');
+  const availW = stage.clientWidth - 36, availH = stage.clientHeight - 36;
+  const k = Math.min(availW / state.canvasW, availH / state.canvasH, 1);
+  const pw = Math.max(1, Math.round(state.canvasW * k));
+  const ph = Math.max(1, Math.round(state.canvasH * k));
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  previewCanvas.width = Math.round(pw * dpr);
+  previewCanvas.height = Math.round(ph * dpr);
+  previewCanvas.style.width = pw + 'px';
+  previewCanvas.style.height = ph + 'px';
+  const ctx = previewCanvas.getContext('2d');
+  ctx.setTransform(pw * dpr / state.canvasW, 0, 0, ph * dpr / state.canvasH, 0, 0);
+  ctx.imageSmoothingQuality = 'high';
+  draw(ctx, state.canvasW, state.canvasH);
+}
+
+/* ---------------- export ---------------- */
+async function exportJPEG(){
+  if (!state.images.length) return;
+  const busy = $('busy');
+  busy.textContent = 'מייצא…';
+  busy.style.display = 'block';
+  await new Promise(r => setTimeout(r, 30)); // let the UI show the message
+  const off = document.createElement('canvas');
+  off.width = state.canvasW; off.height = state.canvasH;
+  const ctx = off.getContext('2d');
+  ctx.imageSmoothingQuality = 'high';
+  draw(ctx, state.canvasW, state.canvasH);
+  off.toBlob(blob => {
+    const d = new Date();
+    const p = x => String(x).padStart(2, '0');
+    const name = `storyboard_${p(d.getDate())}.${p(d.getMonth() + 1)}.${d.getFullYear()}_${p(d.getHours())}-${p(d.getMinutes())}.jpg`;
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+    busy.style.display = 'none';
+  }, 'image/jpeg', state.quality);
+}
+
+/* ---------------- side list ---------------- */
+function renderList(){
+  const list = $('list');
+  list.innerHTML = '';
+  $('count').textContent = state.images.length + ' תמונות';
+  state.images.forEach((img, i) => {
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.draggable = true;
+    el.dataset.idx = i;
+    el.innerHTML = `
+      <span class="num">${i + 1}</span>
+      <img src="${img.thumbURL}" alt="">
+      <div class="meta">
+        <input class="nm" value="${escapeHtml(img.name)}" title="שם מותאם (מוצג במצב ״שם שלי״)">
+        <div class="fn" title="${escapeHtml(img.fileName)}">${escapeHtml(img.fileName)}</div>
+      </div>
+      <button class="del" title="הסר">✕</button>`;
+    el.querySelector('.nm').addEventListener('input', e => { img.name = e.target.value; render(); });
+    el.querySelector('.nm').addEventListener('mousedown', e => e.stopPropagation());
+    el.querySelector('.nm').addEventListener('dragstart', e => e.preventDefault());
+    el.querySelector('.del').addEventListener('click', () => {
+      img.bitmap.close?.();
+      state.images.splice(i, 1);
+      renderList(); render();
+    });
+    el.addEventListener('dragstart', e => {
+      dragIdx = i;
+      el.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', String(i)); // required by some browsers
+    });
+    el.addEventListener('dragend', () => { el.classList.remove('dragging'); dragIdx = -1; });
+    el.addEventListener('dragover', e => {
+      if (dragIdx < 0) return;
+      e.preventDefault();
+      const r = el.getBoundingClientRect();
+      const after = e.clientY > r.top + r.height / 2;
+      let to = i + (after ? 1 : 0);
+      if (to === dragIdx || to === dragIdx + 1) return;
+      const [moved] = state.images.splice(dragIdx, 1);
+      if (to > dragIdx) to--;
+      state.images.splice(to, 0, moved);
+      dragIdx = to;
+      renderList(); render();
+      // keep dragging class on the moved element after re-render
+      const nd = list.querySelector(`[data-idx="${to}"]`);
+      if (nd) nd.classList.add('dragging');
+    });
+    list.appendChild(el);
+  });
+}
+let dragIdx = -1;
+function escapeHtml(s){ return s.replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+
+/* ---------------- wiring ---------------- */
+$('addBtn').addEventListener('click', () => $('fileInput').click());
+$('fileInput').addEventListener('change', e => { addFiles(e.target.files); e.target.value = ''; });
+$('exportBtn').addEventListener('click', exportJPEG);
+$('clearBtn').addEventListener('click', () => {
+  if (!state.images.length) return;
+  if (!confirm('לנקות את כל התמונות?')) return;
+  state.images.forEach(i => i.bitmap.close?.());
+  state.images = [];
+  renderList(); render();
+});
+
+$('canvasPreset').addEventListener('change', e => {
+  const v = e.target.value;
+  $('customSize').style.display = v === 'custom' ? 'flex' : 'none';
+  if (v !== 'custom'){
+    const [w, h] = v.split('x').map(Number);
+    state.canvasW = w; state.canvasH = h;
+    $('cw').value = w; $('ch').value = h;
+    render();
+  }
+});
+for (const id of ['cw', 'ch']){
+  $(id).addEventListener('input', () => {
+    const w = +$('cw').value, h = +$('ch').value;
+    if (w >= 200 && h >= 200 && w <= 16000 && h <= 16000){
+      state.canvasW = w; state.canvasH = h; render();
+    }
+  });
+}
+
+function segWire(id, key){
+  const seg = $(id);
+  seg.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    seg.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    state[key] = b.dataset.v;
+    render();
+  }));
+}
+segWire('nameSeg', 'nameMode');
+segWire('numSeg', 'numMode');
+
+const fontOptions = [
+  ['Segoe UI', 'Segoe UI'], ['Arial', 'Arial'], ['David', 'David'],
+  ['Narkisim', 'נרקיסים'], ['FrankRuehl', 'פרנק־ריהל'],
+  ['Times New Roman', 'Times New Roman'], ['Tahoma', 'Tahoma'],
+  ['Courier New', 'Courier New']
+];
+document.querySelectorAll('.font-select').forEach(select => {
+  fontOptions.forEach(([value, label]) => {
+    const option = document.createElement('option');
+    option.value = value; option.textContent = label;
+    option.style.fontFamily = value;
+    select.appendChild(option);
+  });
+});
+
+function wireText(id, key){
+  $(id).addEventListener('input', e => { state[key] = e.target.value; render(); });
+}
+function wireFont(id, key){
+  $(id).value = state[key];
+  $(id).addEventListener('change', e => { state[key] = e.target.value; render(); });
+}
+function wireSize(id, key){
+  $(id).addEventListener('input', e => {
+    const value = Number(e.target.value);
+    if (Number.isFinite(value) && value > 0){ state[key] = value; render(); }
+  });
+}
+wireText('titleText', 'title');
+wireText('subtitleText', 'subtitle');
+wireFont('titleFont', 'titleFont');
+wireFont('subtitleFont', 'subtitleFont');
+wireFont('nameFont', 'nameFont');
+wireFont('numFont', 'numFont');
+wireSize('titleSize', 'titleSize');
+wireSize('subtitleSize', 'subtitleSize');
+wireSize('nameSize', 'nameSize');
+wireSize('numSize', 'numSize');
+
+$('colsSel').addEventListener('change', e => { state.cols = +e.target.value; render(); });
+$('importRes').addEventListener('change', e => { state.importMax = +e.target.value; });
+
+const bgBtns = $('bgBtns');
+bgBtns.querySelectorAll('.sw').forEach(b => b.addEventListener('click', () => {
+  bgBtns.querySelectorAll('.sw').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  state.bg = b.dataset.c;
+  $('bgPick').value = b.dataset.c;
+  render();
+}));
+$('bgPick').addEventListener('input', e => {
+  bgBtns.querySelectorAll('.sw').forEach(x => x.classList.remove('on'));
+  state.bg = e.target.value;
+  render();
+});
+
+$('spacing').addEventListener('input', e => { state.spacing = +e.target.value; $('spacingVal').textContent = e.target.value; render(); });
+$('quality').addEventListener('input', e => { state.quality = e.target.value / 100; $('qVal').textContent = e.target.value; });
+
+/* drag & drop anywhere */
+let dragDepth = 0;
+window.addEventListener('dragenter', e => {
+  if (dragIdx >= 0) return; // internal reorder, not a file drop
+  if (![...e.dataTransfer.types].includes('Files')) return;
+  dragDepth++;
+  document.body.classList.add('dragover');
+});
+window.addEventListener('dragleave', () => {
+  if (dragIdx >= 0) return;
+  if (--dragDepth <= 0){ dragDepth = 0; document.body.classList.remove('dragover'); }
+});
+window.addEventListener('dragover', e => e.preventDefault());
+window.addEventListener('drop', e => {
+  e.preventDefault();
+  dragDepth = 0;
+  document.body.classList.remove('dragover');
+  if (dragIdx >= 0) return;
+  if (e.dataTransfer.files.length) addFiles(e.dataTransfer.files);
+});
+
+/* paste */
+window.addEventListener('paste', e => {
+  const files = [...(e.clipboardData?.files || [])];
+  if (files.length) addFiles(files);
+});
+
+window.addEventListener('resize', render);
+render();
+</script>
+<script>
+/* Tool cards open in a new tab. "Back" then closes this tab, so the visitor is back on the site tab
+   they came from; a visitor who arrived here directly (search, shared link) goes to the tools page instead. */
+document.querySelectorAll("[data-back]").forEach(function(a){a.addEventListener("click",function(e){
+  var fromSite=false;try{fromSite=new URL(document.referrer).origin===location.origin}catch(x){}
+  if(!fromSite)return;
+  e.preventDefault();window.close();setTimeout(function(){location.href=a.href},150);
+})});
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>FORMA | כלים | מישה קרץ'</title>
+<meta name="description" content="FORMA: כלי חינמי בעברית להקטנת תמונות, שינוי מידות, המרת קבצים ועריכת PDF. בלי הרשמה, הכל רץ במחשב שלכם.">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@400;500&display=swap">
+<!-- FORMA itself lives in its own repo (github.com/bigmisha87/FORMA-TOOL) and publishes to GitHub Pages
+     on every push. This page frames that live copy, so the site always shows the latest version. -->
+<style>
+  :root { color-scheme: dark; --bg: #0b0b0c; --line: #26262a; --ink: #f2f0ea; --muted: #9a978f; --rec: #ff3b2f; }
+  * { box-sizing: border-box; margin: 0; }
+  html, body { height: 100%; }
+  body { background: var(--bg); color: var(--ink); font-family: "IBM Plex Sans Hebrew", system-ui, sans-serif; display: flex; flex-direction: column; }
+  .bar { flex: 0 0 auto; display: flex; align-items: center; gap: 16px; padding: 10px clamp(12px, 2vw, 24px); border-bottom: 1px solid var(--line); font-size: 14px; }
+  .bar a { color: var(--muted); text-decoration: none; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; white-space: nowrap; transition: color .2s, border-color .2s; }
+  .bar a:hover, .bar a:focus-visible { color: var(--ink); border-color: var(--muted); }
+  .bar__name { font-weight: 500; }
+  .bar__name i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--rec); margin-inline-end: 8px; vertical-align: middle; }
+  .bar__sp { flex: 1; }
+  iframe { flex: 1; width: 100%; border: 0; background: #f5f5f5; }
+  @media (max-width: 560px) { .bar__open span { display: none; } }
+</style>
+</head>
+<body>
+<header class="bar">
+  <a href="../../tools.html" data-back>→ לכל הכלים</a>
+  <span class="bar__name"><i aria-hidden="true"></i>FORMA</span>
+  <span class="bar__sp"></span>
+  <a class="bar__open" href="https://bigmisha87.github.io/FORMA-TOOL/" target="_blank" rel="noopener"><span>פתיחה בחלון נפרד </span>↗</a>
+</header>
+<iframe src="https://bigmisha87.github.io/FORMA-TOOL/" title="FORMA: הקטנת תמונות, המרת קבצים ועריכת PDF" allow="clipboard-read; clipboard-write; fullscreen"></iframe>
+<script>
+/* Tool cards open in a new tab. "Back" then closes this tab, so the visitor is back on the site tab
+   they came from; a visitor who arrived here directly (search, shared link) goes to the tools page instead. */
+document.querySelectorAll("[data-back]").forEach(function(a){a.addEventListener("click",function(e){
+  var fromSite=false;try{fromSite=new URL(document.referrer).origin===location.origin}catch(x){}
+  if(!fromSite)return;
+  e.preventDefault();window.close();setTimeout(function(){location.href=a.href},150);
+})});
+</script>
+</body>
+</html>
