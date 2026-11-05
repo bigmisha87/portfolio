@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>איזה מודל AI לבחור | כלים | מישה קרץ'</title>
+<meta name="description" content="דפי עזר להורדה חינם: איזה מודל של ChatGPT ואיזה מודל של Claude לבחור לכל משימה. השוואה מהירה, פירמידת עוצמה ודוגמאות שימוש.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="איזה מודל AI לבחור ולמה">
+<meta property="og:description" content="ChatGPT ו־Claude: השוואה מהירה, פירמידת עוצמה ודוגמאות שימוש. להורדה חינם.">
+<meta property="og:image" content="https://www.misha.co.il/tools/ai-models/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../page.css?v=1">
+<script>try{if(localStorage.getItem("mg-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(24px, 4vw, 64px); }
+  .duo { position: relative; aspect-ratio: 1 / 0.92; margin-block: clamp(24px, 4vw, 60px); }
+  .duo img { position: absolute; top: 0; width: 58%; border-radius: 8px; box-shadow: var(--shadow); transition: transform .9s var(--ease-out); }
+  .duo img:nth-child(1) { inset-inline-start: 2%; transform: rotate(4deg); }
+  .duo img:nth-child(2) { inset-inline-end: 2%; top: 6%; transform: rotate(-4deg); }
+  .hero:hover .duo img:nth-child(1) { transform: rotate(6deg) translateX(3%); }
+  .hero:hover .duo img:nth-child(2) { transform: rotate(-6deg) translateX(-3%); }
+
+  .sheets { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(20px, 3vw, 48px); margin-top: clamp(20px, 3vw, 40px); }
+  .model { display: grid; gap: 18px; align-content: start; scroll-margin-top: 90px; }
+  .model__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 20px; padding-bottom: 16px; border-bottom: 2px solid var(--c); }
+  .model__name { font-family: var(--f-display); font-weight: 700; font-size: clamp(2.6rem, 1.6rem + 3.4vw, 5rem); line-height: 1; letter-spacing: normal; direction: ltr; }
+  .model__name i { display: inline-block; width: 0.3em; height: 0.3em; border-radius: 50%; background: var(--c); margin-inline-end: 0.22em; vertical-align: 0.12em; }
+  .model__sub { color: var(--muted); font-size: 0.95rem; }
+  .model__head .btn:hover { background: var(--c); border-color: var(--c); color: #fff; }
+  .sheet__btn { position: relative; display: block; padding: 0; border: 0; border-radius: var(--radius); overflow: hidden; background: #fff; cursor: zoom-in; box-shadow: var(--shadow); }
+  .sheet__btn img { width: 100%; aspect-ratio: 1000 / 1415; object-fit: cover; transition: scale .8s var(--ease-out); }
+  .sheet__btn::after { content: "הגדלה ⤢"; position: absolute; bottom: 12px; inset-inline-start: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(11, 11, 12, 0.85); color: #f2efe9; font-size: 0.82rem; opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s var(--ease-out); }
+  .sheet__btn:hover img { scale: 1.02; }
+  .sheet__btn:hover::after, .sheet__btn:focus-visible::after { opacity: 1; transform: none; }
+
+  /* the "how to pick fast" strip from the bottom of each sheet, as real text */
+  .pick { display: grid; gap: 8px; }
+  .pick h3 { font-size: 1rem; font-weight: 600; color: var(--muted); }
+  .pick ul { list-style: none; padding: 0; display: grid; gap: 6px; }
+  .pick li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); }
+  .pick li span { color: var(--ink); }
+  .pick li b { font-weight: 600; font-family: var(--f-text); direction: ltr; color: var(--c); white-space: nowrap; }
+  :root[data-theme="light"] .pick li b { filter: brightness(0.8); }
+
+  .note { margin-top: clamp(48px, 6vw, 80px); padding: clamp(20px, 3vw, 32px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); display: grid; gap: 8px; max-width: 760px; }
+  .note h2 { font-size: 1.15rem; font-weight: 600; }
+  .note p { color: var(--muted); }
+  @media (max-width: 960px) { .hero { grid-template-columns: 1fr; } .duo { width: min(100%, 520px); justify-self: center; margin-top: 0; } }
+  @media (max-width: 760px) { .sheets { grid-template-columns: 1fr; gap: 64px; } .sheet__btn::after { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+<header class="tp-bar">
+  <a class="tp-bar__back" href="../../tools.html" data-back>→ לכל הכלים</a>
+  <a class="tp-bar__brand" href="../../index.html">מישה קרץ'</a>
+  <span class="tp-bar__sp"></span>
+  <button class="tp-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+
+<main class="tp-wrap">
+  <div class="hero">
+    <section class="tp-hero">
+      <p class="tp-eyebrow">דפי עזר · להורדה חינם</p>
+      <h1 class="tp-title">איזה מודל<br>לבחור?</h1>
+      <p class="tp-lead">ב־ChatGPT וב־Claude יש כמה מודלים, ולא תמיד ברור מה ההבדל. בכל דף: <b>פירמידת עוצמה</b> מהכי חזק לכי קליל, <b>למה כל מודל טוב</b>, דוגמאות שימוש, ואיך לבחור מהר.</p>
+      <div class="chips" aria-label="דפים">
+        <a class="chip" href="#chatgpt" style="--c:#7b3fe4"><i></i>ChatGPT</a>
+        <a class="chip" href="#claude" style="--c:#d97757"><i></i>Claude</a>
+      </div>
+    </section>
+    <div class="duo" aria-hidden="true">
+      <img src="img/claude-1000.webp" alt="" width="1000" height="1414">
+      <img src="img/chatgpt-1000.webp" alt="" width="1000" height="1415">
+    </div>
+  </div>
+
+  <div class="sheets">
+    <section class="model" id="chatgpt" style="--c:#7b3fe4" aria-labelledby="h-gpt">
+      <header class="model__head">
+        <div>
+          <h2 class="model__name" id="h-gpt"><i aria-hidden="true"></i>ChatGPT</h2>
+          <p class="model__sub">חמשת המודלים של GPT-6, מ־Astra ועד Luna.</p>
+        </div>
+        <a class="btn" href="pdf/chatgpt-models.pdf" download="איזה מודל ChatGPT לבחור - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">A4</span></a>
+      </header>
+      <button class="sheet__btn" type="button" data-view="img/chatgpt.webp" data-alt="דף עזר: איזה מודל ChatGPT לבחור" data-pdf="pdf/chatgpt-models.pdf" data-pdf-name="איזה מודל ChatGPT לבחור - מישה קרץ.pdf"><img src="img/chatgpt-1000.webp" alt="דף עזר: איזה מודל ChatGPT לבחור ולמה, עם פירמידת עוצמה, כרטיס לכל מודל ודוגמאות שימוש" width="1000" height="1415" loading="lazy" decoding="async"></button>
+      <div class="pick">
+        <h3>איך לבחור מהר</h3>
+        <ul>
+          <li><span>צריך את הכי חזק?</span><b>GPT-6 Astra</b></li>
+          <li><span>צריך איזון מעולה?</span><b>GPT-6.1 Sol</b></li>
+          <li><span>צריך סדר ופרקטיקה?</span><b>GPT-6.1 Terra</b></li>
+          <li><span>צריך משהו כללי?</span><b>GPT-6 Sol</b></li>
+          <li><span>צריך קליל ומהיר?</span><b>GPT-6 Luna</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="model" id="claude" style="--c:#d97757" aria-labelledby="h-claude">
+      <header class="model__head">
+        <div>
+          <h2 class="model__name" id="h-claude"><i aria-hidden="true"></i>Claude</h2>
+          <p class="model__sub">ארבעת המודלים, מ־Fable ועד Haiku.</p>
+        </div>
+        <a class="btn" href="pdf/claude-models.pdf" download="איזה מודל Claude לבחור - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">A4</span></a>
+      </header>
+      <button class="sheet__btn" type="button" data-view="img/claude.webp" data-alt="דף עזר: איזה מודל Claude לבחור" data-pdf="pdf/claude-models.pdf" data-pdf-name="איזה מודל Claude לבחור - מישה קרץ.pdf"><img src="img/claude-1000.webp" alt="דף עזר: איזה מודל Claude לבחור ולמה, עם פירמידת עוצמה, כרטיס לכל מודל ודוגמאות שימוש" width="1000" height="1414" loading="lazy" decoding="async"></button>
+      <div class="pick">
+        <h3>איך לבחור מהר</h3>
+        <ul>
+          <li><span>צריך את הכי חזק?</span><b>Fable 5.1</b></li>
+          <li><span>צריך עומק מקצועי?</span><b>Opus 5.5</b></li>
+          <li><span>צריך איזון מעולה?</span><b>Sonnet 5.5</b></li>
+          <li><span>צריך קליל ומהיר?</span><b>Haiku 5.5</b></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <aside class="note">
+    <h2>טיפ</h2>
+    <p>אפשר להחליף מודל באמצע שיחה, בלי להתחיל מחדש. מתחילים עם מודל קליל לרעיונות, ועוברים לחזק יותר כשצריך לדייק.</p>
+  </aside>
+</main>
+
+<footer class="tp-foot">
+  <span>דפי העזר חינמיים לשימוש אישי ולימודי.</span>
+  <a href="../../tools.html">עוד כלים והורדות ←</a>
+</footer>
+
+<script src="../page.js?v=1"></script>
+</body>
+</html>

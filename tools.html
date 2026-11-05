@@ -17,8 +17,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
-<link rel="stylesheet" href="assets/css/site.css?v=28">
+<link rel="stylesheet" href="assets/css/site.css?v=29">
 <script>(function(h){h.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)h.classList.add('motion');try{if(sessionStorage.getItem('mg-curtain')){h.classList.add('curtain-in');setTimeout(function(){h.classList.remove('curtain-in')},2600)}}catch(e){}})(document.documentElement)</script>
+<style>
+  .tools-jump { max-width: 1600px; margin: calc(clamp(28px, 4vw, 56px) * -0.4) auto clamp(36px, 5vw, 64px); display: flex; flex-wrap: wrap; gap: 8px; }
+  .tools-sec { max-width: 1600px; margin: 0 auto; scroll-margin-top: calc(var(--hdr) + 20px); }
+  .tools-sec + .tools-sec { margin-top: clamp(64px, 8vw, 120px); }
+  .tools-sec__title { font-family: var(--f-display); font-weight: 700; font-size: var(--t-l); line-height: 1.05; padding-bottom: 14px; margin-bottom: clamp(20px, 3vw, 36px); border-bottom: 1px solid var(--line); }
+  .tools-sec__lead { color: var(--muted); max-width: 60ch; margin: calc(clamp(20px, 3vw, 36px) * -0.5) 0 clamp(20px, 3vw, 36px); }
+  .post-card__cover { position: relative; }
+  .dl-card .post-card__cover { background: #fff; }
+  .dl-card__badge { position: absolute; bottom: 10px; inset-inline-start: 10px; padding: 5px 12px; border-radius: 999px; background: rgba(11, 11, 12, 0.86); color: var(--ink); font-size: var(--t-xs); }
+  .dl-card .post-card__meta .mono { font-size: var(--t-xs); }
+</style>
 </head>
 <body data-page="tools">
 <a class="skip" href="#main">דלגו לתוכן</a>
@@ -52,50 +63,148 @@
   <article class="blog tools">
     <header class="blog-head">
       <h1 class="blog-head__title display">כלים</h1>
-      <p class="blog-head__lead">כלים, אפליקציות ותוספים שבניתי בשביל העבודה שלי, ועכשיו פתוחים לכולם. רובם חינמיים ורצים ישר בדפדפן, בלי הרשמה.</p>
+      <p class="blog-head__lead">כלים, משחקים ודפי עזר שבניתי בשביל העבודה שלי ובשביל הסטודנטים שלי, ועכשיו פתוחים לכולם. רובם חינמיים ורצים ישר בדפדפן, בלי הרשמה.</p>
     </header>
-    <div class="blog-grid">
-      <a class="post-card" href="tools/storyboard/" target="_blank" rel="noopener">
+    <nav class="tools-jump" aria-label="חלקי העמוד">
+      <a class="tok" href="#work">כלים לעבודה</a>
+      <a class="tok" href="#learning">חומרי לימוד</a>
+    </nav>
+    <section class="tools-sec" id="work" aria-labelledby="sec-work">
+      <h2 class="tools-sec__title" id="sec-work">כלים לעבודה</h2>
+      <p class="tools-sec__lead">אפליקציות שרצות בדפדפן, סקריפטים ל־After Effects ותבניות בריף ללקוחות. כרטיס עם תווית "הורדה" מוריד את הקובץ.</p>
+      <div class="blog-grid">
+        <a class="post-card" href="tools/storyboard/" target="_blank" rel="noopener">
         <span class="post-card__cover"><img src="media/tools/storyboard.jpg" alt="סטוריבורד מהיר: שמונה תמונות מסודרות על לוח אחד עם כותרת ומספרים" loading="lazy" decoding="async" width="1200" height="750"></span>
         <span class="post-card__meta"><span class="post-card__tag">תמונות</span><span>קולאז' וסטוריבורד</span></span>
         <span class="post-card__title">סטוריבורד מהיר</span>
         <span class="post-card__excerpt">גוררים פנימה הרבה תמונות ומקבלים לוח אחד מסודר, עם כותרת, מספור ושמות. יוצא כתמונה אחת עד רזולוציית 8K.</span>
-      </a>
-      <a class="post-card" href="tools/forma/" target="_blank" rel="noopener">
+        </a>
+        <a class="post-card" href="tools/forma/" target="_blank" rel="noopener">
         <span class="post-card__cover"><img src="media/tools/forma.jpg" alt="FORMA: מסך הכלי להקטנת תמונות ועריכת PDF" loading="lazy" decoding="async" width="1200" height="750"></span>
         <span class="post-card__meta"><span class="post-card__tag">קבצים</span><span>תמונות ו־PDF</span></span>
         <span class="post-card__title">FORMA</span>
         <span class="post-card__excerpt">הקטנת תמונות למשקל שרוצים, שינוי מידות, המרה בין פורמטים, ואיחוד, פיצול ודחיסה של PDF.</span>
-      </a>
-      <a class="post-card" href="tools/prompt-catalog/" target="_blank" rel="noopener">
+        </a>
+        <a class="post-card" href="tools/prompt-catalog/" target="_blank" rel="noopener">
         <span class="post-card__cover"><img src="media/tools/prompt-catalog.jpg" alt="Prompt Catalog: רשת של תבניות וידאו עם תמונה לכל אחת" loading="lazy" decoding="async" width="1200" height="750"></span>
         <span class="post-card__meta"><span class="post-card__tag">AI</span><span>השראה לווידאו</span></span>
         <span class="post-card__title">Prompt Catalog</span>
         <span class="post-card__excerpt">549 תבניות לווידאו AI, לכל אחת סרטון לדוגמה ופרומפט מוכן להעתקה. מסודר לפי נושאים ולפי הפלטפורמה שממנה הגיעה התבנית.</span>
-      </a>
-      <a class="post-card" href="tools/real-talk/" target="_blank" rel="noopener">
+        </a>
+        <a class="post-card" href="tools/real-talk/" target="_blank" rel="noopener">
         <span class="post-card__cover"><img src="media/tools/real-talk.jpg" alt="Real Talk: קלף שאלה על רקע סגול כהה" loading="lazy" decoding="async" width="1200" height="750"></span>
         <span class="post-card__meta"><span class="post-card__tag">קלפים</span><span>שיחות</span></span>
         <span class="post-card__title">Real Talk</span>
         <span class="post-card__excerpt">264 קלפי שאלות לשיחות אמיתיות, בעברית, באנגלית או בשתיהן יחד. בוחרים סוג שיחה, מערבבים ושולפים קלף.</span>
-      </a>
-      <a class="post-card" href="tools/ultimate-align/" target="_blank" rel="noopener">
+        </a>
+        <a class="post-card" href="tools/ultimate-align/" target="_blank" rel="noopener">
         <span class="post-card__cover"><img src="media/tools/ultimate-align.jpg" alt="Ultimate Align: מסכי הפאנל מרחפים מעל רשת כחולה" loading="lazy" decoding="async" width="1200" height="750"></span>
         <span class="post-card__meta"><span class="post-card__tag">After Effects</span><span>תוסף בתשלום</span></span>
         <span class="post-card__title">Ultimate Align</span>
         <span class="post-card__excerpt">פאנל ל־After Effects שמיישר, מפזר ומשנה גודל של הרבה שכבות בבת אחת. במקום שלוש דקות, שלוש לחיצות.</span>
-      </a>
-    </div>
+        </a>
+        <a class="post-card dl-card" href="media/files/change-names-ui.zip" download="שינוי שמות שכבות.zip">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-01.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">After Effects</span><span>סקריפט</span><span class="mono">ZIP · 1KB</span></span>
+        <span class="post-card__title">שינוי שמות שכבות</span>
+        <span class="post-card__excerpt">חיפוש והחלפה בשמות של הרבה שכבות בבת אחת, והוספת מילה לפני או אחרי השם.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/align-midjourney-zoom.zip" download="יישור תמונות זום של Midjourney.zip">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-02.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">After Effects</span><span>סקריפט</span><span class="mono">ZIP · 2KB</span></span>
+        <span class="post-card__title">זום־אאוט מתמונות Midjourney</span>
+        <span class="post-card__excerpt">בונה קומפוזיציה שלמה מתמונות ה־Zoom Out: מגדירים גודל, כמות תמונות ומשך, והזום מוכן.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/logo-brief-template.docx" download="בריף לוגו - מישה קרץ.docx">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-03.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">בריף</span><span>תבנית Word</span><span class="mono">DOCX · 10MB</span></span>
+        <span class="post-card__title">בריף מיתוג ולוגו</span>
+        <span class="post-card__excerpt">שאלון לפגישה הראשונה עם לקוח: שם וסלוגן, מה החברה מוכרת, מה הסיפור שלה ועוד.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/website-brief-questionnaire.docx" download="שאלון בריף לאתר - מישה קרץ.docx">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-04.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">בריף</span><span>תבנית Word</span><span class="mono">DOCX · 22KB</span></span>
+        <span class="post-card__title">שאלון בריף לאתר</span>
+        <span class="post-card__excerpt">השאלות שכדאי לשאול לפני שמתחילים לעצב אתר או עמוד נחיתה.</span>
+        </a>
+      </div>
+    </section>
+    <section class="tools-sec" id="learning" aria-labelledby="sec-learn">
+      <h2 class="tools-sec__title" id="sec-learn">חומרי לימוד</h2>
+      <p class="tools-sec__lead">משחק, דפי עזר, רשימות ביקורת ומדריכים שהכנתי לסטודנטים שלי. חינם, להדפסה או לשמירה במחשב.</p>
+      <div class="blog-grid">
+        <a class="post-card" href="tools/pen-tool-game/" target="_blank" rel="noopener">
+        <span class="post-card__cover"><img src="media/tools/pen-tool-game.jpg" alt="משחק כלי העט: צורת ברווז עם נקודות וידיות" loading="lazy" decoding="async" width="1200" height="750"></span>
+        <span class="post-card__meta"><span class="post-card__tag">משחק</span><span>כלי העט</span></span>
+        <span class="post-card__title">משחק כלי העט</span>
+        <span class="post-card__excerpt">משחזרים צורות בעזרת נקודות וידיות, כמו באילוסטרייטור, ומקבלים ציון. מדריך של 9 שלבים, 2 משחקים ו־3 רמות קושי.</span>
+        </a>
+        <a class="post-card" href="tools/adobe-shortcuts/" target="_blank" rel="noopener">
+        <span class="post-card__cover"><img src="media/tools/adobe-shortcuts.jpg" alt="דפי קיצורי מקלדת של InDesign, Photoshop ו־Illustrator" loading="lazy" decoding="async" width="1200" height="750"></span>
+        <span class="post-card__meta"><span class="post-card__tag">דפי עזר</span><span>InDesign · Photoshop · Illustrator</span></span>
+        <span class="post-card__title">קיצורי מקלדת ל־Adobe</span>
+        <span class="post-card__excerpt">מקלדת עם הכלים וטבלאות קיצורים לפי נושא, לכל אחת משלוש התוכנות. להדפסה או לשמירה במחשב, PDF חינם.</span>
+        </a>
+        <a class="post-card" href="tools/ai-models/" target="_blank" rel="noopener">
+        <span class="post-card__cover"><img src="media/tools/ai-models.jpg" alt="דפי עזר: איזה מודל של ChatGPT ושל Claude לבחור" loading="lazy" decoding="async" width="1200" height="750"></span>
+        <span class="post-card__meta"><span class="post-card__tag">דפי עזר</span><span>ChatGPT · Claude</span></span>
+        <span class="post-card__title">איזה מודל AI לבחור?</span>
+        <span class="post-card__excerpt">פירמידת עוצמה, למה כל מודל טוב ודוגמאות שימוש, ל־ChatGPT ול־Claude. PDF חינם.</span>
+        </a>
+        <a class="post-card" href="tools/branding-checklist/" target="_blank" rel="noopener">
+          <span class="post-card__cover"><img src="media/tools/branding-checklist.jpg" alt="רשימת ביקורת לפרויקט מיתוג: סעיפים עם תיבות סימון" loading="lazy" decoding="async" width="1200" height="750"></span>
+          <span class="post-card__meta"><span class="post-card__tag">רשימת ביקורת</span><span>מיתוג</span></span>
+          <span class="post-card__title">פרויקט מיתוג: רשימת ביקורת</span>
+          <span class="post-card__excerpt">כל מה שצריך להיות בהגשה של פרויקט מיתוג, ב־11 חלקים. מסמנים תוך כדי עבודה, והסימונים נשמרים.</span>
+        </a>
+        <a class="post-card" href="tools/mac-screenshot/" target="_blank" rel="noopener">
+          <span class="post-card__cover"><img src="media/tools/mac-screenshot.jpg" alt="קיצורי מקלדת לצילום מסך ב־Mac, מצוירים כמקשים" loading="lazy" decoding="async" width="1200" height="750"></span>
+          <span class="post-card__meta"><span class="post-card__tag">מדריך</span><span>Mac</span></span>
+          <span class="post-card__title">צילום מסך ב־Mac</span>
+          <span class="post-card__excerpt">כל המסך, חלק ממנו, חלון מסוים או הקלטת מסך: כל הקיצורים במקום אחד, ואיפה הצילומים נשמרים.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/pen-tool.pdf" download="תרגיל כלי העט - מישה קרץ.pdf">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-09.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">מדריך</span><span>Illustrator</span><span class="mono">PDF · 1MB</span></span>
+        <span class="post-card__title">תרגיל כלי העט</span>
+        <span class="post-card__excerpt">נקודות, ידיות ופינות חדות, עם הקיצורים שצריך לזכור. הולך יד ביד עם המשחק.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/blend-modes.pdf" download="מצבי מיזוג - מישה קרץ.pdf">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-08.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">מדריך</span><span>Photoshop</span><span class="mono">PDF · 70KB</span></span>
+        <span class="post-card__title">מצבי מיזוג</span>
+        <span class="post-card__excerpt">כל ה־Blend Modes מחולקים לקבוצות, עם הסבר קצר מה כל קבוצה עושה.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/indesign-print-export.pdf" download="שמירה לדפוס מאינדיזיין - מישה קרץ.pdf">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-06.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">מדריך</span><span>InDesign</span><span class="mono">PDF · 80KB</span></span>
+        <span class="post-card__title">שמירה לדפוס מ־InDesign</span>
+        <span class="post-card__excerpt">מדריך קצר עם צילומי מסך: איך מוציאים PDF שבית הדפוס יקבל בלי שאלות.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/saving-files-for-client.pdf" download="הגשת לוגו ללקוח - מישה קרץ.pdf">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-07.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">מדריך</span><span>הגשה</span><span class="mono">PDF · 340KB</span></span>
+        <span class="post-card__title">הגשת לוגו ללקוח</span>
+        <span class="post-card__excerpt">אילו קבצים הלקוח צריך לקבל ולמה: וקטור, תמונה עם רקע ותמונה שקופה.</span>
+        </a>
+        <a class="post-card dl-card" href="media/files/punctuation.pdf" download="ניקוד במקלדת - מישה קרץ.pdf">
+        <span class="post-card__cover"><img src="media/tools/tips/tip-05.jpg" alt="" loading="lazy" decoding="async" width="800" height="500"><span class="dl-card__badge">הורדה ↓</span></span>
+        <span class="post-card__meta"><span class="post-card__tag">מדריך</span><span>טיפוגרפיה</span><span class="mono">PDF · 1MB</span></span>
+        <span class="post-card__title">ניקוד במקלדת</span>
+        <span class="post-card__excerpt">איך מקלידים ניקוד בעברית ב־Mac וב־Windows, עם טבלה של כל הסימנים.</span>
+        </a>
+      </div>
+    </section>
   </article>
 </main>
 
 <footer class="ftr" id="ftr"></footer>
 
-<script src="assets/js/content.js?v=13"></script>
+<script src="assets/js/content.js?v=14"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.4/dist/lenis.min.js" defer></script>
-<script src="assets/js/site.js?v=20" defer></script>
+<script src="assets/js/site.js?v=23" defer></script>
 </body>
 </html>

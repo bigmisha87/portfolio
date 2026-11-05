@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>קיצורי מקלדת ל־Adobe | כלים | מישה קרץ'</title>
+<meta name="description" content="דפי עזר להורדה חינם: קיצורי המקלדת החשובים של InDesign, Photoshop ו־Illustrator. מקלדת עם הכלים וטבלאות קיצורים לפי נושא, להדפסה או לשמירה במחשב.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="קיצורי מקלדת ל־Adobe: דפי עזר להורדה">
+<meta property="og:description" content="InDesign, Photoshop ו־Illustrator. מקלדת עם הכלים וטבלאות קיצורים לפי נושא, להדפסה או לשמירה במחשב.">
+<meta property="og:image" content="https://www.misha.co.il/media/tools/adobe-shortcuts.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../page.css?v=1">
+<script>try{if(localStorage.getItem("mg-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<style>
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: clamp(24px, 4vw, 64px); }
+  .fan { position: relative; aspect-ratio: 1400 / 1150; margin-block: clamp(24px, 4vw, 60px); }
+  .fan img { position: absolute; inset-inline: 0; width: 84%; margin-inline: auto; border-radius: 8px; box-shadow: var(--shadow); transform-origin: 50% 100%; transition: transform .9s var(--ease-out); }
+  .fan img:nth-child(1) { top: 0; transform: rotate(-7deg) translateX(-3%); }
+  .fan img:nth-child(2) { top: 8%; transform: rotate(4deg) translateX(5%); }
+  .fan img:nth-child(3) { top: 16%; transform: rotate(-1.5deg); }
+  .hero:hover .fan img:nth-child(1) { transform: rotate(-9deg) translateX(-6%); }
+  .hero:hover .fan img:nth-child(2) { transform: rotate(7deg) translateX(9%); }
+  .apps { position: sticky; top: 63px; z-index: 10; padding: 12px 0; background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  .dl-all { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; margin: clamp(8px, 2vw, 24px) 0 clamp(36px, 5vw, 64px); }
+  .dl-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 16px; padding: 18px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); text-decoration: none; transition: border-color .25s, transform .3s var(--ease-out); }
+  .dl-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+  .dl-card__icon { width: 46px; height: 46px; border-radius: 10px; display: grid; place-items: center; background: var(--card-2); }
+  .dl-card__icon svg { width: 22px; height: 22px; }
+  .dl-card b { display: block; font-weight: 600; }
+  .dl-card span { color: var(--muted); font-size: 0.9rem; }
+  .dl-card .mono { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+
+  .app { padding-top: clamp(40px, 6vw, 80px); scroll-margin-top: 120px; }
+  .app__head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px 24px; padding-bottom: 20px; margin-bottom: 24px; border-bottom: 2px solid var(--c); }
+  .app__name { font-family: var(--f-display); font-weight: 700; font-size: clamp(3rem, 1.6rem + 5vw, 6.5rem); line-height: 1; letter-spacing: normal; direction: ltr; }
+  .app__name i { display: inline-block; width: 0.32em; height: 0.32em; border-radius: 50%; background: var(--c); margin-inline-end: 0.22em; vertical-align: 0.12em; }
+  .app__sub { color: var(--muted); max-width: 40ch; }
+  .app__head .btn:hover { background: var(--c); border-color: var(--c); color: #fff; }
+  .sheets { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(14px, 1.6vw, 24px); }
+  .sheet { display: grid; gap: 10px; }
+  .sheet__btn { position: relative; display: block; padding: 0; border: 0; border-radius: var(--radius); overflow: hidden; background: #fff; cursor: zoom-in; box-shadow: var(--shadow); }
+  .sheet__btn img { width: 100%; aspect-ratio: 3041 / 2151; object-fit: cover; transition: scale .8s var(--ease-out); }
+  .sheet__btn::after { content: "הגדלה ⤢"; position: absolute; bottom: 12px; inset-inline-start: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(11, 11, 12, 0.85); color: #f2efe9; font-size: 0.82rem; opacity: 0; transform: translateY(6px); transition: opacity .3s, transform .3s var(--ease-out); }
+  .sheet__btn:hover img { scale: 1.02; }
+  .sheet__btn:hover::after, .sheet__btn:focus-visible::after { opacity: 1; transform: none; }
+  .sheet figcaption { color: var(--muted); font-size: 0.9rem; }
+  .note { margin-top: clamp(48px, 6vw, 80px); padding: clamp(20px, 3vw, 32px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); display: grid; gap: 8px; max-width: 760px; }
+  .note h2 { font-size: 1.15rem; font-weight: 600; }
+  .note p { color: var(--muted); }
+  .kbd { font-family: var(--f-mono); font-size: 0.85em; padding: 1px 7px; border: 1px solid var(--line); border-radius: 6px; background: var(--card-2); color: var(--ink); white-space: nowrap; }
+  @media (max-width: 960px) { .hero { grid-template-columns: 1fr; } .fan { width: min(100%, 560px); justify-self: center; margin-top: 0; } }
+  @media (max-width: 760px) {
+    .sheets { grid-template-columns: 1fr; }
+    .apps { top: 59px; }
+    .sheet__btn::after { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<header class="tp-bar">
+  <a class="tp-bar__back" href="../../tools.html" data-back>→ לכל הכלים</a>
+  <a class="tp-bar__brand" href="../../index.html">מישה קרץ'</a>
+  <span class="tp-bar__sp"></span>
+  <button class="tp-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+
+<main class="tp-wrap">
+  <div class="hero">
+  <section class="tp-hero">
+    <p class="tp-eyebrow">דפי עזר · להורדה חינם</p>
+    <h1 class="tp-title">קיצורי מקלדת<br>ל־Adobe</h1>
+    <p class="tp-lead">דפי העזר שהכנתי לסטודנטים שלי. לכל תוכנה שני עמודים: <b>מקלדת עם הכלים</b> שיושבים על כל מקש, ו<b>טבלאות קיצורים</b> לפי נושא. אפשר להדפיס, לתלות ליד המסך או לשמור במחשב.</p>
+  </section>
+  <div class="fan" aria-hidden="true">
+    <img src="img/illustrator-1-1400.webp" alt="" width="1400" height="990">
+    <img src="img/photoshop-1-1400.webp" alt="" width="1400" height="990">
+    <img src="img/indesign-1-1400.webp" alt="" width="1400" height="990">
+  </div>
+  </div>
+
+  <nav class="apps" aria-label="תוכנות">
+    <div class="chips">
+      <a class="chip" href="#indesign" style="--c:#ee3866"><i></i>InDesign</a>
+      <a class="chip" href="#photoshop" style="--c:#0082c9"><i></i>Photoshop</a>
+      <a class="chip" href="#illustrator" style="--c:#f89b1b"><i></i>Illustrator</a>
+    </div>
+  </nav>
+
+  <div class="dl-all">
+    <a class="dl-card" href="pdf/adobe-shortcuts-all.pdf" download="קיצורי מקלדת Adobe - מישה קרץ.pdf">
+      <span class="dl-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg></span>
+      <span><b>כל הדפים בקובץ אחד</b><span>שש עמודים, עמוד A4 לכל דף</span></span>
+      <span class="mono">PDF · 0.9MB</span>
+    </a>
+    <a class="dl-card" href="pdf/adobe-shortcuts-one-page.pdf" download="קיצורי מקלדת Adobe בעמוד אחד - מישה קרץ.pdf">
+      <span class="dl-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
+      <span><b>הכל בעמוד אחד</b><span>שלוש התוכנות על דף אחד, כמו פוסטר</span></span>
+      <span class="mono">PDF · 0.4MB</span>
+    </a>
+  </div>
+
+  <section class="app" id="indesign" style="--c:#ee3866" aria-labelledby="h-id">
+    <header class="app__head">
+      <div>
+        <h2 class="app__name" id="h-id"><i aria-hidden="true"></i>InDesign</h2>
+        <p class="app__sub">עבודה עם טקסט, יישור פסקה, חלונית הצבעים והיררכיה של אובייקטים.</p>
+      </div>
+      <a class="btn" href="pdf/indesign-shortcuts.pdf" download="קיצורי מקלדת InDesign - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">2 עמודים</span></a>
+    </header>
+    <div class="sheets">
+      <figure class="sheet">
+        <button class="sheet__btn" type="button" data-view="img/indesign-1.webp" data-alt="InDesign: מקלדת עם הכלים" data-pdf="pdf/indesign-shortcuts.pdf" data-pdf-name="קיצורי מקלדת InDesign - מישה קרץ.pdf"><img src="img/indesign-1-1400.webp" alt="דף עזר InDesign: מקלדת שעל כל מקש מצויר הכלי שלו" width="1400" height="990" loading="lazy" decoding="async"></button>
+        <figcaption>עמוד 1: המקלדת והכלים</figcaption>
+      </figure>
+      <figure class="sheet">
+        <button class="sheet__btn" type="button" data-view="img/indesign-2.webp" data-alt="InDesign: טבלאות קיצורים" data-pdf="pdf/indesign-shortcuts.pdf" data-pdf-name="קיצורי מקלדת InDesign - מישה קרץ.pdf"><img src="img/indesign-2-1400.webp" alt="דף עזר InDesign: טבלאות קיצורים לעיצוב טקסט, יישור פסקה וצבעים" width="1400" height="990" loading="lazy" decoding="async"></button>
+        <figcaption>עמוד 2: טבלאות קיצורים</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="app" id="photoshop" style="--c:#0082c9" aria-labelledby="h-ps">
+    <header class="app__head">
+      <div>
+        <h2 class="app__name" id="h-ps"><i aria-hidden="true"></i>Photoshop</h2>
+        <p class="app__sub">שקיפות במספרים, מסיכות, שכבות, מילוי מהיר ועבודה עם טקסט.</p>
+      </div>
+      <a class="btn" href="pdf/photoshop-shortcuts.pdf" download="קיצורי מקלדת Photoshop - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">2 עמודים</span></a>
+    </header>
+    <div class="sheets">
+      <figure class="sheet">
+        <button class="sheet__btn" type="button" data-view="img/photoshop-1.webp" data-alt="Photoshop: מקלדת עם הכלים" data-pdf="pdf/photoshop-shortcuts.pdf" data-pdf-name="קיצורי מקלדת Photoshop - מישה קרץ.pdf"><img src="img/photoshop-1-1400.webp" alt="דף עזר Photoshop: מקלדת שעל כל מקש מצויר הכלי שלו" width="1400" height="990" loading="lazy" decoding="async"></button>
+        <figcaption>עמוד 1: המקלדת והכלים</figcaption>
+      </figure>
+      <figure class="sheet">
+        <button class="sheet__btn" type="button" data-view="img/photoshop-2.webp" data-alt="Photoshop: טבלאות קיצורים" data-pdf="pdf/photoshop-shortcuts.pdf" data-pdf-name="קיצורי מקלדת Photoshop - מישה קרץ.pdf"><img src="img/photoshop-2-1400.webp" alt="דף עזר Photoshop: טבלאות קיצורים לטקסט, שכבות ובחירות" width="1400" height="990" loading="lazy" decoding="async"></button>
+        <figcaption>עמוד 2: טבלאות קיצורים</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="app" id="illustrator" style="--c:#f89b1b" aria-labelledby="h-ai">
+    <header class="app__head">
+      <div>
+        <h2 class="app__name" id="h-ai"><i aria-hidden="true"></i>Illustrator</h2>
+        <p class="app__sub">קבוצות, מסיכות, עיוות צורות, הנחיות ותצוגה, וכלי העט.</p>
+      </div>
+      <a class="btn" href="pdf/illustrator-shortcuts.pdf" download="קיצורי מקלדת Illustrator - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">2 עמודים</span></a>
+    </header>
+    <div class="sheets">
+      <figure class="sheet">
+        <button class="sheet__btn" type="button" data-view="img/illustrator-1.webp" data-alt="Illustrator: מקלדת עם הכלים" data-pdf="pdf/illustrator-shortcuts.pdf" data-pdf-name="קיצורי מקלדת Illustrator - מישה קרץ.pdf"><img src="img/illustrator-1-1400.webp" alt="דף עזר Illustrator: מקלדת שעל כל מקש מצויר הכלי שלו" width="1400" height="990" loading="lazy" decoding="async"></button>
+        <figcaption>עמוד 1: המקלדת והכלים</figcaption>
+      </figure>
+      <figure class="sheet">
+        <button class="sheet__btn" type="button" data-view="img/illustrator-2.webp" data-alt="Illustrator: טבלאות קיצורים" data-pdf="pdf/illustrator-shortcuts.pdf" data-pdf-name="קיצורי מקלדת Illustrator - מישה קרץ.pdf"><img src="img/illustrator-2-1400.webp" alt="דף עזר Illustrator: טבלאות קיצורים לקבוצות, מסיכות ותצוגה" width="1400" height="990" loading="lazy" decoding="async"></button>
+        <figcaption>עמוד 2: טבלאות קיצורים</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <aside class="note">
+    <h2>עובדים על PC?</h2>
+    <p>הדפים כתובים לפי מקלדת של Mac. ב־Windows מחליפים <span class="kbd">CMD</span> ב־<span class="kbd">Ctrl</span>, ו־<span class="kbd">OPT</span> ב־<span class="kbd">Alt</span>. כל השאר זהה.</p>
+  </aside>
+</main>
+
+<footer class="tp-foot">
+  <span>דפי העזר חינמיים לשימוש אישי ולימודי.</span>
+  <a href="../../tools.html">עוד כלים והורדות ←</a>
+</footer>
+
+<script src="../page.js?v=1"></script>
+</body>
+</html>

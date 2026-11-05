@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>איך מצלמים מסך ב־Mac | כלים | מישה קרץ'</title>
+<meta name="description" content="כל קיצורי המקלדת לצילום מסך ב־Mac: כל המסך, חלק מהמסך, חלון מסוים, סרגל הכלים והקלטת מסך. ואיפה הצילומים נשמרים.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="איך מצלמים מסך ב־Mac">
+<meta property="og:description" content="כל המסך, חלק, חלון, הקלטה: הקיצורים במקום אחד.">
+<meta property="og:image" content="https://www.misha.co.il/media/tools/mac-screenshot.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../page.css?v=1">
+<script>try{if(localStorage.getItem("mg-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<style>
+  :root { --key: #1d1d20; --key-edge: #2c2c31; --key-ink: #f2efe9; --sel: #4f8cff; }
+  :root[data-theme="light"] { --key: #ffffff; --key-edge: #d7d3cc; --key-ink: #141414; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); align-items: center; gap: clamp(24px, 4vw, 64px); }
+  .hero__keys { justify-self: center; display: flex; gap: clamp(8px, 1.2vw, 16px); direction: ltr; }
+  .hero__keys .key { width: clamp(64px, 7vw, 104px); height: clamp(64px, 7vw, 104px); font-size: clamp(1.4rem, 1rem + 1.4vw, 2.4rem); border-radius: 16px; }
+  .hero__keys .key small { font-size: 0.32em; }
+  .hero__keys .key--wide { width: clamp(110px, 12vw, 176px); }
+
+  /* a keyboard key */
+  .keys { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 8px; direction: ltr; }
+  .plus { color: var(--muted); font-family: var(--f-mono); }
+  .key { position: relative; display: inline-grid; place-items: center; align-content: center; gap: 2px; min-width: 52px; height: 52px; padding: 0 14px; border-radius: 10px; background: var(--key); color: var(--key-ink); border: 1px solid var(--key-edge); box-shadow: 0 3px 0 var(--key-edge), 0 8px 18px rgba(0, 0, 0, 0.25); font-family: var(--f-text); font-weight: 600; font-size: 1.15rem; line-height: 1; }
+  .key small { font-size: 0.62rem; font-weight: 400; color: var(--muted); letter-spacing: 0.02em; }
+  .key--num { font-family: var(--f-mono); font-size: 1.3rem; }
+  .key--hot { border-color: var(--accent); box-shadow: 0 3px 0 color-mix(in srgb, var(--accent) 70%, #000), 0 8px 22px color-mix(in srgb, var(--accent) 30%, transparent); }
+  .then { color: var(--muted); font-size: 0.9rem; margin-inline: 4px; }
+
+  .shots { display: grid; gap: 14px; margin-top: clamp(10px, 2vw, 24px); }
+  .shot { display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; align-items: center; gap: clamp(18px, 3vw, 40px); padding: clamp(18px, 2.4vw, 28px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+  .shot__art { width: 150px; aspect-ratio: 16 / 10; }
+  .shot__art svg { width: 100%; height: 100%; display: block; }
+  .shot h2 { font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.6rem); font-weight: 600; margin-bottom: 4px; }
+  .shot h2 .opt { font-size: 0.8rem; font-weight: 400; color: var(--muted); margin-inline-start: 8px; }
+  .shot p { color: var(--muted); max-width: 52ch; }
+  .shot__keys { justify-self: end; }
+
+  /* drawings: a screen (frame) with what each shortcut captures */
+  .scr { fill: var(--card-2); stroke: var(--line); stroke-width: 1.5; }
+  .bar { fill: var(--line); }
+  .cap { fill: color-mix(in srgb, var(--sel) 22%, transparent); stroke: var(--sel); stroke-width: 2; }
+  .cap--dash { stroke-dasharray: 5 4; }
+  .win { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+  .ink { fill: var(--muted); }
+  .rec { fill: var(--accent); }
+
+  .info { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; margin-top: clamp(40px, 5vw, 70px); }
+  .info__card { padding: clamp(20px, 2.6vw, 30px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); display: grid; gap: 10px; align-content: start; }
+  .info__card h2 { font-size: 1.2rem; font-weight: 600; }
+  .info__card p { color: var(--muted); }
+  .info__card .keys { margin-top: 4px; }
+  .info__card .key { min-width: 40px; height: 40px; font-size: 0.95rem; padding: 0 10px; }
+  .info__card .key small { font-size: 0.55rem; }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero__keys { justify-self: start; margin-bottom: 10px; }
+    .shot { grid-template-columns: 96px minmax(0, 1fr); }
+    .shot__art { width: 96px; }
+    .shot__keys { grid-column: 1 / -1; justify-self: start; }
+  }
+  @media (max-width: 420px) { .key { min-width: 46px; height: 46px; padding: 0 11px; font-size: 1.05rem; } }
+</style>
+</head>
+<body>
+<header class="tp-bar">
+  <a class="tp-bar__back" href="../../tools.html" data-back>→ לכל הכלים</a>
+  <a class="tp-bar__brand" href="../../index.html">מישה קרץ'</a>
+  <span class="tp-bar__sp"></span>
+  <button class="tp-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+
+<main class="tp-wrap">
+  <div class="hero">
+    <section class="tp-hero">
+      <p class="tp-eyebrow">לימוד · מדריך מהיר</p>
+      <h1 class="tp-title">צילום מסך<br>ב־Mac</h1>
+      <p class="tp-lead">כל הקיצורים במקום אחד. כולם מתחילים ב־<b>Command + Shift</b>, ורק המספר משתנה: <b>3</b> לכל המסך, <b>4</b> לחלק ממנו, <b>5</b> לסרגל הכלים.</p>
+      <div class="tp-actions">
+        <a class="btn" href="mac-screenshot.pdf" download="איך לצלם צילום מסך ב-Mac - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">עמוד אחד</span></a>
+      </div>
+    </section>
+    <div class="hero__keys" aria-hidden="true">
+      <span class="key key--wide">⌘<small>command</small></span>
+      <span class="key key--wide">⇧<small>shift</small></span>
+      <span class="key key--num key--hot">4</span>
+    </div>
+  </div>
+
+  <div class="shots">
+    <article class="shot">
+      <div class="shot__art" aria-hidden="true"><svg viewBox="0 0 160 100"><rect class="scr" x="4" y="4" width="152" height="92" rx="6"/><rect class="bar" x="4" y="4" width="152" height="9" rx="3"/><rect class="cap" x="9" y="17" width="142" height="74" rx="3"/></svg></div>
+      <div><h2>כל המסך</h2><p>מצלם את כל המסך ושומר את התמונה על שולחן העבודה.</p></div>
+      <div class="shot__keys keys" aria-label="Command ועוד Shift ועוד 3"><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num key--hot">3</span></div>
+    </article>
+
+    <article class="shot">
+      <div class="shot__art" aria-hidden="true"><svg viewBox="0 0 160 100"><rect class="scr" x="4" y="4" width="152" height="92" rx="6"/><rect class="bar" x="4" y="4" width="152" height="9" rx="3"/><rect class="cap cap--dash" x="44" y="30" width="72" height="44" rx="2"/><path d="M116 74 l9 3 -4 1.5 -1.5 4z" class="ink"/></svg></div>
+      <div><h2>חלק מהמסך</h2><p>הסמן הופך לכוונת. גוררים כדי לבחור את האזור שרוצים לצלם.</p></div>
+      <div class="shot__keys keys" aria-label="Command ועוד Shift ועוד 4"><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num key--hot">4</span></div>
+    </article>
+
+    <article class="shot">
+      <div class="shot__art" aria-hidden="true"><svg viewBox="0 0 160 100"><rect class="scr" x="4" y="4" width="152" height="92" rx="6"/><rect class="bar" x="4" y="4" width="152" height="9" rx="3"/><rect class="win" x="16" y="22" width="56" height="40" rx="3"/><rect class="cap" x="62" y="34" width="78" height="52" rx="3"/><rect x="92" y="52" width="18" height="13" rx="2.5" class="ink"/><circle cx="101" cy="58.5" r="3.6" class="scr"/></svg></div>
+      <div><h2>חלון מסוים</h2><p>אחרי הקיצור לוחצים על מקש רווח. הסמן הופך למצלמה, ולוחצים על החלון שרוצים לצלם.</p></div>
+      <div class="shot__keys keys" aria-label="Command ועוד Shift ועוד 4, ואז מקש רווח"><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num">4</span><span class="then">ואז</span><span class="key key--hot">space<small>רווח</small></span></div>
+    </article>
+
+    <article class="shot">
+      <div class="shot__art" aria-hidden="true"><svg viewBox="0 0 160 100"><rect class="scr" x="4" y="4" width="152" height="92" rx="6"/><rect class="bar" x="4" y="4" width="152" height="9" rx="3"/><rect class="win" x="30" y="70" width="100" height="16" rx="5"/><rect class="cap" x="38" y="74" width="9" height="8" rx="1.5"/><rect class="ink" x="52" y="74" width="9" height="8" rx="1.5"/><rect class="ink" x="66" y="74" width="9" height="8" rx="1.5"/><circle class="rec" cx="88" cy="78" r="4"/><circle class="ink" cx="100" cy="78" r="4"/><rect class="ink" x="110" y="75" width="14" height="6" rx="3"/></svg></div>
+      <div><h2>סרגל הכלים <span class="opt">כולל הקלטת מסך</span></h2><p>נפתח סרגל קטן: כל המסך, חלון, אזור נבחר, או הקלטת וידאו של המסך. שם גם בוחרים איפה לשמור.</p></div>
+      <div class="shot__keys keys" aria-label="Command ועוד Shift ועוד 5"><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num key--hot">5</span></div>
+    </article>
+
+    <article class="shot">
+      <div class="shot__art" aria-hidden="true"><svg viewBox="0 0 160 100"><rect class="win" x="8" y="30" width="144" height="40" rx="6"/><rect class="cap" x="16" y="42" width="128" height="16" rx="5"/><rect class="ink" x="24" y="47" width="14" height="6" rx="3"/><rect class="ink" x="44" y="47" width="22" height="6" rx="3"/><rect class="ink" x="72" y="47" width="14" height="6" rx="3"/></svg></div>
+      <div><h2>ה־Touch Bar <span class="opt">אם יש במחשב שלכם</span></h2><p>מצלם את מה שמוצג כרגע על פס המגע שמעל המקלדת.</p></div>
+      <div class="shot__keys keys" aria-label="Command ועוד Shift ועוד 6"><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num key--hot">6</span></div>
+    </article>
+  </div>
+
+  <div class="info">
+    <section class="info__card">
+      <h2>איפה נשמרים הצילומים?</h2>
+      <p>כברירת מחדל, על שולחן העבודה. אפשר לשנות את מקום השמירה בתפריט "אפשרויות" שבסרגל הכלים.</p>
+      <div class="keys" aria-label="Command ועוד Shift ועוד 5"><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num">5</span></div>
+    </section>
+    <section class="info__card">
+      <h2>טיפ: ישר להעתקה, בלי קובץ</h2>
+      <p>מוסיפים את מקש Control לכל אחד מהקיצורים, והצילום נשמר בזיכרון להדבקה במקום כקובץ. אחר כך מדביקים ב־Command + V, למשל ישר לוואטסאפ או לפוטושופ.</p>
+      <div class="keys" aria-label="Control ועוד Command ועוד Shift ועוד 4"><span class="key">⌃<small>control</small></span><span class="plus">+</span><span class="key">⌘<small>command</small></span><span class="plus">+</span><span class="key">⇧<small>shift</small></span><span class="plus">+</span><span class="key key--num">4</span></div>
+    </section>
+  </div>
+</main>
+
+<footer class="tp-foot">
+  <span>מדריך מהיר, חינם לשימוש אישי ולימודי.</span>
+  <a href="../../tools.html">עוד כלים וחומרי לימוד ←</a>
+</footer>
+
+<script src="../page.js?v=1"></script>
+</body>
+</html>

@@ -1088,6 +1088,9 @@
     const host = $("#post");
     if (!host) return;
     const slug = new URLSearchParams(location.search).get("slug") || "";
+    // posts that moved off the blog: keep their old addresses working
+    const MOVED = { "tips-and-tricks": "tools.html#learning" };
+    if (MOVED[slug]) { location.replace(MOVED[slug]); return; }
     const posts = D.posts || [];
     const k = posts.findIndex((p) => p.slug === slug);
     if (k < 0) {
@@ -1121,11 +1124,14 @@
       </header>
       ${p.cover ? `<figure class="post-cover"><img src="${esc(p.cover)}" alt="" fetchpriority="high"></figure>` : ""}
       <div class="post-body">${(p.body || []).map(block).join("")}</div>
-      ${posts.length > 1 ? `<a class="proj__next post-next" href="${postHref(next)}">
-        <span class="proj__next-label">הפוסט הבא</span>
-        <span class="proj__next-title display" dir="auto">${esc(next.title)}</span>
-        ${postCover(next) ? `<span class="proj__next-img" aria-hidden="true"><img src="${esc(postCover(next))}" alt="" loading="lazy"></span>` : "<span></span>"}
-        <span class="arrow" aria-hidden="true">←</span>
+      ${posts.length > 1 ? `<a class="post-next" href="${postHref(next)}">
+        ${postCover(next) ? `<span class="post-next__img" aria-hidden="true"><img src="${esc(postCover(next))}" alt="" loading="lazy"></span>` : ""}
+        <span class="post-next__txt">
+          <span class="post-next__label">הפוסט הבא</span>
+          <span class="post-next__title" dir="auto">${esc(next.title)}</span>
+          ${next.excerpt ? `<span class="post-next__excerpt" dir="auto">${esc(next.excerpt)}</span>` : ""}
+        </span>
+        <span class="post-next__go" aria-hidden="true">←</span>
       </a>` : ""}`;
   }
 

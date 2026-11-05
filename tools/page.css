@@ -1,0 +1,94 @@
+/* Shared look for the designed pages under tools/ (Adobe shortcuts, pen tool game).
+   Same palette and type as the site (assets/css/site.css), dark by default; light only by the toggle. */
+:root {
+  color-scheme: dark;
+  --ground: #0b0b0c;
+  --ink: #f2efe9;
+  --muted: #a19d95;
+  --line: rgba(242, 239, 233, 0.14);
+  --card: #141416;
+  --card-2: #1b1b1e;
+  --accent: #ff3b2f;
+  --on-accent: #fff;
+  --shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  --f-display: "Karantina", "IBM Plex Sans Hebrew", system-ui, sans-serif;
+  --f-text: "IBM Plex Sans Hebrew", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --gutter: clamp(16px, 2.2vw, 32px);
+  --radius: 12px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ground: #f4f2ee;
+  --ink: #141414;
+  --muted: #5f5b55;
+  --line: rgba(20, 20, 20, 0.14);
+  --card: #ffffff;
+  --card-2: #ebe8e2;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.14);
+}
+
+* { box-sizing: border-box; margin: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--ground); color: var(--ink); font-family: var(--f-text); font-size: clamp(1rem, 0.96rem + 0.2vw, 1.125rem); line-height: 1.6; overflow-x: hidden; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.mono { font-family: var(--f-mono); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* top bar */
+.tp-bar { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 12px var(--gutter); background: color-mix(in srgb, var(--ground) 86%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); font-size: 0.9rem; }
+.tp-bar__back { text-decoration: none; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; white-space: nowrap; color: var(--muted); transition: color .2s, border-color .2s; }
+.tp-bar__back:hover { color: var(--ink); border-color: var(--muted); }
+.tp-bar__brand { font-family: var(--f-display); font-size: 1.6rem; line-height: 1; text-decoration: none; letter-spacing: normal; }
+.tp-bar__sp { flex: 1; }
+.tp-theme { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: transparent; color: var(--ink); cursor: pointer; font-size: 1rem; transition: border-color .2s; }
+.tp-theme:hover { border-color: var(--muted); }
+
+.tp-wrap { max-width: 1400px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* hero */
+.tp-hero { padding: clamp(40px, 7vw, 110px) 0 clamp(28px, 4vw, 56px); display: grid; gap: 18px; }
+.tp-eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.02em; }
+.tp-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
+.tp-title { font-family: var(--f-display); font-weight: 700; font-size: clamp(3.4rem, 1.2rem + 9vw, 10rem); line-height: 1.02; letter-spacing: normal; }
+.tp-lead { color: var(--muted); font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem); font-weight: 300; max-width: 46ch; }
+.tp-lead b { color: var(--ink); font-weight: 500; }
+
+/* buttons and chips */
+.tp-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; border: 1px solid var(--line); background: transparent; color: var(--ink); font: inherit; font-size: 0.95rem; font-weight: 500; text-decoration: none; cursor: pointer; transition: background .25s, border-color .25s, color .25s, transform .25s var(--ease-out); }
+.btn:hover { border-color: var(--ink); }
+.btn:active { transform: scale(0.97); }
+.btn--solid { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+.btn--solid:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.btn__meta { font-family: var(--f-mono); font-size: 0.75rem; opacity: 0.7; }
+.btn svg { width: 18px; height: 18px; flex: 0 0 auto; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); font-size: 0.9rem; text-decoration: none; color: var(--ink); background: var(--card); }
+.chip i { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); }
+a.chip:hover { border-color: var(--c, var(--ink)); }
+
+/* footer */
+.tp-foot { margin-top: clamp(60px, 8vw, 120px); padding: 28px var(--gutter) 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; }
+.tp-foot a { text-decoration: none; }
+.tp-foot a:hover { color: var(--ink); }
+
+/* image viewer: fit to screen, click to see it at full size and drag around */
+.viewer { position: fixed; inset: 0; z-index: 100; background: rgba(5, 5, 6, 0.94); display: none; }
+.viewer.is-open { display: block; }
+.viewer__scroll { position: absolute; inset: 0; overflow: auto; display: grid; place-items: center; cursor: zoom-in; overscroll-behavior: contain; }
+.viewer__scroll img { max-width: 94vw; max-height: 88vh; width: auto; height: auto; border-radius: 6px; box-shadow: var(--shadow); user-select: none; -webkit-user-drag: none; }
+.viewer.is-zoomed .viewer__scroll { place-items: start; cursor: grab; }
+.viewer.is-zoomed .viewer__scroll:active { cursor: grabbing; }
+.viewer.is-zoomed .viewer__scroll img { max-width: none; max-height: none; border-radius: 0; }
+.viewer__bar { position: absolute; z-index: 2; top: 14px; inset-inline: 14px; display: flex; gap: 8px; justify-content: space-between; pointer-events: none; }
+.viewer__bar > * { pointer-events: auto; }
+.viewer__btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 14px; border-radius: 999px; border: 1px solid rgba(242, 239, 233, 0.25); background: rgba(11, 11, 12, 0.8); color: #f2efe9; font: inherit; font-size: 0.88rem; text-decoration: none; cursor: pointer; }
+.viewer__btn:hover { border-color: #f2efe9; }
+.viewer__hint { position: absolute; bottom: 16px; inset-inline: 0; text-align: center; color: rgba(242, 239, 233, 0.7); font-size: 0.85rem; pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }

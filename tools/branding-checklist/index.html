@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>רשימת ביקורת לפרויקט מיתוג | כלים | מישה קרץ'</title>
+<meta name="description" content="כל מה שצריך להיות בהגשה של פרויקט מיתוג, מחולק ל־11 חלקים: לוגו, צבעים, טיפוגרפיה, שפה גרפית, מוקאפים, סושיאל, מושן ועוד. מסמנים תוך כדי עבודה, או מורידים PDF.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="רשימת ביקורת לפרויקט מיתוג">
+<meta property="og:description" content="11 חלקים, מה חובה ומה רשות, ובדיקה אחרונה לפני הגשה. מסמנים תוך כדי עבודה.">
+<meta property="og:image" content="https://www.misha.co.il/media/tools/branding-checklist.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono&display=swap">
+<link rel="stylesheet" href="../page.css?v=1">
+<script>try{if(localStorage.getItem("mg-theme")==="light")document.documentElement.setAttribute("data-theme","light")}catch(e){}</script>
+<style>
+  :root { --done: #3ecf8e; }
+  :root[data-theme="light"] { --done: #12925a; }
+
+  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); align-items: center; gap: clamp(24px, 4vw, 64px); }
+  .duo { position: relative; aspect-ratio: 1 / 0.95; margin-block: clamp(24px, 4vw, 60px); }
+  .duo img { position: absolute; top: 0; width: 58%; border-radius: 8px; box-shadow: var(--shadow); transition: transform .9s var(--ease-out); }
+  .duo img:nth-child(1) { inset-inline-start: 2%; transform: rotate(4deg); }
+  .duo img:nth-child(2) { inset-inline-end: 2%; top: 6%; transform: rotate(-4deg); }
+  .hero:hover .duo img:nth-child(1) { transform: rotate(6deg) translateX(3%); }
+  .hero:hover .duo img:nth-child(2) { transform: rotate(-6deg) translateX(-3%); }
+  @media (max-width: 960px) { .hero { grid-template-columns: 1fr; } .duo { display: none; } }
+  .brand-field { display: grid; gap: 6px; max-width: 420px; margin-top: 6px; }
+  .brand-field span { color: var(--muted); font-size: 0.9rem; }
+  .brand-field input { font: inherit; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 11px 14px; }
+  .brand-field input:focus { outline: none; border-color: var(--accent); }
+
+  /* progress, stays in view while scrolling */
+  .prog { position: sticky; top: 63px; z-index: 10; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; padding: 14px 0; background: color-mix(in srgb, var(--ground) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); margin-bottom: clamp(24px, 3vw, 40px); }
+  .prog__item { flex: 1 1 220px; display: grid; gap: 6px; }
+  .prog__row { display: flex; justify-content: space-between; gap: 12px; font-size: 0.9rem; }
+  .prog__row b { font-weight: 600; }
+  .prog__row span { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .bar { height: 6px; border-radius: 999px; background: var(--card-2); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--ink); transition: width .5s var(--ease-out), background .3s; }
+  .bar.is-full i { background: var(--done); }
+  .prog__tools { display: flex; gap: 8px; }
+  .prog__tools .btn { padding: 9px 14px; font-size: 0.85rem; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 0.9rem; margin-bottom: 18px; }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+
+  .tag { display: inline-flex; align-items: center; padding: 3px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
+  .tag--req { background: var(--ink); color: var(--ground); }
+  .tag--opt { border: 1px solid var(--line); color: var(--muted); }
+
+  .grid { columns: 2 380px; column-gap: clamp(14px, 1.6vw, 22px); }
+  .sec { break-inside: avoid; margin-bottom: clamp(14px, 1.6vw, 22px); padding: clamp(18px, 2vw, 24px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); transition: border-color .3s; }
+  .sec.is-done { border-color: color-mix(in srgb, var(--done) 55%, transparent); }
+  .sec__head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+  .sec__n { font-family: var(--f-mono); font-size: 0.85rem; color: var(--muted); }
+  .sec__title { font-size: 1.2rem; font-weight: 600; }
+  .sec__en { color: var(--muted); font-size: 0.82rem; direction: ltr; }
+  .sec__sp { flex: 1; }
+  .sec__count { font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted); }
+  .sec.is-done .sec__count { color: var(--done); }
+
+  .items { list-style: none; padding: 0; display: grid; gap: 2px; }
+  .item label { display: flex; align-items: flex-start; gap: 12px; padding: 8px 6px; margin-inline: -6px; border-radius: 8px; cursor: pointer; transition: background .2s; }
+  .item label:hover { background: var(--card-2); }
+  .item input { position: absolute; opacity: 0; pointer-events: none; }
+  .box { flex: 0 0 auto; width: 20px; height: 20px; margin-top: 2px; border-radius: 6px; border: 1.5px solid var(--muted); display: grid; place-items: center; transition: background .2s, border-color .2s; }
+  .box svg { width: 13px; height: 13px; opacity: 0; transform: scale(.6); transition: opacity .2s, transform .3s var(--ease-out); }
+  .item input:checked + .box { background: var(--done); border-color: var(--done); }
+  .item input:checked + .box svg { opacity: 1; transform: none; color: #0b0b0c; }
+  .item input:focus-visible + .box { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .item__txt { line-height: 1.5; transition: color .2s; }
+  .item input:checked ~ .item__txt { color: var(--muted); text-decoration: line-through; text-decoration-color: color-mix(in srgb, var(--muted) 60%, transparent); }
+  .item__opt { color: var(--muted); font-size: 0.8rem; margin-inline-start: 6px; }
+
+  .sec--final { border-color: color-mix(in srgb, var(--accent) 45%, transparent); background: color-mix(in srgb, var(--accent) 7%, var(--card)); }
+  .sec--final .sec__title::before { content: ""; display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-inline-end: 10px; vertical-align: 0.15em; }
+
+  .quote { margin-top: clamp(40px, 5vw, 70px); max-width: 760px; font-size: clamp(1.1rem, 1rem + 0.5vw, 1.4rem); font-weight: 300; line-height: 1.6; color: var(--muted); }
+  .quote b { color: var(--ink); font-weight: 500; }
+  .quote small { display: block; margin-top: 10px; font-size: 0.85rem; }
+
+  .all-done { display: none; align-items: center; gap: 10px; color: var(--done); font-weight: 600; }
+  .prog.is-ready .all-done { display: inline-flex; }
+
+  @media (max-width: 760px) { .prog { top: 59px; } .prog__tools { width: 100%; } }
+  @media (max-width: 560px) { .sec__en { display: none; } }
+
+  @media print {
+    :root, :root[data-theme] { --ground: #fff; --ink: #111; --muted: #555; --line: #ccc; --card: #fff; --card-2: #eee; --done: #111; }
+    body { font-size: 11pt; }
+    .tp-bar, .prog__tools, .tp-foot, .tp-actions, .tp-eyebrow { display: none !important; }
+    .prog { position: static; backdrop-filter: none; }
+    .tp-hero { padding: 0 0 12px; }
+    .duo { display: none !important; }
+    .tp-title { font-size: 34pt; }
+    .tp-lead { display: none; }
+    .grid { columns: 2; }
+    .sec { padding: 10px 12px; margin-bottom: 8px; }
+    .item label { padding: 3px 6px; }
+    .box { border-color: #333; }
+    .item input:checked + .box svg { color: #fff; }
+    .brand-field input { border: 0; border-bottom: 1px solid #999; border-radius: 0; padding: 4px 0; }
+  }
+</style>
+</head>
+<body>
+<header class="tp-bar">
+  <a class="tp-bar__back" href="../../tools.html" data-back>→ לכל הכלים</a>
+  <a class="tp-bar__brand" href="../../index.html">מישה קרץ'</a>
+  <span class="tp-bar__sp"></span>
+  <button class="tp-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+
+<main class="tp-wrap">
+  <div class="hero">
+  <section class="tp-hero">
+    <p class="tp-eyebrow">לימוד · קורס מיתוג ועיצוב</p>
+    <h1 class="tp-title">פרויקט מיתוג:<br>רשימת ביקורת</h1>
+    <p class="tp-lead">כל מה שצריך להיות בהגשה של פרויקט מיתוג, מחולק ל־<b>11 חלקים</b>. מסמנים כאן תוך כדי עבודה, <b>והסימונים נשמרים בדפדפן</b> עד שתחזרו. אפשר גם להדפיס או להוריד את הדף המקורי.</p>
+    <label class="brand-field"><span>שם המותג שלכם</span><input type="text" id="brand" placeholder="לדוגמה: קפה רחוב" autocomplete="off"></label>
+    <div class="tp-actions">
+      <a class="btn" href="branding-checklist.pdf" download="רשימת ביקורת - פרויקט מיתוג - מישה קרץ.pdf">הורדת PDF <span class="btn__meta">2 עמודים</span></a>
+    </div>
+  </section>
+  <div class="duo" aria-hidden="true">
+    <img src="img/page-2.webp" alt="" width="900" height="1273">
+    <img src="img/page-1.webp" alt="" width="900" height="1273">
+  </div>
+  </div>
+
+  <div class="prog" id="prog">
+    <div class="prog__item">
+      <div class="prog__row"><b>חובה</b><span data-c="req">0 מתוך 0</span></div>
+      <div class="bar" data-b="req"><i></i></div>
+    </div>
+    <div class="prog__item">
+      <div class="prog__row"><b>הכל, כולל רשות</b><span data-c="all">0 מתוך 0</span></div>
+      <div class="bar" data-b="all"><i></i></div>
+    </div>
+    <span class="all-done">✓ כל החובה מוכנה להגשה</span>
+    <div class="prog__tools">
+      <button class="btn" type="button" id="print">הדפסה</button>
+      <button class="btn" type="button" id="reset">איפוס</button>
+    </div>
+  </div>
+
+  <div class="legend"><span><span class="tag tag--req">חובה</span> נדרש בהגשה</span><span><span class="tag tag--opt">רשות</span> יתרון משמעותי</span></div>
+
+  <div class="grid" id="list"></div>
+
+  <p class="quote"><b>מיתוג טוב נמדד באחידות ובדיוק.</b> המטרה היא להראות איך המותג מתנהג, מדבר וחי, לא רק איך הוא נראה.<small>מבוסס על המסמך "עקרונות מיתוג ועיצוב".</small></p>
+</main>
+
+<footer class="tp-foot">
+  <span>הסימונים נשמרים רק בדפדפן שלכם.</span>
+  <a href="../../tools.html">עוד כלים וחומרי לימוד ←</a>
+</footer>
+
+<script>
+(function () {
+  // [number, title, English name, required section?, items]. An item ending in " (רשות)" is optional
+  // even inside a required section.
+  var SECTIONS = [
+    ["01", "מערכת הלוגו", "Logo System", true, ["לוגו ראשי", "לוגו משני", "סמל בלבד (Icon / Mark)", "גרסה אופקית וגרסה אנכית", "גרסה מונוכרומטית (שחור־לבן)", "גרסה נגטיבית לרקע כהה", "גרסה קטנה (Favicon)", "כללי ריווח (Clear Space) וגודל מינימלי"]],
+    ["02", "מערכת צבעים", "Color System", true, ["צבע ראשי וצבע משני", "צבעי רקע (בהיר + כהה, לא לבן או שחור מוחלט)", "צבעי הדגשה (Accent)", "ערכים ב־HEX / RGB / CMYK", "בדיקת ניגודיות טקסט–רקע"]],
+    ["03", "טיפוגרפיה", "Typography", true, ["פונט כותרות", "פונט גוף", "היררכיה: H1 / H2 / H3 / טקסט רץ / Caption", "תמיכה בעברית ובאנגלית", "עמוד דוגמה שממחיש את ההיררכיה"]],
+    ["04", "שפה גרפית", "Graphic Language", true, ["טקסטורות / קווים / צורות", "מסגרות ורקעים", "סגנון מוגדר: שטוח / קווי / מרקם", "אחידות עם הלוגו, הצבעים והפונטים"]],
+    ["05", "מערכת דמות", "Character System", false, ["סט הבעות", "שימוש בדמות בפוסטים", "שימוש באריזה", "שימוש באייקונים"]],
+    ["06", "סט אייקונים", "Icon Set", true, ["סט אייקונים באותה שפה גרפית", "קו וסגנון אחידים בכל הסט"]],
+    ["07", "דוגמאות שימוש", "Mockups", true, ["אריזה / מוצר", "פוסטרים ושילוט", "סטיקרים / מרצ׳נדייז", "ניירת: כרטיס ביקור, מעטפה", "סגנון הדמיה אחיד (אור, זווית, צבעוניות)"]],
+    ["08", "פרסום וסושיאל", "Social & Ads", true, ["תמונת פרופיל ברשתות (מוקאפ)", "פוסט אינסטגרם (⁦1080×1080⁩)", "סטורי (⁦1080×1920⁩)", "באנרים קטנים, מסר אחד ברור", "לוגו על צילום בשפת המותג", "פוסטר / פרינט (תחנת אוטובוס, קיר, עיתון)"]],
+    ["09", "מושן ואנימציה", "Motion", true, ["סטורי או פוסט מונפש", "אנימציית לוגו (רשות)", "סטיקרים מונפשים (רשות)"]],
+    ["10", "ספר מותג", "Brand Guidelines", false, ["מהות המותג וערכים", "שימוש נכון בלוגו: עשה ואל תעשה", "צבעים וטיפוגרפיה", "דוגמאות שימוש", "מוקאפ של 2–4 עמודים מספיק"]],
+    ["11", "אסטרטגיה", "Strategy", false, ["סיפור המותג (Brand Story)", "קהל יעד (Target Audience)", "בידול מול מתחרים (Positioning)", "בורד השראה / סקיצות"]],
+    ["✓", "לפני הגשה: בדיקה אחרונה", "Final check", true, ["הלוגו לא נמתח ולא עוות בשום מקום", "אין טקסט על רקע בלי ניגודיות מספקת", "אין GIF או אנימציה ליד טקסט שצריך לקרוא", "הצבעים נבדקו גם ב־CMYK, אם יש דפוס", "טקסטים קצרים ותמציתיים, בלי חפירות", "כל החומרים מרגישים שייכים לאותה שפה"]]
+  ];
+  var KEY = "mg-branding-checklist", state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+  var save = function () { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); };
+  var check = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.2 3L13 4.5"/></svg>';
+
+  var list = document.getElementById("list");
+  list.innerHTML = SECTIONS.map(function (s, si) {
+    var final = s[0] === "✓";
+    return '<section class="sec' + (final ? " sec--final" : "") + '" data-s="' + si + '" aria-labelledby="s' + si + '">' +
+      '<div class="sec__head">' + (final ? "" : '<span class="sec__n">' + s[0] + "</span>") +
+      '<h2 class="sec__title" id="s' + si + '">' + esc(s[1]) + "</h2>" + (final ? "" : '<span class="sec__en">' + esc(s[2]) + "</span>") +
+      '<span class="sec__sp"></span><span class="sec__count"></span>' + (final ? "" : '<span class="tag ' + (s[3] ? "tag--req" : "tag--opt") + '">' + (s[3] ? "חובה" : "רשות") + "</span>") + "</div>" +
+      '<ul class="items">' + s[4].map(function (t, ii) {
+        var opt = / \(רשות\)$/.test(t), txt = t.replace(/ \(רשות\)$/, ""), id = si + "-" + ii;
+        return '<li class="item" data-req="' + (s[3] && !opt ? 1 : 0) + '"><label><input type="checkbox" data-id="' + id + '"' + (state[id] ? " checked" : "") + '><span class="box" aria-hidden="true">' + check + '</span><span class="item__txt">' + esc(txt) + (opt ? '<span class="item__opt">רשות</span>' : "") + "</span></label></li>";
+      }).join("") + "</ul></section>";
+  }).join("");
+
+  var prog = document.getElementById("prog");
+  function paint() {
+    var req = [0, 0], all = [0, 0];
+    list.querySelectorAll(".sec").forEach(function (sec) {
+      var boxes = sec.querySelectorAll("input"), done = 0;
+      boxes.forEach(function (b) {
+        var r = b.closest(".item").dataset.req === "1";
+        all[1]++; if (r) req[1]++;
+        if (b.checked) { done++; all[0]++; if (r) req[0]++; }
+      });
+      sec.querySelector(".sec__count").textContent = done + "/" + boxes.length;
+      sec.classList.toggle("is-done", done === boxes.length);
+    });
+    [["req", req], ["all", all]].forEach(function (p) {
+      prog.querySelector('[data-c="' + p[0] + '"]').textContent = p[1][0] + " מתוך " + p[1][1];
+      var bar = prog.querySelector('[data-b="' + p[0] + '"]');
+      bar.querySelector("i").style.width = (p[1][1] ? (100 * p[1][0] / p[1][1]) : 0) + "%";
+      bar.classList.toggle("is-full", p[1][0] === p[1][1]);
+    });
+    prog.classList.toggle("is-ready", req[0] === req[1]);
+  }
+  list.addEventListener("change", function (e) {
+    var b = e.target;
+    if (!b.dataset.id) return;
+    if (b.checked) state[b.dataset.id] = 1; else delete state[b.dataset.id];
+    save(); paint();
+  });
+
+  var brand = document.getElementById("brand");
+  brand.value = state.brand || "";
+  brand.addEventListener("input", function () { if (brand.value) state.brand = brand.value; else delete state.brand; save(); });
+
+  document.getElementById("reset").addEventListener("click", function () {
+    if (!confirm("למחוק את כל הסימונים?")) return;
+    state = brand.value ? { brand: brand.value } : {};
+    save();
+    list.querySelectorAll("input").forEach(function (b) { b.checked = false; });
+    paint();
+  });
+  document.getElementById("print").addEventListener("click", function () { window.print(); });
+  paint();
+})();
+</script>
+<script src="../page.js?v=1"></script>
+</body>
+</html>
