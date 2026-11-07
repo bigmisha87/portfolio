@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=8">
+<link rel="stylesheet" href="assets/guide.css?v=10">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* Infographics on this page are click-through steppers (guide.js: data-steps / data-goto).
@@ -169,23 +169,19 @@ body { --tint: color-mix(in srgb, var(--accent) 22%, transparent); --tint-2: col
 @media (prefers-reduced-motion: reduce) { .anim *, .anim *::before, .anim *::after { animation: none !important; } }
 @media (max-width: 600px) { .rp { grid-template-columns: 1fr; } }
 </style>
+<link rel="stylesheet" href="../../assets/css/blog-nav.css?v=2">
 </head>
 <body data-ch="grid">
+<script src="../../assets/js/blog-nav.js?v=2"></script>
 <a class="skip" href="#main">דלגו לתוכן</a>
 
-<header class="g-top">
-  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
-  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
-  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
-  <span class="spacer"></span>
-  <div class="g-search" role="search">
-    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
-    <kbd>/</kbd>
-    <div class="g-results" aria-live="polite"></div>
-  </div>
-  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
-</header>
+<button data-bn-action="raw" hidden class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+<div data-bn-action="raw" hidden class="g-search" role="search">
+  <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+  <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+  <kbd>/</kbd>
+  <div class="g-results" aria-live="polite"></div>
+</div>
 <div class="g-progress" aria-hidden="true"><i></i></div>
 
 <div class="g-shell">
@@ -465,7 +461,7 @@ body { --tint: color-mix(in srgb, var(--accent) 22%, transparent); --tint-2: col
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=11" defer></script>
+<script src="assets/guide.js?v=12" defer></script>
 <script>
 /* page widgets: 8pt spacing, white space, leading slider, 12-column divisions, reading patterns */
 document.addEventListener("DOMContentLoaded", function () {

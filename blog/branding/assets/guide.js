@@ -243,7 +243,7 @@
     doc.addEventListener("keydown", function (e) {
       var t = e.target; if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
       if (e.key === "/" || ((e.ctrlKey || e.metaKey) && (e.key === "k" || e.key === "K"))) {
-        var i = $(".hub-search input") || $(".g-top .g-search input"); if (i) { e.preventDefault(); i.focus(); i.select(); }
+        var i = $(".hub-search input") || $(".bn .g-search input"); if (i) { e.preventDefault(); i.focus(); i.select(); }
       }
     });
   }

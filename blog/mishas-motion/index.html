@@ -128,13 +128,13 @@ footer { padding-block: 40px 70px; border-top: 1px solid var(--line); color: var
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } .card { transition: none } }
 </style>
+<link rel="stylesheet" href="../../assets/css/blog-nav.css?v=2">
 </head>
 <body>
-<button class="theme" id="themeBtn" type="button" aria-label="החלפת מצב תצוגה"></button>
+<script src="../../assets/js/blog-nav.js?v=2"></script>
 <div class="wrap">
 
 <header class="hero">
-  <a class="back" href="../../blog.html"><span aria-hidden="true">→</span> לכל הפוסטים בבלוג</a>
   <div class="eyebrow">מדריך למתחילים · AI · 07.11.2026</div>
   <h1 class="title">מ־PDF לסרטון, <span class="o">עם Claude</span><svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" style="color:var(--orange)"><line x1="50" y1="50" x2="94" y2="56"/><line x1="50" y1="50" x2="78" y2="78"/><line x1="50" y1="50" x2="56" y2="94"/><line x1="50" y1="50" x2="22" y2="80"/><line x1="50" y1="50" x2="6" y2="56"/><line x1="50" y1="50" x2="20" y2="22"/><line x1="50" y1="50" x2="44" y2="6"/><line x1="50" y1="50" x2="80" y2="20"/></g></svg></h1>
   <p class="lead prose">היום אתם יכולים לעשות אנימציות לבד. נותנים ל־Claude את הסקיל שלי, זורקים לו קובץ PDF של עיצוב, והוא מפרק אותו לשכבות, מציע סיפור, בונה סטוריבורד שאתם מאשרים, ומנפיש. בסרטון למטה רואים את כל הדרך. מתחתיו: הסקיל להורדה, קובץ לתרגול, וכל השלבים.</p>
@@ -333,15 +333,6 @@ footer { padding-block: 40px 70px; border-top: 1px solid var(--line); color: var
 </div>
 <script>
 (function () {
-  const b = document.getElementById('themeBtn'), root = document.documentElement;
-  const paint = () => { const light = root.getAttribute('data-theme') === 'light'; b.textContent = light ? '☾ מצב כהה' : '☀ מצב בהיר'; };
-  b.addEventListener('click', () => {
-    const light = root.getAttribute('data-theme') !== 'light';
-    if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
-    try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
-    paint();
-  });
-  paint();
   // copy buttons: the prompt text, with a fallback that selects it when the clipboard is refused
   document.querySelectorAll('.prompt .copy').forEach(btn => btn.addEventListener('click', () => {
     const p = btn.parentElement.querySelector('p');

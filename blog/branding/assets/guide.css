@@ -515,3 +515,28 @@ section.has-rail .rail-body { width: 100%; }
 .anim.no-trans, .anim.no-trans * { transition: none !important; }
 /* phone: a step's heading lands below the sticky step strip, not under it */
 @media (max-width: 1060px) { section.has-rail [data-rail-step][id], section.has-rail .rail-body h3[id] { scroll-margin-top: 136px; } }
+
+/* ---------- 07.11.2026: one top bar only ----------
+   The guide's own bar (title, chapters button, search) is gone; the site's bar (assets/css/blog-nav.css)
+   is the only one. The chapters button and the search now sit in its second row, so nothing is pinned
+   above the page any more and everything that made room for the old 64px bar moves up. */
+.g-progress { top: 0; }
+.g-nav { top: 0; height: 100vh; }
+[id], h2, h3 { scroll-margin-top: 20px; }
+.rail { top: 24px; }
+@media (max-width: 1060px) {
+  .rail { top: 0; }
+  section.has-rail [data-rail-step][id], section.has-rail .rail-body h3[id] { scroll-margin-top: 72px; }
+}
+/* inside the site bar, which is dark in both themes */
+.bn .g-iconbtn { background: transparent; color: #f2efe9; border-color: rgba(242, 239, 233, 0.14); }
+.bn .g-iconbtn:hover { border-color: #f2efe9; }
+.bn .g-search input { background: rgba(242, 239, 233, 0.06); color: #f2efe9; border-color: rgba(242, 239, 233, 0.14); }
+.bn .g-search input::placeholder, .bn .g-search .ico, .bn .g-search kbd { color: #a19d95; }
+.bn .g-search kbd { border-color: rgba(242, 239, 233, 0.14); }
+.bn .g-results { text-align: right; }
+@media (max-width: 760px) {
+  .bn .bn__sub:has(.g-search) { flex-wrap: wrap; }
+  .bn .bn__sub:has(.g-search) .bn__acts { width: 100%; flex-wrap: nowrap; }
+  .bn .g-search { flex: 1; width: auto; min-width: 0; }
+}

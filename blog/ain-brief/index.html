@@ -153,13 +153,13 @@ footer { padding-block: 40px 70px; border-top: 2px solid var(--rule); color: var
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
 </style>
+<link rel="stylesheet" href="../../assets/css/blog-nav.css?v=2">
 </head>
 <body>
-<button class="theme" id="themeBtn" type="button" aria-label="החלפת מצב תצוגה"></button>
+<script src="../../assets/js/blog-nav.js?v=2"></script>
 <div class="wrap">
 
 <header class="hero">
-  <a class="back" href="../../blog.html"><span aria-hidden="true">→</span> לכל הפוסטים בבלוג</a>
   <div class="eyebrow">תיעוד תהליך · 28.10.2026</div>
   <h1 class="title" aria-label="אין brief">אין <span class="cut" aria-hidden="true"><span>b</span><span>r</span><span>i</span><span>e</span><span>f</span><span>!</span></span></h1>
   <p class="sub">קליפ טיפוגרפי של ארבע דקות בלי קאט אחד. מצלמה תלת־ממדית אחת מטיילת על קיר של ניירות משרד, וכל מילה נוחתת בדיוק כשהיא מושרת. כתבתי את הבריף, נתתי הערות ואישרתי. Claude בנה, תזמן ובדק. כאן כל התהליך, כדי שתוכלו לעשות את זה בעצמכם.</p>
@@ -635,15 +635,6 @@ LINES outside the frame / overlapping ... 0 of 142</pre>
 </div>
 <script>
 (function () {
-  const b = document.getElementById('themeBtn'), root = document.documentElement;
-  const paint = () => { const light = root.getAttribute('data-theme') === 'light'; b.textContent = light ? '☾ מצב כהה' : '☀ מצב בהיר'; };
-  b.addEventListener('click', () => {
-    const light = root.getAttribute('data-theme') !== 'light';
-    if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
-    try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
-    paint();
-  });
-  paint();
 })();
 </script>
 </body>
