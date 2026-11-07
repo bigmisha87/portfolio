@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מ־PDF לסרטון · אנימציה עם Claude והסקיל שלי</title>
+<meta name="description" content="מדריך למתחילים: נותנים ל־Claude קובץ PDF של עיצוב, והוא מפרק אותו לשכבות, מציע סיפור, בונה סטוריבורד ומנפיש. כולל הסקיל להורדה וקובץ PDF לתרגול.">
+<meta property="og:title" content="מ־PDF לסרטון · אנימציה עם Claude והסקיל שלי">
+<meta property="og:description" content="היום אתם יכולים לעשות אנימציות לבד. הסקיל שלי להורדה, קובץ לתרגול, וכל הדרך צעד אחרי צעד.">
+<meta property="og:image" content="https://www.misha.co.il/blog/mishas-motion/img/hero.jpg">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<script>try { if (localStorage.getItem('theme') === 'light') document.documentElement.setAttribute('data-theme', 'light'); } catch (e) {}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* The same packaging as the explainer film: a warm dark terminal, ivory type, one orange accent. */
+:root {
+  /* dark by default; light only when the viewer picks it */
+  --bg: #262624; --panel: #30302e; --term: #1f1e1d; --line: #3d3d3a; --ink: #faf9f5; --muted: #a3a19a;
+  --orange: #d97757; --orange-ink: #1f1e1d; --green: #8aa06a; --blue: #6a9bcc; --shadow: rgba(0,0,0,.45);
+  --code: #e8e6dc;
+  --body: "IBM Plex Sans Hebrew", "Heebo", Arial, sans-serif; --mono: "JetBrains Mono", Consolas, monospace;
+  color-scheme: dark;
+}
+:root[data-theme="light"] {
+  --bg: #f5f4ef; --panel: #ffffff; --term: #ecebe4; --line: #dcdad0; --ink: #1f1e1d; --muted: #63615b;
+  --orange: #b4532f; --orange-ink: #ffffff; --green: #4f6b2c; --blue: #2f5f94; --shadow: rgba(0,0,0,.12);
+  --code: #2b2a27;
+  color-scheme: light;
+}
+* { box-sizing: border-box }
+html { scroll-behavior: smooth }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.75 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+img, video { max-width: 100%; height: auto; display: block }
+a { color: var(--orange); text-underline-offset: 3px }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px }
+.wrap { max-width: 1120px; margin: 0 auto }
+.prose { max-width: 66ch }
+h1, h2, h3 { font-weight: 700; line-height: 1.15; text-wrap: balance; margin: 0 }
+h2 { font-size: clamp(30px, 4.4vw, 46px) }
+h3 { font-size: 23px; line-height: 1.3 }
+p { margin: 0 }
+.stack { display: grid; gap: 18px }
+section { padding-block: 72px; border-top: 1px solid var(--line) }
+.eyebrow { font: 500 14px/1 var(--mono); letter-spacing: .04em; color: var(--orange); direction: rtl }
+.lead { font-size: 21px }
+.muted { color: var(--muted) }
+.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block }
+code { font-family: var(--mono); font-size: .86em; background: var(--term); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; direction: ltr; unicode-bidi: isolate; display: inline-block; max-width: 100%; overflow-wrap: anywhere }
+
+/* theme switch */
+.theme { position: fixed; top: calc(12px + env(safe-area-inset-top, 0px)); left: calc(12px + env(safe-area-inset-left, 0px)); z-index: 20;
+  background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font: 600 14px/1 var(--body); padding: 9px 14px; cursor: pointer; box-shadow: 0 4px 14px var(--shadow) }
+.theme:hover { border-color: var(--orange) }
+
+/* hero */
+header.hero { padding-block: 56px 48px; display: grid; gap: 24px }
+.back { justify-self: start; display: inline-flex; gap: 8px; align-items: center; color: var(--muted); text-decoration: none; font-size: 15px;
+  border: 1px solid var(--line); background: var(--panel); border-radius: 999px; padding: 6px 14px }
+.back:hover { color: var(--ink); border-color: var(--orange) }
+.title { font-size: clamp(46px, 8.4vw, 104px); line-height: 1.05; letter-spacing: -.01em }
+.title .o { color: var(--orange) }
+.spark { display: inline-block; width: .62em; height: .62em; vertical-align: .02em; margin-inline-start: .12em }
+.player { border-radius: 16px; overflow: hidden; border: 1px solid var(--line); background: #000; box-shadow: 0 24px 60px var(--shadow) }
+.player video { width: 100%; aspect-ratio: 16 / 9 }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; color: var(--muted); font-size: 15px }
+
+/* downloads */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px }
+.card { display: grid; gap: 10px; align-content: start; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; text-decoration: none; color: var(--ink);
+  transition: border-color .2s, transform .2s }
+.card:hover { border-color: var(--orange); transform: translateY(-2px) }
+.card b { font-size: 20px }
+.card .file { font: 400 14px/1.4 var(--mono); color: var(--muted); direction: ltr; text-align: right }
+.card .go { justify-self: start; background: var(--orange); color: var(--orange-ink); font-weight: 700; border-radius: 999px; padding: 8px 16px; font-size: 15px }
+.card.alt .go { background: transparent; color: var(--ink); border: 1px solid var(--line) }
+
+.toc { display: flex; flex-wrap: wrap; gap: 8px }
+.toc a { color: var(--ink); text-decoration: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; background: var(--panel) }
+.toc a:hover { border-color: var(--orange) }
+
+/* lists of needs */
+.needs { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px; list-style: none; padding: 0; margin: 0 }
+.needs li { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 6px }
+.needs li b { font-size: 18px }
+.tag { justify-self: start; font: 500 12px/1 var(--mono); border-radius: 999px; padding: 5px 10px; border: 1px solid var(--line); color: var(--muted) }
+.tag.must { color: var(--orange-ink); background: var(--orange); border-color: var(--orange) }
+
+/* steps */
+ol.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 56px; counter-reset: s }
+ol.steps > li { counter-increment: s; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 32px; align-items: center }
+ol.steps > li .txt { display: grid; gap: 14px }
+ol.steps > li .num::before { content: counter(s, decimal-leading-zero); font: 500 15px/1 var(--mono); color: var(--orange) }
+ol.steps figure { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); background: var(--term) }
+ol.steps figure img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover }
+
+/* prompts */
+.prompt { position: relative; background: var(--term); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px 18px 92px }
+.prompt p { font-size: 17px }
+.prompt .copy { position: absolute; top: 14px; left: 14px; background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 999px;
+  font: 600 13px/1 var(--body); padding: 8px 12px; cursor: pointer }
+.prompt .copy:hover { border-color: var(--orange) }
+.prompt .copy.ok { background: var(--green); border-color: var(--green); color: #fff }
+.prompt .who { font: 500 12px/1 var(--mono); color: var(--muted); margin-bottom: 8px }
+
+/* the result: a phone */
+.result { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: center }
+.phone { width: min(320px, 78vw); justify-self: center; background: #141413; border: 2px solid var(--line); border-radius: 44px; padding: 14px; box-shadow: 0 24px 60px var(--shadow) }
+.phone video { width: 100%; aspect-ratio: 9 / 16; border-radius: 32px; background: #000 }
+
+/* rules */
+.rules { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; list-style: none; padding: 0; margin: 0 }
+.rules li { background: var(--panel); border: 1px solid var(--line); border-inline-start: 4px solid var(--orange); border-radius: 12px; padding: 16px 20px; display: grid; gap: 4px }
+.rules li b { font-size: 18px }
+
+.note { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px }
+.note b { color: var(--orange) }
+
+footer { padding-block: 40px 70px; border-top: 1px solid var(--line); color: var(--muted); font-size: 15px; display: grid; gap: 6px }
+
+@media (max-width: 820px) {
+  ol.steps > li, .result { grid-template-columns: minmax(0, 1fr) }
+  ol.steps > li figure { order: -1 }
+  section { padding-block: 52px }
+  .prompt { padding: 56px 18px 18px }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } .card { transition: none } }
+</style>
+</head>
+<body>
+<button class="theme" id="themeBtn" type="button" aria-label="החלפת מצב תצוגה"></button>
+<div class="wrap">
+
+<header class="hero">
+  <a class="back" href="../../blog.html"><span aria-hidden="true">→</span> לכל הפוסטים בבלוג</a>
+  <div class="eyebrow">מדריך למתחילים · AI · 07.11.2026</div>
+  <h1 class="title">מ־PDF לסרטון, <span class="o">עם Claude</span><svg class="spark" viewBox="0 0 100 100" aria-hidden="true"><g stroke="currentColor" stroke-width="10" stroke-linecap="round" style="color:var(--orange)"><line x1="50" y1="50" x2="94" y2="56"/><line x1="50" y1="50" x2="78" y2="78"/><line x1="50" y1="50" x2="56" y2="94"/><line x1="50" y1="50" x2="22" y2="80"/><line x1="50" y1="50" x2="6" y2="56"/><line x1="50" y1="50" x2="20" y2="22"/><line x1="50" y1="50" x2="44" y2="6"/><line x1="50" y1="50" x2="80" y2="20"/></g></svg></h1>
+  <p class="lead prose">היום אתם יכולים לעשות אנימציות לבד. נותנים ל־Claude את הסקיל שלי, זורקים לו קובץ PDF של עיצוב, והוא מפרק אותו לשכבות, מציע סיפור, בונה סטוריבורד שאתם מאשרים, ומנפיש. בסרטון למטה רואים את כל הדרך. מתחתיו: הסקיל להורדה, קובץ לתרגול, וכל השלבים.</p>
+  <div class="player"><video controls preload="metadata" playsinline poster="img/hero.jpg" src="media/explainer.mp4"></video></div>
+  <div class="meta"><span>הסרטון נעשה כולו ב־Claude, עם הסקיל</span><span class="ltr">mishas-motion</span><span>· קריינות בקול שלי (ElevenLabs)</span></div>
+
+  <div class="cards" id="get">
+    <a class="card" href="downloads/mishas-motion.skill" download>
+      <b>הסקיל להורדה</b>
+      <span class="muted">הקובץ שנותנים ל־Claude. בפנים: הטעם שלי, רשימת בדיקות, הסטוריבורד ועבודה מ־PDF.</span>
+      <span class="file">mishas-motion.skill · 18 KB</span>
+      <span class="go">הורדה</span>
+    </a>
+    <a class="card" href="downloads/nirlat_event.pdf" download>
+      <b>קובץ PDF לתרגול</b>
+      <span class="muted">הפוסטר של נירלט, אותו קובץ שממנו התחלנו. נסו להפוך אותו לסטורי.</span>
+      <span class="file">nirlat_event.pdf · 38 KB</span>
+      <span class="go">הורדה</span>
+    </a>
+    <a class="card alt" href="downloads/README.he.md" download>
+      <b>הוראות התקנה</b>
+      <span class="muted">אותו הסבר שנמצא בתוך הסקיל, בעברית, לקריאה לפני ההתקנה.</span>
+      <span class="file">README.he.md</span>
+      <span class="go">הורדה</span>
+    </a>
+  </div>
+
+  <nav class="toc" aria-label="תוכן העניינים">
+    <a href="#needs">מה צריך</a><a href="#install">התקנה</a><a href="#steps">התרגיל, צעד אחרי צעד</a><a href="#result">התוצאה</a>
+    <a href="#teach">מלמדים אותו</a><a href="#updates">עדכונים</a><a href="#rules">כללים שלמדתי</a><a href="#prompts">פרומפטים להעתקה</a>
+  </nav>
+</header>
+
+<section id="needs" class="stack">
+  <div class="eyebrow">01 · לפני שמתחילים</div>
+  <h2>מה צריך</h2>
+  <p class="prose muted">לא צריך לדעת לתכנת. Claude כותב את הקוד, מתקין את הכלים ומרנדר. אתם נותנים קובץ, בוחרים, ומעירים.</p>
+  <ul class="needs">
+    <li><span class="tag must">חובה</span><b>מנוי Claude</b><span class="muted">Pro או Max. עובדים ב־Claude Code, בתוך אפליקציית Claude למחשב (הלשונית Code).</span></li>
+    <li><span class="tag must">חובה</span><b>הסקיל שלי</b><span class="muted">הקובץ <span class="ltr">mishas-motion.skill</span> מלמעלה.</span></li>
+    <li><span class="tag must">חובה</span><b>קובץ עיצוב</b><span class="muted">PDF אחד מספיק. לא צריך קובץ InDesign ולא קבצי פונטים: Claude מוציא מה־PDF את הצורות, הטקסט והפונטים.</span></li>
+    <li><span class="tag">לא חובה</span><b>מנוי ElevenLabs</b><span class="muted">בשביל מוזיקה וקריינות. מחברים אותו ל־Claude כחיבור (Connector) בהגדרות.</span></li>
+  </ul>
+  <div class="note prose"><b>מה Claude מתקין לבד:</b> Node.js (בשביל HyperFrames, הכלי שהופך דף אינטרנט לווידאו), ffmpeg (וידאו וסאונד) ו־Python (פירוק ה־PDF). לפני כל התקנה הוא שואל, ואתם מאשרים.</div>
+</section>
+
+<section id="install" class="stack">
+  <div class="eyebrow">02 · חמש דקות</div>
+  <h2>התקנת הסקיל</h2>
+  <ol class="steps">
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>נותנים לקלוד את הסקיל</h3>
+        <p class="prose">ב־Claude Code (מומלץ): פותחים את <span class="ltr">mishas-motion.skill</span> כמו קובץ זיפ, ומעתיקים את התיקייה <code>mishas-motion</code> לתוך התיקייה <code>~/.claude/skills/</code></p>
+        <p class="prose">ב־Windows זו התיקייה הזו, כש־YOUR-NAME הוא שם המשתמש שלכם במחשב:<br><code>C:\Users\YOUR-NAME\.claude\skills\</code></p>
+        <p class="prose muted">אפשר גם פשוט לגרור את הקובץ לשיחה ולבקש: "תתקין לי את הסקיל הזה". ב־claude.ai מעלים אותו בהגדרות, ביכולות, אבל רינדור וידאו עובד רק ב־Claude Code, כי שם Claude עובד על המחשב שלכם.</p>
+      </div>
+      <figure><img src="img/skill-in.jpg" alt="קובץ SKILL.md נכנס לתוך האייקון של Claude, והסקיל נטען" loading="lazy" width="1600" height="900"></figure>
+    </li>
+  </ol>
+</section>
+
+<section id="steps" class="stack">
+  <div class="eyebrow">03 · התרגיל</div>
+  <h2>מקובץ PDF לסטורי, צעד אחרי צעד</h2>
+  <p class="prose muted">זה בדיוק מה שעשינו בתחילת הפרויקט: קובץ PDF אחד של פוסטר, בלי שום קובץ אחר, ובסוף סטורי מונפש עם מוזיקה וקריינות. הורידו את קובץ התרגול ונסו.</p>
+  <ol class="steps">
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>זורקים את ה־PDF לשיחה</h3>
+        <p class="prose">פותחים תיקייה חדשה ב־Claude Code, שמים בה את <span class="ltr">nirlat_event.pdf</span>, וכותבים בקשה פשוטה. בלי מונחים טכניים: אומרים מה רוצים, באיזה גודל, ואיפה זה יעלה.</p>
+        <div class="prompt"><div class="who">אתם</div><p>תשתמש בסקיל mishas-motion. הנה קובץ PDF של העיצוב. תעשה ממנו אנימציה בגודל סטורי (1080×1920). קודם תציע לי שלושה סיפורים במילים.</p><button class="copy" type="button">העתקה</button></div>
+      </div>
+      <figure><img src="img/pdf-in.jpg" alt="קובץ ה־PDF נגרר לשיחה עם Claude, והפוסטר נפתח" loading="lazy" width="1600" height="900"></figure>
+    </li>
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>הוא מפרק אותו לשכבות</h3>
+        <p class="prose">Claude קורא את ה־PDF ומוציא ממנו כל צורה, כל שורת טקסט והפונטים עצמם. בפוסטר של נירלט: 215 צורות ו־16 שורות טקסט. ככה כל דבר בעיצוב יכול לזוז לבד, ושום דבר לא מצויר מחדש.</p>
+      </div>
+      <figure><img src="img/layers.jpg" alt="הפוסטר מתפרק לארבע שכבות בפרספקטיבה: רקע, צורות, לוגו, טקסט ופונט" loading="lazy" width="1600" height="900"></figure>
+    </li>
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>קודם סיפור, במילים</h3>
+        <p class="prose">לפני שהוא מנפיש משהו, הוא מציע שלושה סיפורים שונים במילים. אתם בוחרים אחד, או משלבים. אצלנו נבחר שילוב של שניים. זה השלב הכי זול לשנות בו כיוון.</p>
+      </div>
+      <figure><img src="img/stories.jpg" alt="שלוש הצעות סיפור ליד השכבות, ונבחר שילוב של א׳ וב׳" loading="lazy" width="1600" height="900"></figure>
+    </li>
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>סטוריבורד, ואתם מאשרים</h3>
+        <p class="prose">Claude בונה דף סטוריבורד: פריים לכל רגע בסרט, ומתחת לכל פריים תיבה. כותבים הערה רק איפה שצריך לתקן, למשל "לצמצם ריווח בין שורות". תיבה ריקה פירושה מאושר. לוחצים "שלח הערות", ו־Claude מקבל את כולן ומתקן.</p>
+      </div>
+      <figure><img src="img/storyboard.jpg" alt="דף הסטוריבורד עם פריימים מהסרט, הערה בתיבה וכפתור שלח הערות" loading="lazy" width="1600" height="900"></figure>
+    </li>
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>מוזיקה וקריינות</h3>
+        <p class="prose">אם יש לכם מנוי ל־ElevenLabs ואתם מחברים אותו, Claude יוצר מוזיקה ואפילו קריינות. לפני כל הפקה הוא אומר כמה זה עולה ומחכה לאישור. הוא מכין כמה אופציות, ואתם בוחרים באוזן. אחר כך הוא מתזמן כל מילה לפעמה.</p>
+      </div>
+      <figure><img src="img/music.jpg" alt="שלוש אופציות מוזיקה ב־ElevenLabs, מחיר לפני, בחירה באוזן" loading="lazy" width="1600" height="900"></figure>
+    </li>
+    <li>
+      <div class="txt">
+        <span class="num"></span>
+        <h3>הוא מנפיש, ובודק את עצמו</h3>
+        <p class="prose">עכשיו הוא מנפיש. לפני שהוא מראה לכם משהו, הוא עובר בעצמו על הפריימים: שטקסט לא נוגע בצורה, שיש מספיק ניגודיות, ששום רגע לא קופא. אחרי כל סבב הערות הוא מעדכן את הסטוריבורד עם הגרסה החדשה.</p>
+      </div>
+      <figure><img src="img/checks.jpg" alt="הוא בודק את עצמו: טקסט לא נוגע בצורה, ניגודיות, אין פריים שקופא" loading="lazy" width="1600" height="900"></figure>
+    </li>
+  </ol>
+</section>
+
+<section id="result" class="stack">
+  <div class="eyebrow">04 · מה יצא</div>
+  <div class="result">
+    <div class="stack">
+      <h2>התוצאה: סטורי של 25 שניות</h2>
+      <p class="prose">מקובץ PDF אחד: הפוסטר נבנה מחדש מהשכבות שלו, כל מסר נכנס בתנועה, עם מוזיקה וקריינות שנבחרו באוזן. כל התנועה בדו־ממד, כי זה מה שהתאים לעיצוב הזה.</p>
+      <p class="prose muted">נסו עם קובץ התרגול, ואחר כך עם עיצוב משלכם.</p>
+    </div>
+    <div class="phone"><video controls preload="metadata" playsinline poster="img/result-poster.jpg" src="media/result-story.mp4"></video></div>
+  </div>
+</section>
+
+<section id="teach" class="stack">
+  <div class="eyebrow">05 · החלק הכי טוב</div>
+  <h2>מלמדים אותו, והוא משתפר</h2>
+  <p class="prose">הסקיל הוא לא קופסה סגורה. כל הערה שלכם יכולה להפוך לכלל. אומרים לו לשמור, והכלל נכתב בקובץ <span class="ltr">MOTION.md</span> שבתוך הסקיל. הפרויקט הבא כבר מתחיל משם, כך שהסקיל מתאים לכם יותר עם כל סרטון.</p>
+  <div class="prompt"><div class="who">אתם</div><p>טקסט לא נוגע בצורה, אף פעם. תשמור את זה ככלל בסקיל.</p><button class="copy" type="button">העתקה</button></div>
+  <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)"><img src="img/teach.jpg" alt="הערה הופכת לשורה חדשה ב־MOTION.md: נשמר, מעכשיו זה כלל" loading="lazy" width="1600" height="900"></figure>
+</section>
+
+<section id="updates" class="stack">
+  <div class="eyebrow">06 · כשאני מעדכן</div>
+  <h2>עדכונים לסקיל</h2>
+  <p class="prose">אני ממשיך לשפר את הסקיל. כשתצא גרסה חדשה, היא תעלה לכאן. לא צריך להחליף את מה שלימדתם: מורידים את הגרסה החדשה, נותנים אותה ל־Claude, ושואלים מה שווה לקחת ממנה.</p>
+  <div class="prompt"><div class="who">אתם</div><p>קיבלתי גרסה חדשה של הסקיל mishas-motion. מה חדש ומועיל לי פה? אל תמחק כללים שלימדתי אותך.</p><button class="copy" type="button">העתקה</button></div>
+  <figure style="margin:0;border-radius:14px;overflow:hidden;border:1px solid var(--line)"><img src="img/updates.jpg" alt="קובץ SKILL חדש נכנס, ו־Claude עונה מה שווה לקחת" loading="lazy" width="1600" height="900"></figure>
+</section>
+
+<section id="rules" class="stack">
+  <div class="eyebrow">07 · מהפרויקט הזה</div>
+  <h2>כללים שלמדתי בדרך</h2>
+  <p class="prose muted">כל אלה כבר בתוך הסקיל. הם כאן כדי שתבינו למה הוא עושה מה שהוא עושה, ומה כדאי לבקש.</p>
+  <ul class="rules">
+    <li><b>הכל נכנס בתנועה</b><span class="muted">שום דבר לא מופיע בקפיצה. כל אלמנט נכנס בתנועה רכה, ומעבר חכם עדיף על חיתוך.</span></li>
+    <li><b>טקסט לא נוגע בצורה</b><span class="muted">או מרווח ברור, או שהטקסט יושב כולו על הצורה. נגיעה של חצי מילימטר מעצבנת את העין.</span></li>
+    <li><b>טקסט של סטורי גדול יותר</b><span class="muted">טקסט שנראה טוב בדפוס קטן מדי בטלפון. בסטורי, טקסט רץ לפחות 45 פיקסלים.</span></li>
+    <li><b>תלת־ממד רק כשזה מתאים</b><span class="muted">אף פעם לא טקסט עם עובי. כשתלת־ממד משרת את הרעיון, כמו שכבות שעולות מהעיצוב, הוא נשאר שטוח, עם אור וצל.</span></li>
+    <li><b>עברית מימין לשמאל, גם בסדר</b><span class="muted">לא רק הטקסט: כל רצף של מילים או שלבים על המסך מתחיל מימין.</span></li>
+    <li><b>מה שכתוב על המסך נשמע גם בקריינות</b><span class="muted">ובלי מונחים טכניים שהצופה לא מכיר.</span></li>
+    <li><b>קצת צבע בכל כמה שניות</b><span class="muted">עיצוב כהה לגמרי מרגיש עצוב. אפור זה בסדר, אבל צבע ההדגשה חוזר בקצב קבוע.</span></li>
+    <li><b>מחיר לפני, ובחירה באוזן</b><span class="muted">כל הפקה בתשלום מתומחרת קודם. מוזיקה וקריינות בוחרים בשמיעה, לא לפי מדידות.</span></li>
+  </ul>
+</section>
+
+<section id="prompts" class="stack">
+  <div class="eyebrow">08 · להעתקה</div>
+  <h2>פרומפטים לכל שלב</h2>
+  <div class="stack">
+    <div class="prompt"><div class="who">התחלה</div><p>תשתמש בסקיל mishas-motion. הנה קובץ PDF של העיצוב. תעשה ממנו אנימציה בגודל סטורי (1080×1920). קודם תציע לי שלושה סיפורים במילים.</p><button class="copy" type="button">העתקה</button></div>
+    <div class="prompt"><div class="who">אחרי שבחרתם סיפור</div><p>בוא נלך על הצעה ב׳. תבנה לי סטוריבורד עם פריים לכל רגע ותיבת הערה מתחת לכל פריים.</p><button class="copy" type="button">העתקה</button></div>
+    <div class="prompt"><div class="who">אחרי שכתבתם הערות</div><p>שלחתי הערות בסטוריבורד. תקרא אותן, תתקן, ותעדכן את הסטוריבורד עם הגרסה החדשה.</p><button class="copy" type="button">העתקה</button></div>
+    <div class="prompt"><div class="who">מוזיקה</div><p>תכין שלוש אופציות מוזיקה ב־ElevenLabs Music v2.5, באורך של כל הסרטון, בלי שירה. תגיד לי כמה זה עולה לפני שאתה מייצר.</p><button class="copy" type="button">העתקה</button></div>
+    <div class="prompt"><div class="who">קריינות</div><p>תוסיף קריינות בקול של בחורה צעירה ומתלהבת, עם הטקסט הזה: ... תן לי שתי גרסאות לבחירה, ותגיד מחיר קודם.</p><button class="copy" type="button">העתקה</button></div>
+    <div class="prompt"><div class="who">ללמד אותו</div><p>תשמור את זה ככלל בסקיל: ...</p><button class="copy" type="button">העתקה</button></div>
+    <div class="prompt"><div class="who">סיום</div><p>מאושר. תרנדר גרסה סופית, ותכתוב בסקיל את מה שלמדת מההערות שלי בפרויקט הזה.</p><button class="copy" type="button">העתקה</button></div>
+  </div>
+</section>
+
+<section id="downloads" class="stack">
+  <div class="eyebrow">09 · הכל במקום אחד</div>
+  <h2>הורדות</h2>
+  <div class="cards">
+    <a class="card" href="downloads/mishas-motion.skill" download><b>הסקיל</b><span class="file">mishas-motion.skill</span><span class="go">הורדה</span></a>
+    <a class="card" href="downloads/nirlat_event.pdf" download><b>PDF לתרגול</b><span class="file">nirlat_event.pdf</span><span class="go">הורדה</span></a>
+    <a class="card alt" href="downloads/README.he.md" download><b>הוראות התקנה</b><span class="file">README.he.md</span><span class="go">הורדה</span></a>
+    <a class="card alt" href="media/explainer.mp4" download><b>סרטון ההסבר</b><span class="file">explainer.mp4 · Full HD</span><span class="go">הורדה</span></a>
+  </div>
+</section>
+
+<footer>
+  <p><a href="../../blog.html">חזרה לבלוג</a> · <a href="../../index.html">לאתר של מישה</a></p>
+  <p>מ־PDF לסרטון · 07.11.2026</p>
+  <p>סקיל, הערות וקריינות: מישה. בנייה, תזמון ובדיקות: Claude ב־Claude Code. מוזיקה וקריינות: ElevenLabs. מנוע: HyperFrames.</p>
+</footer>
+
+</div>
+<script>
+(function () {
+  const b = document.getElementById('themeBtn'), root = document.documentElement;
+  const paint = () => { const light = root.getAttribute('data-theme') === 'light'; b.textContent = light ? '☾ מצב כהה' : '☀ מצב בהיר'; };
+  b.addEventListener('click', () => {
+    const light = root.getAttribute('data-theme') !== 'light';
+    if (light) root.setAttribute('data-theme', 'light'); else root.removeAttribute('data-theme');
+    try { localStorage.setItem('theme', light ? 'light' : 'dark'); } catch (e) {}
+    paint();
+  });
+  paint();
+  // copy buttons: the prompt text, with a fallback that selects it when the clipboard is refused
+  document.querySelectorAll('.prompt .copy').forEach(btn => btn.addEventListener('click', () => {
+    const p = btn.parentElement.querySelector('p');
+    const done = () => { btn.textContent = 'הועתק'; btn.classList.add('ok'); setTimeout(() => { btn.textContent = 'העתקה'; btn.classList.remove('ok'); }, 1600); };
+    const pick = () => { const r = document.createRange(); r.selectNodeContents(p); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(p.textContent.trim()).then(done, pick); else pick();
+  }));
+})();
+</script>
+</body>
+</html>
