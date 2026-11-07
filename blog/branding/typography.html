@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;700&family=Caveat:wght@700&family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@300;400;500;700;800&family=Noto+Sans+Hebrew:wght@400;700&family=Playfair+Display:wght@700&family=Roboto+Slab:wght@700&family=Rubik:wght@400;700&family=Rubik+Bubbles&family=Secular+One&family=Suez+One&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* font helpers (specimens only) */
@@ -138,6 +138,16 @@
 .hf .k { font: 500 12px var(--mono); color: var(--accent-ink); direction: ltr; text-align: right; display: block; }
 .hf .s { display: block; font-size: 28px; line-height: 1.2; margin: 6px 0 8px; color: var(--ink); }
 .hf p { font-size: 15px; line-height: 1.55; color: var(--muted); margin: 0; }
+/* the six-types table: on phones each type becomes a stacked card instead of four squeezed columns */
+@media (max-width: 640px) {
+  .tbl-stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .tbl-stack, .tbl-stack tbody, .tbl-stack tr, .tbl-stack td { display: block; width: 100%; }
+  .tbl-stack tr { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .tbl-stack tr:last-child { border-bottom: 0; }
+  .tbl-stack td { padding: 0; border-bottom: 0; }
+  .tbl-stack td + td { margin-top: 10px; }
+  .tbl-stack td[data-label]::before { content: attr(data-label); display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 2px; }
+}
 </style>
 </head>
 <body data-ch="type">
@@ -208,15 +218,15 @@
       </figure>
 
       <div class="tbl-wrap">
-        <table class="tbl">
+        <table class="tbl tbl-stack">
           <thead><tr><th>סוג פונט</th><th>תחושה עיקרית</th><th>מתאים ל...</th><th>הערות</th></tr></thead>
           <tbody>
-            <tr><td><span class="tsamp f-heebo" style="font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Sans Serif</span><small class="gl">ללא עיטורים</small></td><td>מודרני, נקי, טכנולוגי</td><td>הייטק, סטארטאפים, אפליקציות, מותגים צעירים, חינוך, בריאות, אופנה מודרנית, לייף־סטייל</td><td>קריא במיוחד במסכים ובשפה דיגיטלית. מתאים למיתוג עכשווי וחדשני.</td></tr>
-            <tr><td><span class="tsamp" style="font-family:'Playfair Display','Frank Ruhl Libre',serif;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Serif</span><small class="gl">עם עיטורים</small></td><td>קלאסי, אמין, יוקרתי</td><td>מוסדות, עיתונות, עריכת דין, פיננסים, ייעוץ, חינוך, מותגים עם מסורת או יוקרה</td><td>משדר רצינות, אמינות ואלגנטיות. טוב למותגים עם עומק היסטורי.</td></tr>
-            <tr><td><span class="tsamp" style="font-family:'Roboto Slab','Suez One',serif;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Slab Serif</span><small class="gl">עיטורים עבים</small></td><td>יציב, חזק, בולט</td><td>מותגים מסחריים, בנייה, תעשייה, ספורט, לוגיסטיקה, ביטוח, תחבורה</td><td>מעניק תחושת כוח ונוכחות. מתאים לעולמות פיזיים ו„כבדים”.</td></tr>
-            <tr><td><span class="tsamp" style="font-family:'Caveat','Amatic SC',cursive;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Script / Handwritten</span></td><td>אישי, רגשי, יצירתי</td><td>אופנה, לייף־סטייל, טיפוח, קוסמטיקה, ילדים, אמנות, אוכל ובייקרי, אירועים</td><td>יוצר קשר רגשי וחמים. להשתמש במידה: פחות קריא בטקסטים ארוכים.</td></tr>
-            <tr><td><span class="tsamp" style="font-family:'Rubik Bubbles','Secular One',sans-serif" aria-hidden="true">אב Ab</span><span class="ltr">Display / Decorative</span></td><td>ייחודי, בולט, מזוהה</td><td>לוגואים, כותרות גדולות, פרסום, שלטי חוצות, אריזות, בידור, תרבות</td><td>מושך תשומת לב, אבל לא לקריאה ממושכת. טוב לשימוש ממוקד.</td></tr>
-            <tr><td><span class="tsamp" style="font-family:'IBM Plex Mono','Courier New',monospace;font-weight:500" aria-hidden="true">אב Ab</span><span class="ltr">Monospace</span></td><td>טכני, מקצועי, אנליטי</td><td>טכנולוגיה, פיתוח, עולמות קוד, דאטה, סייבר, חקר, מדע, גיימינג</td><td>משדר דיוק, סדר וחדשנות. טוב לעולמות טכנולוגיים ומדעיים.</td></tr>
+            <tr><td><span class="tsamp f-heebo" style="font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Sans Serif</span><small class="gl">ללא עיטורים</small></td><td data-label="תחושה עיקרית">מודרני, נקי, טכנולוגי</td><td data-label="מתאים ל...">הייטק, סטארטאפים, אפליקציות, מותגים צעירים, חינוך, בריאות, אופנה מודרנית, לייף־סטייל</td><td data-label="הערות">קריא במיוחד במסכים ובשפה דיגיטלית. מתאים למיתוג עכשווי וחדשני.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Playfair Display','Frank Ruhl Libre',serif;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Serif</span><small class="gl">עם עיטורים</small></td><td data-label="תחושה עיקרית">קלאסי, אמין, יוקרתי</td><td data-label="מתאים ל...">מוסדות, עיתונות, עריכת דין, פיננסים, ייעוץ, חינוך, מותגים עם מסורת או יוקרה</td><td data-label="הערות">משדר רצינות, אמינות ואלגנטיות. טוב למותגים עם עומק היסטורי.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Roboto Slab','Suez One',serif;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Slab Serif</span><small class="gl">עיטורים עבים</small></td><td data-label="תחושה עיקרית">יציב, חזק, בולט</td><td data-label="מתאים ל...">מותגים מסחריים, בנייה, תעשייה, ספורט, לוגיסטיקה, ביטוח, תחבורה</td><td data-label="הערות">מעניק תחושת כוח ונוכחות. מתאים לעולמות פיזיים ו„כבדים”.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Caveat','Amatic SC',cursive;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Script / Handwritten</span></td><td data-label="תחושה עיקרית">אישי, רגשי, יצירתי</td><td data-label="מתאים ל...">אופנה, לייף־סטייל, טיפוח, קוסמטיקה, ילדים, אמנות, אוכל ובייקרי, אירועים</td><td data-label="הערות">יוצר קשר רגשי וחמים. להשתמש במידה: פחות קריא בטקסטים ארוכים.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Rubik Bubbles','Secular One',sans-serif" aria-hidden="true">אב Ab</span><span class="ltr">Display / Decorative</span></td><td data-label="תחושה עיקרית">ייחודי, בולט, מזוהה</td><td data-label="מתאים ל...">לוגואים, כותרות גדולות, פרסום, שלטי חוצות, אריזות, בידור, תרבות</td><td data-label="הערות">מושך תשומת לב, אבל לא לקריאה ממושכת. טוב לשימוש ממוקד.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'IBM Plex Mono','Courier New',monospace;font-weight:500" aria-hidden="true">אב Ab</span><span class="ltr">Monospace</span></td><td data-label="תחושה עיקרית">טכני, מקצועי, אנליטי</td><td data-label="מתאים ל...">טכנולוגיה, פיתוח, עולמות קוד, דאטה, סייבר, חקר, מדע, גיימינג</td><td data-label="הערות">משדר דיוק, סדר וחדשנות. טוב לעולמות טכנולוגיים ומדעיים.</td></tr>
           </tbody>
         </table>
       </div>
@@ -245,7 +255,7 @@
               <dt><span class="ltr">Grotesque</span></dt><dd>קצת עקום וקצת אופי, ניגוד מורגש בעובי. <span class="ltr">Franklin Gothic</span>.</dd>
               <dt><span class="ltr">Neo-Grotesque</span></dt><dd>ניטרלי ומלוטש. <span class="ltr">Helvetica, Roboto</span>.</dd>
               <dt><span class="ltr">Geometric</span></dt><dd>בנוי מעיגולים וריבועים. <span class="ltr">Futura, Montserrat, Poppins</span>.</dd>
-              <dt><span class="ltr">Humanist</span></dt><dd>הכי קריא, יש בו משהו מכתב היד. <span class="ltr">Gill Sans, Frutiger, Inter</span>.</dd>
+              <dt><span class="ltr">Humanist</span></dt><dd>נחשב מהקריאים ביותר בגופי טקסט, יש בו משהו מכתב היד. <span class="ltr">Gill Sans, Frutiger, Myriad</span>.</dd>
             </dl>
           </div>
         </div>
@@ -293,7 +303,7 @@
     <!-- ================= hierarchy ================= -->
     <section class="sec">
       <h2 id="hierarchy" data-short="היררכיה טיפוגרפית">היררכיה: מי צועק ומי לוחש</h2>
-      <p>הגדירו פונטים לשימושים שונים: <strong>כותרת ראשית, משנה, טקסט רץ, מספרים וציטוטים</strong>. הראו דוגמה אמיתית לעמוד מעוצב שממחיש את ההיררכיה הזו. <a class="xref" href="what-is-branding.html#steps">צעד 3 מתוך שבעת הצעדים</a></p>
+      <p>הגדירו פונטים לשימושים שונים: <strong>כותרת ראשית, משנה, טקסט רץ, מספרים וציטוטים</strong>. הראו דוגמה אמיתית לעמוד מעוצב שממחיש את ההיררכיה הזו. <a class="xref" href="what-is-branding.html#steps">צעד 4 מתוך שבעת הצעדים</a></p>
       <p>בעמוד הטיפוגרפיה של הפרויקט צריך להראות:</p>
       <ul class="dots">
         <li>פונט כותרות</li>
@@ -357,7 +367,7 @@
           <label for="ms-range">רוחב הטור</label>
           <input type="range" id="ms-range" min="200" max="760" value="440" step="10">
           <div class="ms-box" style="margin-top:12px">
-            <p class="ms-txt">מיתוג טוב הוא לא רק עיצוב יפה, אלא מערכת שמספרת סיפור שלם. כשהטקסט נוח לקריאה, הקורא נשאר עם הסיפור ולא נאבק בשורות. שורה באורך נכון מרגישה כמו נשימה רגועה: העין רצה עד הסוף, חוזרת בלי לחפש, וממשיכה הלאה בלי להתאמץ.</p>
+            <p class="ms-txt">אורך השורה משפיע על נוחות הקריאה לא פחות מהפונט עצמו. כשהטקסט נוח לקריאה, הקורא נשאר עם הסיפור ולא נאבק בשורות. שורה באורך נכון מרגישה כמו נשימה רגועה: העין רצה עד הסוף, חוזרת בלי לחפש, וממשיכה הלאה בלי להתאמץ.</p>
           </div>
           <div class="ms-out"><span class="ms-n" id="ms-n">–</span><span>תווים בשורה, בערך</span><span class="badge" id="ms-b"></span></div>
         </div>
@@ -382,7 +392,7 @@
 
       <h3 id="bilingual" data-added>למה עברית ואנגלית לא יוצאות באותו גודל</h3>
       <div data-added>
-        <p>באותו גודל נקודה, אותיות עבריות ולטיניות לא יושבות באותו גובה. רוב האותיות בטקסט לטיני הן אותיות קטנות, בגובה ה־<span class="ltr">x</span>, ואילו האות העברית גבוהה יותר וקרובה לגובה האות הגדולה. לכן באותו גודל העברית נראית גדולה וכבדה יותר. הנה מדידה אמיתית בתוך הפונטים עצמם:</p>
+        <p>באותו גודל נקודה, אותיות עבריות ולטיניות לא יושבות באותו גובה. רוב האותיות בטקסט לטיני הן אותיות קטנות, בגובה ה־<span class="ltr">x</span>, ואילו האות העברית גבוהה מגובה ה־<span class="ltr">x</span> של הלטינית, ונמצאת בין גובה ה־<span class="ltr">x</span> לגובה האות הגדולה. לכן באותו גודל העברית נראית גדולה וכבדה יותר. הנה מדידה אמיתית בתוך הפונטים עצמם:</p>
 
         <figure class="anim" data-steps="3" data-step-labels="האותיות הקטנות|האות הגדולה|האות העברית" id="hx">
           <span class="anim__label">גובה האות, נמדד בדפדפן שלכם</span>
@@ -438,7 +448,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: type morph, hierarchy scale, pairing, line length, Hebrew/Latin heights */
 document.addEventListener("DOMContentLoaded", function () {
@@ -584,7 +594,7 @@ document.addEventListener("DOMContentLoaded", function () {
         var cap = ctx.measureText("H").actualBoundingBoxAscent, xh = ctx.measureText("x").actualBoundingBoxAscent, hb = ctx.measureText("מ").actualBoundingBoxAscent;
         if (!cap || !xh || !hb) { houtp.textContent = ""; return; }
         line("base", 0); line("gx", xh); line("gc", cap); line("gh", hb);
-        houtp.innerHTML = "בפונט <span class=\"ltr\">" + f + "</span>: גובה האות מ הוא <strong><span class=\"ltr\">" + Math.round(hb / cap * 100) + "%</span></strong> מגובה <span class=\"ltr\">H</span>, ו<strong><span class=\"ltr\">" + Math.round(hb / xh * 100) + "%</span></strong> מגובה ה־<span class=\"ltr\">x</span>.";
+        houtp.innerHTML = "בפונט <span class=\"ltr\">" + f + "</span>: גובה האות מ הוא <strong><span class=\"ltr\">" + Math.round(hb / cap * 100) + "%</span></strong> מגובה <span class=\"ltr\">H</span>, ו־<strong><span class=\"ltr\">" + Math.round(hb / xh * 100) + "%</span></strong> מגובה ה־<span class=\"ltr\">x</span>.";
       };
       if (document.fonts && document.fonts.load) document.fonts.load(spec, "Hxמ").then(go, go); else go();
     }

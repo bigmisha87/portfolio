@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* ---- brand as a system (svg) ---- */
@@ -45,6 +45,13 @@
 .anim[data-step="3"] .sys .ln { stroke: var(--muted); stroke-dasharray: .03 .03; opacity: .6; }
 .anim[data-step="3"] .sys .tp .dot { fill: var(--warn); }
 .anim[data-step="3"] .sys .tp[style*="--i:1"] .dot, .anim[data-step="3"] .sys .tp[style*="--i:3"] .dot { fill: var(--muted); }
+/* phones: the wide drawing would shrink its labels to ~6px, so a taller drawing with bigger type takes over */
+.sys.sys-n { display: none; max-width: 420px; margin: 0 auto; }
+.sys-n .chip text { font-size: 16px; }
+.sys-n .tp text { font-size: 16px; }
+.sys-n .core text { font-size: 21px; }
+.anim[data-step="3"] .sys-n .chip.odd { transform: translate(-8px, 30px) rotate(9deg); }
+@media (max-width: 740px) { .sys.sys-w { display: none; } .sys.sys-n { display: block; } }
 .sys-state { display: grid; margin-top: 12px; text-align: center; font-weight: 600; font-size: 16px; line-height: 1.5; }
 .sys-state span { grid-area: 1 / 1; opacity: 0; transition: opacity .4s; }
 .sys-state .s3 { color: var(--warn); }
@@ -159,7 +166,7 @@
       <div class="ch-num">01 / 15</div>
       <h1>מה זה בעצם מיתוג</h1>
       <p class="lede">מיתוג הוא הרבה מעבר ללוגו, צבעים או פאטרן. אלה רק השכבה החיצונית. מיתוג הוא שפה עיצובית שלמה, שמאפשרת לעסק לדבר עם הקהל שלו באותו קול בכל מקום: על כוס, על שלט, באינסטגרם ועל שקית.</p>
-      <div class="ch-meta"><span>5 נושאים</span><span>2 הדגמות</span><span>2 אינפוגרפיקות</span><span>שבעה צעדים</span></div>
+      <div class="ch-meta"><span>5 נושאים</span><span>2 הדגמות</span><span>שבעה צעדים</span></div>
     </header>
     <figure class="illus hero" aria-hidden="false"><img src="img/hero-01.webp" alt="איור: סמל מותג זוהר במרכז, ומסביבו כוס קפה, שקית, חנות, טלפון, כרטיס ושלט חוצות, כולם באותה שפה צבעונית" width="1344" height="576" fetchpriority="high"></figure>
 
@@ -182,7 +189,7 @@
       <figure class="anim" data-steps="3" data-step-labels="שישה מרכיבים, רעיון אחד|יוצאים לכל נקודת מגע|מרכיב אחד בשפה אחרת">
         <span class="anim__label">מותג הוא מערכת</span>
         <div class="anim__stage">
-          <svg class="sys" viewBox="0 0 800 460" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: לוגו, צבעים, טיפוגרפיה, אלמנטים גרפיים, שפה צילומית או איורית וטון דיבור. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
+          <svg class="sys sys-w" viewBox="0 0 800 460" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: לוגו, צבעים, טיפוגרפיה, אלמנטים גרפיים, שפה צילומית או איורית וטון דיבור. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
             <path class="ln" style="--i:0" d="M400 230 L90 74" pathLength="1"/>
             <path class="ln" style="--i:1" d="M400 230 L710 62" pathLength="1"/>
             <path class="ln" style="--i:2" d="M400 230 L710 384" pathLength="1"/>
@@ -214,6 +221,39 @@
               <rect class="ico" x="62" y="368" width="56" height="50" rx="4"/><path class="ico" d="M76 368v-8a14 14 0 0 1 28 0v8"/><circle class="dot" cx="90" cy="393" r="9"/>
               <text x="90" y="442">שקית</text>
             </g>
+          </svg>
+          <svg class="sys sys-n" viewBox="0 0 360 540" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: לוגו, צבעים, טיפוגרפיה, אלמנטים גרפיים, שפה צילומית או איורית וטון דיבור. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
+            <path class="ln" style="--i:0" d="M180 270 L50 42" pathLength="1"/>
+            <path class="ln" style="--i:1" d="M180 270 L288 35" pathLength="1"/>
+            <path class="ln" style="--i:2" d="M180 270 L310 458" pathLength="1"/>
+            <path class="ln" style="--i:3" d="M180 270 L50 471" pathLength="1"/>
+            <polygon class="ring" points="180,150 290,210 290,330 180,390 70,330 70,210"/>
+
+            <g class="orb" style="--i:0"><g class="chip"><rect x="114" y="132" width="132" height="36" rx="18"/><text x="180" y="156">לוגו</text></g></g>
+            <g class="orb" style="--i:1"><g class="chip"><rect x="224" y="192" width="132" height="36" rx="18"/><text x="290" y="216">צבעים</text></g></g>
+            <g class="orb" style="--i:2"><g class="chip odd"><rect x="224" y="312" width="132" height="36" rx="18"/><text x="290" y="336">טיפוגרפיה</text></g></g>
+            <g class="orb" style="--i:3"><g class="chip"><rect x="114" y="372" width="132" height="36" rx="18"/><text x="180" y="396">טון דיבור</text></g></g>
+            <g class="orb" style="--i:4"><g class="chip"><rect x="4" y="302" width="132" height="56" rx="20"/><text x="70" y="326">שפה צילומית</text><text x="70" y="346">או איורית</text></g></g>
+            <g class="orb" style="--i:5"><g class="chip"><rect x="4" y="192" width="132" height="36" rx="18"/><text x="70" y="216">אלמנטים גרפיים</text></g></g>
+
+            <g class="core"><circle cx="180" cy="270" r="46"/><text x="180" y="277">המותג</text></g>
+
+            <g transform="translate(-40,-32)"><g class="tp" style="--i:0">
+              <path class="ico" d="M64 46h52M69 50h42l-6 50H75z"/><circle class="dot" cx="90" cy="74" r="9"/>
+              <text x="90" y="124">כוס</text>
+            </g></g>
+            <g transform="translate(-400,-26)"><g class="tp" style="--i:1">
+              <rect class="ico" x="670" y="40" width="80" height="42" rx="4"/><path class="ico" d="M710 82v26M700 62h36"/><circle class="dot" cx="688" cy="61" r="8"/>
+              <text x="710" y="128">שלט</text>
+            </g></g>
+            <g transform="translate(-400,80)"><g class="tp" style="--i:2">
+              <rect class="ico" x="690" y="348" width="40" height="72" rx="8"/><path class="ico" d="M702 402h16"/><circle class="dot" cx="710" cy="378" r="8"/>
+              <text x="710" y="442">טלפון</text>
+            </g></g>
+            <g transform="translate(-40,78)"><g class="tp" style="--i:3">
+              <rect class="ico" x="62" y="368" width="56" height="50" rx="4"/><path class="ico" d="M76 368v-8a14 14 0 0 1 28 0v8"/><circle class="dot" cx="90" cy="393" r="9"/>
+              <text x="90" y="442">שקית</text>
+            </g></g>
           </svg>
           <div class="sys-state" aria-live="polite"><span class="s1">שישה מרכיבים, ובמרכז רעיון אחד שמחבר ביניהם</span><span class="s2">מהמרכז יוצאים לכל נקודת מגע, ובכולן אותה שפה</span><span class="s3">הטיפוגרפיה „מדברת בשפה אחרת”, וכל נקודות המגע כבר לא נראות שייכות</span></div>
         </div>
@@ -299,38 +339,38 @@
       <figure class="illus"><img src="img/steps-01.webp" alt="איור: גרם מדרגות של שבעה שלבים, כל מדרגה עשויה מכלי עיצוב אחר, ודמות קטנה מטפסת עם עיפרון" width="1344" height="752" loading="lazy"></figure>
       <p>לוגו יפה ועוד כמה צבעים זה עדיין עיצוב. שבעת הצעדים האלה הם מה שהופך אותו למיתוג. כל צעד כאן קצר, ולכל אחד יש פרק שנכנס לעומק. הציר שבצד מראה איפה אתם.</p>
 
-      <h3 id="step-illustration" data-rail-label="שפה איורית או צילומית">1. פיתוח שפה איורית או צילומית</h3>
+      <h3 id="step-voice" data-rail-label="סיפור וטון">1. סיפור מותג וטון דיבור</h3>
+      <p>מותג צריך גם לדבר, לא רק להיראות: אישיות, מסרים קבועים, וקשר בין הערכים לבין הצבע, האיור והפונט.</p>
+      <p class="step-more"><a class="xref" href="strategy.html#voice">סיפור מותג וטון דיבור לעומק</a></p>
+      <h3 id="step-illustration" data-rail-label="שפה איורית או צילומית">2. פיתוח שפה איורית או צילומית</h3>
       <p>דמות, סמל או סגנון איור הם לא אלמנט אחד שחוזר, אלא עולם שמתפתח לסדרה שלמה של סצנות ושימושים. בפרק השפה הגרפית יש גם תרגיל.</p>
       <p class="step-more"><a class="xref" href="visual-language.html#illustration">שפה איורית וצילומית לעומק</a></p>
 
-      <h3 id="step-color" data-rail-label="מערכת צבעים">2. בניית מערכת צבעים</h3>
+      <h3 id="step-color" data-rail-label="מערכת צבעים">3. בניית מערכת צבעים</h3>
       <p>מותג זקוק לפלטת צבעים מגוונת:</p>
       <ul class="dots">
-        <li><span class="ltr">3–5</span> צבעי בסיס</li>
-        <li>2 צבעי הדגשה</li>
+        <li>2 צבעי בסיס</li>
+        <li>3 צבעים משלימים, לרוב לרקעים</li>
       </ul>
       <p>הציגו דף צבעוניות עם דוגמאות שימוש אמיתיות (אריזה, אתר, מודעה), כולל גרסה בשחור־לבן.</p>
       <p class="step-more"><a class="xref" href="color.html#palette">פרק הצבע</a></p>
 
-      <h3 id="step-type" data-rail-label="היררכיה טיפוגרפית">3. טיפוגרפיה עם היררכיה</h3>
+      <h3 id="step-type" data-rail-label="היררכיה טיפוגרפית">4. טיפוגרפיה עם היררכיה</h3>
       <p>לכל תפקיד בעמוד יש פונט ומשקל משלו, מהכותרת הראשית ועד הציטוט, וצריך להראות את זה על עמוד אמיתי.</p>
       <p class="step-more"><a class="xref" href="typography.html#hierarchy">היררכיה טיפוגרפית</a></p>
 
-      <h3 id="step-language" data-rail-label="עברית או אנגלית">4. בחירת שפה: עברית או אנגלית</h3>
+      <h3 id="step-language" data-rail-label="עברית או אנגלית">5. בחירת שפה: עברית או אנגלית</h3>
       <p>מקומי, בינלאומי או שניהם: ההחלטה על שפת התקשורת המרכזית משפיעה גם על האישיות של המותג, וגם על הפונטים שאפשר לבחור.</p>
       <p class="step-more"><a class="xref" href="typography.html#language">עברית, אנגלית ושתיהן יחד</a></p>
 
-      <h3 id="step-applications" data-rail-label="הרחבת יישומים">5. הרחבת יישומים</h3>
+      <h3 id="step-applications" data-rail-label="הרחבת יישומים">6. הרחבת יישומים</h3>
       <p>המבחן האמיתי של שפה עיצובית: האם היא נשמרת גם על כוס, על שלט וגם בבאנר קטן.</p>
       <p class="step-more"><a class="xref" href="mockups.html#applications">יישומים ומוקאפים</a></p>
 
-      <h3 id="step-brand-book" data-rail-label="ספר מותג">6. ספר מותג <span class="ltr">(Mini Brand Book)</span></h3>
+      <h3 id="step-brand-book" data-rail-label="ספר מותג">7. ספר מותג <span class="ltr">(Mini Brand Book)</span></h3>
       <p>מסמך אחד שמרכז את כל החוקים, כדי שגם מעצב אחר יוכל להמשיך באותה שפה.</p>
       <p class="step-more"><a class="xref" href="checklist.html#brand-book">מה נכנס לספר מותג</a></p>
 
-      <h3 id="step-voice" data-rail-label="סיפור וטון">7. סיפור מותג וטון דיבור</h3>
-      <p>מותג צריך גם לדבר, לא רק להיראות: אישיות, מסרים קבועים, וקשר בין הערכים לבין הצבע, האיור והפונט.</p>
-      <p class="step-more"><a class="xref" href="strategy.html#voice">סיפור מותג וטון דיבור לעומק</a></p>
     </section>
 
     <!-- ================= summary ================= -->
@@ -349,6 +389,6 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 </body>
 </html>

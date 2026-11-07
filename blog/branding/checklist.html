@@ -15,11 +15,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
-html { scroll-padding-top: 140px; }
-h2, h3 { scroll-margin-top: 140px; }
+/* the checklist has a sticky progress bar: jump targets land below it */
+[id] { scroll-margin-top: 140px; }
 
 /* ---- sticky progress ---- */
 .ckbar { position: sticky; top: 72px; z-index: 30; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 16px; margin: 0 0 36px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: var(--shadow); }
@@ -66,7 +66,6 @@ h2, h3 { scroll-margin-top: 140px; }
 .split-bar .m { flex-basis: 57.2%; background: var(--accent); color: var(--on-accent); }
 .split-bar .a { flex-basis: 21.4%; background: color-mix(in srgb, var(--accent) 40%, var(--fill)); color: var(--ink); }
 .split-bar .b { flex-basis: 21.4%; background: var(--fill); color: var(--ink); }
-.ck li.sub { padding-inline-start: 28px; }
 .split-cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-top: 14px; }
 .split-cols ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
 .split-cols li { margin: 0; font-size: 14px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--soft); }
@@ -81,7 +80,10 @@ h2, h3 { scroll-margin-top: 140px; }
 .split-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
 .split-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
 .spf[data-step="1"] .split-note [data-s="1"], .spf[data-step="2"] .split-note [data-s="2"], .spf[data-step="3"] .split-note [data-s="3"] { opacity: 1; visibility: visible; }
+.split-bar .sh { display: none; }
 @media (max-width: 560px) { .split-cols { grid-template-columns: 1fr; } }
+/* on a phone the middle segment is too narrow for „פרסום: חובה”; the short word fits */
+@media (max-width: 440px) { .split-bar .lg { display: none; } .split-bar .sh { display: inline; } }
 
 /* ---- brand book builds itself (animation) ---- */
 .bk { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 22px; align-items: center; }
@@ -135,7 +137,7 @@ h2, h3 { scroll-margin-top: 140px; }
 .glance .r { background: #f3e6cc; color: #1f3d2b; padding: 20px 22px; display: grid; gap: 14px; align-content: start; }
 .glance .r h5 { margin: 0 0 6px; font: 600 12px var(--text); color: #5a4a36; letter-spacing: .02em; }
 .glance .sw4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
-.glance .sw4 div { border-radius: 6px; height: 46px; display: flex; align-items: flex-end; padding: 4px 6px; font: 500 10px var(--mono); direction: ltr; }
+.glance .sw4 div { border-radius: 6px; height: 46px; display: flex; align-items: flex-end; padding: 4px 6px; font: 500 12px var(--mono); direction: ltr; }
 .glance .ty { font-size: 14px; line-height: 1.5; color: #1f3d2b; }
 .glance .ty b { font: 700 26px/1.1 var(--display); color: #1f3d2b; display: block; }
 .glance .dd { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 13px; line-height: 1.4; color: #1f3d2b; }
@@ -191,7 +193,7 @@ h2, h3 { scroll-margin-top: 140px; }
       <p>כל סעיף כאן הוא משהו שמרצה (או לקוח) ירצה לראות בהגשה. כשהסעיף מוסבר לעומק בפרק אחר, יש לידו קישור, וכאן נשארת רק השורה לסימון. מתחילים מהסיכום הקצר, ממשיכים לרשימה המלאה, ומסיימים בספר המותג.</p>
       <a class="tool" href="../../tools/branding-checklist/">
         <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="6" width="28" height="36" rx="3"/><path d="M16 16l3 3 5-6M16 27l3 3 5-6M28 17h5M28 28h5M16 37h17"/></svg>
-        <span><b>רוצים את זה על נייר?</b><span class="d">רשימת הביקורת להדפסה: 11 חלקים, עם קובץ <span class="ltr">PDF</span> להורדה. טובה לתלות ליד המחשב או להביא לפגישת הגשה.</span></span>
+        <span><b>רוצים את זה על נייר?</b><span class="d">רשימת הבדיקה להדפסה: 11 חלקים, עם קובץ <span class="ltr">PDF</span> להורדה. טובה לתלות ליד המחשב או להביא לפגישת הגשה.</span></span>
       </a>
       <div class="tool-links"><a class="xref" href="../../tools/branding-checklist/">לכלי ההדפסה</a> <a class="xref" href="../../tools/branding-checklist/branding-checklist.pdf">ישר ל־<span class="ltr">PDF</span></a></div>
     </section>
@@ -204,18 +206,18 @@ h2, h3 { scroll-margin-top: 140px; }
       <h3 id="summary-core">המיתוג עצמו</h3>
       <ul class="ck" data-group="summary-core">
         <li><label><input type="checkbox" data-k="s-logo"><span class="t">לוגו (בכל הגדלים וכל השימושים)</span><span class="tag m">חובה</span></label></li>
-        <li><label><input type="checkbox" data-k="s-board"><span class="t">בורד השראה. לא חובה, אבל יתרון להראות סקיצות, אפילו אם נעשו עם <span class="ltr">AI</span></span><span class="tag b">יתרון</span></label></li>
+        <li><label><input type="checkbox" data-k="s-board"><span class="t">לוח השראה <span class="ltr">(Mood Board)</span>. לא חובה, אבל יתרון להראות סקיצות, אפילו אם נעשו עם <span class="ltr">AI</span></span><span class="tag b">יתרון</span></label></li>
         <li><label><input type="checkbox" data-k="s-logosys"><span class="t">מערכת לוגו מלאה</span><span class="tag m">חובה</span></label></li>
-        <li class="sub"><label><input type="checkbox" data-k="s-colors"><span class="t">צבעים</span><span class="tag m">חובה</span></label></li>
-        <li class="sub"><label><input type="checkbox" data-k="s-type"><span class="t">טיפוגרפיה</span><span class="tag m">חובה</span></label></li>
-        <li class="sub"><label><input type="checkbox" data-k="s-graphic"><span class="t">שפה גרפית</span><span class="tag m">חובה</span></label></li>
-        <li class="sub"><label><input type="checkbox" data-k="s-icons"><span class="t">אייקונים</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-colors"><span class="t">צבעים</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-type"><span class="t">טיפוגרפיה</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-graphic"><span class="t">שפה גרפית</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-icons"><span class="t">אייקונים</span><span class="tag m">חובה</span></label></li>
         <li><label><input type="checkbox" data-k="s-mockups"><span class="t">שימושים <span class="ltr">(mockups)</span>: איפה הלוגו קיים, על איזה אובייקטים או מדיה</span><span class="tag m">חובה</span></label></li>
       </ul>
 
       <h3 id="summary-ads">פרסום: חובה!</h3>
       <ul class="ck" data-group="summary-ads">
-        <li><label><input type="checkbox" data-k="s-social"><span class="t"><strong>סושיאל מדיה:</strong> פוסטים לסושיאל (פרסומות) בפורמט ריבועי וסטורי</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-social"><span class="t"><strong>סושיאל מדיה:</strong> פוסטים לסושיאל (פרסומות) בפורמט ריבועי או עומד <span class="ltr">(4:5)</span> וסטורי</span><span class="tag m">חובה</span></label></li>
         <li><label><input type="checkbox" data-k="s-posters"><span class="t">פוסטרים (פרינטים לתחנות אוטובוס, קירות, עיתונים. זה בגדול אותו הדבר)</span><span class="tag m">חובה</span></label></li>
         <li><label><input type="checkbox" data-k="s-motion"><span class="t"><strong><span class="ltr">Motion / Animation</span>:</strong> סטורי או פוסט מונפש (עבודה של אפטר אפקטס, מומלץ לשלב <span class="ltr">AI</span>)</span><span class="tag m">חובה</span></label></li>
       </ul>
@@ -231,13 +233,13 @@ h2, h3 { scroll-margin-top: 140px; }
       <figure class="anim spf" id="split-fig" data-steps="3" data-step-labels="המיתוג עצמו|פרסום: חובה|הרחבות">
         <span class="anim__label">מה חובה ומה הרחבה</span>
         <div class="anim__stage">
-          <div class="split-bar" aria-hidden="true"><i class="m" data-goto="1">המיתוג עצמו</i><i class="a" data-goto="2">פרסום: חובה</i><i class="b" data-goto="3">הרחבות</i></div>
+          <div class="split-bar" aria-hidden="true"><i class="m" data-goto="1">המיתוג עצמו</i><i class="a" data-goto="2"><span class="lg">פרסום: חובה</span><span class="sh">פרסום</span></i><i class="b" data-goto="3">הרחבות</i></div>
           <div class="split-cols">
-            <div class="mc g1" data-goto="1"><h4>המיתוג עצמו</h4><ul><li>לוגו</li><li>מערכת לוגו מלאה</li><li>צבעים</li><li>טיפוגרפיה</li><li>שפה גרפית</li><li>אייקונים</li><li>מוקאפים</li><li>בורד השראה (יתרון)</li></ul></div>
+            <div class="mc g1" data-goto="1"><h4>המיתוג עצמו</h4><ul><li>לוגו</li><li>מערכת לוגו מלאה</li><li>צבעים</li><li>טיפוגרפיה</li><li>שפה גרפית</li><li>אייקונים</li><li>מוקאפים</li><li>לוח השראה (יתרון)</li></ul></div>
             <div class="mc g2" data-goto="2"><h4>פרסום: חובה!</h4><ul><li>סושיאל: ריבוע וסטורי</li><li>פוסטרים</li><li>סטורי מונפש</li></ul></div>
             <div class="bc g3" data-goto="3"><h4>הרחבות: לא חובה</h4><ul><li>אנימציות</li><li>מערכת הדמות</li><li>ספר מותג קצר</li></ul></div>
           </div>
-          <p class="split-note" aria-live="polite"><span data-s="1"><b>המיתוג עצמו:</b> שמונה סעיפים, שבעה מהם חובה. בורד ההשראה הוא יתרון.</span><span data-s="2"><b>פרסום:</b> שלושה סעיפים, וכולם חובה. בלי פוסטים, פוסטר וסטורי מונפש, ההגשה לא שלמה.</span><span data-s="3"><b>הרחבות:</b> שלושה סעיפים, כולם בונוס. זה מה שמבדיל הגשה טובה מהגשה מצוינת.</span></p>
+          <p class="split-note" aria-live="polite"><span data-s="1"><b>המיתוג עצמו:</b> שמונה סעיפים, שבעה מהם חובה. לוח ההשראה הוא יתרון.</span><span data-s="2"><b>פרסום:</b> שלושה סעיפים, וכולם חובה. בלי פוסטים, פוסטר וסטורי מונפש, ההגשה לא שלמה.</span><span data-s="3"><b>הרחבות:</b> שלושה סעיפים, כולם בונוס. זה מה שמבדיל הגשה טובה מהגשה מצוינת.</span></p>
         </div>
         <figcaption>הפרסום הוא לא תוספת: בלי פוסטים, פוסטר וסטורי מונפש, ההגשה לא שלמה. ההרחבות הן מה שמבדיל הגשה טובה מהגשה מצוינת.</figcaption>
       </figure>
@@ -295,7 +297,7 @@ h2, h3 { scroll-margin-top: 140px; }
         <li><label><input type="checkbox" data-k="gr-bg"><span class="t">רקעים</span></label></li>
       </ul>
       <p class="grp-note muted">לא חייבים את כולם: בחרו את מה שבאמת שייך לעולם של המותג, והראו שזה חוזר באותו אופן בכל מקום.</p>
-      <p class="more"><a class="xref" href="visual-language.html#illustration">שפה גרפית, עם דוגמה ממותג אמיתי</a></p>
+      <p class="more"><a class="xref" href="visual-language.html#graphic-language">שפה גרפית, עם דוגמה ממותג אמיתי</a></p>
 
       <h3 id="cl-character">5. מערכת הדמות <span class="ltr">(Character System)</span></h3>
       <p class="grp-note">אם יש למותג דמות, כדאי להציג:</p>
@@ -305,13 +307,13 @@ h2, h3 { scroll-margin-top: 140px; }
         <li><label><input type="checkbox" data-k="ch-pack"><span class="t">שימוש באריזה</span></label></li>
         <li><label><input type="checkbox" data-k="ch-icons"><span class="t">שימוש באייקונים</span></label></li>
       </ul>
-      <p class="more"><a class="xref" href="visual-language.html#illustration">דמות ושפה איורית</a></p>
+      <p class="more"><a class="xref" href="visual-language.html#character">דמות ושפה איורית</a></p>
 
       <h3 id="cl-icons">6. אייקונים <span class="ltr">(Icon set)</span></h3>
       <ul class="ck wide">
         <li><label><input type="checkbox" data-k="ic-set"><span class="t">סט אייקונים באותה שפה, מהעולם של המותג (הדברים שהמותג מוכר, עושה ומרגיש)</span></label></li>
       </ul>
-      <p class="more"><a class="xref" href="visual-language.html#illustration">אייקונים ואיורים</a></p>
+      <p class="more"><a class="xref" href="visual-language.html#icons">אייקונים ואיורים</a></p>
 
       <h3 id="cl-mockups">7. דוגמאות שימוש <span class="ltr">(Mockups)</span></h3>
       <p class="grp-note">מאוד חשוב לפרויקט. לדוגמה:</p>
@@ -328,10 +330,13 @@ h2, h3 { scroll-margin-top: 140px; }
       <h3 id="cl-social">8. סושיאל מדיה</h3>
       <p class="grp-note">מערכת פוסטים. לדוגמה:</p>
       <ul class="ck">
+        <li><label><input type="checkbox" data-k="so-profile"><span class="t">תמונת פרופיל ברשתות חברתיות: להראות מוקאפ כיצד הלוגו ייראה (אינסטגרם, יוטיוב וכו’)</span></label></li>
+        <li><label><input type="checkbox" data-k="so-site"><span class="t">הדמיה של הלוגו באתר של המותג</span></label></li>
         <li><label><input type="checkbox" data-k="so-post"><span class="t">פוסט אינסטגרם</span></label></li>
         <li><label><input type="checkbox" data-k="so-story"><span class="t">סטורי</span></label></li>
-        <li><label><input type="checkbox" data-k="so-ad"><span class="t">פרסומת</span></label></li>
-        <li><label><input type="checkbox" data-k="so-meme"><span class="t">מם מותג</span></label></li>
+        <li><label><input type="checkbox" data-k="so-video"><span class="t">פרסומת וידאו</span></label></li>
+        <li><label><input type="checkbox" data-k="so-banners"><span class="t">איך הלוגו ייראה על באנרים קטנים</span></label></li>
+        <li><label><input type="checkbox" data-k="so-photo"><span class="t">לוגו על תמונה. הצילום צריך להיות לפי השפה של המותג.</span></label></li>
       </ul>
       <p class="more"><a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a></p>
 
@@ -348,7 +353,7 @@ h2, h3 { scroll-margin-top: 140px; }
           <li><strong>קצר</strong>: רוב התנועות בממשק לוקחות <span class="ltr">200–500</span> אלפיות שנייה. אנימציית לוגו של פתיחה: שנייה עד שלוש, לא יותר.</li>
           <li><strong>האצה והאטה</strong>: תנועה במהירות קבועה מרגישה רובוטית. מה שנכנס, מאט בסוף. מה שיוצא, מאיץ.</li>
           <li><strong>אופי</strong>: קפיצי ושובב למותג קליל, רך ואיטי למותג יוקרתי. התנועה היא חלק מהאישיות.</li>
-          <li><strong>נגמר</strong>: תנועה שמתנגנת שוב ושוב ליד טקסט מפריעה לקרוא. מתנגנת פעם, ונחה. <a class="xref" href="golden-rules.html">כללי זהב</a></li>
+          <li><strong>נגמר</strong>: תנועה שמתנגנת שוב ושוב ליד טקסט מפריעה לקרוא. מתנגנת פעם, ונחה. <a class="xref" href="golden-rules.html#no-gifs">כללי זהב</a></li>
         </ul>
       </div>
 
@@ -405,7 +410,7 @@ h2, h3 { scroll-margin-top: 140px; }
             <div class="ok" data-act="4">מעצב אחר יכול להמשיך</div>
           </div>
         </div>
-        <p class="bk-note" aria-live="polite"><span data-s="1"><b>היסודות:</b> לוגו, צבעים וטיפוגרפיה. בלי שלושת אלה אין ספר.</span><span data-s="2"><b>השפה:</b> אלמנטים גרפיים, דמות ושפה מילולית. ככה המותג נשמע ומרגיש, לא רק נראה.</span><span data-s="3"><b>היישום:</b> דוגמאות אמיתיות, כדי שאף אחד לא יצטרך לנחש איך זה נראה בעולם.</span><span data-s="4"><b>המבחן:</b> מעצב שלא פגש אתכם מעולם ממשיך לעבוד עם הספר, בלי לשאול שאלות.</span></p>
+        <p class="bk-note" aria-live="polite"><span data-s="1"><b>היסודות:</b> מהות וערכים, לוגו, צבעים וטיפוגרפיה. בלי אלה אין ספר.</span><span data-s="2"><b>השפה:</b> אלמנטים גרפיים, דמות ושפה מילולית. ככה המותג נשמע ומרגיש, לא רק נראה.</span><span data-s="3"><b>היישום:</b> דוגמאות אמיתיות, כדי שאף אחד לא יצטרך לנחש איך זה נראה בעולם.</span><span data-s="4"><b>המבחן:</b> מעצב שלא פגש אתכם מעולם ממשיך לעבוד עם הספר, בלי לשאול שאלות.</span></p>
         <figcaption>שבעה עמודים, ספר אחד. העמוד השמיני הוא המבחן: אם מעצב שלא פגש אתכם מעולם יכול לעבוד עם הספר בלי לשאול שאלות, הספר עובד.</figcaption>
       </figure>
 
@@ -419,7 +424,7 @@ h2, h3 { scroll-margin-top: 140px; }
         <li><label><input type="checkbox" data-k="bb-type"><span class="t">טיפוגרפיה</span></label></li>
         <li><label><input type="checkbox" data-k="bb-examples"><span class="t">דוגמאות שימוש</span></label></li>
       </ul>
-      <p>אם הספר מיועד ללקוח אמיתי ולא רק לתיק עבודות, הוסיפו עמוד „עשה ואל תעשה” עם הלוגו. ובספר עצמו, כמו בכל טקסט במיתוג: משפט פתיחה אחד, לא מגילה. <a class="xref" href="logo.html">עשה ואל תעשה</a> <a class="xref" href="golden-rules.html">בלי חפירות</a></p>
+      <p>אם הספר מיועד ללקוח אמיתי ולא רק לתיק עבודות, הוסיפו עמוד „עשה ואל תעשה” עם הלוגו. ובספר עצמו, כמו בכל טקסט במיתוג: משפט פתיחה אחד, לא מגילה. <a class="xref" href="logo.html#dos-donts">עשה ואל תעשה</a> <a class="xref" href="golden-rules.html#no-rambling">בלי חפירות</a></p>
 
       <h3 id="brand-book-toc" data-added>תוכן העניינים של ספר מותג מלא</h3>
       <div data-added>
@@ -454,7 +459,7 @@ h2, h3 { scroll-margin-top: 140px; }
       <div data-added>
         <p>קובץ <span class="ltr">PDF</span> מתיישן ביום שבו שולחים אותו. מותגים שהספר שלהם באמת נשמר עובדים אחרת:</p>
         <ul class="dots">
-          <li><strong>דיגיטלי, לא <span class="ltr">PDF</span></strong>: עמוד אינטרנט (אפילו בנוטשן) שאפשר לעדכן, עם לינק אחד שתמיד נכון.</li>
+          <li><strong>דיגיטלי, לא <span class="ltr">PDF</span></strong>: עמוד אינטרנט (אפילו בנושן) שאפשר לעדכן, עם לינק אחד שתמיד נכון.</li>
           <li><strong>יש לו בעלים</strong>: אדם אחד שאחראי לעדכן אותו, ובדיקה פעם ברבעון של יישומים ופלטפורמות חדשים.</li>
           <li><strong>נכון ולא נכון, זה לצד זה</strong>: כל כלל מגיע עם דוגמה ויזואלית של השימוש הנכון ושל השגוי.</li>
           <li><strong>עם „למה”</strong>: אנשים שומרים על כללים שהם מבינים. „לא על רקע עמוס, כי הלוגו נעלם” עובד יותר טוב מ„לא על רקע עמוס”.</li>
@@ -470,7 +475,7 @@ h2, h3 { scroll-margin-top: 140px; }
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* interactive checklist: saved in localStorage (inside try/catch), progress bar, reset with a second-click confirm */
 (function () {

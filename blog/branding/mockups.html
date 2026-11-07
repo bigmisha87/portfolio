@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* ---- one logo travels across touchpoints ---- */
@@ -39,6 +39,8 @@
 .anim[data-step="2"] .trav .br4, .anim[data-step="3"] .trav .br3, .anim[data-step="4"] .trav .br2, .anim[data-step="5"] .trav .br1 { transition: opacity .5s ease .55s; }
 .anim[data-step="5"] .trav .fin { opacity: 1; transition: opacity .6s ease .9s; }
 .trav .lbl { transition: fill .4s; }
+/* on a phone the drawing shrinks to ~40%, so the labels grow inside it to stay at least 11px on screen */
+@media (max-width: 560px) { .trav .lbl, .trav .fin { font-size: 30px; } }
 .anim[data-step="2"] .trav .l4, .anim[data-step="3"] .trav .l3, .anim[data-step="4"] .trav .l2, .anim[data-step="5"] .trav .l1 { fill: var(--accent-ink); }
 
 /* ---- three ways to show ---- */
@@ -132,7 +134,7 @@
       <figure class="anim" id="trav-fig" data-steps="5" data-step-labels="הלוגו|אינסטגרם|חזית חנות|תיק בד|כוס">
         <span class="anim__label">לוגו אחד, ארבעה עולמות</span>
         <div class="anim__stage">
-          <svg class="trav" viewBox="0 0 800 330" role="img" aria-label="לוגו של מותג בדיוני בשם בוקר עובר מכוס, לתיק, לשלט של חנות ולמסך של טלפון. בכל מקום שהוא נוחת, החפץ מקבל את אותם צבעים ואותו סמל.">
+          <svg class="trav" viewBox="0 0 800 330" role="img" aria-label="לוגו של מותג בדיוני בשם בוקר עובר ממסך של טלפון, לשלט של חנות, לתיק בד ולכוס. בכל מקום שהוא נוחת, החפץ מקבל את אותם צבעים ואותו סמל.">
             <defs>
               <g id="bk-mark"><circle r="22" fill="#e2622b"/><path d="M-11 5 A11 11 0 0 1 11 5 Z" fill="#fff4e6"/><rect x="-14" y="8" width="28" height="3.2" rx="1.6" fill="#fff4e6"/></g>
               <g id="bk-neg"><circle r="22" fill="#fff4e6"/><path d="M-11 5 A11 11 0 0 1 11 5 Z" fill="#e2622b"/><rect x="-14" y="8" width="28" height="3.2" rx="1.6" fill="#e2622b"/></g>
@@ -236,7 +238,7 @@
         <a href="img/mock-oula-bags.webp" data-lb data-cap="OULA: אותה שקית בכתום ובלבן"><img src="img/mock-oula-bags.webp" alt="שתי שקיות של OULA, אחת כתומה ואחת לבנה, באותו איור ובאותן ידיות עור" loading="lazy" width="1400" height="1077"></a>
         <a href="img/mock-oula-hands.webp" data-lb data-cap="OULA: קופסה עגולה וקופסה מרובעת"><img src="img/mock-oula-hands.webp" alt="שתי ידיים מחזיקות קופסה עגולה וקופסה מרובעת כתומות עם ידיות" loading="lazy" width="1400" height="1036"></a>
         <a href="img/mock-oula-tins.webp" data-lb data-cap="OULA: מגדל של קופסאות עגולות"><img src="img/mock-oula-tins.webp" alt="ערימה של קופסאות עגולות כתומות עם הלוגו OULA ואיורים" loading="lazy" width="1200" height="1497"></a>
-        <a href="img/mock-oula-box.webp" data-lb data-cap="OULA: קופסת מאפים, בצבע ובשחור־לבן"><img src="img/mock-oula-box.webp" alt="שתי קופסאות מאפים עם ידית, אחת כתומה ואחת בגווני קרם, על רקע של מאפים בשחור־לבן" loading="lazy" width="1400" height="1640"></a>
+        <a href="img/mock-oula-box.webp" data-lb data-cap="OULA: שתי קופסאות מאפים, כתומה ובהירה, על רקע של מאפים בשחור־לבן"><img src="img/mock-oula-box.webp" alt="שתי קופסאות מאפים עם ידית, אחת כתומה ואחת בגווני קרם, על רקע של מאפים בשחור־לבן" loading="lazy" width="1400" height="1640"></a>
         <a href="img/mock-oula-carrier.webp" data-lb data-cap="OULA: קופסה עם ידית, בצד השני של אותו איור"><img src="img/mock-oula-carrier.webp" alt="יד מחזיקה קופסה לבנה עם ידית ואיור קווי של דמויות ופחית כתומה" loading="lazy" width="1400" height="1400"></a>
       </div>
       <figcaption>לחיצה על תמונה פותחת אותה בגדול.</figcaption>
@@ -291,7 +293,7 @@
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M19 4h10v8l4 6v24a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V18l4-6z"/><path d="M15 26h18v10H15z"/></svg>בקבוק / צנצנת</li>
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="4" width="28" height="40" rx="1"/><circle cx="24" cy="18" r="7"/><path d="M15 32h18M15 37h11"/></svg>פוסטרים</li>
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M24 6a18 18 0 1 0 18 18H30a6 6 0 0 1-6-6z"/><path d="M24 6l18 18"/></svg>סטיקרים</li>
-        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M6 42V8M42 42V8"/><rect x="12" y="14" width="24" height="18" rx="2" transform="rotate(-6 24 23)"/><path d="M4 42h40"/></svg>מדבקות רחוב</li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4v40M10 44h12"/><g transform="rotate(-8 25 25)"><path d="M10 13h26v14l-9 9H10z" fill="var(--paper)"/><path d="M36 27h-9v9"/><circle cx="20" cy="23" r="4.5"/></g></svg>מדבקות רחוב</li>
         <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M17 6c2 4 12 4 14 0l11 6-5 9-4-2v23H15V19l-4 2-5-9z"/><circle cx="24" cy="24" r="4"/></svg>חולצה / מרצ'נדייז</li>
       </ul>
       <p>וכל השאר, מלוגו ועד ספר מותג, מסודר ברשימה אחת שאפשר לסמן תוך כדי עבודה. <a class="xref" href="checklist.html">רשימת הבדיקה</a></p>
@@ -303,9 +305,9 @@
       <p>לא צריך לצלם כל שקית בסטודיו. רוב המוקאפים המקצועיים הם קבצי פוטושופ עם <span class="ltr">Smart Object</span>: לוחצים פעמיים על השכבה, מדביקים את העיצוב, שומרים, והוא נעטף על החפץ עם הצל, הקמטים והאור. כמה מקורות טובים:</p>
       <div class="cards c4">
         <div class="card"><span class="k">Mockup World</span><h4>קבצים חינמיים</h4><p>מוקאפים ריאליסטיים בפוטושופ, מותרים גם לשימוש מסחרי. <a href="https://www.mockupworld.co/">לאתר</a></p></div>
-        <div class="card"><span class="k">Anthony Boyd Graphics</span><h4>חינמי ואיכותי</h4><p>קבצי פוטושופ ברמה גבוהה מאוד, הרבה מכשירים ודפוס. <a href="https://www.anthonyboyd.graphics/">לאתר</a></p></div>
+        <div class="card"><span class="k">Mockups Design</span><h4>חינמי, גם למסחרי</h4><p>אלפי קבצי פוטושופ: אריזות, דפוס, שילוט וקירות ברחוב. בלי הרשמה, ומותר גם בעבודה ללקוח. <a href="https://mockups-design.com/">לאתר</a></p></div>
         <div class="card"><span class="k">Placeit</span><h4>בדפדפן, בלי פוטושופ</h4><p>אלפי תבניות, גוררים את העיצוב ומקבלים תמונה. בתשלום חודשי. <a href="https://placeit.net/">לאתר</a></p></div>
-        <div class="card"><span class="k">Smartmockups</span><h4>למתחילים</h4><p>עובד בדפדפן ומשולב בקנבה. יש גרסה חינמית. <a href="https://smartmockups.com/">לאתר</a></p></div>
+        <div class="card"><span class="k">Canva Mockups</span><h4>למתחילים</h4><p>כלי המוקאפים של קנבה (לשעבר <span class="ltr">Smartmockups</span>). עובד בדפדפן, בלי פוטושופ, וזמין גם בחשבון החינמי. <a href="https://www.canva.com/mockups/">לאתר</a></p></div>
         <div class="card"><span class="k">Yellow Images</span><h4>אריזות</h4><p>ספרייה ענקית של אריזות: בקבוקים, פחיות, שקיות וקופסאות. <a href="https://yellowimages.com/">לאתר</a></p></div>
         <div class="card"><span class="k">LS Graphics</span><h4>נקי ומינימלי</h4><p>מוקאפים בסגנון נקי, חלקם עובדים גם בפיגמה. <a href="https://www.ls.graphics/">לאתר</a></p></div>
         <div class="card"><span class="k">Vectary</span><h4>תלת־ממד בדפדפן</h4><p>מסובבים את החפץ, משנים זווית ואור, ומייצאים. <a href="https://www.vectary.com/">לאתר</a></p></div>
@@ -341,7 +343,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   /* one logo, four worlds: the logo flies from where it was to the object of the new step, then melts into it */

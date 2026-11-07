@@ -70,7 +70,7 @@ a { color: var(--accent-ink); text-underline-offset: 3px; text-decoration-thickn
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: var(--accent); color: var(--on-accent); }
-.ltr { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+.ltr { direction: ltr; unicode-bidi: isolate; }
 .mono { font-family: var(--mono); font-size: .9em; }
 .skip { position: absolute; inset-inline-start: 12px; top: -60px; z-index: 100; background: var(--accent); color: var(--on-accent); padding: 8px 14px; border-radius: 999px; font-weight: 600; text-decoration: none; }
 .skip:focus { top: 12px; }
@@ -511,3 +511,7 @@ section.has-rail .rail-body { width: 100%; }
 @media (max-width: 1060px) { .rail { max-height: none; overflow-y: visible; } }
 /* readers who ask the system for less motion: step changes happen at once */
 @media (prefers-reduced-motion: reduce) { .anim *, .anim *::before, .anim *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+/* search reveal: switch an infographic's step without its slide transition */
+.anim.no-trans, .anim.no-trans * { transition: none !important; }
+/* phone: a step's heading lands below the sticky step strip, not under it */
+@media (max-width: 1060px) { section.has-rail [data-rail-step][id], section.has-rail .rail-body h3[id] { scroll-margin-top: 136px; } }

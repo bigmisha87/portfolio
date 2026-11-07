@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>איך מותגים גדולים נבנים · מדריך המיתוג | מישה קרץ'</title>
-<meta name="description" content="קנבס המותג: למה 95% מהחלטות הקנייה רגשיות, למה לוגו אינו מותג, הרעיון המארגן, פילוח לפי תפיסת עולם, נכסים בחמשת החושים, עקביות רדיקלית, Top of Mind, ומקרה המבחן של טחינה ברכה.">
+<meta name="description" content="קנבס המותג: למה 95% מהחלטות הקנייה רגשיות, למה לוגו אינו מותג, הרעיון המארגן, פילוח לפי תפיסת עולם, נכסים בחמשת החושים, עקביות רדיקלית, Top of Mind, ומקרה המבחן של טחינה בארכה.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="איך מותגים גדולים נבנים · מדריך המיתוג">
@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* ---- illustrations cropped from the lecture deck: they keep their own paper colour ---- */
@@ -143,8 +143,9 @@
 .aud-card.no figcaption b { color: var(--warn); }
 .aud-card.yes figcaption b { color: var(--ok); }
 .demo-card { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 14px; color: var(--muted); }
-.demo-card span { text-decoration: line-through; text-decoration-color: var(--warn); }
-.demo-card span::before { content: "☑ "; text-decoration: none; display: inline-block; margin-inline-end: 2px; }
+/* the strike is an underline pulled up above the middle, so it crosses the words but not the dash in "25–35" */
+.demo-card > span { text-decoration: underline; text-decoration-color: var(--warn); text-decoration-thickness: 1.5px; text-underline-offset: -0.5em; text-decoration-skip-ink: none; }
+.demo-card > span::before { content: "☑ "; text-decoration: none; display: inline-block; margin-inline-end: 2px; }
 .callout { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: start; }
 .callout svg { width: 52px; height: 52px; fill: none; stroke: var(--accent-ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 640px) { .aud { grid-template-columns: 1fr; } }
@@ -246,7 +247,8 @@
 .lab svg { width: 34px; height: 34px; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .lab ul { margin: 0; }
 @media (max-width: 640px) { .lab { grid-template-columns: 1fr; } }
-.flip img.cmp { display: block; height: 84px; width: auto; max-width: 170px; border-radius: 10px; margin: 6px 0 10px; }
+.flip img.cmp { display: block; height: 84px; width: auto; max-width: 170px; object-fit: contain; align-self: flex-start; border-radius: 10px; margin: 6px 0 10px; }
+.nw { white-space: nowrap; }
 </style>
 </head>
 <body data-ch="brands">
@@ -384,7 +386,7 @@
           </span>
           <span class="face brand">
             <span class="tag">מותג</span>
-            <img class="cmp" src="img/canvas-cmp-bmw.webp" alt="מכונית אפורה בתנועה עם הלוגו של BMW" loading="lazy">
+            <img class="cmp" src="img/canvas-cmp-bmw-v2.webp" alt="מכונית אפורה בתנועה עם הלוגו של BMW" loading="lazy">
             <b>BMW</b>
             <span class="d">סטטוס, ביטחון עצמי ותחושת הצלחה. אותם ארבעה גלגלים, סיפור אחר לגמרי.</span>
           </span>
@@ -395,7 +397,7 @@
             <span class="tag">מוצר חסר זהות</span>
             <img class="cmp" src="img/canvas-cmp-hot.webp" alt="סמל גאומטרי מבריק בשחור ואפור, בהשראת הלוגו של HOT" loading="lazy">
             <b>עיצוב מדהים לחברת תקשורת</b>
-            <span class="d">לוגו מבריק, פרסומות יפות (הדוגמה בהרצאה: <span class="ltr">HOT</span>). על הנייר, זה נראה כמו מותג.</span>
+            <span class="d">לוגו מבריק, פרסומות יפות (הדוגמה בהרצאה: <span class="nw"><span class="ltr">HOT</span>).</span> על הנייר, זה נראה כמו מותג.</span>
           </span>
           <span class="face brand">
             <span class="tag">מותג</span>
@@ -480,12 +482,12 @@
         <div class="card">
           <span class="k">Apple</span>
           <h4>שבירת הסטטוס קוו <span class="ltr">(Think Different)</span></h4>
-          <p>הרעיון מתבטא בעיצוב החנויות, בהיעדר הכפתורים (באייפון הראשון), ובהכנסת צבע לעולם של מחשבים אפורים.</p>
+          <p>הרעיון מתבטא בעיצוב החנויות, בהיעדר מקלדת פיזית (באייפון הראשון), ובהכנסת צבע לעולם של מחשבים אפורים.</p>
         </div>
         <div class="card">
           <span class="k">TEL AVIV</span>
           <h4>סגנון החיים התל־אביבי</h4>
-          <p>ליברליות, פתוח <span class="ltr">24/7</span>, סלי קנייה קטנים, מטריות בחורף, מטריות לכלבים, והזמנה להיכנס למזגן בקיץ. הכל נגזר מתוך תובנה עמוקה על הקהל.</p>
+          <p>ליברליות, פתוח <span class="ltr">24/7</span>, סלי קנייה קטנים, מטריות בחורף, מטריות לכלבים, והזמנה להיכנס למזגן בקיץ. הכול נגזר מתוך תובנה עמוקה על הקהל.</p>
         </div>
       </div>
       <p>הרעיון המארגן הוא גם מה שמבדיל אתכם מהמתחרים, ומה שנותן למותג אישיות. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a> <a class="xref" href="strategy.html#archetypes">12 הארכיטיפים</a></p>
@@ -496,7 +498,7 @@
     <section class="sec">
       <h2 id="audience" data-short="פילוח קונספטואלי">הסוף לדמוגרפיה: פילוח קונספטואלי</h2>
       <p class="lead"><span class="hl">אנחנו לא מטרגטים גיל, מיקוד או הכנסה. אנחנו מטרגטים תפיסת עולם.</span></p>
-      <p>ההבדל נשמע קטן, אבל הוא משנה הכל. הדוגמה המוכרת היא הארלי־דייווידסון: מי שמדמיין את הקהל שלה רואה אופנוען עם בנדנה, אבל הקונים בפועל הם אנשים אחרים לגמרי.</p>
+      <p>ההבדל נשמע קטן, אבל הוא משנה הכול. הדוגמה המוכרת היא הארלי־דייווידסון: מי שמדמיין את הקהל שלה רואה אופנוען עם בנדנה, אבל הקונים בפועל הם אנשים אחרים לגמרי.</p>
 
       <div class="aud">
         <figure class="aud-card no">
@@ -545,7 +547,7 @@
           </div>
           <div class="sense-panel" aria-live="polite">
             <div data-p="1"><h4>ראייה</h4><p>הצבע האדום וצורת הבקבוק הרשומה של קוקה־קולה. <span data-added>או הלוגו של צ'ופה צ'ופס, שעיצב סלבדור דאלי, האיש עם השפם המפורסם.</span></p></div>
-            <div data-p="2"><h4>שמיעה</h4><p>ה„טא־דום” בפתיחה של נטפליקס, או הצפצוף של <span class="ltr">Intel Inside</span>. צליל קצר שמייצר ציפייה, כמו ממתק קטן למוח.</p></div>
+            <div data-p="2"><h4>שמיעה</h4><p>ה„טא־דום” בפתיחה של נטפליקס, או הג׳ינגל בן חמשת הצלילים של <span class="ltr">Intel Inside</span>. צליל קצר שמייצר ציפייה, כמו ממתק קטן למוח.</p></div>
             <div data-p="3"><h4>ריח</h4><p>חתימת הריח בחנויות <span class="ltr">Laline</span>, ריח „הרכב החדש” של לקסוס, או הרגע שבו פותחים את מרכך הכביסה סוד באמצע הסופר.</p></div>
             <div data-p="4"><h4>מישוש</h4><p>הקימורים של בקבוק הזכוכית ההיסטורי של קוקה־קולה, או המרקם של שקית <span class="ltr">Golden Ring</span>, שנותן תחושת פרימיום עוד לפני שפותחים אותה.</p></div>
             <div data-p="5"><h4>טעם</h4><p>הצביטה הספציפית בגרון בלגימה הראשונה של קוקה־קולה. אפשר לזהות אותה בעיניים עצומות.</p></div>
@@ -582,7 +584,7 @@
 
       <div class="warn">
         <span class="box-label">מה קורה כששוברים את המסילה</span>
-        <p>ב־<span class="ltr">1985</span> קוקה־קולה שינתה את הנוסחה וקראה למשקה החדש <span class="ltr">New Coke</span>. היא שברה את המסילה. המכירות התרסקו, והחברה נאלצה לחזור במהירות לנוסחה הישנה, תחת השם <span class="ltr">Coca-Cola Classic</span><span data-added>, אחרי 79 ימים בלבד</span>.</p>
+        <p>ב־<span class="ltr">1985</span> קוקה־קולה שינתה את הנוסחה וקראה למשקה החדש <span class="ltr">New Coke</span>. היא שברה את המסילה. הקהל זעם: מאות אלפי שיחות ומכתבים של לקוחות כועסים, והחברה נאלצה לחזור במהירות לנוסחה הישנה, תחת השם <span class="ltr">Coca-Cola Classic</span><span data-added>, אחרי <span class="ltr">79</span> ימים בלבד</span>.</p>
         <p><strong>אל תשתעממו מהמותג שלכם לפני שהלקוחות משתעממים ממנו.</strong> מה שנראה לכם „ישן” אחרי שנה, הלקוחות רק התחילו לזהות.</p>
       </div>
     </section>
@@ -623,7 +625,7 @@
 
     <!-- ================= case study: bracha ================= -->
     <section class="sec" data-rail>
-      <h2 id="bracha" data-short="מקרה מבחן: ברכה">מקרה מבחן: פיצוח קטגוריית הטחינה (ברכה)</h2>
+      <h2 id="bracha" data-short="מקרה מבחן: בארכה">מקרה מבחן: פיצוח קטגוריית הטחינה (בארכה)</h2>
       <p>כל מה שראינו עד עכשיו, במקרה אחד אמיתי. עקבו אחרי הציר: מנקודת הפתיחה ועד התוצאה.</p>
 
       <h3 id="bracha-start" data-rail-label="נקודת הפתיחה">נקודת הפתיחה</h3>
@@ -642,7 +644,7 @@
       <p>מכאן והלאה, כל החלטה נגזרת מהמשפט הזה.</p>
 
       <h3 id="bracha-name" data-rail-label="השם">השם: זהות</h3>
-      <p>השם <strong>ברקה</strong> (ברכה, בערבית): מילה שמתגלגלת נכון על הלשון, גם בעברית וגם בערבית.</p>
+      <p>השם <strong>בארכה</strong> (ברכה, בערבית): מילה שמתגלגלת נכון על הלשון, גם בעברית וגם בערבית.</p>
 
       <h3 id="bracha-logo" data-rail-label="הלוגו">הלוגו: ראייה</h3>
       <p>טיפוגרפיה שמזכירה כתב ערבי, ואייקון שנלקח מתוך פסיפסים ערביים מסורתיים.</p>
@@ -653,7 +655,7 @@
       <figure class="anim jf" data-steps="3" data-step-labels="המדף הגנרי|כד החרס|שם ולוגו">
         <span class="anim__label">שחזור סכמטי של האריזה</span>
         <div class="anim__stage jar-wrap">
-          <svg class="jar-svg" viewBox="0 0 300 340" role="img" aria-label="שרטוט של צנצנת: מצנצנת ישרה ורגילה לכד חרס מעוגל, ועליו השם ברקה וסמל פסיפס">
+          <svg class="jar-svg" viewBox="0 0 300 340" role="img" aria-label="שרטוט של צנצנת: מצנצנת ישרה ורגילה לכד חרס מעוגל, ועליו השם בארכה וסמל פסיפס">
             <path class="bp" d="M150 20v306M30 92h240M30 300h240M44 60v250M256 60v250"/>
             <g class="g straight">
               <rect class="lid" x="94" y="40" width="112" height="26" rx="4"/>
@@ -665,7 +667,7 @@
               <path class="orange" d="M40 150c-6 54 10 108 52 144M260 150c6 54-10 108-52 144"/>
             </g>
             <g class="g label">
-              <text class="name" x="150" y="168" text-anchor="middle">ברקה</text>
+              <text class="name" x="150" y="168" text-anchor="middle">בארכה</text>
               <g transform="translate(150 226)">
                 <rect x="-24" y="-24" width="48" height="48" fill="#1f3a68"/>
                 <rect x="-24" y="-24" width="48" height="48" fill="#e07b22" transform="rotate(45)"/>
@@ -679,14 +681,14 @@
           <div class="jar-text" aria-live="polite">
             <div data-p="1"><h4>כמו כולם</h4><p>צנצנת עם דפנות ישרות. על מדף של עשרות צנצנות זהות, היא פשוט נבלעת.</p></div>
             <div data-p="2"><h4>כד חרס</h4><p>צורה מעוגלת של כד חרס ערבי היסטורי. היא בולטת על המדף (ראייה) ומרגישה אחרת ביד (מישוש). שני חושים, צורה אחת.</p></div>
-            <div data-p="3"><h4>השם והלוגו</h4><p>השם ברקה, באותיות שמזכירות כתב ערבי, ואייקון בהשראת פסיפס מסורתי. עכשיו האריזה עצמה אומרת „טחינה ערבית אסלית”.</p></div>
+            <div data-p="3"><h4>השם והלוגו</h4><p>השם בארכה, באותיות שמזכירות כתב ערבי, ואייקון בהשראת פסיפס מסורתי. עכשיו האריזה עצמה אומרת „טחינה ערבית אסלית”.</p></div>
           </div>
         </div>
         <figcaption>שרטוט סכמטי שמדגים את העיקרון, לא העתק של האריזה האמיתית.</figcaption>
       </figure>
 
       <h3 id="bracha-campaign" data-rail-label="הקמפיין">השפה התקשורתית</h3>
-      <p>סרטוני קמפיין שבהם הפחית נכנסת לפריים בתנועה של ריקודי בטן, עם קריינות עמוקה של השחקן אורי גבריאל. גם כאן: חוש השמיעה, והרעיון המארגן, בכל שנייה.</p>
+      <p>סרטוני קמפיין שבהם הצנצנת נכנסת לפריים בתנועה של ריקודי בטן, עם קריינות עמוקה של השחקן אורי גבריאל. גם כאן: חוש השמיעה, והרעיון המארגן, בכל שנייה.</p>
 
       <h3 id="bracha-result" data-rail-label="התוצאה">התוצאה</h3>
       <div class="result-box">ממדף גנרי למותג מספר 1 בישראל, בתוך שנה אחת בלבד.<small>לפי ההרצאה.</small></div>
@@ -738,7 +740,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: product/brand flip cards, the organizing-idea brand switch, rail-or-carriage quiz.
    The steppers (supermarket, ring, senses, jar) are driven by guide.js; their states are pure CSS. */

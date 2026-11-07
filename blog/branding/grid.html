@@ -15,13 +15,14 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* Infographics on this page are click-through steppers (guide.js: data-steps / data-goto).
    Nothing plays by itself: each step is a state (.anim[data-step="k"]) reached with CSS transitions,
    and a picked tile replays its move only after the reader's first click (.is-live, set below). */
-:root { --tint: color-mix(in srgb, var(--accent) 22%, transparent); --tint-2: color-mix(in srgb, var(--accent) 10%, transparent); }
+/* the tints are set on body, where this chapter's colour (body[data-ch="grid"] --accent) lives; on :root they fell back to the default yellow */
+body { --tint: color-mix(in srgb, var(--accent) 22%, transparent); --tint-2: color-mix(in srgb, var(--accent) 10%, transparent); }
 
 /* ---- 12-column snap ---- */
 .snap { position: relative; aspect-ratio: 16 / 10.5; background: var(--soft); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
@@ -53,8 +54,9 @@
 .anim[data-step="2"] .snap .lay > div { opacity: .72; box-shadow: 0 0 0 1.5px var(--accent); }
 /* step 3: the same page placed "roughly", without the grid */
 .anim[data-step="3"] .snap .lay > div { transform: translate(calc(var(--x) * .28), calc(var(--y) * .28)) rotate(calc(var(--r) * .4)); }
-.snap-legend span { transition: opacity .45s; }
-.anim[data-step="1"] .snap-legend span, .anim[data-step="3"] .snap-legend span { opacity: .45; }
+.snap-legend b { transition: color .45s; }
+/* when the columns are hidden, the legend steps back to muted text (still readable, never faded) */
+.anim[data-step="1"] .snap-legend b, .anim[data-step="3"] .snap-legend b { color: var(--muted); }
 .snap-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: 14px; color: var(--muted); }
 .snap-legend b { color: var(--ink); font-weight: 600; }
 
@@ -150,9 +152,14 @@
 .rp .zone { fill: var(--tint); }
 .rp h4 { margin: 0; font-size: 16px; }
 .rp p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
-.rp > div { transition: opacity .45s, border-color .45s, background .45s; }
-.anim[data-step] .rp > div:not(.on) { opacity: .55; }
-.anim[data-step] .rp > div:not(.on):hover { opacity: .85; }
+.tbl.wrap-th th { white-space: normal; }
+.tbl.wrap-th td .ltr { white-space: nowrap; }
+@media (max-width: 560px) { .tbl.wrap-th th, .tbl.wrap-th td { padding: 10px 8px; } }
+.rp > div { transition: border-color .45s, background .45s; }
+.rp svg { transition: opacity .45s; }
+/* unpicked patterns: only the drawing fades, the title and text stay fully readable */
+.anim[data-step] .rp > div:not(.on) svg { opacity: .5; }
+.anim[data-step] .rp > div:not(.on):hover svg { opacity: .85; }
 .rp > div.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--soft)); }
 .rp > div.on h4 { color: var(--accent-ink); }
 .anim.is-live .rp > div.on .path { animation: draw 1.3s ease-in-out both; }
@@ -217,7 +224,7 @@
         <figcaption>אף אלמנט לא ממוקם „בערך”. כל קצה נופל על קו של עמודה, ולכן גם כשמוסיפים עמוד חדש, הוא ייראה שייך.</figcaption>
       </figure>
 
-      <blockquote class="quote" data-added>„מערכת הגריד היא כלי עזר, לא ערובה.”<br><span class="muted" style="font-size:15px">יוזף מילר־ברוקמן, <span class="ltr">Grid Systems in Graphic Design</span> (1961). הספר של הסגנון השוויצרי שעדיין קובע איך נראים עמודים, אתרים וספרי מותג. הגריד לא יעצב בשבילכם, הוא רק ייתן לכם על מה לעמוד.</span></blockquote>
+      <blockquote class="quote" data-added>„מערכת הגריד היא כלי עזר, לא ערובה.”<br><span class="muted" style="font-size:15px">יוזף מילר־ברוקמן, <span class="ltr">Grid Systems in Graphic Design</span> (<span class="ltr">1981</span>). הספר של הסגנון השוויצרי שעדיין קובע איך נראים עמודים, אתרים וספרי מותג. הגריד לא יעצב בשבילכם, הוא רק ייתן לכם על מה לעמוד.</span></blockquote>
     </section>
 
     <!-- ================= grid types ================= -->
@@ -308,7 +315,7 @@
         </div>
       </div>
       <div data-added>
-        <p>למה דווקא 8? כי רוב גדלי המסכים מתחלקים ב־8, כי זה מתרגם נקי גם למסכים בצפיפות כפולה, ובעיקר כי זה <strong>חוסך החלטות</strong>: במקום להתלבט בין 13 ל־15, בוחרים בין <span class="ltr">8 / 16 / 24</span>. כמה הרגלים שמגיעים יחד עם השיטה:</p>
+        <p>למה דווקא 8? כי 8 מתחלק נקי לחצאים ולרבעים (4 ו־2), ולכן גם כשהמסך מגדיל את העיצוב פי <span class="ltr">1.5</span>, פי 2 או פי 3, כל המידות נשארות בפיקסלים שלמים וחדים. כי מספר אחד נותן לכל העמוד קצב משותף. ובעיקר כי זה <strong>חוסך החלטות</strong>: במקום להתלבט בין 13 ל־15, בוחרים בין <span class="ltr">8 / 16 / 24</span>. כמה הרגלים שמגיעים יחד עם השיטה:</p>
         <ul class="dots">
           <li>כל המידות, הריפודים והשוליים בכפולות של 8: <span class="ltr">8, 16, 24, 32, 40, 48, 56, 64</span>.</li>
           <li><span class="ltr">4px</span> הוא חצי יחידה, רק לכוונונים קטנים (בין אייקון לטקסט שלו, למשל).</li>
@@ -353,10 +360,10 @@
       <div data-added>
         <p>באתרים ובאפליקציות זה אומר שהגריד עצמו משתנה לפי רוחב המסך. המקובל היום:</p>
         <div class="tbl-wrap">
-          <table class="tbl">
+          <table class="tbl wrap-th">
             <thead><tr><th>מסך</th><th>רוחב</th><th>עמודות</th><th>מרווח בין עמודות</th></tr></thead>
             <tbody>
-              <tr><td>מחשב</td><td><span class="ltr">1440px+</span></td><td>12</td><td><span class="ltr">24px</span></td></tr>
+              <tr><td>מחשב</td><td><span class="ltr">905px+</span></td><td>12</td><td><span class="ltr">24px</span></td></tr>
               <tr><td>טאבלט</td><td><span class="ltr">600–904px</span></td><td>8</td><td><span class="ltr">16–24px</span></td></tr>
               <tr><td>טלפון</td><td><span class="ltr">0–599px</span></td><td>4</td><td><span class="ltr">16px</span></td></tr>
             </tbody>
@@ -415,10 +422,10 @@
     <!-- ================= reading patterns ================= -->
     <section class="sec">
       <h2 id="reading-patterns" data-short="איך העין קוראת עמוד" data-added>איך העין עוברת על עמוד</h2>
-      <p data-added>גריד מסדר את העמוד, אבל העין לא קוראת אותו כמו טבלה. יש כמה מסלולים קבועים שהעין נוטה ללכת בהם, ושווה למקם עליהם את הדברים החשובים. כל המחקרים המוכרים נעשו על שפות שנכתבות משמאל לימין, ולכן בעברית המסלולים <strong>מתהפכים במראה</strong>, וכך הם מצוירים כאן.</p>
+      <p data-added>גריד מסדר את העמוד, אבל העין לא קוראת אותו כמו טבלה. יש כמה מסלולים קבועים שהעין נוטה ללכת בהם, ושווה למקם עליהם את הדברים החשובים. רוב המחקרים המוכרים נעשו על שפות שנכתבות משמאל לימין, ולכן בעברית המסלולים <strong>מתהפכים במראה</strong>, וכך הם מצוירים כאן.</p>
 
       <figure class="anim rp-fig" data-steps="4" data-step-labels="דפוס Z|דפוס F|דיאגרמת גוטנברג|כלל השלישים" data-added>
-        <span class="anim__label">ארבעה מסלולים של העין, בעברית</span>
+        <span class="anim__label">שלושה מסלולים של העין וכלל קומפוזיציה אחד, בעברית</span>
         <div class="anim__stage">
           <div class="rp">
             <div data-goto="1">
@@ -429,7 +436,7 @@
             <div data-goto="2">
               <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><rect class="blk" x="20" y="14" width="126" height="8" rx="2"/><rect class="blk" x="60" y="40" width="86" height="6" rx="2"/><rect class="blk" x="110" y="58" width="36" height="5" rx="2"/><rect class="blk" x="110" y="72" width="36" height="5" rx="2"/><rect class="blk" x="110" y="86" width="36" height="5" rx="2"/><path class="path" pathLength="1" d="M144 26H22M144 26V50M144 50H62M144 50V98"/></svg>
               <h4>דפוס <span class="ltr">F</span></h4>
-              <p>בעמודים עמוסי טקסט: סריקה רחבה למעלה, עוד אחת קצרה יותר, ואז גלישה לאורך צד תחילת השורות. מחקרי מעקב עיניים של <span class="ltr">Nielsen Norman Group</span> אישרו את הדפוס הזה.</p>
+              <p>בעמודים עמוסי טקסט: סריקה רחבה למעלה, עוד אחת קצרה יותר, ואז גלישה לאורך צד תחילת השורות. מחקרי מעקב עיניים של <span class="ltr">Nielsen Norman Group</span> זיהו את הדפוס הזה.</p>
             </div>
             <div data-goto="3">
               <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><rect class="zone" x="82" y="10" width="68" height="44" rx="4"/><rect class="zone" x="10" y="56" width="68" height="44" rx="4"/><path class="gd" d="M80 10V100M10 55H150"/><path class="path" pathLength="1" d="M128 26L32 86"/><circle class="pt" cx="128" cy="26" r="5" style="--i:0"/><circle class="pt" cx="32" cy="86" r="5" style="--i:8"/></svg>
@@ -439,7 +446,7 @@
             <div data-goto="4">
               <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><path class="path" pathLength="1" d="M55 6V104M105 6V104M6 38.7H154M6 71.3H154" style="stroke-width:1.6;stroke:var(--muted)"/><circle class="pt" cx="55" cy="38.7" r="6" style="--i:6"/><circle class="pt" cx="105" cy="38.7" r="6" style="--i:7"/><circle class="pt" cx="55" cy="71.3" r="6" style="--i:8"/><circle class="pt" cx="105" cy="71.3" r="6" style="--i:9"/></svg>
               <h4>כלל השלישים</h4>
-              <p>חלקו את הפריים לתשעה חלקים שווים. נקודות המיקוד החזקות הן ארבע נקודות ההצטלבות, לא המרכז. עובד בצילום, בבאנר ובפוסטר.</p>
+              <p>זה לא מסלול קריאה, אלא כלל קומפוזיציה שעוזר להחליט איפה לשים את מוקד העניין. חלקו את הפריים לתשעה חלקים שווים: נקודות המיקוד החזקות הן ארבע נקודות ההצטלבות, לא המרכז. עובד בצילום, בבאנר ובפוסטר.</p>
             </div>
           </div>
         </div>
@@ -448,7 +455,7 @@
 
       <div class="note" data-added>
         <span class="box-label">ויחס הזהב?</span>
-        <p>יחס הזהב (<span class="ltr">1:1.618</span>) יכול לעזור לקבוע יחס בין רוחב של שני טורים, בין גדלי טקסט, או בין מרווחים. אבל הוא כלי עזר, לא חוק: גם לוגואים שנבנו עליו עברו בסוף תיקון בעין. <a class="xref" href="logo.html">פרק הלוגו</a></p>
+        <p>יחס הזהב (<span class="ltr">1:1.618</span>) יכול לעזור לקבוע יחס בין רוחב של שני טורים, בין גדלי טקסט, או בין מרווחים. אבל הוא כלי עזר, לא חוק: גם לוגואים שנבנו עליו עברו בסוף תיקון בעין. <a class="xref" href="logo.html#optical">תיקונים אופטיים בלוגו</a></p>
       </div>
     </section>
 
@@ -458,7 +465,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: 8pt spacing, white space, leading slider, 12-column divisions, reading patterns */
 document.addEventListener("DOMContentLoaded", function () {

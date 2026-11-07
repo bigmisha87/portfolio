@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* The demo brand "luma" is invented for this page. Its colours are literal (demo objects), UI colours are tokens. */
@@ -72,7 +72,8 @@
 .cs-svg .nb { fill: var(--muted); opacity: .55; }
 .cs-hl { fill: var(--accent); opacity: .25; }
 .cs-sq rect { fill: var(--accent); fill-opacity: .16; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 3; }
-.cs-sq text { fill: var(--accent-ink); font: 600 14px var(--mono); }
+.cs-sq text { fill: var(--accent-ink); font: 600 17px var(--mono); }
+@media (max-width: 600px) { .cs-sq text { font-size: 22px; } }
 .cs-zone { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 8 6; }
 /* stepper: 1 measure the unit → 2 copy it to every side → 3 the protected zone pushes neighbours out */
 .csf .cs-sq { opacity: 0; transform: translate(var(--dx), var(--dy)); transition: transform .8s cubic-bezier(.3,.7,.2,1), opacity .25s; }
@@ -574,7 +575,7 @@ section.has-rail .rail-body { width: 100%; }
         <li>ספר מותג</li><li>סוגי הגופנים של החברה</li><li>צבעי החברה</li><li>שילוט בבניינים</li><li>מדי הצוות</li><li>סוג התמונות</li><li>כללים לתמונות ולשימוש בלוגו</li><li>אופי המותג</li><li>כל הזהות הפרסומית</li>
       </ul>
       <p><a class="xref" href="what-is-branding.html#components">המרכיבים של שפה עיצובית</a> <a class="xref" href="what-is-branding.html#identity-image">זהות מול תדמית</a></p>
-      <blockquote class="quote">הלוגו הוא לא המותג, אבל הוא <strong>החלק החשוב ביותר</strong> של המותג.</blockquote>
+      <blockquote class="quote">הלוגו הוא לא המותג, אבל הוא <strong>החלק המזוהה ביותר</strong> של המותג.</blockquote>
     </section>
 
     <!-- ================= symbol vs logo ================= -->
@@ -674,7 +675,7 @@ section.has-rail .rail-body { width: 100%; }
         <li><a href="#scalable"><span class="n">4</span><b>ניתן להרחבה</b></a></li>
         <li><a href="#original"><span class="n">5</span><b>מקורי</b></a></li>
       </ol>
-      <p>שלושה מהם (נקי וזכיר, מותאם לכל פלטפורמה, משדר ערכים ומתחבר לקהל) מסוכמים יפה בסרטון קצר ששמרתי: <a href="https://www.youtube.com/shorts/bZ_-nty_rbE">3 עקרונות טובים לעיצוב לוגו (יוטיוב)</a>. עוד ערוצים טובים יש בפרק ההשראה. <a class="xref" href="resources.html">השראה ומקורות</a></p>
+      <p>שלושה מהם (נקי וזכיר, מותאם לכל פלטפורמה, משדר ערכים ומתחבר לקהל) מסוכמים יפה בסרטון קצר ששמרתי: <a href="https://www.youtube.com/shorts/bZ_-nty_rbE">3 עקרונות טובים לעיצוב לוגו (יוטיוב)</a>. עוד ערוצים טובים יש בפרק ההשראה. <a class="xref" href="resources.html#youtube">ערוצי יוטיוב</a></p>
 
       <h3 id="simplicity" data-rail-step data-rail-label="פשטות">1. פשטות: לא מינימליזם נטול נשמה, אלא זיקוק של מהות</h3>
       <div class="cards">
@@ -734,7 +735,7 @@ section.has-rail .rail-body { width: 100%; }
       <h4>כשפשטות הולכת לאיבוד: הפיל של <span class="ltr">Animal Planet</span></h4>
       <p><span class="ltr">Animal Planet</span>, רשת הטלוויזיה שהביאה לנו את <span class="ltr">The Crocodile Hunter</span>, סרטי טבע רגועים ו־<span class="ltr">River Monsters</span>, החזיקה בעבר לוגו שהיה הגיוני לגמרי.</p>
       <div class="rd rd3">
-        <div><a class="ap" href="img/lecture-animal-planet-2006.webp" data-lb data-cap="Animal Planet, 2006"><img src="img/lecture-animal-planet-2006.webp" alt="לוגו Animal Planet משנת 2006: פיל לבן וגלובוס כחול על רקע ירוק, מעל השם" loading="lazy" width="877" height="1200"></a><span class="yr">2006</span><h4>פיל וגלובוס</h4><p>שילוב שאמר מיד לאיזה מסע הצופה נכנס.</p></div>
+        <div><a class="ap" href="img/lecture-animal-planet-2006.webp" data-lb data-cap="Animal Planet, 1996"><img src="img/lecture-animal-planet-2006.webp" alt="לוגו Animal Planet משנת 1996: פיל לבן וגלובוס כחול על רקע ירוק, מעל השם" loading="lazy" width="877" height="1200"></a><span class="yr">1996</span><h4>פיל וגלובוס</h4><p>שילוב שאמר מיד לאיזה מסע הצופה נכנס.</p></div>
         <div><a class="ap" href="img/lecture-animal-planet-2008.webp" data-lb data-cap="Animal Planet, 2008"><img src="img/lecture-animal-planet-2008.webp" alt="לוגו Animal Planet משנת 2008: אותיות ירוקות גדולות, והאות M מוטה הצידה" loading="lazy" width="960" height="470"></a><span class="yr">2008</span><h4>האות <span class="ltr">M</span> נופלת</h4><p>הפיל האהוב נעלם, ובמקומו הופיע לוגו טקסטואלי מגושם, עם האות <span class="ltr">M</span> שמוטה הצידה כאילו היא באמצע נפילה. בחירה אמיצה, שמטרתה הייתה מודרניזציה של המותג ופנייה לקהל רחב ובוגר יותר, בדומה למהלך שעשתה <span class="ltr">Tropicana</span>, ובהתאם לתכנים החדים יותר שהרשת התחילה לשדר.</p><span class="stat">בפועל, זה לא עבד.</span></div>
         <div><a class="ap" href="img/lecture-animal-planet-2018.webp" data-lb data-cap="Animal Planet, 2018"><img src="img/lecture-animal-planet-2018.webp" alt="לוגו Animal Planet משנת 2018: פיל כחול קופץ מעל השם באותיות קטנות" loading="lazy" width="1200" height="705"></a><span class="yr">2018</span><h4>הפיל חוזר</h4><p>הקהל היה מבולבל, מעצבים סלדו מהשינוי, ואפילו הפילים נפגעו (הערת עורך: דרוש מקור). הרשת דבקה בכיוון, ולמזל כולם, כעבור עשר שנים הוצג לוגו מחודש ומעודן, כשהפיל חוזר למקומו הטבעי. וכך, הסדר חזר לכוכב החיות.</p></div>
       </div>
@@ -831,7 +832,7 @@ section.has-rail .rail-body { width: 100%; }
         <figcaption>מותג שהמצאתי לצורך ההדגמה. שלוש רמות של אותו סמל: לוגו מלא, מגן עם אות, ולבסוף האות לבד. כל רמה למקום אחר.</figcaption>
       </figure>
 
-      <p>ולפני שהלוגו יוצא לעולם, שלושה מבחני חובה: <strong>צבע, גלילה ובהירות.</strong> הם מפורטים, עם הדגמה, בהמשך הפרק. <a class="xref" href="#tests">מבחני חובה</a></p>
+      <p>ולפני שהלוגו יוצא לעולם, שלושה מבחני חובה: <strong>צבע, גלילה וזכירות צורנית.</strong> הם מפורטים, עם הדגמה, בהמשך הפרק. <a class="xref" href="#tests">מבחני חובה</a></p>
       <h4>התאמות לכל גודל ורזולוציה</h4>
       <figure class="fig">
         <a href="img/lecture-responsive-brands.webp" data-lb data-cap="לוגו רספונסיבי: Guinness, Victorinox, Kodak ו-Warner Bros בארבעה גדלים"><img src="img/lecture-responsive-brands.webp" alt="ארבעה מותגים, כל אחד בארבעה גדלים מהגדול לקטן: Guinness, Victorinox, Kodak ו־Warner Bros" loading="lazy" width="1000" height="682"></a>
@@ -848,7 +849,8 @@ section.has-rail .rail-body { width: 100%; }
       <div class="tip">
         <span class="box-label">חיפוש לפי תמונה, אבל רק בסוף</span>
         <p>היום אפשר להעלות את הלוגו שלכם כתמונה לגוגל ולחפש לפי התמונה. תקבלו תוצאות דומות, ותוכלו לבדוק אם כבר עשו את זה לפניכם.</p>
-        <p>מומלץ לבדוק כפילויות <strong>בסיום העבודה</strong>, כדי לא לחסום את היצירתיות. באופן טבעי, כשאנחנו בוחנים הרבה עיצובים, מתחילים להיווצר אצלנו מחסומים ליצירת עיצוב מקורי. <a class="xref" href="logo-design.html#step-computer">למה לחפש רק אחרי</a></p>
+        <p>מומלץ לבדוק כפילויות <strong>בסיום העבודה</strong>, כדי לא לחסום את היצירתיות. באופן טבעי, כשאנחנו בוחנים הרבה עיצובים, מתחילים להיווצר אצלנו מחסומים ליצירת עיצוב מקורי.</p>
+        <p>שימו לב: זו בדיקה של דמיון ללוגואים קיימים, בסוף העבודה. מחקר המתחרים הוא שלב אחר, ועושים אותו לפני שמתחילים לעצב. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a> <a class="xref" href="logo-design.html#step-computer">למה לחפש רק אחרי</a></p>
       </div>
       <p data-added>ובעידן של מחוללי לוגואים, מקוריות היא כבר לא רק „לא להעתיק”. היא השאלה מה אתם מביאים שהכלי לא יכול.</p>
 
@@ -894,12 +896,7 @@ section.has-rail .rail-body { width: 100%; }
       </div>
       <p>אתם יודעים מתי להגיד „לא, זה יותר מדי”. אתם מבינים שלוגו בצורת מגן לא מתאים למותג צעצועים, או שסמל אגרסיבי מדי יבריח לקוחות של יועץ פיננסי. <strong>זה הערך שלכם.</strong></p>
 
-      <h4>מודל העבודה: <span class="ltr">AI</span> כסקצ'בוק, לא כמחליף</h4>
-      <div class="model3" aria-label="מודל העבודה">
-        <span>אסטרטגיה אנושית</span><i aria-hidden="true">←</i><span class="ai">חומר גלם מ־<span class="ltr">AI</span></span><i aria-hidden="true">←</i><span>זיקוק אנושי</span>
-      </div>
-      <p>אל תתעלמו מ־<span class="ltr">AI</span> לחלוטין: השתמשו בו ככלי לחקר ולקונספטים. הרעיונות והכיוון האסטרטגי צריכים להגיע מכם, ה־<span class="ltr">AI</span> מייצר את חומר הגלם, ואתם מעצבים כמו בני אדם: עם מוח, אחריות וטעם. איך זה נראה בפועל, עם הדגמה ומה אומרים ללקוח, נמצא בפרק הבא. <a class="xref" href="logo-design.html#ai-sketchbook">AI כסקצ'בוק</a></p>
-      <blockquote class="quote">אם אתם מוסרים את כל העבודה ל־<span class="ltr">AI</span>, אתם הופכים למתווכים חסרי ערך. אם אתם משתמשים בו כדי להרחיב את החשיבה שלכם, קשה מאוד להחליף אתכם.</blockquote>
+      <p>ומה עושים עם זה? משתמשים ב־<span class="ltr">AI</span> כסקצ'בוק, לא כמחליף: האסטרטגיה מגיעה מכם, חומר הגלם מהמכונה, והזיקוק שוב מכם. מודל העבודה המלא, עם הדגמה ומה אומרים ללקוח, נמצא בפרק הבא. <a class="xref" href="logo-design.html#ai-sketchbook">AI כסקצ'בוק</a></p>
       <p>ולבסוף, ושוב: <strong>לוגו טוב חייב להיות מקורי.</strong></p>
 
       <h3 id="good-logo-checklist" data-rail-step data-rail-label="רשימת בדיקה">סיכום: מה זה לוגו טוב?</h3>
@@ -924,7 +921,7 @@ section.has-rail .rail-body { width: 100%; }
           <p>לוגו שקיים בעיקר בצורת סמל, והטיפוגרפיה היא רק ליווי ולא העיקר. אפשר להשתמש בסמל כמו באייקון, במקרים שאין מקום לטיפוגרפיה.</p>
         </div>
         <div class="lt">
-          <span class="k">LOGOTYPE</span><h4>2. לוגו טיפוגרפי</h4>
+          <span class="k">LOGOTYPE</span><h4>2. לוגו טיפוגרפי (לוגו מילה, <span class="ltr">Wordmark</span>)</h4>
           <a class="lt-img" href="img/lecture-type-logotype.webp" data-lb data-cap="לוגו טיפוגרפי: amazon, Canon, Carlsberg, CNN, ebay, IBM, LEGO, Nokia, דנונה, Panasonic, Subway, Tefal, yes"><img src="img/lecture-type-logotype.webp" alt="לוגואים טיפוגרפיים: amazon, Canon, Carlsberg, CNN, ebay, IBM, LEGO, Nokia, דנונה, Panasonic, Subway, Tefal ו־yes" loading="lazy" width="1200" height="519"></a>
           <p>לוגו שמורכב מאותיות השם של המותג, החברה או המוצר. לוגו שאי אפשר „לפרק” לצורה אחת פשוטה.</p>
           <a class="lt-img" href="img/lecture-type-disney.webp" data-lb data-cap="Disney: הלוגו הטיפוגרפי, גרסה עם הטירה, ואוזני מיקי כאייקון"><img src="img/lecture-type-disney.webp" alt="שלוש גרסאות של Disney: החתימה, Walt Disney Pictures עם הטירה, וראש מיקי מאוס בשחור" loading="lazy" width="1200" height="253"></a>
@@ -966,7 +963,7 @@ section.has-rail .rail-body { width: 100%; }
       </div>
       <div class="note" data-added>
         <span class="box-label">ומה עם החלוקות האחרות?</span>
-        <p>במקורות אחרים תמצאו חלוקה עדינה יותר, אבל כולה נכנסת בחמשת הסוגים שלמעלה: <strong>לוגו ראשי תיבות <span class="ltr">(Lettermark)</span></strong> ( כמו <span class="ltr">IBM</span> או <span class="ltr">HBO</span>) הוא לוגו טיפוגרפי. <strong>אמבלם</strong> (הטקסט בתוך תג או חותם, כמו <span class="ltr">Starbucks</span>) הוא לוגו טיפוגרפי וסמל שאי אפשר להפריד. ואת הסמלים נהוג לחלק ל<strong>תמונתי</strong> (ציור של דבר מוכר, כמו התפוח של <span class="ltr">Apple</span>) ול<strong>מופשט</strong> (צורה בלי משמעות מילולית, כמו של <span class="ltr">Nike</span>).</p>
+        <p>במקורות אחרים תמצאו חלוקה עדינה יותר, אבל כולה נכנסת בחמשת הסוגים שלמעלה: <strong>לוגו ראשי תיבות <span class="ltr">(Lettermark)</span></strong> ( כמו <span class="ltr">IBM</span> או <span class="ltr">HBO</span>) הוא לוגו טיפוגרפי. <strong>אמבלם</strong> (הטקסט בתוך תג או חותם, כמו <span class="ltr">Harley-Davidson</span>) הוא לוגו טיפוגרפי וסמל שאי אפשר להפריד. ואת הסמלים נהוג לחלק ל<strong>תמונתי</strong> (ציור של דבר מוכר, כמו התפוח של <span class="ltr">Apple</span>) ול<strong>מופשט</strong> (צורה בלי משמעות מילולית, כמו של <span class="ltr">Nike</span>).</p>
       </div>
     </section>
 
@@ -994,8 +991,8 @@ section.has-rail .rail-body { width: 100%; }
       </figure>
 
       <div class="gallery g2 natural">
-        <a href="img/logo-popsicles.webp" data-lb data-cap="Popsicles: לוגו ראשי, לוגו משני וסמל, בכמה גרסאות צבע"><img src="img/logo-popsicles.webp" alt="מערכת הלוגו של Popsicles על רקע סגול: לוגו ראשי בשתי שורות, לוגו משני בשורה אחת, וסמל של ארטיק, כל אחד בכמה צבעים" loading="lazy"></a>
-        <a href="img/logo-dompet.webp" data-lb data-cap="Dom Pet Store: הלוגו על רקע בהיר, סגול וכתום"><img src="img/logo-dompet.webp" alt="הלוגו של Dom Pet Store בארבע וריאציות: חותם עגול על רקע קרם ועל רקע סגול, ולוגו עם שם על רקע כתום ועל רקע קרם" loading="lazy"></a>
+        <a href="img/logo-popsicles.webp" data-lb data-cap="Popsicles: לוגו ראשי, לוגו משני וסמל, בכמה גרסאות צבע"><img src="img/logo-popsicles.webp" alt="מערכת הלוגו של Popsicles על רקע סגול: לוגו ראשי בשתי שורות, לוגו משני בשורה אחת, וסמל של ארטיק, כל אחד בכמה צבעים" width="1200" height="561" loading="lazy"></a>
+        <a href="img/logo-dompet.webp" data-lb data-cap="Dom Pet Store: הלוגו על רקע בהיר, סגול וכתום"><img src="img/logo-dompet.webp" alt="הלוגו של Dom Pet Store בארבע וריאציות: חותם עגול על רקע קרם ועל רקע סגול, ולוגו עם שם על רקע כתום ועל רקע קרם" width="1400" height="788" loading="lazy"></a>
       </div>
       <figcaption>שימו לב שכל גרסה תוכננה לרקע מסוים. ובתמונה של <span class="ltr">Popsicles</span> רואים גם לוגו ראשי, לוגו משני וסמל. <a class="xref" href="#system">מערכת לוגו</a></figcaption>
 
@@ -1020,13 +1017,13 @@ section.has-rail .rail-body { width: 100%; }
 
     <!-- ================= clear space ================= -->
     <section class="sec">
-      <h2 id="clear-space" data-short="מרווח מגן">כללי ריווח ללוגו <span class="ltr">(Clear Space)</span></h2>
-      <p>כל לוגו זקוק לשטח נשימה מסביבו: אזור נקי וחופשי מאלמנטים אחרים, כדי לשמור על נראות, קריאות והשפעה ויזואלית. האזור הזה נקרא <strong><span class="ltr">Clear Space</span></strong> או <strong>אזור מגן</strong>, והוא מגן על הלוגו מהצפה ויזואלית של טקסטים, תמונות או סמלים סמוכים.</p>
+      <h2 id="clear-space" data-short="מרווח מגן">מרווח מגן <span class="ltr">(Clear Space)</span></h2>
+      <p>כל לוגו זקוק לשטח נשימה מסביבו: אזור נקי וחופשי מאלמנטים אחרים, כדי לשמור על נראות, קריאות והשפעה ויזואלית. האזור הזה נקרא <strong><span class="ltr">Clear Space</span></strong> או <strong>מרווח מגן</strong>, והוא מגן על הלוגו מהצפה ויזואלית של טקסטים, תמונות או סמלים סמוכים.</p>
 
       <h3 id="clear-space-how">איך מגדירים את הריווח?</h3>
       <p>בדרך כלל משתמשים <strong>באלמנט מתוך הלוגו עצמו</strong> (למשל גובה האות הראשונה, או חלק מצורת הסמל) כיחידת מידה לחישוב הריווח. לדוגמה: אם גובה האות „<span class="ltr">A</span>” בלוגו הוא היחידה הבסיסית, אז כל צד של הלוגו יקבל ריווח שווה לגובה האות הזו <span class="ltr">(X = A height)</span>.</p>
 
-      <figure class="anim csf" data-steps="3" data-step-labels="מודדים יחידה|לכל צד|האזור המוגן">
+      <figure class="anim csf" data-steps="3" data-step-labels="מודדים יחידה|לכל צד|מרווח המגן">
         <span class="anim__label">יחידת X נמדדת מהלוגו ושומרת עליו</span>
         <div class="anim__stage">
           <svg class="cs-svg" viewBox="-150 -72 560 244" aria-hidden="true">
@@ -1036,19 +1033,19 @@ section.has-rail .rail-body { width: 100%; }
             <g class="cs-nb" style="--px:0px;--py:30px"><rect class="nb" x="40" y="98" width="220" height="8" rx="3"/></g>
             <g class="on-token"><use href="#lm-mark" x="0" y="14" width="72" height="72"/><use href="#lm-word" x="88" y="12" width="226" height="76"/></g>
             <rect class="cs-hl" x="112" y="40" width="48" height="40"/>
-            <g class="cs-sq q1" style="--dx:152px;--dy:10px"><rect x="-40" y="30" width="40" height="40"/><text x="-20" y="55" text-anchor="middle">X</text></g>
-            <g class="cs-sq q2" style="--dx:-194px;--dy:10px"><rect x="306" y="30" width="40" height="40"/><text x="326" y="55" text-anchor="middle">X</text></g>
-            <g class="cs-sq q3" style="--dx:-21px;--dy:66px"><rect x="133" y="-26" width="40" height="40"/><text x="153" y="-1" text-anchor="middle">X</text></g>
-            <g class="cs-sq q4" style="--dx:-21px;--dy:-46px"><rect x="133" y="86" width="40" height="40"/><text x="153" y="111" text-anchor="middle">X</text></g>
-            <rect class="cs-zone" x="-40" y="-26" width="386" height="152" rx="2"/>
+            <g class="cs-sq q1" style="--dx:150px;--dy:10px"><rect x="-38" y="30" width="40" height="40"/><text x="-18" y="50" text-anchor="middle" dominant-baseline="central">X</text></g>
+            <g class="cs-sq q2" style="--dx:-198px;--dy:10px"><rect x="310" y="30" width="40" height="40"/><text x="330" y="50" text-anchor="middle" dominant-baseline="central">X</text></g>
+            <g class="cs-sq q3" style="--dx:-21px;--dy:66px"><rect x="133" y="-26" width="40" height="40"/><text x="153" y="-6" text-anchor="middle" dominant-baseline="central">X</text></g>
+            <g class="cs-sq q4" style="--dx:-21px;--dy:-46px"><rect x="133" y="86" width="40" height="40"/><text x="153" y="106" text-anchor="middle" dominant-baseline="central">X</text></g>
+            <rect class="cs-zone" x="-38" y="-26" width="388" height="152" rx="2"/>
           </svg>
           <div class="say" aria-live="polite">
             <p data-s="1">מודדים: הגובה של האות <span class="ltr">u</span> בלוגו הופך ליחידה <span class="ltr">X</span>. בינתיים הטקסטים והסמלים מסביב צפופים עליו.</p>
             <p data-s="2">משכפלים את <span class="ltr">X</span> לכל אחד מארבעת הצדדים.</p>
-            <p data-s="3">המסגרת שנוצרת היא האזור המוגן. כל מה שניסה להתקרב נדחף החוצה.</p>
+            <p data-s="3">המסגרת שנוצרת היא מרווח המגן. כל מה שניסה להתקרב נדחף החוצה.</p>
           </div>
         </div>
-        <figcaption>כאן היחידה היא גובה האות <span class="ltr">u</span> (גובה ה־<span class="ltr">x</span>). היא משוכפלת לכל צד, והאזור שנוצר דוחף החוצה כל טקסט, תמונה או סמל שניסו להתקרב.</figcaption>
+        <figcaption>כאן היחידה היא גובה האות <span class="ltr">u</span> (גובה ה־<span class="ltr">x</span>). היא משוכפלת לכל צד, ומרווח המגן שנוצר דוחף החוצה כל טקסט, תמונה או סמל שניסו להתקרב.</figcaption>
       </figure>
 
       <h3 id="clear-space-why">מטרת הריווח</h3>
@@ -1060,9 +1057,9 @@ section.has-rail .rail-body { width: 100%; }
       <p data-added class="muted" style="font-size:16px">גם המותגים הגדולים עובדים כך. גוגל, למשל, מגדירה את המרווח המינימלי סביב הלוגו שלה לפי גובה האות <span class="ltr">G</span>.</p>
 
       <div class="gallery g2 natural">
-        <a href="img/clearspace-aacrossfit.webp" data-lb data-cap="AACrossfit: האות O משמשת כיחידת המידה"><img src="img/clearspace-aacrossfit.webp" alt="הלוגו של AACrossfit באילוסטרייטור, עם קווי עזר כחולים ועיגולים בגודל האות O בכל צד" loading="lazy"></a>
-        <a href="img/clearspace-scewo.webp" data-lb data-cap="Scewo: האות s משוכפלת לכל צד"><img src="img/clearspace-scewo.webp" alt="הלוגו scewo באפור, והאות s משוכפלת בבהיר מעליו, מתחתיו ומשני צדיו כדי לסמן את האזור המוגן" loading="lazy"></a>
-        <a href="img/clearspace-book.webp" data-lb data-cap="עמודי הלוגו בספר המותג של AACrossfit"><img src="img/clearspace-book.webp" alt="ספר מותג פתוח: בעמוד אחד הסמל, הלוגו והגודל המינימלי, ובעמוד השני מרווח המגן סביב כל גרסה" loading="lazy"></a>
+        <a href="img/clearspace-aacrossfit.webp" data-lb data-cap="AACrossfit: האות O משמשת כיחידת המידה"><img src="img/clearspace-aacrossfit.webp" alt="הלוגו של AACrossfit באילוסטרייטור, עם קווי עזר כחולים ועיגולים בגודל האות O בכל צד" width="1200" height="900" loading="lazy"></a>
+        <a href="img/clearspace-scewo.webp" data-lb data-cap="Scewo: האות s משוכפלת לכל צד"><img src="img/clearspace-scewo.webp" alt="הלוגו scewo באפור, והאות s משוכפלת בבהיר מעליו, מתחתיו ומשני צדיו כדי לסמן את מרווח המגן" width="1600" height="900" loading="lazy"></a>
+        <a href="img/clearspace-book.webp" data-lb data-cap="עמודי הלוגו בספר המותג של AACrossfit"><img src="img/clearspace-book.webp" alt="ספר מותג פתוח: בעמוד אחד הסמל, הלוגו והגודל המינימלי, ובעמוד השני מרווח המגן סביב כל גרסה" width="1600" height="1067" loading="lazy"></a>
       </div>
       <figcaption>שלוש דרכים להציג אותו כלל. בספר המותג (התמונה האחרונה) רואים גם את הגודל המינימלי.</figcaption>
 
@@ -1171,7 +1168,7 @@ section.has-rail .rail-body { width: 100%; }
               <tr><td>אייקונים לאתר</td><td><span class="ltr">ICO</span>, ו־<span class="ltr">PNG</span> בגדלים <span class="ltr">16, 32, 48, 180, 192, 512</span></td><td>לשונית הדפדפן, מסך הבית בטלפון, אפליקציות</td></tr>
               <tr><td>גרסאות צבע</td><td>צבעונית, נגטיבית, שחור מלא, לבן מלא, אפור</td><td>כל רקע וכל שיטת הדפסה</td></tr>
               <tr><td>טקסט בלוגו</td><td>הופכים לקווי מתאר <span class="ltr">(Create Outlines, Cmd+Shift+O)</span></td><td>שהפונט לא יתחלף אצל מי שאין לו אותו</td></tr>
-              <tr><td>גודל מינימלי</td><td>דפוס: <span class="ltr">25</span> מ"מ רוחב. דיגיטל: <span class="ltr">20px</span> ללוגו מילה <span class="ltr">(Wordmark)</span></td><td>מתחת לזה עוברים לגרסה הפשוטה</td></tr>
+              <tr><td>גודל מינימלי</td><td>דפוס: <span class="ltr">25</span> מ"מ רוחב. דיגיטל: <span class="ltr">20px</span> גובה ללוגו מילה <span class="ltr">(Wordmark)</span></td><td>מתחת לזה עוברים לגרסה הפשוטה</td></tr>
             </tbody>
           </table>
         </div>
@@ -1181,7 +1178,7 @@ section.has-rail .rail-body { width: 100%; }
 
     <!-- ================= tests ================= -->
     <section class="sec">
-      <h2 id="tests" data-short="מבחני חובה">מבחני חובה: צבע, גלילה ובהירות</h2>
+      <h2 id="tests" data-short="מבחני חובה">מבחני חובה: צבע, גלילה וזכירות צורנית</h2>
       <p>לפני שלוגו יוצא לעולם, הוא עובר מבחני לחץ. שלושת הראשונים הם החובה המינימלית, והשאר מוסיפים ביטחון:</p>
       <ol class="steps">
         <li><strong>עמידות ללא צבע.</strong> אם הרעיון קורס כשהלוגו מוצג בצבע אחיד (שחור או לבן), כנראה שהצבע „סחב” את כל הקונספט. צבע אמור להעצים, לא להציל.</li>
@@ -1193,7 +1190,7 @@ section.has-rail .rail-body { width: 100%; }
         <li data-added><strong>מבחן המתחרים.</strong> שימו אותו ליד הלוגואים של המתחרים. אם הוא נבלע ביניהם, הוא לא מבדל. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a></li>
       </ol>
 
-      <figure class="anim stf" data-steps="5" data-step-labels="בלי צבע|גלילה|טשטוש|16px|נגטיב">
+      <figure class="anim stf" data-steps="5" data-step-labels="בלי צבע|גלילה|זכירות צורנית|16px|נגטיב">
         <span class="anim__label">מבחני הלחץ, אחד אחרי השני</span>
         <div class="anim__stage">
           <div class="st" aria-hidden="true">
@@ -1206,19 +1203,19 @@ section.has-rail .rail-body { width: 100%; }
               <div class="post"><div><svg viewBox="-2 -2 230 164"><use href="#lm-v" x="-2" y="-2" width="230" height="164"/></svg></div></div>
               <div class="post"><div><i></i><i></i></div></div>
             </div></div><span class="stt-ok">✓</span></div><b>גלילה</b><small>נקלט בשבריר שנייה</small><span class="stt-tag must">חובה</span></div>
-            <div class="stt"><div class="stt-stage t3"><svg class="m" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b>טשטוש</b><small>המתאר עדיין מזוהה</small><span class="stt-tag must">חובה</span></div>
+            <div class="stt"><div class="stt-stage t3"><svg class="m" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b>זכירות צורנית</b><small>המתאר עדיין מזוהה</small><span class="stt-tag must">חובה</span></div>
             <div class="stt"><div class="stt-stage t4"><svg class="m16" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b><span class="ltr">16px</span></b><small>לא הופך לכתם</small><span class="stt-tag">נוסף</span></div>
             <div class="stt"><div class="stt-stage t5"><svg class="m" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b>נגטיב</b><small>לבן על כהה</small><span class="stt-tag">נוסף</span></div>
           </div>
           <div class="say" aria-live="polite">
             <p data-s="1"><strong>בלי צבע:</strong> הסמל בשחור על לבן. אם הרעיון עדיין שם, הצבע רק מעצים אותו, ולא מציל אותו.</p>
             <p data-s="2"><strong>גלילה:</strong> הסמל בתוך פיד שרץ מהר מתחת לאגודל. יש לו שבריר שנייה להיקלט, בין פוסט לפוסט.</p>
-            <p data-s="3"><strong>טשטוש:</strong> מצמצמים עיניים. הפרטים נעלמים, אבל המתאר עדיין מזוהה. על זה המוח „ננעל”.</p>
+            <p data-s="3"><strong>זכירות צורנית:</strong> מטשטשים או מצמצמים עיניים. הפרטים נעלמים, אבל המתאר עדיין מזוהה. על זה המוח „ננעל”.</p>
             <p data-s="4"><strong><span class="ltr">16</span> פיקסלים:</strong> הגודל של אייקון בלשונית בדפדפן. הסמל לא הופך לכתם.</p>
             <p data-s="5"><strong>נגטיב:</strong> לבן על רקע כהה. הצורה מחזיקה גם הפוך, ולא „השמינה” בהיפוך.</p>
           </div>
         </div>
-        <figcaption>הסמל של מותג הקפה עובר חמישה מבחנים: שלושת מבחני החובה ועוד שניים. סמל פשוט עם צורה חזקה עובר את כולם. לוגו עמוס בפרטים היה נופל כבר בטשטוש.</figcaption>
+        <figcaption>הסמל של מותג הקפה עובר חמישה מבחנים: שלושת מבחני החובה ועוד שניים. סמל פשוט עם צורה חזקה עובר את כולם. לוגו עמוס בפרטים היה נופל כבר במבחן הזכירות הצורנית.</figcaption>
       </figure>
       <div class="gallery natural">
         <a href="img/lecture-grri-mono.webp" data-lb data-cap="עמידות ללא צבע: GRRi בצבע ובשחור"><img src="img/lecture-grri-mono.webp" alt="הלוגו של GRRi בצבע ליד אותו לוגו בשחור מלא" loading="lazy" width="579" height="487"></a>
@@ -1353,7 +1350,7 @@ section.has-rail .rail-body { width: 100%; }
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: optical toggle, strip toggle, stretch slider, responsive logo */
 document.addEventListener("DOMContentLoaded", function () {

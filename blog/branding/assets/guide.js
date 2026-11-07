@@ -164,7 +164,7 @@
   function loadIndex() {
     if (INDEX) return Promise.resolve(INDEX);
     if (loading) return loading;
-    try { var c = sessionStorage.getItem("bg-index-v2"); if (c) { INDEX = JSON.parse(c); return Promise.resolve(INDEX); } } catch (e) {}
+    try { var c = sessionStorage.getItem("bg-index-v4"); if (c) { INDEX = JSON.parse(c); return Promise.resolve(INDEX); } } catch (e) {}
     var parser = new DOMParser();
     loading = Promise.all(CHAPTERS.map(function (c, i) {
       if (i === curIdx) return Promise.resolve(indexDoc(doc, c.f, c.t, pad(i + 1)));
@@ -173,7 +173,7 @@
         .catch(function () { return []; });
     })).then(function (parts) {
       INDEX = [].concat.apply([], parts).map(function (e) { e.nt = norm(e.t); e.nx = norm(e.x); return e; });
-      try { sessionStorage.setItem("bg-index-v2", JSON.stringify(INDEX)); } catch (e) {}
+      try { sessionStorage.setItem("bg-index-v4", JSON.stringify(INDEX)); } catch (e) {}
       return INDEX;
     });
     return loading;
@@ -193,10 +193,13 @@
     var res = [];
     INDEX.forEach(function (e) {
       var score = 0, all = true;
+      var nc = norm(e.ch);
       words.forEach(function (w) {
-        var inT = e.nt.indexOf(w) >= 0, inX = e.nx.indexOf(w) >= 0;
+        var inT = e.nt.indexOf(w) >= 0, inX = e.nx.indexOf(w) >= 0, inC = nc.indexOf(w) >= 0;
         if (!inT && !inX) all = false;
         score += (inT ? 6 : 0) + (inX ? 1 + Math.min(4, e.nx.split(w).length - 1) : 0);
+        /* "צבע" should open the colour chapter first, not a paragraph elsewhere that mentions colour */
+        if (inC) score += e.id === "" ? 14 : 3;
       });
       if (all) res.push({ e: e, s: score });
     });
@@ -250,7 +253,10 @@
     var main = $("#main"); var nq = norm(q); if (!main || nq.length < 2) return;
     var words = nq.split(" ").filter(function (w) { return w.length >= 2; });
     if (!words.length) return;
-    var re = new RegExp(words.map(function (w) { return w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("|"), "gi");
+    /* the search ignores ״ ׳ ' " (דוא"ל = דואל), so the page match has to allow them between letters */
+    var re = new RegExp(words.map(function (w) {
+      return w.split("").map(function (ch) { return ch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }).join("[׳״'\"`]?");
+    }).join("|"), "gi");
     var walker = doc.createTreeWalker(main, NodeFilter.SHOW_TEXT, {
       acceptNode: function (n) {
         var p = n.parentNode; if (!p || /SCRIPT|STYLE|TEXTAREA|BUTTON/.test(p.nodeName) || p.closest("svg,.anim__replay,.ch-pager")) return NodeFilter.FILTER_REJECT;
@@ -279,12 +285,32 @@
       var target = doc.getElementById(decodeURIComponent(location.hash.slice(1)));
       if (target) { for (var k = 0; k < hits.length; k++) { if (target.compareDocumentPosition(hits[k]) & Node.DOCUMENT_POSITION_FOLLOWING || target.contains(hits[k])) { i = k; break; } } }
     }
+    function seen(el) {
+      if (el.checkVisibility) return el.checkVisibility({ opacityProperty: true, visibilityProperty: true });
+      return el.getClientRects().length > 0;
+    }
+    /* a match inside an infographic may sit on a step that isn't showing: move the figure to that step */
+    function reveal(h) {
+      var d = h.closest("details:not([open])"); if (d) d.open = true;
+      if (seen(h)) return;
+      var f = h.closest(".anim[data-steps]"); if (!f || !f.GUIDE_go) return;
+      var n = Number(f.getAttribute("data-steps")) || 2, was = Number(f.getAttribute("data-step")) || 1;
+      f.classList.add("no-trans");
+      for (var k = 1; k <= n; k++) { f.GUIDE_go(k); void f.offsetWidth; if (seen(h)) break; }
+      if (!seen(h)) f.GUIDE_go(was);
+      void f.offsetWidth; f.classList.remove("no-trans");
+    }
+    var moved = false;
     function show() {
       hits.forEach(function (h) { h.classList.remove("now"); });
+      reveal(hits[i]);
       hits[i].classList.add("now");
       hits[i].scrollIntoView({ block: "center", behavior: reduce ? "auto" : "smooth" });
       $(".c", bar).textContent = (i + 1) + " מתוך " + hits.length;
     }
+    /* images that load later push the page down: put the current match back in view, unless the reader moved */
+    ["wheel", "touchmove", "keydown"].forEach(function (ev) { addEventListener(ev, function () { moved = true; }, { passive: true, once: true }); });
+    addEventListener("load", function () { setTimeout(function () { if (!moved) hits[i].scrollIntoView({ block: "center", behavior: "instant" }); }, 120); }, { once: true });
     bar.addEventListener("click", function (e) {
       var b = e.target.closest("button"); if (!b) return;
       if (b.hasAttribute("data-x")) {
@@ -406,14 +432,28 @@
       var locked = -1;
       function unlock() { if (locked !== -1) { locked = -1; update(); } }
       ["wheel", "touchmove", "keydown"].forEach(function (ev) { addEventListener(ev, unlock, { passive: true }); });
-      links.forEach(function (a, i) {
-        a.addEventListener("click", function (e) {
-          var t = doc.getElementById(a.getAttribute("href").slice(1)); if (!t) return;
-          e.preventDefault(); locked = i; cur = -1;
+      /* any link to one of the steps (the rail itself, slide tiles, links in the text) lights that step;
+         a link to anywhere else lets go of the lock */
+      doc.addEventListener("click", function (e) {
+        var a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+        var id = a.getAttribute("href").slice(1), i = -1;
+        steps.forEach(function (st, k) { if (st.id === id) i = k; });
+        if (i < 0) { if (locked !== -1) { locked = -1; requestAnimationFrame(update); } return; }
+        var t = steps[i];
+        if (rail.contains(a)) {
+          e.preventDefault();
           t.scrollIntoView({ block: "start", behavior: reduce ? "auto" : "smooth" });
           history.replaceState(null, "", "#" + t.id);
-          update();
-        });
+        }
+        locked = i; cur = -1; update();
+        /* a long smooth scroll can stop short: when it ends, land exactly on the step */
+        var settle = function () {
+          removeEventListener("scrollend", settle);
+          if (locked !== i) return;
+          var want = parseFloat(getComputedStyle(t).scrollMarginTop) || 84;
+          if (Math.abs(t.getBoundingClientRect().top - want) > 24) t.scrollIntoView({ block: "start", behavior: "instant" });
+        };
+        if ("onscrollend" in window) addEventListener("scrollend", settle);
       });
       var cur = -1;
       function update() {

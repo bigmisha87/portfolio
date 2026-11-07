@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>עיצוב לוגו: מהרעיון לסקיצה · מדריך המיתוג | מישה קרץ'</title>
-<meta name="description" content="איך מעצבים לוגו: עבודת המחקר והשבט, שאלות ללקוח, שש שיטות ליצירת רעיונות (מפות חשיבה, לוח רוח, שפה גרפית, סקיצות, פונט וצבע), ציר ההפשטה מרפרנס לאייקון, חמישה צעדי עבודה ובריף לוגו.">
+<meta name="description" content="איך מעצבים לוגו: עבודת המחקר והשבט, שאלות ללקוח, שש שיטות ליצירת רעיונות (מפות חשיבה, לוח השראה, שפה גרפית, סקיצות, פונט וצבע), ציר ההפשטה מרפרנס לאייקון, חמישה צעדי עבודה ובריף לוגו.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="עיצוב לוגו: מהרעיון לסקיצה · מדריך המיתוג">
-<meta property="og:description" content="שאלות ללקוח, מפות חשיבה, לוח רוח, 12 סגנונות, סקיצות, פונט וצבע, ושלבי העבודה.">
+<meta property="og:description" content="שאלות ללקוח, מפות חשיבה, לוח השראה, 12 סגנונות, סקיצות, פונט וצבע, ושלבי העבודה.">
 <meta property="og:image" content="https://www.misha.co.il/blog/branding/img/lecture-owl-axis.webp">
 <meta name="theme-color" content="#0c0c0c">
 <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@700;800&family=Frank+Ruhl+Libre:wght@400&family=Suez+One&family=Roboto+Slab:wght@700&family=Dancing+Script:wght@700&family=Playpen+Sans+Hebrew:wght@400&family=Varela+Round&family=Heebo:wght@800&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* The demo brand "luma" is invented for this guide. Its colours are literal (demo objects), UI colours are tokens. */
@@ -43,6 +43,8 @@
 .psf[data-step="1"] .ps li:nth-of-type(-n+1), .psf[data-step="2"] .ps li:nth-of-type(-n+2), .psf[data-step="3"] .ps li:nth-of-type(-n+3), .psf[data-step="4"] .ps li:nth-of-type(-n+4), .psf[data-step="5"] .ps li { opacity: 1; }
 .psf[data-step="1"] .ps li:nth-of-type(-n+1) .n, .psf[data-step="2"] .ps li:nth-of-type(-n+2) .n, .psf[data-step="3"] .ps li:nth-of-type(-n+3) .n, .psf[data-step="4"] .ps li:nth-of-type(-n+4) .n, .psf[data-step="5"] .ps li .n { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
 .psf .ps li.on .n { box-shadow: 0 0 0 4px var(--accent-soft); }
+/* five stage buttons: a little tighter than the default step bar, so all five fit on one row on desktop */
+@media (min-width: 561px) { .psf .stepper__list { gap: 4px; } .psf .stepper__btn { gap: 6px; padding: 5px 9px 5px 5px; font-size: 13px; } }
 @media (max-width: 700px) {
   .ps { grid-template-columns: 1fr; gap: 14px; }
   .ps-wrap::before, .ps-fill { display: none; }
@@ -85,6 +87,8 @@
 .vcf:is([data-step="2"], [data-step="3"]) .vc-l.st { opacity: 1; }
 .vcf[data-step="3"] .vc-x { opacity: 1; }
 .vcf[data-step="3"] .vc-area { opacity: .13; }
+/* on phones the chart shrinks to about half, so its words get bigger SVG units to stay readable (about 11-12px on screen) */
+@media (max-width: 600px) { .vc-svg text { font-size: 22px; } .vc-svg .lb { font-size: 23px; } }
 
 /* 05.15 tribe: five questions + a tribe board */
 .tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
@@ -384,7 +388,7 @@
       </figure>
       <ol class="steps">
         <li><strong>מחקר ומיצוב מותג.</strong> איזה מקום המותג רוצה לתפוס בשוק? מול מי הוא מתחרה? מהי ההבטחה הבסיסית שלו? <a class="xref" href="strategy.html#story-audience-positioning">סיפור, קהל ומיצוב</a></li>
-        <li><strong>בניית לוחות השראה <span class="ltr">(Mood Boards)</span>.</strong> הלוחות מבוססים על האסטרטגיה. כל רפרנס נמצא שם מסיבה מוצדקת, לא באופן אקראי. <a class="xref" href="#mood-board">לוח רוח</a> <a class="xref" href="checklist.html">בורד השראה בהגשה</a></li>
+        <li><strong>בניית לוחות השראה <span class="ltr">(Mood Boards)</span>.</strong> הלוחות מבוססים על האסטרטגיה. כל רפרנס נמצא שם מסיבה מוצדקת, לא באופן אקראי. <a class="xref" href="#mood-board">לוח השראה</a> <a class="xref" href="checklist.html#summary-core">לוח השראה בהגשה: לא חובה, אבל יתרון</a></li>
         <li><strong>חקר וסקיצות.</strong> על נייר או טאבלט. בשלב הזה עובדים מהר, בחופשיות, וממוקדים ברעיונות, לא בפיקסלים מושלמים.<span data-added> הרבה סקיצות קטנות, בשחור־לבן: זה מכריח את הצורה להיות חזקה בלי עזרה של צבע.</span> <a class="xref" href="#sketches">סקיצות</a></li>
         <li><strong>זיקוק ועידון ידני.</strong> בחירת הכיוונים החזקים ביותר שמתחברים לבריף ול„שבט”, ועידונם באופן ידני ומדויק.</li>
         <li><strong>בניית המערכת.</strong> מתכננים איך הלוגו יתנהג בגדלים שונים ובהקשרים שונים: גרסאות אייקון, לוגו מילה <span class="ltr">(Wordmark)</span>, אווטארים לרשתות חברתיות, בדיקות אנימציה (במידת הצורך). <a class="xref" href="logo.html#system">מערכת לוגו</a></li>
@@ -494,11 +498,11 @@
       <h3 id="q-name" data-rail-label="שם החברה">שם החברה או המותג</h3>
       <p>חשבו על שם החברה או המותג: <strong>למה בחרו בשם הזה? מה הוא מעורר?</strong> בדרך כלל שם קצר טוב יותר משם ארוך. אין צורך להשתמש בכל השם החוקי של החברה בלוגו, מותר לקצר.</p>
       <div class="gallery g2 natural names">
-        <a href="img/lecture-name-apple.webp" data-lb data-cap="Apple Computers מוצגת בלוגו בתור Apple"><img src="img/lecture-name-apple.webp" alt="הלוגו של Apple: התפוח השחור עם המילה Apple" loading="lazy" width="1200" height="426"></a>
+        <a href="img/lecture-name-apple.webp" data-lb data-cap="Apple Computer מוצגת בלוגו בתור Apple"><img src="img/lecture-name-apple.webp" alt="הלוגו של Apple: התפוח השחור עם המילה Apple" loading="lazy" width="1200" height="426"></a>
         <a href="img/lecture-name-adobe.webp" data-lb data-cap="Adobe Systems מוצגת בלוגו בתור Adobe"><img src="img/lecture-name-adobe.webp" alt="הלוגו של Adobe: הסמל האדום עם המילה Adobe" loading="lazy" width="660" height="198"></a>
       </div>
       <div class="nm2">
-        <div><span class="ltr full">Apple Computers</span><i aria-hidden="true">←</i><span class="ltr short">Apple</span></div>
+        <div><span class="ltr full">Apple Computer</span><i aria-hidden="true">←</i><span class="ltr short">Apple</span></div>
         <div><span class="ltr full">Adobe Systems</span><i aria-hidden="true">←</i><span class="ltr short">Adobe</span></div>
       </div>
       <p><span data-added>זה גם העיקרון השני של לוגו טוב: הלוגו צריך להחמיא לשם.</span> <a class="xref" href="logo.html#compliment-name">החמיאו לשם החברה</a></p>
@@ -533,7 +537,7 @@
       <p class="lead">בבסיס כל לוגו טוב יש רעיון טוב. הנה שש שיטות והחלטות ליצירת רעיונות:</p>
       <ol class="six">
         <li><a href="#mind-maps"><span class="n">1</span>מפות חשיבה</a></li>
-        <li><a href="#mood-board"><span class="n">2</span>לוח רוח</a></li>
+        <li><a href="#mood-board"><span class="n">2</span>לוח השראה</a></li>
         <li><a href="#graphic-style"><span class="n">3</span>שפה גרפית</a></li>
         <li><a href="#sketches"><span class="n">4</span>סקיצות</a></li>
         <li><a href="#fonts"><span class="n">5</span>פונט</a></li>
@@ -568,15 +572,15 @@
       <p>אחרי הסימון של המילים, <strong>נסו לשלב אותן יחד בסקיצה.</strong> שימו לב לשינוי אחד שקרה ברשימה בהרצאה אחרי הסימון: „בניינים גבוהים” הפכו ל„עזריאלי”. <span data-added>מהכללי אל הספציפי: מגדל עזריאלי הוא צורה שאפשר לצייר, ושכל תל־אביבי מזהה.</span> <a class="xref" href="#sketches">סקיצות</a></p>
 
       <!-- method 2 -->
-      <h3 id="mood-board" data-rail-label="לוח רוח">שיטה 2. לוח מחשבות, רגשות, רוח <span class="ltr">(Mood Board)</span></h3>
-      <p>לוחות הם שיטה טובה לקבוע את <strong>הטון (הצבעוניות) והסגנון העיצובי</strong> של הפרויקט. הלוח יציג את הרגשות, האסוציאציות והאסתטיקה שהלקוח מכוון אליהם. רצוי לשמור את הלוח בסביבת העבודה, כדי שיעזור להתמקד בשפה ובנראות שהפרויקט מכוון אליהן.</p>
+      <h3 id="mood-board" data-rail-label="לוח השראה">שיטה 2. לוח השראה <span class="ltr">(Mood Board)</span></h3>
+      <p>בהרצאה אני מתאר אותו כלוח של מחשבות, רגשות ו„רוח”. לוחות הם שיטה טובה לקבוע את <strong>הטון (הצבעוניות) והסגנון העיצובי</strong> של הפרויקט. הלוח יציג את הרגשות, האסוציאציות והאסתטיקה שהלקוח מכוון אליהם. רצוי לשמור את הלוח בסביבת העבודה, כדי שיעזור להתמקד בשפה ובנראות שהפרויקט מכוון אליהן.</p>
       <div class="gallery g3 natural">
-        <a href="img/lecture-moodboard-bodoni.webp" data-lb data-cap="לוח רוח: ספרייה, עור, עץ כהה ופונט Bodoni"><img src="img/lecture-moodboard-bodoni.webp" alt="לוח רוח קלאסי: ספרייה עם כורסת עור, חליפת טוויד, פונט Bodoni, דוגמאות צבע חומות ושחורות וחותמת" loading="lazy" width="930" height="726"></a>
-        <a href="img/lecture-moodboard-green.webp" data-lb data-cap="לוח רוח ירוק: לימונים, צמחים ומרקמים"><img src="img/lecture-moodboard-green.webp" alt="קולאז' של תמונות בירוק: פרוסות ליים, עלים, קקטוסים, שתייה ירוקה ומרקמים טבעיים" loading="lazy" width="640" height="463"></a>
-        <a href="img/lecture-moodboard-soft.webp" data-lb data-cap="לוח רוח רך: סוקולנטים, ירוק מנטה ונייר"><img src="img/lecture-moodboard-soft.webp" alt="לוח רוח בגוונים רכים של ירוק ושמנת: סוקולנטים, זוג, אריג עם דוגמה ודוגמאות צבע" loading="lazy" width="670" height="909"></a>
+        <a href="img/lecture-moodboard-bodoni.webp" data-lb data-cap="לוח השראה: ספרייה, עור, עץ כהה ופונט Bodoni"><img src="img/lecture-moodboard-bodoni.webp" alt="לוח השראה קלאסי: ספרייה עם כורסת עור, חליפת טוויד, פונט Bodoni, דוגמאות צבע חומות ושחורות וחותמת" loading="lazy" width="930" height="726"></a>
+        <a href="img/lecture-moodboard-green.webp" data-lb data-cap="לוח השראה ירוק: לימונים, צמחים ומרקמים"><img src="img/lecture-moodboard-green.webp" alt="קולאז' של תמונות בירוק: פרוסות ליים, עלים, קקטוסים, שתייה ירוקה ומרקמים טבעיים" loading="lazy" width="640" height="463"></a>
+        <a href="img/lecture-moodboard-soft.webp" data-lb data-cap="לוח השראה רך: סוקולנטים, ירוק מנטה ונייר"><img src="img/lecture-moodboard-soft.webp" alt="לוח השראה בגוונים רכים של ירוק ושמנת: סוקולנטים, זוג, אריג עם דוגמה ודוגמאות צבע" loading="lazy" width="670" height="909"></a>
       </div>
-      <figcaption>שלושה לוחות רוח מההרצאה. כל אחד קובע טון אחר עוד לפני שיש סקיצה אחת.</figcaption>
-      <p>איך בונים לוח השראה להגשה: <a class="xref" href="checklist.html">ההגשה: רשימת בדיקה</a></p>
+      <figcaption>שלושה לוחות השראה מההרצאה. כל אחד קובע טון אחר עוד לפני שיש סקיצה אחת.</figcaption>
+      <p>ובהגשה הסופית? <a class="xref" href="checklist.html#summary-core">לוח השראה בהגשה: לא חובה, אבל יתרון</a></p>
 
       <!-- method 3 -->
       <h3 id="graphic-style" data-rail-label="שפה גרפית">שיטה 3. שפה גרפית: החלטה על סגנון</h3>
@@ -622,7 +626,7 @@
       <div class="gallery natural">
         <a href="img/lecture-polished-1.webp" data-lb data-cap="Arlington Pediatric Center"><img src="img/lecture-polished-1.webp" alt="הלוגו של Arlington Pediatric Center: דמות מבוגר ודמות ילד בלבן על רקע כחול" loading="lazy" width="400" height="326"></a>
         <a href="img/lecture-polished-2.webp" data-lb data-cap="The Computer Doctors"><img src="img/lecture-polished-2.webp" alt="הלוגו של The Computer Doctors, עם האות u בצורת עכבר" loading="lazy" width="590" height="220"></a>
-        <a href="img/lecture-polished-3.webp" data-lb data-cap="London 2012"><img src="img/lecture-polished-3.webp" alt="הלוגו של אולימפיאדת לונדון 2012: צורות שבורות בורוד שיוצרות את המספר 2012" loading="lazy" width="1065" height="1200"></a>
+        <a href="img/lecture-polished-3.webp" data-lb data-cap="London 2012"><img src="img/lecture-polished-3.webp" alt="הלוגו של אולימפיאדת לונדון 2012: צורות שבורות בוורוד שיוצרות את המספר 2012" loading="lazy" width="1065" height="1200"></a>
         <a href="img/lecture-polished-4.webp" data-lb data-cap="Mama’s Baking"><img src="img/lecture-polished-4.webp" alt="הלוגו של Mama’s Baking: דמות אישה עם תנור בצורת פנים" loading="lazy" width="500" height="500"></a>
       </div>
       <figcaption>מתוך ההרצאה: לוגואים אמיתיים, נקיים ומלוטשים, שבכל זאת נכשלו. כל אחד מהם אפשר לקרוא גם בדרך שאף אחד לא התכוון אליה, ומבט נוסף על סקיצה היה תופס את זה.</figcaption>
@@ -728,7 +732,8 @@
       <p>עוברים למחשב ומתחילים לעבוד. בסיום העבודה מחפשים באינטרנט רעיונות דומים, ומוודאים שזה לא נעשה בעבר.</p>
       <div class="note">
         <span class="box-label">למה לחפש רק אחרי העבודה?</span>
-        <p>זה אמנם יכול להיראות כמו בזבוז זמן, אבל בגלל הטבע האנושי: אם נחפש דוגמאות לפני שנתחיל לעבוד, יש סיכוי טוב שנגמור בכך שנעתיק את העיצוב, <strong>אפילו אם לא נתכוון לזה</strong>. <a class="xref" href="logo.html#original">מקורי</a></p>
+        <p>זה אמנם יכול להיראות כמו בזבוז זמן, אבל בגלל הטבע האנושי: אם נחפש דוגמאות לפני שנתחיל לעבוד, יש סיכוי טוב שנגמור בכך שנעתיק את העיצוב, <strong>אפילו אם לא נתכוון לזה</strong>.</p>
+        <p>זה לא סותר את מפת המתחרים מהפרק השלישי: אותה עושים קודם, כדי להבין את השוק. כאן מדובר על משהו אחר, לא לחפש דוגמאות עיצוב שאפשר להעתיק מהן. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a> <a class="xref" href="logo.html#original">מקורי</a></p>
       </div>
 
       <h3 id="step-rest" data-rail-label="לעזוב לכמה ימים">4. לעזוב את הלוגו לכמה ימים</h3>
@@ -772,9 +777,9 @@
         <li>„הראה לי 20 דרכים שבהן צורת מגן יכולה להרגיש רכה יותר.”</li>
         <li>או: „הדגם איך צורת <span class="ltr">V</span> יכולה לרמוז על מהירות בלי לצייר כנפיים.”</li>
       </ul>
-      <p><strong>התהליך:</strong> הרעיונות והכיוון האסטרטגי צריכים להגיע מכם. תנו ל־<span class="ltr">AI</span> לייצר את חומר הגלם, ואז קחו אותו ועצבו כמו בן אדם: עם מוח, אחריות וטעם.</p>
+      <p><strong>התהליך:</strong> הרעיונות והכיוון האסטרטגי צריכים להגיע מכם. תנו ל־<span class="ltr">AI</span> לייצר את חומר הגלם, ואז כבו אותו ועצבו כמו בן אדם: עם מוח, אחריות וטעם.</p>
       <figure class="anim skf" data-steps="3" data-no-bar>
-        <span class="anim__label">שלושה שלבים, ורק אחד מהם של המכונה</span>
+        <span class="anim__label">מודל העבודה: שלושה שלבים, ורק אחד מהם של המכונה</span>
         <div class="anim__stage">
           <div class="sk-nodes">
             <button type="button" class="sk-n" data-goto="1"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M24 35v-5h4a3 3 0 0 0 3-3v-4l3-1-3-6A12 12 0 0 0 9 18c0 4 2 7 4 9v8"/><path d="M19 12a4.5 4.5 0 0 1 3 8v2h-4v-2a4.5 4.5 0 0 1 1-8z"/></svg><span>אסטרטגיה אנושית</span><small>הבריף, השבט, הרעיון והכיוון. שלכם.</small></button>
@@ -814,7 +819,7 @@
       </figure>
       <div class="warn">
         <span class="box-label">השורה התחתונה</span>
-        <p>אם אתם מוסרים את כל העבודה ל־<span class="ltr">AI</span>, אתם הופכים למוצר חסר ערך. אם אתם משתמשים בו כדי להרחיב את החשיבה שלכם, קשה מאוד להחליף אתכם.</p>
+        <p>אם אתם מוסרים את כל העבודה ל־<span class="ltr">AI</span>, אתם הופכים למתווכים חסרי ערך. אם אתם משתמשים בו כדי להרחיב את החשיבה שלכם, קשה מאוד להחליף אתכם.</p>
       </div>
       <h3 id="ai-to-client">ומה אומרים על זה ללקוח</h3>
       <p>אין מה להסתיר. ככה אני מציע להציג את זה: „אנחנו משתמשים בכלי <span class="ltr">AI</span> כדי לייעל תהליכים, לייצר וריאציות במהירות ולבנות הדמיות מציאותיות. זה כלי עבודה לגיטימי שמאפשר לנו להשקיע יותר זמן בחשיבה אסטרטגית ופחות בעבודה טכנית. <strong>כל ההחלטות היצירתיות והאסטרטגיות הן שלנו. הכלי רק מאיץ.</strong>”</p>
@@ -825,7 +830,7 @@
     <section class="sec">
       <h2 id="brief" data-short="בריף לוגו">בריף לוגו</h2>
       <p>את השאלות ללקוח ריכזתי לתבנית אחת: בריף לוגו בקובץ <span class="ltr">Word</span>, שאפשר להוריד, למלא עם הלקוח בפגישה הראשונה ולשמור בתיק הפרויקט.</p>
-      <a class="brief-dl" href="https://www.misha.co.il/_files/ugd/21aa29_ef8476121f9148eebd332c72194963e9.docx?dn=%D7%91%D7%A8%D7%99%D7%A3%20%D7%9C%D7%95%D7%92%D7%95%20-%20%D7%97%D7%93%D7%A9%20%D7%A2%D7%9D%20%D7%98%D7%91%D7%9C%D7%94.docx" rel="noopener">
+      <a class="brief-dl" href="../../media/files/logo-brief-template.docx" download rel="noopener">
         <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z M15 3v4h4 M9 12h6M9 15h6M9 18h4"/></svg></span>
         <span><b>בריף לוגו</b><small>תבנית <span class="ltr">Word (.docx)</span>, נפתחת להורדה</small></span>
       </a>
@@ -851,8 +856,8 @@
           <h4>שלבי העבודה <span class="muted">(הפרק הזה)</span></h4>
           <ol class="steps">
             <li><a href="#client-questions">עבודת מחקר: לשאול שאלות</a>. לוגו חדש או רענון, דד ליין, תקציב והיקף עבודה, שם החברה, קהל היעד, יופי או אופי (ערכים, מסרים), מי המתחרים.</li>
-            <li><a href="#ideas">שיטות ליצירת רעיונות והשראה</a>: מפות חשיבה (שמש אסוציאציות), לוח מחשבות, רגשות, רוח <span class="ltr">(Mood Board)</span>.</li>
-            <li><a href="#graphic-style">שפה גרפית: החלטה על סגנון</a>. טיפוגרפיה וחלל נגטיבי, כתמים, קו מינימליסטי בעובי אחיד, קו פשוט, סגנון חתימה, פוליגון, דמות, קמע ספורט, שילוב של צורות, צורות גיאומטריות, וינטג'.</li>
+            <li><a href="#ideas">שיטות ליצירת רעיונות והשראה</a>: מפות חשיבה (שמש אסוציאציות), לוח השראה.</li>
+            <li><a href="#graphic-style">שפה גרפית: החלטה על סגנון</a>. טיפוגרפיה וחלל נגטיבי, כתמים, קו מינימליסטי בעובי אחיד, קו מינימליסטי, קו פשוט, סגנון חתימה, פוליגון, דמות, קמע ספורט, שילוב של צורות, צורות גיאומטריות, וינטג'.</li>
             <li><a href="#sketches">סקיצות ידניות על הנייר</a>.</li>
             <li><a href="#fonts">החלטה על פונט</a>.</li>
             <li><a href="#color-method">צבעוניות</a>: צבע קבוע, צבע משתנה, מונוכרומטי.</li>
@@ -897,7 +902,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: association sun, font tester, AI sketchbook shields */
 document.addEventListener("DOMContentLoaded", function () {

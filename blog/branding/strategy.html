@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* ---- three things lecturers love ---- */
@@ -150,6 +150,7 @@
 .btn { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 7px 16px; font: 500 14px var(--text); cursor: pointer; }
 .btn:hover { border-color: var(--accent); }
 .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.nw { white-space: nowrap; }
 </style>
 </head>
 <body data-ch="strategy">
@@ -220,12 +221,12 @@
           <li>מה מבדל אותו מהמתחרים?</li>
           <li>איזה רגש הוא רוצה ליצור?</li>
         </ol>
-        <p>ואז תלכו עוד צעד: הלוגו בכלל לא בשביל הלקוח שלכם, הוא בשביל ה„שבט” שהלקוח רוצה להתחבר אליו. איך הם מתלבשים, מה הם גוללים, אילו מותגים הם כבר אוהבים. <a class="xref" href="logo-design.html#process">השבט ותהליך העבודה</a></p>
+        <p>ואז לכו עוד צעד: הלוגו בכלל לא בשביל הלקוח שלכם, הוא בשביל ה„שבט” שהלקוח רוצה להתחבר אליו. איך הם מתלבשים, מה הם גוללים, אילו מותגים הם כבר אוהבים. <a class="xref" href="logo-design.html#tribe">השבט ותהליך העבודה</a></p>
       </div>
 
       <h3 id="positioning">3. מיצוב: איך הוא שונה מהמתחרים</h3>
       <div data-added>
-        <p>מיצוב הוא משפט אחד שמכריח אתכם להחליט. נוסחת המיצוב הקלאסית: <strong>„עבור [קהל יעד], [המותג] הוא [הקטגוריה] ש[נקודת הבידול], כי [הסיבה להאמין].”</strong> כל החלטה עיצובית אחר כך אמורה „להוכיח” את המשפט הזה. נסו:</p>
+        <p>מיצוב הוא משפט אחד שמכריח אתכם להחליט. נוסחת המיצוב הקלאסית: <strong>„עבור [קהל יעד], [המותג]: [הקטגוריה] ש[נקודת הבידול], כי [הסיבה להאמין].”</strong> כל החלטה עיצובית אחר כך אמורה „להוכיח” את המשפט הזה. נסו:</p>
         <div class="widget" id="wfx">
           <div class="fx">
             <label>קהל היעד<input data-f="aud" type="text" value="הורים צעירים בשכונה"></label>
@@ -234,7 +235,7 @@
             <label>נקודת הבידול<input data-f="diff" type="text" value="אופה רק לחם שאור עם קמח מלא"></label>
             <label>הסיבה להאמין<input data-f="why" type="text" value="המאפים יוצאים מהתנור מול העיניים כל בוקר"></label>
           </div>
-          <div class="fx-out" aria-live="polite">עבור <em data-o="aud"></em>, <em data-o="brand"></em> היא <em data-o="cat"></em> ש<em data-o="diff"></em>, כי <em data-o="why"></em>.</div>
+          <div class="fx-out" aria-live="polite">עבור <em data-o="aud"></em>, <em data-o="brand"></em>: <em data-o="cat"></em> ש<em data-o="diff"></em>, כי <em data-o="why"></em>.</div>
           <p class="muted" style="font-size:15px;margin:12px 0 0">והגרסה הקצרה של מרטי נוימאייר, „מבחן הבלעדיות”: <strong>„המותג שלנו הוא ה־___ היחיד ש־___.”</strong> אם אי אפשר להשלים את המשפט בלי לשקר, עוד אין בידול.</p>
         </div>
         <p>עוד כלי מהיר: איפה המותג עומד על ארבעה צירים. אין תשובה נכונה, יש תשובה ברורה. מותג שעומד „באמצע” בכל הצירים, לרוב לא אומר כלום.</p>
@@ -304,7 +305,7 @@
             <div class="cm-new"><svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="6" fill="#2a4bff"/><path d="M4 44L44 4h12v12L16 56H4z" fill="#d7ff3a"/></svg></div>
           </div>
         </div>
-        <figcaption>שישה לוגואים של בתי קפה מומצאים. עברו בין השלבים: מחליפים להם מקומות פעמיים, ושום דבר לא משתנה: כולם חומים, עגולים, עם כוס או פול. כשמסדרים אותם על מפה, כולם יושבים באותה פינה. הפינה הריקה היא ההזדמנות.</figcaption>
+        <figcaption>שישה לוגואים של בתי קפה מומצאים. עברו בין השלבים: מחליפים להם מקומות פעמיים, ושום דבר לא משתנה: כולם חומים, עגולים, ועם סמל צפוי של בית קפה (כוס, פול, שיבולת, עלה או אות בודדת). כשמסדרים אותם על מפה, כולם יושבים באותה פינה. הפינה הריקה היא ההזדמנות.</figcaption>
       </figure>
 
       <h3 id="what-to-collect" data-added>מה עוד כדאי לאסוף, חוץ מלוגואים</h3>
@@ -369,7 +370,7 @@
             <tbody>
               <tr><td>חמימות משפחתית</td><td>חומים, קרם, כתום אפוי</td><td>קו יד לא מושלם, אור טבעי, ידיים בפריים</td><td>סאנס מעוגל וידידותי</td></tr>
               <tr><td>מקצועיות ודיוק</td><td>מעט צבעים, הרבה ריק, צבע הדגשה אחד</td><td>צילום נקי על רקע אחיד, אייקונים בקו אחיד</td><td>סאנס נקי, היררכיה חדה</td></tr>
-              <tr><td>חדשנות ותעוזה</td><td>צבע רווי אחד שאף מתחרה לא לקח</td><td>קומפוזיציות לא צפויות, גריד שנשבר בכוונה</td><td>תצוגה בולטת לכותרות</td></tr>
+              <tr><td>חדשנות ותעוזה</td><td>צבע רווי אחד שאף מתחרה לא לקח</td><td>קומפוזיציות לא צפויות, גריד שנשבר בכוונה</td><td>פונט תצוגה <span class="ltr">(Display)</span> בולט לכותרות</td></tr>
             </tbody>
           </table>
         </div>
@@ -432,24 +433,24 @@
           <div class="card"><span class="k">General Motors</span><h4>תיאורי</h4><p>מובן מיד, אבל קשה להגן עליו ולרוב בלי רגש.</p></div>
           <div class="card"><span class="k">Amazon · Nike</span><h4>מטאפורי</h4><p>אמזון כמו הנהר הגדול בעולם, נייקי אלת הניצחון.</p></div>
           <div class="card"><span class="k">Kodak · Xerox</span><h4>מומצא</h4><p>מילה חדשה לגמרי. בעלות מלאה, אבל המשמעות נבנית מאפס.</p></div>
-          <div class="card"><span class="k">Spotify · Pinterest</span><h4>הלחם</h4><p>שתי מילים שהתאחדו: <span class="ltr">spot + identify</span>, <span class="ltr">pin + interest</span>.</p></div>
+          <div class="card"><span class="k">Instagram · Pinterest</span><h4>הלחם</h4><p>שתי מילים שהתאחדו: <span class="ltr nw">instant camera + telegram</span>, <span class="ltr nw">pin + interest</span>.</p></div>
           <div class="card"><span class="k">Apple · Uber</span><h4>מעורר אסוציאציה</h4><p>מילה קיימת שיוצאת מההקשר שלה, ומפתיעה.</p></div>
         </div>
         <p>כל שם צריך לעבור חמש בדיקות: <strong>זכיר, קל להגייה, יכול לגדול עם העסק, אפשר לרשום אותו כסימן מסחר, ויש לו דומיין פנוי</strong>. ובעברית עוד שלוש: איך הוא נשמע בעברית ובאנגלית, האם התעתיק שלו עקבי, והאם יש לו משמעות סלנג שלא תכננתם. לפני שמתאהבים בשם, חפשו אותו במאגר סימני המסחר של רשות הפטנטים.</p>
-        <h4>סוגי סלוגנים</h4>
+        <h4>סוגי סלוגנים וטאגליינים</h4>
         <div class="tbl-wrap">
           <table class="tbl">
             <thead><tr><th>סוג</th><th>דוגמה</th></tr></thead>
             <tbody>
               <tr><td>תיאורי</td><td><span class="ltr">“The Ultimate Driving Machine” (BMW)</span></td></tr>
-              <tr><td>תועלת</td><td><span class="ltr">“Just Do It”</span> (נייקי)</td></tr>
-              <tr><td>שאיפה</td><td><span class="ltr">“Think Different”</span> (אפל)</td></tr>
+              <tr><td>תועלת</td><td><span class="ltr">“Just Do It” (Nike)</span></td></tr>
+              <tr><td>שאיפה</td><td><span class="ltr">“Think Different” (Apple)</span></td></tr>
               <tr><td>רגשי</td><td><span class="ltr">“Because You’re Worth It”</span> (לוריאל)</td></tr>
               <tr><td>שאלה</td><td><span class="ltr">“Got Milk?”</span> (מועצת החלב בקליפורניה)</td></tr>
             </tbody>
           </table>
         </div>
-        <p class="muted" style="font-size:15px">ההבדל: <strong>טאגליין</strong> שייך למותג ונשאר שנים. <strong>סלוגן</strong> שייך לקמפיין ומתחלף איתו.</p>
+        <p class="muted" style="font-size:15px">אותם סוגים עובדים גם לטאגליין וגם לסלוגן. ההבדל הוא כמה זמן הם חיים: <strong>טאגליין</strong> שייך למותג ונשאר שנים, כמו <span class="ltr nw">Just Do It</span>. <strong>סלוגן</strong> שייך לקמפיין ומתחלף איתו, כמו <span class="ltr nw">Think Different</span>, שליווה קמפיין של אפל.</p>
       </div>
     </section>
 
@@ -486,7 +487,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: positioning formula, sliders, competitor test, archetype wheel, voice switcher, 40 chars, brief copy.
    Runs at parse time (end of body) so the "anim:step" listener exists before guide.js starts the steppers. */

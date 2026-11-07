@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@700&family=Frank+Ruhl+Libre:wght@400&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* ---- deck slides ---- */
@@ -64,13 +64,17 @@
 @media (max-width: 700px) { .howmany { grid-template-columns: 1fr 1fr; } }
 
 /* ---- storyboard ---- */
-.sb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-.sb a { position: relative; display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 16 / 10; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); text-decoration: none; overflow: hidden; }
+/* six small tiles per row, so the whole deck, its note and the step bar fit on one screen */
+.sb { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.sb a { position: relative; display: flex; flex-direction: column; justify-content: space-between; gap: 4px; min-height: 96px; padding: 8px 9px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); text-decoration: none; overflow: hidden; }
 .sb a:hover { border-color: var(--accent); }
 .sb .n { font: 500 11px var(--mono); color: var(--accent-ink); direction: ltr; text-align: right; }
-.sb svg { width: 46%; height: auto; align-self: center; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sb svg { width: 50%; max-width: 46px; height: auto; align-self: center; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .sb svg .f { fill: var(--accent); stroke: none; }
-.sb b { font-size: 14px; line-height: 1.3; font-weight: 600; }
+.sb b { font-size: 12.5px; line-height: 1.3; font-weight: 600; }
+/* the five step names stay on one row */
+#sb-fig .stepper__list { gap: 4px; }
+#sb-fig .stepper__btn { gap: 6px; padding: 5px 10px 5px 6px; }
 .sb a { transition: opacity .5s ease, transform .5s ease, border-color .4s, box-shadow .4s; }
 /* steps build the deck act by act: slides of later acts wait as faint placeholders (still clickable) */
 .sbf[data-step="1"] .sb a[data-act="2"],
@@ -89,9 +93,10 @@
 .sbf[data-step="4"] .sb a[data-act="4"],
 .sbf[data-step="5"] .sb a[data-act="5"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
 .sb-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
-.sb-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
+.sb-note > span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
 .sbf[data-step="1"] .sb-note [data-s="1"], .sbf[data-step="2"] .sb-note [data-s="2"], .sbf[data-step="3"] .sb-note [data-s="3"], .sbf[data-step="4"] .sb-note [data-s="4"], .sbf[data-step="5"] .sb-note [data-s="5"] { opacity: 1; visibility: visible; }
-@media (max-width: 560px) { .sb { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sb b { font-size: 13px; } }
+@media (max-width: 700px) { .sb { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .sb { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; } .sb a { min-height: 0; padding: 7px 8px; } .sb svg { display: none; } .sb b { font-size: 12px; } #sb-fig .stepper__btn { padding: 4px; } }
 
 /* ---- strategy dna ---- */
 .dna { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
@@ -247,7 +252,7 @@
             <a href="#deck-17" data-act="4"><span class="n">17</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M12 10h24l2 18H10z M18 10V7a6 6 0 0 1 12 0v3"/></svg><b>אריזות ושקיות</b></a>
             <a href="#deck-18" data-act="5"><span class="n">18</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M10 8h28M14 15h20M10 22h28"/></svg><b>סיכום והחלטה</b></a>
           </div>
-          <p class="sb-note" aria-live="polite"><span data-s="1"><b>הקשר:</b> חמש שקופיות לפני שרואים עיצוב אחד. האתגר, המותג, הקהל, הכיוון והרעיון, כך שהלוגו מגיע כתשובה.</span><span data-s="2"><b>הלוגו:</b> רק עכשיו החשיפה. הלוגו לבד, ומיד אחריו למה הצורה והצבע נראים כך.</span><span data-s="3"><b>המערכת:</b> מוכיחים שהוא עובד בכל גודל, ושיש סביבו מערכת שלמה ולא אוסף החלטות.</span><span data-s="4"><b>בעולם:</b> שבע שקופיות של המותג בחיים עצמם: מוקאפים, מסך, דפוס, שילוט, הלבשה ואריזה.</span><span data-s="5"><b>ההחלטה:</b> שקופית אחת שסוגרת. לא הצגנו לוגו, הצגנו מערכת שעובדת.</span></p>
+          <p class="sb-note" aria-live="polite"><span data-s="1"><b>הקשר:</b> חמש שקופיות לפני שרואים עיצוב אחד. האתגר, המותג, הקהל, הכיוון והרעיון, כך שהלוגו מגיע כתשובה.</span><span data-s="2"><b>הלוגו:</b> רק עכשיו החשיפה. הלוגו לבד, ומיד אחריו למה הצורה והצבע נראים כך.</span><span data-s="3"><b>המערכת:</b> מוכיחים שהוא עובד בכל גודל, ושיש סביבו מערכת שלמה ולא אוסף החלטות.</span><span data-s="4"><b>בעולם:</b> שבע שקופיות. שש של המותג בחיים עצמם: מוקאפים, מסך, דפוס, שילוט, הלבשה ואריזה, ועוד אחת על <span class="ltr">AI</span> בתהליך.</span><span data-s="5"><b>ההחלטה:</b> שקופית אחת שסוגרת. לא הצגנו לוגו, הצגנו מערכת שעובדת.</span></p>
         </div>
         <figcaption>שמונה־עשרה שקופיות. אף אחת מהן לא שואלת „מה דעתך?”. כולן מסבירות „למה”.</figcaption>
       </figure>
@@ -394,14 +399,14 @@
         <div><h4>הטיפוגרפיה</h4><p>הפונט הנקי והגיאומטרי מבטיח קריאות, ורסטיליות ומראה מודרני.</p></div>
       </div>
       <a class="slide-img" href="img/bp-meaning.webp" data-lb data-cap="מאחורי כל החלטה עומדת משמעות"><img src="img/bp-meaning.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו עם שלושה חיצים להסברים על הצורה, הצבעוניות והטיפוגרפיה"></a>
-      <p data-added>שימו לב שכל נימוק מחזיר לאסטרטגיה: „נגישות”, „אמינות”, „ביטחון” הן בדיוק המילים מעמוד ה„אנחנו כן”. ככה „אני לא אוהב כחול” הופך לשיחה על ביטחון ומקצועיות, ולא על טעם.</p>
+      <p data-added>שימו לב שכל נימוק מחזיר לאסטרטגיה: „נגישות”, „אמינות”, „ביטחון” הן בדיוק המילים מהערכים ומעמוד ה„אנחנו כן”. ככה „אני לא אוהב כחול” הופך לשיחה על ביטחון ומקצועיות, ולא על טעם.</p>
     </section>
 
     <!-- ================= 7. versatility ================= -->
     <section class="sec">
-      <h2 id="versatility" data-short="עובד בכל מצב">הוכחה ורסטיליות: הלוגו עובד בכל מצב</h2>
+      <h2 id="versatility" data-short="עובד בכל מצב">הוכחת ורסטיליות: הלוגו עובד בכל מצב</h2>
       <p>לוגו חזק חייב להיות גמיש. הראו איך הוא שומר על הזהות שלו בכל קנה מידה ובכל פורמט: אופקי, סמל זעיר, על רקע בהיר, על רקע כהה, על הצבע של המותג, עם מסגרות המרווח המגן, בגרסה שחורה, וסמל בלבד.</p>
-      <a class="slide-img" href="img/bp-every-size.webp" data-lb data-cap="הוכחה ורסטיליות: הלוגו עובד בכל מצב"><img src="img/bp-every-size.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו בשמונה מצבים, אופקי, זעיר, על רקעים בהירים, כהים וכחולים, בשחור וסמל בלבד"></a>
+      <a class="slide-img" href="img/bp-every-size.webp" data-lb data-cap="הוכחת ורסטיליות: הלוגו עובד בכל מצב"><img src="img/bp-every-size.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו בשמונה מצבים, אופקי, זעיר, על רקעים בהירים, כהים וכחולים, בשחור וסמל בלבד"></a>
       <p>איך בונים את המערכת הזו מלכתחילה, ומה הן כל הגרסאות: <a class="xref" href="logo.html#system">מערכת הלוגו</a></p>
     </section>
 
@@ -428,7 +433,7 @@
       <h3 id="digital-world">בעולם הדיגיטלי</h3>
       <p>המערכת העיצובית מותאמת למסכים, עם דגש על קריאות, נגישות ואימפקט: פרופיל אינסטגרם, אתר, מסך פתיחה של אפליקציה, מסך טעינה ו־<span class="ltr">GIF</span> מונפש קצר. אם רלוונטי, מציגים גם דוגמאות של תנועה עדינה.</p>
       <a class="slide-img" href="img/bp-digital.webp" data-lb data-cap="איך המותג חי בעולם הדיגיטלי"><img src="img/bp-digital.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על פרופיל אינסטגרם, אתר, מסך פתיחה וטעינה של אפליקציה, ואנימציה קצרה"></a>
-      <p><a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a> <a class="xref" href="golden-rules.html">תנועה, אבל לא ליד טקסט</a></p>
+      <p><a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a> <a class="xref" href="golden-rules.html#no-gifs">תנועה, אבל לא ליד טקסט</a></p>
 
       <h3 id="physical-world">בעולם הפיזי</h3>
       <p>הזהות הוויזואלית עובדת לא רק על מסך, אלא גם במרחב הפיזי, על חומרים שונים ובקני מידה משתנים: שלט קיר בקבלה, תיק בד, כרטיס ביקור.</p>
@@ -470,7 +475,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* funnel 20 -> 3 -> 1, a click-through stepper (js driven). Runs at parse time so the listener exists before guide.js starts. */
 (function () {

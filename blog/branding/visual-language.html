@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* Infographics on this page are click-through steppers (guide.js: data-steps / data-goto).
@@ -52,12 +52,13 @@
 .series .tp { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .series .bar { fill: var(--fill); }
 .series b { display: block; font-size: 14px; font-weight: 500; margin-top: 8px; }
-.series > div { border-radius: 12px; transition: opacity .45s; }
-.series svg { transition: border-color .45s, background .45s; }
+.series > div { border-radius: 12px; }
+.series svg { transition: border-color .45s, background .45s, opacity .45s; }
 .series b { transition: color .45s; }
 .series .pop { transform-box: fill-box; transform-origin: center; transition: transform .6s cubic-bezier(.3,1.6,.5,1); }
-.anim[data-step] .series > div:not(.on) { opacity: .5; }
-.anim[data-step] .series > div:not(.on):hover { opacity: .8; }
+/* unpicked tiles: only the drawing fades, the label stays readable */
+.anim[data-step] .series > div:not(.on) svg { opacity: .5; }
+.anim[data-step] .series > div:not(.on):hover svg { opacity: .8; }
 .series > div.on svg { border-color: var(--accent); background: var(--accent-soft); }
 .series > div.on b { color: var(--accent-ink); }
 .series > div.on .pop { transform: scale(1.32); }
@@ -93,9 +94,11 @@
 .ic4 .solid { fill: currentColor; }
 .ic4 .duo { fill: var(--accent); fill-opacity: .55; }
 .ic4 .flat-body { fill: #e9663a; } .ic4 .flat-h { stroke: #e9663a; } .ic4 .flat-s { stroke: #9aa3a8; } .ic4 .flat-p { stroke: #8a5a3c; }
-.ic4 > div { transition: opacity .45s, border-color .45s, background .45s; }
-.anim[data-step] .ic4 > div:not(.on) { opacity: .55; }
-.anim[data-step] .ic4 > div:not(.on):hover { opacity: .85; }
+.ic4 > div { transition: border-color .45s, background .45s; }
+.ic4 svg { transition: opacity .45s; }
+/* unpicked styles: only the icon fades, the name and note stay readable */
+.anim[data-step] .ic4 > div:not(.on) svg { opacity: .55; }
+.anim[data-step] .ic4 > div:not(.on):hover svg { opacity: .85; }
 .ic4 > div.on { border-color: var(--accent); background: var(--accent-soft); }
 .anim.is-live .ic4 > div.on .st { animation: draw .8s ease both; }
 .anim.is-live .ic4 > div.on .fl { animation: fadeto .45s ease .65s both; }
@@ -106,6 +109,9 @@
 /* ---- icon grid infographic ---- */
 .igrid { display: grid; grid-template-columns: minmax(0, 260px) minmax(0, 1fr); gap: 24px; align-items: center; }
 .igrid svg { width: 100%; height: auto; display: block; border-radius: 10px; background: var(--soft); }
+/* two-image row: column widths follow each image's proportions (1600×495 and 1600×811), so both end at the same height, nothing stretched */
+.gallery.vl-pair { grid-template-columns: minmax(0, 3.232fr) minmax(0, 1.973fr); align-items: start; }
+@media (max-width: 640px) { .gallery.vl-pair { grid-template-columns: minmax(0, 1fr); } }
 .igrid .gl { fill: none; stroke: var(--line); stroke-width: 1; }
 .igrid .live { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 6 5; }
 .igrid .key { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 3 4; }
@@ -340,11 +346,11 @@
 
       <h3 id="illustration-portfolio">דוגמה לתיק עבודות מצוין</h3>
       <p>דוגמה לתיק עבודות מצוין שמציג מגוון שפות גרפיות: <a href="https://www.behance.net/gallery/46054763/Brand-Illustration-vol-1"><span class="ltr">Brand Illustration Vol. 1</span></a></p>
-      <div class="gallery g2 natural">
-        <a href="img/graphic-icons-a.webp" data-lb data-cap="שתי שפות שונות לגמרי: איורי נוף עם מרקם על רקע כהה, ואייקונים קוויים בטורקיז"><img src="img/graphic-icons-a.webp" alt="מימין חמישה איורי נוף במסגרת מעוינת עם מרקם גרעיני, משמאל שנים עשר אייקונים קוויים בטורקיז של אנשים, מסכים וענן" loading="lazy" width="1600" height="495"></a>
+      <div class="gallery g2 natural vl-pair">
+        <a href="img/graphic-icons-a.webp" data-lb data-cap="שתי שפות שונות לגמרי: איורי נוף עם מרקם על רקע כהה, ואייקונים קוויים בטורקיז"><img src="img/graphic-icons-a.webp" alt="משמאל, על רקע ירוק כהה, חמישה איורי נוף במסגרת מעוינת עם מרקם גרעיני. מימין, על רקע לבן, שנים עשר אייקונים קוויים בטורקיז של אנשים, מסכים וענן" loading="lazy" width="1600" height="495"></a>
         <a href="img/graphic-icons-b.webp" data-lb data-cap="איורי עיגול לאפליקציית תיירות, אייקוני פינטק, דמות ציפור לשירות שיניים ונוף לבלוג טיולים"><img src="img/graphic-icons-b.webp" alt="אוסף איורים: פסל החירות ומגדל בורג' אל ערב בעיגולים, אייקונים פיננסיים, ציפור כתומה על שן, ונוף עיירה על אגם" loading="lazy" width="1600" height="811"></a>
       </div>
-      <p data-added>שמונה פרויקטים מתוך אותו תיק עבודות, וכל אחד מהם הוא שפה שלמה. שימו לב שכל פרויקט מציג גם את הסקיצות בעיפרון, גם את הפלטה (הפס הצבעוני בתחתית), וגם את האיור עובד על נייר או על מסך. זו בדיוק הרמה שכדאי לכוון אליה.</p>
+      <p data-added>שמונה פרויקטים מתוך אותו תיק עבודות, וכל אחד מהם הוא שפה שלמה. שימו לב שרוב הפרויקטים מציגים גם את הסקיצות בעיפרון, גם את הפלטה (הפס הצבעוני בתחתית), וגם את האיור בשימוש, על נייר או על מסך. זו בדיוק הרמה שכדאי לכוון אליה.</p>
       <div class="gallery" style="grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr))">
         <a href="img/style-1.webp" data-lb data-cap="Travel Booking Service: נופים עם מרקם בתוך מעוין"><img src="img/style-1.webp" alt="פרויקט שירות הזמנת טיולים: איורי נוף צבעוניים במעוין על רקע ירוק כהה, סקיצות ויישום על כרטיס" loading="lazy" style="object-position:top"></a>
         <a href="img/style-2.webp" data-lb data-cap="Growth Marketing Platform: שועל ודמויות בקו דק"><img src="img/style-2.webp" alt="פרויקט פלטפורמת שיווק: איורי קו עדינים עם דמות שועל, מוצגים על מסך מחשב" loading="lazy" style="object-position:top"></a>
@@ -436,9 +442,9 @@
         <div><svg viewBox="0 0 40 40" role="img" aria-label="הדמות קורצת"><path d="M20 5c9 0 15 7 15 16s-6 15-15 15S5 30 5 21 11 5 20 5z" fill="#f0a43a"/><path d="M20 5c0-3 3-4.5 6-3.5" fill="none" stroke="#2f9e5b" stroke-width="2.2" stroke-linecap="round"/><path d="M12.5 19.5q2.5-2 5 0" fill="none" stroke="#2b1606" stroke-width="2" stroke-linecap="round"/><circle cx="25" cy="19" r="2.3" fill="#2b1606"/><path d="M15 25q6 4 11-1" fill="none" stroke="#2b1606" stroke-width="2" stroke-linecap="round"/><path d="M24 26.5q1.5 3 3.5 1" fill="#e2462b"/></svg><b>קורץ</b></div>
         <div><svg viewBox="0 0 40 40" role="img" aria-label="הדמות אדומה ויוצא לה עשן, כאילו אכלה משהו חריף"><path d="M20 5c9 0 15 7 15 16s-6 15-15 15S5 30 5 21 11 5 20 5z" fill="#e2462b"/><path d="M20 5c0-3 3-4.5 6-3.5" fill="none" stroke="#2f9e5b" stroke-width="2.2" stroke-linecap="round"/><path d="M11.5 15.5l6 2M28.5 15.5l-6 2" stroke="#2b1606" stroke-width="2" stroke-linecap="round"/><circle cx="15.5" cy="20" r="1.9" fill="#2b1606"/><circle cx="24.5" cy="20" r="1.9" fill="#2b1606"/><path d="M14 27h12" stroke="#2b1606" stroke-width="2.2" stroke-linecap="round"/><path d="M3 10c-2-2 1-3-1-5M37 10c2-2-1-3 1-5" fill="none" stroke="#9aa3a8" stroke-width="1.6" stroke-linecap="round"/></svg><b>חריף!</b></div>
       </div>
-      <p class="muted" style="font-size:15px">דמות טובה נבנית מכמה צורות פשוטות, ולכן קל לשנות לה הבעה בלי לאבד את הזהות: הגוף, הצבע והעלה נשארים, רק העיניים והפה משתנים.</p>
+      <p class="muted" style="font-size:15px">דמות טובה נבנית מכמה צורות פשוטות, ולכן קל לשנות לה הבעה בלי לאבד את הזהות: הגוף והעלה נשארים תמיד; העיניים והפה משתנים, ורק ברגש קיצוני גם הצבע.</p>
 
-      <h3 id="icons">איקונים <span class="ltr">(Icon set)</span></h3>
+      <h3 id="icons">אייקונים <span class="ltr">(Icon set)</span></h3>
       <p><strong>סט אייקונים באותה שפה.</strong> כל האייקונים חייבים להיראות כאילו צייר אותם אותו אדם, באותו יום, עם אותו עט: אותו עובי קו, אותן פינות, אותה רמת פירוט.</p>
 
       <figure class="anim vl-icons" data-steps="4" data-step-labels="קווי|מלא|דו־גוני|צבע שטוח">
@@ -446,19 +452,19 @@
         <div class="anim__stage">
           <div class="ic4">
             <div data-goto="1">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="st" pathLength="1" d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st" pathLength="1" d="M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5"/><path class="st" pathLength="1" d="M3 21.5h15"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="st" pathLength="1" d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st" pathLength="1" d="M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3"/><path class="st" pathLength="1" d="M3.5 20.5h14.5"/></svg>
               <b>קווי</b><small>ברירת המחדל בממשקים</small>
             </div>
             <div data-goto="2">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fl solid" d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st" pathLength="1" d="M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5"/><path class="st" pathLength="1" d="M3 21.5h15"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fl solid" d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st" pathLength="1" d="M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3"/><path class="st" pathLength="1" d="M3.5 20.5h14.5"/></svg>
               <b>מלא</b><small>מצב פעיל, נבחר</small>
             </div>
             <div data-goto="3">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fl duo" d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st" pathLength="1" d="M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5"/><path class="st" pathLength="1" d="M3 21.5h15"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fl duo" d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st" pathLength="1" d="M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3"/><path class="st" pathLength="1" d="M3.5 20.5h14.5"/></svg>
               <b>דו־גוני</b><small>לרגעים עם אופי</small>
             </div>
             <div data-goto="4">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fl flat-body" d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st flat-h" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st flat-s" pathLength="1" d="M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5"/><path class="st flat-p" pathLength="1" d="M3 21.5h15"/></svg>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fl flat-body" d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path class="st flat-h" pathLength="1" d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path class="st flat-s" pathLength="1" d="M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3"/><path class="st flat-p" pathLength="1" d="M3.5 20.5h14.5"/></svg>
               <b>צבע שטוח</b><small>איורי מותג, שיווק</small>
             </div>
           </div>
@@ -475,21 +481,21 @@
             <rect width="240" height="240" fill="url(#g10)"/>
             <rect class="live" x="20" y="20" width="200" height="200" rx="4"/>
             <circle class="key" cx="120" cy="120" r="100"/>
-            <g class="ic" transform="scale(10)" style="stroke-width:2"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5"/><path d="M3 21.5h15"/></g>
+            <g class="ic" transform="scale(10)" style="stroke-width:2"><path d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3"/><path d="M3.5 20.5h14.5"/></g>
           </svg>
           <ul class="dots">
-            <li>משטח של <span class="ltr">24×24</span> פיקסלים, עם שוליים של <span class="ltr">2px</span> מכל צד (הקו המקווקו הצהוב).</li>
+            <li>משטח של <span class="ltr">24×24</span> פיקסלים, עם שוליים של <span class="ltr">2px</span> מכל צד (הקו המקווקו הירוק).</li>
             <li>קו בעובי <span class="ltr">2px</span> (כמו בסטים <span class="ltr">Feather</span> ו־<span class="ltr">Tabler</span>), או <span class="ltr">1.5px</span> לסגנון עדין יותר. עובי אחד לכל הסט.</li>
             <li>מעגל עזר וריבוע עזר, כדי שעיגול וריבוע ייראו באותו „משקל” למרות שהם בגדלים שונים.</li>
-            <li>שלושה סגנונות לפחות: קווי לברירת מחדל, מלא למצב פעיל, ודו־גוני לרגעים עם אופי.</li>
+            <li>סגנון אחד או שניים לכל הסט, למשל קווי לברירת מחדל ומלא למצב פעיל. כל אייקון מצויר בכל הסגנונות שנבחרו.</li>
           </ul>
         </div>
         <div class="sizes" aria-label="אותו אייקון בחמישה גדלים">
-          <div><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5M3 21.5h15"/></svg><small>16</small></div>
-          <div><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5M3 21.5h15"/></svg><small>24</small></div>
-          <div><svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5M3 21.5h15"/></svg><small>32</small></div>
-          <div><svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5M3 21.5h15"/></svg><small>40</small></div>
-          <div><svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 2.5c-1 1.2 1 2 0 3.5M12 2.5c-1 1.2 1 2 0 3.5M3 21.5h15"/></svg><small>48</small></div>
+          <div><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3M3.5 20.5h14.5"/></svg><small>16</small></div>
+          <div><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3M3.5 20.5h14.5"/></svg><small>24</small></div>
+          <div><svg width="32" height="32" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3M3.5 20.5h14.5"/></svg><small>32</small></div>
+          <div><svg width="40" height="40" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3M3.5 20.5h14.5"/></svg><small>40</small></div>
+          <div><svg width="48" height="48" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h12v5.5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-1 1 1 1.8 0 3M12 3.5c-1 1 1 1.8 0 3M3.5 20.5h14.5"/></svg><small>48</small></div>
         </div>
         <p class="muted" style="font-size:15px">הגדלים קופצים בכפולות של 8 (<span class="ltr">16, 24, 32, 40, 48</span>), בדיוק כמו מערכת הריווח. ואם לא מציירים מאפס, סטים פתוחים וחינמיים כמו <a href="https://phosphoricons.com/"><span class="ltr">Phosphor</span></a>, <a href="https://tabler.io/icons"><span class="ltr">Tabler</span></a> ו־<a href="https://lucide.dev/"><span class="ltr">Lucide</span></a> הם נקודת פתיחה מצוינת להתאמה. <a class="xref" href="grid.html#spacing-system">מערכת ריווח של 8</a></p>
       </div>
@@ -499,7 +505,7 @@
         <p>כך זה נראה כשמפרקים מותג אחד לשלושת הסעיפים.</p>
         <p class="muted" style="font-size:15px" data-added>הדוגמה נכתבה במקור כמשוב לסטודנט שעבד על מותג כזה, ולכן היא כל כך ספציפית.</p>
         <div class="ex-cols">
-          <div><h4>שפת הגרפיקה, במקרה של המותג הזה</h4><ul class="dots"><li><span class="ltr">ink strokes</span></li><li>גרפיטי</li><li>קווי דיו</li></ul></div>
+          <div><h4>שפת הגרפיקה, במקרה של המותג הזה</h4><ul class="dots"><li>גרפיטי</li><li>קווי דיו</li></ul></div>
           <div><h4>מערכת הדמות</h4><p style="margin:0;font-size:16px">יש כבר התחלה טובה. אבל כדאי להציג: סט הבעות, שימוש בדמות בפוסטים, שימוש באריזה ושימוש באייקונים.</p></div>
           <div><h4>סט אייקונים באותה שפה</h4><ul class="dots"><li>דבורה</li><li>חריפות</li><li>דבש</li><li>טעם</li><li>אש</li></ul></div>
         </div>
@@ -543,7 +549,7 @@
       <h3 id="principles-posters">שלוש דרכים לצייר את אותם עקרונות</h3>
       <p>שלושה פוסטרים שאספתי, שכל אחד מהם מסביר את אותם עקרונות בשפה גרפית אחרת. גם זה שיעור: אותו תוכן, שלוש זהויות.</p>
       <div class="gallery natural" style="grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));align-items:start">
-        <a href="img/principles-classic.webp" data-lb data-cap="The Principles of Design: גרסה קלאסית בשחור על נייר"><img src="img/principles-classic.webp" alt="פוסטר בסגנון קלאסי: כותרת בסריף ושנים עשר ריבועים שחורים, כל אחד מדגים עיקרון עיצוב" loading="lazy" width="675" height="885"></a>
+        <a href="img/principles-classic.webp" data-lb data-cap="The Principles of Design: גרסה קלאסית בשחור על נייר"><img src="img/principles-classic.webp" alt="פוסטר בסגנון קלאסי: כותרת בסריף ועשרה ריבועים שחורים, כל אחד מדגים עיקרון עיצוב" loading="lazy" width="675" height="885"></a>
         <a href="img/principles-icons.webp" data-lb data-cap="עקרונות העיצוב כאייקונים בכחול"><img src="img/principles-icons.webp" alt="אחד עשר אייקונים בתכלת עם שם באנגלית: Emphasis, Balance, Contrast, Repetition, Proportion, Movement, White Space, Unity, Pattern, Rhythm, Variety" loading="lazy" width="900" height="600"></a>
         <a href="img/principles-blue.webp" data-lb data-cap="The Principles of Design: אינפוגרפיקה ארוכה על רקע כחול כהה (Toptal, 2019)"><img src="img/principles-blue.webp" alt="אינפוגרפיקה אנכית על רקע כחול כהה: כל עיקרון עיצוב באייקון מרובע עם הסבר קצר, מחוברים בקו" loading="lazy" style="aspect-ratio:3/4;object-fit:cover;object-position:top"></a>
       </div>
@@ -603,7 +609,7 @@
               <tr><td>קומפוזיציה</td><td>מרחק המצלמה, זווית, כמה אוויר יש סביב הנושא, והיכן משאירים מקום לטקסט.</td></tr>
               <tr><td>נושאים</td><td>מה מצלמים ומה לא, איך נראים האנשים (אותנטי, מבוים או דוקומנטרי), וגיוון.</td></tr>
               <tr><td>עיבוד</td><td>כמה רטוש, חדות, גרעין, ואיך נראה העור. מה אסור לגמרי.</td></tr>
-              <tr><td>טכני</td><td>לפחות <span class="ltr">300 DPI</span> בגודל ההדפסה לדפוס, ו־<span class="ltr">72 DPI</span> לרשת.</td></tr>
+              <tr><td>טכני</td><td>לפחות <span class="ltr">300 DPI</span> בגודל ההדפסה לדפוס, ולרשת קובעים לפי פיקסלים (למשל פי 2 מגודל התצוגה).</td></tr>
             </tbody>
           </table>
         </div>
@@ -617,7 +623,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* page widgets: illustration style chooser, photo relight, click-through infographics */
 document.addEventListener("DOMContentLoaded", function () {

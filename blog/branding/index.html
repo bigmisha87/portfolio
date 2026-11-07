@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=7">
+<link rel="stylesheet" href="assets/guide.css?v=8">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 .hub-hero h1 { font-size: clamp(76px, 9.5vw, 150px) !important; }
@@ -31,6 +31,7 @@
 .sys .core-t { fill: var(--on-accent); font: 700 46px var(--display); }
 .sys .node circle { fill: var(--paper); stroke: var(--line); stroke-width: 1.4; transition: fill .4s, stroke .4s; }
 .sys .node text { fill: var(--ink); font: 500 15px var(--text); text-anchor: middle; dominant-baseline: middle; transition: fill .4s; }
+.sys .node text.two { font-size: 14px; }
 .sys .node .ico { fill: none; stroke: var(--accent-ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: stroke .4s; }
 .sys .node, .sys .core-g { transform-box: fill-box; transform-origin: center; transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .4s; outline: none; }
 .sys .node:hover circle, .sys .node:focus-visible circle { stroke: var(--accent); }
@@ -57,7 +58,6 @@
 
 .hub-chapters a .ic { width: 34px; height: 34px; color: var(--accent-ink); margin-bottom: 10px; }
 .hub-chapters a .ic svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-.hub-chapters a.new::after { content: "חדש"; position: absolute; top: 16px; left: 16px; font: 600 11px var(--text); background: var(--accent); color: var(--on-accent); padding: 2px 9px; border-radius: 999px; }
 
 .howto { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); margin: 18px 0; }
 .howto div { padding: 18px; border-radius: var(--r); background: var(--soft); border: 1px solid var(--line); font-size: 16px; line-height: 1.6; }
@@ -97,41 +97,41 @@
             <div class="g-results" aria-live="polite"></div>
           </div>
         </div>
-        <div class="stats"><span><b>15</b>פרקים</span><span><b>28</b>איורים</span><span><b>67</b>הדגמות וכלים לנסות</span></div>
+        <div class="stats"><span><b>15</b>פרקים</span><span><b>30</b>איורים</span><span><b>77</b>הדגמות וכלים לנסות</span></div>
       </div>
 
-      <figure class="anim" data-steps="7" data-no-bar data-step-labels="המערכת כולה|צבע|טיפוגרפיה|שפה גרפית|צילום|טון דיבור|גריד" aria-label="מותג כמערכת: לוגו במרכז ושישה רכיבים סביבו. לחצו על רכיב כדי לקרוא מה הוא עושה">
+      <figure class="anim" data-steps="7" data-no-bar data-step-labels="המערכת כולה|לוגו|צבעים|טיפוגרפיה|אלמנטים גרפיים|שפה צילומית או איורית|טון דיבור" aria-label="מותג כמערכת: המותג במרכז ושישה מרכיבים סביבו. לחצו על מרכיב כדי לקרוא מה הוא עושה">
         <div class="anim__stage sys">
-          <svg viewBox="-260 -260 520 520" role="group" aria-label="הלוגו ושישה רכיבים">
+          <svg viewBox="-260 -260 520 520" role="group" aria-label="המותג ושישה מרכיבים">
             <circle class="ring" r="190"/>
             <g class="spokes">
-              <line class="spoke" style="--i:0" x1="0" y1="-62" x2="0" y2="-150"/>
-              <line class="spoke" style="--i:1" x1="54" y1="-31" x2="130" y2="-75"/>
-              <line class="spoke" style="--i:2" x1="54" y1="31" x2="130" y2="75"/>
-              <line class="spoke" style="--i:3" x1="0" y1="62" x2="0" y2="150"/>
-              <line class="spoke" style="--i:4" x1="-54" y1="31" x2="-130" y2="75"/>
-              <line class="spoke" style="--i:5" x1="-54" y1="-31" x2="-130" y2="-75"/>
+              <line class="spoke" style="--i:0" x1="0" y1="-62" x2="0" y2="-136"/>
+              <line class="spoke" style="--i:1" x1="54" y1="-31" x2="118" y2="-68"/>
+              <line class="spoke" style="--i:2" x1="54" y1="31" x2="118" y2="68"/>
+              <line class="spoke" style="--i:3" x1="0" y1="62" x2="0" y2="136"/>
+              <line class="spoke" style="--i:4" x1="-54" y1="31" x2="-118" y2="68"/>
+              <line class="spoke" style="--i:5" x1="-54" y1="-31" x2="-118" y2="-68"/>
             </g>
-            <g class="core-g" data-goto="1" tabindex="0" role="button" aria-label="המערכת כולה"><circle class="core" r="62"/><text class="core-t" text-anchor="middle" dominant-baseline="central" y="4">לוגו</text></g>
-            <g transform="translate(0,-190)"><g class="node" data-goto="2" tabindex="0" role="button" aria-label="צבע"><circle r="46"/><path class="ico" d="M-12 -8h24M-12 0h16M-12 8h20" transform="translate(0,-10)"/><text y="16">צבע</text></g></g>
-            <g transform="translate(165,-95)"><g class="node" data-goto="3" tabindex="0" role="button" aria-label="טיפוגרפיה"><circle r="46"/><path class="ico" d="M-9 6 0-12 9 6M-5 -2h10" transform="translate(0,-10)"/><text y="16">טיפוגרפיה</text></g></g>
-            <g transform="translate(165,95)"><g class="node" data-goto="4" tabindex="0" role="button" aria-label="שפה גרפית"><circle r="46"/><path class="ico" d="M-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0" transform="translate(0,-12) scale(.8)"/><text y="16">שפה גרפית</text></g></g>
-            <g transform="translate(0,190)"><g class="node" data-goto="5" tabindex="0" role="button" aria-label="צילום"><circle r="46"/><path class="ico" d="M-11 -6h22v14h-22zM-4 -6l2-4h4l2 4" transform="translate(0,-10)"/><text y="16">צילום</text></g></g>
-            <g transform="translate(-165,95)"><g class="node" data-goto="6" tabindex="0" role="button" aria-label="טון דיבור"><circle r="46"/><path class="ico" d="M-11 -8h22v12h-12l-6 5v-5h-4z" transform="translate(0,-10)"/><text y="16">טון דיבור</text></g></g>
-            <g transform="translate(-165,-95)"><g class="node" data-goto="7" tabindex="0" role="button" aria-label="גריד"><circle r="46"/><path class="ico" d="M-10 -10h20v20h-20zM-10 0h20M0 -10v20" transform="translate(0,-10) scale(.8)"/><text y="16">גריד</text></g></g>
+            <g class="core-g" data-goto="1" tabindex="0" role="button" aria-label="המערכת כולה"><circle class="core" r="62"/><text class="core-t" text-anchor="middle" dominant-baseline="central" y="4">המותג</text></g>
+            <g transform="translate(0,-190)"><g class="node" data-goto="2" tabindex="0" role="button" aria-label="לוגו"><circle r="52"/><path class="ico" d="M0 -12 11 -7v8c0 6-5 10-11 11C-6 11-11 7-11 1V-7zM-4 0l3 3 6-6" transform="translate(0,-13) scale(.9)"/><text y="18">לוגו</text></g></g>
+            <g transform="translate(165,-95)"><g class="node" data-goto="3" tabindex="0" role="button" aria-label="צבעים"><circle r="52"/><path class="ico" d="M-12 -8h24M-12 0h16M-12 8h20" transform="translate(0,-13)"/><text y="18">צבעים</text></g></g>
+            <g transform="translate(165,95)"><g class="node" data-goto="4" tabindex="0" role="button" aria-label="טיפוגרפיה"><circle r="52"/><path class="ico" d="M-9 6 0-12 9 6M-5 -2h10" transform="translate(0,-13)"/><text y="18">טיפוגרפיה</text></g></g>
+            <g transform="translate(0,190)"><g class="node" data-goto="5" tabindex="0" role="button" aria-label="אלמנטים גרפיים"><circle r="52"/><path class="ico" d="M-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0" transform="translate(0,-24) scale(.75)"/><text class="two" y="2"><tspan x="0">אלמנטים</tspan><tspan x="0" dy="19">גרפיים</tspan></text></g></g>
+            <g transform="translate(-165,95)"><g class="node" data-goto="6" tabindex="0" role="button" aria-label="שפה צילומית או איורית"><circle r="52"/><path class="ico" d="M-11 -6h22v14h-22zM-4 -6l2-4h4l2 4" transform="translate(0,-24) scale(.85)"/><text class="two" y="2"><tspan x="0">שפה צילומית</tspan><tspan x="0" dy="19">או איורית</tspan></text></g></g>
+            <g transform="translate(-165,-95)"><g class="node" data-goto="7" tabindex="0" role="button" aria-label="טון דיבור"><circle r="52"/><path class="ico" d="M-11 -8h22v12h-12l-6 5v-5h-4z" transform="translate(0,-13)"/><text y="18">טון דיבור</text></g></g>
           </svg>
         </div>
         <figcaption>
           <span class="sys-say" aria-live="polite">
-            <span data-s="1">הלוגו הוא רק שכבה אחת. מותג מתנהג כמערכת של רכיבים, לא כאלמנט בודד.</span>
-            <span data-s="2"><b>צבע</b>: פלטה קבועה, ראשי, משני והדגשה, שמזהים עוד לפני שקוראים מילה.</span>
-            <span data-s="3"><b>טיפוגרפיה</b>: שניים־שלושה פונטים עם היררכיה ברורה, מהכותרת ועד הכיתוב הקטן.</span>
-            <span data-s="4"><b>שפה גרפית</b>: אייקונים, פאטרנים ואיורים שנותנים למותג אופי משלו.</span>
-            <span data-s="5"><b>צילום</b>: אותו אור, אותו מרחק ואותה אווירה בכל תמונה.</span>
-            <span data-s="6"><b>טון דיבור</b>: איך המותג נשמע. אותו קול בשלט, בפוסט ובמענה ללקוח.</span>
-            <span data-s="7"><b>גריד</b>: השלד שמסדר כל עמוד, כדי שהכול ירגיש שייך לאותה משפחה.</span>
+            <span data-s="1">הלוגו הוא רק מרכיב אחד מתוך שישה. מותג מתנהג כמערכת של רכיבים, לא כאלמנט בודד.</span>
+            <span data-s="2"><b>לוגו</b>: הסמל המזוהה שמרכז את הזהות הוויזואלית, אבל לא עובד לבד.</span>
+            <span data-s="3"><b>צבעים</b>: פלטה קבועה של צבעי בסיס, משנה והדגשה, שמזהים עוד לפני שקוראים מילה.</span>
+            <span data-s="4"><b>טיפוגרפיה</b>: מערכת פונטים עם היררכיה ברורה, מהכותרת הראשית ועד הכיתוב הקטן.</span>
+            <span data-s="5"><b>אלמנטים גרפיים</b>: אייקונים, פאטרנים, טקסטורות ואיורים שנותנים למותג אופי משלו.</span>
+            <span data-s="6"><b>שפה צילומית או איורית</b>: קו אחד בכל הצילומים והאיורים, אותו אור, אותה אווירה ואותו סגנון.</span>
+            <span data-s="7"><b>טון דיבור</b>: איך המותג נשמע. אותו קול בשלט, בפוסט ובמענה ללקוח.</span>
           </span>
-          <span class="sys-hint">לחצו על רכיב כדי לקרוא מה הוא עושה, ועל הלוגו כדי לחזור לתמונה המלאה.</span>
+          <span class="sys-hint">לחצו על מרכיב כדי לקרוא מה הוא עושה, ועל המותג שבמרכז כדי לחזור לתמונה המלאה.</span>
         </figcaption>
       </figure>
     </div>
@@ -173,7 +173,7 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=9" defer></script>
+<script src="assets/guide.js?v=11" defer></script>
 <script>
 /* the hero mark's components are SVG groups, not <button>s: let Enter / Space press them too */
 document.addEventListener("keydown", function (e) {
