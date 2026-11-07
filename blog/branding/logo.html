@@ -1,0 +1,1533 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>לוגו · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="מה זה לוגו ולמה צריך אותו, סמל מול לוגו, שלושת התפקידים, חמישה עקרונות ללוגו חזק, חמשת סוגי הלוגו, גרסאות חובה, מרווח מגן, עשה ואל תעשה, מערכת לוגו רספונסיבית, מבחני חובה, פסיכולוגיה של צורות, תהליך העבודה, ועיצוב לוגו בעידן ה-AI.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="לוגו · מדריך המיתוג">
+<meta property="og:description" content="גרסאות חובה, מרווח מגן, מבחני לחץ, פסיכולוגיה של צורות, ולוגו בעידן ה-AI.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/logo-dompet.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* The demo brand "luma" is invented for this page. Its colours are literal (demo objects), UI colours are tokens. */
+@property --lm-mark { syntax: "<color>"; inherits: true; initial-value: #e2552b; }
+@property --lm-word { syntax: "<color>"; inherits: true; initial-value: #1f2a30; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.lg { display: block; width: 100%; height: auto; direction: ltr; }
+.gallery.natural { align-items: start; }
+.on-token { --lm-word: var(--ink); }
+
+/* logo panels */
+.lp { background: #f4eadb; color: #1f2a30; --lm-mark: #e2552b; --lm-word: #1f2a30; border-radius: var(--r-sm); display: grid; place-items: center; }
+.lp.mono { background: #ffffff; color: #111; --lm-mark: #111111; --lm-word: #111111; }
+.lp.neg { background: #1f2a30; color: #f4eadb; --lm-mark: #f4eadb; --lm-word: #f4eadb; }
+.lp.white-line { box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+
+/* ---- versions (anim a) ---- */
+.vers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.vp-wrap { position: relative; }
+.vp { aspect-ratio: 4 / 3; padding: 14%; position: relative; z-index: 1; }
+.vp-wrap:nth-child(1) { z-index: 3; }
+.vp-wrap:nth-child(2) { z-index: 2; }
+.vl { margin-top: 10px; font-size: 15px; line-height: 1.4; text-align: center; }
+.vl b { display: block; }
+.vl small { color: var(--muted); font-size: 13px; }
+/* stepper: 1 colour (all stacked) → 2 mono deals out → 3 negative deals out */
+.vf .vp-wrap { transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+.vf .vp { transition: background .6s ease, --lm-mark .6s ease, --lm-word .6s ease; }
+.vf .vl { opacity: 0; transition: opacity .5s ease .25s; }
+.vf .vp-wrap:nth-child(1) { transform: translateX(calc(-100% - 14px)); }
+.vf .vp-wrap:nth-child(3) { transform: translateX(calc(100% + 14px)); }
+.vf .vp.mono, .vf .vp.neg { background: #f4eadb; --lm-mark: #e2552b; --lm-word: #1f2a30; }
+.vf .vp-wrap:nth-child(1) .vl { opacity: 1; }
+.vf:is([data-step="2"], [data-step="3"]) .vp-wrap:nth-child(1) { transform: none; }
+.vf:is([data-step="2"], [data-step="3"]) .vp.mono { background: #ffffff; --lm-mark: #111111; --lm-word: #111111; }
+.vf:is([data-step="2"], [data-step="3"]) .vp-wrap:nth-child(2) .vl { opacity: 1; }
+.vf[data-step="3"] .vp-wrap:nth-child(3) { transform: none; }
+.vf[data-step="3"] .vp.neg { background: #1f2a30; --lm-mark: #f4eadb; --lm-word: #f4eadb; }
+.vf[data-step="3"] .vp-wrap:nth-child(3) .vl { opacity: 1; }
+@media (max-width: 520px) { .vers { gap: 8px; } .vp { padding: 10%; } .vl { font-size: 13px; } }
+
+/* strip widget */
+.stp { position: relative; border-radius: var(--r-sm); min-height: 210px; display: grid; place-items: center; overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 30%, #f2b84b 0 18%, transparent 19%),
+    radial-gradient(circle at 75% 70%, #2d6a73 0 22%, transparent 23%),
+    radial-gradient(circle at 60% 15%, #e2552b 0 12%, transparent 13%),
+    repeating-linear-gradient(35deg, #c9573a 0 14px, #e8c9a0 14px 28px, #3c4a52 28px 34px); }
+.stp-logo { width: min(300px, 70%); padding: 18px 22px; border-radius: 10px; transition: background .35s, box-shadow .35s; --lm-mark: #e2552b; --lm-word: #1f2a30; }
+.stp.on .stp-logo { background: #f4eadb; box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+
+/* ---- clear space (anim b) ---- */
+.cs-svg { display: block; width: 100%; height: auto; direction: ltr; }
+.cs-svg .nb { fill: var(--muted); opacity: .55; }
+.cs-hl { fill: var(--accent); opacity: .25; }
+.cs-sq rect { fill: var(--accent); fill-opacity: .16; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 3; }
+.cs-sq text { fill: var(--accent-ink); font: 600 14px var(--mono); }
+.cs-zone { fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 8 6; }
+/* stepper: 1 measure the unit → 2 copy it to every side → 3 the protected zone pushes neighbours out */
+.csf .cs-sq { opacity: 0; transform: translate(var(--dx), var(--dy)); transition: transform .8s cubic-bezier(.3,.7,.2,1), opacity .25s; }
+.csf .cs-sq.q2 { transition-delay: .08s; }
+.csf .cs-sq.q3 { transition-delay: .16s; }
+.csf .cs-sq.q4 { transition-delay: .24s; }
+.csf .cs-zone { opacity: 0; transition: opacity .5s; }
+.csf .cs-nb { transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+.csf:is([data-step="2"], [data-step="3"]) .cs-sq { opacity: 1; transform: none; }
+.csf[data-step="3"] .cs-zone { opacity: 1; }
+.csf[data-step="3"] .cs-nb { transform: translate(var(--px), var(--py)); }
+
+/* ---- do / don't stretch (anim d) ---- */
+.ds { position: relative; display: grid; place-items: center; min-height: 230px; background: var(--soft); border-radius: var(--r-sm); overflow: hidden; }
+.ds-logo { width: min(280px, 64%); transform-origin: center; }
+.ds-x, .ds-ok { position: absolute; inset: 0; display: grid; place-items: center; pointer-events: none; }
+.ds-x svg { width: 120px; height: 120px; }
+.ds-x line { stroke: var(--warn); stroke-width: 10; stroke-linecap: round; }
+.ds-tag { position: absolute; bottom: 12px; inset-inline: 0; text-align: center; font-size: 15px; font-weight: 600; }
+.ds-tag.bad { color: var(--warn); }
+.ds-tag.good { color: var(--ok); }
+/* stepper: 1 free stretch (wrong) → 2 proportional scale (right) */
+.dsf .ds-logo { transition: transform .7s cubic-bezier(.3,.7,.2,1); }
+.dsf .ds-x, .dsf .ds-tag { opacity: 0; transition: opacity .4s; }
+.dsf[data-step="1"] .ds-logo { transform: scale(1.4, .7); }
+.dsf[data-step="1"] .ds-x, .dsf[data-step="1"] .ds-tag.bad { opacity: 1; }
+.dsf[data-step="2"] .ds-logo { transform: scale(1.15); }
+.dsf[data-step="2"] .ds-tag.good { opacity: 1; }
+
+/* stretch slider */
+.sl-stage { display: grid; place-items: center; min-height: 170px; background: var(--soft); border-radius: var(--r-sm); overflow: hidden; margin: 12px 0; }
+.sl-logo { width: min(260px, 60%); }
+.sl-out { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.sl-n { font: 500 26px var(--mono); direction: ltr; }
+.badge { font: 600 13px var(--text); padding: 4px 10px; border-radius: 999px; }
+.badge.pass { background: var(--ok-soft); color: var(--ok); }
+.badge.fail { background: var(--warn-soft); color: var(--warn); }
+
+/* ---- logo types ---- */
+.ltypes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); margin: 20px 0; }
+.lt { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 14px 16px 16px; --lm-mark: var(--accent); --lm-word: var(--ink); }
+.lt svg { display: block; width: 100%; height: 64px; direction: ltr; color: var(--ink); margin-bottom: 8px; }
+.lt .acc { fill: var(--accent); }
+.lt .str { fill: none; stroke: var(--ink); stroke-linecap: round; stroke-linejoin: round; }
+.lt h4 { margin: 0; font-size: 17px; }
+.lt .k { font: 500 12px var(--mono); color: var(--accent-ink); direction: ltr; display: block; text-align: right; }
+.lt p { margin: 6px 0 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+
+/* optical widget */
+.op-svg { display: block; width: 100%; height: auto; direction: ltr; }
+.op-svg .guide { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 5 4; }
+.op-svg .sh { fill: var(--ink); transform-box: fill-box; transform-origin: center; transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.op-on .op-svg .circ { transform: scale(1.06); }
+.op-on .op-svg .tri { transform: scale(1.1); }
+.op-word { font: 600 clamp(48px, 9vw, 84px)/1.1 var(--text); direction: ltr; text-align: center; letter-spacing: .02em; font-kerning: none; font-feature-settings: "kern" 0; margin: 10px 0 0; transition: letter-spacing .4s; }
+.op-on .op-word { font-kerning: normal; font-feature-settings: "kern" 1; letter-spacing: 0; }
+.op-why { font-size: 16px; color: var(--muted); margin: 12px 0 0; min-height: 3.2em; }
+
+/* ---- system cards ---- */
+.sys { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(210px, 100%), 1fr)); margin: 22px 0; }
+.sc { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); overflow: hidden; }
+.sc .lp { aspect-ratio: 16 / 10; padding: 12% 16%; border-radius: 0; }
+.sc .lp svg { max-height: 100%; }
+.sc div.t { padding: 12px 14px 14px; }
+.sc h4 { margin: 0; font-size: 16px; }
+.sc h4 .ltr { font: 500 12px var(--mono); color: var(--accent-ink); margin-inline-start: 6px; }
+.sc p { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.tabmock { width: 92%; background: #dcd6cc; border-radius: 8px 8px 0 0; padding: 8px 8px 0; align-self: end; }
+.tabmock .tb { display: flex; align-items: center; gap: 7px; background: #fbf8f3; border-radius: 7px 7px 0 0; padding: 7px 10px; width: 78%; font: 500 12px var(--text); color: #2b2b2b; direction: ltr; white-space: nowrap; overflow: hidden; }
+.tabmock svg { width: 16px; height: 16px; flex: none; }
+.sc .lp.tabbed { place-items: end center; padding: 0 0 0; }
+
+/* ---- responsive sequence (anim e) ---- */
+.rs { display: grid; grid-template-columns: 1.6fr 1.3fr 1fr .8fr .8fr; gap: 10px; align-items: end; }
+.rs-c { text-align: center; }
+.rs-c .lp { padding: 10px; aspect-ratio: auto; height: 120px; }
+.rs-c .lp svg { max-height: 96px; width: 100%; }
+.rs-c b { display: block; font-size: 14px; margin-top: 8px; }
+.rs-c small { display: block; font-size: 12px; color: var(--muted); line-height: 1.4; }
+.rs-app { width: 64px; height: 64px; border-radius: 16px; background: #e2552b; display: grid; place-items: center; --lm-mark: #f4eadb; }
+.rs-app svg { width: 40px; height: 40px; }
+/* stepper: one more (smaller) version per step; the current one is outlined */
+.rsf .rs-c { opacity: .16; transform: translateY(10px); transition: opacity .5s, transform .5s cubic-bezier(.2,.8,.2,1); }
+.rsf .rs-c .lp { transition: box-shadow .3s; }
+.rsf[data-step="1"] .rs-c:nth-child(-n+1), .rsf[data-step="2"] .rs-c:nth-child(-n+2), .rsf[data-step="3"] .rs-c:nth-child(-n+3),
+.rsf[data-step="4"] .rs-c:nth-child(-n+4), .rsf[data-step="5"] .rs-c { opacity: 1; transform: none; }
+.rsf[data-step="1"] .rs-c:nth-child(1) .lp, .rsf[data-step="2"] .rs-c:nth-child(2) .lp, .rsf[data-step="3"] .rs-c:nth-child(3) .lp,
+.rsf[data-step="4"] .rs-c:nth-child(4) .lp, .rsf[data-step="5"] .rs-c:nth-child(5) .lp { box-shadow: 0 0 0 2px var(--accent); }
+@media (max-width: 700px) { .rs { grid-template-columns: 1fr 1fr; } .rs-c:first-child { grid-column: 1 / -1; } }
+
+/* responsive slider */
+.rw-stage { height: 170px; display: grid; place-items: center; background: var(--soft); border-radius: var(--r-sm); margin: 12px 0; overflow: hidden; }
+.rw-box { height: 130px; border: 1.5px dashed var(--accent); border-radius: 8px; display: grid; place-items: center; padding: 8px; transition: width .12s; max-width: 100%; }
+.rw-box svg { width: 100%; height: 100%; max-height: 110px; }
+.rw-box svg.fav { width: 16px; height: 16px; }
+.rw-out { font-size: 15px; color: var(--muted); }
+.rw-out b { color: var(--ink); }
+
+/* ---- stress tests (anim c) ---- */
+.st { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.stt { text-align: center; }
+.stt-stage { position: relative; aspect-ratio: 1; border-radius: var(--r-sm); background: #f4eadb; overflow: hidden; display: grid; place-items: center; --lm-mark: #e2552b; --lm-word: #1f2a30; }
+.stt-stage .m { width: 56%; max-width: 92px; }
+.stt-stage .m16 { width: 80px; height: 80px; }
+.stt b { display: block; font-size: 14px; margin-top: 8px; }
+.stt small { display: block; font-size: 12px; color: var(--muted); line-height: 1.4; }
+.stt-ok { position: absolute; top: 6px; inset-inline-end: 6px; width: 24px; height: 24px; border-radius: 50%; background: var(--ok); color: #fff; font: 700 14px/24px var(--text); text-align: center; }
+.stt-tag { display: inline-block; margin-top: 4px; font: 600 11px var(--text); padding: 1px 8px; border-radius: 999px; background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
+.stt-tag.must { background: var(--accent-soft); color: var(--accent-ink); border-color: transparent; }
+/* phone drawn in CSS (a physical object: own colours) with a feed that scrolls fast */
+.t2 { background: #e8e1d6; }
+.phone { position: absolute; top: 7%; bottom: 7%; left: 50%; width: 52%; transform: translateX(-50%); border-radius: 12px; border: 4px solid #1c1c1e; background: #f2efe9; overflow: hidden; }
+.phone::before { content: ""; position: absolute; top: 3px; left: 50%; width: 32%; height: 5px; transform: translateX(-50%); border-radius: 3px; background: #1c1c1e; z-index: 2; }
+.feed { position: absolute; inset: 0 7% auto; height: 300%; display: flex; flex-direction: column; }
+.feed .post { height: 16.6667%; padding: 7% 0; }
+.feed .post > div { height: 100%; background: #ffffff; border-radius: 5px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 8%; padding: 8%; }
+.feed .post i { display: block; width: 100%; height: 9%; border-radius: 3px; background: #d9cfc1; }
+.feed .post i + i { width: 70%; }
+.feed .post svg { width: 92%; height: auto; flex: none; }
+/* stepper: each step applies one more test; tests already done keep their tick */
+.stf .stt { transition: opacity .4s; }
+.stf .stt-stage { transition: background .6s, --lm-mark .6s, --lm-word .6s, box-shadow .3s; }
+.stf .stt-ok { opacity: 0; transform: scale(.5); transition: opacity .3s .45s, transform .35s cubic-bezier(.3,1.6,.5,1) .45s; }
+.stf .stt-stage .m { transition: filter .6s; }
+.stf .m16 { transition: transform .7s cubic-bezier(.3,.7,.2,1); }
+.stf .feed { transition: transform 1.1s cubic-bezier(.12,.75,.2,1); }
+.stf .t1 { background: #ffffff; --lm-mark: #111111; --lm-word: #111111; }
+.stf[data-step="1"] .stt:nth-child(n+2), .stf[data-step="2"] .stt:nth-child(n+3), .stf[data-step="3"] .stt:nth-child(n+4), .stf[data-step="4"] .stt:nth-child(n+5) { opacity: .4; }
+.stf[data-step="1"] .stt:nth-child(-n+1) .stt-ok, .stf[data-step="2"] .stt:nth-child(-n+2) .stt-ok, .stf[data-step="3"] .stt:nth-child(-n+3) .stt-ok,
+.stf[data-step="4"] .stt:nth-child(-n+4) .stt-ok, .stf[data-step="5"] .stt-ok { opacity: 1; transform: none; }
+.stf:is([data-step="2"], [data-step="3"], [data-step="4"], [data-step="5"]) .feed { transform: translateY(-58.3333%); }
+.stf:is([data-step="3"], [data-step="4"], [data-step="5"]) .t3 .m { filter: blur(5px); }
+.stf:is([data-step="4"], [data-step="5"]) .t4 .m16 { transform: scale(.2); }
+.stf[data-step="5"] .t5 { background: #1f2a30; --lm-mark: #f4eadb; --lm-word: #f4eadb; }
+.stf[data-step="1"] .stt:nth-child(1) .stt-stage, .stf[data-step="2"] .stt:nth-child(2) .stt-stage, .stf[data-step="3"] .stt:nth-child(3) .stt-stage,
+.stf[data-step="4"] .stt:nth-child(4) .stt-stage, .stf[data-step="5"] .stt:nth-child(5) .stt-stage { box-shadow: 0 0 0 3px var(--accent); }
+@media (max-width: 700px) { .st { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 420px) { .st { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---- shapes (stepper: one shape per step) ---- */
+.shp { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.shp > div { border: 1px solid var(--line); border-radius: var(--r); background: var(--raise); padding: 16px 14px; text-align: center; }
+.shp svg { width: 84px; height: 84px; display: block; margin: 0 auto 10px; overflow: visible; }
+.shp .s { fill: var(--accent); fill-opacity: .18; stroke: var(--accent); stroke-width: 4; stroke-linejoin: round; stroke-dasharray: 1; }
+.shp h4 { margin: 0; font-size: 17px; }
+.shp p { margin: 4px 0 0; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.shf .shp > div { opacity: .4; transition: opacity .4s, border-color .3s, box-shadow .3s; }
+.shf .shp .s { stroke-dashoffset: 1; fill-opacity: 0; transition: stroke-dashoffset 1s cubic-bezier(.4,.1,.2,1), fill-opacity .4s .7s; }
+.shf[data-step="1"] .shp > div:nth-child(-n+1), .shf[data-step="2"] .shp > div:nth-child(-n+2), .shf[data-step="3"] .shp > div { opacity: 1; }
+.shf[data-step="1"] .shp > div:nth-child(-n+1) .s, .shf[data-step="2"] .shp > div:nth-child(-n+2) .s, .shf[data-step="3"] .shp .s { stroke-dashoffset: 0; fill-opacity: .18; }
+.shf[data-step="1"] .shp > div:nth-child(1), .shf[data-step="2"] .shp > div:nth-child(2), .shf[data-step="3"] .shp > div:nth-child(3) { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+@media (max-width: 640px) { .shp { grid-template-columns: 1fr; } .shp > div { display: grid; grid-template-columns: 64px 1fr; gap: 0 12px; text-align: start; align-items: center; } .shp svg { width: 56px; height: 56px; margin: 0; grid-row: span 2; } }
+
+
+/* blind spots, flow */
+.bs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.bs > div { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 16px 18px; }
+.bs h4 { margin: 0 0 4px; }
+.bs p { margin: 0; font-size: 16px; color: var(--muted); line-height: 1.6; }
+@media (max-width: 560px) { .bs { grid-template-columns: 1fr; } }
+
+/* redesign cards */
+.rd { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.rd > div { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 18px; }
+.rd .yr { font: 700 44px/1 var(--display); color: var(--accent-ink); }
+.rd h4 { margin: 6px 0; }
+.rd p { margin: 0; font-size: 16px; line-height: 1.6; color: var(--muted); }
+.rd .stat { display: block; margin-top: 10px; font: 600 15px var(--text); color: var(--warn); }
+@media (max-width: 560px) { .rd { grid-template-columns: 1fr; } }
+
+/* =========== rebuilt slides (graphics in code, text as page text) =========== */
+/* step texts: one block per step, stacked in one grid cell so the height never jumps */
+.say { display: grid; margin-top: 16px; }
+.say > * { grid-area: 1 / 1; margin: 0; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s linear .45s; font-size: 16px; line-height: 1.7; }
+.anim[data-step="1"] .say > [data-s~="1"], .anim[data-step="2"] .say > [data-s~="2"], .anim[data-step="3"] .say > [data-s~="3"],
+.anim[data-step="4"] .say > [data-s~="4"], .anim[data-step="5"] .say > [data-s~="5"] { opacity: 1; visibility: visible; transition: opacity .45s ease .1s, visibility 0s; }
+.say .k { display: block; font: 600 13px var(--text); color: var(--accent-ink); margin-bottom: 2px; }
+.say p { margin: 0 0 6px; }
+.say p:last-child { margin-bottom: 0; }
+.say.inl { display: inline-grid; margin: 0; }
+.say.inl > * { font-size: 14px; line-height: 1.4; color: var(--muted); }
+
+/* 05.01 wall of look-alike marks */
+.wl-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; margin-bottom: 12px; }
+.wl-prompt { font: 500 13px var(--mono); color: var(--muted); background: var(--soft); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+.wl-count { display: inline-flex; align-items: baseline; gap: 8px; }
+.wl-n { font: 700 44px/1 var(--display); color: var(--accent-ink); min-width: 2ch; text-align: center; }
+.wl { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; grid-auto-flow: dense; }
+.wl-t { display: grid; place-items: center; aspect-ratio: 1; border-radius: 8px; background: var(--soft); transition: opacity .45s ease calc(var(--i) * 12ms), transform .45s ease calc(var(--i) * 12ms), filter .5s; }
+.wl-t svg { width: 70%; height: 70%; }
+.wl-sk { grid-column: 4 / span 2; grid-row: 2 / span 2; position: relative; display: grid; place-items: center; border-radius: 8px; background: var(--soft); transition: opacity .5s, box-shadow .4s, background .4s; }
+.wl-sk svg { width: 84%; height: 84%; overflow: visible; }
+.wl-sk .cl { fill: none; stroke: var(--accent); stroke-width: .7; stroke-dasharray: 2.5 2.5; opacity: 0; transition: opacity .5s .2s; }
+.wl-sk .ln { fill: none; stroke: var(--muted); stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; transition: stroke .4s; }
+.wl-sk .fl { fill: var(--accent); opacity: 0; transition: opacity .5s .3s; }
+.wl-t svg { transition: opacity .45s ease calc(var(--i) * 12ms), transform .45s ease calc(var(--i) * 12ms); }
+.wlf[data-step="1"] .wl-t:nth-of-type(n+5) { opacity: .35; }
+.wlf[data-step="1"] .wl-t:nth-of-type(n+5) svg { opacity: 0; transform: scale(.6); }
+.wlf[data-step="1"] .wl-sk { opacity: .35; }
+.wlf[data-step="1"] .wl-sk svg { opacity: 0; }
+.wl-sk svg { transition: opacity .45s; }
+.wlf[data-step="3"] .wl-t { opacity: .14; filter: grayscale(1); }
+.wlf[data-step="3"] .wl-sk { background: var(--raise); box-shadow: 0 0 0 2px var(--accent); }
+.wlf[data-step="3"] .wl-sk .cl { opacity: .9; }
+.wlf[data-step="3"] .wl-sk .fl { opacity: .9; }
+.wlf[data-step="3"] .wl-sk .ln { stroke: var(--ink); }
+@media (max-width: 560px) { .wl { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 5px; } .wl-sk { grid-column: 3 / span 2; grid-row: 3 / span 2; } .wl-n { font-size: 36px; } }
+
+/* 05.02 a logo generator in a browser window */
+.mj { direction: ltr; border: 1px solid var(--line); border-radius: 12px; background: var(--raise); overflow: hidden; }
+.mj-bar { display: flex; align-items: center; gap: 6px; padding: 8px 12px; background: var(--soft); border-bottom: 1px solid var(--line); }
+.mj-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--fill); flex: none; }
+.mj-url { flex: 1; min-width: 0; margin-left: 8px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; background: var(--paper); border-radius: 999px; padding: 3px 12px; font: 400 12px var(--mono); color: var(--muted); }
+.mj-body { position: relative; padding: 18px; }
+.mj-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; max-width: 520px; margin: 0 auto; transition: opacity .5s; }
+.mj-t { display: grid; place-items: center; aspect-ratio: 1; border-radius: 10px; background: var(--soft); border: 1px dashed var(--line); transition: border-color .3s; }
+.mj-t svg { width: 64%; height: 64%; opacity: 0; transform: scale(.7); transition: opacity .45s, transform .45s cubic-bezier(.2,.8,.2,1); }
+.mj-t:nth-child(2) svg { transition-delay: .12s; }
+.mj-t:nth-child(3) svg { transition-delay: .24s; }
+.mj-t:nth-child(4) svg { transition-delay: .36s; }
+.mj-prompt { display: flex; gap: 8px; max-width: 520px; margin: 16px auto 0; }
+.mj-in { flex: 1; min-width: 0; border: 1px solid var(--line); background: var(--paper); border-radius: 8px; padding: 8px 12px; font: 400 14px var(--mono); color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mj-in::after { content: ""; display: inline-block; width: 2px; height: 1.1em; margin-left: 2px; vertical-align: -3px; background: var(--accent); }
+.mj-go { flex: none; border-radius: 8px; padding: 8px 14px; background: var(--accent); color: var(--on-accent); font: 600 14px var(--text); }
+.mj-st { max-width: 520px; margin: 8px auto 0; font: 400 12px var(--mono); color: var(--muted); opacity: 0; transition: opacity .4s .4s; }
+.mj-edge { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 8px; padding: 18px; text-align: center; opacity: 0; visibility: hidden; transition: opacity .5s, visibility 0s linear .5s; }
+.mj-edge b { font: 600 clamp(20px, 3.6vw, 30px)/1.3 var(--text); color: var(--accent-ink); }
+.mj-edge span { direction: rtl; font-size: 16px; color: var(--ink); }
+.mjf:is([data-step="2"], [data-step="3"]) .mj-t { border-style: solid; }
+.mjf:is([data-step="2"], [data-step="3"]) .mj-t svg { opacity: 1; transform: none; }
+.mjf:is([data-step="2"], [data-step="3"]) .mj-st { opacity: 1; }
+.mjf[data-step="3"] .mj-grid, .mjf[data-step="3"] .mj-prompt, .mjf[data-step="3"] .mj-st { opacity: .12; }
+.mjf[data-step="3"] .mj-edge { opacity: 1; visibility: visible; transition: opacity .5s .15s, visibility 0s; }
+.mj-prompt { transition: opacity .5s; }
+@media (max-width: 560px) { .mj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 260px; } .mj-body { padding: 14px; } .mj-go { padding: 8px 10px; } }
+
+
+/* 05.04 simplicity: past / today */
+.sm { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sm-p { text-align: center; transition: opacity .5s; }
+.sm-art { position: relative; display: grid; place-items: center; height: 170px; border-radius: var(--r-sm); background: var(--soft); transition: box-shadow .4s; }
+.sm-art svg { width: 86%; max-width: 250px; height: 140px; overflow: visible; }
+.sm-old .g { fill: var(--muted); opacity: .75; }
+.sm-old .gs { fill: none; stroke: var(--muted); stroke-width: 9; opacity: .75; }
+.sm-new .sm-art { background: #f3eee4; }
+.sm-mark { transform-box: fill-box; transform-origin: center; opacity: 0; transform: scale(.8); transition: opacity .6s, transform .7s cubic-bezier(.2,.8,.2,1); }
+.sm-q { position: absolute; inset: 0; display: grid; place-items: center; font: 700 64px var(--display); color: #b9ad98; transition: opacity .4s; }
+.sm-p h4 { margin: 10px 0 0; font-size: 17px; }
+.sm-p small { display: block; font-size: 13px; color: var(--muted); }
+.smf[data-step="1"] .sm-old .sm-art { box-shadow: 0 0 0 2px var(--accent); }
+.smf[data-step="2"] .sm-old { opacity: .45; }
+.smf[data-step="2"] .sm-new .sm-art { box-shadow: 0 0 0 2px var(--accent); }
+.smf[data-step="2"] .sm-mark { opacity: 1; transform: none; }
+.smf[data-step="2"] .sm-q { opacity: 0; }
+@media (max-width: 520px) { .sm-art { height: 130px; } .sm-art svg { height: 104px; } }
+
+/* 05.11 versatility: one invented brand (KAVEN) from a stadium screen to a 16px tab */
+.kv { --kv-a: #14284b; --kv-b: #f2b33d; --kv-ink: #14284b; }
+.vs-lv { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.vs-lv > span { display: inline-flex; align-items: center; gap: 8px; padding: 4px 12px 4px 5px; border-radius: 999px; border: 1px solid var(--line); background: var(--soft); font-size: 14px; color: var(--muted); transition: background .3s, color .3s, border-color .3s; }
+.vs-lv i { display: grid; place-items: center; height: 28px; padding: 0 6px; border-radius: 999px; background: #f3eee4; }
+.vs-lv svg { height: 20px; width: auto; }
+.vsf:is([data-step="1"], [data-step="2"]) .vs-lv > span:nth-child(1), .vsf:is([data-step="3"], [data-step="4"]) .vs-lv > span:nth-child(2), .vsf[data-step="5"] .vs-lv > span:nth-child(3) { background: var(--accent-soft); border-color: var(--accent); color: var(--ink); }
+.vs-sc { display: grid; }
+.vs-sc > div { grid-area: 1 / 1; position: relative; aspect-ratio: 16 / 7; border-radius: var(--r-sm); overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .5s, visibility 0s linear .5s; }
+.vsf[data-step="1"] .vs-sc > div:nth-child(1), .vsf[data-step="2"] .vs-sc > div:nth-child(2), .vsf[data-step="3"] .vs-sc > div:nth-child(3),
+.vsf[data-step="4"] .vs-sc > div:nth-child(4), .vsf[data-step="5"] .vs-sc > div:nth-child(5) { opacity: 1; visibility: visible; transition: opacity .5s, visibility 0s; }
+.sc-st { background: linear-gradient(#0a1020, #18233b 64%, #241d14); }
+.sc-st .scr { position: absolute; left: 15%; right: 15%; top: 13%; height: 50%; display: grid; place-items: center; background: #1f4c8f; border: 5px solid #262b33; border-radius: 4px; box-shadow: 0 0 46px rgba(110,160,255,.3); --kv-ink: #ffffff; }
+.sc-st .scr svg { width: 64%; height: auto; }
+.sc-st .post { position: absolute; top: 63%; width: 1.6%; height: 16%; background: #262b33; }
+.sc-st .lamp { position: absolute; top: 7%; width: 7%; height: 5%; border-radius: 3px; background: #fff6d2; box-shadow: 0 0 22px 6px rgba(255,236,170,.45); }
+.sc-st .crowd { position: absolute; inset: auto 0 0; height: 22%; background: radial-gradient(circle, #3c4250 36%, transparent 40%) 0 0 / 11px 11px, #12151b; }
+.sc-mo, .sc-ap { display: grid; place-items: center; background: var(--fill); }
+.sc-ap { container-type: size; }
+.sc-mo .mon { position: relative; width: 50%; aspect-ratio: 16 / 10; margin-bottom: 7%; background: #f7f5f0; border: 6px solid #1c1c1e; border-radius: 8px; direction: ltr; }
+.sc-mo .mon::after { content: ""; position: absolute; left: 40%; right: 40%; top: 100%; height: 22%; background: #2a2a2d; clip-path: polygon(32% 0, 68% 0, 100% 100%, 0 100%); margin-top: 6px; }
+.sc-mo .hd { display: flex; align-items: center; justify-content: space-between; padding: 5% 6%; border-bottom: 1px solid #e3ded4; }
+.sc-mo .hd svg { width: 34%; height: auto; }
+.sc-mo .nav { display: flex; gap: 6px; width: 30%; }
+.sc-mo .nav i { flex: 1; height: 4px; border-radius: 2px; background: #c8c2b6; }
+.sc-mo .hero { margin: 6% 6% 0; height: 42%; border-radius: 4px; background: #14284b; display: grid; align-content: center; gap: 8px; padding: 0 8%; }
+.sc-mo .hero i { display: block; height: 6px; width: 60%; border-radius: 3px; background: #f2b33d; }
+.sc-mo .hero i + i { width: 40%; background: #4b6290; }
+.sc-ap .ph { position: absolute; top: 5%; bottom: 5%; left: 50%; transform: translateX(-50%); aspect-ratio: 9 / 17; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-content: start; gap: 5cqh 6cqh; padding: 13cqh 6cqh 0; border-radius: 18px; border: 5px solid #1c1c1e; background: linear-gradient(160deg, #c9d6e8, #ead9c6); }
+.sc-ap .ph i { aspect-ratio: 1; border-radius: 24%; background: rgba(255,255,255,.55); }
+.sc-ap .ph .ic { display: grid; place-items: center; background: #ffffff; box-shadow: 0 2px 6px rgba(0,0,0,.18); }
+.sc-ap .ph .ic svg { width: 66%; height: auto; }
+.sc-em { display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, #8a6446, #5b3e29 72%); }
+.sc-em::before { content: ""; position: absolute; inset: 7%; border: 2px dashed rgba(255,225,190,.32); border-radius: 10px; }
+.sc-em svg { height: 62%; width: auto; --kv-a: #6a4932; --kv-b: #573a26; filter: drop-shadow(-1px -1px 0 rgba(255,228,196,.4)) drop-shadow(2px 3px 2px rgba(0,0,0,.5)); }
+.sc-fv { background: var(--fill); padding: 6% 7%; direction: ltr; }
+.sc-fv .tabs { display: flex; gap: 4px; padding: 8px 8px 0; border-radius: 8px 8px 0 0; background: #d9d5ce; }
+.sc-fv .tab { display: flex; align-items: center; gap: 7px; padding: 7px 12px; border-radius: 7px 7px 0 0; font: 500 12px var(--text); color: #6a665f; white-space: nowrap; overflow: hidden; }
+.sc-fv .tab.on { background: #fbf9f5; color: #2b2b2b; }
+.sc-fv .tab svg { width: 16px; height: 16px; flex: none; }
+.sc-fv .tab b { display: block; width: 16px; height: 16px; border-radius: 50%; background: #bdb7ad; flex: none; }
+.sc-fv .addr { height: 34px; background: #fbf9f5; border-radius: 0 0 8px 8px; display: flex; align-items: center; padding: 0 12px; }
+.sc-fv .addr i { flex: 1; height: 16px; border-radius: 999px; background: #ebe7e0; }
+.sc-fv .zoom { position: absolute; right: 8%; bottom: 9%; width: 25%; max-width: 150px; aspect-ratio: 1; display: grid; place-items: center; align-content: center; gap: 4px; border-radius: 50%; background: #fbf9f5; border: 3px solid var(--accent); }
+.sc-fv .zoom svg { width: 42%; height: auto; }
+.sc-fv .zoom small { font: 500 11px var(--mono); color: #5d5b57; }
+@media (max-width: 600px) {
+  .vs-sc > div { aspect-ratio: 4 / 3; }
+  .sc-mo .mon { width: 76%; }
+  .sc-st .scr { left: 8%; right: 8%; }
+  .sc-fv .zoom { width: 34%; }
+}
+
+/* 05.14 colours over shape */
+.cl-art { display: grid; border-radius: var(--r-sm); overflow: hidden; background: var(--soft); }
+.cl-art > svg { grid-area: 1 / 1; display: block; width: 100%; height: auto; opacity: 0; transition: opacity .6s; }
+.clf[data-step="1"] .cl-art > svg:nth-child(1), .clf[data-step="2"] .cl-art > svg:nth-child(2), .clf[data-step="3"] .cl-art > svg:nth-child(3), .clf[data-step="4"] .cl-art > svg:nth-child(4) { opacity: 1; }
+.cl-art .pn { fill: var(--raise); stroke: var(--line); }
+.cl-art text { font: 600 15px var(--text); fill: var(--ink); }
+.cl-art text.sub { font-weight: 400; font-size: 13px; fill: var(--muted); }
+@media (max-width: 560px) { .cl-art text { font-size: 26px; } .cl-art text.sub { display: none; } }
+.cl-sws { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 12px 0 0; padding: 0; list-style: none; }
+.cl-sws li { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 14px; color: var(--ink); }
+.cl-sws i { width: 22px; height: 22px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(128,128,128,.35); }
+
+/* =========== lecture additions =========== */
+/* "what does this logo say to you" exercise */
+.ex-q { margin: 14px 0 10px; font-size: 17px; }
+.ex-go { display: inline-flex; align-items: center; gap: 8px; border: 0; border-radius: 999px; padding: 8px 18px; background: var(--accent); color: var(--on-accent); font: 600 15px var(--text); cursor: pointer; }
+.ex-go:hover { filter: brightness(1.08); }
+.ex-go[disabled] { opacity: .45; cursor: default; filter: none; }
+.ex-words { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; padding: 0; list-style: none; min-height: 40px; }
+.ex-words li { margin: 0; font-size: 15px; padding: 5px 14px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); opacity: 0; transform: translateY(6px) scale(.96); transition: opacity .35s ease calc(var(--i) * 70ms), transform .35s cubic-bezier(.2,.8,.2,1) calc(var(--i) * 70ms); }
+.ex-words.on li { opacity: 1; transform: none; }
+.ex-words li.neg { border-color: var(--warn); color: var(--warn); background: var(--warn-soft); }
+.ex-note { margin: 12px 0 0; font-size: 15px; color: var(--muted); opacity: 0; transition: opacity .4s ease .9s; }
+.ex.done .ex-note { opacity: 1; }
+
+/* five principles index */
+.pr5 { list-style: none; margin: 18px 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.pr5 li { margin: 0; }
+.pr5 a { display: grid; justify-items: center; gap: 6px; height: 100%; padding: 12px 8px; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); color: var(--ink); text-decoration: none; text-align: center; font-size: 15px; line-height: 1.3; transition: border-color .25s; }
+.pr5 a:hover { border-color: var(--accent); }
+.pr5 .n { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: 600 15px var(--mono); }
+.pr5 b { font-weight: 600; }
+@media (max-width: 640px) { .pr5 { grid-template-columns: 1fr; } .pr5 a { grid-template-columns: 34px 1fr; justify-items: start; align-items: center; text-align: start; padding: 8px 12px; } }
+.rd3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 700px) { .rd3 { grid-template-columns: 1fr; } }
+.model3 { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 12px 0; }
+.model3 span { padding: 8px 14px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--paper); font-weight: 600; font-size: 15px; }
+.model3 span.ai { border-style: dashed; background: var(--soft); }
+.model3 i { font-style: normal; color: var(--accent-ink); }
+.ck5 { display: grid; gap: 8px; }
+.ck5 label { display: flex; align-items: flex-start; gap: 10px; padding: 8px 12px; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--paper); cursor: pointer; font-size: 15px; line-height: 1.5; transition: border-color .25s, background .25s; }
+.ck5 label:has(input:checked) { border-color: var(--ok); background: var(--ok-soft); }
+.ck5 input { accent-color: var(--accent); width: 18px; height: 18px; margin-top: 3px; flex: none; }
+.ck5 b { display: block; }
+.ck5 span span, .ck5 label > span { color: var(--muted); }
+.ck5 label > span b { color: var(--ink); }
+.ck5-out { margin: 4px 0 0; font-weight: 600; min-height: 1.6em; }
+
+/* the rail body must not grow with wide demo content (the KAVEN browser tabs) on phones */
+section.has-rail .rail-body { width: 100%; }
+
+/* real examples */
+.ex-logo { display: grid; place-items: center; height: 120px; margin-top: 14px; border-radius: var(--r-sm); background: #ffffff; }
+.ex-logo img { max-height: 84px; max-width: 70%; width: auto; height: auto; }
+.strip { display: block; margin-top: 10px; border-radius: var(--r-sm); overflow: hidden; background: #ffffff; }
+.strip img { display: block; width: 100%; height: auto; }
+.rd .ap { display: grid; place-items: center; height: 130px; margin-bottom: 10px; border-radius: var(--r-sm); background: #ffffff; overflow: hidden; }
+.rd .ap img { max-height: 118px; max-width: 92%; width: auto; height: auto; }
+.lt-img { display: block; margin: 8px 0 4px; border-radius: var(--r-sm); overflow: hidden; background: #ffffff; border: 1px solid var(--line); }
+.lt-img img { display: block; width: 100%; height: auto; }
+
+/* five logo types */
+.lt5 { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); margin: 20px 0; align-items: start; }
+.lt5 .lt { --lm-mark: var(--accent); --lm-word: var(--ink); }
+.lt5 .lt svg { height: 74px; }
+.lt5 .lt p + p { margin-top: 8px; }
+.dyn-row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin: 14px 0; }
+.dyn-row > div { aspect-ratio: 1; border-radius: var(--r-sm); background: var(--soft); display: grid; place-items: center; }
+.dyn-row svg { width: 74%; height: 74%; overflow: visible; }
+.dyn-row > div { animation: dynIn .45s cubic-bezier(.2,.8,.2,1) both; animation-delay: calc(var(--i) * 60ms); }
+@keyframes dynIn { from { opacity: 0; transform: scale(.85); } }
+@media (max-width: 520px) { .dyn-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* lines + symbolic shapes */
+.lines3, .sym6 { display: grid; gap: 10px; margin: 14px 0 22px; }
+.lines3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sym6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.lines3 > div, .sym6 > div { border: 1px solid var(--line); border-radius: var(--r); background: var(--raise); padding: 14px; text-align: center; }
+.lines3 svg, .sym6 svg { display: block; margin: 0 auto 8px; fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+.lines3 svg { width: 90px; height: 54px; }
+.sym6 svg { width: 64px; height: 64px; stroke-width: 6; }
+.lines3 b, .sym6 b { display: block; font-size: 16px; }
+.lines3 span, .sym6 span { display: block; font-size: 14px; line-height: 1.5; color: var(--muted); margin-top: 2px; }
+@media (max-width: 600px) { .lines3 { grid-template-columns: 1fr; } .sym6 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+</head>
+<body data-ch="logo">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<!-- invented demo brand "luma": mark, wordmark, lockups -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="lm-mark" viewBox="0 0 100 100"><path style="fill:var(--lm-mark)" fill-rule="evenodd" d="M4 50a46 46 0 1 0 92 0a46 46 0 1 0-92 0zM42 34a18 18 0 1 0 36 0a18 18 0 1 0-36 0z"/></symbol>
+  <symbol id="lm-word" viewBox="0 12 226 76"><g style="stroke:var(--lm-word)" fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20V80M30 40V60a18 18 0 0 0 36 0V40M66 40V80M84 40V80M84 58a18 18 0 0 1 36 0V80M120 58a18 18 0 0 1 36 0V80M216 40V80"/><circle cx="196" cy="60" r="20"/></g></symbol>
+  <symbol id="lm-h" viewBox="-2 10 318 80"><use href="#lm-mark" x="0" y="14" width="72" height="72"/><use href="#lm-word" x="88" y="12" width="226" height="76"/></symbol>
+  <symbol id="lm-ht" viewBox="-2 10 318 112"><use href="#lm-mark" x="0" y="14" width="72" height="72"/><use href="#lm-word" x="88" y="12" width="226" height="76"/><text x="92" y="114" direction="ltr" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="15" letter-spacing="5" style="fill:var(--lm-word)">COFFEE ROASTERS</text></symbol>
+  <symbol id="lm-v" viewBox="-2 -2 230 164"><use href="#lm-mark" x="77" y="0" width="72" height="72"/><use href="#lm-word" x="0" y="84" width="226" height="76"/></symbol>
+  <symbol id="lm-p" viewBox="-2 -2 230 202"><use href="#lm-mark" x="77" y="0" width="72" height="72"/><use href="#lm-word" x="0" y="84" width="226" height="76"/><text x="113" y="192" direction="ltr" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-weight="500" font-size="15" letter-spacing="5" style="fill:var(--lm-word)">COFFEE ROASTERS</text></symbol>
+  <!-- invented demo brand "KAVEN" (versatility): shield + K, the K alone, and the full lockup -->
+  <symbol id="kv-shield" viewBox="0 0 100 110"><path style="fill:var(--kv-a)" d="M50 4L92 17V52C92 79 73 97 50 106C27 97 8 79 8 52V17Z"/><path style="stroke:var(--kv-b)" fill="none" stroke-width="12" stroke-linejoin="round" d="M37 29V83M37 61L65 29M49 51L68 83"/></symbol>
+  <symbol id="kv-k" viewBox="0 0 80 100"><path style="stroke:var(--kv-a)" fill="none" stroke-width="20" stroke-linejoin="round" d="M20 10V90M20 62L64 10M38 46L68 90"/></symbol>
+  <symbol id="kv-full" viewBox="0 0 330 110"><use href="#kv-shield" x="0" y="0" width="100" height="110"/><text x="118" y="78" direction="ltr" font-family="IBM Plex Sans Hebrew, IBM Plex Sans, sans-serif" font-weight="600" font-size="60" textLength="206" lengthAdjust="spacing" style="fill:var(--kv-ink)">KAVEN</text></symbol>
+  <!-- gradients for the generic "AI" marks -->
+  <defs>
+    <linearGradient id="wg0" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
+    <linearGradient id="wg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06b6d4"/><stop offset="1" stop-color="#3b5bdb"/></linearGradient>
+    <linearGradient id="wg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#a855f7"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+    <linearGradient id="wg3" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#6366f1"/></linearGradient>
+    <linearGradient id="mjb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient>
+  </defs>
+</svg>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">06 / 15</div>
+      <h1>לוגו</h1>
+      <p class="lede">מה זה בכלל לוגו, ולמה צריך אותו? מה ההבדל בין לוגו לסמל ובין לוגו למותג, אילו חמישה עקרונות הופכים לוגו לחזק, ואילו חמישה סוגי לוגו יש. ואחר כך: הלוגו לא חי לבד. הוא צריך לעבוד בצבע ובשחור־לבן, על רקע בהיר וכהה, בשלט ענק ובלשונית דפדפן של 16 פיקסלים. ובעולם שבו כל אחד מייצר לוגו בפרומפט, הוא גם צריך לנבוע מחשיבה, לא רק מכלי.</p>
+      <div class="ch-meta"><span>14 נושאים</span><span>11 הדגמות</span><span>7 כלים לנסות</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-05.webp" alt="איור: יד עם עט מדייקת סמל גאומטרי אחד על משטח חיתוך, ומאחוריה עשרות סמלים גנריים מטושטשים מתרחקים" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= what is a logo ================= -->
+    <section class="sec">
+      <h2 id="what-is-logo">מה זה לוגו?</h2>
+      <blockquote class="quote"><span class="ltr">To logo or not to logo. That is the question.</span></blockquote>
+      <p class="lead">לוגו הוא <strong>אלמנט גרפי</strong>, המורכב מאילוסטרציה או מטיפוגרפיה, שנוצר במטרה <strong>לסמל ולייצג גורם מסוים</strong>: בדרך כלל ארגון או מוצר.</p>
+      <div class="tip">
+        <span class="box-label">נסו לפני שממשיכים</span>
+        <p>איזה לוגואים אתם מכירים? רשמו חמישה מהזיכרון. ועכשיו השאלה שהפרק הזה עונה עליה: <strong>למה בכלל צריך לוגו?</strong></p>
+      </div>
+    </section>
+
+    <!-- ================= why a logo: logo vs brand ================= -->
+    <section class="sec">
+      <h2 id="why-logo" data-short="למה צריך לוגו">למה צריך לוגו: הלוגו והמותג</h2>
+      <p>בואו נבין את הקשר של הלוגו למותג שהוא מייצג. התרגיל הבא לקוח מההרצאה שלי: בוחרים מותג, חושבים על הלוגו שלו, ושואלים „מה הלוגו הזה אומר לכם?”</p>
+      <div class="widget ex" id="wassoc">
+        <div class="seg" role="group" aria-label="בחירת מותג">
+          <button type="button" aria-pressed="true" data-b="nike"><span class="ltr">Nike</span></button>
+          <button type="button" aria-pressed="false" data-b="apple"><span class="ltr">Apple</span></button>
+        </div>
+        <div class="ex-logo"><img src="img/lecture-nike.webp" alt="הלוגו של Nike: הסימן השחור בצורת וי" width="1200" height="434"></div>
+        <p class="ex-q">מה הלוגו של <b class="ex-name"><span class="ltr">Nike</span></b> אומר לכם? חשבו על שלוש מילים, ורק אז לחצו.</p>
+        <button type="button" class="ex-go">הראו מה ענו בכיתה</button>
+        <ul class="ex-words" aria-live="polite"></ul>
+        <p class="ex-note">שימו לב למילים האחרונות ברשימה. אף אחת מהן לא הגיעה מהלוגו.</p>
+      </div>
+      <p class="muted" style="font-size:15px">המילים הן התשובות של סטודנטים בהרצאה שלי.</p>
+
+      <h3 id="what-we-control">על מה אין לנו שליטה, ועל מה יש</h3>
+      <p>חשוב להבין: <strong>לא כל הערכים שהצרכנים משייכים למותג מגיעים מהלוגו.</strong> אנשים יצרו את החיבור הרגשי שלהם למותג דרך השימוש במוצר, וימציאו לעצמם פירושים למה המותג אומר ומסמל. לטוב ולרע, אין לנו שליטה על זה.</p>
+      <div class="cards ctl">
+        <div class="card"><span class="k">אין שליטה</span><h4>המוצר והשירות</h4><p>אם מעצב יקבל מיליון דולר לעצב לוגו, והוא יעשה עבודה נפלאה, אבל המוצר עצמו תקול והשירות של החברה לוקה בחסר… לא יעזור כמה המסר של הלוגו יהיה חיובי, אם המוצר נתפס באור שלילי בעיני הצרכנים.</p></div>
+        <div class="card"><span class="k">יש שליטה</span><h4>קמפיינים ותרבות</h4><p>ערכים שיגיעו מקמפיינים: פרסומות, מודעות, מהלכי פרסום ועוד. וטכניקה נוספת: הטמעה של המותג בתרבות, כמו קליפים של שירים, שימוש בסרטים, פרזנטורים ועוד.</p></div>
+        <div class="card"><span class="k">המעצב</span><h4>הרושם הראשוני</h4><p>למעצב יש שליטה על הרושם הראשוני של המותג. כשאתם מעצבים לוגו, אתם בעצם מציגים מסר בצורה ויזואלית. <strong>מסר אחד!</strong></p></div>
+      </div>
+
+      <div class="gallery g2 natural">
+        <a href="img/lecture-apple-queue.webp" data-lb data-cap="תור בלילה מחוץ לחנות Apple: החיבור הרגשי נוצר מהשימוש במוצר, לא מהלוגו"><img src="img/lecture-apple-queue.webp" alt="אנשים ישנים בשקי שינה על המדרכה בלילה, מתחת לתפוח המואר של חנות Apple" loading="lazy" width="1200" height="977"></a>
+        <a href="img/lecture-culture-placement.webp" data-lb data-cap="הטמעה בתרבות: המוצר מופיע בתוך סצנה של סדרה"><img src="img/lecture-culture-placement.webp" alt="סצנה מסדרה: נערה בחלוק בית חולים יושבת ליד שולחן, ולידה פחית משקה אדומה" loading="lazy" width="1200" height="656"></a>
+      </div>
+      <figcaption>מתוך ההרצאה: מה שאין לנו שליטה עליו (חוויית המוצר), ומה שכן (הטמעה בתרבות).</figcaption>
+
+      <h3 id="logo-goal">המטרה של הלוגו</h3>
+      <p>לוגו הוא <strong>ייצוג חזותי</strong> של חברה, ארגון או מותג. הוא יוצר הכרה ומסייע לאנשים לזכור את החוויות שלהם ואת הקשר עם המותג. השאיפה האידיאלית: <strong>לעורר השראה ונאמנות</strong> (וכמובן, זה לוקח זמן).</p>
+
+      <h3 id="logo-not-brand">הלוגו הוא לא המותג</h3>
+      <p>לוגו הוא לא מותג, אבל הוא חלק מהמותג: חלק אחד מזהות המותג של החברה. המותג כולו מייצג יותר: את מטרת החברה, את ההיסטוריה שלה ואת התפיסה שלה בעיני האנשים.</p>
+      <p>יחד עם הלוגו, המותג כולל בין השאר:</p>
+      <ul class="chips">
+        <li>ספר מותג</li><li>סוגי הגופנים של החברה</li><li>צבעי החברה</li><li>שילוט בבניינים</li><li>מדי הצוות</li><li>סוג התמונות</li><li>כללים לתמונות ולשימוש בלוגו</li><li>אופי המותג</li><li>כל הזהות הפרסומית</li>
+      </ul>
+      <p><a class="xref" href="what-is-branding.html#components">המרכיבים של שפה עיצובית</a> <a class="xref" href="what-is-branding.html#identity-image">זהות מול תדמית</a></p>
+      <blockquote class="quote">הלוגו הוא לא המותג, אבל הוא <strong>החלק החשוב ביותר</strong> של המותג.</blockquote>
+    </section>
+
+    <!-- ================= symbol vs logo ================= -->
+    <section class="sec">
+      <h2 id="symbol-vs-logo" data-short="סמל מול לוגו">מה ההבדל בין סמל לבין לוגו?</h2>
+      <div class="tip">
+        <span class="box-label">זה דיון, אז תשתתפו</span>
+        <p>לפני שאתם קוראים הלאה: איך הייתם מסבירים את ההבדל במשפט אחד?</p>
+      </div>
+      <div class="cards">
+        <div class="card"><span class="k">סמל</span><h4>מסר אחד</h4><p>לא ניתן לפרש. יש לו מסר אחד, ברור ואוניברסלי.</p></div>
+        <div class="card"><span class="k">לוגו</span><h4>הרבה פירושים</h4><p>יכול לשדר מסרים שונים. המתבונן יכול לפרש אותו בדרכים שונות, ואף ליצור כלפיו קשר רגשי.</p></div>
+      </div>
+      <h3 id="symbols-you-know">איזה סמלים אתם מכירים?</h3>
+      <p>תזכרו: <strong>לסמל יש מסר אחד בלבד</strong>, ברור ואוניברסלי. <span data-added>נורות האזהרה ברכב, למשל, צריכות להיות מובנות לכל נהג, בכל מדינה, בלי מילה אחת.</span></p>
+      <div class="gallery natural">
+        <a href="img/lecture-symbols-dashboard.webp" data-lb data-cap="סמלי אזהרה בלוח המחוונים של רכב: מסר אחד לכל סמל"><img src="img/lecture-symbols-dashboard.webp" alt="תשעה סמלי אזהרה של רכב בשחור: מנוע, משולש אזהרה, שמן, טמפרטורה ועוד" loading="lazy" width="600" height="564"></a>
+        <a href="img/lecture-symbols-seatbelt.webp" data-lb data-cap="סמלי בטיחות במטוס ובמכונית: מובנים בלי מילה"><img src="img/lecture-symbols-seatbelt.webp" alt="שני סמלים בצהוב על רקע שחור: חגורת בטיחות עם איסור עישון, וחגורה שננעלת" loading="lazy" width="612" height="321"></a>
+        <a href="img/lecture-symbols-faith.webp" data-lb data-cap="מגן דוד, צלב וסהר: סמלים עם משמעות אחת ומוסכמת"><img src="img/lecture-symbols-faith.webp" alt="מגן דוד, צלב וסהר עם כוכב, בשחור על לבן" loading="lazy" width="1024" height="882"></a>
+      </div>
+      <figcaption>סמלים שכולם מבינים באותו אופן, מהשקפים של ההרצאה.</figcaption>
+
+      <h3 id="oldest-symbols">מהו הסמל העתיק ביותר שאתם מכירים?</h3>
+      <div class="note">
+        <span class="box-label">העשרה</span>
+        <p>„הקוניפורם” (כתב היתדות) ידוע בתור הכתב העתיק בעולם: מערכת של אותיות שפיתחו השומרים העתיקים ב־<span class="ltr">3500–3000</span> לפני הספירה. המערכת נחשבת למשמעותית ביותר מבין ההמצאות שלהם. ארץ שומר השתרעה על רוב האזור שבדרום מסופוטמיה, בדרום עיראק של היום.</p>
+        <p>ובמצרים: ההירוגליפים, כתב החרטומים.</p>
+      </div>
+      <div class="gallery g2 natural">
+        <a href="img/lecture-cuneiform.webp" data-lb data-cap="כתב יתדות (קוניפורם) חרוט באבן"><img src="img/lecture-cuneiform.webp" alt="לוח אבן עם כתב יתדות שומרי חרוט" loading="lazy" width="890" height="594"></a>
+        <a href="img/lecture-hieroglyphs.webp" data-lb data-cap="הירוגליפים מצריים, כתב החרטומים"><img src="img/lecture-hieroglyphs.webp" alt="קיר אבן חום־זהוב עם הירוגליפים מצריים חרוטים: ציפורים, עיניים וסימנים" loading="lazy" width="700" height="595"></a>
+      </div>
+
+      <div class="ok-box">
+        <span class="box-label">מסקנה</span>
+        <p>מותר לשלב „סמלים” (איקונים מוסכמים ומוכרים) בלוגו, אבל צריך לקחת בחשבון את האסוציאציות שנובעות מהם. זה יהיה תלוי בלקוח, בקהל היעד, במדינה, בשפה, בתחום וכו’. אתם לא יכולים להתעלם מזה. <a class="xref" href="#symbolic-shapes">צורות עם מוסכמה תרבותית</a> <a class="xref" href="color.html#culture">אותו צבע, תרבות אחרת</a></p>
+      </div>
+    </section>
+
+    <!-- ================= three jobs ================= -->
+    <section class="sec">
+      <h2 id="three-jobs" data-short="שלושת התפקידים">שלושת התפקידים של הלוגו</h2>
+      <p>לכל לוגו יש שלושה תפקידים עיקריים: <strong>זיהוי, הבחנה ותקשורת.</strong></p>
+      <div class="cards jobs">
+        <div class="card"><span class="k">01</span><h4>זיהוי</h4><p>הלוגו הוא סימן הזיהוי של המותג בשוק. ביכולתו לייצג את המותג אל מול העולם, באופן ויזואלי וסימבולי. הלוגו הוא הדבר הראשון שהלקוח רואה, ולכן הוא חייב להשאיר רושם חיובי. <strong>אין שני לרושם ראשוני!</strong></p></div>
+        <div class="card"><span class="k">02</span><h4>הבחנה</h4><p>בידול, ייחוד. לוגו יעיל צריך להיות ייחודי. ככל שהלוגו מיוחד ומקורי יותר, הוא יבלוט לעומת המתחרים וייצור בידול מהם. <a class="xref" href="#original">מקורי</a></p></div>
+        <div class="card"><span class="k">03</span><h4>תקשורת</h4><p>לוגו מספר על המותג. המסר עשוי להיות ישיר או עדין, אבל חשוב שהצופה יקלוט מסר חיובי: מתוחכם, לא פורמלי, מוצק, אמין, אכפתי, מקצועי, יצירתי וכו’. מצד שני, לוגו לא מדויק יכול להעביר מסר הפוך ולהזיק: לא מקצועי, גימיקי ומיושן.</p></div>
+      </div>
+    </section>
+    <!-- ================= AI era ================= -->
+    <section class="sec">
+      <h2 id="ai-era" data-short="לוגו בעידן ה-AI">לוגו בעידן ה־<span class="ltr">AI</span></h2>
+      <blockquote class="quote">בעידן שבו <span class="ltr">AI</span> מייצר לוגו בשנייה, המעצב האנושי נהיה קריטי יותר.</blockquote>
+      <p>בינה מלאכותית יכולה לייצר <span class="ltr">1,000</span> סמלי לוגו בדקה. זה לא מאיים על מעצבים טובים. זה פשוט חושף מי באמת מעצב ומי רק מייצר גרפיקה. עולם עיצוב הלוגו עובר שינוי עמוק, והכלים החדשים לא מחליפים חשיבה: הם מבליטים את הפער בין סמל שנראה נחמד לבין זהות מותג שנבנית מתוך אסטרטגיה, הבנה ודיוק.</p>
+      <figure class="anim wlf" id="f-wall" data-steps="3" data-step-labels="פרומפט אחד|אלף בדקה|ומה מבדיל">
+        <span class="anim__label">אלף סמלים, וסמל אחד עם סיבה</span>
+        <div class="anim__stage">
+          <div class="wl-top">
+            <span class="wl-prompt ltr">logo, tech startup, modern</span>
+            <span class="wl-count"><b class="wl-n ltr" id="wl-n">4</b><span class="say inl" aria-hidden="true"><span data-s="1">סמלים מפרומפט אחד</span><span data-s="2">סמלים בדקה</span><span data-s="3">סמל אחד שמישהו חשב עליו</span></span></span>
+          </div>
+          <div class="wl" id="wl" aria-hidden="true">
+            <div class="wl-sk"><svg viewBox="0 0 100 100">
+              <circle class="cl" cx="50" cy="52" r="36"/><circle class="cl" cx="50" cy="62" r="20"/><circle class="cl" cx="28" cy="29" r="10"/><circle class="cl" cx="72" cy="29" r="10"/>
+              <path class="cl" d="M50 6V98M8 36H92M20 22L50 84L80 22"/>
+              <path class="fl" d="M20 22L36 36L50 56L50 84L24 50Z"/>
+              <path class="ln" d="M20 22L36 36H64L80 22L76 50L50 84L24 50Z M36 36L50 56L64 36 M46 74L50 79L54 74"/>
+            </svg></div>
+          </div>
+          <div class="say" aria-live="polite">
+            <p data-s="1">פרומפט אחד, שלוש מילים באנגלית, וכבר יש כמה סמלים שנראים מקצועיים לגמרי.</p>
+            <p data-s="2">ועוד, ועוד. אלף בדקה. כולם עם אותם גרדיאנטים, אותם חיצים ואותן מערבולות. כשיש כל כך הרבה, אף אחד מהם לא נזכר.</p>
+            <p data-s="3">מה שמבדיל הוא לא הליטוש אלא הכוונה: סקיצה אחת שמישהו חשב עליה, עם קווי בנייה וסיבה לכל קו. את זה המעצב מביא, ואת זה הכלי לא מייצר.</p>
+          </div>
+        </div>
+        <figcaption>הסמלים הכלליים נוצרים כאן בקוד מכמה צורות וגרדיאנטים, בדיוק כדי להראות כמה הם דומים זה לזה. הסקיצה היא סמל שציירתי לצורך ההדגמה.</figcaption>
+      </figure>
+
+      <figure class="fig">
+        <a href="img/lecture-ai-logos.webp" data-lb data-cap="סמלים של מוצרי AI אמיתיים, מתוך ההרצאה"><img src="img/lecture-ai-logos.webp" alt="שמונה סמלים של מוצרי בינה מלאכותית: טבעות בגרדיאנט, כוכבים בצבעי כחול וסגול, ריבועים מעוגלים צבעוניים" loading="lazy" width="1200" height="675"></a>
+        <figcaption>ולא רק בהדגמה: אלה סמלים אמיתיים של מוצרי <span class="ltr">AI</span>, מהשקף בהרצאה. גרדיאנטים, טבעות וכוכבים, וקשה לזכור איזה שייך למי.</figcaption>
+      </figure>
+
+      <h3 id="classic-rules">הכללים הקלאסיים עדיין חיים, אבל צריכים שדרוג</h3>
+      <p>היסודות של עיצוב לוגו טוב לא נעלמו. <strong>פשטות, ורסטיליות וזכירות</strong> עדיין קריטיים. אבל ההגדרות שלהם התרחבו. מה שנחשב „ורסטילי” ב־<span class="ltr">2016</span> לא מספיק בעולם של היום, הנשלט על ידי מסכים, תנועה וממשקים דיגיטליים. בואו נבחן את העקרונות המוכרים ונראה איך מתאימים אותם למציאות הנוכחית. <a class="xref" href="#simplicity">פשטות</a> <a class="xref" href="#scalable">ורסטיליות</a> <a class="xref" href="#tests">זכירות</a></p>
+      <p>ואיך הסיפור הזה נגמר, עם הגרף של „הכלים השתנו, אבל המקצוע לא מת”: בסוף הפרק הבא, כמו בסוף ההרצאה. <a class="xref" href="logo-design.html#value-curve">הרף פשוט עלה</a></p>
+    </section>
+
+    <!-- ================= five principles ================= -->
+    <section class="sec" data-rail>
+      <h2 id="principles" data-short="5 עקרונות ללוגו חזק">מה זה לוגו טוב? חמישה עקרונות שיוצרים לוגו חזק</h2>
+      <p data-added>חמשת העקרונות האלה הם עמוד השדרה של הפרק. כל אחד מהם נבנה על הקודם, ובסוף הם מתחברים לרשימת בדיקה אחת.</p>
+      <ol class="pr5">
+        <li><a href="#simplicity"><span class="n">1</span><b>פשטות</b></a></li>
+        <li><a href="#compliment-name"><span class="n">2</span><b>החמיאו לשם החברה</b></a></li>
+        <li><a href="#black-white"><span class="n">3</span><b>נראה טוב בשחור ולבן</b></a></li>
+        <li><a href="#scalable"><span class="n">4</span><b>ניתן להרחבה</b></a></li>
+        <li><a href="#original"><span class="n">5</span><b>מקורי</b></a></li>
+      </ol>
+      <p>שלושה מהם (נקי וזכיר, מותאם לכל פלטפורמה, משדר ערכים ומתחבר לקהל) מסוכמים יפה בסרטון קצר ששמרתי: <a href="https://www.youtube.com/shorts/bZ_-nty_rbE">3 עקרונות טובים לעיצוב לוגו (יוטיוב)</a>. עוד ערוצים טובים יש בפרק ההשראה. <a class="xref" href="resources.html">השראה ומקורות</a></p>
+
+      <h3 id="simplicity" data-rail-step data-rail-label="פשטות">1. פשטות: לא מינימליזם נטול נשמה, אלא זיקוק של מהות</h3>
+      <div class="cards">
+        <div class="card"><span class="k">BEFORE</span><h4>בעבר</h4><p>פשטות הייתה שם נרדף לצמצום צורני, לעיתים על חשבון האופי.</p></div>
+        <div class="card"><span class="k">2026</span><h4>היום</h4><p>פשטות אמיתית היא היכולת להסיר את הרעש תוך שמירה על נשמת המותג. זהו איזון עדין בין בהירות לרגש.</p></div>
+      </div>
+      <figure class="fig">
+        <a href="img/lecture-old-new.webp" data-lb data-cap="לפני ואחרי: לוגואים מוכרים שהתפשטו עם השנים"><img src="img/lecture-old-new.webp" alt="טבלת לפני ואחרי של לוגואים: Burger King, Burberry, Durex, Intel, Pfizer, Pringles, Subway, Toblerone, Warner Bros, Saint Laurent ועוד, הישן ליד החדש" loading="lazy" width="1000" height="563"></a>
+        <figcaption>מתוך ההרצאה: לוגואים מוכרים, הישן (<span class="ltr">OLD</span>) ליד החדש (<span class="ltr">NEW</span>). כמעט כולם הסירו פרטים, צללים ותלת־מימד.</figcaption>
+      </figure>
+      <p><strong>דוגמה:</strong> הלוגו של <span class="ltr">Iron Grip</span> (חדר כושר) הוא פשוט, אבל עדיין ניתן להרגיש את המשקל, השליטה, התנועה והפסיכולוגיה שמאחוריו. זו הפשטות שאליה אנחנו שואפים.</p>
+      <figure class="anim smf" data-steps="2" data-step-labels="בעבר|היום">
+        <span class="anim__label">אותה פשטות, פעם בלי נשמה ופעם איתה</span>
+        <div class="anim__stage">
+          <div class="sm">
+            <div class="sm-p sm-old">
+              <div class="sm-art"><svg viewBox="0 0 250 140" aria-hidden="true">
+                <circle class="gs" cx="40" cy="70" r="27"/>
+                <rect class="g" x="90" y="47" width="64" height="11" rx="2"/><rect class="g" x="90" y="64.5" width="64" height="11" rx="2"/><rect class="g" x="90" y="82" width="64" height="11" rx="2"/>
+                <polygon class="g" points="210,38 237.7,54 237.7,86 210,102 182.3,86 182.3,54"/>
+              </svg></div>
+              <h4>בעבר</h4><small>צמצום צורני</small>
+            </div>
+            <div class="sm-p sm-new">
+              <div class="sm-art"><span class="sm-q" aria-hidden="true">?</span><svg viewBox="0 0 200 160" role="img" aria-label="סמל שציירתי לחדר כושר: אגרוף זהוב סגור סביב מוט של משקולת כחולה">
+                <g class="sm-mark">
+                  <rect x="8" y="74" width="184" height="14" rx="3" fill="#1d3557"/>
+                  <rect x="16" y="44" width="17" height="74" rx="4" fill="#1d3557"/><rect x="37" y="55" width="11" height="52" rx="3" fill="#1d3557"/>
+                  <rect x="167" y="44" width="17" height="74" rx="4" fill="#1d3557"/><rect x="152" y="55" width="11" height="52" rx="3" fill="#1d3557"/>
+                  <rect x="68" y="126" width="64" height="24" rx="4" fill="#1d3557"/><rect x="68" y="133" width="64" height="4" fill="#e0a630"/>
+                  <rect x="54" y="84" width="92" height="46" rx="13" fill="#e0a630" stroke="#1d3557" stroke-width="4"/>
+                  <rect x="54" y="44" width="23" height="46" rx="11.5" fill="#e0a630" stroke="#1d3557" stroke-width="4"/>
+                  <rect x="77" y="40" width="23" height="50" rx="11.5" fill="#e0a630" stroke="#1d3557" stroke-width="4"/>
+                  <rect x="100" y="40" width="23" height="50" rx="11.5" fill="#e0a630" stroke="#1d3557" stroke-width="4"/>
+                  <rect x="123" y="44" width="23" height="46" rx="11.5" fill="#e0a630" stroke="#1d3557" stroke-width="4"/>
+                  <rect x="54" y="80" width="62" height="20" rx="10" fill="#b9821f" stroke="#1d3557" stroke-width="4"/>
+                </g>
+              </svg></div>
+              <h4>היום</h4><small>זיקוק של מהות</small>
+            </div>
+          </div>
+          <div class="say" aria-live="polite">
+            <p data-s="1"><strong>בעבר:</strong> עיגול, שלושה פסים, משושה. נקי ומסודר, אבל אפשר להדביק את זה לכל עסק בעולם. אין כאן אף אחד.</p>
+            <p data-s="2"><strong>היום:</strong> סמל לחדר כושר שהמצאתי, בנוי מכמה צורות גיאומטריות בלבד. ובכל זאת רואים אגרוף שנסגר סביב מוט: משקל, אחיזה ושליטה. פשוט, ועדיין יש לו נשמה.</p>
+          </div>
+        </div>
+        <figcaption>בעבר מול היום: לוגו פשוט שעדיין מרגיש משקל ותנועה. הסמל הוא ציור שלי להדגמה, לא הלוגו של <span class="ltr">Iron Grip</span>.</figcaption>
+      </figure>
+
+      <p><strong>דוגמה מהשנים האחרונות:</strong> מותג הוולנס <span class="ltr">Mindbody</span> חשף זהות חדשה, שעושה קפיצה משמעותית מהעיצוב הישן, עם רענון צבעים מתבקש ואייקון לוגו חדש לגמרי. סמל ה־<span class="ltr">m</span> הדינמי והזורם מייצג תנועה, נשימה ודופק, ומשקף את המשימה של המותג ואת הקצב של קהילת הוולנס שלו. זהות מודרנית, ברורה ועל־זמנית, שמביטה קדימה בלי לנתק את הקשר למורשת.</p>
+      <div class="gallery g2 natural">
+        <a href="img/lecture-mindbody.webp" data-lb data-cap="Mindbody: לפני ואחרי"><img src="img/lecture-mindbody.webp" alt="שני לוגואים של Mindbody: הישן בכתום עם עיגול פתוח, והחדש עם סמל m על רקע ירוק מנטה" loading="lazy" width="784" height="420"></a>
+        <a href="img/lecture-humane-society.webp" data-lb data-cap="The Humane Society: לפני ואחרי"><img src="img/lecture-humane-society.webp" alt="לפני ואחרי: הלוגו הישן של The Humane Society עם מפת ארצות הברית מחיות, והחדש Humane World for Animals עם סמל כחול פשוט" loading="lazy" width="1200" height="675"></a>
+      </div>
+      <figcaption>שני רענונים מההרצאה: <span class="ltr">Mindbody</span>, ו־<span class="ltr">The Humane Society</span> שהפכה ל־<span class="ltr">Humane World for Animals</span>. בשניהם, מהרבה פרטים לסמל אחד.</figcaption>
+
+      <h4>כשפשטות הולכת לאיבוד: הפיל של <span class="ltr">Animal Planet</span></h4>
+      <p><span class="ltr">Animal Planet</span>, רשת הטלוויזיה שהביאה לנו את <span class="ltr">The Crocodile Hunter</span>, סרטי טבע רגועים ו־<span class="ltr">River Monsters</span>, החזיקה בעבר לוגו שהיה הגיוני לגמרי.</p>
+      <div class="rd rd3">
+        <div><a class="ap" href="img/lecture-animal-planet-2006.webp" data-lb data-cap="Animal Planet, 2006"><img src="img/lecture-animal-planet-2006.webp" alt="לוגו Animal Planet משנת 2006: פיל לבן וגלובוס כחול על רקע ירוק, מעל השם" loading="lazy" width="877" height="1200"></a><span class="yr">2006</span><h4>פיל וגלובוס</h4><p>שילוב שאמר מיד לאיזה מסע הצופה נכנס.</p></div>
+        <div><a class="ap" href="img/lecture-animal-planet-2008.webp" data-lb data-cap="Animal Planet, 2008"><img src="img/lecture-animal-planet-2008.webp" alt="לוגו Animal Planet משנת 2008: אותיות ירוקות גדולות, והאות M מוטה הצידה" loading="lazy" width="960" height="470"></a><span class="yr">2008</span><h4>האות <span class="ltr">M</span> נופלת</h4><p>הפיל האהוב נעלם, ובמקומו הופיע לוגו טקסטואלי מגושם, עם האות <span class="ltr">M</span> שמוטה הצידה כאילו היא באמצע נפילה. בחירה אמיצה, שמטרתה הייתה מודרניזציה של המותג ופנייה לקהל רחב ובוגר יותר, בדומה למהלך שעשתה <span class="ltr">Tropicana</span>, ובהתאם לתכנים החדים יותר שהרשת התחילה לשדר.</p><span class="stat">בפועל, זה לא עבד.</span></div>
+        <div><a class="ap" href="img/lecture-animal-planet-2018.webp" data-lb data-cap="Animal Planet, 2018"><img src="img/lecture-animal-planet-2018.webp" alt="לוגו Animal Planet משנת 2018: פיל כחול קופץ מעל השם באותיות קטנות" loading="lazy" width="1200" height="705"></a><span class="yr">2018</span><h4>הפיל חוזר</h4><p>הקהל היה מבולבל, מעצבים סלדו מהשינוי, ואפילו הפילים נפגעו (הערת עורך: דרוש מקור). הרשת דבקה בכיוון, ולמזל כולם, כעבור עשר שנים הוצג לוגו מחודש ומעודן, כשהפיל חוזר למקומו הטבעי. וכך, הסדר חזר לכוכב החיות.</p></div>
+      </div>
+      <p>עוד שני סיפורים כאלה, של <span class="ltr">Gap</span> ו־<span class="ltr">Tropicana</span>, יש בסוף הפרק. <a class="xref" href="#redesign">כשמשנים לוגו בלי סיבה טובה</a></p>
+
+      <h4>פשוט וברור</h4>
+      <p>לוגו טוב לא צריך הסבר. יש דוגמאות של לוגואים מוצלחים ששוברים את החוקים, אבל באופן כללי לוגו טוב צריך להיות פשוט, ובנוי מהמרכיבים החיוניים ביותר בלבד, כך שאפשר לזכור אותו אחרי מבט אחד.</p>
+      <div class="tip">
+        <span class="box-label">התבוננו</span>
+        <p>התבוננו בלוגואים הבאים: לוגואים שאנחנו רואים כל יום ומזהים באופן מיידי. פשוטים, נכון? לא קל להיות כל כך פשוט.</p>
+        <a class="strip" href="img/lecture-everyday-logos.webp" data-lb data-cap="Mitsubishi, CBS, McDonald's, CNN, Nike והטבעות האולימפיות"><img src="img/lecture-everyday-logos.webp" alt="שורת לוגואים: Mitsubishi, CBS, McDonald's, CNN, Nike והטבעות האולימפיות" loading="lazy" width="1200" height="134"></a>
+      </div>
+      <p><strong>פול רנד <span class="ltr">(Paul Rand)</span></strong> תכנן חלק מהלוגואים המפורסמים והוותיקים ביותר בעולם<span data-added>, ביניהם <span class="ltr">IBM, ABC, UPS</span> ו־<span class="ltr">Westinghouse</span>. שווה לחפש את העבודות שלו ולראות כמה מעט צורות כל אחד מהם צריך</span>.</p>
+      <div class="gallery g2 natural">
+        <a href="img/lecture-paul-rand.webp" data-lb data-cap="פול רנד (Paul Rand)"><img src="img/lecture-paul-rand.webp" alt="פול רנד, מעצב מבוגר עם משקפיים, בתצלום שחור־לבן" loading="lazy" width="940" height="500"></a>
+        <a href="img/lecture-paul-rand-logos.webp" data-lb data-cap="חלק מהלוגואים שעיצב פול רנד"><img src="img/lecture-paul-rand-logos.webp" alt="קיר של לוגואים שעיצב פול רנד: UPS, ABC, IBM, Westinghouse, NeXT ועוד" loading="lazy" width="819" height="463"></a>
+      </div>
+      <blockquote class="quote">העיצוב כל כך פשוט, ולכן כל כך מסובך. כדי שהלוגו יהיה נוח לזיהוי מיידי, <strong>מה שאנחנו משאירים בחוץ חשוב לא פחות ממה שאנחנו משאירים בפנים.</strong><br><span class="muted" style="font-size:16px">פשטות, סיכום</span></blockquote>
+      <h3 id="optical" data-added>התיקונים שהעין עושה, ולא התוכנה</h3>
+      <div data-added>
+        <p>מה שמדויק מתמטית לא תמיד נראה מדויק. עיגול וריבוע באותו גובה בדיוק? העיגול ייראה קטן יותר, כי הוא לא ממלא את הפינות. לכן מעצבים נותנים לצורות מעוגלות ומחודדות <strong>לחרוג מעט</strong> מקו הבסיס ומקו הגובה <span class="ltr">(Overshoot)</span>. אותו דבר באותיות: ריווח שווה בין כל האותיות נראה לא שווה, כי אותיות כמו <span class="ltr">A, V, W, T</span> כולאות הרבה חלל לבן, ולכן מקרבים אותן ידנית <span class="ltr">(Kerning)</span>.</p>
+        <div class="widget" id="wopt">
+          <div class="seg" role="group" aria-label="סוג יישור">
+            <button type="button" aria-pressed="true" data-m="math">מתמטי</button>
+            <button type="button" aria-pressed="false" data-m="optical">אופטי</button>
+          </div>
+          <svg class="op-svg" viewBox="0 0 540 180" aria-hidden="true" style="margin-top:14px">
+            <line class="guide" x1="20" y1="40" x2="520" y2="40"/><line class="guide" x1="20" y1="140" x2="520" y2="140"/>
+            <rect class="sh" x="60" y="40" width="100" height="100"/>
+            <circle class="sh circ" cx="270" cy="90" r="50"/>
+            <polygon class="sh tri" points="380,140 430,40 480,140"/>
+          </svg>
+          <p class="op-word" aria-hidden="true">AVATAR</p>
+          <p class="op-why" aria-live="polite"></p>
+        </div>
+        <p>ועוד תיקון אחד שחשוב לגרסה הנגטיבית: לבן על רקע כהה נראה <strong>עבה יותר</strong> מאותה צורה בשחור על לבן, כי האור „זולג” החוצה. בלוגו עם קווים עבים כדאי להרזות מעט את הגרסה הנגטיבית כדי שתיראה כמו המקור. <a class="xref" href="#versions">גרסאות חובה</a></p>
+      </div>
+
+      <h3 id="compliment-name" data-rail-step data-rail-label="החמיאו לשם">2. החמיאו לשם החברה</h3>
+      <p>לוגו טוב צריך <strong>להחמיא לשם החברה</strong>. משמעות הדבר היא לבחון אסוציאציות, לחקור את ההיסטוריה ואת הסמליות של שם החברה, ולהשתמש בדימויים שמתאימים לתחום העיסוק.</p>
+      <p><span data-added>איך עושים את זה בפועל: שואלים את הלקוח למה בחר בשם, ומפרקים את השם למפת אסוציאציות.</span> <a class="xref" href="logo-design.html#q-name">שם החברה: שאלות ללקוח</a> <a class="xref" href="logo-design.html#mind-maps">מפות חשיבה</a> <a class="xref" href="strategy.html#naming">שם וסלוגן</a></p>
+
+      <h3 id="black-white" data-rail-step data-rail-label="שחור ולבן">3. נראה טוב בשחור ולבן</h3>
+      <p>לוגו טוב צריך להיראות טוב בשחור־לבן בדיוק כמו בצבע. זה אולי פחות חשוב מפעם, כי קיימים לוגואים שנועדו רק למסך. אבל כשהלוגו נראה טוב בשחור־לבן, <strong>תוספת הצבע תחזק את הניגודיות ותדגיש את הצורה או הרעיון</strong>, ולא תצטרך להציל אותו.</p>
+      <p><span data-added>זה גם מבחן החובה הראשון, וגם אחת משלוש גרסאות החובה של כל לוגו.</span> <a class="xref" href="#tests">עמידות ללא צבע</a> <a class="xref" href="#versions">גרסת שחור־לבן</a></p>
+
+      <h3 id="scalable" data-rail-step data-rail-label="ניתן להרחבה">4. ניתן להרחבה</h3>
+      <p>לוגו טוב צריך להיות <strong>מדרגי</strong>: לעבוד במספר גדלים שונים. כרטיסי ביקור, אתרי אינטרנט, חולצות טריקו, חוברות, באנרים, אפליקציה (אייקון), כלי רכב, שלטי חוצות וכו’.</p>
+      <div class="tip">
+        <span class="box-label">תרגיל</span>
+        <p>ערכו רשימה של השימושים השונים בלוגו. שקלו איך כל שימוש עשוי להשפיע על הקריאות של הלוגו, ובזמן העיצוב התחשבו במגבלות שמצאתם.</p>
+      </div>
+      <div class="gallery g2 natural">
+        <a href="img/lecture-ibm-sign.webp" data-lb data-cap="IBM: שלט על בניין"><img src="img/lecture-ibm-sign.webp" alt="השלט של IBM על בניין משרדים, בפסים לבנים על רקע שחור" loading="lazy" width="580" height="358"></a>
+        <a href="img/lecture-ibm-truck.webp" data-lb data-cap="IBM: על משאית"><img src="img/lecture-ibm-truck.webp" alt="משאית תצוגה כחולה עם הלוגו של IBM בצד" loading="lazy" width="552" height="349"></a>
+        <a href="img/lecture-ibm-card.webp" data-lb data-cap="IBM: על כרטיס ביקור"><img src="img/lecture-ibm-card.webp" alt="כרטיס ביקור לבן עם הלוגו הכחול של IBM בפינה" loading="lazy" width="1200" height="835"></a>
+      </div>
+      <figcaption>מתוך ההרצאה: אותו לוגו של <span class="ltr">IBM</span> על בניין, על משאית ועל כרטיס ביקור.</figcaption>
+
+      <h3 id="versatility">ורסטיליות וסקיילביליות: מעבר למבחן החולצה</h3>
+      <p>פעם היה מספיק שהלוגו „עובר את מבחן הטי־שירט”. היום הרף גבוה יותר:</p>
+      <div class="cards">
+        <div class="card"><span class="k">Scalability</span><h4>סקיילביליות</h4><p>הלוגו חייב לשרוד בגודל <span class="ltr">16</span> פיקסלים כ־<span class="ltr">favicon</span>, ובו בזמן להיראות מרשים על מסך ענק באצטדיון. זה אומר לתכנן <strong>מערכת של סמלים</strong>: לוגו מלא, סמל, סמל מפושט, ואולי אפילו מיקרו־סמל למקומות הזעירים ביותר.</p></div>
+        <div class="card"><span class="k">Versatility</span><h4>ורסטיליות</h4><p>הלוגו צריך לעבוד בתנועה, במצב חשוך <span class="ltr">(Dark Mode)</span>, כחלק מרכיבי ממשק משתמש <span class="ltr">(UI)</span> ועל מוצרים פיזיים. הוא צריך להיראות חד כשהוא מונפש בעדינות במסך פתיחה של אפליקציה, כאווטאר זעיר בפינת אתר, וגם כהטבעה. דמיינו מגן כמו של <span class="ltr">GRRi</span> עושה בדיוק את זה.</p></div>
+      </div>
+      <div class="gallery g2 natural">
+        <a href="img/lecture-grri-system.webp" data-lb data-cap="GRRi: מהלוגו המלא ועד הלשונית בדפדפן"><img src="img/lecture-grri-system.webp" alt="מערכת הלוגו של GRRi: לוגו מלא, מגן עם אות ואות לבד, ומתחת הלוגו על מסך באצטדיון, על מסך מחשב ובלשונית דפדפן" loading="lazy" width="891" height="505"></a>
+        <a href="img/lecture-grri-dark.webp" data-lb data-cap="GRRi: מסך פתיחה, מצב כהה, הטבעה ואווטאר"><img src="img/lecture-grri-dark.webp" alt="הלוגו של GRRi בטלפון במסך פתיחה, בממשק כהה, מוטבע על עור ובאווטאר עגול" loading="lazy" width="805" height="469"></a>
+      </div>
+      <figcaption>הדוגמה מההרצאה: המגן של <span class="ltr">GRRi</span> בכל הגדלים ובכל המצבים. ובהדגמה שמתחת, אותו רעיון צעד אחר צעד, עם מותג שהמצאתי.</figcaption>
+      <figure class="anim vsf kv" data-steps="5" data-step-labels="מסך אצטדיון|מסך מחשב|אייקון אפליקציה|הטבעה|לשונית בדפדפן">
+        <span class="anim__label">מהמקום הגדול ביותר לקטן ביותר</span>
+        <div class="anim__stage">
+          <div class="vs-lv">
+            <span><i><svg viewBox="0 0 330 110" aria-hidden="true"><use href="#kv-full"/></svg></i>לוגו מלא</span>
+            <span><i><svg viewBox="0 0 100 110" aria-hidden="true"><use href="#kv-shield"/></svg></i>מגן עם אות</span>
+            <span><i><svg viewBox="0 0 80 100" aria-hidden="true"><use href="#kv-k"/></svg></i>אות לבד</span>
+          </div>
+          <div class="vs-sc" aria-hidden="true">
+            <div class="sc-st"><span class="lamp" style="left:4%"></span><span class="lamp" style="right:4%"></span><div class="scr"><svg viewBox="0 0 330 110"><use href="#kv-full"/></svg></div><span class="post" style="left:32%"></span><span class="post" style="right:32%"></span><span class="crowd"></span></div>
+            <div class="sc-mo"><div class="mon"><div class="hd"><svg viewBox="0 0 330 110"><use href="#kv-full"/></svg><span class="nav"><i></i><i></i><i></i></span></div><div class="hero"><i></i><i></i></div></div></div>
+            <div class="sc-ap"><div class="ph"><i></i><i></i><i></i><i></i><i class="ic"><svg viewBox="0 0 100 110"><use href="#kv-shield"/></svg></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="sc-em"><svg viewBox="0 0 100 110"><use href="#kv-shield"/></svg></div>
+            <div class="sc-fv"><div class="tabs"><span class="tab on"><svg viewBox="0 0 80 100"><use href="#kv-k"/></svg>KAVEN | Home</span><span class="tab"><b></b>Inbox</span><span class="tab"><b></b>News</span></div><div class="addr"><i></i></div><div class="zoom"><svg viewBox="0 0 80 100"><use href="#kv-k"/></svg><small>16 × 16</small></div></div>
+          </div>
+          <div class="say" aria-live="polite">
+            <p data-s="1"><strong>מסך באצטדיון:</strong> עשרות מטרים, ורואים אותו מרחוק. כאן נכנס הלוגו המלא, עם המגן ועם השם.</p>
+            <p data-s="2"><strong>מסך מחשב:</strong> הכותרת של האתר. עדיין יש מקום לשם ליד הסמל, אבל הכול כבר קטן בהרבה.</p>
+            <p data-s="3"><strong>אייקון אפליקציה:</strong> ריבוע קטן במסך הבית. השם נופל, ונשאר המגן עם האות.</p>
+            <p data-s="4"><strong>הטבעה:</strong> על כריכת עור אין צבע בכלל, רק בליטה ושקע. אם הצורה חזקה, מזהים אותה גם ככה.</p>
+            <p data-s="5"><strong>לשונית בדפדפן:</strong> <span class="ltr">16×16</span> פיקסלים. גם המגן כבר עמוס מדי, ונשארת האות לבד, עבה ופשוטה.</p>
+          </div>
+        </div>
+        <figcaption>מותג שהמצאתי לצורך ההדגמה. שלוש רמות של אותו סמל: לוגו מלא, מגן עם אות, ולבסוף האות לבד. כל רמה למקום אחר.</figcaption>
+      </figure>
+
+      <p>ולפני שהלוגו יוצא לעולם, שלושה מבחני חובה: <strong>צבע, גלילה ובהירות.</strong> הם מפורטים, עם הדגמה, בהמשך הפרק. <a class="xref" href="#tests">מבחני חובה</a></p>
+      <h4>התאמות לכל גודל ורזולוציה</h4>
+      <figure class="fig">
+        <a href="img/lecture-responsive-brands.webp" data-lb data-cap="לוגו רספונסיבי: Guinness, Victorinox, Kodak ו-Warner Bros בארבעה גדלים"><img src="img/lecture-responsive-brands.webp" alt="ארבעה מותגים, כל אחד בארבעה גדלים מהגדול לקטן: Guinness, Victorinox, Kodak ו־Warner Bros" loading="lazy" width="1000" height="682"></a>
+        <figcaption>מתוך ההרצאה: ארבעה מותגים, כל אחד בארבע רמות פירוט. ככל שהמקום קטן, נשאר פחות.</figcaption>
+      </figure>
+      <figure class="fig">
+        <a href="img/lecture-responsive-argento.webp" data-lb data-cap="Argento: אותו לוגו בשלוש רמות פירוט, מהמלא ועד הקטן ביותר"><img src="img/lecture-responsive-argento.webp" alt="שלוש גרסאות של לוגו היין Argento, מלמעלה למטה: חותם עם השם והמקום, גרסה מצומצמת, וגרסה זעירה. ליד כל אחת תקריב של החותם" loading="lazy" width="1000" height="942"></a>
+        <figcaption>מתוך השקפים: אותו לוגו בשלוש רמות פירוט. ככל שהגודל קטן, יורדים פרטים: קודם הטקסט הקטן, אחר כך הקישוטים בחותם.</figcaption>
+      </figure>
+      <p>איך מתכננים את הגרסאות האלה מראש, ומה מוסרים ללקוח: <a class="xref" href="#system">מערכת לוגו</a> <a class="xref" href="#responsive">לוגו רספונסיבי</a></p>
+
+      <h3 id="original" data-rail-step data-rail-label="מקורי">5. מקורי</h3>
+      <p>לוגו טוב חייב להיות מקורי. עם כל כך הרבה לוגואים בעולם, צריך להיות ערניים לשוק ולבדוק שלא עיצבנו משהו שכבר נראה בעבר, או מזכיר משהו כזה. <strong>תמיד תעשו מחקר:</strong> מי המתחרים של העסק? מה עשו בעבר בתחום? <a class="xref" href="logo-design.html#q-competitors">מי המתחרים</a></p>
+      <div class="tip">
+        <span class="box-label">חיפוש לפי תמונה, אבל רק בסוף</span>
+        <p>היום אפשר להעלות את הלוגו שלכם כתמונה לגוגל ולחפש לפי התמונה. תקבלו תוצאות דומות, ותוכלו לבדוק אם כבר עשו את זה לפניכם.</p>
+        <p>מומלץ לבדוק כפילויות <strong>בסיום העבודה</strong>, כדי לא לחסום את היצירתיות. באופן טבעי, כשאנחנו בוחנים הרבה עיצובים, מתחילים להיווצר אצלנו מחסומים ליצירת עיצוב מקורי. <a class="xref" href="logo-design.html#step-computer">למה לחפש רק אחרי</a></p>
+      </div>
+      <p data-added>ובעידן של מחוללי לוגואים, מקוריות היא כבר לא רק „לא להעתיק”. היא השאלה מה אתם מביאים שהכלי לא יכול.</p>
+
+      <h3 id="midjourney">האמת הלא נוחה: הלקוחות שלכם כבר מכירים את <span class="ltr">Midjourney</span> וחבריו</h3>
+      <p>בואו נדבר ישירות על <span class="ltr">AI</span>. רוב הלקוחות שלכם יודעים שהם יכולים לייצר לוגואים בעצמם. אם ההצעה היחידה שלכם היא „אני אעצב לך סמל שנראה מגניב”, אתם מתחרים ישירות בפרומפט של 20 שניות. זה קרב שאתם לא רוצים, ולא יכולים, לנצח בו.</p>
+      <figure class="anim mjf" data-steps="3" data-step-labels="הפרומפט|20 שניות|היתרון שלכם">
+        <span class="anim__label">מחולל לוגואים, מבפנים</span>
+        <div class="anim__stage">
+          <div class="mj">
+            <div class="mj-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mj-url">logo generator</span></div>
+            <div class="mj-body">
+              <div class="mj-grid" aria-hidden="true">
+                <div class="mj-t"><svg viewBox="0 0 40 40"><path d="M11 7h22l-3 6H18l-1 4h11l-3 6h-9l-3 10H7z" fill="url(#mjb)"/></svg></div>
+                <div class="mj-t"><svg viewBox="0 0 40 40"><path d="M20 4l13 5v10c0 9-6 14-13 17C13 33 7 28 7 19V9z" fill="url(#mjb)"/><path d="M20 13v13M14 16v6l3 3M26 16v6l-3 3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="20" cy="12" r="2.2" fill="#fff"/></svg></div>
+                <div class="mj-t"><svg viewBox="0 0 40 40"><path d="M30 11.5a12 12 0 1 0 0 17" fill="none" stroke="#2563eb" stroke-width="7" stroke-linecap="round"/><circle cx="29" cy="20" r="3.6" fill="#38bdf8"/></svg></div>
+                <div class="mj-t"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="url(#mjb)"/><path d="M6 20h28M20 6c-6 6-6 22 0 28M20 6c6 6 6 22 0 28M9 13h22M9 27h22" stroke="#fff" stroke-width="1.8" fill="none"/></svg></div>
+              </div>
+              <div class="mj-st" aria-hidden="true">4 results · 20 s</div>
+              <div class="mj-prompt"><span class="mj-in">logo for a tech company, modern, blue</span><span class="mj-go" aria-hidden="true">Generate</span></div>
+              <div class="mj-edge"><b>Your edge is thinking, not just using tools.</b><span>היתרון שלכם הוא החשיבה, לא רק השימוש בכלים.</span></div>
+            </div>
+          </div>
+          <div class="say" aria-live="polite">
+            <p data-s="1">כך הלקוח מתחיל: פרומפט אחד, בלי בריף, בלי מחקר ובלי לדעת מי הקהל.</p>
+            <p data-s="2">עשרים שניות אחר כך יש ארבעה סמלים נקיים. כולם „נראים כמו לוגו”, ואף אחד מהם לא יודע למי הוא מיועד או ממה הוא צריך להבדיל.</p>
+            <p data-s="3">כאן נגמרת התחרות על הציור ומתחילה התחרות על החשיבה. בה אתם מנצחים.</p>
+          </div>
+        </div>
+        <figcaption>הסמלים בחלון ציירתי בעצמי בסגנון הכללי של מחוללי לוגואים. הם לא נוצרו בכלי כזה.</figcaption>
+      </figure>
+
+      <figure class="fig">
+        <a href="img/lecture-ai-generator.webp" data-lb data-cap="מחולל לוגואים: ארבעה סמלים מפרומפט אחד"><img src="img/lecture-ai-generator.webp" alt="מחולל לוגואים בדפדפן: ארבעה סמלים כחולים בגרדיאנט מעל שורת פרומפט logo for a tech company, modern, blue" loading="lazy" width="755" height="496"></a>
+        <figcaption>מהשקף בהרצאה: אותו פרומפט במחולל אמיתי, ואותם ארבעה סמלים כחולים שאפשר להדביק לכל חברה.</figcaption>
+      </figure>
+
+      <h3 id="blind-spots">נקודות התורפה של <span class="ltr">AI</span> הן החוזקות שלכם</h3>
+      <div class="bs">
+        <div><h4>פסיכולוגיה</h4><p>היא לא מבינה את הניואנסים התרבותיים והרגשיים של קהל המטרה.</p></div>
+        <div><h4>אסטרטגיה</h4><p>היא לא מבינה את ההקשר העסקי או את קהל היעד הספציפי.</p></div>
+        <div><h4>התאמה לשוק</h4><p>היא לא מבינה איך הלוגו ישתלב בסביבה תחרותית רוויה.</p></div>
+        <div><h4>איפוק</h4><p>היא תוסיף ותקשט עד שנשמת הרעיון תיעלם.</p></div>
+      </div>
+      <p>אתם יודעים מתי להגיד „לא, זה יותר מדי”. אתם מבינים שלוגו בצורת מגן לא מתאים למותג צעצועים, או שסמל אגרסיבי מדי יבריח לקוחות של יועץ פיננסי. <strong>זה הערך שלכם.</strong></p>
+
+      <h4>מודל העבודה: <span class="ltr">AI</span> כסקצ'בוק, לא כמחליף</h4>
+      <div class="model3" aria-label="מודל העבודה">
+        <span>אסטרטגיה אנושית</span><i aria-hidden="true">←</i><span class="ai">חומר גלם מ־<span class="ltr">AI</span></span><i aria-hidden="true">←</i><span>זיקוק אנושי</span>
+      </div>
+      <p>אל תתעלמו מ־<span class="ltr">AI</span> לחלוטין: השתמשו בו ככלי לחקר ולקונספטים. הרעיונות והכיוון האסטרטגי צריכים להגיע מכם, ה־<span class="ltr">AI</span> מייצר את חומר הגלם, ואתם מעצבים כמו בני אדם: עם מוח, אחריות וטעם. איך זה נראה בפועל, עם הדגמה ומה אומרים ללקוח, נמצא בפרק הבא. <a class="xref" href="logo-design.html#ai-sketchbook">AI כסקצ'בוק</a></p>
+      <blockquote class="quote">אם אתם מוסרים את כל העבודה ל־<span class="ltr">AI</span>, אתם הופכים למתווכים חסרי ערך. אם אתם משתמשים בו כדי להרחיב את החשיבה שלכם, קשה מאוד להחליף אתכם.</blockquote>
+      <p>ולבסוף, ושוב: <strong>לוגו טוב חייב להיות מקורי.</strong></p>
+
+      <h3 id="good-logo-checklist" data-rail-step data-rail-label="רשימת בדיקה">סיכום: מה זה לוגו טוב?</h3>
+      <p>תחשבו על הרשימה הזו כמו <span class="ltr">Check List</span>. עברו עליה עם הלוגו שלכם, וסמנו רק מה שבאמת עובר:</p>
+      <div class="widget ck5" id="wck5">
+        <label><input type="checkbox"> <span><b>1. פשטות</b> אפשר לזכור אותו אחרי מבט אחד</span></label>
+        <label><input type="checkbox"> <span><b>2. החמיאו לשם החברה</b> הדימוי מתאים לשם ולתחום</span></label>
+        <label><input type="checkbox"> <span><b>3. נראה טוב בשחור ולבן</b> הצבע מעצים, לא מציל</span></label>
+        <label><input type="checkbox"> <span><b>4. ניתן להרחבה</b> עובד מכרטיס ביקור ועד שלט חוצות</span></label>
+        <label><input type="checkbox"> <span><b>5. מקורי</b> בדקתי בחיפוש לפי תמונה, בסוף העבודה</span></label>
+        <p class="ck5-out" aria-live="polite"></p>
+      </div>
+    </section>
+    <!-- ================= five logo types ================= -->
+    <section class="sec">
+      <h2 id="logo-types" data-short="חמשת סוגי הלוגו">חמשת סוגי הלוגו</h2>
+      <p>לפני שמתחילים לשרטט, כדאי לדעת מה האפשרויות. ישנם חמישה סוגים של לוגואים, וכל סוג פותר בעיה אחרת:</p>
+      <div class="lt5">
+        <div class="lt">
+          <span class="k">LOGO symbol with name</span><h4>1. לוגו סמל עם שם</h4>
+          <a class="lt-img" href="img/lecture-type-symbol-name.webp" data-lb data-cap="לוגו סמל עם שם: Microsoft, משרד התרבות והספורט, הראל, פלאפון, מפעל הפיס, מזרחי טפחות"><img src="img/lecture-type-symbol-name.webp" alt="שישה לוגואים: Microsoft, משרד התרבות והספורט, הראל ביטוח ופיננסים, פלאפון, מפעל הפיס ומזרחי טפחות" loading="lazy" width="1200" height="522"></a>
+          <p>לוגו שקיים בעיקר בצורת סמל, והטיפוגרפיה היא רק ליווי ולא העיקר. אפשר להשתמש בסמל כמו באייקון, במקרים שאין מקום לטיפוגרפיה.</p>
+        </div>
+        <div class="lt">
+          <span class="k">LOGOTYPE</span><h4>2. לוגו טיפוגרפי</h4>
+          <a class="lt-img" href="img/lecture-type-logotype.webp" data-lb data-cap="לוגו טיפוגרפי: amazon, Canon, Carlsberg, CNN, ebay, IBM, LEGO, Nokia, דנונה, Panasonic, Subway, Tefal, yes"><img src="img/lecture-type-logotype.webp" alt="לוגואים טיפוגרפיים: amazon, Canon, Carlsberg, CNN, ebay, IBM, LEGO, Nokia, דנונה, Panasonic, Subway, Tefal ו־yes" loading="lazy" width="1200" height="519"></a>
+          <p>לוגו שמורכב מאותיות השם של המותג, החברה או המוצר. לוגו שאי אפשר „לפרק” לצורה אחת פשוטה.</p>
+          <a class="lt-img" href="img/lecture-type-disney.webp" data-lb data-cap="Disney: הלוגו הטיפוגרפי, גרסה עם הטירה, ואוזני מיקי כאייקון"><img src="img/lecture-type-disney.webp" alt="שלוש גרסאות של Disney: החתימה, Walt Disney Pictures עם הטירה, וראש מיקי מאוס בשחור" loading="lazy" width="1200" height="253"></a>
+          <p>לפעמים ללוגו טיפוגרפי יש עוד כמה אפשרויות, ואפילו עיצוב של אייקון בלבד! כמו <span class="ltr">Disney</span>.</p>
+        </div>
+        <div class="lt">
+          <span class="k">LOGOTYPE &amp; Symbol</span><h4>3. לוגו טיפוגרפי וסמל</h4>
+          <a class="lt-img" href="img/lecture-type-logo-symbol.webp" data-lb data-cap="לוגו טיפוגרפי וסמל: בזק, Google, פרטנר"><img src="img/lecture-type-logo-symbol.webp" alt="שלושה לוגואים: בזק עם הסמל הכחול, Google עם ה־G הצבעוני, ופרטנר עם הפרח הצבעוני" loading="lazy" width="1200" height="256"></a>
+          <p>לוגו טיפוגרפי עם סמל. בדרך כלל הסמל נועד לשמש כתחליף, כשאין מקום ללוגו הטיפוגרפי.</p>
+          <a class="lt-img" href="img/lecture-type-telma.webp" data-lb data-cap="תלמה: כמה גרסאות של אותו לוגו"><img src="img/lecture-type-telma.webp" alt="שלוש גרסאות של הלוגו של תלמה באדום ובכחול" loading="lazy" width="1200" height="182"></a>
+          <p>לפעמים ללוגו יהיו כמה גרסאות לשימושים שונים, בעיקר למדיה שונה: דפוס, אינטרנט וטלוויזיה.</p>
+          <a class="lt-img" href="img/lecture-type-coca-cola.webp" data-lb data-cap="Coca-Cola: הכתב, העיגול האדום, הגל והבקבוק"><img src="img/lecture-type-coca-cola.webp" alt="גרסאות של Coca-Cola: בקבוק, עיגול אדום עם הכתב, מלבן אדום, הכתב לבד וגל לבן על אדום" loading="lazy" width="1200" height="484"></a>
+          <p>דוגמה לחברה שיודעת לעשות את זה כמו שצריך: <span class="ltr">Coca-Cola</span>.</p>
+          <a class="lt-img" href="img/lecture-type-cars.webp" data-lb data-cap="סמלים של יצרני רכב עם הטיפוגרפיה שלהם"><img src="img/lecture-type-cars.webp" alt="סמלים ושמות של יצרני רכב: Aston Martin, Audi, Bentley, Cadillac, Chrysler, Citroën, Kia, Volkswagen, Honda, Jaguar, Lexus, Mercedes, Peugeot, Renault, Škoda, smart, Subaru, Suzuki, Toyota, GMC" loading="lazy" width="1200" height="572"></a>
+          <p>בסמלים של יצרני רכב, בדרך כלל משתדלים שיהיה סמל וגם טיפוגרפיה ייחודית ש„מחמיאה” לסמל, מחזקת אותו ולעיתים ממשיכה אותו.</p>
+        </div>
+        <div class="lt">
+          <span class="k">LOGO SYSTEM · Dynamic Logo</span><h4>4. לוגו מערכתי / לוגו דינמי</h4>
+          <a class="lt-img" href="img/lecture-type-mtv-system.webp" data-lb data-cap="MTV: אותו M בעשרות גרסאות"><img src="img/lecture-type-mtv-system.webp" alt="עשרות גרסאות של הלוגו של MTV, כל אחת בצבעים ובמרקמים אחרים" loading="lazy" width="1200" height="355"></a>
+          <p>ערוץ <span class="ltr">MTV</span> היה בין החלוצים שהשתמשו ב־<span class="ltr">Logo System</span>, שידוע גם בתור <span class="ltr">Dynamic Logo</span>.</p>
+          <a class="lt-img" href="img/lecture-type-doodles.webp" data-lb data-cap="Google Doodles"><img src="img/lecture-type-doodles.webp" alt="חמישה Google Doodles מאוירים, כל אחד בסגנון אחר" loading="lazy" width="1200" height="573"></a>
+          <p>ממשיכי הדרך: <span class="ltr">Google</span>, שהמציאו את ה־<span class="ltr">Google Doodle</span>. לא משנה כמה העיצוב היה משוגע או מקושקש, תמיד אפשר היה לזהות את הלוגו.</p>
+          <a class="lt-img" href="img/lecture-type-dynamic.webp" data-lb data-cap="עוד מערכות לוגו: FedEx, Transport for London, Natural History Museum, MIT Media Lab ועוד"><img src="img/lecture-type-dynamic.webp" alt="קולאז' של מערכות לוגו: FedEx בצבעים שונים, עיגולי Transport for London, Natural History Museum ועוד" loading="lazy" width="1200" height="510"></a>
+          <p>חברה, מותג, עסק או מוצר שרוצים להראות חדשנות והסתגלות ישתמשו במערכת הזו. עוד דוגמאות בשפע תמצאו אם תחפשו את המונחים <span class="ltr">dynamic identity</span> ו־<span class="ltr">generative logos</span>.</p>
+        </div>
+        <div class="lt">
+          <span class="k">Brand Character</span><h4>5. לוגו דמות</h4>
+          <a class="lt-img" href="img/lecture-type-characters.webp" data-lb data-cap="דמויות מותג: טוני הנמר, דמויות M&amp;M's ומר קלין"><img src="img/lecture-type-characters.webp" alt="דמויות מותג: טוני הנמר, שש דמויות M&amp;M's צבעוניות ומר קלין" loading="lazy" width="1200" height="260"></a>
+          <a class="lt-img" href="img/lecture-type-mms.webp" data-lb data-cap="M&amp;M's: הדמויות הן הפנים של המותג"><img src="img/lecture-type-mms.webp" alt="דמויות M&amp;M's האדומה והצהובה משני צדי הלוגו והאריזה" loading="lazy" width="1200" height="518"></a>
+          <p>שילוב של דמות בלוגו הוא חזק מאוד, אבל מחייב את המעצב לחדש ולהשתמש בדמות, כי היא הפנים של החברה, של המוצר או של המותג. <a class="xref" href="visual-language.html#character">מערכת הדמות</a></p>
+        </div>
+      </div>
+      <p class="muted" style="font-size:15px">כל הדוגמאות מהשקפים של ההרצאה. לחיצה על תמונה פותחת אותה בגדול.</p>
+      <div class="widget dyn" id="wdyn" data-added>
+        <span class="anim__label">לוגו דינמי: לחצו כדי לייצר עוד גרסה</span>
+        <div class="dyn-row" aria-hidden="true"></div>
+        <button type="button" class="ex-go">עוד גרסה</button>
+        <p class="muted" style="font-size:15px;margin:10px 0 0">הצבע, המרקם והקישוט משתנים בכל לחיצה. הצורה נשארת, ולכן מזהים את המותג גם בגרסה שלא ראיתם קודם.</p>
+      </div>
+      <div class="note" data-added>
+        <span class="box-label">ומה עם החלוקות האחרות?</span>
+        <p>במקורות אחרים תמצאו חלוקה עדינה יותר, אבל כולה נכנסת בחמשת הסוגים שלמעלה: <strong>לוגו ראשי תיבות <span class="ltr">(Lettermark)</span></strong> ( כמו <span class="ltr">IBM</span> או <span class="ltr">HBO</span>) הוא לוגו טיפוגרפי. <strong>אמבלם</strong> (הטקסט בתוך תג או חותם, כמו <span class="ltr">Starbucks</span>) הוא לוגו טיפוגרפי וסמל שאי אפשר להפריד. ואת הסמלים נהוג לחלק ל<strong>תמונתי</strong> (ציור של דבר מוכר, כמו התפוח של <span class="ltr">Apple</span>) ול<strong>מופשט</strong> (צורה בלי משמעות מילולית, כמו של <span class="ltr">Nike</span>).</p>
+      </div>
+    </section>
+
+    <!-- ================= versions ================= -->
+    <section class="sec">
+      <h2 id="versions" data-short="גרסאות חובה">צבעים ללוגו: גרסאות חובה</h2>
+      <p>הלוגו הוא <strong>הפנים של המותג</strong>, ולכן עליו להיות <strong>גמיש ומוכן למגוון שימושים</strong>: מדפוס ועד דיגיטל, מרקע בהיר ועד כהה. המטרה היא לשמור על <strong>נראות ברורה ועקבית</strong> בכל מצב.</p>
+      <h3 id="three-versions">גרסאות חובה לכל לוגו</h3>
+      <ul class="dots">
+        <li><strong>גרסה צבעונית מלאה</strong>: הגרסה הראשית של הלוגו, הכוללת את צבעי המותג כפי שהוגדרו בפלטה הרשמית. זו הגרסה שתשמש ברוב המקרים: באתר, בפרסום ובמדיה הדיגיטלית.</li>
+        <li><strong>גרסה שחור־לבן <span class="ltr">(Monochrome)</span></strong>: נדרשת לשימושים שבהם לא ניתן להדפיס או להציג צבע (כמו פקסים, הטבעה, חותמות, חריטות וכו’). גרסה זו גם בודקת את <strong>החוזק הצורני של הלוגו</strong>: אם הוא עובד טוב בשחור־לבן, סימן שהוא מעוצב נכון.</li>
+        <li><strong>גרסה נגטיבית <span class="ltr">(Reverse / Negative)</span></strong>: גרסה שבה הלוגו מוצג בלבן על רקע כהה, או להפך. מיועדת למקומות שבהם יש רקע צבעוני או עמוס, כדי לשמור על ניגודיות וקריאות.</li>
+      </ul>
+
+      <figure class="anim vf" data-steps="3" data-step-labels="צבעונית מלאה|שחור־לבן|נגטיבית">
+        <span class="anim__label">לוגו אחד, שלוש גרסאות</span>
+        <div class="anim__stage">
+          <div class="vers" aria-hidden="true">
+            <div class="vp-wrap"><div class="vp lp"><svg class="lg" viewBox="-2 10 318 80"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div><div class="vl"><b>צבעונית מלאה</b><small>אתר, פרסום, דיגיטל</small></div></div>
+            <div class="vp-wrap"><div class="vp lp mono white-line"><svg class="lg" viewBox="-2 10 318 80"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div><div class="vl"><b>שחור־לבן</b><small>מסמכים, הטבעה, חריטה</small></div></div>
+            <div class="vp-wrap"><div class="vp lp neg"><svg class="lg" viewBox="-2 10 318 80"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div><div class="vl"><b>נגטיבית</b><small>רקעים כהים וצבעוניים</small></div></div>
+          </div>
+        </div>
+        <figcaption>אותו לוגו (של מותג קפה שהמצאתי לצורך ההדגמה), שלוש גרסאות. אם הצורה מחזיקה גם בלי הצבע, הלוגו מעוצב נכון.</figcaption>
+      </figure>
+
+      <div class="gallery g2 natural">
+        <a href="img/logo-popsicles.webp" data-lb data-cap="Popsicles: לוגו ראשי, לוגו משני וסמל, בכמה גרסאות צבע"><img src="img/logo-popsicles.webp" alt="מערכת הלוגו של Popsicles על רקע סגול: לוגו ראשי בשתי שורות, לוגו משני בשורה אחת, וסמל של ארטיק, כל אחד בכמה צבעים" loading="lazy"></a>
+        <a href="img/logo-dompet.webp" data-lb data-cap="Dom Pet Store: הלוגו על רקע בהיר, סגול וכתום"><img src="img/logo-dompet.webp" alt="הלוגו של Dom Pet Store בארבע וריאציות: חותם עגול על רקע קרם ועל רקע סגול, ולוגו עם שם על רקע כתום ועל רקע קרם" loading="lazy"></a>
+      </div>
+      <figcaption>שימו לב שכל גרסה תוכננה לרקע מסוים. ובתמונה של <span class="ltr">Popsicles</span> רואים גם לוגו ראשי, לוגו משני וסמל. <a class="xref" href="#system">מערכת לוגו</a></figcaption>
+
+      <h3 id="usage">כללים לשימוש נכון</h3>
+      <ul class="dots">
+        <li>הגדירו מתי להשתמש בכל גרסה. לדוגמה: צבעונית למדיה דיגיטלית, שחור־לבן למסמכים, נגטיבית לרקעים כהים.</li>
+        <li>במקרים שבהם הרקע „נאבק” בלוגו, ניתן להשתמש ב־<strong><span class="ltr">Strip</span> / פלאח צבעוני, לבן או שחור</strong> מאחוריו כדי להחזיר ניגודיות וקריאות.</li>
+        <li>הימנעו מהנחת הלוגו על <strong>תמונות עמוסות או רקעים מתחלפים</strong>. זה פוגע בזיהוי ובאחידות המותג.</li>
+        <li>ודאו שלוגו בצבע שקוף (<span class="ltr">PNG</span> או <span class="ltr">SVG</span>) <strong>נבחן גם על רקעים שונים</strong> לפני מסירה ללקוח.</li>
+      </ul>
+      <div class="widget">
+        <div class="seg" role="group" aria-label="פלאח מאחורי הלוגו" id="stp-seg">
+          <button type="button" aria-pressed="true" data-v="off">בלי פלאח</button>
+          <button type="button" aria-pressed="false" data-v="on">עם פלאח</button>
+        </div>
+        <div class="stp" id="stp" style="margin-top:14px"><div class="stp-logo"><svg class="lg" viewBox="-2 10 318 80" aria-hidden="true"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div></div>
+        <p class="muted" style="font-size:15px;margin:10px 0 0">רקע עמוס „נאבק” בלוגו. פלאח בצבע הרקע של המותג מחזיר את הקריאות בלי לשנות את הלוגו עצמו.</p>
+      </div>
+      <p>ואם המותג פועל גם בדפוס וגם בדיגיטל, מגדירים <strong>ערכי צבע מדויקים לכל מערכת</strong>: <span class="ltr">HEX / RGB</span> למסכים, <span class="ltr">CMYK</span> לדפוס, ו־<span class="ltr">Pantone</span> לצבע מותג ייחודי. <a class="xref" href="color.html#systems">קוד צבע לכל מערכת</a></p>
+    </section>
+
+
+    <!-- ================= clear space ================= -->
+    <section class="sec">
+      <h2 id="clear-space" data-short="מרווח מגן">כללי ריווח ללוגו <span class="ltr">(Clear Space)</span></h2>
+      <p>כל לוגו זקוק לשטח נשימה מסביבו: אזור נקי וחופשי מאלמנטים אחרים, כדי לשמור על נראות, קריאות והשפעה ויזואלית. האזור הזה נקרא <strong><span class="ltr">Clear Space</span></strong> או <strong>אזור מגן</strong>, והוא מגן על הלוגו מהצפה ויזואלית של טקסטים, תמונות או סמלים סמוכים.</p>
+
+      <h3 id="clear-space-how">איך מגדירים את הריווח?</h3>
+      <p>בדרך כלל משתמשים <strong>באלמנט מתוך הלוגו עצמו</strong> (למשל גובה האות הראשונה, או חלק מצורת הסמל) כיחידת מידה לחישוב הריווח. לדוגמה: אם גובה האות „<span class="ltr">A</span>” בלוגו הוא היחידה הבסיסית, אז כל צד של הלוגו יקבל ריווח שווה לגובה האות הזו <span class="ltr">(X = A height)</span>.</p>
+
+      <figure class="anim csf" data-steps="3" data-step-labels="מודדים יחידה|לכל צד|האזור המוגן">
+        <span class="anim__label">יחידת X נמדדת מהלוגו ושומרת עליו</span>
+        <div class="anim__stage">
+          <svg class="cs-svg" viewBox="-150 -72 560 244" aria-hidden="true">
+            <g class="cs-nb" style="--px:-50px;--py:0px"><rect class="nb" x="-84" y="24" width="72" height="7" rx="3"/><rect class="nb" x="-84" y="38" width="56" height="7" rx="3"/><rect class="nb" x="-84" y="52" width="64" height="7" rx="3"/></g>
+            <g class="cs-nb" style="--px:0px;--py:-34px"><rect class="nb" x="60" y="-24" width="170" height="10" rx="4"/></g>
+            <g class="cs-nb" style="--px:48px;--py:0px"><circle class="nb" cx="346" cy="50" r="16"/></g>
+            <g class="cs-nb" style="--px:0px;--py:30px"><rect class="nb" x="40" y="98" width="220" height="8" rx="3"/></g>
+            <g class="on-token"><use href="#lm-mark" x="0" y="14" width="72" height="72"/><use href="#lm-word" x="88" y="12" width="226" height="76"/></g>
+            <rect class="cs-hl" x="112" y="40" width="48" height="40"/>
+            <g class="cs-sq q1" style="--dx:152px;--dy:10px"><rect x="-40" y="30" width="40" height="40"/><text x="-20" y="55" text-anchor="middle">X</text></g>
+            <g class="cs-sq q2" style="--dx:-194px;--dy:10px"><rect x="306" y="30" width="40" height="40"/><text x="326" y="55" text-anchor="middle">X</text></g>
+            <g class="cs-sq q3" style="--dx:-21px;--dy:66px"><rect x="133" y="-26" width="40" height="40"/><text x="153" y="-1" text-anchor="middle">X</text></g>
+            <g class="cs-sq q4" style="--dx:-21px;--dy:-46px"><rect x="133" y="86" width="40" height="40"/><text x="153" y="111" text-anchor="middle">X</text></g>
+            <rect class="cs-zone" x="-40" y="-26" width="386" height="152" rx="2"/>
+          </svg>
+          <div class="say" aria-live="polite">
+            <p data-s="1">מודדים: הגובה של האות <span class="ltr">u</span> בלוגו הופך ליחידה <span class="ltr">X</span>. בינתיים הטקסטים והסמלים מסביב צפופים עליו.</p>
+            <p data-s="2">משכפלים את <span class="ltr">X</span> לכל אחד מארבעת הצדדים.</p>
+            <p data-s="3">המסגרת שנוצרת היא האזור המוגן. כל מה שניסה להתקרב נדחף החוצה.</p>
+          </div>
+        </div>
+        <figcaption>כאן היחידה היא גובה האות <span class="ltr">u</span> (גובה ה־<span class="ltr">x</span>). היא משוכפלת לכל צד, והאזור שנוצר דוחף החוצה כל טקסט, תמונה או סמל שניסו להתקרב.</figcaption>
+      </figure>
+
+      <h3 id="clear-space-why">מטרת הריווח</h3>
+      <ul class="dots">
+        <li>לשמור על <strong>איזון ויזואלי</strong> בכל קנה מידה, גדול או קטן.</li>
+        <li>למנוע מצב שבו אלמנטים אחרים „מתנגשים” עם הלוגו.</li>
+        <li>להבטיח שהלוגו <strong>יעמוד בפני עצמו</strong> ויישאר ברור גם כשהוא משולב בעיצוב מורכב.</li>
+      </ul>
+      <p data-added class="muted" style="font-size:16px">גם המותגים הגדולים עובדים כך. גוגל, למשל, מגדירה את המרווח המינימלי סביב הלוגו שלה לפי גובה האות <span class="ltr">G</span>.</p>
+
+      <div class="gallery g2 natural">
+        <a href="img/clearspace-aacrossfit.webp" data-lb data-cap="AACrossfit: האות O משמשת כיחידת המידה"><img src="img/clearspace-aacrossfit.webp" alt="הלוגו של AACrossfit באילוסטרייטור, עם קווי עזר כחולים ועיגולים בגודל האות O בכל צד" loading="lazy"></a>
+        <a href="img/clearspace-scewo.webp" data-lb data-cap="Scewo: האות s משוכפלת לכל צד"><img src="img/clearspace-scewo.webp" alt="הלוגו scewo באפור, והאות s משוכפלת בבהיר מעליו, מתחתיו ומשני צדיו כדי לסמן את האזור המוגן" loading="lazy"></a>
+        <a href="img/clearspace-book.webp" data-lb data-cap="עמודי הלוגו בספר המותג של AACrossfit"><img src="img/clearspace-book.webp" alt="ספר מותג פתוח: בעמוד אחד הסמל, הלוגו והגודל המינימלי, ובעמוד השני מרווח המגן סביב כל גרסה" loading="lazy"></a>
+      </div>
+      <figcaption>שלוש דרכים להציג אותו כלל. בספר המותג (התמונה האחרונה) רואים גם את הגודל המינימלי.</figcaption>
+
+      <div class="tip">
+        <span class="box-label">טיפ</span>
+        <p>ניתן להגדיר גם <strong>גודל מינימלי</strong> ללוגו: גובה או רוחב שבו הוא עדיין קריא וברור. מתחת לגודל הזה עדיף להשתמש בגרסה פשוטה יותר של הלוגו (ללא טקסט או פרטים קטנים). <a class="xref" href="#responsive">לוגו רספונסיבי</a></p>
+      </div>
+    </section>
+
+
+    <!-- ================= do / don't ================= -->
+    <section class="sec">
+      <h2 id="dos-donts" data-short="עשה ואל תעשה">עשה ואל תעשה עם הלוגו</h2>
+      <p>אם אתם מכינים <strong>ספר מותג ללקוח אמיתי</strong> (ולא לתיק עבודות בלבד), מומלץ להוסיף עמוד שמסביר בצורה ברורה את <strong>כללי „עשה ואל תעשה” עם הלוגו</strong>. מטרת העמוד היא להבטיח שכל מי שיעבוד עם המותג בעתיד, מעצבים, ספקים, בתי דפוס או משרדי פרסום, ישמור על שימוש נכון ואחיד בלוגו.</p>
+      <p>בעמוד זה ניתן להציג דוגמאות ויזואליות קצרות עם הסברים קצרים מתחת, כמו:</p>
+      <ul class="chips no">
+        <li>לא למתוח או לשנות פרופורציות</li>
+        <li>לא לשים על רקע עמוס</li>
+        <li>לא לסובב</li>
+        <li>לא להחליף צבעים מהפלטה הרשמית</li>
+        <li>לא לשים את הלוגו קטן מדי או קרוב מדי לקצוות</li>
+      </ul>
+      <p>עמוד כזה לא רק שומר על שלמות המותג, אלא גם <strong>מראה על רמת מקצועיות גבוהה ומחשבה לטווח ארוך</strong>. <a class="xref" href="checklist.html#brand-book">ספר מותג</a></p>
+      <figure class="fig">
+        <a href="img/logo-dont.webp" data-lb data-cap="Logo Incorrect Usage: עמוד אל תעשה מספר מותג"><img src="img/logo-dont.webp" alt="עמוד שימושים שגויים בלוגו Treebird Branding: מתיחה, רקע עמוס, גודל קטן מדי, צבעים שלא מהפלטה, מלבן לבן על רקע שחור וסיבוב, כל אחד מסומן באיקס" loading="lazy" width="1600" height="1200"></a>
+        <figcaption>ככה נראה עמוד „אל תעשה” טוב: דוגמה ויזואלית, איקס, ומשפט אחד שמסביר למה.</figcaption>
+      </figure>
+
+      <h3 id="no-stretch">אל תמתחו לוגו או טיפוגרפיה</h3>
+      <p><strong>אסור לעוות לוגו או פונט על־ידי מתיחה, דחיסה או שינוי פרופורציות.</strong> זה פוגע ביחסים הגרפיים, באיזון הצורני ובקריאות, ובעצם הורס את השפה שהמעצב המקורי תכנן.</p>
+      <p>אם יש צורך להתאים את הגודל או היחס, עדיף <strong>לשנות את קנה המידה באופן פרופורציונלי</strong> בלבד <span class="ltr">(Shift + Drag)</span>, ולא לבצע מתיחה חופשית.</p>
+
+      <figure class="anim dsf" data-steps="2" data-step-labels="מתיחה חופשית|קנה מידה">
+        <span class="anim__label">מתיחה מול קנה מידה</span>
+        <div class="anim__stage ds">
+          <div class="ds-logo"><svg class="lg on-token" viewBox="-2 10 318 80" aria-hidden="true"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div>
+          <div class="ds-x" aria-hidden="true"><svg viewBox="0 0 120 120"><line x1="18" y1="18" x2="102" y2="102"/><line x1="102" y1="18" x2="18" y2="102"/></svg></div>
+          <span class="ds-tag bad">מתיחה חופשית: הלוגו מתעוות</span>
+          <span class="ds-tag good">✓ <span class="ltr">Shift + Drag</span>: אותו לוגו, רק גדול יותר</span>
+        </div>
+        <figcaption>כשמותחים, העיגול הופך לביצה והקווים משנים עובי. כשמגדילים בפרופורציה, הלוגו נשאר הלוגו.</figcaption>
+      </figure>
+
+      <div class="tip">
+        <span class="box-label">טיפ</span>
+        <p>מתיחה קלה של עד <span class="ltr">3–5%</span> לרוב לא תורגש, אבל כל שינוי מעבר לכך כבר פוגע במראה המקצועי של העבודה. נסו בעצמכם:</p>
+      </div>
+      <div class="widget" id="wstretch">
+        <label for="sl-range">רוחב הלוגו ביחס לגובה</label>
+        <input type="range" id="sl-range" min="70" max="130" value="100" step="1">
+        <div class="sl-stage"><div class="sl-logo"><svg class="lg on-token" viewBox="-2 10 318 80" aria-hidden="true"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div></div>
+        <div class="sl-out"><span class="sl-n" id="sl-n">0%</span><span class="badge pass" id="sl-b">הלוגו המקורי</span></div>
+      </div>
+      <p>ואותו כלל חל גם על תמונות, רק שלהן יש כלים אחרים: חיתוך, מסכה והתאמת פרספקטיבה. <a class="xref" href="golden-rules.html#no-stretch-photos">לא למתוח תמונות</a></p>
+    </section>
+
+
+    <!-- ================= system ================= -->
+    <section class="sec">
+      <h2 id="system" data-short="מערכת לוגו">מערכת לוגו, לא לוגו אחד</h2>
+      <p>לא רק לוגו אחד. זה עיקרון 4, „ניתן להרחבה”, בפועל. <a class="xref" href="#scalable">ניתן להרחבה</a> בפרויקט מיתוג צריך להראות:</p>
+      <div class="sys">
+        <div class="sc"><div class="lp"><svg class="lg" viewBox="-2 -2 230 202" aria-hidden="true"><use href="#lm-p" x="-2" y="-2" width="230" height="202"/></svg></div><div class="t"><h4>לוגו ראשי</h4><p>הגרסה המלאה, עם כל הרכיבים. השגריר הרשמי.</p></div></div>
+        <div class="sc"><div class="lp"><svg class="lg" viewBox="0 12 226 76" aria-hidden="true"><use href="#lm-word" x="0" y="12" width="226" height="76"/></svg></div><div class="t"><h4>לוגו משני</h4><p>גרסה מצומצמת, כאן השם לבד, למקומות שבהם הראשי לא נכנס.</p></div></div>
+        <div class="sc"><div class="lp"><svg class="lg" viewBox="0 0 100 100" aria-hidden="true" style="max-width:96px"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg></div><div class="t"><h4>סמל בלבד <span class="ltr">icon / mark</span></h4><p>הצורה בלי השם. לאפליקציה, לחותם, לפרופיל.</p></div></div>
+        <div class="sc"><div class="lp"><svg class="lg" viewBox="-2 10 318 80" aria-hidden="true"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div><div class="t"><h4>גרסה אופקית</h4><p>סמל ליד השם. לכותרת של אתר, לשלט רחב, לחתימת דוא"ל.</p></div></div>
+        <div class="sc"><div class="lp"><svg class="lg" viewBox="-2 -2 230 164" aria-hidden="true"><use href="#lm-v" x="-2" y="-2" width="230" height="164"/></svg></div><div class="t"><h4>גרסה אנכית</h4><p>סמל מעל השם. לפוסט ריבועי, לאריזה, לכוס.</p></div></div>
+        <div class="sc"><div class="lp mono white-line"><svg class="lg" viewBox="-2 10 318 80" aria-hidden="true"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div><div class="t"><h4>גרסה מונוכרומטית</h4><p>צבע אחד. להטבעה, לחריטה, לפקס ולמסמכים.</p></div></div>
+        <div class="sc"><div class="lp tabbed"><div class="tabmock"><div class="tb"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg>luma · coffee</div></div></div><div class="t"><h4>גרסה קטנה <span class="ltr">favicon</span></h4><p>הסמל ב־<span class="ltr">16px</span>, בלשונית של הדפדפן.</p></div></div>
+      </div>
+
+
+      <h3 id="responsive" data-added>לוגו רספונסיבי: מצטמצם בלי להתפרק</h3>
+      <div data-added>
+        <p>כמו אתר שמסתדר מחדש בטלפון, גם הלוגו מוותר על פרטים ככל שהמקום קטן: קודם הסלוגן, אחר כך הסידור, ובסוף נשאר רק הסמל. ממליצים לתכנן <span class="ltr">3–5</span> גרסאות ולבדוק אותן בטלפון, בטאבלט, במחשב ואפילו בשעון.</p>
+        <figure class="anim rsf" data-steps="5" data-step-labels="מלא עם סלוגן|בלי סלוגן|קומפקטי|סמל|favicon">
+          <span class="anim__label">מהשלט ועד הלשונית</span>
+          <div class="anim__stage">
+            <div class="rs" aria-hidden="true">
+              <div class="rs-c"><div class="lp"><svg class="lg" viewBox="-2 10 318 112"><use href="#lm-ht" x="-2" y="10" width="318" height="112"/></svg></div><b>מלא עם סלוגן</b><small>שלט חוצות, אריזה</small></div>
+              <div class="rs-c"><div class="lp"><svg class="lg" viewBox="-2 10 318 80"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg></div><b>בלי סלוגן</b><small>כותרת האתר</small></div>
+              <div class="rs-c"><div class="lp"><svg class="lg" viewBox="-2 -2 230 164"><use href="#lm-v" x="-2" y="-2" width="230" height="164"/></svg></div><b>קומפקטי</b><small>רשתות חברתיות</small></div>
+              <div class="rs-c"><div class="lp"><div class="rs-app"><svg viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg></div></div><b>סמל</b><small>אייקון אפליקציה</small></div>
+              <div class="rs-c"><div class="lp"><svg viewBox="0 0 100 100" style="width:16px;height:16px"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg></div><b><span class="ltr">favicon</span></b><small>לשונית דפדפן, <span class="ltr">16px</span></small></div>
+            </div>
+          </div>
+          <figcaption>חמש גרסאות של אותו לוגו. כל אחת מוותרת על משהו, אבל כולן מזוהות כאותו מותג.</figcaption>
+        </figure>
+        <div class="widget" id="wresp">
+          <label for="rw-range">כמה מקום יש ללוגו? גררו</label>
+          <input type="range" id="rw-range" min="16" max="520" value="420" step="2">
+          <div class="rw-stage"><div class="rw-box" id="rw-box"></div></div>
+          <p class="rw-out" id="rw-out" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <h3 id="delivery" data-added>מה מוסרים ללקוח</h3>
+      <div data-added>
+        <p>מערכת לוגו טובה מגיעה כחבילה מסודרת, כך שאף אחד לא יצטרך לבקש „את הלוגו בגודל אחר” בעוד שנה:</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>מה</th><th>פורמטים</th><th>בשביל מה</th></tr></thead>
+            <tbody>
+              <tr><td>קבצי וקטור</td><td><span class="ltr">AI, EPS, SVG, PDF</span>, גם ב־<span class="ltr">CMYK</span> וגם ב־<span class="ltr">RGB</span></td><td>דפוס, שילוט, וכל הגדלה בלי לאבד איכות</td></tr>
+              <tr><td>קבצי תמונה</td><td><span class="ltr">PNG</span> עם רקע שקוף בכ־<span class="ltr">1500px</span>, <span class="ltr">JPG</span> באיכות מקסימלית</td><td>מסמכים, מצגות, שימוש מהיר</td></tr>
+              <tr><td>אייקונים לאתר</td><td><span class="ltr">ICO</span>, ו־<span class="ltr">PNG</span> בגדלים <span class="ltr">16, 32, 48, 180, 192, 512</span></td><td>לשונית הדפדפן, מסך הבית בטלפון, אפליקציות</td></tr>
+              <tr><td>גרסאות צבע</td><td>צבעונית, נגטיבית, שחור מלא, לבן מלא, אפור</td><td>כל רקע וכל שיטת הדפסה</td></tr>
+              <tr><td>טקסט בלוגו</td><td>הופכים לקווי מתאר <span class="ltr">(Create Outlines, Cmd+Shift+O)</span></td><td>שהפונט לא יתחלף אצל מי שאין לו אותו</td></tr>
+              <tr><td>גודל מינימלי</td><td>דפוס: <span class="ltr">25</span> מ"מ רוחב. דיגיטל: <span class="ltr">20px</span> ללוגו מילה <span class="ltr">(Wordmark)</span></td><td>מתחת לזה עוברים לגרסה הפשוטה</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ================= tests ================= -->
+    <section class="sec">
+      <h2 id="tests" data-short="מבחני חובה">מבחני חובה: צבע, גלילה ובהירות</h2>
+      <p>לפני שלוגו יוצא לעולם, הוא עובר מבחני לחץ. שלושת הראשונים הם החובה המינימלית, והשאר מוסיפים ביטחון:</p>
+      <ol class="steps">
+        <li><strong>עמידות ללא צבע.</strong> אם הרעיון קורס כשהלוגו מוצג בצבע אחיד (שחור או לבן), כנראה שהצבע „סחב” את כל הקונספט. צבע אמור להעצים, לא להציל.</li>
+        <li><strong>עמידות בגלילה <span class="ltr">(Scroll-Proof)</span>.</strong> אנשים לא מתבוננים בלוגו שלכם בגלריה שקטה; הם חולפים על פניו במהירות האגודל בפיד עמוס. הלוגו חייב להיות קריא ולהשאיר רושם בשבריר שנייה.</li>
+        <li><strong>זכירות צורנית.</strong> אם מטשטשים את הלוגו או מצמצמים את העיניים מולו <span class="ltr">(Squint)</span>, האם עדיין אפשר לזהות את הצורה הבסיסית שלו? המוח צריך „להינעל” על המתאר האיקוני לפני שהוא מבחין בפרטים.</li>
+        <li data-added><strong>מבחן 16 הפיקסלים.</strong> הקטינו את הלוגו ל־<span class="ltr">16×16</span> פיקסלים, הגודל של אייקון בלשונית הדפדפן. אם הוא הופך לכתם, צריך גרסה מפושטת. <a class="xref" href="#responsive">לוגו רספונסיבי</a></li>
+        <li data-added><strong>מבחן הנגטיב.</strong> לבן על רקע כהה. בדקו שהצורה מחזיקה, ושלא „השמינה” בהיפוך. <a class="xref" href="#optical">תיקונים אופטיים</a></li>
+        <li data-added><strong>מבחן הזיכרון.</strong> הראו את הלוגו למישהו ל־5 שניות, הסתירו אותו, ובקשו שיצייר מהזיכרון. אם אפשר לצייר אותו מהזיכרון, הוא כנראה חזק.</li>
+        <li data-added><strong>מבחן המתחרים.</strong> שימו אותו ליד הלוגואים של המתחרים. אם הוא נבלע ביניהם, הוא לא מבדל. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a></li>
+      </ol>
+
+      <figure class="anim stf" data-steps="5" data-step-labels="בלי צבע|גלילה|טשטוש|16px|נגטיב">
+        <span class="anim__label">מבחני הלחץ, אחד אחרי השני</span>
+        <div class="anim__stage">
+          <div class="st" aria-hidden="true">
+            <div class="stt"><div class="stt-stage t1"><svg class="m" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b>בלי צבע</b><small>הצורה מחזיקה לבד</small><span class="stt-tag must">חובה</span></div>
+            <div class="stt"><div class="stt-stage t2"><div class="phone"><div class="feed">
+              <div class="post"><div><i></i><i></i></div></div>
+              <div class="post"><div><i></i><i></i></div></div>
+              <div class="post"><div><i></i><i></i></div></div>
+              <div class="post"><div><i></i><i></i></div></div>
+              <div class="post"><div><svg viewBox="-2 -2 230 164"><use href="#lm-v" x="-2" y="-2" width="230" height="164"/></svg></div></div>
+              <div class="post"><div><i></i><i></i></div></div>
+            </div></div><span class="stt-ok">✓</span></div><b>גלילה</b><small>נקלט בשבריר שנייה</small><span class="stt-tag must">חובה</span></div>
+            <div class="stt"><div class="stt-stage t3"><svg class="m" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b>טשטוש</b><small>המתאר עדיין מזוהה</small><span class="stt-tag must">חובה</span></div>
+            <div class="stt"><div class="stt-stage t4"><svg class="m16" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b><span class="ltr">16px</span></b><small>לא הופך לכתם</small><span class="stt-tag">נוסף</span></div>
+            <div class="stt"><div class="stt-stage t5"><svg class="m" viewBox="0 0 100 100"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg><span class="stt-ok">✓</span></div><b>נגטיב</b><small>לבן על כהה</small><span class="stt-tag">נוסף</span></div>
+          </div>
+          <div class="say" aria-live="polite">
+            <p data-s="1"><strong>בלי צבע:</strong> הסמל בשחור על לבן. אם הרעיון עדיין שם, הצבע רק מעצים אותו, ולא מציל אותו.</p>
+            <p data-s="2"><strong>גלילה:</strong> הסמל בתוך פיד שרץ מהר מתחת לאגודל. יש לו שבריר שנייה להיקלט, בין פוסט לפוסט.</p>
+            <p data-s="3"><strong>טשטוש:</strong> מצמצמים עיניים. הפרטים נעלמים, אבל המתאר עדיין מזוהה. על זה המוח „ננעל”.</p>
+            <p data-s="4"><strong><span class="ltr">16</span> פיקסלים:</strong> הגודל של אייקון בלשונית בדפדפן. הסמל לא הופך לכתם.</p>
+            <p data-s="5"><strong>נגטיב:</strong> לבן על רקע כהה. הצורה מחזיקה גם הפוך, ולא „השמינה” בהיפוך.</p>
+          </div>
+        </div>
+        <figcaption>הסמל של מותג הקפה עובר חמישה מבחנים: שלושת מבחני החובה ועוד שניים. סמל פשוט עם צורה חזקה עובר את כולם. לוגו עמוס בפרטים היה נופל כבר בטשטוש.</figcaption>
+      </figure>
+      <div class="gallery natural">
+        <a href="img/lecture-grri-mono.webp" data-lb data-cap="עמידות ללא צבע: GRRi בצבע ובשחור"><img src="img/lecture-grri-mono.webp" alt="הלוגו של GRRi בצבע ליד אותו לוגו בשחור מלא" loading="lazy" width="579" height="487"></a>
+        <a href="img/lecture-grri-feed.webp" data-lb data-cap="עמידות בגלילה: GRRi בתוך פיד"><img src="img/lecture-grri-feed.webp" alt="הלוגו של GRRi בתוך פוסט בפיד אינסטגרם בטלפון" loading="lazy" width="579" height="487"></a>
+        <a href="img/lecture-grri-blur.webp" data-lb data-cap="זכירות צורנית: GRRi מטושטש"><img src="img/lecture-grri-blur.webp" alt="הלוגו של GRRi חד, ולידו אותו לוגו מטושטש שעדיין מזוהה" loading="lazy" width="579" height="487"></a>
+      </div>
+      <figcaption>שלושת מבחני החובה, כמו שהם מופיעים בהרצאה: בלי צבע, בפיד, ומטושטש.</figcaption>
+    </section>
+
+    <!-- ================= shapes ================= -->
+    <section class="sec">
+      <h2 id="shapes" data-short="פסיכולוגיה של צורות">ארגז הכלים: פסיכולוגיה של צורות</h2>
+      <p>צורות הן הדרך המהירה ביותר לתקשר תחושה, עוד לפני שמבינים מה רואים. הן מתקשרות לפני מילים, המוח קורא אותן באופן אינסטינקטיבי, עוד לפני צבע, טקסט או סגנון. הן <strong>השלד של השפה החזותית</strong>, והבסיס שעליו זהות מותג נבנית.</p>
+
+      <h3 id="primitive-shapes">צורות בסיסיות <span class="ltr">(Primitive Shapes)</span></h3>
+      <p>אלה הצורות הגיאומטריות הראשוניות, עם משמעות פסיכולוגית כמעט אוניברסלית.</p>
+      <figure class="anim shf" data-steps="3" data-step-labels="עיגולים|ריבועים|משולשים ו־V">
+        <span class="anim__label">מה כל צורה אומרת</span>
+        <div class="anim__stage">
+          <div class="shp">
+            <div><svg viewBox="0 0 100 100" aria-hidden="true"><path class="s" pathLength="1" d="M50 8a42 42 0 1 1 0 84a42 42 0 1 1 0-84Z"/></svg><h4>עיגולים ואליפסות</h4><p>קהילה, הכלה, רוך, ידידותיות, זרימה.</p></div>
+            <div><svg viewBox="0 0 100 100" aria-hidden="true"><path class="s" pathLength="1" d="M15 12H85Q88 12 88 15V85Q88 88 85 88H15Q12 88 12 85V15Q12 12 15 12Z"/></svg><h4>ריבועים ומלבנים</h4><p>יציבות, סדר, אמינות, מבנה ומקצועיות.</p></div>
+            <div><svg viewBox="0 0 100 100" aria-hidden="true"><path class="s" pathLength="1" d="M8 14L50 90L92 14L71 14L50 54L29 14Z"/></svg><h4>משולשים וצורות <span class="ltr">V</span> חדות</h4><p>מהירות, כיוון, כוח, תקיפות ותחרותיות. כמו בלוגו של <span class="ltr">Vespool</span>.</p></div>
+          </div>
+        </div>
+        <figcaption>כל צורה מגיעה עם מטען רגשי מובנה. הבחירה בה היא כבר חצי מהמסר.</figcaption>
+      </figure>
+      <h4>וגם קווים</h4>
+      <div class="lines3">
+        <div><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M10 22H90M10 38H90"/></svg><b>קווים אופקיים</b><span>רוגע, איזון וקרקוע.</span></div>
+        <div><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M38 6V54M62 6V54"/></svg><b>קווים אנכיים</b><span>סמכות, יציבות וצמיחה.</span></div>
+        <div><svg viewBox="0 0 100 60" aria-hidden="true"><path d="M20 54L52 6M48 54L80 6"/></svg><b>קווים אלכסוניים</b><span>תנועה, שינוי ודינמיקה.</span></div>
+      </div>
+
+      <h3 id="symbolic-shapes">צורות עם מוסכמה תרבותית <span class="ltr">(Symbolic Shapes)</span></h3>
+      <p>אלה צורות שלא רק מרגישות משהו, אלא כבר <strong>אומרות</strong> משהו. הן מגיעות עם מטען תרבותי ברור.</p>
+      <div class="sym6">
+        <div><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 8L86 21V48C86 71 69 86 50 93C31 86 14 71 14 48V21Z"/></svg><b>מגנים</b><span>הגנה, ביטחון, שליטה, אחריות, סמכות. כמו בלוגו של <span class="ltr">GRRi</span>.</span></div>
+        <div><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M14 86L82 18M50 16H84V50"/></svg><b>חצים</b><span>כיוון, תנועה, פעולה, התקדמות.</span></div>
+        <div><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M58 6L22 56H48L40 94L78 40H52Z"/></svg><b>ברקים</b><span>כוח, אנרגיה, מהירות, סכנה.</span></div>
+        <div><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M50 86C22 66 10 50 10 33C10 20 20 12 31 12C40 12 46 18 50 25C54 18 60 12 69 12C80 12 90 20 90 33C90 50 78 66 50 86Z"/></svg><b>לבבות</b><span>רגש, חיבור, אכפתיות.</span></div>
+        <div><svg viewBox="0 0 100 100" aria-hidden="true"><path d="M12 30L30 52L50 18L70 52L88 30L80 76H20Z M20 88H80"/></svg><b>כתרים</b><span>סמכות, פרימיום, הישג, עליונות.</span></div>
+        <div><svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="40"/><circle cx="50" cy="50" r="25"/><circle cx="50" cy="50" r="9"/></svg><b>מעגלי מטרה</b><span>מיקוד, דיוק, שליטה, מטרה ברורה, הישג.</span></div>
+      </div>
+
+      <h3 id="shapes-application">יישום בעבודה</h3>
+      <p>בשלב מוקדם של עיצוב לוגו, חשוב להבחין: האם אתם עובדים עם <strong>צורה בסיסית שמרמזת תחושה</strong>, או עם <strong>סמל שכבר נושא משמעות ברורה</strong>? ככל שהצורה קונבנציונלית יותר, כך היא חזקה וברורה יותר, אבל גם מגבילה יותר. מעצב טוב יודע מתי להשתמש בשפה אוניברסלית, ומתי בשפה תרבותית.</p>
+      <figure class="fig">
+        <a href="img/lecture-shapes-application.webp" data-lb data-cap="מצורות בסיסיות לסמל: עיגול, ריבוע ומשולש מול מגן עם חץ"><img src="img/lecture-shapes-application.webp" alt="שני לוחות: משמאל עיגול כהה, ריבוע כחול־אפור, ריבוע ומשולש בחום־זהב. מימין מגן עם חץ שעולה באלכסון" loading="lazy" width="1200" height="509"></a>
+        <figcaption>מתוך השקפים: צורות בסיסיות שמרמזות תחושה, מול מגן עם חץ, שכבר אומר „הגנה” ו„התקדמות”.</figcaption>
+      </figure>
+      <p>והתאמת הצורה הנכונה לערכי המותג ולציפיות של ה„שבט” היא הצעד הראשון בבניית לוגו שעובד. <a class="xref" href="logo-design.html#tribe">מי השבט</a> <a class="xref" href="#symbol-vs-logo">סמל מול לוגו</a></p>
+
+      <h3 id="shape-color">צבע על גבי הצורה</h3>
+      <p>צבע יושב על גבי הצורה ומוסיף עומק וניואנסים למסר. את המשמעויות של רוב הצבעים פירטתי בפרק הצבע. <a class="xref" href="color.html#psychology">פסיכולוגיה של צבעים</a> שני דברים שכדאי להוסיף כשמדובר בלוגו:</p>
+      <ul class="dots">
+        <li><strong>צבעי ניאון</strong>: עתידנות, גיימינג, תרבות צעירה.</li>
+        <li><strong>הסינרגיה</strong>: כשמחברים את פסיכולוגיית הצורות עם פסיכולוגיית הצבעים, ומכוונים את שתיהן לקהל היעד, עיצוב פשוט „מרגיש נכון”. זו חשיבה שמתחילה בקהל.</li>
+      </ul>
+      <figure class="anim clf" data-steps="4" data-step-labels="כחול וטורקיז|אדום וכתום|ניאון|הסינרגיה">
+        <span class="anim__label">שלוש קבוצות צבע, ואז צבע על צורה</span>
+        <div class="anim__stage">
+          <div class="cl-art" aria-hidden="true">
+            <svg viewBox="0 0 600 220">
+              <g fill="none" stroke-linecap="round">
+                <path d="M0 60Q75 36 150 60T300 60T450 60T600 60" stroke="#2f80c9" stroke-width="5"/>
+                <path d="M-60 92Q15 70 90 92T240 92T390 92T540 92T690 92" stroke="#1f4e79" stroke-width="9"/>
+                <path d="M-30 124Q45 104 120 124T270 124T420 124T570 124T720 124" stroke="#17a2a2" stroke-width="6"/>
+                <path d="M-90 156Q-15 136 60 156T210 156T360 156T510 156T660 156" stroke="#2f80c9" stroke-width="4" opacity=".7"/>
+                <path d="M0 188Q75 170 150 188T300 188T450 188T600 188" stroke="#5cc8c0" stroke-width="3" opacity=".85"/>
+              </g>
+            </svg>
+            <svg viewBox="0 0 600 220">
+              <g stroke-linecap="round" fill="none">
+                <path d="M40 58H230" stroke="#ffb31a" stroke-width="5"/><path d="M90 84H280" stroke="#f57a1f" stroke-width="9"/>
+                <path d="M20 112H300" stroke="#e63a2e" stroke-width="6"/><path d="M70 140H260" stroke="#f57a1f" stroke-width="4"/>
+                <path d="M120 166H290" stroke="#ffb31a" stroke-width="7"/>
+              </g>
+              <path d="M262 206L344 206L482 14L400 14Z" fill="#e63a2e"/>
+              <path d="M366 206L392 206L530 14L504 14Z" fill="#f57a1f"/>
+              <path d="M418 206L432 206L570 14L556 14Z" fill="#ffb31a"/>
+            </svg>
+            <svg viewBox="0 0 600 220">
+              <defs><filter id="nglow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+              <rect width="600" height="220" fill="#0b0a18"/>
+              <g fill="none" stroke-linecap="round" filter="url(#nglow)">
+                <circle cx="300" cy="96" r="44" stroke="#19e8ff" stroke-width="3"/>
+                <path d="M300 132L60 220M300 132L180 220M300 132L300 220M300 132L420 220M300 132L540 220" stroke="#ff2bd6" stroke-width="2"/>
+                <path d="M0 132H600M0 152H600M0 182H600" stroke="#ff2bd6" stroke-width="2" opacity=".8"/>
+                <path d="M40 70L110 34L180 80L250 26M350 26L420 80L490 34L560 70" stroke="#3dff7a" stroke-width="3"/>
+              </g>
+            </svg>
+            <svg viewBox="0 0 600 220">
+              <rect class="pn" x="15" y="12" width="180" height="150" rx="10"/><rect class="pn" x="210" y="12" width="180" height="150" rx="10"/><rect x="405" y="12" width="180" height="150" rx="10" fill="#0b0a18"/>
+              <g transform="translate(55 37)"><path d="M50 8a42 42 0 1 1 0 84a42 42 0 1 1 0-84Z" fill="#2f80c9"/><path d="M14 58Q32 48 50 58T86 58" fill="none" stroke="#5cc8c0" stroke-width="5" stroke-linecap="round"/></g>
+              <g transform="translate(250 37)"><path d="M8 14L50 90L92 14L71 14L50 54L29 14Z" fill="#e63a2e"/><path d="M-26 34H0M-34 52H8M-22 70H14" stroke="#f57a1f" stroke-width="4" stroke-linecap="round"/></g>
+              <g transform="translate(445 37)" fill="none" filter="url(#nglow)"><path d="M50 6L88 20V48C88 72 70 88 50 96C30 88 12 72 12 48V20Z" stroke="#19e8ff" stroke-width="4"/><path d="M50 26L70 34V50C70 63 61 71 50 76C39 71 30 63 30 50V34Z" stroke="#ff2bd6" stroke-width="3"/></g>
+              <text x="105" y="190" text-anchor="middle">עיגול + כחול</text><text class="sub" x="105" y="210" text-anchor="middle">קהילה רגועה</text>
+              <text x="300" y="190" text-anchor="middle">צורת V + אדום</text><text class="sub" x="300" y="210" text-anchor="middle">מהירות ואנרגיה</text>
+              <text x="495" y="190" text-anchor="middle">מגן + ניאון</text><text class="sub" x="495" y="210" text-anchor="middle">הגנה בעולם הגיימינג</text>
+            </svg>
+          </div>
+          <div class="say" aria-live="polite">
+            <div data-s="1"><p><strong>כחול וירוק־טורקיז:</strong> רוגע, ביטחון, אמינות. כמו גלים רכים.</p><ul class="cl-sws"><li><i style="background:#1f4e79"></i>כחול כהה</li><li><i style="background:#2f80c9"></i>כחול</li><li><i style="background:#17a2a2"></i>טורקיז</li></ul></div>
+            <div data-s="2"><p><strong>אדום וכתום עז:</strong> אנרגיה גבוהה, דחיפות, סיכון, ספורט. כמו קו מהיר באלכסון.</p><ul class="cl-sws"><li><i style="background:#e63a2e"></i>אדום</li><li><i style="background:#f57a1f"></i>כתום</li><li><i style="background:#ffb31a"></i>ענבר</li></ul></div>
+            <div data-s="3"><p><strong>צבעי ניאון:</strong> עתידנות, גיימינג, תרבות צעירה. הם זוהרים באמת רק על רקע כהה.</p><ul class="cl-sws"><li><i style="background:#ff2bd6"></i>מג'נטה</li><li><i style="background:#19e8ff"></i>ציאן</li><li><i style="background:#3dff7a"></i>ירוק ניאון</li></ul></div>
+            <div data-s="4"><p><strong>הסינרגיה:</strong> אותן צורות מהחלק הקודם, עם צבע שמכוון לאותו קהל. כשהצורה והצבע אומרים את אותו הדבר, עיצוב פשוט „מרגיש נכון”.</p></div>
+          </div>
+        </div>
+        <figcaption>הגוונים הם דוגמה אחת לכל קבוצה, לא ערכים מחייבים. את המשמעות של כל צבע בפירוט תמצאו בפרק הצבע. <a class="xref" href="color.html#psychology">פסיכולוגיה של צבעים</a></figcaption>
+      </figure>
+    </section>
+
+
+    <!-- ================= redesign failures ================= -->
+    <section class="sec">
+      <h2 id="redesign" data-short="כשלי עיצוב מחדש" data-added>כשמשנים לוגו בלי סיבה טובה</h2>
+      <figure class="illus"><img src="img/redesign-05.webp" alt="איור: מנוף מוריד שלט אהוב של חנות, וקהל קטן מסתכל למעלה בהפתעה" width="1344" height="752" loading="lazy"></figure>
+      <div data-added>
+        <p>שני הסיפורים שכל מעצב מותג צריך להכיר. בשניהם העיצוב החדש לא היה „מכוער”. הבעיה הייתה שזרקו לפח בדיוק את מה שהקהל כבר זיהה ואהב.</p>
+        <div class="rd">
+          <div><span class="yr">2010</span><h4><span class="ltr">Gap</span></h4><p>החליפה את הריבוע הכחול שליווה אותה כעשרים שנה בשם בפונט <span class="ltr">Helvetica</span> עם ריבוע קטן בגרדיאנט. הלקוחות התקוממו, הרשת התמלאה בפרודיות, והחברה חזרה ללוגו הישן.</p><span class="stat">הלוגו החדש החזיק שישה ימים.</span></div>
+          <div><span class="yr">2009</span><h4><span class="ltr">Tropicana</span></h4><p>עיצוב אריזה חדש העלים את התפוז עם הקש, הסמל שקונים חיפשו על המדף. בלי הסמל המוכר, אנשים פשוט לא מצאו את המוצר.</p><span class="stat">המכירות ירדו בכ־<span class="ltr">20%</span> בתוך חודשיים.</span></div>
+        </div>
+        <p><strong>הלקח:</strong> לא משנים זהות חזותית בלי מטרה אסטרטגית ברורה, וכשמשנים, שומרים על הנכסים שהקהל כבר מזהה: הצורה, הצבע, הסמל.</p>
+      </div>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* page widgets: optical toggle, strip toggle, stretch slider, responsive logo */
+document.addEventListener("DOMContentLoaded", function () {
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+  function pressSeg(seg, b) { each(seg.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); }); }
+
+  /* optical vs mathematical */
+  var wo = document.getElementById("wopt");
+  if (wo) {
+    var why = wo.querySelector(".op-why");
+    var T = {
+      math: "מתמטי: שלוש הצורות בדיוק באותו גובה, והאותיות בריווח שווה. ובכל זאת העיגול והמשולש נראים קטנים יותר, ובין A ל־V נפער חור.",
+      optical: "אופטי: העיגול והמשולש חורגים מעט מעבר לקווים, והזוגות AV, VA ו־TA התקרבו. עכשיו זה נראה שווה, גם אם זה לא שווה."
+    };
+    function setO(m) { wo.classList.toggle("op-on", m === "optical"); why.textContent = T[m]; }
+    wo.querySelector(".seg").addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; pressSeg(this, b); setO(b.getAttribute("data-m")); });
+    setO("math");
+  }
+
+  /* strip behind the logo */
+  var ss = document.getElementById("stp-seg"), stp = document.getElementById("stp");
+  if (ss && stp) ss.addEventListener("click", function (e) { var b = e.target.closest("button"); if (!b) return; pressSeg(ss, b); stp.classList.toggle("on", b.getAttribute("data-v") === "on"); });
+
+  /* stretch slider */
+  var sr = document.getElementById("sl-range");
+  if (sr) {
+    var logo = document.querySelector("#wstretch .sl-logo"), n = document.getElementById("sl-n"), bd = document.getElementById("sl-b");
+    function st() {
+      var v = Number(sr.value), d = v - 100;
+      logo.style.transform = "scaleX(" + (v / 100) + ")";
+      n.textContent = (d > 0 ? "+" : "") + d + "%";
+      if (d === 0) { bd.className = "badge pass"; bd.textContent = "הלוגו המקורי"; }
+      else if (Math.abs(d) <= 5) { bd.className = "badge pass"; bd.textContent = "עד 5%: לרוב לא יורגש"; }
+      else { bd.className = "badge fail"; bd.textContent = (d > 0 ? "מתוח" : "דחוס") + ": פוגע במראה המקצועי"; }
+    }
+    sr.addEventListener("input", st); st();
+  }
+
+  /* responsive logo */
+  var rr = document.getElementById("rw-range");
+  if (rr) {
+    var box = document.getElementById("rw-box"), out = document.getElementById("rw-out");
+    var V = [
+      { min: 380, n: "מלא עם סלוגן", s: '<svg class="lg" viewBox="-2 10 318 112" aria-hidden="true"><use href="#lm-ht" x="-2" y="10" width="318" height="112"/></svg>' },
+      { min: 230, n: "אופקי בלי סלוגן", s: '<svg class="lg" viewBox="-2 10 318 80" aria-hidden="true"><use href="#lm-h" x="-2" y="10" width="318" height="80"/></svg>' },
+      { min: 110, n: "קומפקטי, סמל מעל השם", s: '<svg class="lg" viewBox="-2 -2 230 164" aria-hidden="true"><use href="#lm-v" x="-2" y="-2" width="230" height="164"/></svg>' },
+      { min: 34, n: "סמל בלבד", s: '<svg class="lg" viewBox="0 0 100 100" aria-hidden="true"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg>' },
+      { min: 0, n: "favicon, 16 פיקסלים", s: '<svg class="fav" viewBox="0 0 100 100" aria-hidden="true"><use href="#lm-mark" x="0" y="0" width="100" height="100"/></svg>' }
+    ];
+    var last = -1;
+    function rw() {
+      var w = Number(rr.value), stage = box.parentNode, max = stage.clientWidth - 24;
+      var eff = Math.min(w, max);
+      box.style.width = Math.max(eff, 24) + "px";
+      var i = 0; while (i < V.length - 1 && eff < V[i].min) i++;
+      if (i !== last) { box.innerHTML = V[i].s; last = i; }
+      box.className = "rw-box lp";
+      out.innerHTML = "רוחב זמין: <b><span class=\"ltr\">" + eff + "px</span></b> · הגרסה שנבחרה: <b>" + V[i].n + "</b>";
+    }
+    rr.addEventListener("input", rw); addEventListener("resize", rw); rw();
+  }
+
+  var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function stepOf(f) { return Number(f.getAttribute("data-step")) || 1; }
+
+  /* 05.01 wall of look-alike "AI" marks: a few shapes x a few details x four gradients */
+  (function () {
+  var wl = document.getElementById("wl");
+  if (wl) {
+    var BASE = [
+      '<circle cx="20" cy="20" r="13.5" fill="none" stroke="url(#wg{g})" stroke-width="5"/>',
+      '<path d="M20 5l13 7.5v15L20 35 7 27.5v-15z" fill="url(#wg{g})"/>',
+      '<rect x="9" y="9" width="22" height="22" rx="6" transform="rotate(45 20 20)" fill="url(#wg{g})"/>',
+      '<path d="M20 5l13 5v9c0 8-6 13-13 16C13 32 7 27 7 19v-9z" fill="url(#wg{g})"/>',
+      '<path d="M20 6a14 14 0 1 1-12.1 7M20 13a7 7 0 1 1-6 3.5" fill="none" stroke="url(#wg{g})" stroke-width="4.5" stroke-linecap="round"/>'
+    ];
+    var FILLED = [false, true, true, true, false];
+    var INNER = [
+      '<path d="M14 25l11-11M18 14h7v7" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+      '<path d="M13.5 20.5l4.5 4.5 8.5-9.5" fill="none" stroke="{c}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+      '<g fill="{c}"><circle cx="20" cy="14.5" r="2.6"/><circle cx="14.8" cy="23.5" r="2.6"/><circle cx="25.2" cy="23.5" r="2.6"/></g>',
+      '<path d="M12.5 22c3-5 5 3 7.5-2s5 3 7.5-2" fill="none" stroke="{c}" stroke-width="2.8" stroke-linecap="round"/>',
+      ''
+    ];
+    var html = "";
+    for (var i = 0; i < 44; i++) {
+      var b = i % 5, n = (i * 2 + Math.floor(i / 5)) % 5, g = (i * 3 + Math.floor(i / 7)) % 4, rot = ((i * 7) % 4) * 90;
+      var c = FILLED[b] ? "#ffffff" : "url(#wg" + g + ")";
+      html += '<i class="wl-t" style="--i:' + i + '"><svg viewBox="0 0 40 40"><g transform="rotate(' + rot + ' 20 20)">' +
+        BASE[b].replace("{g}", g) + INNER[n].replace(/\{c\}/g, c) + "</g></svg></i>";
+    }
+    wl.insertAdjacentHTML("afterbegin", html);
+    var wf = document.getElementById("f-wall"), wn = document.getElementById("wl-n"), run = 0;
+    var setN = function (s) {
+      var my = ++run;
+      if (s !== 2 || reduce) { wn.textContent = s === 1 ? "4" : s === 2 ? "1,000" : "1"; return; }
+      var t0 = performance.now();
+      (function tick(t) {
+        if (my !== run) return;
+        var p = Math.min(1, (t - t0) / 800), v = Math.round(4 + 996 * (1 - Math.pow(1 - p, 3)));
+        wn.textContent = v.toLocaleString("en-US");
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    };
+    wf.addEventListener("anim:step", function (e) { setN(e.detail.step); });
+    wn.textContent = stepOf(wf) === 2 ? "1,000" : stepOf(wf) === 3 ? "1" : "4";
+  }
+  })();
+
+
+  /* "what does this logo say to you": the class's answers, revealed on click */
+  (function () {
+    var w = document.getElementById("wassoc"); if (!w) return;
+    var A = {
+      nike: { n: "Nike", w: ["מהירות", "הצלחה", "JUST DO IT", "מייקל ג'ורדן", "יקר", "איכותי", "ספורט", "צעיר", "נוח"], neg: ["תנאי העסקה פוגעניים"], alt: "הלוגו של Nike: הסימן השחור בצורת וי", wh: [1200, 434] },
+      apple: { n: "Apple", w: ["טכנולוגיה", "מהפכה", "לחשוב אחרת", "יוקרתי", "איכותי", "פשוט", "סטיב ג'ובס", "היפסטרים", "מעצב גרפי"], neg: ["מחיר מופקע", "מסובך לתיקונים"], alt: "הלוגו של Apple: תפוח שחור עם ביס", wh: [511, 626] }
+    };
+    var lg = w.querySelector(".ex-logo img"), ul = w.querySelector(".ex-words"), go = w.querySelector(".ex-go"), nm = w.querySelector(".ex-name"), seg = w.querySelector(".seg"), cur = "nike";
+    function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function set(b) {
+      cur = b; w.classList.remove("done"); ul.classList.remove("on"); ul.innerHTML = ""; go.disabled = false;
+      nm.innerHTML = '<span class="ltr">' + A[b].n + "</span>";
+      lg.src = "img/lecture-" + b + ".webp"; lg.alt = A[b].alt; lg.width = A[b].wh[0]; lg.height = A[b].wh[1];
+    }
+    seg.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      set(b.getAttribute("data-b"));
+    });
+    go.addEventListener("click", function () {
+      var a = A[cur], i = 0, h = "";
+      a.w.forEach(function (t) { h += '<li style="--i:' + (i++) + '"' + (/[A-Za-z]/.test(t) ? ' class="ltr"' : "") + ">" + esc(t) + "</li>"; });
+      a.neg.forEach(function (t) { h += '<li class="neg" style="--i:' + (i++) + '">' + esc(t) + "</li>"; });
+      ul.innerHTML = h; void ul.offsetWidth; ul.classList.add("on"); w.classList.add("done"); go.disabled = true;
+    });
+  })();
+
+  /* five-principles checklist */
+  (function () {
+    var w = document.getElementById("wck5"); if (!w) return;
+    var out = w.querySelector(".ck5-out"), boxes = w.querySelectorAll("input");
+    function upd() {
+      var n = 0; Array.prototype.forEach.call(boxes, function (b) { if (b.checked) n++; });
+      out.textContent = n === 5 ? "5 מתוך 5: הלוגו מוכן לעבור למבחני הלחץ." : n + " מתוך 5. מה שלא מסומן, חוזר לשולחן העבודה.";
+    }
+    w.addEventListener("change", upd); upd();
+  })();
+
+  /* a dynamic logo: same shape, new surface on every click */
+  (function () {
+    var w = document.getElementById("wdyn"); if (!w) return;
+    var row = w.querySelector(".dyn-row"), btn = w.querySelector(".ex-go"), uid = 0, seed = 0;
+    var D = "M4 50a46 46 0 1 0 92 0a46 46 0 1 0-92 0zM42 34a18 18 0 1 0 36 0a18 18 0 1 0-36 0z";
+    var C = [["#e2552b", "#f2b84b"], ["#3b5bdb", "#22d3ee"], ["#12804a", "#a3e635"], ["#a855f7", "#ec4899"], ["#1f2a30", "#e2552b"], ["#f5b800", "#e2552b"], ["#0e7490", "#f4eadb"]];
+    var V = [
+      function (c, id) { return '<path fill="' + c[0] + '" fill-rule="evenodd" d="' + D + '"/>'; },
+      function (c, id) { return '<defs><linearGradient id="' + id + '" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="' + c[0] + '"/><stop offset="1" stop-color="' + c[1] + '"/></linearGradient></defs><path fill="url(#' + id + ')" fill-rule="evenodd" d="' + D + '"/>'; },
+      function (c, id) { return '<defs><pattern id="' + id + '" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(35)"><rect width="10" height="10" fill="' + c[0] + '"/><rect width="5" height="10" fill="' + c[1] + '"/></pattern></defs><path fill="url(#' + id + ')" fill-rule="evenodd" d="' + D + '"/>'; },
+      function (c, id) { return '<defs><pattern id="' + id + '" width="9" height="9" patternUnits="userSpaceOnUse"><rect width="9" height="9" fill="' + c[0] + '"/><circle cx="4.5" cy="4.5" r="2.2" fill="' + c[1] + '"/></pattern></defs><path fill="url(#' + id + ')" fill-rule="evenodd" d="' + D + '"/>'; },
+      function (c, id) { return '<path fill="none" stroke="' + c[0] + '" stroke-width="6" fill-rule="evenodd" d="' + D + '"/>'; },
+      function (c, id) { return '<path fill="' + c[0] + '" fill-rule="evenodd" d="' + D + '"/><g fill="none" stroke="' + c[1] + '" stroke-width="3.5" stroke-linecap="round"><path d="M20 66q10-8 20 0t20 0t20 0"/><path d="M26 80q8-6 16 0t16 0t16 0"/></g>'; },
+      function (c, id) { return '<path fill="' + c[0] + '" fill-rule="evenodd" d="' + D + '"/><g fill="' + c[1] + '"><circle cx="60" cy="34" r="7"/><path d="M60 12v6M60 50v6M38 34h6M76 34h6M45 19l4 4M71 45l4 4M45 49l4-4M71 23l4-4" stroke="' + c[1] + '" stroke-width="3" stroke-linecap="round"/></g>'; }
+    ];
+    function deal() {
+      var h = "";
+      for (var i = 0; i < 6; i++) {
+        var c = C[(seed * 5 + i * 3) % C.length], v = V[(seed * 2 + i) % V.length], id = "dyn" + (uid++);
+        h += '<div style="--i:' + i + '"><svg viewBox="0 0 100 100">' + v(c, id) + "</svg></div>";
+      }
+      seed++; row.innerHTML = h;
+    }
+    btn.addEventListener("click", deal); deal();
+  })();
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ההגשה: רשימת בדיקה · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="רשימת בדיקה אינטראקטיבית לפרויקט מיתוג: מה חובה ומה בונוס, מערכת לוגו, צבעים, טיפוגרפיה, שפה גרפית, מוקאפים, סושיאל, תנועה, וספר מותג קצר. הסימונים נשמרים בדפדפן.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="ההגשה: רשימת בדיקה · מדריך המיתוג">
+<meta property="og:description" content="מה חובה, מה בונוס, וספר מותג קצר. מסמנים תוך כדי עבודה.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/bp-system.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+html { scroll-padding-top: 140px; }
+h2, h3 { scroll-margin-top: 140px; }
+
+/* ---- sticky progress ---- */
+.ckbar { position: sticky; top: 72px; z-index: 30; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 10px 16px; margin: 0 0 36px; border: 1px solid var(--line); border-radius: 999px; background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); box-shadow: var(--shadow); }
+.ckbar .txt { font-size: 15px; white-space: nowrap; }
+.ckbar .txt b { font: 500 16px var(--mono); color: var(--accent-ink); }
+.ckbar .bar { flex: 1; min-width: 120px; height: 8px; border-radius: 999px; background: var(--fill); overflow: hidden; }
+.ckbar .bar i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .35s cubic-bezier(.2,.8,.2,1); }
+.ckbar.full .bar i { background: var(--ok); }
+.ckbar button { border: 1px solid var(--line); background: var(--soft); color: var(--muted); border-radius: 999px; padding: 4px 12px; font: 500 13px var(--text); cursor: pointer; }
+.ckbar button:hover { color: var(--ink); border-color: var(--muted); }
+.ckbar button.sure { color: var(--warn); border-color: var(--warn); }
+@media (max-width: 760px) { .ckbar { top: 70px; border-radius: 14px; padding: 8px 12px; gap: 8px 12px; } .ckbar .txt { font-size: 14px; } }
+
+/* ---- printable tool card ---- */
+.tool { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; padding: 20px 22px; border-radius: var(--r); border: 1px solid var(--accent); background: var(--accent-soft); text-decoration: none; color: var(--ink); margin: 20px 0; }
+.tool:hover { box-shadow: 0 0 0 2px var(--accent); }
+.tool svg { width: 52px; height: 52px; color: var(--accent-ink); fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.tool b { display: block; font-size: 20px; }
+.tool .d { color: var(--muted); font-size: 15px; line-height: 1.55; display: block; }
+.tool-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* ---- checkboxes ---- */
+.ck { list-style: none; padding: 0; margin: 14px 0 16px; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); }
+.ck.wide { grid-template-columns: 1fr; }
+.ck li { margin: 0; }
+.ck label { display: flex; gap: 12px; align-items: flex-start; height: 100%; padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); cursor: pointer; font-size: 16px; line-height: 1.5; transition: border-color .2s, background .2s; }
+.ck label:hover { border-color: var(--muted); }
+.ck input { appearance: none; -webkit-appearance: none; flex: none; width: 22px; height: 22px; margin: 1px 0 0; border: 2px solid var(--muted); border-radius: 6px; background: var(--bg); display: grid; place-items: center; cursor: pointer; transition: background .2s, border-color .2s; }
+.ck input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.ck input:checked { background: var(--accent); border-color: var(--accent); }
+.ck input:checked::after { content: ""; width: 6px; height: 11px; margin-top: -2px; border: solid var(--on-accent); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg); }
+.ck input:checked ~ .t { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--accent); }
+.ck label:has(input:checked) { background: var(--soft); }
+.ck .t { flex: 1; }
+.ck .tag { flex: none; font: 600 11px var(--text); padding: 2px 8px; border-radius: 999px; margin-top: 3px; }
+.ck .tag.m { background: var(--accent-soft); color: var(--accent-ink); }
+.ck .tag.b { background: var(--soft); color: var(--muted); border: 1px solid var(--line); }
+.grp-note { font-size: 16px; margin: -4px 0 8px; }
+.more { margin: 0 0 6px; }
+
+/* ---- core / ads / extras split (animation) ---- */
+.split-bar { display: flex; height: 34px; border-radius: 10px; overflow: hidden; font: 600 13px var(--text); }
+.split-bar i { display: flex; align-items: center; justify-content: center; font-style: normal; white-space: nowrap; overflow: hidden; }
+.split-bar .m { flex-basis: 57.2%; background: var(--accent); color: var(--on-accent); }
+.split-bar .a { flex-basis: 21.4%; background: color-mix(in srgb, var(--accent) 40%, var(--fill)); color: var(--ink); }
+.split-bar .b { flex-basis: 21.4%; background: var(--fill); color: var(--ink); }
+.ck li.sub { padding-inline-start: 28px; }
+.split-cols { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px; margin-top: 14px; }
+.split-cols ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+.split-cols li { margin: 0; font-size: 14px; padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--soft); }
+.split-cols .mc li { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); }
+.split-cols h4 { margin: 0 0 8px; font-size: 15px; }
+.split-bar i, .split-cols > div { cursor: pointer; transition: opacity .4s ease, filter .4s ease, border-color .4s, background .4s; }
+.split-cols > div { border: 1px solid transparent; border-radius: var(--r-sm); padding: 10px; }
+/* each step lights one group; the other two stay readable but step back */
+.spf[data-step="1"] .split-bar i:not(.m), .spf[data-step="2"] .split-bar i:not(.a), .spf[data-step="3"] .split-bar i:not(.b) { opacity: .35; filter: saturate(.4); }
+.spf[data-step="1"] .split-cols > div:not(.g1), .spf[data-step="2"] .split-cols > div:not(.g2), .spf[data-step="3"] .split-cols > div:not(.g3) { opacity: .4; }
+.spf[data-step="1"] .split-cols .g1, .spf[data-step="2"] .split-cols .g2, .spf[data-step="3"] .split-cols .g3 { border-color: var(--accent); background: var(--soft); }
+.split-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
+.split-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
+.spf[data-step="1"] .split-note [data-s="1"], .spf[data-step="2"] .split-note [data-s="2"], .spf[data-step="3"] .split-note [data-s="3"] { opacity: 1; visibility: visible; }
+@media (max-width: 560px) { .split-cols { grid-template-columns: 1fr; } }
+
+/* ---- brand book builds itself (animation) ---- */
+.bk { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 22px; align-items: center; }
+.bk-cover { aspect-ratio: 3 / 4; border-radius: 6px 14px 14px 6px; background: var(--accent); color: var(--on-accent); padding: 16px 14px; display: flex; flex-direction: column; justify-content: space-between; box-shadow: inset 8px 0 0 rgba(0,0,0,.18), var(--shadow); transform-origin: right center; }
+.bk-cover b { font: 700 34px/1 var(--display); color: var(--on-accent); }
+.bk-cover small { font: 500 11px var(--mono); direction: ltr; text-align: right; color: var(--on-accent); opacity: .8; }
+.bk-pages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.bk-pages div { aspect-ratio: 3 / 4; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); padding: 8px; display: flex; flex-direction: column; justify-content: space-between; }
+.bk-pages svg { width: 100%; height: auto; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.bk-pages svg .f { fill: var(--accent); stroke: none; }
+.bk-pages span { font-size: 12px; line-height: 1.3; font-weight: 600; }
+.bk-pages .ok { border-style: dashed; border-color: var(--accent); display: grid; place-items: center; text-align: center; color: var(--accent-ink); font-size: 13px; font-weight: 600; }
+.bk-pages div { transition: opacity .5s ease, transform .5s ease, border-color .4s, box-shadow .4s; }
+/* the book fills up chapter by chapter; pages still to come wait as faint outlines */
+.bkf[data-step="1"] .bk-pages [data-act="2"],
+.bkf[data-step="1"] .bk-pages [data-act="3"],
+.bkf[data-step="1"] .bk-pages [data-act="4"],
+.bkf[data-step="2"] .bk-pages [data-act="3"],
+.bkf[data-step="2"] .bk-pages [data-act="4"],
+.bkf[data-step="3"] .bk-pages [data-act="4"] { opacity: .3; border-style: dashed; transform: scale(.96); }
+.bkf[data-step="1"] .bk-pages [data-act="1"],
+.bkf[data-step="2"] .bk-pages [data-act="2"],
+.bkf[data-step="3"] .bk-pages [data-act="3"],
+.bkf[data-step="4"] .bk-pages [data-act="4"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.bk-note { display: grid; margin: 16px 0 0; font-size: 15px; line-height: 1.55; }
+.bk-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
+.bkf[data-step="1"] .bk-note [data-s="1"], .bkf[data-step="2"] .bk-note [data-s="2"], .bkf[data-step="3"] .bk-note [data-s="3"], .bkf[data-step="4"] .bk-note [data-s="4"] { opacity: 1; visibility: visible; }
+@media (max-width: 600px) { .bk { grid-template-columns: 1fr; } .bk-cover { width: 120px; } .bk-pages { grid-template-columns: repeat(4, minmax(0, 1fr)); } .bk-pages span { font-size: 11px; } }
+
+/* ---- full brand book toc ---- */
+.toc5 { display: grid; gap: 10px; margin: 18px 0; }
+.toc5 details { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); }
+.toc5 summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 14px; padding: 14px 18px; font-weight: 600; }
+.toc5 summary::-webkit-details-marker { display: none; }
+.toc5 summary .p { font: 500 13px var(--mono); color: var(--accent-ink); min-width: 28px; }
+.toc5 summary .h { color: var(--muted); font-weight: 400; font-size: 15px; }
+.toc5 summary::after { content: "+"; margin-inline-start: auto; color: var(--muted); font: 400 20px/1 var(--mono); }
+.toc5 details[open] summary::after { content: "−"; }
+.toc5 details > div { padding: 0 18px 14px 18px; }
+.toc5 .chips { margin: 4px 0 0; }
+
+/* ---- brand at a glance (demo brand, literal colours) ---- */
+.glance { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); }
+.glance .l { background: #1f3d2b; color: #f3e6cc; padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.glance .l .mk { display: flex; align-items: center; gap: 12px; }
+.glance .l .mk i { width: 46px; height: 46px; border-radius: 50%; background: #e8a33d; color: #1f3d2b; display: grid; place-items: center; font: 700 30px/1 var(--display); font-style: normal; padding-top: 4px; }
+.glance .l .mk b { font: 700 52px/1 var(--display); color: #f3e6cc; }
+.glance .l p { margin: 0; font-size: 16px; line-height: 1.55; color: #f3e6cc; }
+.glance .l .w { display: flex; gap: 6px; flex-wrap: wrap; }
+.glance .l .w span { font-size: 13px; padding: 2px 10px; border-radius: 999px; border: 1px solid #e8a33d; color: #f3e6cc; }
+.glance .r { background: #f3e6cc; color: #1f3d2b; padding: 20px 22px; display: grid; gap: 14px; align-content: start; }
+.glance .r h5 { margin: 0 0 6px; font: 600 12px var(--text); color: #5a4a36; letter-spacing: .02em; }
+.glance .sw4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.glance .sw4 div { border-radius: 6px; height: 46px; display: flex; align-items: flex-end; padding: 4px 6px; font: 500 10px var(--mono); direction: ltr; }
+.glance .ty { font-size: 14px; line-height: 1.5; color: #1f3d2b; }
+.glance .ty b { font: 700 26px/1.1 var(--display); color: #1f3d2b; display: block; }
+.glance .dd { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; font-size: 13px; line-height: 1.4; color: #1f3d2b; }
+.glance .dd div { border-radius: 6px; padding: 6px 8px; background: #ffffff; }
+.glance .dd .no { background: #f8d9d2; }
+@media (max-width: 640px) { .glance { grid-template-columns: 1fr; } }
+
+.done-msg { display: none; }
+.done-msg.show { display: block; }
+</style>
+</head>
+<body data-ch="checklist">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">14 / 15</div>
+      <h1>ההגשה: רשימת בדיקה</h1>
+      <p class="lede">רשימת הדברים שכדאי שיהיו בפרויקט מיתוג. מה חובה, מה בונוס, ומה נכנס לספר מותג קצר. סמנו תוך כדי עבודה: הסימונים נשמרים בדפדפן שלכם, גם אם סוגרים את הדף.</p>
+      <div class="ch-meta"><span>רשימה אינטראקטיבית</span><span>2 הדגמות</span><span>גרסה להדפסה</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-12.webp" alt="איור: שולחן הגשה עם לוח רשימות מסומן בווי, עיפרון, מדבקות, דוגמיות צבע ותיקייה מוכנה" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <div class="ckbar" id="ckbar" role="status">
+      <span class="txt">סימנתם <b class="n">0</b> מתוך <b class="of">0</b></span>
+      <span class="bar" aria-hidden="true"><i></i></span>
+      <button type="button" id="ck-reset">איפוס</button>
+    </div>
+
+    <!-- ================= how ================= -->
+    <section class="sec">
+      <h2 id="how" data-short="איך עובדים עם הרשימה">איך עובדים עם הרשימה</h2>
+      <p>כל סעיף כאן הוא משהו שמרצה (או לקוח) ירצה לראות בהגשה. כשהסעיף מוסבר לעומק בפרק אחר, יש לידו קישור, וכאן נשארת רק השורה לסימון. מתחילים מהסיכום הקצר, ממשיכים לרשימה המלאה, ומסיימים בספר המותג.</p>
+      <a class="tool" href="../../tools/branding-checklist/">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="10" y="6" width="28" height="36" rx="3"/><path d="M16 16l3 3 5-6M16 27l3 3 5-6M28 17h5M28 28h5M16 37h17"/></svg>
+        <span><b>רוצים את זה על נייר?</b><span class="d">רשימת הביקורת להדפסה: 11 חלקים, עם קובץ <span class="ltr">PDF</span> להורדה. טובה לתלות ליד המחשב או להביא לפגישת הגשה.</span></span>
+      </a>
+      <div class="tool-links"><a class="xref" href="../../tools/branding-checklist/">לכלי ההדפסה</a> <a class="xref" href="../../tools/branding-checklist/branding-checklist.pdf">ישר ל־<span class="ltr">PDF</span></a></div>
+    </section>
+
+    <!-- ================= summary: must / bonus ================= -->
+    <section class="sec">
+      <h2 id="summary" data-short="סיכום קצר: חובה ובונוס">סיכום קצר</h2>
+      <p>אם אין זמן לקרוא את כל הרשימה, זה הסיכום הקצר של כל מה שצריך להיות בפרויקט.</p>
+
+      <h3 id="summary-core">המיתוג עצמו</h3>
+      <ul class="ck" data-group="summary-core">
+        <li><label><input type="checkbox" data-k="s-logo"><span class="t">לוגו (בכל הגדלים וכל השימושים)</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-board"><span class="t">בורד השראה. לא חובה, אבל יתרון להראות סקיצות, אפילו אם נעשו עם <span class="ltr">AI</span></span><span class="tag b">יתרון</span></label></li>
+        <li><label><input type="checkbox" data-k="s-logosys"><span class="t">מערכת לוגו מלאה</span><span class="tag m">חובה</span></label></li>
+        <li class="sub"><label><input type="checkbox" data-k="s-colors"><span class="t">צבעים</span><span class="tag m">חובה</span></label></li>
+        <li class="sub"><label><input type="checkbox" data-k="s-type"><span class="t">טיפוגרפיה</span><span class="tag m">חובה</span></label></li>
+        <li class="sub"><label><input type="checkbox" data-k="s-graphic"><span class="t">שפה גרפית</span><span class="tag m">חובה</span></label></li>
+        <li class="sub"><label><input type="checkbox" data-k="s-icons"><span class="t">אייקונים</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-mockups"><span class="t">שימושים <span class="ltr">(mockups)</span>: איפה הלוגו קיים, על איזה אובייקטים או מדיה</span><span class="tag m">חובה</span></label></li>
+      </ul>
+
+      <h3 id="summary-ads">פרסום: חובה!</h3>
+      <ul class="ck" data-group="summary-ads">
+        <li><label><input type="checkbox" data-k="s-social"><span class="t"><strong>סושיאל מדיה:</strong> פוסטים לסושיאל (פרסומות) בפורמט ריבועי וסטורי</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-posters"><span class="t">פוסטרים (פרינטים לתחנות אוטובוס, קירות, עיתונים. זה בגדול אותו הדבר)</span><span class="tag m">חובה</span></label></li>
+        <li><label><input type="checkbox" data-k="s-motion"><span class="t"><strong><span class="ltr">Motion / Animation</span>:</strong> סטורי או פוסט מונפש (עבודה של אפטר אפקטס, מומלץ לשלב <span class="ltr">AI</span>)</span><span class="tag m">חובה</span></label></li>
+      </ul>
+
+      <h3 id="summary-extra">הרחבות: לא חובה</h3>
+      <ul class="ck" data-group="summary-extra">
+        <li><label><input type="checkbox" data-k="s-anim"><span class="t">אנימציות. הנפשות של הלוגו עם <span class="ltr">AI</span>. הנפשת דמות.</span><span class="tag b">בונוס</span></label></li>
+        <li><label><input type="checkbox" data-k="s-character"><span class="t">מערכת הדמות <span class="ltr">(Character System)</span>, אם יש כזו</span><span class="tag b">בונוס</span></label></li>
+        <li><label><input type="checkbox" data-k="s-guidelines"><span class="t">ספר מותג קצר <span class="ltr">(Brand guidelines)</span>. בעצם מכיל הכול בצורה של ספר. אפשר לעשות מוקאפ של כמה עמודים, זה מספיק: <span class="ltr">2-4</span> עמודים.</span><span class="tag b">בונוס</span></label></li>
+      </ul>
+      <p><a class="xref" href="#brand-book">ספר המותג לעומק</a></p>
+
+      <figure class="anim spf" id="split-fig" data-steps="3" data-step-labels="המיתוג עצמו|פרסום: חובה|הרחבות">
+        <span class="anim__label">מה חובה ומה הרחבה</span>
+        <div class="anim__stage">
+          <div class="split-bar" aria-hidden="true"><i class="m" data-goto="1">המיתוג עצמו</i><i class="a" data-goto="2">פרסום: חובה</i><i class="b" data-goto="3">הרחבות</i></div>
+          <div class="split-cols">
+            <div class="mc g1" data-goto="1"><h4>המיתוג עצמו</h4><ul><li>לוגו</li><li>מערכת לוגו מלאה</li><li>צבעים</li><li>טיפוגרפיה</li><li>שפה גרפית</li><li>אייקונים</li><li>מוקאפים</li><li>בורד השראה (יתרון)</li></ul></div>
+            <div class="mc g2" data-goto="2"><h4>פרסום: חובה!</h4><ul><li>סושיאל: ריבוע וסטורי</li><li>פוסטרים</li><li>סטורי מונפש</li></ul></div>
+            <div class="bc g3" data-goto="3"><h4>הרחבות: לא חובה</h4><ul><li>אנימציות</li><li>מערכת הדמות</li><li>ספר מותג קצר</li></ul></div>
+          </div>
+          <p class="split-note" aria-live="polite"><span data-s="1"><b>המיתוג עצמו:</b> שמונה סעיפים, שבעה מהם חובה. בורד ההשראה הוא יתרון.</span><span data-s="2"><b>פרסום:</b> שלושה סעיפים, וכולם חובה. בלי פוסטים, פוסטר וסטורי מונפש, ההגשה לא שלמה.</span><span data-s="3"><b>הרחבות:</b> שלושה סעיפים, כולם בונוס. זה מה שמבדיל הגשה טובה מהגשה מצוינת.</span></p>
+        </div>
+        <figcaption>הפרסום הוא לא תוספת: בלי פוסטים, פוסטר וסטורי מונפש, ההגשה לא שלמה. ההרחבות הן מה שמבדיל הגשה טובה מהגשה מצוינת.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= full list ================= -->
+    <section class="sec">
+      <h2 id="full-list" data-short="הרשימה המלאה">רשימת דברים שכדאי שיהיו בפרויקט מיתוג</h2>
+      <p>עשרה חלקים, ועוד שלושה דברים אסטרטגיים שמרצים מאוד אוהבים לראות.</p>
+
+      <h3 id="cl-logo">1. מערכת הלוגו <span class="ltr">(Logo System)</span></h3>
+      <p class="grp-note">לא רק לוגו אחד. צריך להראות:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="logo-main"><span class="t">לוגו ראשי</span></label></li>
+        <li><label><input type="checkbox" data-k="logo-second"><span class="t">לוגו משני</span></label></li>
+        <li><label><input type="checkbox" data-k="logo-mark"><span class="t">סמל בלבד <span class="ltr">(icon / mark)</span></span></label></li>
+        <li><label><input type="checkbox" data-k="logo-h"><span class="t">גרסה אופקית</span></label></li>
+        <li><label><input type="checkbox" data-k="logo-v"><span class="t">גרסה אנכית</span></label></li>
+        <li><label><input type="checkbox" data-k="logo-mono"><span class="t">גרסה מונוכרומטית</span></label></li>
+        <li><label><input type="checkbox" data-k="logo-fav"><span class="t">גרסה קטנה <span class="ltr">(favicon)</span></span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="logo.html#system">מערכת הלוגו לעומק</a></p>
+
+      <h3 id="cl-color">2. מערכת צבעים <span class="ltr">(Brand Color System)</span></h3>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="col-primary"><span class="t">צבע ראשי</span></label></li>
+        <li><label><input type="checkbox" data-k="col-second"><span class="t">צבע משני</span></label></li>
+        <li><label><input type="checkbox" data-k="col-bg"><span class="t">צבעי רקע</span></label></li>
+        <li><label><input type="checkbox" data-k="col-accent"><span class="t">צבעי הדגשה</span></label></li>
+      </ul>
+      <p class="grp-note">להציג גם:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="col-rgb"><span class="t"><span class="ltr">RGB</span></span></label></li>
+        <li><label><input type="checkbox" data-k="col-hex"><span class="t"><span class="ltr">HEX</span></span></label></li>
+        <li><label><input type="checkbox" data-k="col-cmyk"><span class="t"><span class="ltr">CMYK</span></span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="color.html#palette">בניית פלטה</a> <a class="xref" href="color.html#systems">קוד צבע לכל מערכת</a></p>
+
+      <h3 id="cl-type">3. טיפוגרפיה</h3>
+      <p class="grp-note">צריך להראות:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="type-head"><span class="t">פונט כותרות</span></label></li>
+        <li><label><input type="checkbox" data-k="type-body"><span class="t">פונט גוף</span></label></li>
+        <li><label><input type="checkbox" data-k="type-hier"><span class="t">היררכיה טיפוגרפית, לדוגמה: <span class="ltr">H1 H2 H3 Body text Caption</span></span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="typography.html#hierarchy">היררכיה טיפוגרפית, עם דוגמה חיה</a></p>
+
+      <h3 id="cl-graphic">4. שפת גרפיקה <span class="ltr">(Graphic Language)</span></h3>
+      <p class="grp-note">לדוגמה:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="gr-texture"><span class="t">טקסטורות</span></label></li>
+        <li><label><input type="checkbox" data-k="gr-lines"><span class="t">קווים</span></label></li>
+        <li><label><input type="checkbox" data-k="gr-shapes"><span class="t">צורות</span></label></li>
+        <li><label><input type="checkbox" data-k="gr-frames"><span class="t">מסגרות</span></label></li>
+        <li><label><input type="checkbox" data-k="gr-bg"><span class="t">רקעים</span></label></li>
+      </ul>
+      <p class="grp-note muted">לא חייבים את כולם: בחרו את מה שבאמת שייך לעולם של המותג, והראו שזה חוזר באותו אופן בכל מקום.</p>
+      <p class="more"><a class="xref" href="visual-language.html#illustration">שפה גרפית, עם דוגמה ממותג אמיתי</a></p>
+
+      <h3 id="cl-character">5. מערכת הדמות <span class="ltr">(Character System)</span></h3>
+      <p class="grp-note">אם יש למותג דמות, כדאי להציג:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="ch-faces"><span class="t">סט הבעות</span></label></li>
+        <li><label><input type="checkbox" data-k="ch-posts"><span class="t">שימוש בדמות בפוסטים</span></label></li>
+        <li><label><input type="checkbox" data-k="ch-pack"><span class="t">שימוש באריזה</span></label></li>
+        <li><label><input type="checkbox" data-k="ch-icons"><span class="t">שימוש באייקונים</span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="visual-language.html#illustration">דמות ושפה איורית</a></p>
+
+      <h3 id="cl-icons">6. אייקונים <span class="ltr">(Icon set)</span></h3>
+      <ul class="ck wide">
+        <li><label><input type="checkbox" data-k="ic-set"><span class="t">סט אייקונים באותה שפה, מהעולם של המותג (הדברים שהמותג מוכר, עושה ומרגיש)</span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="visual-language.html#illustration">אייקונים ואיורים</a></p>
+
+      <h3 id="cl-mockups">7. דוגמאות שימוש <span class="ltr">(Mockups)</span></h3>
+      <p class="grp-note">מאוד חשוב לפרויקט. לדוגמה:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="mk-pack"><span class="t">אריזה</span></label></li>
+        <li><label><input type="checkbox" data-k="mk-jar"><span class="t">בקבוק / צנצנת</span></label></li>
+        <li><label><input type="checkbox" data-k="mk-poster"><span class="t">פוסטרים</span></label></li>
+        <li><label><input type="checkbox" data-k="mk-sticker"><span class="t">סטיקרים</span></label></li>
+        <li><label><input type="checkbox" data-k="mk-street"><span class="t">מדבקות רחוב</span></label></li>
+        <li><label><input type="checkbox" data-k="mk-merch"><span class="t">חולצה / מרצ’נדייז</span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="mockups.html">יישומים ומוקאפים</a></p>
+
+      <h3 id="cl-social">8. סושיאל מדיה</h3>
+      <p class="grp-note">מערכת פוסטים. לדוגמה:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="so-post"><span class="t">פוסט אינסטגרם</span></label></li>
+        <li><label><input type="checkbox" data-k="so-story"><span class="t">סטורי</span></label></li>
+        <li><label><input type="checkbox" data-k="so-ad"><span class="t">פרסומת</span></label></li>
+        <li><label><input type="checkbox" data-k="so-meme"><span class="t">מם מותג</span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a></p>
+
+      <h3 id="cl-motion">9. תנועה ואנימציה <span class="ltr">(Motion / Animation)</span></h3>
+      <p class="grp-note">אפשר להראות:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="mo-logo"><span class="t"><strong>אנימציית לוגו</strong></span></label></li>
+        <li><label><input type="checkbox" data-k="mo-char"><span class="t">אנימציית דמות</span></label></li>
+        <li><label><input type="checkbox" data-k="mo-sticker"><span class="t">סטיקרים מונפשים</span></label></li>
+      </ul>
+      <div class="note" data-added>
+        <span class="box-label">כמה כללים לתנועה של מותג</span>
+        <ul class="dots">
+          <li><strong>קצר</strong>: רוב התנועות בממשק לוקחות <span class="ltr">200–500</span> אלפיות שנייה. אנימציית לוגו של פתיחה: שנייה עד שלוש, לא יותר.</li>
+          <li><strong>האצה והאטה</strong>: תנועה במהירות קבועה מרגישה רובוטית. מה שנכנס, מאט בסוף. מה שיוצא, מאיץ.</li>
+          <li><strong>אופי</strong>: קפיצי ושובב למותג קליל, רך ואיטי למותג יוקרתי. התנועה היא חלק מהאישיות.</li>
+          <li><strong>נגמר</strong>: תנועה שמתנגנת שוב ושוב ליד טקסט מפריעה לקרוא. מתנגנת פעם, ונחה. <a class="xref" href="golden-rules.html">כללי זהב</a></li>
+        </ul>
+      </div>
+
+      <h3 id="cl-guidelines">10. ספר מותג <span class="ltr">(Brand Guidelines)</span></h3>
+      <p>ספר מותג קצר. מה בדיוק נכנס אליו, עם רשימת סימון משלו, בהמשך העמוד. <a class="xref" href="#brand-book">ספר מותג</a></p>
+
+      <h3 id="cl-strategic">ובונוס אסטרטגי: 3 דברים שמרצים אוהבים</h3>
+      <p class="grp-note">אם אתם עושים את זה <strong>לפורטפוליו או לפרויקט לימודי</strong>, יש גם 3 דברים שמרצים מאוד אוהבים לראות:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="st-story"><span class="t">סיפור המותג <span class="ltr">(Brand Story)</span></span></label></li>
+        <li><label><input type="checkbox" data-k="st-aud"><span class="t">למי המותג פונה <span class="ltr">(Target Audience)</span></span></label></li>
+        <li><label><input type="checkbox" data-k="st-pos"><span class="t">איך הוא שונה מהמתחרים <span class="ltr">(Brand Positioning)</span></span></label></li>
+      </ul>
+      <p class="more"><a class="xref" href="strategy.html#story-audience-positioning">סיפור, קהל ומיצוב</a></p>
+    </section>
+
+    <!-- ================= final check ================= -->
+    <section class="sec">
+      <h2 id="final-check" data-added data-short="בדיקה אחרונה">בדיקה אחרונה לפני ההגשה</h2>
+      <figure class="illus"><img src="img/final-12.webp" alt="איור: זכוכית מגדלת, סרגל ושלושה סימני וי מעל סט מוקאפים מסודר: כוס, כרטיס וטלפון" width="1344" height="752" loading="lazy"></figure>
+      <div data-added>
+        <p>שבע טעויות שמרצים רואים מקילומטר. כל אחת מהן מוסברת בפרק משלה, כאן רק בודקים:</p>
+        <ul class="ck wide">
+          <li><label><input type="checkbox" data-k="f-stretch"><span class="t">שום לוגו, פונט או תמונה לא נמתחו או נדחסו.</span></label></li>
+          <li><label><input type="checkbox" data-k="f-contrast"><span class="t">כל הטקסטים קריאים מול הרקע, בלי צללים או קווי מתאר שמנסים להציל אותם.</span></label></li>
+          <li><label><input type="checkbox" data-k="f-bw"><span class="t">השפה הצבעונית לא נשענת על שחור מוחלט ולבן מוחלט.</span></label></li>
+          <li><label><input type="checkbox" data-k="f-print"><span class="t">צבעי מוצרי הדפוס נבדקו ב־<span class="ltr">CMYK</span>, ולא רק על המסך.</span></label></li>
+          <li><label><input type="checkbox" data-k="f-gif"><span class="t">אין אנימציה או <span class="ltr">GIF</span> בלולאה ליד טקסט שצריך לקרוא.</span></label></li>
+          <li><label><input type="checkbox" data-k="f-opening"><span class="t">יש משפט פתיחה אחד קצר שמסביר מה המותג, בלי חפירות.</span></label></li>
+          <li><label><input type="checkbox" data-k="f-present"><span class="t">המצגת מובילה להחלטה: הקשר, אסטרטגיה, קונספט, ורק אז הלוגו.</span></label></li>
+        </ul>
+        <p class="more"><a class="xref" href="logo.html#no-stretch">לא למתוח</a> <a class="xref" href="golden-rules.html">כללי זהב</a> <a class="xref" href="color.html#black-white">שחור ולבן</a> <a class="xref" href="color.html#print-colors">צבעי דפוס</a> <a class="xref" href="presenting.html#structure">מבנה המצגת</a></p>
+        <div class="ok-box done-msg" id="done-msg"><span class="box-label">הכול מסומן</span><p>עבודה מסודרת. עכשיו נשאר רק להציג אותה נכון. <a class="xref" href="presenting.html">הצגה ללקוח</a></p></div>
+      </div>
+    </section>
+
+    <!-- ================= brand book ================= -->
+    <section class="sec">
+      <h2 id="brand-book" data-short="ספר מותג">ספר מותג <span class="ltr">(Mini Brand Book)</span></h2>
+      <p>צרו מסמך אחד שמרכז הכול: לוגו, צבעים, טיפוגרפיה, אלמנטים גרפיים, דמות, שפה מילולית ודוגמאות יישום. <strong>המטרה: שכל מעצב אחר יוכל להמשיך לעבוד באותה שפה בלי בלבול.</strong></p>
+
+      <figure class="anim bkf" id="bk-fig" data-steps="4" data-step-labels="היסודות|השפה|היישום|המבחן">
+        <span class="anim__label">ספר מותג מתחבר</span>
+        <div class="anim__stage bk" aria-hidden="true">
+          <div class="bk-cover"><b>ספר מותג</b><small>Mini Brand Book</small></div>
+          <div class="bk-pages">
+            <div data-act="1"><svg viewBox="0 0 40 26"><circle class="f" cx="20" cy="13" r="9"/></svg><span>לוגו</span></div>
+            <div data-act="1"><svg viewBox="0 0 40 26"><rect class="f" x="2" y="5" width="11" height="16" rx="2"/><rect x="15" y="5" width="11" height="16" rx="2"/><rect x="28" y="5" width="10" height="16" rx="2"/></svg><span>צבעים</span></div>
+            <div data-act="1"><svg viewBox="0 0 40 26"><path d="M6 21L13 4l7 17M9 15h8M26 9v12M26 13a5 4 0 1 1 0 6"/></svg><span>טיפוגרפיה</span></div>
+            <div data-act="2"><svg viewBox="0 0 40 26"><path d="M4 20l8-12 8 12zM24 6h12v12H24z"/></svg><span>אלמנטים גרפיים</span></div>
+            <div data-act="2"><svg viewBox="0 0 40 26"><circle cx="20" cy="10" r="6"/><path d="M10 24c2-6 18-6 20 0M17 9h1M22 9h1"/></svg><span>דמות</span></div>
+            <div data-act="2"><svg viewBox="0 0 40 26"><path d="M5 5h30v12H16l-6 5v-5H5z"/></svg><span>שפה מילולית</span></div>
+            <div data-act="3"><svg viewBox="0 0 40 26"><rect x="4" y="4" width="14" height="18" rx="2"/><path d="M24 8h12l-2 14h-8z"/><circle class="f" cx="11" cy="12" r="3"/></svg><span>דוגמאות יישום</span></div>
+            <div class="ok" data-act="4">מעצב אחר יכול להמשיך</div>
+          </div>
+        </div>
+        <p class="bk-note" aria-live="polite"><span data-s="1"><b>היסודות:</b> לוגו, צבעים וטיפוגרפיה. בלי שלושת אלה אין ספר.</span><span data-s="2"><b>השפה:</b> אלמנטים גרפיים, דמות ושפה מילולית. ככה המותג נשמע ומרגיש, לא רק נראה.</span><span data-s="3"><b>היישום:</b> דוגמאות אמיתיות, כדי שאף אחד לא יצטרך לנחש איך זה נראה בעולם.</span><span data-s="4"><b>המבחן:</b> מעצב שלא פגש אתכם מעולם ממשיך לעבוד עם הספר, בלי לשאול שאלות.</span></p>
+        <figcaption>שבעה עמודים, ספר אחד. העמוד השמיני הוא המבחן: אם מעצב שלא פגש אתכם מעולם יכול לעבוד עם הספר בלי לשאול שאלות, הספר עובד.</figcaption>
+      </figure>
+
+      <h3 id="brand-book-check">מה חייב להיות בספר המותג</h3>
+      <p class="grp-note">ספר מותג קצר. כולל:</p>
+      <ul class="ck">
+        <li><label><input type="checkbox" data-k="bb-essence"><span class="t">מהות המותג</span></label></li>
+        <li><label><input type="checkbox" data-k="bb-values"><span class="t">ערכים</span></label></li>
+        <li><label><input type="checkbox" data-k="bb-logo"><span class="t">שימוש נכון בלוגו</span></label></li>
+        <li><label><input type="checkbox" data-k="bb-colors"><span class="t">צבעים</span></label></li>
+        <li><label><input type="checkbox" data-k="bb-type"><span class="t">טיפוגרפיה</span></label></li>
+        <li><label><input type="checkbox" data-k="bb-examples"><span class="t">דוגמאות שימוש</span></label></li>
+      </ul>
+      <p>אם הספר מיועד ללקוח אמיתי ולא רק לתיק עבודות, הוסיפו עמוד „עשה ואל תעשה” עם הלוגו. ובספר עצמו, כמו בכל טקסט במיתוג: משפט פתיחה אחד, לא מגילה. <a class="xref" href="logo.html">עשה ואל תעשה</a> <a class="xref" href="golden-rules.html">בלי חפירות</a></p>
+
+      <h3 id="brand-book-toc" data-added>תוכן העניינים של ספר מותג מלא</h3>
+      <div data-added>
+        <p>ככה בנוי ספר מותג של חברה גדולה, בחמישה חלקים. לפרויקט לימודי, ארבעת החלקים הראשונים מספיקים, והראשון יכול להיות עמוד אחד.</p>
+        <div class="toc5">
+          <details open><summary><span class="p">I</span>יסודות המותג<span class="h">מי אנחנו ולמה</span></summary><div><ul class="chips"><li>מבוא</li><li>סיפור המותג</li><li>ייעוד, חזון וערכים</li><li>הבטחת המותג</li><li>פרסונות של קהל היעד</li><li>משפט המיצוב</li></ul></div></details>
+          <details><summary><span class="p">II</span>זהות חזותית<span class="h">איך זה נראה</span></summary><div><ul class="chips"><li>לוגו: ראשי, משני, סמלים, <span class="ltr">favicon</span></li><li>גריד בנייה של הלוגו</li><li>מרווח מגן וגודל מינימלי</li><li>גרסאות צבע</li><li>עשה ואל תעשה</li><li>פלטה עם <span class="ltr">HEX / RGB / CMYK / Pantone</span></li><li>טיפוגרפיה: היררכיה, גדלים, משקלים</li><li>צילום</li><li>איור ואייקונים</li><li>פאטרנים וטקסטורות</li><li>גריד ופריסה</li></ul></div></details>
+          <details><summary><span class="p">III</span>זהות מילולית<span class="h">איך זה נשמע</span></summary><div><ul class="chips"><li>קול וטון</li><li>מסרים מרכזיים</li><li>סלוגן</li><li>כללי שמות</li><li>כללי כתיבה</li><li>מילון מונחים</li></ul></div></details>
+          <details><summary><span class="p">IV</span>יישומים<span class="h">איפה זה חי</span></summary><div><ul class="chips"><li>כרטיסי ביקור</li><li>נייר מכתבים</li><li>חתימת דוא"ל</li><li>מצגות</li><li>רשתות חברתיות</li><li>אתר</li><li>פרסום</li><li>אריזה</li><li>שילוט</li><li>וידאו, תנועה וסאונד</li></ul></div></details>
+          <details><summary><span class="p">V</span>משאבים<span class="h">איך עובדים עם זה</span></summary><div><ul class="chips"><li>קבצים להורדה</li><li>אנשי קשר בצוות המותג</li><li>תהליך אישור</li><li>היסטוריית גרסאות</li></ul></div></details>
+        </div>
+      </div>
+
+      <h3 id="at-a-glance" data-added>המותג במבט אחד</h3>
+      <div data-added>
+        <p>הכלי הכי שימושי בספר מותג הוא לפעמים העמוד הכי קצר: עמוד אחד שמסכם הכול, לשימוש יומיומי. מי שצריך רק את הקוד של הצבע או את שם הפונט לא יפתח ספר של ארבעים עמודים. ככה זה יכול להיראות (למותג לדוגמה):</p>
+        <div class="glance">
+          <div class="l">
+            <div class="mk"><i>ש</i><b>שקד</b></div>
+            <p>מאפיית שאור שכונתית. לחם אמיתי, כל בוקר, מול העיניים.</p>
+            <div class="w"><span>חם</span><span>אמיתי</span><span>שכונתי</span><span>לא ממהר</span></div>
+          </div>
+          <div class="r">
+            <div><h5>צבעים</h5><div class="sw4"><div style="background:#1f3d2b;color:#f3e6cc">#1F3D2B</div><div style="background:#e8a33d;color:#1f3d2b">#E8A33D</div><div style="background:#fbf6ec;color:#1f3d2b;border:1px solid #d9c9a8">#FBF6EC</div><div style="background:#3a2a1e;color:#f3e6cc">#3A2A1E</div></div></div>
+            <div class="ty"><h5>טיפוגרפיה</h5><b>כותרת בקרנטינה</b>טקסט רץ ב־<span class="ltr">IBM Plex Sans Hebrew</span></div>
+            <div><h5>הכי חשוב</h5><div class="dd"><div>✓ לוגו על ירוק או על קרם</div><div class="no">✕ לוגו על צילום עמוס</div><div>✓ כתום רק להדגשה</div><div class="no">✕ כתום כרקע לטקסט</div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <h3 id="digital-guidelines" data-added>למה עדיף ספר מותג דיגיטלי</h3>
+      <div data-added>
+        <p>קובץ <span class="ltr">PDF</span> מתיישן ביום שבו שולחים אותו. מותגים שהספר שלהם באמת נשמר עובדים אחרת:</p>
+        <ul class="dots">
+          <li><strong>דיגיטלי, לא <span class="ltr">PDF</span></strong>: עמוד אינטרנט (אפילו בנוטשן) שאפשר לעדכן, עם לינק אחד שתמיד נכון.</li>
+          <li><strong>יש לו בעלים</strong>: אדם אחד שאחראי לעדכן אותו, ובדיקה פעם ברבעון של יישומים ופלטפורמות חדשים.</li>
+          <li><strong>נכון ולא נכון, זה לצד זה</strong>: כל כלל מגיע עם דוגמה ויזואלית של השימוש הנכון ושל השגוי.</li>
+          <li><strong>עם „למה”</strong>: אנשים שומרים על כללים שהם מבינים. „לא על רקע עמוס, כי הלוגו נעלם” עובד יותר טוב מ„לא על רקע עמוס”.</li>
+          <li><strong>הכול להורדה</strong>: קבצי לוגו בלחיצה, וקוד צבע שמועתק בלחיצה.</li>
+          <li><strong>ועמוד אחד לסיכום</strong>, כמו „המותג במבט אחד” שלמעלה.</li>
+        </ul>
+      </div>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* interactive checklist: saved in localStorage (inside try/catch), progress bar, reset with a second-click confirm */
+(function () {
+  "use strict";
+  var KEY = "bg-checklist-v1";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('#main .ck input[type="checkbox"][data-k]'));
+  var bar = document.getElementById("ckbar"), fill = bar.querySelector(".bar i"), n = bar.querySelector(".n"), of = bar.querySelector(".of");
+  var reset = document.getElementById("ck-reset"), doneMsg = document.getElementById("done-msg");
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+  boxes.forEach(function (b) { b.checked = !!state[b.getAttribute("data-k")]; });
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  function upd() {
+    var c = boxes.filter(function (b) { return b.checked; }).length, t = boxes.length;
+    n.textContent = c; of.textContent = t;
+    fill.style.width = (t ? c / t * 100 : 0) + "%";
+    bar.classList.toggle("full", c === t && t > 0);
+    if (doneMsg) doneMsg.classList.toggle("show", c === t && t > 0);
+  }
+  boxes.forEach(function (b) {
+    b.addEventListener("change", function () {
+      var k = b.getAttribute("data-k");
+      if (b.checked) state[k] = 1; else delete state[k];
+      save(); upd();
+    });
+  });
+  var armed = null;
+  reset.addEventListener("click", function () {
+    if (!reset.classList.contains("sure")) {
+      reset.classList.add("sure"); reset.textContent = "בטוחים? לחצו שוב";
+      clearTimeout(armed); armed = setTimeout(function () { reset.classList.remove("sure"); reset.textContent = "איפוס"; }, 3000);
+      return;
+    }
+    clearTimeout(armed); reset.classList.remove("sure"); reset.textContent = "איפוס";
+    state = {}; boxes.forEach(function (b) { b.checked = false; }); save(); upd();
+  });
+  upd();
+})();
+</script>
+</body>
+</html>

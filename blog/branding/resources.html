@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>השראה ומקורות · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="מיתוגים שאהבתי (כולל ביקורת מלאה על Kokkopi), לוחות השראה ב־Behance, סטודיואים וגלריות, ערוצי יוטיוב, סרטון אחד שחובה לראות, ספרים וכלים לצבע, טיפוגרפיה ואייקונים.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="השראה ומקורות · מדריך המיתוג">
+<meta property="og:description" content="פרויקטים שאהבתי, סטודיואים, ערוצי יוטיוב, ספרים וכלים.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/insp-kokkopi.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* ---- jump chips ---- */
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 40px; padding: 0; list-style: none; }
+.jump li { margin: 0; }
+.jump a { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--paper); color: var(--ink); text-decoration: none; font-size: 15px; }
+.jump a:hover { border-color: var(--accent); }
+.jump .n { font: 500 12px var(--mono); color: var(--accent-ink); }
+
+/* ---- resource cards with thumbnails ---- */
+.rc { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); margin: 22px 0; }
+.rc a { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); color: var(--ink); text-decoration: none; overflow: hidden; transition: border-color .2s, transform .35s cubic-bezier(.2,.7,.2,1); }
+.rc a:hover { border-color: var(--accent); transform: translateY(-3px); }
+.rc .th { aspect-ratio: 16 / 9; background: var(--soft); overflow: hidden; }
+.rc .th img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.rc a:hover .th img { transform: scale(1.04); }
+.rc .bd { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.rc .kk { font: 500 12px var(--text); color: var(--accent-ink); }
+.rc b { font-size: 17px; line-height: 1.35; }
+.rc p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--muted); }
+.rc .u { margin-top: auto; padding-top: 8px; font: 400 12px var(--mono); color: var(--muted); direction: ltr; unicode-bidi: isolate; text-align: right; }
+.rc .gl { display: grid; place-items: center; aspect-ratio: 16 / 9; background: var(--soft); }
+.rc .gl svg { width: 64px; height: 64px; }
+.rc.wide2 { grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
+
+/* ---- feature (Kokkopi) ---- */
+.feature { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); overflow: hidden; margin: 22px 0; }
+.feature > a { display: block; }
+.feature img { display: block; width: 100%; height: auto; }
+.feature .fb { padding: clamp(16px, 3vw, 28px); }
+.feature .tag { display: inline-block; font: 600 13px var(--text); color: var(--on-accent); background: var(--accent); padding: 3px 12px; border-radius: 999px; }
+.feature .ft { margin: 10px 0 0; font: 700 clamp(30px, 3.6vw, 40px)/1.1 var(--display); }
+.feature .ft a { text-decoration: none; color: var(--ink); }
+.feature .ft a:hover { color: var(--accent-ink); }
+.rev { display: grid; gap: 12px; margin: 18px 0 6px; }
+.rev > div { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 14px; padding: 14px 16px; border-radius: var(--r-sm); background: var(--soft); border: 1px solid var(--line); }
+.rev h4 { margin: 0; font-size: 15px; line-height: 1.5; }
+.rev p { margin: 0; font-size: 16.5px; line-height: 1.7; }
+.rev .plus h4 { color: var(--ok); } .rev .minus h4 { color: var(--warn); } .rev .end h4 { color: var(--accent-ink); }
+@media (max-width: 560px) { .rev > div { grid-template-columns: 1fr; gap: 4px; } }
+
+/* ---- studios list ---- */
+.links .ico { flex: none; width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: var(--soft); border: 1px solid var(--line); font: 700 18px var(--display); color: var(--accent-ink); }
+.links .tx { flex: 1; min-width: 0; }
+.links b { font-weight: 600; }
+.links .say { color: var(--accent-ink); font-weight: 500; }
+
+/* ---- bookshelf ---- */
+.shelf { display: flex; align-items: flex-end; gap: 6px; height: 220px; padding: 0 12px; border-bottom: 10px solid var(--fill); border-radius: 0 0 6px 6px; overflow-x: clip; overflow-y: visible; direction: ltr; }
+.bk { flex: none; width: var(--w, 44px); height: var(--h, 180px); border-radius: 4px 4px 2px 2px; background: var(--c); color: var(--t, #fff); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: inset -4px 0 0 rgba(0,0,0,.18), inset 3px 0 0 rgba(255,255,255,.12); transform-origin: bottom center; }
+.bk span { writing-mode: vertical-rl; transform: rotate(180deg); font: 600 12.5px/1.1 var(--text); letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 92%; }
+.bk.lean { transform: rotate(-7deg) translateX(4px); }
+/* stepper: 1 = the whole shelf, 2-4 = one of the three groups steps forward, the rest step back */
+.bk { transition: opacity .45s, filter .45s, transform .55s cubic-bezier(.3,1.25,.5,1); }
+.shelf-fig[data-step="2"] .bk:not([data-g="s"]), .shelf-fig[data-step="3"] .bk:not([data-g="i"]), .shelf-fig[data-step="4"] .bk:not([data-g="e"]) { opacity: .22; filter: saturate(.35); }
+.shelf-fig[data-step="2"] .bk[data-g="s"], .shelf-fig[data-step="3"] .bk[data-g="i"], .shelf-fig[data-step="4"] .bk[data-g="e"] { transform: translateY(-10px); }
+.shelf-fig[data-step="4"] .bk.lean { transform: translateY(-10px) rotate(-7deg) translateX(4px); }
+/* the matching list under the shelf lights up too */
+.books h4 { transition: color .45s; }
+.sec:has(.shelf-fig[data-step="2"]) #books-strategy, .sec:has(.shelf-fig[data-step="3"]) #books-identity, .sec:has(.shelf-fig[data-step="4"]) #books-emotion { color: var(--accent-ink); }
+@media (max-width: 600px) { .shelf { height: 160px; gap: 3px; padding: 0 6px; } .bk { width: calc(var(--w, 44px) * .56); height: calc(var(--h, 180px) * .74); } .bk span { font-size: 9.5px; } }
+.books { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); margin-top: 22px; }
+.books h4 { margin: 0 0 8px; font-size: 18px; }
+.books ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.books li { margin: 0; display: grid; grid-template-columns: 10px minmax(0, 1fr); gap: 12px; padding: 10px 12px; border-radius: var(--r-sm); background: var(--paper); border: 1px solid var(--line); }
+.books li i { border-radius: 3px; background: var(--c); }
+.books li b { display: block; font-size: 15.5px; direction: ltr; text-align: right; unicode-bidi: isolate; }
+.books li small { display: block; color: var(--muted); font-size: 14px; }
+.books li p { margin: 2px 0 0; font-size: 15px; line-height: 1.55; }
+
+/* ---- tools ---- */
+.tools { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); margin: 22px 0; }
+.tools section, .tools > div { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 16px 16px 10px; }
+.tools h4 { margin: 0 0 8px; display: flex; align-items: center; gap: 10px; }
+.tools h4 svg { width: 22px; height: 22px; color: var(--accent-ink); }
+.tools ul { list-style: none; padding: 0; margin: 0; }
+.tools li { margin: 0; border-top: 1px solid var(--line); }
+.tools li:first-child { border-top: 0; }
+.tools li a { display: block; padding: 8px 0; color: var(--ink); text-decoration: none; }
+.tools li a:hover b { color: var(--accent-ink); }
+.tools li b { font-weight: 600; display: block; direction: ltr; text-align: right; unicode-bidi: isolate; }
+.tools li small { display: block; font-size: 14px; color: var(--muted); line-height: 1.45; }
+</style>
+</head>
+<body data-ch="resources">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">15 / 15</div>
+      <h1>השראה ומקורות</h1>
+      <p class="lede">איפה אני מחפש השראה, אילו עבודות הכי ריגשו אותי, ממי כדאי ללמוד ביוטיוב, ומה כדאי שיהיה על המדף. הכול כאן מוביל החוצה, אז פתחו בלשונית חדשה ותחזרו.</p>
+      <div class="ch-meta"><span>7 נושאים</span><span>3 מיתוגים נבחרים</span><span>11 ספרים</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-13.webp" alt="איור: פינת ספרייה וסטודיו, מדפי ספרים, קיר השראה, מחשב עם כפתור ניגון, צמחים וכורסה" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <ul class="jump" aria-label="קפיצה לנושא">
+      <li><a href="#behance"><span class="n">01</span>לוחות השראה</a></li>
+      <li><a href="#favorites"><span class="n">02</span>מיתוגים שאהבתי</a></li>
+      <li><a href="#studios"><span class="n">03</span>סטודיואים וגלריות</a></li>
+      <li><a href="#youtube"><span class="n">04</span>ערוצי יוטיוב</a></li>
+      <li><a href="#videos"><span class="n">05</span>סרטון חובה</a></li>
+      <li><a href="#books"><span class="n">06</span>ספרים</a></li>
+      <li><a href="#tools"><span class="n">07</span>כלים</a></li>
+    </ul>
+
+    <!-- ================= behance ================= -->
+    <section class="sec">
+      <h2 id="behance" data-short="לוחות השראה ב־Behance">השראה ב־<span class="ltr">Behance</span></h2>
+      <p>אם תחפשו ב־<span class="ltr">Behance</span> את מילות המפתח <span class="ltr"><strong>brand guidelines</strong></span>, תקבלו אחלה תבניות להשראה. ובנוסף, שני לוחות שאני אוסף כבר הרבה זמן:</p>
+      <div class="rc">
+        <a href="https://www.behance.net/search/projects/brand%20guidelines?tracking_source=typeahead_search_direct">
+          <span class="gl" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" style="color:var(--accent-ink)"><circle cx="28" cy="28" r="16"/><path d="m40 40 12 12"/><path d="M21 28h14M28 21v14" stroke-width="2.4"/></svg></span>
+          <span class="bd"><span class="kk">חיפוש מוכן</span><b><span class="ltr">brand guidelines</span></b><p>תבניות של ספרי מותג מכל העולם. מצוין כשלא יודעים איך לסדר עמוד צבעים או עמוד לוגו.</p><span class="u">behance.net</span></span>
+        </a>
+        <a href="https://www.behance.net/moodboard/169372303/Branding-Visual-Identity">
+          <span class="gl" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" style="color:var(--accent-ink)"><rect x="8" y="10" width="22" height="26" rx="3"/><rect x="34" y="10" width="22" height="14" rx="3"/><rect x="34" y="28" width="22" height="26" rx="3"/><rect x="8" y="40" width="22" height="14" rx="3"/></svg></span>
+          <span class="bd"><span class="kk">לוח השראה</span><b>מיתוגים שאהבתי ואספתי</b><p>הלוח האישי שלי של זהויות חזותיות.</p><span class="u">Branding · Visual Identity</span></span>
+        </a>
+        <a href="https://www.behance.net/moodboard/213571273/Branding-Animation">
+          <span class="gl" aria-hidden="true"><svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" style="color:var(--accent-ink)"><rect x="8" y="14" width="48" height="36" rx="5"/><path d="M27 24v16l13-8z" fill="currentColor"/></svg></span>
+          <span class="bd"><span class="kk">לוח השראה</span><b>מיתוגים המשלבים אנימציה</b><p>מותגים שהלוגו והשפה שלהם זזים, ולא רק עומדים יפה.</p><span class="u">Branding · Animation</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= favorites ================= -->
+    <section class="sec">
+      <h2 id="favorites" data-short="מיתוגים שאהבתי">מיתוגים שאהבתי</h2>
+
+      <h3 id="kokkopi">המיתוג הכי יפה שראיתי מזה שנים</h3>
+      <article class="feature">
+        <a href="https://www.behance.net/gallery/230532132/Kokkopi-Branding-Identity"><img src="img/insp-kokkopi.webp" alt="מיתוג Kokkopi: שקיות קפה, קופסאות וכוסות לבנות עם לוגו שחור ואיורים צבעוניים בסגנון ציור יד" loading="lazy" width="1600" height="859"></a>
+        <div class="fb">
+          <span class="tag">הבחירה שלי</span>
+          <p class="ft"><a href="https://www.behance.net/gallery/230532132/Kokkopi-Branding-Identity"><span class="ltr">Kokkopi Branding Identity</span></a></p>
+          <div class="rev">
+            <div class="plus"><h4>ברמה היצירתית</h4><p>זה פשוט <strong><span class="ltr">CRAFT</span> אמיתי מא׳ עד ת׳</strong>. הכול מוקפד עד הפרטים הקטנים: מהרעיון, דרך השפה הגרפית ועד לביצוע.</p></div>
+            <div class="plus"><h4>מבחינה טכנית</h4><p>זה עשוי מצוין: אנימציה ידנית בשילוב עם <strong>אפטר פשוטה</strong> ואלמנטים תלת־ממדיים, מוקאפים איכותיים ומעוצבים ברמה גבוהה מאוד. התוצאה מרשימה, חמה ומדויקת.</p></div>
+            <div class="minus"><h4>מה שכן, הייתי שמח לראות</h4><p>גם <strong>יישומים ריאליים של המותג</strong>, כמו שלטי חוצות, פוסטרים מודפסים, פרסום לעיתון או מודעה לסושיאל. משהו שיראה איך השפה עובדת גם <strong>בעולם האמיתי</strong>, לא רק בקונספטים מעוצבים.</p></div>
+            <div class="minus"><h4>ובנוסף, חסר לי</h4><p>קצת <strong>הסבר טיפוגרפי</strong>: אילו פונטים נבחרו ולמה דווקא הם, וגם הצגה של <strong>גריד עיצובי</strong> או תבנית סידור נקייה שתראה את ההיגיון מאחורי השפה.</p></div>
+            <div class="end"><h4>מעבר לזה</h4><p>באמת <strong>מושלם</strong>. עבודה מרהיבה, מעוררת השראה ומבוצעת ברמה נדירה.</p></div>
+          </div>
+          <p class="muted" style="font-size:15px;margin:14px 0 0" data-added>שימו לב שגם בעבודה „מושלמת”, מה שחסר הוא בדיוק מה שהמדריך הזה מבקש להראות: יישומים אמיתיים, הסבר טיפוגרפי וגריד. <a class="xref" href="mockups.html#applications">יישומים</a> <a class="xref" href="typography.html">טיפוגרפיה</a> <a class="xref" href="grid.html#grid">גריד</a></p>
+        </div>
+      </article>
+
+      <div class="rc wide2">
+        <a href="https://www.behance.net/gallery/229056079/GRUB-Retro-Inspired-Restaurant-Branding">
+          <span class="th"><img src="img/insp-grub.webp" alt="מיתוג GRUB: כותרת צהובה עבה מעל המבורגר וצ'יפס על מפה משובצת כחול וצהוב" loading="lazy" width="1600" height="973"></span>
+          <span class="bd"><span class="kk">מסעדה בהשראת רטרו</span><b>עבודת מיתוג מושלמת</b><p><span class="ltr">GRUB: Retro-Inspired Restaurant Branding</span></p><span class="u">behance.net</span></span>
+        </a>
+        <a href="https://www.behance.net/gallery/202338943/Popsicles-Branding">
+          <span class="th"><img src="img/insp-popsicles.webp" alt="מיתוג Popsicles: לוגו לבן על רקע סגול, מוקף איורי פירות, שלגונים ושמש מחייכת" loading="lazy" width="1478" height="880"></span>
+          <span class="bd"><span class="kk">שלגונים</span><b>מיתוג חברת שלגונים</b><p><span class="ltr">Popsicles Branding</span></p><span class="u">behance.net</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= studios ================= -->
+    <section class="sec">
+      <h2 id="studios" data-short="סטודיואים וגלריות">חברות מיתוג והשראה</h2>
+      <figure class="illus"><img src="img/studios-13.webp" alt="איור: סטודיו קריאייטיב שוקק מלמעלה, שולחנות, מעצבים, לוחות השראה ופוסטרים" width="1344" height="752" loading="lazy"></figure>
+      <ul class="links">
+        <li><a href="https://dogstudio.co/"><span class="ico" aria-hidden="true">D</span><span class="tx"><b>Dogstudio</b><small data-added>סטודיו לעיצוב וחוויה דיגיטלית. אתרים שהם חוויה בפני עצמה.</small><span class="u">dogstudio.co</span></span></a></li>
+        <li><a href="https://www.behance.net/Ramotion"><span class="ico" aria-hidden="true">R</span><span class="tx"><b>Ramotion</b><small>משרד פרסום ומיתוג בקליפורניה. <span class="say">מעריץ!</span></small><span class="u">behance.net/Ramotion</span></span></a></li>
+        <li><a href="https://abduzeedo.com/"><span class="ico" aria-hidden="true">A</span><span class="tx"><b>Abduzeedo</b><small data-added>בלוג השראה יומי לעיצוב גרפי, מיתוג וטיפוגרפיה.</small><span class="u">abduzeedo.com</span></span></a></li>
+        <li><a href="https://the-brandidentity.com/features"><span class="ico" aria-hidden="true">B</span><span class="tx"><b>The Brand Identity</b><small data-added>גלריה של פרויקטי זהות חזותית מכל העולם, עם כתבה על כל אחד.</small><span class="u">the-brandidentity.com</span></span></a></li>
+      </ul>
+      <div data-added>
+        <p style="margin-top:22px">ועוד שתיים שעוקבות אחרי מיתוגים חדשים, ובמיוחד אחרי מיתוגים מחדש של מותגים מוכרים:</p>
+        <ul class="links">
+          <li><a href="https://www.underconsideration.com/brandnew/"><span class="ico" aria-hidden="true">N</span><span class="tx"><b>Brand New</b><small>ביקורת על מיתוגים מחדש: לפני, אחרי, ומה עבד.</small><span class="u">underconsideration.com/brandnew</span></span></a></li>
+          <li><a href="https://bpando.org/"><span class="ico" aria-hidden="true">B</span><span class="tx"><b>BP&amp;O</b><small>מיתוג, אריזות ודעות, עם פירוט על כל פרויקט.</small><span class="u">bpando.org</span></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= youtube ================= -->
+    <section class="sec">
+      <h2 id="youtube" data-short="ערוצי יוטיוב">ערוצי יוטיוב</h2>
+      <div class="rc wide2">
+        <a href="https://www.youtube.com/@MatthewEncina/videos">
+          <span class="th"><img src="img/yt-encina.webp" alt="עמוד הערוץ של Matthew Encina ביוטיוב: תמונת פרופיל על רקע ירוק ובאנר של חדר עבודה עם צמחים" loading="lazy" width="1589" height="730"></span>
+          <span class="bd"><span class="kk">ערוץ</span><b><span class="ltr">Matthew Encina</span></b><p data-added>מנהל קריאייטיב ומעצב. תהליך עבודה, מיתוג והצד העסקי של המקצוע.</p><span class="u">youtube.com/@MatthewEncina</span></span>
+        </a>
+        <a href="https://www.youtube.com/@thefutur">
+          <span class="th"><img src="img/yt-futur.webp" alt="עמוד הערוץ של The Futur ביוטיוב: לוגו לבן על עיגול כחול ובאנר כחול עם תוכניות הלימוד" loading="lazy" width="1600" height="720"></span>
+          <span class="bd"><span class="kk">ערוץ</span><b><span class="ltr">The Futur</span></b><p data-added>עיצוב, מיתוג ואיך מוכרים אותם ללקוח. אחד הערוצים הגדולים בתחום.</p><span class="u">youtube.com/@thefutur</span></span>
+        </a>
+        <a href="https://www.youtube.com/@willpatersondesign">
+          <span class="th"><img src="img/yt-paterson.webp" alt="עמוד הערוץ של Will Paterson ביוטיוב: חתימה בכתב יד על באנר כתום" loading="lazy" width="1600" height="670"></span>
+          <span class="bd"><span class="kk">ערוץ</span><b><span class="ltr">Will Paterson</span></b><p data-added>מעצב גרפי שמתמחה בלוגואים ובמיתוג. הרבה תהליך עבודה אמיתי, מסקיצה ועד קובץ.</p><span class="u">youtube.com/@willpatersondesign</span></span>
+        </a>
+        <a href="https://www.youtube.com/@SatoriGraphics">
+          <span class="th"><img src="img/yt-satori.webp" alt="עמוד הערוץ של Satori Graphics ביוטיוב: כותרת לבנה גדולה על באנר אפור" loading="lazy" width="1600" height="730"></span>
+          <span class="bd"><span class="kk">ערוץ</span><b><span class="ltr">Satori Graphics</span></b><p data-added>טיפים קצרים ומעשיים לעיצוב גרפי וללוגואים.</p><span class="u">youtube.com/@SatoriGraphics</span></span>
+        </a>
+      </div>
+      <div class="note">
+        <span class="box-label">מ־<span class="ltr">The Futur</span>: שלושה עקרונות טובים לעיצוב לוגו</span>
+        <p>נקי ומינימליסטי, מותאם לכל פלטפורמה, ומשדר את ערכי המותג. הסרטון הקצר וההסבר המלא נמצאים בפרק הלוגו. <a class="xref" href="logo.html">שלושת העקרונות</a></p>
+      </div>
+    </section>
+
+    <!-- ================= videos ================= -->
+    <section class="sec">
+      <h2 id="videos" data-short="סרטון חובה">סרטוני יוטיוב טובים</h2>
+      <div class="rc wide2" style="grid-template-columns:1fr">
+        <a href="https://youtu.be/nlhwi-FuY2g?si=n_xVSoQtmkcdYNHO">
+          <span class="th" style="aspect-ratio:16/9"><img src="img/yt-5min5hours.webp" alt="תמונה מתוך הסרטון: שלוש עמודות על דף לבן, 5 דקות, 5 שעות ו־5 ימים, ומתחת לכל אחת סימן לוגו בשלב אחר" loading="lazy" width="1280" height="720"></span>
+          <span class="bd"><span class="kk"><span class="ltr">Will Paterson</span></span><b><span class="ltr">I Designed a Real Client’s Logo in 5 Minutes, 5 Hours, and 5 Days</span></b><p data-added>אותו לקוח, אותו בריף, שלוש מסגרות זמן. רואים בדיוק מה מוסיף כל שלב: לא עוד קישוטים, אלא עוד חשיבה, מחקר וליטוש.</p><span class="u">youtu.be</span></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ================= books ================= -->
+    <section class="sec">
+      <h2 id="books" data-short="ספרים" data-added>ספרים שכדאי שיהיו על המדף</h2>
+      <p data-added>אם יש לכם זמן לספר אחד, התחילו ב־<span class="ltr">Designing Brand Identity</span>. אם יש לכם ערב אחד, <span class="ltr">The Brand Gap</span> נקרא בשעה וחצי.</p>
+
+      <figure class="anim shelf-fig" data-steps="4" data-step-labels="כל המדף|אסטרטגיה ומיצוב|זהות חזותית|רגש, חושים וארכיטיפים" data-added>
+        <span class="anim__label">המדף</span>
+        <div class="anim__stage">
+          <div class="shelf" aria-hidden="true">
+            <div class="bk" data-g="i" data-goto="3" style="--i:0;--c:#e2462b;--w:56px;--h:196px"><span>Designing Brand Identity</span></div>
+            <div class="bk" data-g="s" data-goto="2" style="--i:1;--c:#f5b800;--t:#141414;--w:34px;--h:150px"><span>The Brand Gap</span></div>
+            <div class="bk" data-g="s" data-goto="2" style="--i:2;--c:#4fb3e8;--t:#141414;--w:30px;--h:144px"><span>ZAG</span></div>
+            <div class="bk" data-g="s" data-goto="2" style="--i:3;--c:#2c3a45;--w:44px;--h:176px"><span>Positioning</span></div>
+            <div class="bk" data-g="s" data-goto="2" style="--i:4;--c:#f3d9b8;--t:#3b1f12;--w:40px;--h:168px"><span>Start with Why</span></div>
+            <div class="bk" data-g="s" data-goto="2" style="--i:5;--c:#1d3a7a;--w:42px;--h:160px"><span>Building a StoryBrand</span></div>
+            <div class="bk" data-g="i" data-goto="3" style="--i:6;--c:#ff6b6f;--t:#141414;--w:36px;--h:182px"><span>Logo Design Love</span></div>
+            <div class="bk" data-g="i" data-goto="3" style="--i:7;--c:#efede8;--t:#141414;--w:50px;--h:200px"><span>Grid Systems</span></div>
+            <div class="bk" data-g="e" data-goto="4" style="--i:8;--c:#7b3fc4;--w:40px;--h:170px"><span>Brand Sense</span></div>
+            <div class="bk" data-g="e" data-goto="4" style="--i:9;--c:#2f9e5b;--w:44px;--h:186px"><span>Emotional Branding</span></div>
+            <div class="bk lean" data-g="e" data-goto="4" style="--i:10;--c:#8a5a3c;--w:46px;--h:178px"><span>The Hero and the Outlaw</span></div>
+          </div>
+        </div>
+        <figcaption>אחד עשר ספרים, שלושה מדפים בתוך מדף אחד: אסטרטגיה, זהות חזותית, ורגש.</figcaption>
+      </figure>
+
+      <div class="books" data-added>
+        <div>
+          <h4 id="books-strategy">אסטרטגיה ומיצוב</h4>
+          <ul>
+            <li><i style="--c:#f5b800"></i><div><b>The Brand Gap</b><small>מרטי נוימאייר</small><p>הגשר בין אסטרטגיה לעיצוב, בספר שנקרא כמו מצגת.</p></div></li>
+            <li><i style="--c:#4fb3e8"></i><div><b>Zag</b><small>מרטי נוימאייר</small><p>איך בולטים בשוק צפוף: כשכולם הולכים זיג, אתם הולכים זאג.</p></div></li>
+            <li><i style="--c:#2c3a45"></i><div><b>Positioning: The Battle for Your Mind</b><small>אל ריס וג'ק טראוט</small><p>הספר שהמציא את המילה „מיצוב”.</p></div></li>
+            <li><i style="--c:#f3d9b8"></i><div><b>Start with Why</b><small>סיימון סינק</small><p>אנשים לא קונים מה שאתם עושים, הם קונים למה אתם עושים את זה.</p></div></li>
+            <li><i style="--c:#1d3a7a"></i><div><b>Building a StoryBrand</b><small>דונלד מילר</small><p>הלקוח הוא הגיבור, המותג הוא המדריך. שיטה לכתיבת מסרים.</p></div></li>
+          </ul>
+        </div>
+        <div>
+          <h4 id="books-identity">זהות חזותית</h4>
+          <ul>
+            <li><i style="--c:#e2462b"></i><div><b>Designing Brand Identity</b><small>אלינה וילר</small><p>„התנ״ך” של התחום, כבר במהדורה השישית. מהתהליך ועד ספר המותג.</p></div></li>
+            <li><i style="--c:#ff6b6f"></i><div><b>Logo Design Love</b><small>דייוויד איירי</small><p>מעשי וקריא: איך נולד לוגו, ואיך מציגים אותו.</p></div></li>
+            <li><i style="--c:#efede8"></i><div><b>Grid Systems in Graphic Design</b><small>יוזף מילר־ברוקמן</small><p>הקלאסיקה השוויצרית על גרידים, מ־1961. <a class="xref" href="grid.html#grid">פרק הגריד</a></p></div></li>
+          </ul>
+        </div>
+        <div>
+          <h4 id="books-emotion">רגש, חושים וארכיטיפים</h4>
+          <ul>
+            <li><i style="--c:#7b3fc4"></i><div><b>Brand Sense</b><small>מרטין לינדסטרום</small><p>מיתוג שעובר את העין: קול, ריח, מגע וטעם.</p></div></li>
+            <li><i style="--c:#2f9e5b"></i><div><b>Emotional Branding</b><small>מארק גובה</small><p>עשרת הדיברות של מיתוג רגשי: מצרכנים לאנשים, ממוצר לחוויה.</p></div></li>
+            <li><i style="--c:#8a5a3c"></i><div><b>The Hero and the Outlaw</b><small>מרגרט מארק וקרול פירסון</small><p>שנים עשר הארכיטיפים של יונג, מותאמים למותגים. <a class="xref" href="strategy.html">אסטרטגיה</a></p></div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= tools ================= -->
+    <section class="sec">
+      <h2 id="tools" data-short="כלים" data-added>כלים שכדאי לשמור במועדפים</h2>
+      <p data-added>רשימה קצרה, בלי הסברים ארוכים. ההסבר על כל כלי נמצא בפרק שבו משתמשים בו.</p>
+      <div class="tools" data-added>
+        <div>
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="9" r="6"/><circle cx="15" cy="15" r="6"/></svg>צבע</h4>
+          <ul>
+            <li><a href="https://coolors.co/"><b>Coolors</b><small>מחולל פלטות מהיר</small></a></li>
+            <li><a href="https://color.adobe.com/"><b>Adobe Color</b><small>גלגל הרמוניות</small></a></li>
+            <li><a href="https://www.khroma.co/"><b>Khroma</b><small>לומד את הטעם שלכם</small></a></li>
+            <li><a href="https://colorhunt.co/"><b>Color Hunt</b><small>פלטות של ארבעה צבעים, בהצבעת הקהילה</small></a></li>
+            <li><a href="https://webaim.org/resources/contrastchecker/"><b>WebAIM Contrast Checker</b><small>בודק ניגודיות לפי התקן</small></a></li>
+          </ul>
+          <p style="font-size:14px;margin:8px 0 6px"><a class="xref" href="color.html#dont-reinvent">פרק הצבע</a></p>
+        </div>
+        <div>
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg>טיפוגרפיה</h4>
+          <ul>
+            <li><a href="https://fonts.google.com/?subset=hebrew"><b>Google Fonts</b><small>מסונן לפונטים שתומכים בעברית</small></a></li>
+            <li><a href="https://alefalefalef.co.il/"><b>AlefAlefAlef</b><small>פונטים עבריים, כולל חינמיים</small></a></li>
+            <li><a href="https://fontjoy.com/"><b>Fontjoy</b><small>מציע זוגות פונטים</small></a></li>
+            <li><a href="https://www.typewolf.com/"><b>Typewolf</b><small>פונטים כפי שהם נראים באתרים אמיתיים</small></a></li>
+            <li><a href="https://typescale.com/"><b>Typescale</b><small>מחשב סולם גדלים לכותרות</small></a></li>
+          </ul>
+          <p style="font-size:14px;margin:8px 0 6px"><a class="xref" href="typography.html">פרק הטיפוגרפיה</a></p>
+        </div>
+        <div>
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><circle cx="17.5" cy="17.5" r="3.5"/></svg>אייקונים</h4>
+          <ul>
+            <li><a href="https://phosphoricons.com/"><b>Phosphor</b><small>אלפי אייקונים בשישה משקלים</small></a></li>
+            <li><a href="https://tabler.io/icons"><b>Tabler Icons</b><small>קו <span class="ltr">2px</span> על גריד <span class="ltr">24×24</span></small></a></li>
+            <li><a href="https://lucide.dev/"><b>Lucide</b><small>נקי, עקבי, וקל להתאמה</small></a></li>
+            <li><a href="https://fonts.google.com/icons"><b>Material Symbols</b><small>הסט של גוגל, בכמה סגנונות</small></a></li>
+          </ul>
+          <p style="font-size:14px;margin:8px 0 6px"><a class="xref" href="visual-language.html#icon-grid">הגריד של האייקון</a></p>
+        </div>
+      </div>
+      <p class="muted" style="font-size:15px" data-added>ואתרי המוקאפים (חינמיים ובתשלום) מרוכזים בפרק המוקאפים. <a class="xref" href="mockups.html">מוקאפים</a></p>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+</body>
+</html>

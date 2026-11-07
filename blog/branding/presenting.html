@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>הצגה ללקוח · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="לא מוכרים לוגו, מוכרים ביטחון: איך מציגים פתרון מיתוגי שמנצח. מובילים להחלטה במקום לבקש דעה, פתרונות במקום אופציות, ומבנה מצגת שקופית אחר שקופית.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="הצגה ללקוח · מדריך המיתוג">
+<meta property="og:description" content="לא מוכרים לוגו, מוכרים ביטחון. איך מובילים להחלטה במקום לבקש דעה.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/bp-concept.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@700&family=Frank+Ruhl+Libre:wght@400&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* ---- deck slides ---- */
+.slide-img { display: block; border-radius: var(--r); overflow: hidden; border: 1px solid var(--line); background: var(--soft); }
+.slide-img img { display: block; width: 100%; height: auto; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.slide-img:hover img { transform: scale(1.02); }
+
+/* ---- amateur vs pro ---- */
+.vs2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.vs2 > div { border-radius: var(--r); padding: 18px 20px; border: 1px solid var(--line); background: var(--paper); }
+.vs2 .bad { border-inline-start: 4px solid var(--warn); }
+.vs2 .good { border-inline-start: 4px solid var(--ok); }
+.vs2 h4 { margin: 0 0 6px; }
+.vs2 p { margin: 0; font-size: 16px; line-height: 1.6; }
+@media (max-width: 600px) { .vs2 { grid-template-columns: 1fr; } }
+
+/* ---- funnel: 20 -> 3 -> 1 (js driven) ---- */
+.fun { position: relative; height: 340px; border-radius: 12px; background: var(--soft); overflow: hidden; }
+.fun-h { position: absolute; top: 12px; right: 14px; z-index: 6; font-size: 14px; font-weight: 600; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
+.fm { position: absolute; width: 38px; height: 38px; transform: translate(-50%, -50%) scale(1); transition: left .8s cubic-bezier(.2,.8,.2,1), top .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), opacity .5s; z-index: 4; }
+.fm svg { width: 100%; height: 100%; display: block; }
+.fm.out { opacity: 0; transform: translate(-50%, -50%) scale(.2); }
+.fm.big { transform: translate(-50%, -50%) scale(1.25); }
+.s3 { position: absolute; top: 58%; width: 28%; height: 62%; transform: translate(-50%, -50%) scale(.85); opacity: 0; transition: opacity .6s, transform .6s cubic-bezier(.2,1.2,.4,1), border-color .4s; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); padding: 66px 12px 12px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
+.s3 .sw3 { display: flex; gap: 4px; } .s3 .sw3 i { flex: 1; height: 16px; border-radius: 4px; }
+.s3 .aa { font: 600 15px var(--text); color: var(--ink); }
+.s3 .ln { height: 6px; border-radius: 3px; background: var(--fill); }
+.s3 .ln.s { width: 60%; }
+.s3 .why { font-size: 12px; color: var(--muted); line-height: 1.35; margin-top: auto; }
+.s3 .rec { position: absolute; top: -12px; left: 50%; transform: translateX(-50%) scale(.6); opacity: 0; background: var(--accent); color: var(--on-accent); font: 700 13px var(--text); padding: 3px 12px; border-radius: 999px; white-space: nowrap; transition: opacity .4s, transform .5s cubic-bezier(.2,1.5,.4,1); }
+.fun[data-step="2"] .s3, .fun[data-step="3"] .s3 { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.fun[data-step="3"] .s3:not(.pick) { opacity: .5; }
+.fun[data-step="3"] .s3.pick { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.fun[data-step="3"] .s3.pick .rec { opacity: 1; transform: translateX(-50%) scale(1); }
+.fun[data-step="3"] .fm.dim { opacity: .5; }
+@media (max-width: 600px) { .fun { height: 320px; } .fm { width: 28px; height: 28px; } .s3 { padding-top: 52px; } .s3 .why, .s3 .ln.s { display: none; } .s3 .aa { font-size: 13px; } }
+
+/* ---- rules list for "how many" ---- */
+.howmany { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; margin: 20px 0; }
+.howmany div { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; background: var(--paper); }
+.howmany b { display: block; font: 700 46px/1 var(--display); }
+.howmany .x b { color: var(--warn); }
+.howmany .y b { color: var(--ok); }
+.howmany span { font-size: 15px; line-height: 1.5; display: block; margin-top: 6px; }
+@media (max-width: 700px) { .howmany { grid-template-columns: 1fr 1fr; } }
+
+/* ---- storyboard ---- */
+.sb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.sb a { position: relative; display: flex; flex-direction: column; justify-content: space-between; aspect-ratio: 16 / 10; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); text-decoration: none; overflow: hidden; }
+.sb a:hover { border-color: var(--accent); }
+.sb .n { font: 500 11px var(--mono); color: var(--accent-ink); direction: ltr; text-align: right; }
+.sb svg { width: 46%; height: auto; align-self: center; color: var(--muted); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sb svg .f { fill: var(--accent); stroke: none; }
+.sb b { font-size: 14px; line-height: 1.3; font-weight: 600; }
+.sb a { transition: opacity .5s ease, transform .5s ease, border-color .4s, box-shadow .4s; }
+/* steps build the deck act by act: slides of later acts wait as faint placeholders (still clickable) */
+.sbf[data-step="1"] .sb a[data-act="2"],
+.sbf[data-step="1"] .sb a[data-act="3"],
+.sbf[data-step="1"] .sb a[data-act="4"],
+.sbf[data-step="1"] .sb a[data-act="5"],
+.sbf[data-step="2"] .sb a[data-act="3"],
+.sbf[data-step="2"] .sb a[data-act="4"],
+.sbf[data-step="2"] .sb a[data-act="5"],
+.sbf[data-step="3"] .sb a[data-act="4"],
+.sbf[data-step="3"] .sb a[data-act="5"],
+.sbf[data-step="4"] .sb a[data-act="5"] { opacity: .32; border-style: dashed; transform: scale(.97); }
+.sbf[data-step="1"] .sb a[data-act="1"],
+.sbf[data-step="2"] .sb a[data-act="2"],
+.sbf[data-step="3"] .sb a[data-act="3"],
+.sbf[data-step="4"] .sb a[data-act="4"],
+.sbf[data-step="5"] .sb a[data-act="5"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.sb-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
+.sb-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
+.sbf[data-step="1"] .sb-note [data-s="1"], .sbf[data-step="2"] .sb-note [data-s="2"], .sbf[data-step="3"] .sb-note [data-s="3"], .sbf[data-step="4"] .sb-note [data-s="4"], .sbf[data-step="5"] .sb-note [data-s="5"] { opacity: 1; visibility: visible; }
+@media (max-width: 560px) { .sb { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sb b { font-size: 13px; } }
+
+/* ---- strategy dna ---- */
+.dna { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 18px 0; }
+.dna div { border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; background: var(--paper); }
+.dna b { display: block; }
+.dna span { font-size: 15px; color: var(--muted); line-height: 1.55; display: block; margin-top: 2px; }
+@media (max-width: 560px) { .dna { grid-template-columns: 1fr; } }
+
+/* ---- concept fill-in ---- */
+.concept { background: var(--soft); border-radius: var(--r); padding: 20px 22px; font-size: 19px; line-height: 1.9; margin: 18px 0; }
+.concept .blank { display: inline; border-bottom: 2px dashed var(--accent); padding: 0 6px; color: var(--muted); }
+
+/* ---- reveal ---- */
+.rv { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background-color: #eeece6; background-image: linear-gradient(#dcd9d1 1px, transparent 1px), linear-gradient(90deg, #dcd9d1 1px, transparent 1px); background-size: 28px 28px; display: grid; place-items: center; }
+.rv svg { width: 34%; height: auto; }
+.rv .lbl { position: absolute; top: 9%; left: 0; right: 0; text-align: center; font: 700 clamp(22px, 4vw, 40px)/1 var(--display); color: #0e3a63; }
+.rv ellipse { transition: stroke .8s ease; }
+.rv .lbl { opacity: 0; transform: translateY(-6px); transition: opacity .6s ease, transform .6s ease; }
+/* step 1: black and white · step 2: colour · step 3: one word, then silence */
+.rvf[data-step="1"] .rv .e1 { stroke: #a9a9a9; }
+.rvf[data-step="1"] .rv .e2 { stroke: #1d1d1d; }
+.rvf[data-step="3"] .rv .lbl { opacity: 1; transform: none; }
+.rv-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
+.rv-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
+.rvf[data-step="1"] .rv-note [data-s="1"], .rvf[data-step="2"] .rv-note [data-s="2"], .rvf[data-step="3"] .rv-note [data-s="3"] { opacity: 1; visibility: visible; }
+
+/* ---- meaning cards / system ---- */
+.mean { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0; }
+.mean div { border: 1px solid var(--line); border-radius: var(--r); padding: 16px; background: var(--paper); }
+.mean h4 { margin: 0 0 6px; }
+.mean p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+@media (max-width: 680px) { .mean { grid-template-columns: 1fr; } }
+.spec { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 18px 0; }
+.spec > div { border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; background: var(--paper); }
+.spec .h { font: 700 30px/1.2 "Assistant", var(--text); }
+.spec .b { font: 400 17px/1.6 "Frank Ruhl Libre", Georgia, serif; color: var(--muted); }
+.spec small { display: block; font: 500 12px var(--mono); color: var(--accent-ink); direction: ltr; text-align: right; margin-bottom: 4px; }
+@media (max-width: 600px) { .spec { grid-template-columns: 1fr; } }
+
+/* ---- golden rule ---- */
+.golden { text-align: center; padding: clamp(28px, 6vw, 56px) 20px; border-radius: var(--r); border: 1px solid var(--line); background: var(--paper); }
+.golden p { font: 700 clamp(30px, 5vw, 50px)/1.15 var(--display); margin: 0 0 18px; }
+.golden p span { color: var(--accent-ink); }
+.golden hr { width: 50%; margin: 26px auto; border-top: 2px solid var(--accent); }
+.golden .last { margin: 0; }
+</style>
+</head>
+<body data-ch="presenting">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">13 / 15</div>
+      <h1>הצגה ללקוח</h1>
+      <p class="lede"><strong>לא מוכרים לוגו, מוכרים ביטחון.</strong> המדריך המלא למעצבים צעירים: איך להציג פתרון מיתוגי שמנצח, שקופית אחרי שקופית, מההקשר ועד ה„כן”.</p>
+      <div class="ch-meta"><span>14 נושאים</span><span>3 הדגמות</span><span>10 שקפים מהמצגת שלי</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-11.webp" alt="איור: מעצבת מציגה ללקוחות בחדר ישיבות, על המסך מערכת מותג, וחץ על הרצפה מוביל לדלת מוארת" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= goal ================= -->
+    <section class="sec">
+      <h2 id="goal" data-short="המטרה: להוביל להחלטה">המטרה: להוביל להחלטה, לא לבקש דעה</h2>
+      <figure class="illus"><img src="img/goal-11.webp" alt="איור: צומת עם עשרים שבילים דהויים ומסובכים, ושביל אחד מואר עם חץ שמוביל לדגל" width="1344" height="752" loading="lazy"></figure>
+      <p class="lead">המצגת אינה תחרות יופי. המטרה שלה היא להוביל את הלקוח להבנה שהפתרון שאתם מציגים הוא <strong>הנכון וההגיוני ביותר</strong> עבור המותג שלו.</p>
+      <p>אנחנו לא מציגים אופציות, אנחנו <strong>מסבירים החלטות</strong>. הלוגו הוא רק נקודת הכניסה. הערך האמיתי נוצר מהאופן שבו הוא חי ומתפקד בעולם האמיתי, כחלק ממערכת זהות שלמה.</p>
+    </section>
+
+    <!-- ================= options vs solutions ================= -->
+    <section class="sec">
+      <h2 id="options" data-short="פתרונות, לא אופציות">לא אופציות: פתרונות</h2>
+      <p>עוברים מהצגת „אופציות” להצגת „פתרונות”:</p>
+      <div class="vs2">
+        <div class="bad"><h4>הדרך החובבנית</h4><p>לשלוח 20 אופציות אקראיות ולשאול: „איזה צבע אתה הכי אוהב?”</p></div>
+        <div class="good"><h4>הדרך המקצועית</h4><p>להציג <strong>לכל היותר שלושה</strong> פתרונות חזקים (מערכות), כל אחד מנומק ומחובר לבריף ולקהל.</p></div>
+      </div>
+
+      <figure class="anim" id="fun-anim" data-steps="4" data-step-labels="20 אופציות|מסננים לפי הבריף|3 מערכות|המלצה אחת">
+        <span class="anim__label">מעשרים לאחד</span>
+        <div class="anim__stage">
+          <div class="fun" data-step="0" aria-hidden="true">
+            <span class="fun-h">20 אופציות אקראיות</span>
+            <div class="s3" style="left:83%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#e2462b"></i><i style="background:#2c3a45"></i><i style="background:#f3e6d6"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">אנרגיה, לקהל צעיר</span></div>
+            <div class="s3 pick" style="left:50%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#004e89"></i><i style="background:#222222"></i><i style="background:#e0e0e0"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">ביטחון ונגישות, בדיוק לפי הבריף</span></div>
+            <div class="s3" style="left:17%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#2fbf71"></i><i style="background:#1f3d2b"></i><i style="background:#f2efe8"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">טבעי ורגוע</span></div>
+          </div>
+        </div>
+        <figcaption>עשרים סימנים בלי סיבה הופכים לשלוש מערכות שלמות: סימן, צבעים, טיפוגרפיה ונימוק. ואחת מהן מקבלת את ההמלצה שלכם, בקול.</figcaption>
+      </figure>
+
+      <h3 id="present-right">איך מציגים נכון</h3>
+      <ul class="dots">
+        <li>הראו איך כל מערכת עובדת <strong>בעולם האמיתי</strong>: מסכים, דפוס, תנועה.</li>
+        <li>הסבירו <strong>למה</strong> הצורות, הצבעים והטיפוגרפיה מתאימים לקהל ולמטרות העסקיות.</li>
+        <li>המטרה שלכם: להפוך את ה„כן” של הלקוח <strong>להחלטה הקלה וההגיונית ביותר</strong>.</li>
+      </ul>
+      <a class="slide-img" href="img/ai-present-3.webp" data-lb data-cap="הצגה ללקוח: מאופציות לפתרונות"><img src="img/ai-present-3.webp" width="1376" height="733" loading="lazy" alt="שקף: הדרך החובבנית, 20 אופציות אקראיות, מול הדרך המקצועית, לכל היותר שלוש מערכות מנומקות"></a>
+
+      <h3 id="how-many">אז כמה פתרונות להציג?</h3>
+      <p>„לכל היותר שלושה” הוא התקרה. <span data-added>הרבה סטודיואים הולכים רחוק יותר ומציגים קונספט אחד בלבד, כי ברגע שיש חמישה כיוונים על השולחן, הלקוח מתחיל לבקש „את הצבע מזה, את הצורה מההוא ואת הפונט מהשלישי”, ויוצא פרנקנשטיין בלי חוט שדרה.</span> שתי הגישות מסכימות על העיקר, אז ככה עובדים:</p>
+      <div class="howmany">
+        <div class="x"><b>20</b><span>לעולם לא. זה לא נדיבות, זו העברת העבודה ללקוח.</span></div>
+        <div class="y"><b>1</b><span>באופן אידיאלי: פתרון אחד מומלץ, שלם ומנומק.</span></div>
+        <div class="y"><b>3</b><span>לכל היותר. כל אחד מערכת שלמה, לא סקיצה.</span></div>
+        <div class="y"><b>!</b><span>תמיד: אומרים בקול איזה פתרון אתם ממליצים, ולמה.</span></div>
+      </div>
+    </section>
+
+    <!-- ================= structure ================= -->
+    <section class="sec" data-rail>
+      <h2 id="structure" data-short="המצגת, 18 שקופיות">המצגת, שקופית אחר שקופית</h2>
+      <p>זה הסדר שאני ממליץ עליו: 18 שקופיות. כל שלב בונה את הקרקע לשלב הבא, כך שכשהלוגו סוף סוף מופיע, הלקוח כבר מבין למה הוא נראה כמו שהוא נראה. לחיצה על שקופית קופצת להסבר שלה, ומשם להרחבה בהמשך הפרק.</p>
+      <p><strong>עיקרון־על:</strong> לוגו הוא נקודת כניסה. הוא לא מספיק. הערך האמיתי נוצר מהאופן שבו הלוגו חי, זז ומתפקד בעולם האמיתי, כחלק ממערכת זהות שלמה.</p>
+      <figure class="anim sbf" id="sb-fig" data-steps="5" data-step-labels="הקשר|הלוגו|המערכת|בעולם|ההחלטה">
+        <span class="anim__label">המצגת נבנית</span>
+        <div class="anim__stage">
+          <div class="sb">
+            <a href="#deck-01" data-act="1"><span class="n">01</span><svg viewBox="0 0 48 30" aria-hidden="true"><rect x="12" y="3" width="24" height="24"/><rect x="8" y="0" width="32" height="30" opacity=".35"/></svg><b>פתיחה והקשר</b></a>
+            <a href="#deck-02" data-act="1"><span class="n">02</span><svg viewBox="0 0 48 30" aria-hidden="true"><circle cx="24" cy="5" r="4"/><circle cx="12" cy="15" r="4"/><circle cx="36" cy="15" r="4"/><circle cx="24" cy="25" r="4"/><path d="M21 8l-6 4M27 8l6 4M15 18l6 4M33 18l-6 4"/></svg><b>הבנת המותג</b></a>
+            <a href="#deck-03" data-act="1"><span class="n">03</span><svg viewBox="0 0 48 30" aria-hidden="true"><circle cx="17" cy="9" r="5"/><circle cx="31" cy="9" r="5"/><path d="M7 28c0-6 4-10 10-10s10 4 10 10M21 28c0-6 4-10 10-10s10 4 10 10"/></svg><b>קהל היעד</b></a>
+            <a href="#deck-04" data-act="1"><span class="n">04</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M8 15l5 5 9-10M30 9l10 12M40 9L30 21"/></svg><b>כיוון אסטרטגי</b></a>
+            <a href="#deck-05" data-act="1"><span class="n">05</span><svg viewBox="0 0 48 30" aria-hidden="true"><ellipse cx="20" cy="15" rx="9" ry="12" transform="rotate(-30 20 15)"/><ellipse cx="28" cy="15" rx="9" ry="12" transform="rotate(30 28 15)"/></svg><b>קונספט עיצובי</b></a>
+            <a href="#deck-06" data-act="2"><span class="n">06</span><svg viewBox="0 0 48 30" aria-hidden="true"><circle class="f" cx="24" cy="15" r="9"/></svg><b>הלוגו הראשי</b></a>
+            <a href="#deck-07" data-act="2"><span class="n">07</span><svg viewBox="0 0 48 30" aria-hidden="true"><circle cx="16" cy="15" r="8"/><path d="M24 9h12M24 15h16M24 21h10"/></svg><b>משמעות הצורה</b></a>
+            <a href="#deck-08" data-act="2"><span class="n">08</span><svg viewBox="0 0 48 30" aria-hidden="true"><circle cx="17" cy="12" r="7"/><circle cx="31" cy="12" r="7" class="f"/><circle cx="24" cy="21" r="7"/></svg><b>צבע וגימור</b></a>
+            <a href="#deck-09" data-act="3"><span class="n">09</span><svg viewBox="0 0 48 30" aria-hidden="true"><rect x="4" y="6" width="22" height="18" rx="2"/><rect x="30" y="10" width="10" height="10" rx="2"/><rect x="43" y="13" width="4" height="4"/></svg><b>ורסטיליות ושימושים</b></a>
+            <a href="#deck-10" data-act="3"><span class="n">10</span><svg viewBox="0 0 48 30" aria-hidden="true"><rect x="4" y="4" width="10" height="10"/><rect x="18" y="4" width="10" height="10"/><rect x="32" y="4" width="10" height="10" class="f"/><path d="M4 22h24M4 27h14"/></svg><b>שפה עיצובית ומערכת זהות</b></a>
+            <a href="#deck-11" data-act="4"><span class="n">11</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M8 10h32v16H8z"/><path d="M14 10V6h20v4"/></svg><b>שימושים פרקטיים ומוקאפים</b></a>
+            <a href="#deck-12" data-act="4"><span class="n">12</span><svg viewBox="0 0 48 30" aria-hidden="true"><rect x="6" y="3" width="13" height="24" rx="3"/><rect x="25" y="8" width="18" height="12" rx="2"/></svg><b>שימושים דיגיטליים</b></a>
+            <a href="#deck-13" data-act="4"><span class="n">13</span><svg viewBox="0 0 48 30" aria-hidden="true"><rect x="14" y="5" width="20" height="20" rx="3"/><path d="M18 1v4M24 1v4M30 1v4M18 25v4M24 25v4M30 25v4"/></svg><b>שימוש ב־<span class="ltr">AI</span> בתהליך</b></a>
+            <a href="#deck-14" data-act="4"><span class="n">14</span><svg viewBox="0 0 48 30" aria-hidden="true"><rect x="10" y="3" width="18" height="24"/><rect x="31" y="9" width="12" height="8"/><path d="M14 9h10M14 13h7"/></svg><b>דוגמאות דפוס</b></a>
+            <a href="#deck-15" data-act="4"><span class="n">15</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M6 27V9h36v18M2 27h44M14 9V4h20v5"/><rect x="16" y="14" width="16" height="8" class="f"/></svg><b>שילוט ומרחב</b></a>
+            <a href="#deck-16" data-act="4"><span class="n">16</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M16 4l-10 6 4 6 4-2v14h20V14l4 2 4-6-10-6c-1 3-4 5-8 5s-7-2-8-5z"/></svg><b>מוצרים והלבשה</b></a>
+            <a href="#deck-17" data-act="4"><span class="n">17</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M12 10h24l2 18H10z M18 10V7a6 6 0 0 1 12 0v3"/></svg><b>אריזות ושקיות</b></a>
+            <a href="#deck-18" data-act="5"><span class="n">18</span><svg viewBox="0 0 48 30" aria-hidden="true"><path d="M10 8h28M14 15h20M10 22h28"/></svg><b>סיכום והחלטה</b></a>
+          </div>
+          <p class="sb-note" aria-live="polite"><span data-s="1"><b>הקשר:</b> חמש שקופיות לפני שרואים עיצוב אחד. האתגר, המותג, הקהל, הכיוון והרעיון, כך שהלוגו מגיע כתשובה.</span><span data-s="2"><b>הלוגו:</b> רק עכשיו החשיפה. הלוגו לבד, ומיד אחריו למה הצורה והצבע נראים כך.</span><span data-s="3"><b>המערכת:</b> מוכיחים שהוא עובד בכל גודל, ושיש סביבו מערכת שלמה ולא אוסף החלטות.</span><span data-s="4"><b>בעולם:</b> שבע שקופיות של המותג בחיים עצמם: מוקאפים, מסך, דפוס, שילוט, הלבשה ואריזה.</span><span data-s="5"><b>ההחלטה:</b> שקופית אחת שסוגרת. לא הצגנו לוגו, הצגנו מערכת שעובדת.</span></p>
+        </div>
+        <figcaption>שמונה־עשרה שקופיות. אף אחת מהן לא שואלת „מה דעתך?”. כולן מסבירות „למה”.</figcaption>
+      </figure>
+
+      <h3 id="deck-01" data-rail-label="פתיחה">1. פתיחה והקשר</h3>
+      <p>השקף הראשון מיישר קו: מה האתגר, מה מטרת המיתוג, איזו בעיה הלוגו נועד לפתור. <a class="xref" href="#challenge">מיישרים קו על האתגר</a></p>
+
+      <h3 id="deck-02" data-rail-label="הבנת המותג">2. הבנת המותג</h3>
+      <p>שקף שמוכיח שהקשבתם: מי המותג, מה הוא רוצה לשדר, מה הערכים המרכזיים שלו, ואיפה הוא רוצה להיות ממוקם מול המתחרים. זה מייצר אמון עוד לפני שרואים עיצוב. <a class="xref" href="#strategy">תמצית האסטרטגיה</a></p>
+
+      <h3 id="deck-03" data-rail-label="קהל היעד">3. קהל היעד</h3>
+      <p>הצגה ברורה של מי אמור להזדהות עם המותג: איך הקהל נראה, מה הוא צורך ויזואלית, באילו סביבות הוא פוגש את המותג, ואילו תחושות אמורות להיווצר אצלו. <strong>הלוגו לא נמדד לפי טעם אישי. הוא מיועד להם.</strong> <a class="xref" href="logo-design.html#tribe">מי השבט</a> <a class="xref" href="strategy.html#audience">למי המותג פונה</a></p>
+
+      <h3 id="deck-04" data-rail-label="כיוון אסטרטגי">4. כיוון אסטרטגי</h3>
+      <p>שקף שמגדיר החלטות: מה בחרתם להיות, ומה במכוון לא. לדוגמה: מאופק ולא צעיר מדי, בטוח ולא אגרסיבי, מודרני אבל לא טרנדי. זה סוגר ויכוחים מראש. <a class="xref" href="#we-are">אנחנו כן / אנחנו לא</a></p>
+
+      <h3 id="deck-05" data-rail-label="קונספט">5. קונספט עיצובי</h3>
+      <p>כאן מתחיל החיבור לעיצוב, דרך רעיון: מה הסיפור שמאחורי הלוגו, מה העיקרון המוביל, איזה מסר הוא אמור לשדר עוד לפני שקוראים אותו. בלי פרטים טכניים. <a class="xref" href="#concept">הקונספט העיצובי</a></p>
+
+      <h3 id="deck-06" data-rail-label="הלוגו הראשי">6. הלוגו הראשי</h3>
+      <p>הצגה נקייה וברורה של הלוגו: רקע שקט, מרווח נשימה, בלי הסחות דעת. זה הרגע שבו הלקוח צריך להרגיש שזה נכון. <a class="xref" href="#reveal">החשיפה</a></p>
+
+      <h3 id="deck-07" data-rail-label="משמעות הצורה">7. משמעות הצורה</h3>
+      <p>הסבר קצר על המבנה והצורה: איך הצורה משרתת את ערכי המותג ואת קהל היעד. לא הרצאה תיאורטית, אלא חיבור בין החלטה למשמעות. <a class="xref" href="#meaning">משמעות לכל החלטה</a> <a class="xref" href="logo.html#shapes">פסיכולוגיה של צורות</a></p>
+
+      <h3 id="deck-08" data-rail-label="צבע וגימור">8. צבע וגימור</h3>
+      <p>הסבר על אופי הצבעים והגימור: איזו תחושה הם מייצרים, ואיך זה מתאים לסביבה שבה המותג חי. המסר: <strong>זו בחירה אסטרטגית, לא טעם אישי.</strong> <a class="xref" href="#meaning">משמעות לכל החלטה</a> <a class="xref" href="color.html#psychology">פסיכולוגיה של צבעים</a></p>
+
+      <h3 id="deck-09" data-rail-label="ורסטיליות">9. ורסטיליות ושימושים</h3>
+      <p>הוכחה שהלוגו עובד בעולם האמיתי: גדלים שונים, רקעים שונים, דיגיטל, פרינט, אייקון, אווטאר (תמונת פרופיל לרשתות החברתיות). זה השלב שמרגיע חששות. <a class="xref" href="#versatility">עובד בכל מצב</a></p>
+
+      <h3 id="deck-10" data-rail-label="מערכת זהות">10. שפה עיצובית ומערכת זהות</h3>
+      <p>להבהיר שלוגו לבד זה לא מותג, ואיך הלוגו מתפקד כחלק ממערכת רחבה יותר:</p><ul class="dots"><li><strong>טיפוגרפיה:</strong> פונטים ראשיים ומשניים.</li><li><strong>צבעים:</strong> פלטה, היררכיה, שימוש נכון.</li><li><strong>פאטרנים:</strong> נגזרות מהלוגו או מהצורה המרכזית.</li><li><strong>גרידים:</strong> סדר, עקביות וחוקיות.</li></ul><p>המסר: יש מערכת, לא אוסף החלטות אקראי. <a class="xref" href="#system">מערכת זהות שלמה</a></p>
+
+      <h3 id="deck-11" data-rail-label="מוקאפים">11. שימושים פרקטיים ומוקאפים</h3>
+      <p>שקף שמוכיח <strong>שימושיות, לא יופי</strong>: מוקאפים ריאליסטיים שמראים את המותג בהקשרים אמיתיים, לא וריאציות צבע. <a class="xref" href="mockups.html#mockups">מוקאפים</a></p>
+
+      <h3 id="deck-12" data-rail-label="דיגיטל">12. שימושים דיגיטליים</h3>
+      <p>איך הלוגו והשפה עובדים על מסך:</p><ul class="dots"><li><strong>אתר ואפליקציה:</strong> מסך פתיחה, פייביקון, אזור כותרת, תפריטים.</li><li><strong>רשתות חברתיות:</strong> פוסטים, סטוריז, קאברים, תמונת פרופיל.</li><li><strong>פרסום דיגיטלי:</strong> באנרים, מודעות, קריאייטיבים לפיד.</li><li><strong>אם יש תנועה:</strong> הנפשות לוגו עדינות, אינטרואים קצרים, מיקרו־אינטראקציות. <span class="ltr">After Effects</span> כסטנדרט, לא כבונוס.</li></ul><p><a class="xref" href="#digital-world">בעולם הדיגיטלי</a> <a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a></p>
+
+      <h3 id="deck-13" data-rail-label="AI בתהליך">13. שימוש ב־<span class="ltr">AI</span> בתהליך</h3>
+      <p>להבהיר שזה כלי עבודה לגיטימי. <span class="ltr">AI</span> משמש לקיצור תהליכים, ליצירת וריאציות, לבניית מוקאפים, להדמיות ולסרטונים. אין בעיה להשתמש בו גם להנפשות, לווידאו ולהרחבת דוגמאות. <strong>החשיבה וההחלטות אנושיות, הכלי רק מאיץ.</strong> זה משדר יעילות, לא חוסר מקצועיות. <a class="xref" href="logo-design.html#ai-to-client">ומה אומרים על זה ללקוח</a></p>
+
+      <h3 id="deck-14" data-rail-label="דפוס">14. דוגמאות דפוס</h3>
+      <p>להראות שהמותג עובד גם בלי מסך: דיוק, קריאות וחומריות. זו הזדמנות לחשוב על סוג הנייר ועל גימורים, כמו שכבות דפוס שונות: פויל, הטבעה וכו’.</p><ul class="chips"><li>פוסטרים</li><li>פליירים</li><li>כרטיסי ביקור</li><li>גלויות</li><li>תפריט מסעדה, אם רלוונטי</li></ul><p><a class="xref" href="#physical-world">בעולם הפיזי</a></p>
+
+      <h3 id="deck-15" data-rail-label="שילוט">15. שילוט ומרחב</h3>
+      <p>איך המותג מתנהג בסקייל גדול. <strong>הוכחה לסקיילביליות אמיתית.</strong></p><ul class="chips"><li>שילוט חוץ</li><li>שילוט פנים</li><li>ויטרינות</li><li>קירות</li></ul>
+
+      <h3 id="deck-16" data-rail-label="הלבשה">16. מוצרים והלבשה</h3>
+      <p>איפה שהמותג פוגש אנשים פיזית. <strong>רק מה שרלוונטי לאופי המותג.</strong></p><ul class="chips"><li>חולצות</li><li>כובעים</li><li>תיקי גב</li><li>סינרים</li><li>מדבקות</li></ul>
+
+      <h3 id="deck-17" data-rail-label="אריזות">17. אריזות ושקיות</h3>
+      <p>אם יש מוצר, זה חלק מהזהות. <strong>המטרה היא נוכחות, לא קישוט.</strong></p><ul class="chips"><li>שקיות נייר</li><li>שקיות בד</li><li>שקיות משלוחים ממותגות</li><li>קופסאות</li></ul>
+
+      <h3 id="deck-18" data-rail-label="סיכום והחלטה">18. סיכום והחלטה</h3>
+      <p class="lead">לא הצגנו לוגו. הצגנו מערכת שעובדת בדיגיטל, בדפוס, בתנועה ובמציאות. <strong>כך נראה מותג שמוכן לצאת לעולם.</strong> <a class="xref" href="#working-system">הצגנו מערכת שעובדת</a> <a class="xref" href="#golden-rule">עיקרון הזהב</a></p>
+
+      <div class="note" data-added>
+        <span class="box-label">ועוד ארבעה הרגלים מהשטח</span>
+        <ul class="dots">
+          <li>בחשיפת הלוגו הראו אותו <strong>קודם בשחור־לבן</strong>, כדי להוכיח שהצורה עובדת בלי צבע, ורק אחר כך בצבע.</li>
+          <li>תכננו <strong><span class="ltr">4–8</span> שקפים של הדמיות</strong> בעולם האמיתי. פחות מזה לא משכנע, יותר מזה מעייף.</li>
+          <li><strong>תמיד מציגים בשיחה</strong>, פנים מול פנים או בווידאו. לא שולחים לוגו בדוא"ל בלי להסביר אותו.</li>
+          <li><strong>שולטים בקצב</strong>: חושפים שלב אחרי שלב, ולא שולחים את הקובץ לפני הפגישה.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ================= 1. challenge ================= -->
+    <section class="sec">
+      <h2 id="challenge" data-short="מיישרים קו על האתגר">השלב הראשון: מיישרים קו על האתגר</h2>
+      <p>כל מצגת מנצחת מתחילה בהקשר. לפני שרואים עיצוב אחד, חוזרים על הבסיס המשותף:</p>
+      <ul class="dots">
+        <li><strong>האתגר המרכזי</strong>: מהי הבעיה העסקית שאנחנו פותרים?</li>
+        <li><strong>מטרת המיתוג</strong>: מה אנחנו רוצים להשיג? (למשל: לבדל, לרענן, לפנות לקהל חדש)</li>
+        <li><strong>תפקיד הלוגו</strong>: איזה מסר ספציפי הלוגו צריך להעביר כדי לפתור את האתגר?</li>
+      </ul>
+      <a class="slide-img" href="img/bp-challenge.webp" data-lb data-cap="השלב הראשון: מיישרים קו על האתגר"><img src="img/bp-challenge.webp" width="1376" height="733" loading="lazy" alt="שקף: האתגר המרכזי, מטרת המיתוג ותפקיד הלוגו, ליד ריבוע כחול ממוסגר"></a>
+    </section>
+
+    <!-- ================= 2. strategy ================= -->
+    <section class="sec">
+      <h2 id="strategy" data-short="תמצית האסטרטגיה">הוכחה שהקשבנו: תמצית אסטרטגיית המותג</h2>
+      <p>„סיכמנו את ה־<span class="ltr">DNA</span> של המותג שלכם. זו האמת שעליה יתבסס כל העיצוב.” ארבעה דברים, משפט אחד לכל אחד:</p>
+      <div class="dna">
+        <div><b>מי המותג</b><span>לדוגמה: „מותג טכנולוגי פורץ דרך שמנגיש חדשנות”</span></div>
+        <div><b>ערכים מרכזיים</b><span>לדוגמה: „אמינות, פשטות, אנושיות”</span></div>
+        <div><b>מיצוב תחרותי</b><span>לדוגמה: „האלטרנטיבה האיכותית והנגישה למתחרים הגדולים והיקרים”</span></div>
+        <div><b>קהל היעד</b><span>לדוגמה: „מנהלי שיווק בחברות קטנות ובינוניות, שמחפשים כלים יעילים ואינטואיטיביים”</span></div>
+      </div>
+      <a class="slide-img" href="img/bp-strategy.webp" data-lb data-cap="הוכחה שהקשבנו: תמצית אסטרטגיית המותג"><img src="img/bp-strategy.webp" width="1376" height="733" loading="lazy" alt="שקף: ארבעה עיגולים מחוברים, מי המותג, ערכים, מיצוב וקהל יעד"></a>
+      <p>איך מגיעים לארבעת המשפטים האלה, זה כבר פרק האסטרטגיה. כאן רק מראים ללקוח שהקשבתם. <a class="xref" href="strategy.html#story-audience-positioning">סיפור, קהל ומיצוב</a> <a class="xref" href="strategy.html#brief">תבנית בריף</a></p>
+    </section>
+
+    <!-- ================= 3. we are / we are not ================= -->
+    <section class="sec">
+      <h2 id="we-are" data-short="אנחנו כן / אנחנו לא">ההסכם שלנו: מה בחרנו להיות (ומה במכוון לא)</h2>
+      <p>על בסיס האסטרטגיה, הגדרנו יחד את הגבולות היצירתיים. ההחלטות האלה ינחו את כל הבחירות העיצוביות.</p>
+      <div class="vs2">
+        <div class="good"><h4>אנחנו כן</h4><ul class="chips yes"><li>בטוחים</li><li>מאופקים</li><li>מודרניים</li><li>נגישים</li></ul></div>
+        <div class="bad"><h4>אנחנו לא</h4><ul class="chips no"><li>אגרסיביים</li><li>צעירים מדי</li><li>טרנדיים</li><li>מסורתיים</li></ul></div>
+      </div>
+      <a class="slide-img" href="img/bp-we-are.webp" data-lb data-cap="ההסכם שלנו: מה בחרנו להיות ומה במכוון לא"><img src="img/bp-we-are.webp" width="1376" height="733" loading="lazy" alt="שקף בשתי עמודות: אנחנו כן, עם וי, ואנחנו לא, עם איקס"></a>
+      <p>זה אותו שריר כמו רשימות ה„כל הזמן” וה„לעולם לא” של השפה התקשורתית, בגרסת מצגת: ארבע מילים בכל צד, וההסכמה של הלקוח עליהן. מהרגע הזה, כל ויכוח על טעם חוזר לעמוד הזה. <a class="xref" href="strategy.html#voice-lists">שפה תקשורתית</a></p>
+    </section>
+
+    <!-- ================= 4. concept ================= -->
+    <section class="sec">
+      <h2 id="concept" data-short="הקונספט העיצובי">מהסיפור אל הצורה: הקונספט העיצובי</h2>
+      <p>לכל לוגו חזק יש רעיון מרכזי אחד. בשקף הזה משלימים שלושה משפטים:</p>
+      <div class="concept">
+        הסיפור שלנו מתמקד ב<span class="blank">רעיון החיבור בין אנשים וטכנולוגיה</span>.<br>
+        העיקרון המוביל הוא <span class="blank">זרימה ופשטות</span>.<br>
+        המסר שהלוגו ישדר, עוד לפני שקוראים את שם המותג, הוא <span class="blank">קלות שימוש ושותפות</span>.
+      </div>
+      <a class="slide-img" href="img/bp-concept.webp" data-lb data-cap="מהסיפור אל הצורה: הקונספט העיצובי"><img src="img/bp-concept.webp" width="1376" height="733" loading="lazy" alt="שקף: טקסט הקונספט ליד שתי טבעות משולבות, כחולה ואפורה שקופה"></a>
+    </section>
+
+    <!-- ================= 5. reveal ================= -->
+    <section class="sec">
+      <h2 id="reveal" data-short="החשיפה">הפתרון: החשיפה</h2>
+      <p>ואז, ורק אז: הלוגו. לבד, גדול, על רקע שקט. בלי טקסט, בלי הסברים, בלי עוד שלושה דברים מסביב.</p>
+      <figure class="anim rvf" id="rv-fig" data-steps="3" data-step-labels="שחור־לבן|בצבע|הפתרון">
+        <span class="anim__label">רגע החשיפה</span>
+        <div class="anim__stage">
+          <div class="rv" aria-hidden="true">
+            <span class="lbl">הפתרון</span>
+            <svg viewBox="0 0 200 200"><ellipse class="e1" cx="100" cy="100" rx="58" ry="84" transform="rotate(-38 100 100)" fill="none" stroke="#b9c0c9" stroke-width="22" opacity=".85"/><ellipse class="e2" cx="100" cy="100" rx="58" ry="84" transform="rotate(38 100 100)" fill="none" stroke="#004e89" stroke-width="22"/></svg>
+          </div>
+          <p class="rv-note" aria-live="polite"><span data-s="1">קודם בשחור־לבן: מוכיחים שהצורה עובדת גם בלי צבע.</span><span data-s="2">ואז בצבע. בלי להסביר, בלי למהר. שנייה של שקט.</span><span data-s="3">רק עכשיו מילה אחת: זה הפתרון. ואז מקשיבים ללקוח.</span></p>
+        </div>
+        <figcaption>שנייה של שקט לפני, ושנייה של שקט אחרי. אל תמהרו לדבר: תנו ללקוח לראות. (הסימן כאן הוא דוגמה בהשראת המצגת.)</figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= 6. meaning ================= -->
+    <section class="sec">
+      <h2 id="meaning" data-short="משמעות לכל החלטה">מאחורי כל החלטה עומדת משמעות</h2>
+      <p>מיד אחרי החשיפה, מפרקים את הלוגו להחלטות. כל החלטה מקבלת משפט אחד:</p>
+      <div class="mean">
+        <div><h4>הצורה</h4><p>הקווים המעוגלים משדרים נגישות ואנושיות, בעוד המבנה היציב משקף אמינות טכנולוגית.</p></div>
+        <div><h4>הצבעוניות</h4><p>הכחול הכהה מייצר תחושת ביטחון ומקצועיות, והאפור השקוף מוסיף טאץ’ מודרני ועומק.</p></div>
+        <div><h4>הטיפוגרפיה</h4><p>הפונט הנקי והגיאומטרי מבטיח קריאות, ורסטיליות ומראה מודרני.</p></div>
+      </div>
+      <a class="slide-img" href="img/bp-meaning.webp" data-lb data-cap="מאחורי כל החלטה עומדת משמעות"><img src="img/bp-meaning.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו עם שלושה חיצים להסברים על הצורה, הצבעוניות והטיפוגרפיה"></a>
+      <p data-added>שימו לב שכל נימוק מחזיר לאסטרטגיה: „נגישות”, „אמינות”, „ביטחון” הן בדיוק המילים מעמוד ה„אנחנו כן”. ככה „אני לא אוהב כחול” הופך לשיחה על ביטחון ומקצועיות, ולא על טעם.</p>
+    </section>
+
+    <!-- ================= 7. versatility ================= -->
+    <section class="sec">
+      <h2 id="versatility" data-short="עובד בכל מצב">הוכחה ורסטיליות: הלוגו עובד בכל מצב</h2>
+      <p>לוגו חזק חייב להיות גמיש. הראו איך הוא שומר על הזהות שלו בכל קנה מידה ובכל פורמט: אופקי, סמל זעיר, על רקע בהיר, על רקע כהה, על הצבע של המותג, עם מסגרות המרווח המגן, בגרסה שחורה, וסמל בלבד.</p>
+      <a class="slide-img" href="img/bp-every-size.webp" data-lb data-cap="הוכחה ורסטיליות: הלוגו עובד בכל מצב"><img src="img/bp-every-size.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו בשמונה מצבים, אופקי, זעיר, על רקעים בהירים, כהים וכחולים, בשחור וסמל בלבד"></a>
+      <p>איך בונים את המערכת הזו מלכתחילה, ומה הן כל הגרסאות: <a class="xref" href="logo.html#system">מערכת הלוגו</a></p>
+    </section>
+
+    <!-- ================= 8. system ================= -->
+    <section class="sec">
+      <h2 id="system" data-short="מערכת זהות שלמה">יותר מלוגו: מערכת זהות שלמה</h2>
+      <p>לוגו לבד זה לא מותג. בנינו מערכת חוקים עקבית שמבטיחה שהמותג ידבר בקול אחד בכל מקום: פלטת צבעים, טיפוגרפיה, אלמנטים גרפיים, גריד ומבנה.</p>
+      <div class="swatches">
+        <div class="sw"><i style="background:#222222"></i><div><b>שחור מותג</b><code>#222222</code></div></div>
+        <div class="sw"><i style="background:#004e89"></i><div><b>כחול מותג</b><code>#004E89</code></div></div>
+        <div class="sw"><i style="background:#e0e0e0"></i><div><b>אפור בהיר</b><code>#E0E0E0</code></div></div>
+      </div>
+      <div class="spec">
+        <div><small>Assistant Bold</small><div class="h">כותרת ראשית</div></div>
+        <div><small>Frank Ruhl Libre Regular</small><div class="b">זהו טקסט דמה קלאסי שמשמש בעיצוב גרפי. המטרה היא להדגים את מראה הגופן.</div></div>
+      </div>
+      <a class="slide-img" href="img/bp-system.webp" data-lb data-cap="יותר מלוגו: מערכת זהות שלמה"><img src="img/bp-system.webp" width="1376" height="733" loading="lazy" alt="שקף: פלטת שלושה צבעים, דוגמת טיפוגרפיה, אלמנטים גרפיים עגולים וגריד"></a>
+      <p>זה בעצם תקציר של ספר המותג. מה נכנס לספר המלא: <a class="xref" href="checklist.html#brand-book">ספר מותג</a></p>
+    </section>
+
+    <!-- ================= 9. worlds ================= -->
+    <section class="sec">
+      <h2 id="worlds" data-short="בדיגיטל ובמציאות">איך המותג חי בעולם</h2>
+      <h3 id="digital-world">בעולם הדיגיטלי</h3>
+      <p>המערכת העיצובית מותאמת למסכים, עם דגש על קריאות, נגישות ואימפקט: פרופיל אינסטגרם, אתר, מסך פתיחה של אפליקציה, מסך טעינה ו־<span class="ltr">GIF</span> מונפש קצר. אם רלוונטי, מציגים גם דוגמאות של תנועה עדינה.</p>
+      <a class="slide-img" href="img/bp-digital.webp" data-lb data-cap="איך המותג חי בעולם הדיגיטלי"><img src="img/bp-digital.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על פרופיל אינסטגרם, אתר, מסך פתיחה וטעינה של אפליקציה, ואנימציה קצרה"></a>
+      <p><a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a> <a class="xref" href="golden-rules.html">תנועה, אבל לא ליד טקסט</a></p>
+
+      <h3 id="physical-world">בעולם הפיזי</h3>
+      <p>הזהות הוויזואלית עובדת לא רק על מסך, אלא גם במרחב הפיזי, על חומרים שונים ובקני מידה משתנים: שלט קיר בקבלה, תיק בד, כרטיס ביקור.</p>
+      <a class="slide-img" href="img/bp-real-world.webp" data-lb data-cap="איך המותג חי בעולם הפיזי"><img src="img/bp-real-world.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על שלט בקיר הקבלה, על תיק בד ועל כרטיס ביקור"></a>
+      <p><a class="xref" href="mockups.html">יישומים ומוקאפים</a></p>
+    </section>
+
+    <!-- ================= 10. working system ================= -->
+    <section class="sec">
+      <h2 id="working-system" data-short="הצגנו מערכת שעובדת">לא הצגנו לוגו, הצגנו מערכת שעובדת</h2>
+      <p class="lead">השקף שסוגר את המצגת: ראינו יחד איך הפתרון האסטרטגי בא לידי ביטוי במערכת זהות שלמה. מערכת שעובדת בדיגיטל, בדפוס, בתנועה ובמציאות. <strong>ככה נראה מותג שמוכן לצאת לעולם.</strong></p>
+    </section>
+
+    <!-- ================= golden rule ================= -->
+    <section class="sec">
+      <h2 id="golden-rule">עיקרון הזהב שלכם</h2>
+      <figure class="illus"><img src="img/golden-11.webp" alt="איור: לחיצת יד מעל שולחן, עם ספר מותג סגור וכרטיס עם סמל ביניהם" width="1344" height="752" loading="lazy"></figure>
+      <div class="golden">
+        <p>אל תציגו אופציות.<br><span>הציגו פתרון.</span></p>
+        <p>אל תבקשו טעם.<br><span>הסבירו החלטה.</span></p>
+        <hr>
+        <p class="last">מצגת טובה לא מוכרת לוגו.<br><span>היא מוכרת ביטחון.</span></p>
+      </div>
+
+      <h3 id="pushback" data-added>וכשהלקוח בכל זאת אומר „לא אוהב”</h3>
+      <div data-added>
+        <ol class="steps">
+          <li><strong>שאלו למה</strong>, ותקשיבו עד הסוף. „לא אוהב” הוא כמעט תמיד סימפטום, לא אבחנה.</li>
+          <li><strong>חזרו לאסטרטגיה</strong>: „סיכמנו שאנחנו מאופקים ונגישים. האם זה עדיין נכון?” אם כן, השיחה חוזרת למה שמתאים, לא למה שיפה.</li>
+          <li><strong>הפרידו בין טעם להתאמה</strong>: אפשר לשנות גוון, אפשר לחדד צורה. לא מרכיבים לוגו מחלקים של כיוונים אחרים.</li>
+          <li>אם ההערה נכונה, <strong>תודו בזה</strong> ותחזרו עם פתרון מתוקן. ביטחון זה לא להתבצר, זה לדעת למה.</li>
+        </ol>
+      </div>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* funnel 20 -> 3 -> 1, a click-through stepper (js driven). Runs at parse time so the listener exists before guide.js starts. */
+(function () {
+  "use strict";
+  var fig = document.getElementById("fun-anim"); if (!fig) return;
+  var stage = fig.querySelector(".fun"), head = fig.querySelector(".fun-h");
+  var COLORS = ["#e2462b", "#2c7be5", "#f5b800", "#7a8f86", "#9f7aea", "#2fbf71", "#ff7ab6", "#8a5a3c", "#004e89", "#ff8a3d"];
+  var SH = [
+    function (c) { return '<circle cx="20" cy="20" r="16" fill="' + c + '"/>'; },
+    function (c) { return '<rect x="5" y="5" width="30" height="30" rx="4" fill="' + c + '"/>'; },
+    function (c) { return '<path d="M20 4l16 30H4z" fill="' + c + '"/>'; },
+    function (c) { return '<circle cx="20" cy="20" r="14" fill="none" stroke="' + c + '" stroke-width="6"/>'; },
+    function (c) { return '<path d="M20 3l4.5 11.5L36 15l-9 7.5L30 35l-10-6.5L10 35l3-12.5L4 15l11.5-.5z" fill="' + c + '"/>'; },
+    function (c) { return '<path d="M6 30C10 12 24 6 34 8 30 22 20 32 6 30z" fill="' + c + '"/>'; },
+    function (c) { return '<rect x="8" y="8" width="24" height="24" fill="' + c + '" transform="rotate(45 20 20)"/>'; }
+  ];
+  var CHOSEN = { 6: [83, 39], 12: [50, 39], 13: [17, 39] };
+  var CHOSEN_SVG = {
+    6: '<circle cx="20" cy="20" r="16" fill="#e2462b"/><path d="M12 24l8-12 8 12z" fill="#f3e6d6"/>',
+    12: '<ellipse cx="20" cy="20" rx="10" ry="15" transform="rotate(-38 20 20)" fill="none" stroke="#b9c0c9" stroke-width="5"/><ellipse cx="20" cy="20" rx="10" ry="15" transform="rotate(38 20 20)" fill="none" stroke="#004e89" stroke-width="5"/>',
+    13: '<path d="M6 30C10 12 24 6 34 8 30 22 20 32 6 30z" fill="#2fbf71"/>'
+  };
+  var marks = [], grid = [];
+  for (var i = 0; i < 20; i++) {
+    var c = i % 5, r = Math.floor(i / 5);
+    grid.push([14 + c * 18, 22 + r * 21]);
+    var d = document.createElement("div"); d.className = "fm";
+    var rot = (i * 47) % 360;
+    var inner = CHOSEN_SVG[i] || SH[(i * 3) % SH.length](COLORS[(i * 7) % COLORS.length]);
+    d.innerHTML = '<svg viewBox="0 0 40 40"><g transform="rotate(' + (CHOSEN_SVG[i] ? 0 : rot) + ' 20 20)">' + inner + "</g></svg>";
+    stage.appendChild(d); marks.push(d);
+  }
+  function s0() {
+    stage.setAttribute("data-step", "0"); head.textContent = "20 אופציות אקראיות";
+    marks.forEach(function (m, i) { m.className = "fm"; m.style.left = grid[i][0] + "%"; m.style.top = grid[i][1] + "%"; });
+  }
+  function s1() {
+    stage.setAttribute("data-step", "1"); head.textContent = "מסננים לפי הבריף…";
+    marks.forEach(function (m, i) {
+      if (CHOSEN[i]) { m.className = "fm big"; m.style.left = CHOSEN[i][0] + "%"; m.style.top = CHOSEN[i][1] + "%"; }
+      else m.className = "fm out";
+    });
+  }
+  function s2() { stage.setAttribute("data-step", "2"); head.textContent = "3 מערכות מנומקות"; }
+  function s3() {
+    stage.setAttribute("data-step", "3"); head.textContent = "1 המלצה, עם נימוק";
+    marks.forEach(function (m, i) { if (CHOSEN[i] && i !== 12) m.classList.add("dim"); });
+  }
+  /* stepper (guide.js): 1 twenty marks · 2 filtered by the brief · 3 three full systems · 4 one recommendation */
+  function render(k) {
+    if (k <= 1) { s0(); return; }
+    s1();
+    if (k >= 3) s2();
+    if (k >= 4) s3();
+  }
+  s0();
+  fig.addEventListener("anim:step", function (e) { render(e.detail.step); });
+})();
+</script>
+</body>
+</html>

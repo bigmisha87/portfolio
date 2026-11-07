@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>גריד וריווח · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="גריד הוא הבסיס לסדר, היררכיה ואחידות: גרידים מתמטיים וחופשיים, מערכת ריווח של 8, מרחב נשימה, ריווח בין שורות של 120% עד 140%, ותבנית גריד קבועה לכל החומרים.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="גריד וריווח · מדריך המיתוג">
+<meta property="og:description" content="גרידים מתמטיים וחופשיים, מערכת ריווח של 8, ומרווח בין שורות.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/grid-heinz.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* Infographics on this page are click-through steppers (guide.js: data-steps / data-goto).
+   Nothing plays by itself: each step is a state (.anim[data-step="k"]) reached with CSS transitions,
+   and a picked tile replays its move only after the reader's first click (.is-live, set below). */
+:root { --tint: color-mix(in srgb, var(--accent) 22%, transparent); --tint-2: color-mix(in srgb, var(--accent) 10%, transparent); }
+
+/* ---- 12-column snap ---- */
+.snap { position: relative; aspect-ratio: 16 / 10.5; background: var(--soft); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.snap .cols, .snap .lay { position: absolute; inset: 6% 5%; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 2%; }
+.snap .cols i { background: var(--tint-2); border-inline: 1px solid var(--tint); transform-origin: top; }
+.snap .lay { grid-template-rows: 9% minmax(0, 1fr) 30%; row-gap: 6%; }
+.snap .lay > div { border-radius: 6px; }
+.snap .nav { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; }
+.snap .nav .logo { width: 7%; aspect-ratio: 1; min-width: 14px; border-radius: 50%; background: var(--accent); }
+.snap .nav .links { display: flex; gap: 6%; width: 40%; justify-content: flex-end; }
+.snap .nav .links i { display: block; height: 7px; flex: 1; border-radius: 3px; background: var(--muted); opacity: .6; }
+.snap .hero { grid-column: 1 / span 7; display: flex; flex-direction: column; justify-content: center; gap: 9%; }
+.snap .hero i { display: block; border-radius: 4px; }
+.snap .hero .t1 { height: 18%; width: 100%; background: var(--ink); }
+.snap .hero .t2 { height: 18%; width: 72%; background: var(--ink); }
+.snap .hero .t3 { height: 6%; width: 88%; background: var(--muted); opacity: .7; }
+.snap .hero .btn { height: 14%; width: 30%; border-radius: 999px; background: var(--accent); }
+.snap .pic { grid-column: 8 / span 5; background: linear-gradient(160deg, #f3d9b8, #e2462b); position: relative; overflow: hidden; }
+.snap .pic::after { content: ""; position: absolute; width: 34%; aspect-ratio: 1; border-radius: 50%; background: #fff4ea; top: 16%; left: 18%; opacity: .9; }
+.snap .card { grid-column: span 4; background: var(--paper); border: 1px solid var(--line); padding: 6%; display: flex; flex-direction: column; gap: 10%; }
+.snap .card i { display: block; height: 14%; border-radius: 3px; background: var(--fill); }
+.snap .card i:first-child { width: 40%; height: 22%; background: var(--accent); opacity: .85; }
+.snap .card i:nth-child(3) { width: 70%; }
+.snap .cols i { transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .45s; transition-delay: calc(var(--i) * .03s); }
+.snap .lay > div { transition: transform .75s cubic-bezier(.2,1.25,.4,1), opacity .5s, box-shadow .5s; }
+/* step 1: the finished page, the grid is invisible */
+.anim[data-step="1"] .snap .cols i { transform: scaleY(0); opacity: 0; }
+/* step 2: the 12 columns appear under it, the blocks turn see-through so the columns show */
+.anim[data-step="2"] .snap .lay > div { opacity: .72; box-shadow: 0 0 0 1.5px var(--accent); }
+/* step 3: the same page placed "roughly", without the grid */
+.anim[data-step="3"] .snap .lay > div { transform: translate(calc(var(--x) * .28), calc(var(--y) * .28)) rotate(calc(var(--r) * .4)); }
+.snap-legend span { transition: opacity .45s; }
+.anim[data-step="1"] .snap-legend span, .anim[data-step="3"] .snap-legend span { opacity: .45; }
+.snap-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 12px; font-size: 14px; color: var(--muted); }
+.snap-legend b { color: var(--ink); font-weight: 600; }
+
+/* ---- two grid types ---- */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 22px 0; }
+.two figure { margin: 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; }
+.two svg { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--soft); }
+.two h4 { margin: 12px 0 2px; }
+.two p { font-size: 15px; line-height: 1.6; color: var(--muted); margin: 0; }
+.dg-col { fill: var(--tint-2); }
+.dg-gl { fill: none; stroke: var(--tint); stroke-width: 1; }
+.dg-ink { fill: var(--ink); } .dg-ac { fill: var(--accent); } .dg-mu { fill: var(--muted); opacity: .6; } .dg-fill { fill: var(--fill); }
+.dg-dim { fill: none; stroke: var(--accent-ink); stroke-width: 1.4; }
+.dg-txt { fill: var(--accent-ink); font: 600 9px var(--mono); }
+@media (max-width: 600px) { .two { grid-template-columns: 1fr; } }
+
+/* ---- grid family cards ---- */
+.fam .card svg { display: block; width: 100%; height: auto; margin-bottom: 10px; border-radius: 6px; background: var(--soft); }
+
+/* ---- 8pt ruler ---- */
+.ruler { display: grid; gap: 8px; margin: 4px 0 18px; }
+.ruler div { display: flex; align-items: center; gap: 12px; font: 500 13px var(--mono); color: var(--muted); }
+.ruler div span:first-child { width: 44px; text-align: left; direction: ltr; }
+.ruler i { display: block; height: 14px; border-radius: 3px; background: var(--accent); }
+.ruler .half i { background: var(--muted); }
+.sp-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: center; margin-top: 14px; }
+.sp-card { background: var(--tint); border-radius: 14px; padding: var(--p); transition: padding .45s cubic-bezier(.2,.8,.2,1); }
+.sp-in { background: var(--paper); border-radius: 6px; }
+.sp-in .h { height: 18px; width: 70%; border-radius: 4px; background: var(--ink); }
+.sp-in .l { height: 8px; border-radius: 3px; background: var(--muted); opacity: .6; margin-top: 7px; }
+.sp-in .l.s { width: 60%; }
+.sp-in .gap { position: relative; background: repeating-linear-gradient(45deg, var(--tint), var(--tint) 3px, transparent 3px, transparent 6px); transition: height .45s cubic-bezier(.2,.8,.2,1); }
+.sp-in .g1 { height: var(--g1); } .sp-in .g2 { height: var(--g2); }
+.sp-in .b { width: 40%; height: 26px; border-radius: 999px; background: var(--accent); }
+.sp-vals { font-size: 15px; line-height: 1.7; margin: 0; }
+.sp-vals code { font: 500 14px var(--mono); direction: ltr; unicode-bidi: isolate; color: var(--accent-ink); }
+@media (max-width: 600px) { .sp-wrap { grid-template-columns: 1fr; } }
+
+/* ---- white space demo ---- */
+.ws-wrap { margin-top: 14px; display: grid; place-items: center; background: var(--soft); border-radius: 12px; padding: 18px; }
+.ws { width: min(100%, 360px); background: #f6f1e7; color: #1d1a16; border-radius: 10px; display: grid; transition: padding .45s, gap .45s; }
+.ws .ph { background: linear-gradient(150deg, #f0a43a, #e2462b); border-radius: 6px; transition: height .45s; }
+.ws b { font: 700 1.6em/1.05 var(--display); color: #1d1a16; transition: font-size .45s; }
+.ws p { margin: 0; font-size: 14px; line-height: 1.5; color: #4b443c; }
+.ws span { justify-self: start; background: #1d1a16; color: #f6f1e7; font: 600 13px var(--text); border-radius: 999px; padding: 6px 14px; }
+.ws.tight { padding: 6px; gap: 3px; }
+.ws.tight .ph { height: 140px; } .ws.tight b { font-size: 2.6em; }
+.ws.airy { padding: 30px; gap: 16px; }
+.ws.airy .ph { height: 120px; } .ws.airy b { font-size: 2em; }
+
+/* ---- leading slider ---- */
+.ld-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ld-top label { font-size: 15px; color: var(--muted); }
+.ld-top output { font: 500 15px var(--mono); direction: ltr; unicode-bidi: isolate; }
+.ld-range { position: relative; margin: 10px 0 2px; padding: 6px 0; }
+.ld-band { position: absolute; top: 50%; height: 22px; transform: translateY(-50%); left: calc(8px + (100% - 16px) * .25); width: calc((100% - 16px) * .25); background: var(--ok-soft); border: 1px solid var(--ok); border-radius: 6px; pointer-events: none; }
+.ld-band span { position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%); white-space: nowrap; font: 600 12px var(--text); color: var(--ok); }
+.ld-range input { position: relative; display: block; margin: 0; }
+.ld-scale { display: flex; justify-content: space-between; font: 500 12px var(--mono); color: var(--muted); }
+.ld-txt { font-size: 20px; margin: 20px 0 10px; padding: 4px 0; --lh: 26px; line-height: var(--lh); background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(var(--lh) - 1px), var(--fill) calc(var(--lh) - 1px), var(--fill) var(--lh)); background-position: 0 4px; transition: line-height .15s; }
+.ld-msg { margin: 0; font-size: 15px; font-weight: 500; padding: 8px 12px; border-radius: 8px; display: inline-block; }
+.ld-msg.ok { background: var(--ok-soft); color: var(--ok); }
+.ld-msg.bad { background: var(--warn-soft); color: var(--warn); }
+.ld-msg.mid { background: var(--soft); color: var(--ink); }
+
+/* ---- 12 divides ---- */
+.div12 { position: relative; margin-top: 14px; }
+.div12 .g, .div12 .b { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 6px; }
+.div12 .g i { height: 92px; background: var(--tint-2); border-radius: 4px; }
+.div12 .b { position: absolute; inset: 0; align-items: stretch; }
+.div12 .b i { border-radius: 6px; background: var(--accent); opacity: .9; display: grid; place-items: center; font: 600 13px var(--mono); color: var(--on-accent); transition: grid-column .3s; }
+.div12 .b i:nth-child(even) { background: var(--ink); color: var(--bg); }
+
+/* ---- template page ---- */
+.tpl { display: grid; grid-template-columns: minmax(0, 240px) minmax(0, 1fr); gap: 24px; align-items: center; }
+.tpl svg { width: 100%; height: auto; display: block; }
+.tpl .pg { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+.tpl .mg { fill: none; stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 5 4; }
+.tpl .num { fill: var(--accent); }
+.tpl .num-t { fill: var(--on-accent); font: 700 11px var(--text); }
+.tpl ol { margin: 0; }
+@media (max-width: 600px) { .tpl { grid-template-columns: 1fr; } .tpl svg { max-width: 240px; } }
+
+/* ---- reading patterns ---- */
+.rp { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.rp > div { background: var(--soft); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px 14px; }
+.rp svg { display: block; width: 100%; height: auto; margin-bottom: 8px; overflow: visible; }
+.rp .blk { fill: var(--fill); }
+.rp .frame { fill: var(--paper); stroke: var(--line); }
+.rp .path { fill: none; stroke: var(--accent); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.rp .gd { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 4; }
+.rp .pt { fill: var(--accent); transform-box: fill-box; transform-origin: center; }
+.rp .zone { fill: var(--tint); }
+.rp h4 { margin: 0; font-size: 16px; }
+.rp p { margin: 4px 0 0; font-size: 14.5px; line-height: 1.6; color: var(--muted); }
+.rp > div { transition: opacity .45s, border-color .45s, background .45s; }
+.anim[data-step] .rp > div:not(.on) { opacity: .55; }
+.anim[data-step] .rp > div:not(.on):hover { opacity: .85; }
+.rp > div.on { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 7%, var(--soft)); }
+.rp > div.on h4 { color: var(--accent-ink); }
+.anim.is-live .rp > div.on .path { animation: draw 1.3s ease-in-out both; }
+.anim.is-live .rp > div.on .pt { animation: pop .4s cubic-bezier(.3,1.6,.5,1) both; animation-delay: calc(var(--i, 0) * .15s); }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pop { from { transform: scale(0); } to { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .anim *, .anim *::before, .anim *::after { animation: none !important; } }
+@media (max-width: 600px) { .rp { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body data-ch="grid">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">09 / 15</div>
+      <h1>גריד וריווח</h1>
+      <p class="lede">הגריד הוא השלד שאף אחד לא רואה, אבל כולם מרגישים. הוא מה שגורם לעשרות חומרים שונים, מפוסט ועד שלט, להיראות כמו משפחה אחת. והריווח הוא האוויר שבין האיברים.</p>
+      <div class="ch-meta"><span>6 נושאים</span><span>2 הדגמות</span><span>4 כלים לנסות</span></div>
+    </header>
+
+    <!-- ================= grid ================= -->
+    <section class="sec">
+      <h2 id="grid" data-short="מה זה גריד">גריד: הבסיס לסדר</h2>
+      <p><strong>גריד</strong> הוא הבסיס לסדר, היררכיה ואחידות עיצובית. הוא קובע את הקצב, המבנה והקשר בין האלמנטים בעמוד, ויוצר תחושת יציבות והרמוניה בעין הצופה. גריד טוב מאפשר חופש עיצובי, אבל תמיד <strong>בתוך מערכת חוקים ברורה</strong>.</p>
+
+      <figure class="anim" data-steps="3" data-step-labels="העמוד|12 העמודות מתחת|ובלי גריד">
+        <span class="anim__label">עמוד נוחת על גריד של 12 עמודות</span>
+        <div class="anim__stage">
+          <div class="snap" aria-hidden="true">
+            <div class="cols"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i><i style="--i:4"></i><i style="--i:5"></i><i style="--i:6"></i><i style="--i:7"></i><i style="--i:8"></i><i style="--i:9"></i><i style="--i:10"></i><i style="--i:11"></i></div>
+            <div class="lay">
+              <div class="nav" style="--d:.55s;--x:0px;--y:-40px;--r:0deg"><span class="logo"></span><span class="links"><i></i><i></i><i></i></span></div>
+              <div class="hero" style="--d:.8s;--x:60px;--y:30px;--r:6deg"><i class="t1"></i><i class="t2"></i><i class="t3"></i><i class="btn"></i></div>
+              <div class="pic" style="--d:1s;--x:-70px;--y:-20px;--r:-8deg"></div>
+              <div class="card" style="--d:1.25s;--x:40px;--y:60px;--r:10deg"><i></i><i></i><i></i></div>
+              <div class="card" style="--d:1.4s;--x:0px;--y:80px;--r:-6deg"><i></i><i></i><i></i></div>
+              <div class="card" style="--d:1.55s;--x:-50px;--y:60px;--r:8deg"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="snap-legend"><span><b>כותרת:</b> 7 עמודות</span><span><b>תמונה:</b> 5 עמודות</span><span><b>כרטיסים:</b> <span class="ltr">4 + 4 + 4</span></span><span><b>ניווט:</b> כל ה־12</span></div>
+        </div>
+        <figcaption>אף אלמנט לא ממוקם „בערך”. כל קצה נופל על קו של עמודה, ולכן גם כשמוסיפים עמוד חדש, הוא ייראה שייך.</figcaption>
+      </figure>
+
+      <blockquote class="quote" data-added>„מערכת הגריד היא כלי עזר, לא ערובה.”<br><span class="muted" style="font-size:15px">יוזף מילר־ברוקמן, <span class="ltr">Grid Systems in Graphic Design</span> (1961). הספר של הסגנון השוויצרי שעדיין קובע איך נראים עמודים, אתרים וספרי מותג. הגריד לא יעצב בשבילכם, הוא רק ייתן לכם על מה לעמוד.</span></blockquote>
+    </section>
+
+    <!-- ================= grid types ================= -->
+    <section class="sec">
+      <h2 id="grid-types">סוגי גרידים</h2>
+      <div class="two">
+        <figure>
+          <svg viewBox="0 0 200 140" role="img" aria-label="גריד מתמטי: עמוד עם שש עמודות שוות ובלוקים שמתיישרים בדיוק עליהן">
+            <rect x="0" y="0" width="200" height="140" fill="none"/>
+            <g><rect class="dg-col" x="14" y="12" width="24" height="116"/><rect class="dg-col" x="44" y="12" width="24" height="116"/><rect class="dg-col" x="74" y="12" width="24" height="116"/><rect class="dg-col" x="104" y="12" width="24" height="116"/><rect class="dg-col" x="134" y="12" width="24" height="116"/><rect class="dg-col" x="164" y="12" width="24" height="116"/></g>
+            <rect class="dg-ink" x="74" y="20" width="114" height="12" rx="2"/>
+            <rect class="dg-mu" x="104" y="38" width="84" height="5" rx="2"/>
+            <rect class="dg-ac" x="14" y="20" width="54" height="54" rx="3"/>
+            <rect class="dg-fill" x="14" y="82" width="54" height="38" rx="3"/><rect class="dg-fill" x="74" y="82" width="54" height="38" rx="3"/><rect class="dg-fill" x="134" y="82" width="54" height="38" rx="3"/>
+            <rect class="dg-mu" x="104" y="50" width="84" height="5" rx="2"/><rect class="dg-mu" x="104" y="60" width="60" height="5" rx="2"/>
+          </svg>
+          <h4>גרידים מתמטיים</h4>
+          <p>מבוססים על <strong>שורות, עמודות וריווחים קבועים מראש</strong>. הם יוצרים שלד מדויק שקל לשמור עליו בכל מדיה: אתר, מודעה, ברושור או פוסט לרשתות. לדוגמה: גריד של 12 עמודות ברוחב שווה, או מבנה קבוע של כותרת, תמונה וטקסט.</p>
+        </figure>
+        <figure>
+          <svg viewBox="0 0 200 140" role="img" aria-label="גריד חופשי: בלוקים בגדלים שונים בלי עמודות, עם אותו מרווח קבוע ביניהם, מסומן במידות שוות">
+            <rect class="dg-ac" x="96" y="14" width="90" height="62" rx="31"/>
+            <rect class="dg-ink" x="14" y="22" width="70" height="14" rx="2"/>
+            <rect class="dg-mu" x="14" y="44" width="56" height="5" rx="2"/><rect class="dg-mu" x="14" y="54" width="44" height="5" rx="2"/>
+            <rect class="dg-fill" x="14" y="88" width="104" height="38" rx="3"/>
+            <rect class="dg-fill" x="130" y="88" width="56" height="38" rx="19"/>
+            <path class="dg-dim" d="M86 50h8M86 46v8M94 46v8"/>
+            <path class="dg-dim" d="M150 78v8M146 78h8M146 86h8"/>
+            <path class="dg-dim" d="M120 104h8M120 100v8M128 100v8"/>
+            <text class="dg-txt" x="78" y="68">x</text><text class="dg-txt" x="157" y="85">x</text><text class="dg-txt" x="121" y="120">x</text>
+          </svg>
+          <h4>גרידים חופשיים</h4>
+          <p>מבוססים על <strong>חוקיות פנימית גמישה</strong>, בלי חזרתיות נוקשה של עמודות. הם מאפשרים ביטוי יצירתי יותר, כל עוד נשמרת <strong>יחסיות עקבית</strong> בין הגדלים והריווחים. לדוגמה: שפה עיצובית שמשתמשת תמיד באותו יחס בין טקסט לרווח לבן, גם בלי קווים מדויקים.</p>
+        </figure>
+      </div>
+
+      <h3 id="grid-family" data-added>ארבעה גרידים שכדאי להכיר בשם</h3>
+      <div class="cards fam" data-added>
+        <div class="card"><svg viewBox="0 0 120 70" aria-hidden="true"><g class="dg-col"><rect x="10" y="8" width="20" height="54"/><rect x="36" y="8" width="20" height="54"/><rect x="62" y="8" width="20" height="54"/><rect x="88" y="8" width="20" height="54"/></g><rect class="dg-ink" x="62" y="14" width="46" height="6" rx="2"/><rect class="dg-mu" x="10" y="26" width="46" height="4"/><rect class="dg-mu" x="10" y="34" width="46" height="4"/><rect class="dg-mu" x="62" y="26" width="46" height="4"/><rect class="dg-mu" x="62" y="34" width="46" height="4"/></svg><span class="k">Column grid</span><h4>גריד עמודות</h4><p>עמודות ברוחב קבוע עם מרווחים שווים ביניהן. הבסיס של עיתונים, מגזינים ואתרי תוכן.</p></div>
+        <div class="card"><svg viewBox="0 0 120 70" aria-hidden="true"><g class="dg-fill"><rect x="10" y="8" width="30" height="16" rx="2"/><rect x="45" y="8" width="30" height="16" rx="2"/><rect x="80" y="8" width="30" height="16" rx="2"/><rect x="10" y="28" width="30" height="16" rx="2"/><rect x="80" y="28" width="30" height="16" rx="2"/><rect x="10" y="48" width="30" height="16" rx="2"/><rect x="45" y="48" width="30" height="16" rx="2"/><rect x="80" y="48" width="30" height="16" rx="2"/></g><rect class="dg-ac" x="45" y="28" width="30" height="16" rx="2"/></svg><span class="k">Modular grid</span><h4>גריד מודולרי</h4><p>עמודות ושורות שנחתכות לתאים אחידים. מושלם לחנויות, לגלריות של תיק עבודות ולכרטיסים.</p></div>
+        <div class="card"><svg viewBox="0 0 120 70" aria-hidden="true"><g class="dg-gl"><path d="M10 14H110M10 22H110M10 30H110M10 38H110M10 46H110M10 54H110M10 62H110"/></g><rect class="dg-ink" x="40" y="8" width="70" height="6" rx="1"/><rect class="dg-mu" x="22" y="18" width="88" height="4"/><rect class="dg-mu" x="22" y="26" width="88" height="4"/><rect class="dg-mu" x="22" y="34" width="70" height="4"/><rect class="dg-mu" x="22" y="50" width="88" height="4"/><rect class="dg-mu" x="22" y="58" width="60" height="4"/></svg><span class="k">Baseline grid</span><h4>גריד קו בסיס</h4><p>קווים אופקיים שהאותיות „יושבות” עליהם, כמו מחברת שורות. שומר על קצב אחיד בין עמודות סמוכות.</p></div>
+        <div class="card"><svg viewBox="0 0 120 70" aria-hidden="true"><rect class="dg-ac" x="50" y="8" width="60" height="34" rx="3"/><rect class="dg-ink" x="10" y="10" width="34" height="8" rx="2"/><rect class="dg-mu" x="10" y="24" width="30" height="4"/><rect class="dg-mu" x="10" y="32" width="24" height="4"/><rect class="dg-fill" x="10" y="48" width="56" height="14" rx="2"/><rect class="dg-fill" x="72" y="48" width="38" height="14" rx="2"/></svg><span class="k">Hierarchical grid</span><h4>גריד היררכי</h4><p>פריסה לפי חשיבות התוכן ולא לפי שורות קבועות, לפעמים א־סימטרית. נפוץ בדפי נחיתה, מוצרי יוקרה ואריזות.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= examples ================= -->
+    <section class="sec">
+      <h2 id="examples" data-short="גרידים בעבודה">ככה זה נראה בעבודות אמיתיות</h2>
+      <p>כמה דוגמאות שאספתי, חלקן עם קווי הגריד מצוירים מעל. שימו לב שגם העבודות שנראות הכי „חופשיות” נשענות על מערכת.</p>
+      <div class="gallery" style="grid-template-columns:repeat(auto-fill,minmax(min(150px,100%),1fr))">
+        <a href="img/grid-heinz.webp" data-lb data-cap="Heinz: הכותרת, המספר 57 והטקסט נשענים כולם על אותן עמודות (הקווים האדומים)"><img src="img/grid-heinz.webp" alt="פוסטר אפור של Heinz עם קווי גריד אדומים: כותרת ענקית, צללית של שעועית והמספר 57, הכול מיושר לעמודות" loading="lazy"></a>
+        <a href="img/grid-circles.webp" data-lb data-cap="סדרת פוסטרים על אותה חוקיות: עיגול שחור, כותרת בכתב יד ושורת טקסט קטנה. כל פוסטר שונה, הסדרה אחת"><img src="img/grid-circles.webp" alt="תשעה פוסטרים בשחור לבן עם כותרות בכתב יד וחצאי עיגולים שחורים במיקומים משתנים" loading="lazy"></a>
+        <a href="img/grid-diagonal.webp" data-lb data-cap="גריד באלכסון: התמונה נחתכת בזווית, והטקסט עדיין יושב על קווים מקבילים"><img src="img/grid-diagonal.webp" alt="פוסטר עסקי עם תמונת בניינים שנחתכת באלכסון, ולצידו שרטוט של הגריד בקווים אדומים" loading="lazy"></a>
+        <a href="img/grid-food.webp" data-lb data-cap="גריד נטוי: תמונות וטקסט מסודרים על צירים אלכסוניים מקבילים"><img src="img/grid-food.webp" alt="פוסטר אוכל עם כותרת בכתב מכחול על צירים אלכסוניים, ולצידו שרטוט של הצירים" loading="lazy"></a>
+        <a href="img/grid-icecream.webp" data-lb data-cap="גריד סימטרי על ציר: הכול מאוזן סביב קו האמצע"><img src="img/grid-icecream.webp" alt="פוסטר גלידה ירוקה במרכז עם טקסט מאוזן משני הצדדים, ולצידו שרטוט הגריד הסימטרי" loading="lazy"></a>
+        <a href="img/grid-bento.webp" data-lb data-cap="Bento grid: מודולים בגדלים שונים, שכולם מתחלקים מאותה יחידה"><img src="img/grid-bento.webp" alt="לוח בסגנון בנטו על רקע שחור: קופסאות צבעוניות בגדלים שונים עם טיפוגרפיה וצילומים" loading="lazy"></a>
+        <a href="img/grid-tea.webp" data-lb data-cap="פוסט לרשתות עם רשת משבצות ברקע: הגריד הופך לחלק מהשפה הגרפית"><img src="img/grid-tea.webp" alt="פוסט ורוד של מותג תה: נערה עם כובע שותה תה, כותרת סגולה גלית ורשת משבצות ברקע" loading="lazy"></a>
+        <a href="img/grid-yellow.webp" data-lb data-cap="גם עיצוב עמוס נשען על רשת: היא מבצבצת בפינות ומחזיקה את הכותרות והמדבקות"><img src="img/grid-yellow.webp" alt="פוסטר צהוב עם רשת דקה: אישה עם שיער ורוד מחזיקה קלטת, מוקפת מדבקות וכותרות" loading="lazy"></a>
+      </div>
+      <figcaption>לחיצה על תמונה פותחת אותה בגדול.</figcaption>
+    </section>
+
+    <!-- ================= spacing ================= -->
+    <section class="sec">
+      <h2 id="spacing" data-short="ריווחים והיררכיה">כללים לריווחים ולהיררכיה</h2>
+      <p>הגריד קובע איפה הדברים יושבים. הריווח קובע כמה אוויר יש ביניהם. ארבעה כללים:</p>
+
+      <h3 id="spacing-system">שמרו על יחסים קבועים בין רווחים</h3>
+      <p><strong>שמרו על יחסים קבועים בין רווחים</strong>. לדוגמה: ריווח קבוע של <span class="ltr">8, 16, 24</span> פיקסלים בין אלמנטים. ניתן לעבוד עם <strong>מערכת מודולרית</strong> (כפולות של 4 או 8 פיקסלים) כדי לשמור על אחידות.</p>
+      <div class="widget" id="w-sp">
+        <div class="ruler" aria-label="סרגל מערכת 8">
+          <div class="half"><span>4</span><i style="width:4px"></i><span>חצי יחידה, לכוונונים עדינים</span></div>
+          <div><span>8</span><i style="width:8px"></i></div>
+          <div><span>16</span><i style="width:16px"></i></div>
+          <div><span>24</span><i style="width:24px"></i></div>
+          <div><span>32</span><i style="width:32px"></i></div>
+          <div><span>40</span><i style="width:40px"></i></div>
+          <div><span>48</span><i style="width:48px"></i></div>
+          <div><span>64</span><i style="width:64px"></i></div>
+        </div>
+        <div class="seg" role="group" aria-label="סוג ריווח" id="sp-seg">
+          <button type="button" aria-pressed="false" data-m="rand">ריווח „בעין”</button>
+          <button type="button" aria-pressed="true" data-m="sys">מערכת 8</button>
+        </div>
+        <div class="sp-wrap">
+          <div class="sp-card" id="sp-card" aria-hidden="true"><div class="sp-in"><div class="h"></div><div class="gap g1"></div><div class="l"></div><div class="l"></div><div class="l s"></div><div class="gap g2"></div><div class="b"></div></div></div>
+          <p class="sp-vals" id="sp-vals" aria-live="polite"></p>
+        </div>
+      </div>
+      <div data-added>
+        <p>למה דווקא 8? כי רוב גדלי המסכים מתחלקים ב־8, כי זה מתרגם נקי גם למסכים בצפיפות כפולה, ובעיקר כי זה <strong>חוסך החלטות</strong>: במקום להתלבט בין 13 ל־15, בוחרים בין <span class="ltr">8 / 16 / 24</span>. כמה הרגלים שמגיעים יחד עם השיטה:</p>
+        <ul class="dots">
+          <li>כל המידות, הריפודים והשוליים בכפולות של 8: <span class="ltr">8, 16, 24, 32, 40, 48, 56, 64</span>.</li>
+          <li><span class="ltr">4px</span> הוא חצי יחידה, רק לכוונונים קטנים (בין אייקון לטקסט שלו, למשל).</li>
+          <li>גם גובה השורה בטקסט נקבע בכפולות של 4 או 8, כדי שהטקסט ישב על אותו גריד כמו כל השאר.</li>
+          <li>ב־<span class="ltr">Figma</span>, הגדירו את ה„הזזה הגדולה” <span class="ltr">(Big nudge)</span> ל־<span class="ltr">8px</span>: כל לחיצה על <span class="ltr">Shift</span> וחץ תזיז בדיוק יחידה אחת.</li>
+        </ul>
+      </div>
+
+      <h3 id="white-space">השאירו מרחב נשימה</h3>
+      <p><strong>השאירו מרחב נשימה <span class="ltr">(White Space)</span></strong>. רווח הוא לא שטח מבוזבז; הוא יוצר סדר וקלילות.</p>
+      <div class="widget">
+        <div class="seg" role="group" aria-label="כמות אוויר" id="ws-seg">
+          <button type="button" aria-pressed="true" data-m="tight">בלי אוויר</button>
+          <button type="button" aria-pressed="false" data-m="airy">עם אוויר</button>
+        </div>
+        <div class="ws-wrap">
+          <div class="ws tight" id="ws" aria-label="דוגמה למודעה: תמונה, כותרת, טקסט וכפתור">
+            <div class="ph"></div>
+            <b>מאפייה של שכונה</b>
+            <p>לחם מחמצת, מאפים מהתנור כל בוקר, וקפה שמחכה לכם על הדלפק.</p>
+            <span>להזמנה</span>
+          </div>
+        </div>
+        <p class="muted" style="font-size:15px;margin:12px 0 0" aria-live="polite" id="ws-msg"></p>
+      </div>
+
+      <h3 id="leading">ריווח עקבי בין שורות טקסט <span class="ltr">(Leading)</span></h3>
+      <p>הקפידו על <strong>ריווח עקבי בין שורות טקסט <span class="ltr">(Leading)</span></strong>. לרוב עדיף ריווח של <span class="ltr">120%–140%</span> מגובה הפונט. לדוגמה: פונט בגודל <span class="ltr">20px</span> ← <span class="ltr">Leading 24–28px</span>.</p>
+      <div class="widget" id="w-lead">
+        <div class="ld-top"><label for="ld-r">גררו ושנו את הריווח בין השורות</label><output id="ld-out" for="ld-r">20px × 130% = 26px</output></div>
+        <div dir="ltr">
+          <div class="ld-range"><div class="ld-band"><span>120%–140%</span></div><input type="range" id="ld-r" min="100" max="180" step="5" value="130" aria-label="ריווח בין שורות באחוזים"></div>
+          <div class="ld-scale"><span>100%</span><span>120%</span><span>140%</span><span>160%</span><span>180%</span></div>
+        </div>
+        <p class="ld-txt" id="ld-txt">ריווח בין שורות הוא האוויר של הפסקה. כשהשורות צפופות מדי, העין מתבלבלת בדרך חזרה לתחילת השורה הבאה, מדלגת או חוזרת על אותה שורה. כשהן רחוקות מדי, הפסקה מתפרקת לשורות בודדות שכבר לא מרגישות כמו טקסט אחד. בין שני הקצוות יש אזור נוח, ושם רוב הטקסטים הרצים מרגישים הכי טבעי לקריאה.</p>
+        <p class="ld-msg ok" id="ld-msg" aria-live="polite"></p>
+      </div>
+      <p class="muted" style="font-size:15px" data-added>שני דברים שמשפיעים על המספר הנכון: <strong>כותרות</strong> גדולות צריכות פחות (בערך <span class="ltr">100%–120%</span>), ו<strong>שורות ארוכות</strong> צריכות יותר, כי לעין יש דרך ארוכה יותר לחזור. אורך השורה עצמו והיררכיית הגדלים נמצאים בפרק הטיפוגרפיה. <a class="xref" href="typography.html#hierarchy">טיפוגרפיה והיררכיה</a></p>
+
+      <h3 id="every-media">מהדפסה ועד מסך טלפון</h3>
+      <p>ודאו שהריווחים שלכם עובדים גם <strong>במדיות שונות</strong>: מהדפסה ועד מסך טלפון.</p>
+      <div data-added>
+        <p>באתרים ובאפליקציות זה אומר שהגריד עצמו משתנה לפי רוחב המסך. המקובל היום:</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>מסך</th><th>רוחב</th><th>עמודות</th><th>מרווח בין עמודות</th></tr></thead>
+            <tbody>
+              <tr><td>מחשב</td><td><span class="ltr">1440px+</span></td><td>12</td><td><span class="ltr">24px</span></td></tr>
+              <tr><td>טאבלט</td><td><span class="ltr">600–904px</span></td><td>8</td><td><span class="ltr">16–24px</span></td></tr>
+              <tr><td>טלפון</td><td><span class="ltr">0–599px</span></td><td>4</td><td><span class="ltr">16px</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>ולמה דווקא 12 במחשב? כי 12 מתחלק נקי לחצאים, לשלישים, לרבעים ולשישיות. נסו:</p>
+        <div class="widget" id="w12">
+          <div class="seg" role="group" aria-label="חלוקה של 12 עמודות" id="d12-seg">
+            <button type="button" aria-pressed="false" data-s="12">אחד</button>
+            <button type="button" aria-pressed="false" data-s="6,6">חצאים</button>
+            <button type="button" aria-pressed="true" data-s="4,4,4">שלישים</button>
+            <button type="button" aria-pressed="false" data-s="3,3,3,3">רבעים</button>
+            <button type="button" aria-pressed="false" data-s="2,2,2,2,2,2">שישיות</button>
+            <button type="button" aria-pressed="false" data-s="8,4">2 ל־1</button>
+          </div>
+          <div class="div12" aria-hidden="true">
+            <div class="g"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="b" id="d12-b"></div>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="font-size:15px">בבאנרים ובפורמטים של רשתות, כל מידה היא עולם בפני עצמו. <a class="xref" href="digital.html">פרסום דיגיטלי</a></p>
+    </section>
+
+    <!-- ================= template ================= -->
+    <section class="sec">
+      <h2 id="template" data-short="תבנית גריד קבועה">טיפ מעשי: תבנית גריד קבועה</h2>
+      <p>צרו לעצמכם <strong>תבנית גריד קבועה</strong>: קובץ בסיס <span class="ltr">(Template)</span> שבו מוגדרים ריווחים, עמודות, שוליים וכותרות. כך תוכלו לשמור על <strong>אחידות מותגית</strong> לאורך כל החומרים בלי לבזבז זמן על בנייה מחדש בכל פעם.</p>
+      <div class="tpl">
+        <svg viewBox="0 0 210 280" role="img" aria-label="שרטוט של קובץ תבנית: עמוד עם שוליים מקווקווים, שש עמודות, מקום לכותרת, לתמונה, לטקסט וללוגו, עם מספרים 1 עד 5">
+          <rect class="pg" x="4" y="4" width="202" height="272" rx="6"/>
+          <rect class="mg" x="20" y="20" width="170" height="240"/>
+          <g class="dg-col"><rect x="20" y="20" width="24" height="240"/><rect x="49" y="20" width="24" height="240"/><rect x="78" y="20" width="24" height="240"/><rect x="108" y="20" width="24" height="240"/><rect x="137" y="20" width="24" height="240"/><rect x="166" y="20" width="24" height="240"/></g>
+          <rect class="dg-ink" x="49" y="34" width="141" height="16" rx="2"/>
+          <rect class="dg-mu" x="78" y="58" width="112" height="6" rx="2"/>
+          <rect class="dg-ac" x="20" y="78" width="170" height="92" rx="4" style="opacity:.85"/>
+          <rect class="dg-mu" x="108" y="184" width="82" height="5" rx="2"/><rect class="dg-mu" x="108" y="194" width="82" height="5" rx="2"/><rect class="dg-mu" x="108" y="204" width="60" height="5" rx="2"/>
+          <rect class="dg-mu" x="20" y="184" width="82" height="5" rx="2"/><rect class="dg-mu" x="20" y="194" width="70" height="5" rx="2"/>
+          <circle class="dg-ink" cx="178" cy="246" r="10"/>
+          <g><circle class="num" cx="200" cy="20" r="9"/><text class="num-t" x="200" y="24" text-anchor="middle">1</text></g>
+          <g><circle class="num" cx="32" cy="42" r="9"/><text class="num-t" x="32" y="46" text-anchor="middle">2</text></g>
+          <g><circle class="num" cx="32" cy="124" r="9"/><text class="num-t" x="32" y="128" text-anchor="middle">3</text></g>
+          <g><circle class="num" cx="84" cy="222" r="9"/><text class="num-t" x="84" y="226" text-anchor="middle">4</text></g>
+          <g><circle class="num" cx="156" cy="246" r="9"/><text class="num-t" x="156" y="250" text-anchor="middle">5</text></g>
+        </svg>
+        <ol class="steps" data-added>
+          <li><strong>שוליים ועמודות</strong> נעולים בשכבה נפרדת, כדי שאף אחד לא יזיז אותם בטעות.</li>
+          <li><strong>סגנונות כותרת</strong> מוגדרים מראש (גודל, משקל, ריווח), לא מעוצבים מחדש בכל קובץ.</li>
+          <li><strong>מסגרות לתמונה</strong> בגדלים הקבועים של המותג.</li>
+          <li><strong>טקסט רץ</strong> עם ריווח בין שורות שכבר נקבע.</li>
+          <li><strong>מיקום קבוע ללוגו</strong>, כולל מרווח המגן שלו. <a class="xref" href="logo.html#system">מערכת הלוגו</a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ================= reading patterns ================= -->
+    <section class="sec">
+      <h2 id="reading-patterns" data-short="איך העין קוראת עמוד" data-added>איך העין עוברת על עמוד</h2>
+      <p data-added>גריד מסדר את העמוד, אבל העין לא קוראת אותו כמו טבלה. יש כמה מסלולים קבועים שהעין נוטה ללכת בהם, ושווה למקם עליהם את הדברים החשובים. כל המחקרים המוכרים נעשו על שפות שנכתבות משמאל לימין, ולכן בעברית המסלולים <strong>מתהפכים במראה</strong>, וכך הם מצוירים כאן.</p>
+
+      <figure class="anim rp-fig" data-steps="4" data-step-labels="דפוס Z|דפוס F|דיאגרמת גוטנברג|כלל השלישים" data-added>
+        <span class="anim__label">ארבעה מסלולים של העין, בעברית</span>
+        <div class="anim__stage">
+          <div class="rp">
+            <div data-goto="1">
+              <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><rect class="blk" x="116" y="14" width="30" height="10" rx="2"/><rect class="blk" x="16" y="78" width="40" height="16" rx="8"/><path class="path" pathLength="1" d="M138 20H24L136 88H28"/><circle class="pt" cx="24" cy="88" r="5" style="--i:8"/></svg>
+              <h4>דפוס <span class="ltr">Z</span></h4>
+              <p>בעמודים עם מעט טקסט, כמו דף נחיתה או מודעה: שורה עליונה, אלכסון, שורה תחתונה. לוגו בנקודת ההתחלה (ימין למעלה), קריאה לפעולה בנקודת הסיום.</p>
+            </div>
+            <div data-goto="2">
+              <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><rect class="blk" x="20" y="14" width="126" height="8" rx="2"/><rect class="blk" x="60" y="40" width="86" height="6" rx="2"/><rect class="blk" x="110" y="58" width="36" height="5" rx="2"/><rect class="blk" x="110" y="72" width="36" height="5" rx="2"/><rect class="blk" x="110" y="86" width="36" height="5" rx="2"/><path class="path" pathLength="1" d="M144 26H22M144 26V50M144 50H62M144 50V98"/></svg>
+              <h4>דפוס <span class="ltr">F</span></h4>
+              <p>בעמודים עמוסי טקסט: סריקה רחבה למעלה, עוד אחת קצרה יותר, ואז גלישה לאורך צד תחילת השורות. מחקרי מעקב עיניים של <span class="ltr">Nielsen Norman Group</span> אישרו את הדפוס הזה.</p>
+            </div>
+            <div data-goto="3">
+              <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><rect class="zone" x="82" y="10" width="68" height="44" rx="4"/><rect class="zone" x="10" y="56" width="68" height="44" rx="4"/><path class="gd" d="M80 10V100M10 55H150"/><path class="path" pathLength="1" d="M128 26L32 86"/><circle class="pt" cx="128" cy="26" r="5" style="--i:0"/><circle class="pt" cx="32" cy="86" r="5" style="--i:8"/></svg>
+              <h4>דיאגרמת גוטנברג</h4>
+              <p>בעמוד אחיד ומאוזן, „כוח המשיכה” של הקריאה מושך את העין מהפינה שבה מתחילים לקרוא (ימין למעלה) אל הפינה הנגדית למטה. שם, בנקודת הסיום, מקומו הטבעי של כפתור או חתימה.</p>
+            </div>
+            <div data-goto="4">
+              <svg viewBox="0 0 160 110" aria-hidden="true"><rect class="frame" x="6" y="6" width="148" height="98" rx="6"/><path class="path" pathLength="1" d="M55 6V104M105 6V104M6 38.7H154M6 71.3H154" style="stroke-width:1.6;stroke:var(--muted)"/><circle class="pt" cx="55" cy="38.7" r="6" style="--i:6"/><circle class="pt" cx="105" cy="38.7" r="6" style="--i:7"/><circle class="pt" cx="55" cy="71.3" r="6" style="--i:8"/><circle class="pt" cx="105" cy="71.3" r="6" style="--i:9"/></svg>
+              <h4>כלל השלישים</h4>
+              <p>חלקו את הפריים לתשעה חלקים שווים. נקודות המיקוד החזקות הן ארבע נקודות ההצטלבות, לא המרכז. עובד בצילום, בבאנר ובפוסטר.</p>
+            </div>
+          </div>
+        </div>
+        <figcaption>הדפוסים האלה הם נטייה, לא חוק. עיצוב טוב משתמש בהם, ולפעמים שובר אותם בכוונה עם אלמנט אחד בולט.</figcaption>
+      </figure>
+
+      <div class="note" data-added>
+        <span class="box-label">ויחס הזהב?</span>
+        <p>יחס הזהב (<span class="ltr">1:1.618</span>) יכול לעזור לקבוע יחס בין רוחב של שני טורים, בין גדלי טקסט, או בין מרווחים. אבל הוא כלי עזר, לא חוק: גם לוגואים שנבנו עליו עברו בסוף תיקון בעין. <a class="xref" href="logo.html">פרק הלוגו</a></p>
+      </div>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* page widgets: 8pt spacing, white space, leading slider, 12-column divisions, reading patterns */
+document.addEventListener("DOMContentLoaded", function () {
+  function pressed(seg, attr, val) { seg.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute(attr) === val)); }); }
+
+  /* 8pt spacing */
+  var spSeg = document.getElementById("sp-seg"), card = document.getElementById("sp-card"), vals = document.getElementById("sp-vals");
+  if (spSeg) {
+    var M = {
+      rand: { p: 13, g1: 5, g2: 21, t: "המספרים נבחרו „בעין”. כל אחד בנפרד נראה בסדר, אבל אין ביניהם קשר, ובעמוד הבא מישהו יבחר 11 ו־19." },
+      sys: { p: 24, g1: 8, g2: 24, t: "הכול בכפולות של 8. יחידה אחת בין דברים קשורים, שלוש יחידות בין קבוצות. קל לזכור, קל לחזור על זה בכל עמוד." }
+    };
+    function sp(m) {
+      var o = M[m];
+      card.style.setProperty("--p", o.p + "px"); card.style.setProperty("--g1", o.g1 + "px"); card.style.setProperty("--g2", o.g2 + "px");
+      vals.innerHTML = "ריפוד: <code>" + o.p + "px</code><br>בין כותרת לטקסט: <code>" + o.g1 + "px</code><br>לפני הכפתור: <code>" + o.g2 + "px</code><br><span class=\"muted\">" + o.t + "</span>";
+      pressed(spSeg, "data-m", m);
+    }
+    spSeg.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) sp(b.getAttribute("data-m")); });
+    sp("sys");
+  }
+
+  /* white space */
+  var wsSeg = document.getElementById("ws-seg"), ws = document.getElementById("ws"), wsMsg = document.getElementById("ws-msg");
+  if (wsSeg) {
+    var WT = { tight: "הכול צמוד לקצוות ואחד לשני. העין לא יודעת מאיפה להתחיל, וכל אלמנט נלחם על מקום.", airy: "אותו תוכן בדיוק, רק עם אוויר. הכותרת אפילו קטנה יותר, ובכל זאת בולטת יותר." };
+    function wsSet(m) { ws.className = "ws " + m; wsMsg.textContent = WT[m]; pressed(wsSeg, "data-m", m); }
+    wsSeg.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) wsSet(b.getAttribute("data-m")); });
+    wsSet("tight");
+  }
+
+  /* leading */
+  var r = document.getElementById("ld-r"), txt = document.getElementById("ld-txt"), out = document.getElementById("ld-out"), msg = document.getElementById("ld-msg");
+  if (r) {
+    function ld() {
+      var v = Number(r.value), px = Math.round(20 * v) / 100;
+      txt.style.setProperty("--lh", px + "px");
+      out.textContent = "20px × " + v + "% = " + (px % 1 ? px.toFixed(1) : px) + "px";
+      var c, t;
+      if (v < 115) { c = "bad"; t = "צפוף מדי: השורות כמעט נוגעות זו בזו, והעין מתבלבלת בחזרה לתחילת השורה."; }
+      else if (v < 120) { c = "mid"; t = "כמעט. עוד קצת אוויר."; }
+      else if (v <= 140) { c = "ok"; t = "בדיוק באזור הנכון: קריא, רגוע ומחזיק את הפסקה כגוש אחד."; }
+      else if (v <= 150) { c = "mid"; t = "מרווח. עדיין קריא, מתאים לשורות ארוכות במיוחד."; }
+      else { c = "bad"; t = "רחוק מדי: הפסקה מתפרקת לשורות בודדות, והעין מאבדת את השורה הבאה."; }
+      msg.className = "ld-msg " + c; msg.textContent = t;
+    }
+    r.addEventListener("input", ld); ld();
+  }
+
+  /* 12-column divisions */
+  var dSeg = document.getElementById("d12-seg"), dB = document.getElementById("d12-b");
+  if (dSeg) {
+    function d12(s) {
+      dB.innerHTML = s.split(",").map(function (n) { return '<i style="grid-column: span ' + n + '">' + n + "</i>"; }).join("");
+      pressed(dSeg, "data-s", s);
+    }
+    dSeg.addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) d12(b.getAttribute("data-s")); });
+    d12("4,4,4");
+  }
+
+  /* reading patterns: the picked pattern draws its path (after the first click), clicking it again replays it */
+  document.querySelectorAll(".rp-fig").forEach(function (f) {
+    f.addEventListener("anim:step", function (e) { if (e.detail.from > 0) f.classList.add("is-live"); });
+    f.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-goto]"); if (!t || !f.contains(t)) return;
+      var k = t.getAttribute("data-goto"); if (k !== f.getAttribute("data-step")) return;
+      f.classList.add("is-live");
+      f.querySelectorAll('[data-goto="' + k + '"]:not(.stepper__btn)').forEach(function (x) { x.classList.remove("on"); void x.offsetWidth; x.classList.add("on"); });
+    }, true);
+  });
+});
+</script>
+</body>
+</html>

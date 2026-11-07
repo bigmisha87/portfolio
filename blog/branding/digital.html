@@ -1,0 +1,594 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>פרסום דיגיטלי · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="כל המידות לפרסום דיגיטלי: פוסטים, סטוריז ווידאו, כל משפחות הבאנרים בקנה מידה אמיתי, באנרים למובייל, ולמה באנר של 300 פיקסלים לא מפוקסל.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="פרסום דיגיטלי · מדריך המיתוג">
+<meta property="og:description" content="כל המידות לרשתות ולבאנרים, בקנה מידה אמיתי, ולמה זה לא מפוקסל.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/banner-zoom.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* ---- size lists ---- */
+.sizes { list-style: none; padding: 0; margin: 14px 0 22px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr)); gap: 8px; }
+.sizes.one { grid-template-columns: minmax(0, 1fr); }
+.sizes li { margin: 0; display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--paper); }
+.sizes .nm { font-weight: 600; direction: ltr; unicode-bidi: isolate; }
+.sizes .px { font: 500 15px var(--mono); color: var(--accent-ink); direction: ltr; unicode-bidi: isolate; white-space: nowrap; }
+
+/* ---- social formats to scale ---- */
+.fseg { display: flex; justify-content: center; margin-top: 24px; }
+.fmts { --u: 104px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 22px 18px; }
+.fi { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.fi .ph { display: flex; align-items: flex-end; justify-content: center; transition: width .5s cubic-bezier(.2,.8,.2,1), height .5s cubic-bezier(.2,.8,.2,1), box-shadow .4s; border-radius: 6px; }
+.fi .bx { width: calc(var(--u) * var(--w) / 1080); aspect-ratio: var(--w) / var(--h); background: var(--accent); border-radius: 4px; position: relative; overflow: hidden; transform-origin: bottom; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.fi .bx::before { content: ""; position: absolute; top: 9%; right: 9%; width: 16%; aspect-ratio: 1; min-width: 8px; border-radius: 50%; background: var(--on-accent); opacity: .85; }
+.fi .bx::after { content: ""; position: absolute; bottom: 10%; right: 9%; width: 52%; height: 5px; border-radius: 3px; background: var(--on-accent); opacity: .55; box-shadow: 0 -9px 0 0 color-mix(in srgb, var(--on-accent) 55%, transparent); }
+.fi b { font: 500 14px var(--mono); direction: ltr; unicode-bidi: isolate; margin-top: 10px; }
+.fi span { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.fmts.on-phone .ph { width: var(--u); height: calc(var(--u) * 16 / 9); align-items: center; background: var(--soft); box-shadow: 0 0 0 5px var(--soft), 0 0 0 7px var(--line); margin-top: 8px; }
+.fmts.on-phone .bx { width: var(--u); }
+.fmts.on-phone .fi b { margin-top: 16px; }
+/* stepper: step 1 = side by side (the default above), step 2 = .on-phone (set by the page script) */
+@media (max-width: 640px) { .fmts { --u: 64px; gap: 18px 14px; } }
+
+/* ---- story safe zone ---- */
+.safe-wrap { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; align-items: center; margin: 20px 0; }
+.safe { position: relative; aspect-ratio: 1080 / 1920; border-radius: 12px; border: 2px solid var(--line); background: var(--soft); overflow: hidden; }
+.safe i { position: absolute; inset-inline: 0; background: repeating-linear-gradient(-45deg, var(--warn-soft) 0 6px, transparent 6px 12px); border-color: var(--warn); border-style: dashed; border-width: 0; display: grid; place-items: center; font: 500 11px var(--text); color: var(--warn); font-style: normal; }
+.safe .t { top: 0; height: calc(250 / 1920 * 100%); border-bottom-width: 1px; }
+.safe .b { bottom: 0; height: calc(340 / 1920 * 100%); border-top-width: 1px; }
+.safe .m { position: absolute; inset-inline: 10px; top: 42%; text-align: center; font: 600 14px/1.3 var(--text); color: var(--ink); }
+.safe .m small { display: block; font: 500 11px var(--mono); color: var(--muted); direction: ltr; }
+@media (max-width: 560px) { .safe-wrap { grid-template-columns: 120px minmax(0, 1fr); gap: 16px; } }
+
+/* ---- banner board ---- */
+.bctl { display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+.binfo { min-height: 82px; padding: 12px 16px; border-radius: var(--r-sm); background: var(--soft); border: 1px solid var(--line); margin-bottom: 14px; font-size: 16px; line-height: 1.55; }
+.binfo .bn-n { font-weight: 600; font-size: 19px; direction: ltr; unicode-bidi: isolate; }
+.binfo .bn-s { font: 500 17px var(--mono); color: var(--accent-ink); direction: ltr; unicode-bidi: isolate; margin-inline-start: 10px; }
+.binfo p { margin: 2px 0 0; color: var(--muted); font-size: 15px; }
+.bwrap { overflow-x: auto; border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--bg); -webkit-overflow-scrolling: touch; }
+.board { display: block; width: 100%; min-width: 620px; height: auto; direction: ltr; }
+.board.real { width: 1806px; min-width: 0; max-width: none; }
+.board .fam { fill: var(--accent-ink); font: 600 34px var(--text); }
+.board .bn { cursor: pointer; transition: opacity .3s; outline: none; }
+.board .bn rect { fill: var(--paper); stroke: var(--muted); stroke-width: 3; transition: fill .2s, stroke .2s; }
+.board .bn text { fill: var(--ink); font: 600 28px var(--text); pointer-events: none; }
+.board .bn .sz { fill: var(--muted); font: 500 25px var(--mono); }
+.board .bn:hover rect, .board .bn:focus rect, .board .bn.on rect { fill: var(--accent); stroke: var(--accent); }
+.board .bn:hover text, .board .bn:focus text, .board .bn.on text { fill: var(--on-accent); }
+.board .bn:focus-visible rect { stroke: var(--ink); stroke-width: 6; }
+.board[data-f="square"] .bn:not([data-fam="square"]),
+.board[data-f="tower"] .bn:not([data-fam="tower"]),
+.board[data-f="skyline"] .bn:not([data-fam="skyline"]),
+.board[data-f="mobile"] .bn:not([data-fam="mobile"]),
+.board[data-f="top"] .bn:not([data-top]) { opacity: .14; }
+.board .ref { stroke: var(--accent-ink); stroke-width: 3; stroke-dasharray: 10 8; }
+.board .reft { fill: var(--muted); font: 500 24px var(--text); }
+.bnote { font-size: 14px; color: var(--muted); margin-top: 10px; }
+
+/* ---- phones with mobile banners ---- */
+.phones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.phones .phn { margin: 0; text-align: center; }
+.phones svg { display: block; width: 100%; max-width: 190px; margin: 0 auto; height: auto; direction: ltr; }
+.phones .phn-cap { margin-top: 8px; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.phones .phn-cap b { display: block; color: var(--ink); font: 500 14px var(--mono); direction: ltr; }
+.pb { fill: var(--paper); stroke: var(--line); stroke-width: 6; }
+.ps { fill: var(--soft); }
+.pk { fill: var(--fill); }
+.pl { fill: var(--line); }
+.bf { fill: var(--accent); }
+.bt { fill: var(--on-accent); font: 600 24px var(--mono); }
+.bnr { transform-box: fill-box; transform-origin: center; }
+.phones > .phn { transition: opacity .45s; }
+.phones > .phn svg { transition: transform .45s cubic-bezier(.2,.8,.2,1); }
+.phones .phn-cap b { transition: color .45s; }
+.anim[data-step] .phones > .phn:not(.on) { opacity: .45; }
+.anim[data-step] .phones > .phn:not(.on):hover { opacity: .8; }
+.phones > .phn.on svg { transform: translateY(-6px); }
+.phones > .phn.on .phn-cap b { color: var(--accent-ink); }
+.anim.is-live .phones > .phn.on .bnr { animation: bnin .6s cubic-bezier(.2,.8,.2,1) both; }
+.anim.is-live .phones > .phn.on .mrec { animation-name: mrin; }
+@keyframes bnin { from { opacity: 0; transform: translateY(80px); } to { opacity: 1; transform: none; } }
+@keyframes mrin { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+@media (max-width: 640px) { .phones { grid-template-columns: 1fr 1fr; } }
+
+/* ---- the rant ---- */
+.rant { margin: 26px 0; padding: 20px 22px; border-radius: var(--r); background: var(--warn-soft); border-inline-start: 4px solid var(--warn); font-size: 21px; line-height: 1.6; }
+.rant p { margin: 0; }
+
+/* ---- zoom: it's not pixelated ---- */
+.zv { position: relative; height: 230px; border-radius: 10px; overflow: hidden; background: #1c1c1c; }
+.zv canvas { position: absolute; width: 300px; height: auto; left: calc(50% - 150px); top: calc(50% - 25px); image-rendering: crisp-edges; image-rendering: pixelated; }
+.zv .tgt { position: absolute; left: calc(50% + 98px); top: calc(50% - 21px); width: 48px; height: 26px; border: 2px solid #ff5a5f; border-radius: 50%; opacity: 0; }
+.zv .zb { position: absolute; top: 12px; right: 12px; font: 500 14px var(--mono); color: #f2f2f2; background: rgba(255,255,255,.12); padding: 3px 10px; border-radius: 999px; direction: ltr; }
+.zv .zb.z5 { opacity: 0; background: #ff5a5f; color: #1a0a0a; }
+.zv .vd { position: absolute; bottom: 14px; inset-inline: 14px; text-align: center; font: 600 17px/1.4 var(--text); color: #ffffff; opacity: 0; }
+.zv .vd span { background: rgba(0,0,0,.6); padding: 4px 12px; border-radius: 8px; }
+.zv .vd.v1 span { color: #ffb3b5; }
+.zv .vd.v2 span { color: #b9f2cf; }
+/* stepper: 1 = 100%, 2 = zoomed 500% into the word, 3 = back to 100% */
+.zv canvas { transition: width .8s cubic-bezier(.6,0,.3,1), left .8s cubic-bezier(.6,0,.3,1), top .8s cubic-bezier(.6,0,.3,1); }
+.zv .tgt, .zv .zb, .zv .vd { transition: opacity .4s; }
+.anim[data-step="1"] .zv .tgt { opacity: 1; transition-delay: .3s; }
+.anim[data-step="2"] .zv canvas { width: 1500px; left: calc(50% - 1355px); top: calc(50% - 85px); }
+.anim[data-step="2"] .zv .z1 { opacity: 0; }
+.anim[data-step="2"] .zv .z5 { opacity: 1; transition-delay: .4s; }
+.anim[data-step="2"] .zv .v1 { opacity: 1; transition-delay: .7s; }
+.anim[data-step="3"] .zv .v2 { opacity: 1; transition-delay: .7s; }
+.anim[data-step="3"] .zv .z1 { transition-delay: .5s; }
+@media (prefers-reduced-motion: reduce) { .anim *, .anim *::before, .anim *::after { animation: none !important; } }
+
+/* ---- tech chips ---- */
+.spec { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; padding: 0; list-style: none; }
+.spec li { margin: 0; font: 500 15px var(--mono); padding: 6px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent-ink); border: 1px solid color-mix(in srgb, var(--accent) 45%, var(--line)); direction: ltr; }
+</style>
+</head>
+<body data-ch="digital">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<!-- shared drawing for the phones below -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <clipPath id="scr-clip"><rect x="20" y="50" width="360" height="700" rx="6"/></clipPath>
+    <symbol id="phone" viewBox="0 0 400 800">
+      <rect class="pb" x="4" y="4" width="392" height="792" rx="54"/>
+      <rect class="ps" x="20" y="50" width="360" height="700" rx="6"/>
+      <rect class="pl" x="165" y="22" width="70" height="12" rx="6"/>
+      <rect class="pk" x="20" y="50" width="360" height="60"/>
+      <circle class="pl" cx="352" cy="80" r="14"/>
+      <rect class="pl" x="226" y="74" width="106" height="12" rx="6"/>
+      <rect class="pk" x="36" y="128" width="328" height="150" rx="8"/>
+      <rect class="pl" x="36" y="298" width="328" height="12" rx="6"/>
+      <rect class="pl" x="64" y="320" width="300" height="12" rx="6"/>
+      <rect class="pl" x="114" y="342" width="250" height="12" rx="6"/>
+      <rect class="pl" x="36" y="380" width="328" height="12" rx="6"/>
+      <rect class="pl" x="84" y="402" width="280" height="12" rx="6"/>
+      <rect class="pk" x="36" y="436" width="328" height="130" rx="8"/>
+      <rect class="pl" x="36" y="586" width="328" height="12" rx="6"/>
+      <rect class="pl" x="74" y="608" width="290" height="12" rx="6"/>
+      <rect class="pl" x="134" y="630" width="230" height="12" rx="6"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">11 / 15</div>
+      <h1>פרסום דיגיטלי</h1>
+      <p class="lede">במיתוג דיגיטלי חשוב להבין את <strong>הפורמטים השונים של פרסומות</strong> ולהציג את העיצוב בצורה שתדמה שימוש אמיתי. כל פורמט נועד למטרה אחרת, פוסטים, סטוריז, באנרים ועוד, וכל אחד מהם דורש התאמה מדויקת של יחס, רזולוציה וגודל קובץ.</p>
+      <div class="ch-meta"><span>5 נושאים</span><span>כל המידות בקנה מידה אמיתי</span><span>3 הדגמות</span><span>לוח באנרים אינטראקטיבי</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-09.webp" alt="איור: מסכים בכל היחסים, סטורי, ריבוע, באנר רחב ובאנר צר, מסודרים כמו קו רקיע של עיר בלילה" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= social ================= -->
+    <section class="sec">
+      <h2 id="social" data-short="פורמטים לרשתות">פורמטים לרשתות חברתיות</h2>
+      <ul class="sizes one">
+        <li><span>פוסטים ריבועיים · יחס <span class="ltr">1:1</span></span><span class="px">1080×1080px</span></li>
+        <li><span>פוסטים עומדים · יחס <span class="ltr">4:5</span></span><span class="px">1080×1350px</span></li>
+        <li><span>סטוריז · יחס <span class="ltr">9:16</span></span><span class="px">1080×1920px</span></li>
+        <li><span>באנרים רוחביים / וידאו · יחס <span class="ltr">16:9</span></span><span class="px">1920×1080px</span></li>
+        <li><span>פייסבוק, תמונה לקישור או מודעה · יחס <span class="ltr">1.91:1</span></span><span class="px">1200×628px</span></li>
+      </ul>
+
+      <figure class="anim" id="fmt-fig" data-steps="2" data-step-labels="זה לצד זה|על מסך הטלפון" data-no-bar>
+        <span class="anim__label">כל הפורמטים, באותו קנה מידה</span>
+        <div class="anim__stage">
+          <div class="fmts" id="fmts">
+            <div class="fi"><div class="ph"><div class="bx" style="--w:1080;--h:1080"></div></div><b>1080×1080</b><span>פוסט ריבועי</span></div>
+            <div class="fi"><div class="ph"><div class="bx" style="--w:1080;--h:1350"></div></div><b>1080×1350</b><span>פוסט עומד</span></div>
+            <div class="fi"><div class="ph"><div class="bx" style="--w:1080;--h:1920"></div></div><b>1080×1920</b><span>סטורי</span></div>
+            <div class="fi"><div class="ph"><div class="bx" style="--w:1920;--h:1080"></div></div><b>1920×1080</b><span>רוחבי / וידאו</span></div>
+            <div class="fi"><div class="ph"><div class="bx" style="--w:1200;--h:628"></div></div><b>1200×628</b><span>פייסבוק</span></div>
+          </div>
+          <div class="fseg"><div class="seg" role="group" aria-label="איך להציג את הפורמטים">
+            <button type="button" aria-pressed="true" data-v="side" data-goto="1">זה לצד זה</button>
+            <button type="button" aria-pressed="false" data-v="phone" data-goto="2">על מסך הטלפון</button>
+          </div></div>
+        </div>
+        <figcaption id="fmt-cap">כולם מצוירים באותו קנה מידה. רואים מיד שרוב המידות מתחילות ברוחב <span class="ltr">1080</span>, ומה שמשתנה הוא הגובה.</figcaption>
+      </figure>
+
+      <p>לכל יחס יש היררכיה, קומפוזיציה וצפיפות תוכן אחרת: מה שעובד בריבוע לא „נמתח” לסטורי. שווה להראות סדרה של פורמטים כחלק מקמפיין אחד, כי ככל שהמותג נראה משכנע יותר בפורמטים מציאותיים, כך ההצגה שלו מקצועית יותר.</p>
+
+      <h3 id="feed-portrait" data-added>למה דווקא <span class="ltr">4:5</span>?</h3>
+      <p data-added>בפיד של אינסטגרם, פוסט עומד של <span class="ltr">1080×1350</span> תופס את רוב המסך של הטלפון, ולכן הוא נחשב לפורמט שמקבל הכי הרבה תשומת לב. ריבוע תופס פחות, ותמונה רוחבית עוד פחות. עברו ל„על מסך הטלפון” בהדגמה למעלה ותראו את ההבדל.</p>
+
+      <h3 id="safe-zone" data-added>האזור הבטוח בסטורי</h3>
+      <div class="safe-wrap" data-added>
+        <div class="safe" role="img" aria-label="מסגרת סטורי: פס עליון של כ־250 פיקסלים ופס תחתון של כ־340 פיקסלים מסומנים כאזורים בלי טקסט">
+          <i class="t">שם, פס התקדמות</i>
+          <div class="m">כאן המסר<small>1080×1920</small></div>
+          <i class="b">תגובה, כפתורים</i>
+        </div>
+        <div>
+          <p>בסטורי, החלק העליון מכוסה בשם המשתמש ובפס ההתקדמות, והתחתון בשורת התגובה ובכפתורים. השאירו בערך <span class="ltr">250px</span> למעלה ו־<span class="ltr">340px</span> למטה בלי טקסט, בלי לוגו ובלי כפתור. ברילס גם הצד תפוס (לייק, תגובה, שיתוף), אז מרכזים את המסר.</p>
+          <p class="muted" style="font-size:15px">המידות של האזורים התפוסים משתנות מעט בין אפליקציות ועדכונים. הכלל שלא משתנה: את החשוב שמים במרכז.</p>
+        </div>
+      </div>
+
+      <h3 id="more-platforms" data-added>עוד מידות שכדאי להכיר</h3>
+      <div class="tbl-wrap" data-added>
+        <table class="tbl">
+          <thead><tr><th>איפה</th><th>מידה</th><th>יחס</th><th>הערה</th></tr></thead>
+          <tbody>
+            <tr><td>יוטיוב, תמונה ממוזערת</td><td><span class="ltr">1280×720</span></td><td><span class="ltr">16:9</span></td><td>טקסט גדול, שנקרא גם בקטן</td></tr>
+            <tr><td>יוטיוב, באנר ערוץ</td><td><span class="ltr">2560×1440</span></td><td><span class="ltr">16:9</span></td><td>התוכן החשוב רק במרכז, <span class="ltr">1546×423</span></td></tr>
+            <tr><td>פינטרסט, פין</td><td><span class="ltr">1000×1500</span></td><td><span class="ltr">2:3</span></td><td>הפורמט המומלץ בפיד</td></tr>
+            <tr><td>לינקדאין, פוסט</td><td><span class="ltr">1200×1200</span></td><td><span class="ltr">1:1</span></td><td>מומלץ לפיד</td></tr>
+            <tr><td>אקס (טוויטר), תמונה בפוסט</td><td><span class="ltr">1600×900</span></td><td><span class="ltr">16:9</span></td><td>מוצגת בלי חיתוך</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>המידות ברשתות משתנות מדי פעם, אז לפני עבודה חשובה בדקו את ההנחיות העדכניות. ומידות של דפוס, שילוט, כרטיסים ומסכים? הכול במדריך הקודם שלי לסטודנטים. <a class="xref" href="../midot-media/index.html">מידות מדיה</a></p>
+    </section>
+
+    <!-- ================= banners ================= -->
+    <section class="sec">
+      <h2 id="banners" data-short="באנרים דיגיטליים">באנרים דיגיטליים</h2>
+      <p>מומלץ להכין <strong>סט באנרים בקמפיין אחד</strong> בגדלים הנפוצים ביותר, כדי לכסות את כלל הפלטפורמות. שימו לב: המספר הראשון מציין את <strong>הרוחב</strong>, והשני את <strong>הגובה</strong> (לדוגמה <span class="ltr">300×250</span> = רוחב <span class="ltr">300px</span>, גובה <span class="ltr">250px</span>).</p>
+
+      <h3 id="square-banners">באנרים ריבועיים <span class="ltr">(Square)</span></h3>
+      <ul class="sizes">
+        <li><span class="nm">Small square</span><span class="px">200×200px</span></li>
+        <li><span class="nm">Square</span><span class="px">250×250px</span></li>
+        <li><span class="nm">Inline rectangle</span><span class="px">300×250px</span></li>
+        <li><span class="nm">Large rectangle</span><span class="px">336×280px</span></li>
+      </ul>
+
+      <h3 id="tower-banners">באנרי מגדל <span class="ltr">(Tower)</span></h3>
+      <ul class="sizes">
+        <li><span class="nm">Skyscraper</span><span class="px">120×600px</span></li>
+        <li><span class="nm">Wide skyscraper</span><span class="px">160×600px</span></li>
+        <li><span class="nm">Half-page</span><span class="px">300×600px</span></li>
+        <li><span class="nm">Portrait</span><span class="px">300×1050px</span></li>
+      </ul>
+
+      <h3 id="skyline-banners">באנרי רקיע <span class="ltr">(Skyline)</span></h3>
+      <ul class="sizes">
+        <li><span class="nm">Banner</span><span class="px">468×60px</span></li>
+        <li><span class="nm">Leaderboard</span><span class="px">728×90px</span></li>
+        <li><span class="nm">Large leaderboard</span><span class="px">970×90px</span></li>
+        <li><span class="nm">Billboard</span><span class="px">970×250px</span></li>
+      </ul>
+
+      <h3 id="banner-board">כל הבאנרים על לוח אחד</h3>
+      <p>רשימה של מספרים לא באמת מסבירה כמה <span class="ltr">Skyscraper</span> צר וכמה <span class="ltr">Billboard</span> רחב. כאן כל הבאנרים מצוירים <strong>באותו קנה מידה בדיוק</strong>, כולל באנרי המובייל, מקובצים לפי משפחה.</p>
+      <div class="widget" id="wboard">
+        <div class="bctl">
+          <div class="seg" role="group" aria-label="סינון לפי משפחה" id="bfilter">
+            <button type="button" aria-pressed="true" data-f="all">הכול</button>
+            <button type="button" aria-pressed="false" data-f="square">ריבועיים</button>
+            <button type="button" aria-pressed="false" data-f="tower">מגדל</button>
+            <button type="button" aria-pressed="false" data-f="skyline">רקיע</button>
+            <button type="button" aria-pressed="false" data-f="mobile">מובייל</button>
+            <button type="button" aria-pressed="false" data-f="top" data-added>5 הנפוצים בגוגל</button>
+          </div>
+          <div class="seg" role="group" aria-label="קנה מידה" id="bscale">
+            <button type="button" aria-pressed="true" data-s="fit">מוקטן</button>
+            <button type="button" aria-pressed="false" data-s="real">גודל אמיתי</button>
+          </div>
+        </div>
+        <div class="binfo" id="binfo" aria-live="polite"><p>העבירו את העכבר מעל באנר, או הקישו עליו, כדי לראות את השם, המידה והמשפחה. אפשר גם לעבור בין הבאנרים עם המקש <span class="ltr">Tab</span>.</p></div>
+        <div class="bwrap"><svg class="board" id="board" viewBox="0 0 1806 1872" role="group" aria-label="לוח של 16 גדלי באנרים בקנה מידה אחד"></svg></div>
+        <p class="bnote">„גודל אמיתי” מצייר כל באנר בדיוק בגודל שבו הוא יופיע באתר, פיקסל מול פיקסל. גללו הצידה כדי לראות את כולו.</p>
+      </div>
+    </section>
+
+    <!-- ================= mobile ================= -->
+    <section class="sec">
+      <h2 id="mobile" data-short="באנרים למובייל">באנרים למובייל</h2>
+      <p>באנרים מובייל מופיעים בתחתית של אתרים מסחריים או באפליקציות חינמיות. שימו לב: אלו באנרים <strong>קטנים מאוד!!!</strong> אין שם הרבה מקום, יש <strong>מעט מאוד פיקסלים!!!</strong></p>
+      <p>חשוב לעצב אותם <strong>בפשטות ובבהירות</strong>, עם מסר אחד ברור וטקסט קריא. אל תנסו לדחוף לוגו, כותרת, תת־כותרת, כפתור ומחיר באותו באנר. זה פשוט לא עובד בגודל הזה.</p>
+
+      <h3 id="mobile-sizes">המידות</h3>
+      <ul class="sizes">
+        <li><span class="nm">Mobile banner</span><span class="px">300×50px</span></li>
+        <li><span class="nm">Mobile leaderboard</span><span class="px">320×50px</span></li>
+        <li><span class="nm">Large mobile banner</span><span class="px">320×100px</span></li>
+        <li><span class="nm">Medium rectangle (MREC)</span><span class="px">300×250px</span></li>
+      </ul>
+      <p class="muted" style="font-size:15px" data-added><span class="ltr">MREC</span> הוא בדיוק אותו מלבן של <span class="ltr">300×250</span> מהמשפחה הריבועית <span class="ltr">(Inline rectangle)</span>. זה הבאנר היחיד שמופיע גם במחשב וגם בטלפון, ולכן הוא הנפוץ מכולם.</p>
+
+      <figure class="anim ph-fig" data-steps="4" data-step-labels="⁦300×50⁩|⁦320×50⁩|⁦320×100⁩|MREC">
+        <span class="anim__label">ככה זה נראה על הטלפון, ביחס אמיתי</span>
+        <div class="anim__stage">
+          <div class="phones">
+            <div class="phn" data-goto="1">
+              <svg viewBox="0 0 400 800" role="img" aria-label="טלפון עם באנר של 300 על 50 בתחתית המסך"><use href="#phone"/><g clip-path="url(#scr-clip)"><g class="bnr"><rect class="bf" x="50" y="700" width="300" height="50" rx="3"/><text class="bt" x="200" y="733" text-anchor="middle">300×50</text></g></g></svg>
+              <div class="phn-cap"><b>300×50</b>Mobile banner</div>
+            </div>
+            <div class="phn" data-goto="2">
+              <svg viewBox="0 0 400 800" role="img" aria-label="טלפון עם באנר של 320 על 50 בתחתית המסך"><use href="#phone"/><g clip-path="url(#scr-clip)"><g class="bnr"><rect class="bf" x="40" y="700" width="320" height="50" rx="3"/><text class="bt" x="200" y="733" text-anchor="middle">320×50</text></g></g></svg>
+              <div class="phn-cap"><b>320×50</b>Mobile leaderboard</div>
+            </div>
+            <div class="phn" data-goto="3">
+              <svg viewBox="0 0 400 800" role="img" aria-label="טלפון עם באנר של 320 על 100 בתחתית המסך"><use href="#phone"/><g clip-path="url(#scr-clip)"><g class="bnr"><rect class="bf" x="40" y="650" width="320" height="100" rx="3"/><text class="bt" x="200" y="708" text-anchor="middle">320×100</text></g></g></svg>
+              <div class="phn-cap"><b>320×100</b>Large mobile banner</div>
+            </div>
+            <div class="phn" data-goto="4">
+              <svg viewBox="0 0 400 800" role="img" aria-label="טלפון עם מלבן של 300 על 250 בתוך התוכן, בין הפסקאות"><use href="#phone"/><g clip-path="url(#scr-clip)"><g class="bnr mrec"><rect class="bf" x="50" y="372" width="300" height="250" rx="3"/><text class="bt" x="200" y="505" text-anchor="middle" style="font-size:30px">300×250</text></g></g></svg>
+              <div class="phn-cap"><b>300×250</b><span class="ltr">MREC</span>, בתוך התוכן</div>
+            </div>
+          </div>
+        </div>
+        <figcaption>מסך הטלפון כאן ברוחב <span class="ltr">360</span> פיקסלים, כמו בהרבה טלפונים. באנר של <span class="ltr">320×50</span> הוא רצועה דקה בתחתית: מקום למסר אחד, לא לחמישה.</figcaption>
+      </figure>
+
+      <h3 id="pixelated">„זה מפוקסל!”</h3>
+      <div class="rant">
+        <p>ואל תתלוננו שזה פאקינג מפוקסל! זה לא מפוקסל – אתם פשוט עשיתם <strong><span class="ltr">500%</span> זום אין לתוך באנר של 300 פיקסלים</strong>. אז תנשמו, תתרחקו מהמסך, ואל תהיו מעצבנים.</p>
+      </div>
+      <figure class="fig">
+        <a href="img/banner-zoom.webp" data-lb data-cap="זום לתוך באנר מובייל קטן: מקרוב רואים פיקסלים, וזה בסדר גמור"><img src="img/banner-zoom.webp" alt="באנר מובייל צהוב קטן עם הכיתוב באנר מובייל קטן, וזכוכית מגדלת שמראה את המילה באנר מוגדלת ומפוקסלת" loading="lazy" width="1183" height="851"></a>
+      </figure>
+
+      <figure class="anim" id="zoomfig" data-steps="3" data-step-labels="ב־⁦100%⁩|זום של ⁦500%⁩|ושוב ⁦100%⁩">
+        <span class="anim__label">אותו באנר, פעמיים</span>
+        <div class="anim__stage">
+          <div class="zv" aria-hidden="true">
+            <canvas id="zc" width="300" height="50"></canvas>
+            <span class="tgt"></span>
+            <span class="zb z1">100%</span>
+            <span class="zb z5">500%</span>
+            <div class="vd v1"><span>„פאקינג מפוקסל!”</span></div>
+            <div class="vd v2"><span>זה לא מפוקסל. זה פשוט 300 פיקסלים.</span></div>
+          </div>
+        </div>
+        <figcaption>אותו קובץ בדיוק, בלי שום שינוי: ב־<span class="ltr">100%</span> הוא חד, ב־<span class="ltr">500%</span> רואים כל פיקסל. הבאנר לא מפוקסל, הוא פשוט קטן פיזית. ככה הוא ייראה אצל הגולשים, ב־<span class="ltr">100%</span>.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= tech tips ================= -->
+    <section class="sec">
+      <h2 id="tech-tips" data-short="טיפים טכניים">טיפים טכניים</h2>
+      <figure class="illus"><img src="img/pixels-09.webp" alt="איור: זכוכית מגדלת ענקית מעל באנר קטן, ובתוכה פיקסלים גדולים, עם סרגל וקרן אור באדום, ירוק וכחול" width="1344" height="752" loading="lazy"></figure>
+      <ul class="spec" aria-label="הגדרות מסמך לבאנר">
+        <li>WEB</li><li>RGB</li><li>72dpi</li>
+      </ul>
+      <ul class="dots">
+        <li>אם אתם עובדים בתוכנה וקטורית כמו <span class="ltr">Illustrator</span> או <span class="ltr">InDesign</span>, תוודאו שאתם עובדים במצב <strong><span class="ltr">WEB</span></strong>, עם <strong>סביבת צבעים <span class="ltr">RGB</span></strong> וברזולוציה של <strong><span class="ltr">72dpi</span> בלבד</strong>.</li>
+        <li>הקפידו על טקסט קריא וברור. אל תעמיסו פרטים, כי במובייל כל פיקסל חשוב.</li>
+      </ul>
+
+      <h3 id="why-72" data-added>ולמה דווקא <span class="ltr">72</span>?</h3>
+      <p data-added>על מסך לא סופרים סנטימטרים, רק פיקסלים. כשהמסמך מוגדר ב־<span class="ltr">72</span>, פיקסל אחד במסמך הוא פיקסל אחד בקובץ שתייצאו: מסמך של <span class="ltr">300×250</span> ייצא כתמונה של <span class="ltr">300×250</span> בדיוק. במסמך של <span class="ltr">300dpi</span> אותו באנר ייצא גדול פי ארבעה בערך, כבד, ובמידה הלא נכונה. ומסמך של דפוס בכלל עובד ב־<span class="ltr">CMYK</span>, וזה כבר סיפור אחר. <a class="xref" href="color.html#print-colors">צבעי מסך מול דפוס</a></p>
+
+      <h3 id="google-specs" data-added>כמה מספרים מעולם הבאנרים</h3>
+      <ul class="dots" data-added>
+          <li><strong>משקל:</strong> באנר שמעלים לגוגל צריך לשקול עד <span class="ltr">150KB</span>. עוד סיבה לא להעמיס.</li>
+          <li><strong>חמשת הגדלים הנפוצים בגוגל:</strong> <span class="ltr">300×250</span>, <span class="ltr">336×280</span>, <span class="ltr">728×90</span>, <span class="ltr">300×600</span> ו־<span class="ltr">320×50</span>. אם אין זמן לכל הסט, מתחילים מהם. (בלוח למעלה יש כפתור שמסמן אותם.)</li>
+          <li><strong>מה נכנס לבאנר:</strong> מסר אחד, תמונה אחת, כפתור אחד. והלוגו, קטן.</li>
+        </ul>
+    </section>
+
+    <!-- ================= social system ================= -->
+    <section class="sec">
+      <h2 id="social-system" data-short="מערכת פוסטים">סושיאל מדיה: מערכת פוסטים</h2>
+      <figure class="illus"><img src="img/social-09.webp" alt="איור: טלפון עם רשת של תשעה פוסטים צבעוניים שיוצרים דפוס אחד, וכמה פוסטים יוצאים מהמסך" width="1344" height="752" loading="lazy"></figure>
+      <p>בפרויקט מיתוג לא מספיק פוסט אחד יפה. צריך להראות <strong>מערכת פוסטים</strong>, שבה רואים שכל פוסט שייך לאותו מותג. לדוגמה:</p>
+      <ul class="dots">
+        <li><strong>תמונת פרופיל ברשתות חברתיות</strong>: להראות מוקאפ של איך הלוגו ייראה (אינסטגרם, יוטיוב וכו'). הלוגו בתוך עיגול קטן, וכאן רואים אם יש לכם סמל שעובד לבד. <a class="xref" href="logo.html#system">מערכת הלוגו</a></li>
+        <li><strong>הדמיה של הלוגו באתר של המותג.</strong> <span data-added>לפחות המסך הראשון, במחשב ובטלפון.</span></li>
+        <li><strong>פוסט אינסטגרם</strong></li>
+        <li><strong>סטורי</strong></li>
+        <li><strong>פרסומת וידאו.</strong> <span data-added>אם אין זמן לסרטון שלם, לפחות הפריים הראשון והאחרון שלה.</span></li>
+        <li><strong>איך הלוגו ייראה על באנרים קטנים.</strong> <span data-added>סט מאותו קמפיין, למשל <span class="ltr">300×250</span>, <span class="ltr">728×90</span> ו־<span class="ltr">320×50</span>.</span></li>
+        <li><strong>לוגו על תמונה.</strong> הצילום צריך להיות לפי השפה של המותג. <a class="xref" href="visual-language.html#photography">שפה צילומית</a></li>
+      </ul>
+      <p class="muted" style="font-size:15px">ואפשר להוסיף גם מם מותג: פוסט קליל בשפה של הרשת, שבודק אם הטון של המותג מחזיק גם בהומור.</p>
+      <p>ואיך כל זה נכנס למצגת ללקוח, אחרי הלוגו ולפני העולם הפיזי? <a class="xref" href="presenting.html">הצגה ללקוח</a></p>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var NS = "http://www.w3.org/2000/svg";
+
+  /* ---------- social formats: side by side / on the phone ---------- */
+  var fig = document.getElementById("fmt-fig");
+  if (fig) {
+    var fm = document.getElementById("fmts"), cap = document.getElementById("fmt-cap");
+    var CAP = {
+      side: cap.innerHTML,
+      phone: "כאן כל פורמט מוצג ברוחב מלא של מסך טלפון, כמו בפיד. הסטורי ממלא את כל המסך, הפוסט העומד את רובו, והתמונה הרוחבית רק רצועה."
+    };
+    /* the two seg buttons are the stepper's steps (data-goto, guide.js) */
+    fig.addEventListener("anim:step", function (e) {
+      var v = e.detail.step === 2 ? "phone" : "side";
+      fm.classList.toggle("on-phone", v === "phone");
+      cap.innerHTML = CAP[v];
+    });
+  }
+
+  /* phones: the picked phone replays its banner (after the first click); clicking it again replays it */
+  document.querySelectorAll(".ph-fig").forEach(function (f) {
+    f.addEventListener("anim:step", function (e) { if (e.detail.from > 0) f.classList.add("is-live"); });
+    f.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-goto]"); if (!t || !f.contains(t)) return;
+      var k = t.getAttribute("data-goto"); if (k !== f.getAttribute("data-step")) return;
+      f.classList.add("is-live");
+      f.querySelectorAll('[data-goto="' + k + '"]:not(.stepper__btn)').forEach(function (x) { x.classList.remove("on"); void x.offsetWidth; x.classList.add("on"); });
+    }, true);
+  });
+
+  /* ---------- the banner board ---------- */
+  var svg = document.getElementById("board");
+  if (svg) {
+    var W = 1806;
+    var FAM = { square: "באנר ריבועי", tower: "באנר מגדל", skyline: "באנר רקיע", mobile: "באנר מובייל" };
+    var B = [
+      { n: "Billboard", w: 970, h: 250, f: "skyline", x: 40, y: 100 },
+      { n: "Large leaderboard", w: 970, h: 90, f: "skyline", x: 40, y: 374 },
+      { n: "Leaderboard", w: 728, h: 90, f: "skyline", x: 40, y: 488, top: 1 },
+      { n: "Banner", w: 468, h: 60, f: "skyline", x: 40, y: 602 },
+      { n: "Large rectangle", w: 336, h: 280, f: "square", x: 1090, y: 100, top: 1 },
+      { n: "Inline rectangle", w: 300, h: 250, f: "square", x: 1466, y: 100, top: 1 },
+      { n: "Square", w: 250, h: 250, f: "square", x: 1090, y: 420 },
+      { n: "Small square", w: 200, h: 200, f: "square", x: 1466, y: 420 },
+      { n: "Portrait", w: 300, h: 1050, f: "tower", x: 40, y: 782 },
+      { n: "Half-page", w: 300, h: 600, f: "tower", x: 380, y: 782, top: 1 },
+      { n: "Wide skyscraper", w: 160, h: 600, f: "tower", x: 720, y: 782 },
+      { n: "Skyscraper", w: 120, h: 600, f: "tower", x: 920, y: 782 },
+      { n: "Medium rectangle (MREC)", lab: "MREC", w: 300, h: 250, f: "mobile", x: 1120, y: 782, top: 1 },
+      { n: "Large mobile banner", w: 320, h: 100, f: "mobile", x: 1120, y: 1056 },
+      { n: "Mobile leaderboard", w: 320, h: 50, f: "mobile", x: 1120, y: 1180, top: 1 },
+      { n: "Mobile banner", w: 300, h: 50, f: "mobile", x: 1120, y: 1254 }
+    ];
+    var TITLES = [
+      { t: "רקיע", x: 40, w: 970, y: 72 },
+      { t: "ריבועיים", x: 1090, w: 676, y: 72 },
+      { t: "מגדל", x: 40, w: 1000, y: 754 },
+      { t: "מובייל", x: 1120, w: 320, y: 754 }
+    ];
+    function el(tag, attrs, txt) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (txt != null) e.textContent = txt;
+      return e;
+    }
+    function mx(x, w) { return W - x - w; } /* mirror so the board reads right to left */
+    TITLES.forEach(function (t) { svg.appendChild(el("text", { class: "fam", x: W - t.x, y: t.y, "text-anchor": "end" }, t.t)); });
+
+    B.forEach(function (b) {
+      var X = mx(b.x, b.w), cx = X + b.w / 2, cy = b.y + b.h / 2, size = b.w + "×" + b.h;
+      var g = el("g", { class: "bn", tabindex: "0", role: "button", "data-fam": b.f, "aria-label": b.n + ", " + b.w + " על " + b.h + " פיקסלים, " + FAM[b.f] });
+      if (b.top) g.setAttribute("data-top", "1");
+      g.appendChild(el("rect", { x: X, y: b.y, width: b.w, height: b.h, rx: 6 }));
+      var lab = b.lab || b.n;
+      if (b.w < 200 && b.h >= 400) {
+        g.appendChild(el("text", { x: cx, y: cy, "text-anchor": "middle", transform: "rotate(-90 " + cx + " " + cy + ")", dy: "10" }, lab));
+        g.appendChild(el("text", { class: "sz", x: cx, y: b.y + b.h - 22, "text-anchor": "middle", style: "font-size:22px" }, size));
+      } else if (b.h >= 100) {
+        g.appendChild(el("text", { x: cx, y: cy - 6, "text-anchor": "middle", style: b.h <= 100 ? "font-size:24px" : "" }, lab));
+        g.appendChild(el("text", { class: "sz", x: cx, y: cy + (b.h <= 100 ? 26 : 32), "text-anchor": "middle", style: b.h <= 100 ? "font-size:22px" : "" }, size));
+      } else if (b.w >= 440) {
+        var t = el("text", { x: cx, y: cy + 10, "text-anchor": "middle" });
+        t.appendChild(el("tspan", {}, lab + "  "));
+        t.appendChild(el("tspan", { class: "sz" }, size));
+        g.appendChild(t);
+      } else {
+        g.appendChild(el("text", { class: "sz", x: cx, y: cy + 9, "text-anchor": "middle" }, size));
+      }
+      g._b = b;
+      svg.appendChild(g);
+    });
+
+    /* phone width reference under the mobile family */
+    var rx1 = mx(1120, 360);
+    svg.appendChild(el("line", { class: "ref", x1: rx1, y1: 1340, x2: rx1 + 360, y2: 1340 }));
+    svg.appendChild(el("line", { class: "ref", x1: rx1, y1: 1326, x2: rx1, y2: 1354, "stroke-dasharray": "0" }));
+    svg.appendChild(el("line", { class: "ref", x1: rx1 + 360, y1: 1326, x2: rx1 + 360, y2: 1354, "stroke-dasharray": "0" }));
+    svg.appendChild(el("text", { class: "reft", x: rx1 + 360, y: 1386, "text-anchor": "end" }, "רוחב של מסך טלפון, בערך 360 פיקסלים"));
+
+    /* a 100px ruler, for scale */
+    var r2 = mx(1120, 100);
+    svg.appendChild(el("line", { class: "ref", x1: r2 + 100 - 100, y1: 1470, x2: r2 + 100, y2: 1470, "stroke-dasharray": "0" }));
+    svg.appendChild(el("line", { class: "ref", x1: r2, y1: 1458, x2: r2, y2: 1482, "stroke-dasharray": "0" }));
+    svg.appendChild(el("line", { class: "ref", x1: r2 + 100, y1: 1458, x2: r2 + 100, y2: 1482, "stroke-dasharray": "0" }));
+    svg.appendChild(el("text", { class: "reft", x: r2 + 100, y: 1516, "text-anchor": "end" }, "100 פיקסלים"));
+
+    var info = document.getElementById("binfo");
+    function fmt(n) { return n.toLocaleString("en-US"); }
+    function show(g) {
+      var b = g._b, area = b.w * b.h;
+      svg.querySelectorAll(".bn.on").forEach(function (x) { x.classList.remove("on"); });
+      g.classList.add("on");
+      var times = area / (320 * 50);
+      var extra = "שטח: " + '<span class="ltr">' + fmt(area) + "</span> פיקסלים, פי " + '<span class="ltr">' + (Math.round(times * 10) / 10) + "</span> מבאנר מובייל של " + '<span class="ltr">320×50</span>.';
+      if (b.top) extra += " אחד מחמשת הגדלים הנפוצים בגוגל.";
+      if (b.w === 300 && b.h === 250) extra += " אותו מלבן בדיוק עובד גם במחשב וגם בטלפון.";
+      info.innerHTML = '<span class="bn-n">' + b.n + '</span><span class="bn-s">' + b.w + "×" + b.h + "px</span> · " + FAM[b.f] + "<p>" + extra + "</p>";
+    }
+    svg.querySelectorAll(".bn").forEach(function (g) {
+      g.addEventListener("mouseenter", function () { show(g); });
+      g.addEventListener("focus", function () { show(g); });
+      g.addEventListener("click", function () { show(g); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); show(g); } });
+    });
+
+    document.getElementById("bfilter").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var f = b.getAttribute("data-f");
+      if (f === "all") svg.removeAttribute("data-f"); else svg.setAttribute("data-f", f);
+      this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+    document.getElementById("bscale").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      svg.classList.toggle("real", b.getAttribute("data-s") === "real");
+      this.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+  }
+
+  /* ---------- the zoom demo: a real 300x50 bitmap ---------- */
+  var c = document.getElementById("zc");
+  if (c && c.getContext) {
+    var draw = function () {
+      var x = c.getContext("2d");
+      x.clearRect(0, 0, 300, 50);
+      x.fillStyle = "#f5d000"; x.fillRect(0, 0, 300, 50);
+      x.fillStyle = "#161616";
+      x.beginPath(); x.moveTo(0, 0); x.lineTo(72, 0); x.lineTo(54, 50); x.lineTo(0, 50); x.closePath(); x.fill();
+      x.fillStyle = "#f5d000";
+      x.beginPath(); x.moveTo(28, 8); x.lineTo(39, 25); x.lineTo(28, 42); x.lineTo(17, 25); x.closePath(); x.fill();
+      x.fillStyle = "#161616";
+      if ("direction" in x) x.direction = "rtl";
+      x.textAlign = "right"; x.textBaseline = "alphabetic";
+      x.font = '600 17px "IBM Plex Sans Hebrew", "Assistant", sans-serif';
+      x.fillText("באנר מובייל קטן", 290, 24);
+      x.beginPath();
+      if (x.roundRect) x.roundRect(196, 30, 94, 14, 7); else x.rect(196, 30, 94, 14);
+      x.fill();
+      x.fillStyle = "#f5d000"; x.textAlign = "center";
+      x.font = '600 10px "IBM Plex Sans Hebrew", "Assistant", sans-serif';
+      x.fillText("לפרטים", 243, 41);
+    };
+    draw();
+    if (document.fonts && document.fonts.load) {
+      Promise.all([
+        document.fonts.load('600 17px "IBM Plex Sans Hebrew"'),
+        document.fonts.load('600 10px "IBM Plex Sans Hebrew"')
+      ]).then(draw, function () {});
+    }
+  }
+});
+</script>
+</body>
+</html>

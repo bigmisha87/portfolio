@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>יישומים ומוקאפים · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="מיתוג נבחן על היכולת שלו להחזיק מגוון שימושים: אריזות, שילוט, דפוס ודיגיטל. איך מציגים מוקאפים נכון, מה להדמות בפרויקט, איפה מוצאים מוקאפים ואיך בונים פרויקט לתיק עבודות.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="יישומים ומוקאפים · מדריך המיתוג">
+<meta property="og:description" content="המותג בעולם האמיתי: אריזות, שילוט, דפוס ודיגיטל, ואיך מציגים אותו.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/mock-oula-set.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* ---- one logo travels across touchpoints ---- */
+.trav { display: block; width: 100%; height: auto; direction: ltr; overflow: visible; }
+.trav .b { fill: var(--fill); stroke: var(--line); stroke-width: 2; }
+.trav .h { fill: none; stroke: var(--line); stroke-width: 7; stroke-linecap: round; }
+.trav .gl { stroke: var(--line); stroke-width: 2; }
+.trav .scr { fill: var(--soft); }
+.trav .lbl { fill: var(--muted); font: 500 21px var(--text); }
+.trav .wm { font: 600 25px var(--text); }
+.trav .fin { fill: var(--ink); font: 600 24px var(--text); opacity: 0; transition: opacity .3s; }
+/* stepper: step 1 = the logo and four blank objects; every next step the logo lands on one more object
+   (right to left, like the stepper and like Hebrew: phone, storefront, bag, cup),
+   and that object takes on the brand's colours (cumulative). The flying logo is moved by the page script. */
+.trav .br { opacity: 0; transition: opacity .3s; }
+.trav .tr { transform: translate(400px, 62px) scale(1.6); }
+.anim[data-step="2"] .trav .br4,
+.anim[data-step="3"] .trav :is(.br4, .br3),
+.anim[data-step="4"] .trav :is(.br4, .br3, .br2),
+.anim[data-step="5"] .trav .br { opacity: 1; }
+.anim[data-step="2"] .trav .br4, .anim[data-step="3"] .trav .br3, .anim[data-step="4"] .trav .br2, .anim[data-step="5"] .trav .br1 { transition: opacity .5s ease .55s; }
+.anim[data-step="5"] .trav .fin { opacity: 1; transition: opacity .6s ease .9s; }
+.trav .lbl { transition: fill .4s; }
+.anim[data-step="2"] .trav .l4, .anim[data-step="3"] .trav .l3, .anim[data-step="4"] .trav .l2, .anim[data-step="5"] .trav .l1 { fill: var(--accent-ink); }
+
+/* ---- three ways to show ---- */
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 22px 0; }
+.trio > div { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
+.trio svg { width: 44px; height: 44px; display: block; margin-bottom: 8px; color: var(--accent-ink); }
+.trio h4 { margin: 0 0 6px; }
+.trio p { font-size: 16px; line-height: 1.65; margin: 0 0 8px; }
+.trio .xref { margin-top: 4px; }
+@media (max-width: 760px) { .trio { grid-template-columns: 1fr; } }
+
+.mas { columns: 3 200px; column-gap: 10px; margin: 24px 0 8px; }
+.mas a { display: block; margin: 0 0 10px; border-radius: var(--r-sm); overflow: hidden; background: var(--soft); break-inside: avoid; }
+.mas img { display: block; width: 100%; height: auto; transition: transform .5s cubic-bezier(.2,.7,.2,1); }
+.mas a:hover img { transform: scale(1.03); }
+.mas + figcaption { margin-top: 0; }
+
+/* ---- consistent vs mixed mockups ---- */
+.mx { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+.mx figure { margin: 0; }
+.mx .tile { aspect-ratio: 1; border-radius: 10px; display: grid; place-items: center; overflow: hidden; background: #efe6da; transition: background .5s; }
+.mx .tile svg { width: 66%; height: auto; transition: filter .5s, transform .5s; filter: drop-shadow(-10px 12px 9px rgba(70,40,15,.3)); }
+.mx figcaption { text-align: center; margin-top: 8px; }
+.mx .flat-only { opacity: 0; transition: opacity .4s; }
+.mx .shade { transition: opacity .4s; }
+.mx.mixed .t1 .tile { background: #ffffff; }
+.mx.mixed .t1 svg { filter: none; }
+.mx.mixed .t1 .shade { opacity: 0; }
+.mx.mixed .t1 .flat-only { opacity: 1; }
+.mx.mixed .t2 .tile { background: #1d2129; }
+.mx.mixed .t2 svg { filter: drop-shadow(16px 5px 3px rgba(0,0,0,.75)) saturate(1.7) hue-rotate(-18deg); }
+.mx.mixed .t3 .tile { background: linear-gradient(#a9d8ff, #e7f4ff); }
+.mx.mixed .t3 svg { transform: rotate(-16deg) scale(.82); filter: drop-shadow(0 34px 16px rgba(0,30,60,.35)) saturate(.45) brightness(1.1); }
+#wmix .why { margin: 14px 0 0; font-size: 16px; line-height: 1.6; }
+
+/* ---- what to mock up ---- */
+.mlist { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 18px 0 22px; padding: 0; list-style: none; }
+.mlist li { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 10px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); font-size: 16px; text-align: center; }
+@media (max-width: 560px) { .mlist { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.cards.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 760px) { .cards.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.mlist svg { width: 46px; height: 46px; color: var(--accent-ink); }
+
+/* ---- case study flow ---- */
+.flow { list-style: none; padding: 0; margin: 22px 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; counter-reset: f; }
+.flow li { counter-increment: f; margin: 0; position: relative; padding: 16px 16px 14px; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); }
+.flow li::before { content: counter(f, decimal-leading-zero); font: 500 12px var(--mono); color: var(--accent-ink); display: block; }
+.flow b { display: block; font-size: 17px; }
+.flow .en { font: 500 12px var(--mono); color: var(--muted); direction: ltr; unicode-bidi: isolate; display: block; text-align: right; margin-bottom: 6px; }
+.flow p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--muted); }
+@media (max-width: 640px) { .flow { grid-template-columns: 1fr 1fr; } }
+</style>
+</head>
+<body data-ch="mockups">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">10 / 15</div>
+      <h1>יישומים ומוקאפים</h1>
+      <p class="lede">לוגו יפה על רקע לבן עוד לא אומר כלום. מיתוג נבחן כשהוא יוצא לעולם: על כוס, על שקית, על שלט ועל מסך של טלפון. מוקאפים הם הדרך להראות את זה, ללקוח ולכל מי שמסתכל על תיק העבודות שלכם.</p>
+      <div class="ch-meta"><span>6 נושאים</span><span>2 הדגמות</span><span>8 תמונות</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-08.webp" alt="איור: עולם של מותג על שולחן סטודיו, קופסאות, כוסות, תיק בד, תוויות ומדבקות באותו דפוס" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= applications ================= -->
+    <section class="sec">
+      <h2 id="applications" data-short="הרחבת יישומים">הרחבת יישומים: איפה רואים אם השפה עובדת</h2>
+      <p>מיתוג נבחן על היכולת שלו <strong>להחזיק מגוון שימושים</strong>: תפריטים, אריזות, כוסות, שילוט, עמוד אינסטגרם, מודעה מודפסת, באנר דיגיטלי. אם השפה נשמרת בכל אלה, היא באמת עובדת.</p>
+
+      <figure class="anim" id="trav-fig" data-steps="5" data-step-labels="הלוגו|אינסטגרם|חזית חנות|תיק בד|כוס">
+        <span class="anim__label">לוגו אחד, ארבעה עולמות</span>
+        <div class="anim__stage">
+          <svg class="trav" viewBox="0 0 800 330" role="img" aria-label="לוגו של מותג בדיוני בשם בוקר עובר מכוס, לתיק, לשלט של חנות ולמסך של טלפון. בכל מקום שהוא נוחת, החפץ מקבל את אותם צבעים ואותו סמל.">
+            <defs>
+              <g id="bk-mark"><circle r="22" fill="#e2622b"/><path d="M-11 5 A11 11 0 0 1 11 5 Z" fill="#fff4e6"/><rect x="-14" y="8" width="28" height="3.2" rx="1.6" fill="#fff4e6"/></g>
+              <g id="bk-neg"><circle r="22" fill="#fff4e6"/><path d="M-11 5 A11 11 0 0 1 11 5 Z" fill="#e2622b"/><rect x="-14" y="8" width="28" height="3.2" rx="1.6" fill="#e2622b"/></g>
+            </defs>
+            <line class="gl" x1="24" y1="290" x2="776" y2="290"/>
+
+            <!-- cup -->
+            <path class="b" d="M78 150 H142 L132 288 H88 Z"/>
+            <rect class="b" x="72" y="136" width="76" height="16" rx="5"/>
+            <g class="br br1">
+              <path d="M78 150 H142 L132 288 H88 Z" fill="#fff4e6"/>
+              <rect x="72" y="136" width="76" height="16" rx="5" fill="#2b1d16"/>
+              <path d="M81 192 H139 L135.9 234 H84.1 Z" fill="#e2622b"/>
+              <use href="#bk-neg" transform="translate(110 213) scale(.62)"/>
+            </g>
+
+            <!-- tote bag -->
+            <path class="h" d="M283 152 C283 102 337 102 337 152"/>
+            <rect class="b" x="252" y="150" width="116" height="138" rx="6"/>
+            <g class="br br2">
+              <path d="M283 152 C283 102 337 102 337 152" fill="none" stroke="#2b1d16" stroke-width="7" stroke-linecap="round"/>
+              <rect x="252" y="150" width="116" height="138" rx="6" fill="#e2622b"/>
+              <use href="#bk-neg" transform="translate(310 205)"/>
+              <text class="wm" x="310" y="260" text-anchor="middle" fill="#fff4e6">בוקר</text>
+            </g>
+
+            <!-- storefront -->
+            <rect class="b" x="428" y="150" width="164" height="138"/>
+            <rect class="b" x="420" y="108" width="180" height="46" rx="6"/>
+            <rect class="b" x="492" y="214" width="36" height="74"/>
+            <rect class="b" x="442" y="200" width="38" height="48" rx="3"/>
+            <rect class="b" x="540" y="200" width="38" height="48" rx="3"/>
+            <g class="br br3">
+              <rect x="420" y="108" width="180" height="46" rx="6" fill="#2b1d16"/>
+              <path d="M428 154 H592 V166 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 q-10.25 9 -20.5 0 Z" fill="#e2622b"/>
+              <rect x="492" y="214" width="36" height="74" fill="#2b1d16"/>
+              <use href="#bk-mark" transform="translate(568 131) scale(.78)"/>
+              <text class="wm" x="546" y="140" text-anchor="end" fill="#fff4e6">בוקר</text>
+            </g>
+
+            <!-- phone -->
+            <rect class="b" x="652" y="96" width="96" height="192" rx="14"/>
+            <rect class="scr" x="659" y="110" width="82" height="164" rx="4"/>
+            <g class="br br4">
+              <rect x="659" y="110" width="82" height="164" rx="4" fill="#fff4e6"/>
+              <path d="M663 110 H737 a4 4 0 0 1 4 4 V148 H659 V114 a4 4 0 0 1 4 -4 Z" fill="#e2622b"/>
+              <use href="#bk-neg" transform="translate(700 129) scale(.55)"/>
+              <rect x="667" y="156" width="66" height="66" rx="4" fill="#2b1d16"/>
+              <use href="#bk-mark" transform="translate(700 182) scale(.5)"/>
+              <rect x="680" y="203" width="40" height="5" rx="2.5" fill="#fff4e6"/>
+              <rect x="667" y="232" width="56" height="6" rx="3" fill="#e2622b"/>
+              <rect x="667" y="244" width="38" height="6" rx="3" fill="#2b1d16" opacity=".35"/>
+              <rect x="667" y="256" width="48" height="6" rx="3" fill="#2b1d16" opacity=".35"/>
+            </g>
+
+            <text class="lbl l1" x="110" y="318" text-anchor="middle">כוס</text>
+            <text class="lbl l2" x="310" y="318" text-anchor="middle">תיק בד</text>
+            <text class="lbl l3" x="510" y="318" text-anchor="middle">חזית חנות</text>
+            <text class="lbl l4" x="700" y="318" text-anchor="middle">אינסטגרם</text>
+
+            <text class="fin" x="400" y="58" text-anchor="middle">אותו לוגו, אותם צבעים, אותה שפה</text>
+            <g class="tr"><use href="#bk-mark"/></g>
+          </svg>
+        </div>
+        <figcaption>„בוקר” היא מאפייה בדיונית. שימו לב שהלוגו לא סתם „מודבק” על כל חפץ: הכוס, התיק, השלט והמסך מקבלים את אותו כתום, אותו חום כהה ואותו קרם, ופעם הסמל צבעוני ופעם בגרסה הנגטיבית. זו מערכת, לא מדבקה.</figcaption>
+      </figure>
+
+      <p>יש למותג דמות או סגנון איור? הוא צריך להתפתח לסדרה של סצנות ושימושים, ולא רק לחזור כאלמנט אחד. <a class="xref" href="visual-language.html#illustration">שפה איורית</a></p>
+    </section>
+
+    <!-- ================= mockups ================= -->
+    <section class="sec">
+      <h2 id="mockups" data-short="מוקאפים">מוקאפים: המותג בעולם האמיתי</h2>
+      <p><strong>מוקאפים</strong> <span class="ltr">(Mockups)</span> הם כלי חשוב להצגת המותג במציאות. הם מאפשרים לראות איך הלוגו והשפה העיצובית נראים <strong>בעולם האמיתי</strong>, לא רק על מסך. מוקאפים טובים עוזרים <strong>ללקוח ולצופה להבין את הפוטנציאל של המותג</strong> ולדמיין אותו בפעולה.</p>
+
+      <h3 id="recommended">הצגת מוקאפים מומלצת</h3>
+      <div class="trio">
+        <div>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M6 18h36v24H6z"/><path d="M4 10h40v8H4z"/><path d="M20 42V30h8v12"/></svg>
+          <h4>מוצרים ושילוט</h4>
+          <p>הציגו את המותג על גבי <strong>אריזות, פוסטרים, שלטי חוצות, חזיתות חנויות ורכבי שירות</strong>. כך אפשר לראות כיצד הלוגו משתלב בקנה מידה גדול ובסביבה פיזית אמיתית.</p>
+        </div>
+        <div>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="13" y="4" width="22" height="40" rx="4"/><path d="M13 12h22M13 36h22"/><circle cx="24" cy="24" r="5"/></svg>
+          <h4>מדיה דיגיטלית</h4>
+          <p>הראו שימוש בשפה העיצובית בתוך <strong>רשתות חברתיות, באנרים, תמונות פרופיל, עמודי נחיתה ואייקוני אפליקציה</strong>. זה מדגים את <strong>הנוכחות הדיגיטלית</strong> של המותג ואת היכולת לשמור על אחידות בין פלטפורמות שונות.</p>
+          <a class="xref" href="digital.html">כל המידות</a>
+        </div>
+        <div>
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="12" width="28" height="18" rx="2"/><path d="M16 30v6l20 0V18h8v18H36"/><path d="M10 19h10M10 24h6"/></svg>
+          <h4>דברי דפוס</h4>
+          <p>שלבו הדמיות של <strong>ניירת משרדית, כרטיסי ביקור, מעטפות, גלויות, כרטיסי עובד או מתנה</strong>. אלו מדגישים את <strong>הזהות הארגונית</strong> ואת תשומת הלב לפרטים הקטנים.</p>
+        </div>
+      </div>
+
+      <h3 id="oula">דוגמה: מותג אחד, הרבה חפצים</h3>
+      <p>מיתוג <span class="ltr">OULA</span>: שקיות, קופסאות, מגדל של קופסאות עגולות, כוסות ומארז. בכל תמונה יש אותו כתום, אותו קו איור ואותן דמויות, והצילום עצמו שומר על אותו אור רך ואותו רקע. זה בדיוק מה שמוקאפים צריכים להראות.</p>
+      <div class="mas">
+        <a href="img/mock-oula-set.webp" data-lb data-cap="OULA: כל המערכת יחד, שקיות, כוסות, קופסאות ומארזים"><img src="img/mock-oula-set.webp" alt="סט מוצרים כתום ולבן של המותג OULA: שקיות, כוסות, קופסאות ומאפה עטוף" loading="lazy" width="1400" height="1703"></a>
+        <a href="img/mock-oula-bag.webp" data-lb data-cap="OULA: שקית מתנה כתומה עם איור"><img src="img/mock-oula-bag.webp" alt="יד מחזיקה שקית מתנה כתומה בצורת קשת, עם איור של שתי דמויות ליד שולחן" loading="lazy" width="1400" height="1269"></a>
+        <a href="img/mock-oula-bags.webp" data-lb data-cap="OULA: אותה שקית בכתום ובלבן"><img src="img/mock-oula-bags.webp" alt="שתי שקיות של OULA, אחת כתומה ואחת לבנה, באותו איור ובאותן ידיות עור" loading="lazy" width="1400" height="1077"></a>
+        <a href="img/mock-oula-hands.webp" data-lb data-cap="OULA: קופסה עגולה וקופסה מרובעת"><img src="img/mock-oula-hands.webp" alt="שתי ידיים מחזיקות קופסה עגולה וקופסה מרובעת כתומות עם ידיות" loading="lazy" width="1400" height="1036"></a>
+        <a href="img/mock-oula-tins.webp" data-lb data-cap="OULA: מגדל של קופסאות עגולות"><img src="img/mock-oula-tins.webp" alt="ערימה של קופסאות עגולות כתומות עם הלוגו OULA ואיורים" loading="lazy" width="1200" height="1497"></a>
+        <a href="img/mock-oula-box.webp" data-lb data-cap="OULA: קופסת מאפים, בצבע ובשחור־לבן"><img src="img/mock-oula-box.webp" alt="שתי קופסאות מאפים עם ידית, אחת כתומה ואחת בגווני קרם, על רקע של מאפים בשחור־לבן" loading="lazy" width="1400" height="1640"></a>
+        <a href="img/mock-oula-carrier.webp" data-lb data-cap="OULA: קופסה עם ידית, בצד השני של אותו איור"><img src="img/mock-oula-carrier.webp" alt="יד מחזיקה קופסה לבנה עם ידית ואיור קווי של דמויות ופחית כתומה" loading="lazy" width="1400" height="1400"></a>
+      </div>
+      <figcaption>לחיצה על תמונה פותחת אותה בגדול.</figcaption>
+
+      <h3 id="real-world">מהמצגת שלי: שלט, תיק וכרטיס</h3>
+      <figure class="fig">
+        <a href="img/bp-real-world.webp" data-lb data-cap="המותג בעולם הפיזי: שלט על קיר הקבלה, תיק בד וכרטיס ביקור"><img src="img/bp-real-world.webp" alt="שקף ממצגת: הלוגו יתגה בכחול על קיר קבלה במשרד, על תיק בד שמחזיקה יד, ועל כרטיס ביקור מונח על בטון" loading="lazy" width="1376" height="733"></a>
+        <figcaption>שלושה חומרים, שלושה קני מידה: קיר שלם, תיק שזז ברחוב, וכרטיס שנכנס לכיס. הזהות צריכה לעבוד בכולם, ולא רק על המסך.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ================= principles ================= -->
+    <section class="sec">
+      <h2 id="principles" data-short="עקרונות למוקאפים">עקרונות חשובים</h2>
+      <ul class="dots">
+        <li>ודאו שכל המוקאפים משדרים <strong>אחידות, איכות וריאליזם</strong>: אותו סגנון אור, זווית וצבעוניות.</li>
+        <li>אל תערבבו סגנונות הדמיה שונים (למשל: ריאליסטי מול וקטורי).</li>
+        <li>זכרו שהמוקאפים הם חלק מהמיתוג עצמו. הם לא רק הצגה יפה, הם <strong>דרך לתקשר את השפה החזותית</strong>.</li>
+      </ul>
+
+      <div class="widget" id="wmix" data-added>
+        <div class="seg" role="group" aria-label="סגנון ההדמיות">
+          <button type="button" aria-pressed="true" data-m="same">אחיד</button>
+          <button type="button" aria-pressed="false" data-m="mixed">מעורבב</button>
+        </div>
+        <div class="mx" aria-hidden="true">
+          <figure class="t1"><div class="tile">
+            <svg viewBox="0 0 120 120"><path class="shade" d="M30 44 L60 30 L90 44 L90 92 L60 106 L30 92 Z" fill="#c4501f"/><path d="M30 44 L60 58 L90 44 L60 30 Z" fill="#f08a52"/><path d="M60 58 L90 44 L90 92 L60 106 Z" fill="#e2622b"/><path class="shade" d="M30 44 L60 58 L60 106 L30 92 Z" fill="#b8481a"/><circle cx="75" cy="76" r="9" fill="#fff4e6"/><path class="flat-only" d="M30 44 L60 30 L90 44 L90 92 L60 106 L30 92 Z M30 44 L60 58 L90 44 M60 58 V106" fill="none" stroke="#2b1d16" stroke-width="3" stroke-linejoin="round"/></svg>
+          </div><figcaption>קופסה</figcaption></figure>
+          <figure class="t2"><div class="tile">
+            <svg viewBox="0 0 120 120"><path d="M38 34 H82 L76 104 H44 Z" fill="#fff4e6"/><path class="shade" d="M64 34 H82 L76 104 H62 Z" fill="#e8d9c6"/><rect x="34" y="26" width="52" height="10" rx="3" fill="#2b1d16"/><path d="M40.5 56 H79.5 L77.8 78 H42.2 Z" fill="#e2622b"/><circle cx="60" cy="67" r="6" fill="#fff4e6"/></svg>
+          </div><figcaption>כוס</figcaption></figure>
+          <figure class="t3"><div class="tile">
+            <svg viewBox="0 0 120 120"><rect x="18" y="38" width="84" height="50" rx="3" fill="#2b1d16"/><rect class="shade" x="18" y="80" width="84" height="8" fill="#140d09"/><circle cx="84" cy="58" r="9" fill="#e2622b"/><rect x="34" y="54" width="34" height="6" rx="3" fill="#fff4e6"/><rect x="40" y="66" width="28" height="4" rx="2" fill="#fff4e6" opacity=".6"/></svg>
+          </div><figcaption>כרטיס ביקור</figcaption></figure>
+        </div>
+        <p class="why" aria-live="polite">אותו רקע, אור שמגיע מאותו צד, אותה זווית ואותה צבעוניות. נראה כמו מותג אחד שצולם ביום אחד.</p>
+      </div>
+
+      <div class="tip">
+        <span class="box-label">טיפ</span>
+        <p>בחרו מוקאפים שמדגישים את <strong>החוזקות של העיצוב שלכם</strong>. הציגו אותו על אריזת מוצר, כרטיס ביקור, שלט חוצות, רכב ממותג וכו'. בגדול, כל מוצר שרלוונטי לעולם התוכן של המותג.</p>
+      </div>
+    </section>
+
+    <!-- ================= what to mock up ================= -->
+    <section class="sec">
+      <h2 id="mockup-list" data-short="מה להדמות בפרויקט">דוגמאות שימוש: מה להדמות בפרויקט</h2>
+      <p>מאוד חשוב לפרויקט. בפרויקט מיתוג לתיק עבודות, אלה היישומים שכדאי להראות, לדוגמה:</p>
+      <ul class="mlist">
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 24 8l16 8v18l-16 8-16-8z"/><path d="m8 16 16 8 16-8M24 24v18"/></svg>אריזה</li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M19 4h10v8l4 6v24a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2V18l4-6z"/><path d="M15 26h18v10H15z"/></svg>בקבוק / צנצנת</li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><rect x="10" y="4" width="28" height="40" rx="1"/><circle cx="24" cy="18" r="7"/><path d="M15 32h18M15 37h11"/></svg>פוסטרים</li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M24 6a18 18 0 1 0 18 18H30a6 6 0 0 1-6-6z"/><path d="M24 6l18 18"/></svg>סטיקרים</li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M6 42V8M42 42V8"/><rect x="12" y="14" width="24" height="18" rx="2" transform="rotate(-6 24 23)"/><path d="M4 42h40"/></svg>מדבקות רחוב</li>
+        <li><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M17 6c2 4 12 4 14 0l11 6-5 9-4-2v23H15V19l-4 2-5-9z"/><circle cx="24" cy="24" r="4"/></svg>חולצה / מרצ'נדייז</li>
+      </ul>
+      <p>וכל השאר, מלוגו ועד ספר מותג, מסודר ברשימה אחת שאפשר לסמן תוך כדי עבודה. <a class="xref" href="checklist.html">רשימת הבדיקה</a></p>
+    </section>
+
+    <!-- ================= sources ================= -->
+    <section class="sec" data-added>
+      <h2 id="sources" data-short="איפה מוצאים מוקאפים">איפה מוצאים מוקאפים</h2>
+      <p>לא צריך לצלם כל שקית בסטודיו. רוב המוקאפים המקצועיים הם קבצי פוטושופ עם <span class="ltr">Smart Object</span>: לוחצים פעמיים על השכבה, מדביקים את העיצוב, שומרים, והוא נעטף על החפץ עם הצל, הקמטים והאור. כמה מקורות טובים:</p>
+      <div class="cards c4">
+        <div class="card"><span class="k">Mockup World</span><h4>קבצים חינמיים</h4><p>מוקאפים ריאליסטיים בפוטושופ, מותרים גם לשימוש מסחרי. <a href="https://www.mockupworld.co/">לאתר</a></p></div>
+        <div class="card"><span class="k">Anthony Boyd Graphics</span><h4>חינמי ואיכותי</h4><p>קבצי פוטושופ ברמה גבוהה מאוד, הרבה מכשירים ודפוס. <a href="https://www.anthonyboyd.graphics/">לאתר</a></p></div>
+        <div class="card"><span class="k">Placeit</span><h4>בדפדפן, בלי פוטושופ</h4><p>אלפי תבניות, גוררים את העיצוב ומקבלים תמונה. בתשלום חודשי. <a href="https://placeit.net/">לאתר</a></p></div>
+        <div class="card"><span class="k">Smartmockups</span><h4>למתחילים</h4><p>עובד בדפדפן ומשולב בקנבה. יש גרסה חינמית. <a href="https://smartmockups.com/">לאתר</a></p></div>
+        <div class="card"><span class="k">Yellow Images</span><h4>אריזות</h4><p>ספרייה ענקית של אריזות: בקבוקים, פחיות, שקיות וקופסאות. <a href="https://yellowimages.com/">לאתר</a></p></div>
+        <div class="card"><span class="k">LS Graphics</span><h4>נקי ומינימלי</h4><p>מוקאפים בסגנון נקי, חלקם עובדים גם בפיגמה. <a href="https://www.ls.graphics/">לאתר</a></p></div>
+        <div class="card"><span class="k">Vectary</span><h4>תלת־ממד בדפדפן</h4><p>מסובבים את החפץ, משנים זווית ואור, ומייצאים. <a href="https://www.vectary.com/">לאתר</a></p></div>
+        <div class="card"><span class="k">Blender</span><h4>שליטה מלאה</h4><p>תוכנת תלת־ממד חינמית. הכי גמיש, אבל לוקח זמן ללמוד. <a href="https://www.blender.org/">לאתר</a></p></div>
+      </div>
+      <p>וגם <span class="ltr">AI</span> יודע לייצר הדמיות ריאליסטיות מהר. זה כלי עבודה לגיטימי, כל עוד ההחלטות נשארות שלכם. <a class="xref" href="logo-design.html#ai-sketchbook">AI כסקצ'בוק</a></p>
+      <div class="note">
+        <span class="box-label">שימו לב לרישיון</span>
+        <p>„חינם” לא תמיד אומר „מותר בכל מקום”. לפני שמשתמשים בעבודה ללקוח, קוראים את תנאי השימוש של הקובץ. ובכל מקרה, מוקאפ אחד ממקור אחד שומר על האחידות טוב יותר מעשרה ממקורות שונים.</p>
+      </div>
+    </section>
+
+    <!-- ================= case study ================= -->
+    <section class="sec" data-added>
+      <h2 id="case-study" data-short="פרויקט לתיק עבודות">איך בונים פרויקט מיתוג לתיק עבודות</h2>
+      <figure class="illus"><img src="img/case-08.webp" alt="איור: תיק עבודות פתוח ומחשב נייד עם פרויקט מיתוג, סקיצות ולוח השראה" width="1344" height="752" loading="lazy"></figure>
+      <p>המוקאפים הם לא הפרויקט כולו, הם הפרק של „ככה זה נראה בעולם”. פרויקט מיתוג טוב בתיק עבודות מספר סיפור לפי הסדר הזה:</p>
+      <ol class="flow">
+        <li><span class="en">Challenge</span><b>האתגר</b><p>מה הבעיה של הלקוח, ובאיזה שוק הוא פועל.</p></li>
+        <li><span class="en">Research</span><b>מחקר</b><p>מתחרים, קהל, ומה למדתם מהם.</p></li>
+        <li><span class="en">Strategy</span><b>אסטרטגיה</b><p>מיצוב, מסרים, ואיך המותג מדבר.</p></li>
+        <li><span class="en">Design</span><b>עיצוב</b><p>כיווני חיפוש, גלגולים, והזהות הסופית.</p></li>
+        <li><span class="en">Applications</span><b>יישומים</b><p>המוקאפים: המותג בכל נקודות המגע.</p></li>
+        <li><span class="en">Results</span><b>תוצאות</b><p>מה השתנה: מספרים, ציטוט מהלקוח, תמונות מההשקה.</p></li>
+      </ol>
+      <p>הרבה תמונות, מעט טקסט. אם יש לכם „לפני” ו„אחרי”, הראו אותם זה ליד זה. ופרויקט לימודי בלי תוצאות אמיתיות? סיימו ביישומים ובעמוד מספר המותג. <a class="xref" href="golden-rules.html#no-rambling">בלי חפירות</a></p>
+      <p class="note">ואיך מציגים את כל זה ללקוח, שקף אחרי שקף? <a class="xref" href="presenting.html">הצגה ללקוח</a></p>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  /* one logo, four worlds: the logo flies from where it was to the object of the new step, then melts into it */
+  var tf = document.getElementById("trav-fig");
+  if (tf) {
+    var tr = tf.querySelector(".trav .tr");
+    var P = [[400, 62, 1.6], [700, 129, .55], [568, 131, .78], [310, 205, 1], [110, 213, .62]];
+    var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function T(k) { var q = P[k - 1]; return "translate(" + q[0] + "px, " + q[1] + "px) scale(" + q[2] + ")"; }
+    tf.addEventListener("anim:step", function (e) {
+      var to = e.detail.step, from = e.detail.from || to;
+      if (tr._a) tr._a.cancel();
+      var endOp = to === 1 ? 1 : 0, startOp = from === 1 ? 1 : 0;
+      if (!tr.animate) { tr.style.transform = T(to); tr.style.opacity = endOp; return; }
+      tr._a = tr.animate([
+        { transform: T(from), opacity: startOp },
+        { transform: T(from), opacity: 1, offset: .12 },
+        { transform: T(to), opacity: 1, offset: .62 },
+        { transform: T(to), opacity: endOp }
+      ], { duration: still ? 0 : 1100, easing: "cubic-bezier(.45,0,.3,1)", fill: "forwards" });
+    });
+  }
+
+  /* consistent vs mixed mockups */
+  var w = document.getElementById("wmix");
+  if (w) {
+    var mx = w.querySelector(".mx"), why = w.querySelector(".why");
+    var T = {
+      same: "אותו רקע, אור שמגיע מאותו צד, אותה זווית ואותה צבעוניות. נראה כמו מותג אחד שצולם ביום אחד.",
+      mixed: "וקטור שטוח ליד צילום, אור מכיוון אחר, רקע אחר וזווית אקראית. כל הדמיה אולי יפה לבד, אבל ביחד זה נראה כמו שלושה מותגים שונים."
+    };
+    w.querySelector(".seg").addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      var m = b.getAttribute("data-m");
+      mx.classList.toggle("mixed", m === "mixed");
+      why.textContent = T[m];
+      w.querySelectorAll(".seg button").forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+    });
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>עיצוב לוגו: מהרעיון לסקיצה · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="איך מעצבים לוגו: עבודת המחקר והשבט, שאלות ללקוח, שש שיטות ליצירת רעיונות (מפות חשיבה, לוח רוח, שפה גרפית, סקיצות, פונט וצבע), ציר ההפשטה מרפרנס לאייקון, חמישה צעדי עבודה ובריף לוגו.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="עיצוב לוגו: מהרעיון לסקיצה · מדריך המיתוג">
+<meta property="og:description" content="שאלות ללקוח, מפות חשיבה, לוח רוח, 12 סגנונות, סקיצות, פונט וצבע, ושלבי העבודה.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/lecture-owl-axis.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@700;800&family=Frank+Ruhl+Libre:wght@400&family=Suez+One&family=Roboto+Slab:wght@700&family=Dancing+Script:wght@700&family=Playpen+Sans+Hebrew:wght@400&family=Varela+Round&family=Heebo:wght@800&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* The demo brand "luma" is invented for this guide. Its colours are literal (demo objects), UI colours are tokens. */
+@property --lm-mark { syntax: "<color>"; inherits: true; initial-value: #e2552b; }
+@property --lm-word { syntax: "<color>"; inherits: true; initial-value: #1f2a30; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+/* ---- process (stepper: one stage per step) ---- */
+.ps-wrap { position: relative; }
+.ps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; position: relative; }
+.ps-wrap::before { content: ""; position: absolute; top: 21px; right: 10%; left: 10%; height: 2px; background: var(--line); }
+.ps-fill { position: absolute; top: 21px; right: 10%; left: 10%; height: 2px; background: var(--accent); transform-origin: right center; }
+.ps li { position: relative; text-align: center; margin: 0; }
+.ps .n { position: relative; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; margin: 0 auto 10px; border-radius: 50%; border: 1px solid var(--line); background: var(--soft); font: 500 15px var(--mono); color: var(--muted); transition: none; }
+.ps li b { display: block; font-size: 15px; line-height: 1.35; }
+.ps li small { display: block; font-size: 13px; line-height: 1.45; color: var(--muted); margin-top: 4px; }
+.ps .phase { display: block; font: 500 11px var(--mono); color: var(--accent-ink); margin-top: 6px; }
+.psf .ps-fill { transform: scaleX(0); transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+.psf[data-step="2"] .ps-fill { transform: scaleX(.25); }
+.psf[data-step="3"] .ps-fill { transform: scaleX(.5); }
+.psf[data-step="4"] .ps-fill { transform: scaleX(.75); }
+.psf[data-step="5"] .ps-fill { transform: none; }
+.psf .ps li { opacity: .35; transition: opacity .4s; }
+.psf .ps .n { transition: background .4s, color .4s, border-color .4s, box-shadow .3s; }
+.psf[data-step="1"] .ps li:nth-of-type(-n+1), .psf[data-step="2"] .ps li:nth-of-type(-n+2), .psf[data-step="3"] .ps li:nth-of-type(-n+3), .psf[data-step="4"] .ps li:nth-of-type(-n+4), .psf[data-step="5"] .ps li { opacity: 1; }
+.psf[data-step="1"] .ps li:nth-of-type(-n+1) .n, .psf[data-step="2"] .ps li:nth-of-type(-n+2) .n, .psf[data-step="3"] .ps li:nth-of-type(-n+3) .n, .psf[data-step="4"] .ps li:nth-of-type(-n+4) .n, .psf[data-step="5"] .ps li .n { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+.psf .ps li.on .n { box-shadow: 0 0 0 4px var(--accent-soft); }
+@media (max-width: 700px) {
+  .ps { grid-template-columns: 1fr; gap: 14px; }
+  .ps-wrap::before, .ps-fill { display: none; }
+  .ps li { text-align: start; display: grid; grid-template-columns: 44px 1fr; gap: 0 12px; }
+  .ps .n { margin: 0; grid-row: span 3; }
+}
+
+/* =========== rebuilt slides (graphics in code, text as page text) =========== */
+/* step texts: one block per step, stacked in one grid cell so the height never jumps */
+.say { display: grid; margin-top: 16px; }
+.say > * { grid-area: 1 / 1; margin: 0; opacity: 0; visibility: hidden; transition: opacity .45s ease, visibility 0s linear .45s; font-size: 16px; line-height: 1.7; }
+.anim[data-step="1"] .say > [data-s~="1"], .anim[data-step="2"] .say > [data-s~="2"], .anim[data-step="3"] .say > [data-s~="3"],
+.anim[data-step="4"] .say > [data-s~="4"], .anim[data-step="5"] .say > [data-s~="5"] { opacity: 1; visibility: visible; transition: opacity .45s ease .1s, visibility 0s; }
+.say .k { display: block; font: 600 13px var(--text); color: var(--accent-ink); margin-bottom: 2px; }
+.say p { margin: 0 0 6px; }
+.say p:last-child { margin-bottom: 0; }
+.say.inl { display: inline-grid; margin: 0; }
+.say.inl > * { font-size: 14px; line-height: 1.4; color: var(--muted); }
+
+/* 05.03 value curve */
+.vc-svg { display: block; width: 100%; height: auto; direction: ltr; overflow: visible; }
+.vc-svg .ax { stroke: var(--muted); stroke-width: 1.5; fill: none; }
+.vc-svg .gr { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }
+.vc-svg text { font: 500 15px var(--text); fill: var(--muted); }
+.vc-svg .lb { font-weight: 600; font-size: 16px; }
+.vc-ex, .vc-st { fill: none; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s cubic-bezier(.4,.1,.2,1); }
+.vc-ex { stroke: var(--muted); }
+.vc-st { stroke: var(--accent); }
+.vc-svg .lb.ex { fill: var(--ink); }
+.vc-svg .lb.st { fill: var(--accent-ink); }
+.vc-l, .vc-x { opacity: 0; transition: opacity .5s .6s; }
+.vc-area { fill: var(--accent); opacity: 0; transition: opacity .6s .2s; }
+.vc-x circle.d { fill: var(--accent); stroke: var(--paper); stroke-width: 3; }
+.vc-x circle.r { fill: none; stroke: var(--accent); stroke-width: 1.5; }
+.vc-x line { stroke: var(--accent); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.vc-x text { fill: var(--accent-ink); font-weight: 600; }
+.vcf .vc-ex { stroke-dashoffset: 0; }
+.vcf .vc-l.ex { opacity: 1; }
+.vcf:is([data-step="2"], [data-step="3"]) .vc-st { stroke-dashoffset: 0; }
+.vcf:is([data-step="2"], [data-step="3"]) .vc-l.st { opacity: 1; }
+.vcf[data-step="3"] .vc-x { opacity: 1; }
+.vcf[data-step="3"] .vc-area { opacity: .13; }
+
+/* 05.15 tribe: five questions + a tribe board */
+.tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.tr-q { display: grid; gap: 6px; }
+.tq { display: flex; align-items: center; gap: 10px; width: 100%; text-align: start; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--soft); color: var(--ink); font: 500 15px/1.4 var(--text); transition: background .25s, border-color .25s; }
+.tq .n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--fill); font: 500 12px var(--mono); transition: background .25s, color .25s; }
+.tq:hover { border-color: var(--muted); }
+.tq.on { border-color: var(--accent); background: var(--accent-soft); }
+.tq.on .n { background: var(--accent); color: var(--on-accent); }
+.tr-board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.tr-board > div { display: grid; place-items: center; aspect-ratio: 1; border-radius: 6px; transition: opacity .45s, transform .45s cubic-bezier(.2,.8,.2,1); }
+.tr-board svg { width: 56%; height: 56%; fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.tr-board .pal { background: linear-gradient(90deg, #b86b45 0 33.3%, #d9c4a0 33.3% 66.6%, #6f7450 66.6%); }
+.tr-cap { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
+.trf[data-step="2"] .tr-board > div:not(.b-apron), .trf[data-step="3"] .tr-board > div:not(.b-feed),
+.trf[data-step="4"] .tr-board > div:not(.b-cup), .trf[data-step="5"] .tr-board > div:not(.b-bread):not(.b-pot) { opacity: .22; transform: scale(.94); }
+.trf .say { padding: 14px 16px; border-radius: var(--r-sm); background: var(--soft); }
+@media (max-width: 640px) { .tr { grid-template-columns: 1fr; } .tr-board { max-width: 300px; margin: 0 auto; } }
+
+/* 05.17 identity system on orbits */
+.or { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 22px; align-items: center; }
+.or-map { position: relative; width: 100%; max-width: 400px; aspect-ratio: 1; margin: 0 auto; }
+.or-map > svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.or-map .ring { fill: none; stroke: var(--line); stroke-width: .5; stroke-dasharray: 1.5 1.5; }
+.or-map .spk { stroke: var(--accent); stroke-width: .7; opacity: 0; transition: opacity .35s; }
+.orf[data-step="1"] .spk.s1, .orf[data-step="2"] .spk.s2, .orf[data-step="3"] .spk.s3, .orf[data-step="4"] .spk.s4, .orf[data-step="5"] .spk.s5 { opacity: 1; }
+.or-c { position: absolute; left: 50%; top: 50%; width: 27%; aspect-ratio: 1; transform: translate(-50%, -50%); display: grid; place-items: center; border-radius: 50%; background: #f4eadb; --lm-mark: #e2552b; box-shadow: 0 0 0 6px var(--paper), 0 0 0 7px var(--line); }
+.or-c svg { width: 62%; height: 62%; }
+.or-i { position: absolute; width: 21%; transform: translate(-50%, -32%); display: grid; justify-items: center; gap: 4px; padding: 0; border: 0; background: none; color: var(--muted); font: 500 12px/1.25 var(--text); text-align: center; }
+.or-i .ic { display: grid; place-items: center; width: 100%; aspect-ratio: 1; border-radius: 50%; background: var(--soft); border: 1px solid var(--line); transition: border-color .3s, box-shadow .3s, transform .3s; --lm-mark: #e2552b; --lm-word: var(--ink); }
+.or-i:hover .ic { border-color: var(--muted); }
+.or-i.on { color: var(--ink); }
+.or-i.on .ic { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); transform: scale(1.06); }
+.or-i .app { width: 58%; aspect-ratio: 1; border-radius: 24%; background: #e2552b; display: grid; place-items: center; --lm-mark: #f4eadb; }
+.or-i .app svg { width: 66%; height: 66%; }
+.or-i .ava { width: 66%; aspect-ratio: 1; border-radius: 50%; background: #f4eadb; display: grid; place-items: center; }
+.or-i .ava svg { width: 56%; height: 56%; }
+.or-i .wm { width: 72%; height: auto; }
+.or-i .tabchip { display: grid; place-items: center; width: 50%; height: 34%; border-radius: 6px 6px 0 0; background: #fbf9f5; }
+.or-i .fr { width: 64%; height: 64%; overflow: visible; }
+.or-i .fr .tr1 { fill: none; stroke: var(--accent); stroke-width: 5; stroke-linecap: round; }
+.or-side .hint { font-size: 14px; color: var(--muted); margin: 0 0 6px; }
+.or-side .say { margin-top: 0; }
+.or-side h4 { margin: 0 0 4px; }
+@media (max-width: 680px) { .or { grid-template-columns: 1fr; } .or-map { max-width: 330px; } }
+
+/* 05.18 AI as a sketchbook: strategy → raw material → refinement */
+.sk-nodes { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: stretch; }
+.sk-n { display: grid; justify-items: center; align-content: start; gap: 6px; padding: 12px 10px; border-radius: var(--r); border: 1px solid var(--line); background: var(--soft); color: var(--ink); font: 600 15px/1.35 var(--text); text-align: center; transition: background .25s, border-color .25s; }
+.sk-n.ai { border-style: dashed; }
+.sk-n svg { width: 38px; height: 38px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.sk-n small { font: 400 13px var(--text); color: var(--muted); }
+.sk-n:hover { border-color: var(--muted); }
+.sk-n.on { border-color: var(--accent); background: var(--accent-soft); }
+.sk-ar { display: grid; place-items: center; color: var(--accent-ink); font-size: 22px; }
+.sk-cv { display: grid; margin-top: 16px; }
+.sk-cv > div { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .5s, visibility 0s linear .5s; border-radius: var(--r-sm); background: var(--soft); padding: 16px; }
+.skf[data-step="1"] .sk-cv > div:nth-child(1), .skf[data-step="2"] .sk-cv > div:nth-child(2), .skf[data-step="3"] .sk-cv > div:nth-child(3) { opacity: 1; visibility: visible; transition: opacity .5s, visibility 0s; }
+.sk-brief { max-width: 440px; margin: 0 auto; background: var(--raise); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 14px 16px; }
+.sk-brief .k { display: block; font: 600 13px var(--text); color: var(--accent-ink); margin-bottom: 6px; }
+.sk-brief dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin: 0; font-size: 15px; line-height: 1.5; }
+.sk-brief dt { color: var(--muted); }
+.sk-brief dd { margin: 0; font-weight: 500; }
+.sk-pr { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.sk-pr span { font: 400 13px var(--mono); padding: 4px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--raise); color: var(--muted); }
+.sk-pr span.on { border-color: var(--accent); color: var(--ink); }
+.sk-grid { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 6px; direction: ltr; }
+.sk-grid svg { width: 100%; height: auto; opacity: 0; transform: scale(.7); transition: opacity .3s calc(var(--i) * 30ms), transform .35s cubic-bezier(.2,.8,.2,1) calc(var(--i) * 30ms); }
+.skf[data-step="2"] .sk-grid svg { opacity: 1; transform: none; }
+.sk-grid .sh, .sk-fin .sh { fill: var(--accent); stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.sk-grid .in { fill: none; stroke: var(--ink); stroke-width: 3; }
+.sk-grid .dt { fill: var(--ink); }
+.sk-fin { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 18px; align-items: center; }
+.sk-fin svg { width: 100%; height: auto; overflow: visible; }
+.sk-fin .sh { stroke: none; }
+.sk-fin .cl { fill: none; stroke: var(--ink); stroke-width: .6; stroke-dasharray: 2 2; opacity: .7; }
+.sk-fin ul { margin: 0; }
+.sk-fin li { font-size: 15px; }
+@media (max-width: 560px) {
+  .sk-nodes { grid-template-columns: 1fr; gap: 4px; }
+  .sk-n { grid-template-columns: 30px 1fr; justify-items: start; align-items: center; text-align: start; padding: 8px 12px; }
+  .sk-n svg { width: 28px; height: 28px; }
+  .sk-n small { display: none; }
+  .sk-ar { transform: rotate(-90deg); font-size: 18px; line-height: 1; }
+  .sk-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .sk-fin { grid-template-columns: 1fr; }
+  .sk-fin svg { max-width: 180px; margin: 0 auto; }
+}
+
+/* =========== logo design (lecture) =========== */
+.ix { list-style: none; margin: 18px 0; padding: 0; display: grid; gap: 8px; }
+.six { list-style: none; margin: 18px 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.six li { margin: 0; }
+.six a { display: grid; justify-items: center; gap: 6px; height: 100%; padding: 10px 6px; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; text-align: center; line-height: 1.3; }
+.six a:hover { border-color: var(--accent); }
+.six .n { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font: 600 14px var(--mono); }
+@media (max-width: 640px) { .six { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* name shortening */
+.nm2 { display: grid; gap: 8px; margin: 14px 0; }
+.nm2 > div { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 14px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--paper); }
+.nm2 .full { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--warn); font-size: 17px; }
+.nm2 .short { font: 600 24px var(--text); color: var(--ink); }
+.nm2 i { font-style: normal; color: var(--accent-ink); }
+
+/* association sun */
+.sun-how { margin: 0 0 14px; font-size: 16px; }
+.sun-how .muted { display: block; font-size: 14px; margin-top: 4px; }
+.sun-map { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; padding-top: 74px; }
+.sun-map::before { content: ""; position: absolute; top: 34px; right: 16%; left: 16%; height: 42px; border: 2px dashed var(--line); border-bottom: 0; border-radius: 14px 14px 0 0; }
+.sun-c { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 1; display: grid; justify-items: center; padding: 8px 20px; border-radius: 999px; background: var(--accent); color: var(--on-accent); text-align: center; white-space: nowrap; }
+.sun-c b { font-size: 18px; line-height: 1.2; }
+.sun-c span { font-size: 12px; opacity: .85; }
+.sun-g { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); position: relative; }
+.sun-g > b { flex-basis: 100%; font-size: 16px; color: var(--accent-ink); margin-bottom: 2px; }
+.sun-g button { border: 1px solid var(--line); background: var(--soft); color: var(--ink); border-radius: 999px; padding: 4px 12px; font: 400 14px/1.4 var(--text); cursor: pointer; text-align: start; transition: background .2s, border-color .2s, color .2s, opacity .2s; }
+.sun-g button:hover { border-color: var(--muted); }
+.sun-g button.keep { background: var(--ok-soft); border-color: var(--ok); color: var(--ink); font-weight: 600; }
+.sun-g button.keep::before { content: "✓ "; color: var(--ok); }
+.sun-g button.cross { text-decoration: line-through; text-decoration-color: var(--warn); color: var(--muted); opacity: .7; }
+.sun-out { margin: 14px 0 0; font-size: 15px; min-height: 1.6em; }
+.sun-out b { color: var(--accent-ink); }
+@media (max-width: 640px) { .sun-map { grid-template-columns: 1fr; padding-top: 64px; } .sun-map::before { display: none; } }
+
+/* style gallery */
+.sty { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin: 18px 0 10px; }
+.sty figure { margin: 0; }
+.sty a { display: block; aspect-ratio: 1; border-radius: var(--r-sm); overflow: hidden; background: #ffffff; border: 1px solid var(--line); }
+.sty img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.sty a:hover img { transform: scale(1.04); }
+.sty figcaption { margin: 6px 0 0; font-size: 14px; line-height: 1.35; color: var(--ink); text-align: start; }
+.sty .n { font: 500 12px var(--mono); color: var(--accent-ink); margin-inline-end: 6px; }
+@media (max-width: 760px) { .sty { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 480px) { .sty { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.combo { display: block; max-width: 260px; margin-top: 10px; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--line); }
+.combo img { display: block; width: 100%; height: auto; }
+
+/* what the font */
+.wtf-stage { display: flex; justify-content: center; align-items: baseline; gap: .5em; flex-wrap: wrap; margin: 16px 0 6px; padding: 18px 12px; border-radius: var(--r-sm); background: var(--soft); font-size: clamp(54px, 11vw, 96px); line-height: 1.15; color: var(--ink); transition: font-family 0s; }
+.wtf-stage[data-f="serif"] { font-family: "Frank Ruhl Libre", Georgia, serif; }
+.wtf-stage[data-f="sans"] { font-family: "Assistant", "IBM Plex Sans Hebrew", sans-serif; font-weight: 700; }
+.wtf-stage[data-f="slab"] .ltr { font-family: "Roboto Slab", serif; font-weight: 700; }
+.wtf-stage[data-f="slab"] span:last-child { font-family: "Suez One", serif; }
+.wtf-stage[data-f="cursive"] { font-family: "Dancing Script", cursive; font-weight: 700; }
+.wtf-stage[data-f="cursive"] span:last-child { font-family: "Playpen Sans Hebrew", cursive; font-weight: 400; }
+.wtf-stage[data-f="hand"] { font-family: "Playpen Sans Hebrew", cursive; }
+.wtf-name { margin: 0; font-size: 15px; color: var(--muted); min-height: 3em; }
+.wtf2 .card { display: flex; flex-direction: column; }
+.corner, .dim { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+.corner span, .dim span { display: grid; place-items: center; padding: 14px 6px; border-radius: var(--r-sm); background: var(--soft); font-size: clamp(22px, 3.4vw, 30px); line-height: 1.2; color: var(--ink); white-space: nowrap; }
+.corner .sharp { font-family: "Heebo", "IBM Plex Sans Hebrew", sans-serif; font-weight: 800; }
+.corner .round { font-family: "Varela Round", sans-serif; }
+.dim .flat { font-family: "Assistant", sans-serif; font-weight: 800; color: var(--accent-ink); }
+.dim .d3 { font-family: "Assistant", sans-serif; font-weight: 800; color: var(--accent); text-shadow: 1px 1px 0 color-mix(in srgb, var(--accent) 70%, #000), 2px 2px 0 color-mix(in srgb, var(--accent) 60%, #000), 3px 3px 0 color-mix(in srgb, var(--accent) 50%, #000), 4px 4px 0 color-mix(in srgb, var(--accent) 40%, #000), 6px 7px 8px rgba(0,0,0,.35); }
+
+/* owl stepper has six steps: the shared step-text rule stops at five */
+.anim[data-step="6"] .say > [data-s~="6"] { opacity: 1; visibility: visible; transition: opacity .45s ease .1s, visibility 0s; }
+.names a { display: grid !important; place-items: center; height: 110px; background: #ffffff; }
+.names img { max-height: 76px !important; max-width: 88% !important; width: auto !important; height: auto !important; object-fit: contain; }
+
+/* colour methods */
+.cm-img { display: grid; place-items: center; height: 150px; margin-bottom: 12px; border-radius: var(--r-sm); background: #ffffff; overflow: hidden; }
+.cm-img img { max-width: 88%; max-height: 136px; width: auto; height: auto; }
+.emo { max-width: 560px; }
+.col3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 18px 0; }
+.col3 .card { display: flex; flex-direction: column; }
+.cm { display: grid; place-items: center; height: 90px; margin-bottom: 12px; padding: 0 10%; border-radius: var(--r-sm); background: var(--soft); border: 0; width: 100%; --lm-mark: var(--ink); --lm-word: var(--ink); }
+.cm svg { width: 100%; max-width: 220px; height: auto; direction: ltr; }
+.cm-change { cursor: pointer; transition: box-shadow .25s; }
+.cm-change:hover { box-shadow: inset 0 0 0 1px var(--accent); }
+.cm-change svg { transition: --lm-mark .45s, --lm-word .45s; }
+.cm-fixed { background: #f4eadb; --lm-mark: #e2552b; --lm-word: #1f2a30; }
+@media (max-width: 700px) { .col3 { grid-template-columns: 1fr; } }
+
+/* owl axis */
+.ow-zones { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 8px; font-size: 14px; color: var(--muted); margin-bottom: 8px; text-align: center; }
+.ow-zones b { color: var(--ink); }
+.ow-zones .z1 { text-align: right; }
+.ow-zones .z3 { text-align: left; }
+.ow-row { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; padding: 12px 10px 4px; border-radius: var(--r-sm) var(--r-sm) 0 0; background: #e4e3e6; }
+.ow { padding: 0; border: 0; background: none; border-radius: 6px; cursor: pointer; opacity: .32; filter: grayscale(.6); transform: scale(.94); transition: opacity .4s, filter .4s, transform .45s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
+.ow img { display: block; width: 100%; height: auto; }
+.ow:hover { opacity: .7; }
+.ow.on { opacity: 1; filter: none; transform: scale(1.04); box-shadow: 0 0 0 2px #2e7d32; }
+.ow-axis { position: relative; height: 26px; border-radius: 0 0 var(--r-sm) var(--r-sm); background: #e4e3e6; margin-bottom: 4px; }
+.ow-axis::before { content: ""; position: absolute; top: 11px; right: 4%; left: 3%; height: 3px; background: #9bc59d; border-radius: 2px; }
+.ow-axis::after { content: ""; position: absolute; top: 6px; left: 1.4%; border: 6.5px solid transparent; border-right: 10px solid #2e7d32; border-left: 0; }
+.ow-fill { position: absolute; top: 11px; right: 4%; width: calc((100% - 7%) * var(--p, 0)); height: 3px; background: #2e7d32; border-radius: 2px; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.ow-dot { position: absolute; top: 5px; right: calc(4% + (100% - 7%) * var(--p, 0) - 7px); width: 15px; height: 15px; border-radius: 50%; background: #2e7d32; box-shadow: 0 0 0 3px #e4e3e6; transition: right .5s cubic-bezier(.2,.8,.2,1); }
+.owf[data-step="1"] .ow:nth-child(1), .owf[data-step="2"] .ow:nth-child(2), .owf[data-step="3"] .ow:nth-child(3), .owf[data-step="4"] .ow:nth-child(4), .owf[data-step="5"] .ow:nth-child(5), .owf[data-step="6"] .ow:nth-child(6) { opacity: 1; filter: none; transform: scale(1.04); box-shadow: 0 0 0 2px #2e7d32; }
+.owf[data-step="1"] { --p: 0; } .owf[data-step="2"] { --p: .2; } .owf[data-step="3"] { --p: .4; } .owf[data-step="4"] { --p: .6; } .owf[data-step="5"] { --p: .8; } .owf[data-step="6"] { --p: 1; }
+.owf[data-step="1"] .ow-zones .z1, .owf[data-step="4"] .ow-zones .z2, .owf[data-step="3"] .ow-zones .z2, .owf[data-step="5"] .ow-zones .z3, .owf[data-step="6"] .ow-zones .z3 { color: var(--accent-ink); }
+.owf .say { padding: 12px 16px; border-radius: var(--r-sm); background: var(--soft); }
+.owl-orig a { display: block; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--line); }
+.owl-orig img { display: block; width: 100%; height: auto; }
+@media (max-width: 560px) { .ow-row { gap: 3px; padding: 8px 6px 2px; } .ow-zones { font-size: 12px; } .say > * { font-size: 15px; } }
+
+/* client flow */
+.cflow { list-style: none; margin: 18px 0 8px; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; align-items: stretch; }
+.cflow li { position: relative; margin: 0; flex: 1 1 0; min-width: 72px; display: grid; justify-items: center; align-content: start; gap: 4px; padding: 0 4px; text-align: center; }
+.cflow li + li::before { content: "←"; position: absolute; right: -7px; top: 13px; color: var(--muted); font-size: 14px; }
+.cflow .ic { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 12px; border: 1px solid var(--line); background: var(--paper); }
+.cflow svg { width: 26px; height: 26px; fill: none; stroke: var(--ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.cflow b { font-size: 14px; line-height: 1.3; }
+.cflow small { font-size: 12px; line-height: 1.3; color: var(--muted); }
+.cflow .coin { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 2px solid var(--accent); color: var(--accent-ink); font: 600 20px var(--text); background: var(--accent-soft); }
+.cflow .pay b { color: var(--accent-ink); }
+@media (max-width: 700px) {
+  .cflow { flex-direction: column; gap: 0; }
+  .cflow li { display: grid; grid-template-columns: 46px 1fr; justify-items: start; align-items: center; gap: 0 12px; padding: 4px 0 14px; text-align: start; }
+  .cflow li + li::before { content: ""; right: 22px; top: -14px; width: 2px; height: 14px; background: var(--line); }
+  .cflow .ic, .cflow .coin { grid-row: span 2; }
+  .cflow b { align-self: end; }
+  .cflow small { grid-column: 2; align-self: start; }
+}
+
+/* brief download + summary */
+.brief-dl { display: flex; align-items: center; gap: 14px; max-width: 420px; margin: 16px 0; padding: 14px 18px; border-radius: var(--r); border: 1px solid var(--accent); background: var(--accent-soft); color: var(--ink); text-decoration: none; transition: transform .25s; }
+.brief-dl:hover { transform: translateY(-2px); }
+.brief-dl .ic svg { width: 36px; height: 36px; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; display: block; }
+.brief-dl b { display: block; font-size: 18px; }
+.brief-dl small { display: block; font-size: 14px; color: var(--muted); }
+.sum2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 18px 0; }
+.sum2 > div { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 16px 18px; }
+.sum2 h4 { margin: 0 0 8px; }
+.sum2 h4 .muted { font-weight: 400; font-size: 14px; }
+.sum2 li { font-size: 16px; }
+@media (max-width: 760px) { .sum2 { grid-template-columns: 1fr; } }
+.tribe-img { max-width: 520px; }
+</style>
+</head>
+<body data-ch="logodesign">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<!-- invented demo brand "luma": mark and wordmark -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="lm-mark" viewBox="0 0 100 100"><path style="fill:var(--lm-mark)" fill-rule="evenodd" d="M4 50a46 46 0 1 0 92 0a46 46 0 1 0-92 0zM42 34a18 18 0 1 0 36 0a18 18 0 1 0-36 0z"/></symbol>
+  <symbol id="lm-word" viewBox="0 12 226 76"><g style="stroke:var(--lm-word)" fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20V80M30 40V60a18 18 0 0 0 36 0V40M66 40V80M84 40V80M84 58a18 18 0 0 1 36 0V80M120 58a18 18 0 0 1 36 0V80M216 40V80"/><circle cx="196" cy="60" r="20"/></g></symbol>
+</svg>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">07 / 15</div>
+      <h1>עיצוב לוגו: מהרעיון לסקיצה</h1>
+      <p class="lede">בפרק הקודם ראינו מה זה לוגו טוב. כאן עוברים לאיך: מהמחקר והשאלות ללקוח, דרך שש שיטות ליצירת רעיונות, ועד סקיצה, הדמיה ולקוח מרוצה. הסדר כאן הוא סדר העבודה.</p>
+      <div class="ch-meta"><span>10 נושאים</span><span>6 הדגמות</span><span>2 כלים לנסות</span></div>
+    </header>
+    <figure class="illus hero"><img src="img/hero-logodesign.webp" alt="איור: שולחן מעצב באמצע תהליך לוגו, מפת חשיבה, לוח השראה, שורת סקיצות של ינשוף שהולך ממציאותי לאייקון פשוט, דוגמיות צבע ועיפרון" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= process ================= -->
+    <section class="sec">
+      <h2 id="process" data-short="תהליך העבודה">התהליך המקצועי מתחיל הרבה לפני אילוסטרייטור</h2>
+      <p>אם התהליך שלכם עדיין מתחיל בפתיחת תוכנה ושרטוט וקטורים, אתם בדרך לקשיים. <strong>שלב החשיבה הוא הקריטי.</strong></p>
+
+      <p data-added>זה הפרק שלוקח את חמשת השלבים האלה ומפרק אותם לעבודה: קודם המחקר, אחר כך השיטות ליצירת רעיונות, ובסוף צעדי העבודה והלקוח.</p>
+
+      <h3 id="five-stages">חמשת השלבים</h3>
+      <figure class="anim psf" data-steps="5" data-step-labels="מחקר ומיצוב|לוחות השראה|חקר וסקיצות|זיקוק ועידון|בניית המערכת">
+        <span class="anim__label">מחשיבה למערכת</span>
+        <div class="anim__stage">
+          <div class="ps-wrap"><span class="ps-fill" aria-hidden="true"></span><ol class="ps">
+            <li data-goto="1"><span class="n">1</span><b>מחקר ומיצוב</b><small>איפה המותג רוצה לעמוד?</small><span class="phase">חשיבה</span></li>
+            <li data-goto="2"><span class="n">2</span><b>לוחות השראה</b><small>כל רפרנס מסיבה מוצדקת</small><span class="phase">חשיבה</span></li>
+            <li data-goto="3"><span class="n">3</span><b>חקר וסקיצות</b><small>מהר, חופשי, על נייר</small><span class="phase">חשיבה</span></li>
+            <li data-goto="4"><span class="n">4</span><b>זיקוק ועידון ידני</b><small>הכיוונים החזקים ביותר</small><span class="phase">מערכת</span></li>
+            <li data-goto="5"><span class="n">5</span><b>בניית המערכת</b><small>כל גודל, כל הקשר</small><span class="phase">מערכת</span></li>
+          </ol></div>
+          <div class="say" aria-live="polite" data-added>
+            <p data-s="1"><strong>מה יוצא מהשלב:</strong> משפט מיצוב אחד שאפשר להגיד בקול, ומפה של המתחרים.</p>
+            <p data-s="2"><strong>מה יוצא מהשלב:</strong> לוח השראה אחד או שניים, וליד כל רפרנס מילה שמסבירה למה הוא שם.</p>
+            <p data-s="3"><strong>מה יוצא מהשלב:</strong> עשרות סקיצות קטנות, רובן לא טובות. זה בסדר, זה התפקיד שלהן.</p>
+            <p data-s="4"><strong>מה יוצא מהשלב:</strong> שניים או שלושה כיוונים, מצוירים נקי, שכל אחד מהם עונה על הבריף.</p>
+            <p data-s="5"><strong>מה יוצא מהשלב:</strong> מערכת שלמה: סמל, לוגו מילה <span class="ltr">(Wordmark)</span>, אווטאר, גרסה קטנה, ובדיקה שכולם עובדים יחד.</p>
+          </div>
+        </div>
+        <figcaption>שלושה שלבים של חשיבה לפני שנוגעים בוקטור, ועוד שניים שהופכים סקיצה למערכת.</figcaption>
+      </figure>
+      <ol class="steps">
+        <li><strong>מחקר ומיצוב מותג.</strong> איזה מקום המותג רוצה לתפוס בשוק? מול מי הוא מתחרה? מהי ההבטחה הבסיסית שלו? <a class="xref" href="strategy.html#story-audience-positioning">סיפור, קהל ומיצוב</a></li>
+        <li><strong>בניית לוחות השראה <span class="ltr">(Mood Boards)</span>.</strong> הלוחות מבוססים על האסטרטגיה. כל רפרנס נמצא שם מסיבה מוצדקת, לא באופן אקראי. <a class="xref" href="#mood-board">לוח רוח</a> <a class="xref" href="checklist.html">בורד השראה בהגשה</a></li>
+        <li><strong>חקר וסקיצות.</strong> על נייר או טאבלט. בשלב הזה עובדים מהר, בחופשיות, וממוקדים ברעיונות, לא בפיקסלים מושלמים.<span data-added> הרבה סקיצות קטנות, בשחור־לבן: זה מכריח את הצורה להיות חזקה בלי עזרה של צבע.</span> <a class="xref" href="#sketches">סקיצות</a></li>
+        <li><strong>זיקוק ועידון ידני.</strong> בחירת הכיוונים החזקים ביותר שמתחברים לבריף ול„שבט”, ועידונם באופן ידני ומדויק.</li>
+        <li><strong>בניית המערכת.</strong> מתכננים איך הלוגו יתנהג בגדלים שונים ובהקשרים שונים: גרסאות אייקון, לוגו מילה <span class="ltr">(Wordmark)</span>, אווטארים לרשתות חברתיות, בדיקות אנימציה (במידת הצורך). <a class="xref" href="logo.html#system">מערכת לוגו</a></li>
+      </ol>
+      <p class="lead"><strong>אתם לא מעצבים לוגו. אתם בונים מערכת זהות.</strong> אחרי שלב הסקיצות, התהליך מתמקד בבניית מערכת שלמה סביב הכיוונים החזקים ביותר.</p>
+      <figure class="anim orf" data-steps="5" data-no-bar>
+        <span class="anim__label">סמל אחד במרכז, וכל הגרסאות שלו במסלול</span>
+        <div class="anim__stage">
+          <div class="or">
+            <div class="or-map">
+              <svg viewBox="0 0 100 100" aria-hidden="true">
+                <circle class="ring" cx="50" cy="50" r="38"/><circle class="ring" cx="50" cy="50" r="24"/>
+                <line class="spk s1" x1="50" y1="50" x2="50" y2="12"/><line class="spk s2" x1="50" y1="50" x2="86.1" y2="38.3"/><line class="spk s3" x1="50" y1="50" x2="72.3" y2="80.7"/><line class="spk s4" x1="50" y1="50" x2="27.7" y2="80.7"/><line class="spk s5" x1="50" y1="50" x2="13.9" y2="38.3"/>
+              </svg>
+              <div class="or-c" aria-hidden="true"><svg viewBox="0 0 100 100"><use href="#lm-mark"/></svg></div>
+              <button type="button" class="or-i" data-goto="1" style="left:50%;top:12%"><span class="ic"><span class="app"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#lm-mark"/></svg></span></span>אייקון</button>
+              <button type="button" class="or-i" data-goto="2" style="left:86.1%;top:38.3%"><span class="ic"><svg class="wm" viewBox="0 12 226 76" aria-hidden="true"><use href="#lm-word" x="0" y="12" width="226" height="76"/></svg></span>לוגו מילה</button>
+              <button type="button" class="or-i" data-goto="3" style="left:72.3%;top:80.7%"><span class="ic"><span class="ava"><svg viewBox="0 0 100 100" aria-hidden="true"><use href="#lm-mark"/></svg></span></span>אווטאר</button>
+              <button type="button" class="or-i" data-goto="4" style="left:27.7%;top:80.7%"><span class="ic"><span class="tabchip"><svg viewBox="0 0 100 100" aria-hidden="true" style="width:16px;height:16px"><use href="#lm-mark"/></svg></span></span><span class="ltr">favicon</span></button>
+              <button type="button" class="or-i" data-goto="5" style="left:13.9%;top:38.3%"><span class="ic"><svg class="fr" viewBox="0 0 100 100" aria-hidden="true"><path class="tr1" d="M14 30A44 44 0 0 1 40 8M8 58A44 44 0 0 1 10 40" opacity=".55"/><g transform="rotate(-35 54 54)"><use href="#lm-mark" x="16" y="16" width="76" height="76"/></g></svg></span>אנימציה</button>
+            </div>
+            <div class="or-side">
+              <p class="hint">לחצו על גרסה במסלול:</p>
+              <div class="say" aria-live="polite">
+                <div data-s="1"><h4>אייקון אפליקציה</h4><p><strong>איפה:</strong> מסך הבית בטלפון, חנות האפליקציות.</p><p><strong>למה:</strong> ריבוע קטן עם פינות מעוגלות, ואין בו מקום לשם. רק הסמל, על רקע בצבע המותג.</p></div>
+                <div data-s="2"><h4>לוגו מילה <span class="ltr">(Wordmark)</span></h4><p><strong>איפה:</strong> כותרת האתר, חתימת דוא"ל, מסמכים ומצגות.</p><p><strong>למה:</strong> כשיש מקום לרוחב, השם עצמו עושה את העבודה וקל לקרוא אותו.</p></div>
+                <div data-s="3"><h4>אווטאר לרשתות</h4><p><strong>איפה:</strong> תמונת הפרופיל ברשתות החברתיות ובאפליקציות של הודעות.</p><p><strong>למה:</strong> הרשתות חותכות את התמונה לעיגול, אז הסמל חייב לשבת במרכז ולהשאיר אוויר מכל הצדדים.</p></div>
+                <div data-s="4"><h4>גרסה זעירה <span class="ltr">(favicon)</span></h4><p><strong>איפה:</strong> הלשונית בדפדפן והסימניות.</p><p><strong>למה:</strong> <span class="ltr">16</span> פיקסלים. שורדת רק צורה אחת חזקה, בלי פרטים ובלי טקסט.</p></div>
+                <div data-s="5"><h4>פריים מאנימציה</h4><p><strong>איפה:</strong> מסך טעינה, פתיח של סרטון, סטורי.</p><p><strong>למה:</strong> הסמל צריך לזוז בלי להתפרק. בודקים שגם באמצע התנועה הוא עדיין מזוהה.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption>מערכת של מותג הקפה מההדגמות בפרק הקודם: הסמל במרכז, ובמסלול חמש גרסאות שלו, כל אחת למקום אחר.</figcaption>
+      </figure>
+      <p>וכשהמערכת מוכנה, מגיע שלב ההצגה ללקוח: לא 20 אופציות, אלא פתרון מנומק. <a class="xref" href="presenting.html">הצגה ללקוח</a></p>
+    </section>
+
+    <!-- ================= research: the tribe ================= -->
+    <section class="sec">
+      <h2 id="research" data-short="עבודת המחקר">עבודת המחקר</h2>
+      <h3 id="tribe">שינוי התפיסה שמציל קריירות: הלוגו אינו עבור הלקוח שלכם</h3>
+      <p>הלוגו מיועד לאנשים שהלקוח שלכם רוצה להתחבר אליהם. הוא פיסה של שפה חזותית עבור „שבט” ספציפי. לפני שאתם משרטטים סקיצה, עליכם לדעת את התשובות לחמש השאלות האלה. לחצו על כל שאלה:</p>
+      <figure class="anim trf" data-steps="5" data-no-bar>
+        <span class="anim__label">חמש שאלות על השבט</span>
+        <div class="anim__stage">
+          <div class="tr">
+            <div class="tr-q">
+              <button type="button" class="tq" data-goto="1"><span class="n">1</span>מיהו אותו שבט?</button>
+              <button type="button" class="tq" data-goto="2"><span class="n">2</span>איך הם מתלבשים?</button>
+              <button type="button" class="tq" data-goto="3"><span class="n">3</span>איזו אסתטיקה הם כבר צורכים ברשתות החברתיות?</button>
+              <button type="button" class="tq" data-goto="4"><span class="n">4</span>אילו מותגים הם כבר אוהבים?</button>
+              <button type="button" class="tq" data-goto="5"><span class="n">5</span>אילו מסרים הם מנסים לאותת אחד לשני?</button>
+            </div>
+            <div>
+              <div class="tr-board" aria-hidden="true">
+                <div class="b-pot" style="background:#b86b45"><svg viewBox="0 0 48 48" style="stroke:#fbeee2"><path d="M18 9h12M19 9c0 6-8 9-8 18a13 11 0 0 0 26 0c0-9-8-12-8-18M7 41h34M14 45h20"/></svg></div>
+                <div class="b-cup" style="background:#4a2f22"><svg viewBox="0 0 48 48" style="stroke:#f1dcc4"><path d="M9 19h25v9a10 10 0 0 1-10 10h-5A10 10 0 0 1 9 28z M34 22h3a4.5 4.5 0 0 1 0 9h-3 M17 7c-2 3 2 5 0 8M25 7c-2 3 2 5 0 8"/></svg></div>
+                <div class="b-apron" style="background:#d9c4a0"><svg viewBox="0 0 48 48" style="stroke:#3b2a1e"><path d="M18 5v7M30 5v7M15 12h18l2 8-3 22H16l-3-22z M13 20H5M35 20h8 M19 28h10v6H19z"/></svg></div>
+                <div class="b-bread" style="background:#c99a5b"><svg viewBox="0 0 48 48" style="stroke:#2e1f14"><path d="M7 33c0-10 8-16 17-16s17 6 17 16v4H7z M16 22l4 6M23 20l4 6M30 22l4 6"/></svg></div>
+                <div class="b-feed" style="background:#efe6d6"><svg viewBox="0 0 48 48" style="stroke:#3b2a1e"><rect x="13" y="5" width="22" height="38" rx="4"/><path d="M18 13h5v5h-5zM25 13h5v5h-5zM18 20h5v5h-5zM25 20h5v5h-5z M24 37c-2-2-5-3-5-5.5a2.5 2.5 0 0 1 5-1 2.5 2.5 0 0 1 5 1c0 2.5-3 3.5-5 5.5z"/></svg></div>
+                <div class="pal"></div>
+              </div>
+              <p class="tr-cap">לוח שבט: מה האנשים האלה כבר רואים, לובשים ואוהבים</p>
+            </div>
+          </div>
+          <div class="say" aria-live="polite">
+            <div data-s="1"><span class="k">מיהו אותו שבט?</span><p>לא „כולם”, וגם לא „גילאי <span class="ltr">25–45</span>”. תארו אנשים: מה הם עושים בשבת בבוקר, על מה הם מוכנים לשלם יותר. <strong>דוגמה:</strong> לקוח הוא מאפייה שכונתית. השבט שלה הוא אנשים שמוכנים לחכות בתור בשביל לחם מחמצת, כי הם מעריכים עבודת יד.</p></div>
+            <div data-s="2"><span class="k">איך הם מתלבשים?</span><p>הבגדים הם שפה חזותית שהם כבר בחרו בעצמם: חומרים, צבעים, גימור. <strong>דוגמה:</strong> סינר בד, פשתן, צבעי אדמה, בלי לוגואים צעקניים. זה כבר רמז לפלטה ולמרקם של המותג.</p></div>
+            <div data-s="3"><span class="k">איזו אסתטיקה הם כבר צורכים ברשתות?</span><p>פתחו את הפיד שלהם, לא את שלכם. אילו צילומים, אילו פונטים, כמה אוויר יש בכל פוסט. <strong>דוגמה:</strong> אור טבעי, שולחנות עץ, תקריבים של קמח וידיים.</p></div>
+            <div data-s="4"><span class="k">אילו מותגים הם כבר אוהבים?</span><p>המותגים שהם כבר בחרו מראים מה הם מוכנים לקבל. <strong>דוגמה:</strong> בית קלייה קטן עם שקית נייר פשוטה וחותמת. לידו, לוגו מבריק בגרדיאנט ייראה להם זר.</p></div>
+            <div data-s="5"><span class="k">אילו מסרים הם מנסים לאותת אחד לשני?</span><p>מה הם רוצים שיחשבו עליהם כשהם מחזיקים את השקית ביד. <strong>דוגמה:</strong> „אני תומך בעסקים קטנים ואכפת לי ממה שאני אוכל”. הלוגו צריך לעזור להם להגיד את זה בלי מילים.</p></div>
+          </div>
+        </div>
+        <figcaption>לוח השבט מצויר בקוד: צבעים וסמלים פשוטים במקום תמונות. בעבודה אמיתית ממלאים אותו בצילומים של הקהל עצמו.</figcaption>
+      </figure>
+      <blockquote class="quote"><span class="ltr">“You’re not chasing the pretty design. You’re speaking visual culture here.”</span><br><span class="muted" style="font-size:17px">אתם לא רודפים אחרי העיצוב היפה. אתם מדברים כאן תרבות חזותית.</span></blockquote>
+      <figure class="fig tribe-img">
+        <a href="img/lecture-tribe-board.webp" data-lb data-cap="לוח שבט מההרצאה: מאפייה שכונתית"><img src="img/lecture-tribe-board.webp" alt="לוח שבט: ידיים עובדות על אובניים, מטבח עץ בהיר, אופה בסינר בד, שקיות נייר עם חותמת, ופוסט של לחם מחמצת" loading="lazy" width="838" height="913"></a>
+        <figcaption>ככה נראה לוח שבט אמיתי, מתוך ההרצאה: קדרות, סינר בד, שקיות נייר ולחם מחמצת. לא לוגואים, אלא העולם שהקהל כבר חי בו.</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- ================= questions for the client ================= -->
+    <section class="sec" data-rail>
+      <h2 id="client-questions" data-short="שאלות ללקוח">לפני שמתחילים: שאלות ללקוח</h2>
+      <p class="lead">לפני שתתחילו לעצב את הלוגו של הלקוח, יש לשאול אותו שאלות חשובות. התשובות עליהן יעזרו לקבוע את הצרכים שלו.</p>
+
+      <h3 id="q-new-or-refresh" data-rail-label="חדש או רענון">לוגו חדש או רענון של לוגו קיים</h3>
+      <ul class="dots">
+        <li>האם זה לוגו יחיד? מגוון של לוגואים? לוגואים לתתי־מותגים של החברה או של המותג?</li>
+        <li>תרגיל מיתוג? האם אתם מתכננים לוגו חדש, או עיצוב מחדש של לוגו קיים?</li>
+      </ul>
+      <div class="cards">
+        <div class="card"><span class="k">חדש</span><h4>עיצוב לוגו חדש לגמרי</h4><p>התהליך פשוט, כי אין שפה עיצובית שצריך להתחשב בה.</p></div>
+        <div class="card"><span class="k">רענון</span><h4>רענון של לוגו קיים</h4><p>יש לשאול את הלקוח מה ירצה לחדש ומה לשמר. <a class="xref" href="logo.html#redesign">כשמשנים לוגו בלי סיבה טובה</a></p></div>
+      </div>
+
+      <h3 id="q-scope" data-rail-label="דד ליין ותקציב">דד ליין, תקציב והיקף עבודה</h3>
+      <ul class="dots">
+        <li>מהו התאריך האחרון להגשה?</li>
+        <li>מהו תקציב העבודה?</li>
+        <li>מהו היקף העבודה? (לוגו לדפוס, לוגו לאינטרנט, מדיה חברתית וכו’)</li>
+      </ul>
+
+      <h3 id="q-name" data-rail-label="שם החברה">שם החברה או המותג</h3>
+      <p>חשבו על שם החברה או המותג: <strong>למה בחרו בשם הזה? מה הוא מעורר?</strong> בדרך כלל שם קצר טוב יותר משם ארוך. אין צורך להשתמש בכל השם החוקי של החברה בלוגו, מותר לקצר.</p>
+      <div class="gallery g2 natural names">
+        <a href="img/lecture-name-apple.webp" data-lb data-cap="Apple Computers מוצגת בלוגו בתור Apple"><img src="img/lecture-name-apple.webp" alt="הלוגו של Apple: התפוח השחור עם המילה Apple" loading="lazy" width="1200" height="426"></a>
+        <a href="img/lecture-name-adobe.webp" data-lb data-cap="Adobe Systems מוצגת בלוגו בתור Adobe"><img src="img/lecture-name-adobe.webp" alt="הלוגו של Adobe: הסמל האדום עם המילה Adobe" loading="lazy" width="660" height="198"></a>
+      </div>
+      <div class="nm2">
+        <div><span class="ltr full">Apple Computers</span><i aria-hidden="true">←</i><span class="ltr short">Apple</span></div>
+        <div><span class="ltr full">Adobe Systems</span><i aria-hidden="true">←</i><span class="ltr short">Adobe</span></div>
+      </div>
+      <p><span data-added>זה גם העיקרון השני של לוגו טוב: הלוגו צריך להחמיא לשם.</span> <a class="xref" href="logo.html#compliment-name">החמיאו לשם החברה</a></p>
+
+      <h3 id="q-audience" data-rail-label="קהל היעד">מי קהל היעד?</h3>
+      <ul class="dots">
+        <li>מי קהל היעד של החברה או המותג? ואיך החברה או המותג נתפסים בעיניו?</li>
+        <li>איך מתקשרים עם קהל היעד?</li>
+      </ul>
+      <p>תשובות לשאלות האלה יעזרו לתכנן אסטרטגיה, ולהציע רעיונות איך לתקוף את הבריף. <a class="xref" href="#tribe">מי השבט</a> <a class="xref" href="strategy.html#audience">למי המותג פונה</a></p>
+
+      <h3 id="q-character" data-rail-label="יופי או אופי">יופי או אופי?</h3>
+      <p>מה סוג האישיות שהמותג משקף? לוגו צריך להקרין את מהות החברה. כדי להגדיר את מהות המותג, יושבים עם הלקוח ויוצרים <strong>רשימת תארים ואסוציאציות במילים פשוטות</strong>, כפי שהלקוח מרגיש שהן מגדירות את העסק. מותגים רוצים להקרין ערכים מדויקים.</p>
+      <p><span data-added>הרשימה הזו היא בדיוק חומר הגלם של מפת החשיבה.</span> <a class="xref" href="#mind-maps">מפות חשיבה</a> <a class="xref" href="strategy.html#archetypes">12 הארכיטיפים</a></p>
+
+      <h3 id="q-competitors" data-rail-label="מתחרים">מי המתחרים?</h3>
+      <ul class="dots">
+        <li>מי המתחרים העיקריים של המותג או החברה?</li>
+        <li>איך החברה מבדלת את עצמה מהמתחרים?</li>
+        <li>הסתכלו על הלוגואים של המתחרים: האם יש נושאים משותפים?</li>
+        <li>האם יש קלישאות בעיצובי המתחרים שהייתם נמנעים מהן?</li>
+      </ul>
+      <div class="warn">
+        <span class="box-label">חשוב מאוד</span>
+        <p>לא לקחת יותר מדי השראה מהמתחרים, כדי להישאר מקוריים. <a class="xref" href="logo.html#original">מקורי</a> <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a></p>
+      </div>
+      <p><span data-added>את כל השאלות האלה, מסודרות לטופס אחד, תמצאו בבריף הלוגו שלי.</span> <a class="xref" href="#brief">בריף לוגו</a></p>
+    </section>
+    <!-- ================= six methods ================= -->
+    <section class="sec" data-rail>
+      <h2 id="ideas" data-short="שש שיטות לרעיונות">יצירת רעיונות והשראה: שש שיטות</h2>
+      <p class="lead">בבסיס כל לוגו טוב יש רעיון טוב. הנה שש שיטות והחלטות ליצירת רעיונות:</p>
+      <ol class="six">
+        <li><a href="#mind-maps"><span class="n">1</span>מפות חשיבה</a></li>
+        <li><a href="#mood-board"><span class="n">2</span>לוח רוח</a></li>
+        <li><a href="#graphic-style"><span class="n">3</span>שפה גרפית</a></li>
+        <li><a href="#sketches"><span class="n">4</span>סקיצות</a></li>
+        <li><a href="#fonts"><span class="n">5</span>פונט</a></li>
+        <li><a href="#color-method"><span class="n">6</span>צבעוניות</a></li>
+      </ol>
+
+      <!-- method 1 -->
+      <h3 id="mind-maps" data-rail-label="מפות חשיבה">שיטה 1. מפות חשיבה (שמש אסוציאציות)</h3>
+      <p>מפות מוח, מפות חשיבה או שמש אסוציאציות עוזרות לשקול כיווני עיצוב שונים. מפת המוח היא לא יותר מתהליך פשוט של <strong>התאחדות מילים</strong>: כותבים מילה במרכז, ואז יוצאים ממנה החוצה וכותבים מילים אחרות שעולות על הדעת.</p>
+      <p>בסופו של דבר מתקבל ענן מחשבה, ענן אסוציאציות. הענן הזה הוא מפת המוח, וממנו יצאו כל הרעיונות: על צורה, על צבע, על משמעות, ותובנות מהחיים.</p>
+      <figure class="fig">
+        <a href="img/lecture-mindmap-coffee.webp" data-lb data-cap="מפת חשיבה בכתב יד סביב המילה קפה"><img src="img/lecture-mindmap-coffee.webp" alt="מפת חשיבה בכתב יד בעט שחור: במרכז המילה קפה בתוך עיגול, ומסביבה חצים למילים כמו סוגי קפה, מכונות קפה, כוסות, פולי קפה, צבע, חם, לייף סטייל ואוכל" loading="lazy" width="1200" height="802"></a>
+        <figcaption>מפת חשיבה מההרצאה: מילה אחת במרכז, ומשם החוצה. שום מילה לא נמחקת.</figcaption>
+      </figure>
+      <p><strong>מה סוג האישיות שהמותג משקף?</strong> מתחילים מרשימת תארים ואסוציאציות במילים פשוטות, ויוצרים מפת חשיבה לכל שם תואר, אסוציאציה, מילה וכו’. לדוגמה, רשימה עבור בית קפה: <strong>קפה, תל־אביבי, מודרני־עכשווי, הייטקי־מתקדם.</strong> מיועד לאנשים שאוהבים לשבת עם כוס קפה ומחשב נייד, ולעבוד מבית קפה.</p>
+      <div class="widget sun" id="wsun">
+        <p class="sun-how"><strong>רושמים הכל!!! ולא מוחקים כלום!</strong> אחר כך מסמנים את המילים הטובות, שמתאימות, ושמים קו על המילים שלא מתאימות לקהל היעד או למשימה. <span class="muted">לחיצה אחת מסמנת, לחיצה שנייה מעבירה קו, שלישית מחזירה.</span></p>
+        <div class="sun-map">
+          <div class="sun-c"><b>בית קפה</b><span>תל־אביבי · מודרני · הייטקי</span></div>
+          <div class="sun-g" data-g="קפה"><b>קפה</b>
+            <button type="button">שחור</button><button type="button">קצפת</button><button type="button">כוס אספרסו קטנה</button><button type="button">פולי קפה</button>
+          </div>
+          <div class="sun-g" data-g="תל אביב"><b>תל אביב</b>
+            <button type="button" data-alt="עזריאלי">בניינים גבוהים</button><button type="button">עיר ללא הפסקה (שעון, יום ולילה, שמש, ירח)</button><button type="button">צבעוני (קשת)</button>
+          </div>
+          <div class="sun-g" data-g="הייטק"><b>הייטק</b>
+            <button type="button">אינטרנט <span class="ltr">WIFI</span></button><button type="button">מחשבים</button><button type="button">מעגל חשמלי</button><button type="button">חץ (סמן עכבר)</button>
+          </div>
+        </div>
+        <p class="sun-out" aria-live="polite"></p>
+      </div>
+      <p>אחרי הסימון של המילים, <strong>נסו לשלב אותן יחד בסקיצה.</strong> שימו לב לשינוי אחד שקרה ברשימה בהרצאה אחרי הסימון: „בניינים גבוהים” הפכו ל„עזריאלי”. <span data-added>מהכללי אל הספציפי: מגדל עזריאלי הוא צורה שאפשר לצייר, ושכל תל־אביבי מזהה.</span> <a class="xref" href="#sketches">סקיצות</a></p>
+
+      <!-- method 2 -->
+      <h3 id="mood-board" data-rail-label="לוח רוח">שיטה 2. לוח מחשבות, רגשות, רוח <span class="ltr">(Mood Board)</span></h3>
+      <p>לוחות הם שיטה טובה לקבוע את <strong>הטון (הצבעוניות) והסגנון העיצובי</strong> של הפרויקט. הלוח יציג את הרגשות, האסוציאציות והאסתטיקה שהלקוח מכוון אליהם. רצוי לשמור את הלוח בסביבת העבודה, כדי שיעזור להתמקד בשפה ובנראות שהפרויקט מכוון אליהן.</p>
+      <div class="gallery g3 natural">
+        <a href="img/lecture-moodboard-bodoni.webp" data-lb data-cap="לוח רוח: ספרייה, עור, עץ כהה ופונט Bodoni"><img src="img/lecture-moodboard-bodoni.webp" alt="לוח רוח קלאסי: ספרייה עם כורסת עור, חליפת טוויד, פונט Bodoni, דוגמאות צבע חומות ושחורות וחותמת" loading="lazy" width="930" height="726"></a>
+        <a href="img/lecture-moodboard-green.webp" data-lb data-cap="לוח רוח ירוק: לימונים, צמחים ומרקמים"><img src="img/lecture-moodboard-green.webp" alt="קולאז' של תמונות בירוק: פרוסות ליים, עלים, קקטוסים, שתייה ירוקה ומרקמים טבעיים" loading="lazy" width="640" height="463"></a>
+        <a href="img/lecture-moodboard-soft.webp" data-lb data-cap="לוח רוח רך: סוקולנטים, ירוק מנטה ונייר"><img src="img/lecture-moodboard-soft.webp" alt="לוח רוח בגוונים רכים של ירוק ושמנת: סוקולנטים, זוג, אריג עם דוגמה ודוגמאות צבע" loading="lazy" width="670" height="909"></a>
+      </div>
+      <figcaption>שלושה לוחות רוח מההרצאה. כל אחד קובע טון אחר עוד לפני שיש סקיצה אחת.</figcaption>
+      <p>איך בונים לוח השראה להגשה: <a class="xref" href="checklist.html">ההגשה: רשימת בדיקה</a></p>
+
+      <!-- method 3 -->
+      <h3 id="graphic-style" data-rail-label="שפה גרפית">שיטה 3. שפה גרפית: החלטה על סגנון</h3>
+      <p>לפני שמציירים, מחליטים באיזה סגנון גרפי הלוגו ידבר. אלה שנים־עשר הסגנונות שאני מציג בהרצאה. לחיצה על דוגמה פותחת אותה בגדול:</p>
+      <div class="sty">
+        <figure><a href="img/lecture-style-negative-space.webp" data-lb data-cap="טיפוגרפיה וחלל נגטיבי"><img src="img/lecture-style-negative-space.webp" alt="המילה HORSE באותיות אפורות עבות, וראש סוס מסתתר בחלל הלבן בתוך האותיות" loading="lazy" width="564" height="423"></a><figcaption><span class="n">01</span>טיפוגרפיה וחלל נגטיבי</figcaption></figure>
+        <figure><a href="img/lecture-style-spots.webp" data-lb data-cap="כתמים (SPOT)"><img src="img/lecture-style-spots.webp" alt="שישה סמלי חיות שחורים מכתמים מלאים: פינגווין, אורקה, זברה, פיל וחתול" loading="lazy" width="1200" height="710"></a><figcaption><span class="n">02</span>כתמים <span class="ltr">(SPOT)</span></figcaption></figure>
+        <figure><a href="img/lecture-style-even-line.webp" data-lb data-cap="קו מינימליסטי בעובי אחיד"><img src="img/lecture-style-even-line.webp" alt="ראש שור בקו כתום אחד בעובי אחיד, על רקע כהה" loading="lazy" width="564" height="564"></a><figcaption><span class="n">03</span>קו מינימליסטי, עובי אחיד</figcaption></figure>
+        <figure><a href="img/lecture-style-minimal-line.webp" data-lb data-cap="קו מינימליסטי"><img src="img/lecture-style-minimal-line.webp" alt="ראשי חיות בקו דק: ינשוף, אייל, זאב ושועל, על רקע כחול כהה ועל רקע לבן" loading="lazy" width="474" height="658"></a><figcaption><span class="n">04</span>קו מינימליסטי</figcaption></figure>
+        <figure><a href="img/lecture-style-polygon.webp" data-lb data-cap="פוליגון"><img src="img/lecture-style-polygon.webp" alt="ציפורי אוריגמי שבנויות ממשולשים בקו שחור דק" loading="lazy" width="564" height="564"></a><figcaption><span class="n">05</span>פוליגון</figcaption></figure>
+        <figure><a href="img/lecture-style-line.webp" data-lb data-cap="קו פשוט"><img src="img/lecture-style-line.webp" alt="זאב עם ראש מורם לשמיים, מצויר בקו אחד רציף ודק" loading="lazy" width="264" height="282"></a><figcaption><span class="n">06</span>קו פשוט</figcaption></figure>
+        <figure><a href="img/lecture-style-signature.webp" data-lb data-cap="סגנון חתימה"><img src="img/lecture-style-signature.webp" alt="עשרים חיות קטנות מצוירות בקו אחד בסגנון חתימה: פיל, ארנב, סוס, ציפור ועוד" loading="lazy" width="418" height="446"></a><figcaption><span class="n">07</span>סגנון חתימה</figcaption></figure>
+        <figure><a href="img/lecture-style-character.webp" data-lb data-cap="דמות"><img src="img/lecture-style-character.webp" alt="ראש שועל מאויר בכתום, לבן וחום, על רקע כתום" loading="lazy" width="564" height="564"></a><figcaption><span class="n">08</span>דמות</figcaption></figure>
+        <figure><a href="img/lecture-style-mascot.webp" data-lb data-cap="קמע ספורט"><img src="img/lecture-style-mascot.webp" alt="קמע של קבוצת גיימינג: טירנוזאורוס ירוק מעל מגן עם השם TRex" loading="lazy" width="564" height="564"></a><figcaption><span class="n">09</span>קמע ספורט</figcaption></figure>
+        <figure><a href="img/lecture-style-combo-tiger.webp" data-lb data-cap="שילוב של צורות: נמר ומנעול"><img src="img/lecture-style-combo-tiger.webp" alt="מנעול שבתוכו פנים של נמר, ומתחת שתי תמונות: נמר ומנעול" loading="lazy" width="564" height="564"></a><figcaption><span class="n">10</span>שילוב של צורות</figcaption></figure>
+        <figure><a href="img/lecture-style-geometric.webp" data-lb data-cap="צורות גיאומטריות"><img src="img/lecture-style-geometric.webp" alt="שועל קופץ בכתום, ומסביבו עיגולי עזר מקווקווים שמהם נבנתה הצורה" loading="lazy" width="400" height="300"></a><figcaption><span class="n">11</span>צורות גיאומטריות</figcaption></figure>
+        <figure><a href="img/lecture-style-vintage.webp" data-lb data-cap="וינטג' (VINTAGE)"><img src="img/lecture-style-vintage.webp" alt="לוגו בסגנון וינטג': שלושה חזירים בקו אדום, ומסביבם השם Three Blind Pigs באותיות מעוגלות" loading="lazy" width="564" height="564"></a><figcaption><span class="n">12</span>וינטג' <span class="ltr">(VINTAGE)</span></figcaption></figure>
+      </div>
+      <p class="muted" style="font-size:15px">הדוגמאות הן עבודות של מעצבים שונים, שאספתי להרצאה כדוגמאות לימוד.</p>
+      <div class="tip">
+        <span class="box-label">שילוב של צורות, מקרוב</span>
+        <p>שני דברים שקשורים למותג מתחברים לסימן אחד: נמר ומנעול, או לחם ומטרייה.</p>
+        <a class="combo" href="img/lecture-style-combo-bread.webp" data-lb data-cap="שילוב של צורות: לחם ומטרייה"><img src="img/lecture-style-combo-bread.webp" alt="מטרייה בצורת קרואסון עם טיפות גשם, ומתחת תמונות של קרואסון ושל מטרייה צהובה" loading="lazy" width="564" height="532"></a>
+      </div>
+      <p>הרבה מהסגנונות האלה הם גם סגנונות איור, ושווה לבחור אחד שיחזיק את כל השפה הגרפית. <a class="xref" href="visual-language.html#illustration-styles">חמישה סגנונות איור</a></p>
+
+      <!-- method 4 -->
+      <h3 id="sketches" data-rail-label="סקיצות">שיטה 4. סקיצות <span class="ltr">(Sketching)</span></h3>
+      <p>קחו את הזמן לציור סקיצות של הרעיונות שלכם בצורה חופשית, ואל תדאגו לאיך שהם נראים. שמרו על ראש פתוח, ואל תגבילו את עצמכם בשלב הזה.</p>
+      <p>לאופן הרישום יש ערך ומשמעות גבוהים לגילוי רעיונות. הרבה יותר מהיר לשרטט ולצייר עם עיפרון על נייר מאשר על מחשב, ואפשר למיין מהר יותר את הרעיונות שלא עובדים.</p>
+      <div class="gallery g2 natural">
+        <a href="img/lecture-sketch-lion.webp" data-lb data-cap="הספרייה הציבורית של ניו יורק: עשרות סקיצות של האריה בדרך ללוגו"><img src="img/lecture-sketch-lion.webp" alt="דף עם שש־עשרה סקיצות של ראש אריה, מגרסה מפורטת ועד סמל עגול, ליד הלוגו הסופי של הספרייה הציבורית של ניו יורק" loading="lazy" width="736" height="368"></a>
+        <a href="img/lecture-sketch-birds.webp" data-lb data-cap="עשרות סקיצות של ציפור, מגרסה לגרסה"><img src="img/lecture-sketch-birds.webp" alt="דף עם עשרים וארבע סקיצות קטנות של ראש ציפור בעיפרון, כל אחת מעט שונה" loading="lazy" width="1200" height="900"></a>
+        <a href="img/lecture-sketch-book.webp" data-lb data-cap="מחברת סקיצות: דגים וצורות"><img src="img/lecture-sketch-book.webp" alt="מחברת פתוחה עם סקיצות בעט שחור של דגים, עיגולים וצורות מתפתלות, ועט מונח עליה" loading="lazy" width="564" height="564"></a>
+        <a href="img/lecture-sketch-deer.webp" data-lb data-cap="מחברת סקיצות: איילים"><img src="img/lecture-sketch-deer.webp" alt="מחברת עם סקיצות של איילים בקו שחור, מסקיצה רופפת ועד צורה סגורה" loading="lazy" width="564" height="564"></a>
+      </div>
+      <figcaption>סקיצות מההרצאה, כולל הדרך של האריה של הספרייה הציבורית של ניו יורק: הרבה גרסאות קטנות, מהר, בלי לדאוג ליופי.</figcaption>
+      <div class="warn">
+        <span class="box-label">אבל למה סקיצות על נייר?</span>
+        <p>אם אתם פוסחים על שלב הסקיצות ועוברים ישר למחשב, אתם יכולים למצוא את עצמכם עובדים לשווא על עיצוב לא רלוונטי.</p>
+        <p>ובעיה נוספת: המחשב יכול לגרום לעיצובים שאינם חכמים, בלי קונספט, <strong>להיראות טובים ומלוטשים בקלות</strong>. ככה קל להתעלם מהעובדה שבעיצוב חסרים מרכיבים חיוניים, כמו רעיון או מסר חזק.</p>
+      </div>
+      <div class="gallery natural">
+        <a href="img/lecture-polished-1.webp" data-lb data-cap="Arlington Pediatric Center"><img src="img/lecture-polished-1.webp" alt="הלוגו של Arlington Pediatric Center: דמות מבוגר ודמות ילד בלבן על רקע כחול" loading="lazy" width="400" height="326"></a>
+        <a href="img/lecture-polished-2.webp" data-lb data-cap="The Computer Doctors"><img src="img/lecture-polished-2.webp" alt="הלוגו של The Computer Doctors, עם האות u בצורת עכבר" loading="lazy" width="590" height="220"></a>
+        <a href="img/lecture-polished-3.webp" data-lb data-cap="London 2012"><img src="img/lecture-polished-3.webp" alt="הלוגו של אולימפיאדת לונדון 2012: צורות שבורות בורוד שיוצרות את המספר 2012" loading="lazy" width="1065" height="1200"></a>
+        <a href="img/lecture-polished-4.webp" data-lb data-cap="Mama’s Baking"><img src="img/lecture-polished-4.webp" alt="הלוגו של Mama’s Baking: דמות אישה עם תנור בצורת פנים" loading="lazy" width="500" height="500"></a>
+      </div>
+      <figcaption>מתוך ההרצאה: לוגואים אמיתיים, נקיים ומלוטשים, שבכל זאת נכשלו. כל אחד מהם אפשר לקרוא גם בדרך שאף אחד לא התכוון אליה, ומבט נוסף על סקיצה היה תופס את זה.</figcaption>
+
+      <!-- method 5 -->
+      <h3 id="fonts" data-rail-label="פונט">שיטה 5. <span class="ltr">WHAT THE FONT</span></h3>
+      <p>כשעובדים על לוגו, יש שאלות שאתם צריכים לשאול את עצמכם (ואת הלקוח). הראשונה: <strong>איזה פונט?</strong> בחרו סוג ובדקו איך אותו „<span class="ltr">Abc</span> אלף” משנה אופי:</p>
+      <div class="widget wtf" id="wtf">
+        <div class="seg" role="group" aria-label="סוג הפונט">
+          <button type="button" aria-pressed="true" data-f="serif">סריף</button>
+          <button type="button" aria-pressed="false" data-f="sans">סן סריף</button>
+          <button type="button" aria-pressed="false" data-f="slab">סלאב</button>
+          <button type="button" aria-pressed="false" data-f="cursive">כתב מחובר</button>
+          <button type="button" aria-pressed="false" data-f="hand">כתב יד</button>
+        </div>
+        <div class="wtf-stage" data-f="serif"><span class="ltr">Abc</span><span>אלף</span></div>
+        <p class="wtf-name" aria-live="polite" data-added></p>
+      </div>
+      <div class="cards wtf2">
+        <div class="card"><span class="k">פינות</span><h4>פינות חדות מול פינות מעוגלות</h4><div class="corner"><span class="sharp">Abc אלף</span><span class="round">Abc אלף</span></div></div>
+        <div class="card"><span class="k">מימד</span><h4>עיצוב דו־מימדי (שטוח) מול תלת־מימדי</h4><div class="dim"><span class="flat">Abc אלף</span><span class="d3">Abc אלף</span></div></div>
+      </div>
+      <p>ההבדלים בין סוגי הפונטים, ואיך בוחרים ומזווגים: <a class="xref" href="typography.html#types">שישה סוגי פונטים</a> <a class="xref" href="typography.html#choosing">טיפים לבחירת פונטים</a></p>
+
+      <!-- method 6 -->
+      <h3 id="color-method" data-rail-label="צבעוניות">שיטה 6. צבעוניות</h3>
+      <p>השאלה השנייה: לוגו <strong>מונוכרומטי</strong> (בצבע אחד, או בצבע שמשתנה), או לוגו <strong>צבעוני עם צבעים קבועים</strong>?</p>
+      <div class="col3">
+        <div class="card"><a class="cm-img" href="img/lecture-color-mono.webp" data-lb data-cap="Nike: לוגו מונוכרומטי בצבע אחד"><img src="img/lecture-color-mono.webp" alt="הלוגו של Nike בשחור: המילה NIKE והסימן" loading="lazy" width="1200" height="585"></a><span class="k">מונוכרומטי</span><h4>צבע אחד</h4><p>הלוגו עובד בצבע אחד, והצורה עושה את כל העבודה. כמו <span class="ltr">Nike</span>.</p></div>
+        <div class="card"><a class="cm-img" href="img/lecture-color-nike-2.webp" data-lb data-cap="Nike: אותו סימן, בכל פעם בצבע אחר"><img src="img/lecture-color-nike-2.webp" alt="קופסת נעליים שחורה עם הסימן של Nike באדום" loading="lazy" width="975" height="714"></a><span class="k">מונוכרומטי</span><h4>צבע משתנה</h4><p>צבע אחד בכל פעם, אבל הוא מתחלף לפי ההקשר: על נעל, על קופסה, על שלט.</p></div>
+        <div class="card"><a class="cm-img" href="img/lecture-color-fixed.webp" data-lb data-cap="Pepsi: לוגו צבעוני עם צבעים קבועים"><img src="img/lecture-color-fixed.webp" alt="הלוגו של Pepsi: עיגול באדום, לבן וכחול מעל המילה pepsi" loading="lazy" width="1200" height="1200"></a><span class="k">צבעוני</span><h4>צבעים קבועים</h4><p>כמה צבעים, תמיד באותו סדר ובאותם גוונים. כמו <span class="ltr">Pepsi</span>.</p></div>
+      </div>
+      <div class="gallery natural">
+        <a href="img/lecture-color-nike-1.webp" data-lb data-cap="Nike: הסימן בזהב"><img src="img/lecture-color-nike-1.webp" alt="שלט מואר של Nike SB בזהב על רקע כהה" loading="lazy" width="1000" height="1000"></a>
+        <a href="img/lecture-color-nike-3.webp" data-lb data-cap="Nike: הסימן בירוק"><img src="img/lecture-color-nike-3.webp" alt="נעל חומה עם הסימן של Nike בירוק" loading="lazy" width="300" height="225"></a>
+        <a href="img/lecture-color-nike-4.webp" data-lb data-cap="Nike: הסימן בצהוב"><img src="img/lecture-color-nike-4.webp" alt="נעל שחורה עם הסימן של Nike בצהוב" loading="lazy" width="300" height="225"></a>
+        <a href="img/lecture-color-pepsi-cans.webp" data-lb data-cap="Pepsi: אותו עיגול על כל פחית"><img src="img/lecture-color-pepsi-cans.webp" alt="שלוש פחיות של Pepsi: כחולה, כסופה ושחורה, כולן עם אותו עיגול" loading="lazy" width="875" height="445"></a>
+        <a href="img/lecture-color-pepsi-truck.webp" data-lb data-cap="Pepsi: על משאית"><img src="img/lecture-color-pepsi-truck.webp" alt="משאית כחולה של Pepsi עם הלוגו בצד" loading="lazy" width="480" height="325"></a>
+        <a href="img/lecture-color-pepsi-building.webp" data-lb data-cap="Pepsi: על בניין"><img src="img/lecture-color-pepsi-building.webp" alt="מבנה כחול של Pepsi עם הלוגו הגדול על החזית" loading="lazy" width="1200" height="900"></a>
+      </div>
+      <figcaption>מתוך ההרצאה: הסימן של <span class="ltr">Nike</span> מחליף צבע מנעל לנעל, והעיגול של <span class="ltr">Pepsi</span> נשאר באותם צבעים על פחית, על משאית ועל בניין.</figcaption>
+      <div class="ok-box">
+        <span class="box-label">אבל איך מחליטים על צבעים מתאימים?</span>
+        <p><strong>קודם כל לפי הנושא, ושנית לפי המסר התת־הכרתי של הצבעים.</strong> וכמובן, לכל כלל יש יוצא מן הכלל, ולכן מותר לשבור את ההמלצות. <a class="xref" href="color.html#psychology">פסיכולוגיה של צבעים</a> <a class="xref" href="logo.html#shape-color">צבע על גבי הצורה</a></p>
+      </div>
+      <figure class="fig emo">
+        <a href="img/lecture-color-emotion.webp" data-lb data-cap="מדריך רגשות צבע: לוגואים מסודרים לפי צבע"><img src="img/lecture-color-emotion.webp" alt="מדריך רגשות צבע: לוגואים מוכרים מסודרים לפי צבע, עם מילה לכל צבע: אופטימיות, ידידותיות, התרגשות, יצירתיות, אמון, שלווה ואיזון" loading="lazy" width="1080" height="946"></a>
+        <figcaption>מהשקף בהרצאה: לוגואים מוכרים מסודרים לפי צבע. ככה „המסר התת־הכרתי של הצבעים” נראה בשוק.</figcaption>
+      </figure>
+    </section>
+    <!-- ================= owl axis ================= -->
+    <section class="sec">
+      <h2 id="owl-axis" data-short="מרפרנס ללוגו">מרפרנס ללוגו: ציר ההפשטה</h2>
+      <p>איך הופכים דבר אמיתי ללוגו? ציירתי ינשוף אחד שש פעמים, על ציר אחד: מצד אחד <strong>מציאותי</strong>, הרפרנס, ומהצד השני <strong>מסוגנן</strong>, עד שהוא נהיה אייקון. באמצע עובר סגנון „ספר ילדים”. לחצו על הינשופים, מהמציאותי אל האייקון:</p>
+      <figure class="anim owf" data-steps="6" data-step-labels="רפרנס|סקיצה|קו מפושט|ספר ילדים|עיצוב לוגו|אייקון">
+        <span class="anim__label">ינשוף אחד, שש רמות של הפשטה</span>
+        <div class="anim__stage">
+          <div class="ow-zones" aria-hidden="true">
+            <span class="z1">מציאותי · <b>רפרנס</b></span>
+            <span class="z2">סגנון: „ספר ילדים”</span>
+            <span class="z3"><b>עיצוב לוגו</b> · מסוגנן</span>
+          </div>
+          <div class="ow-row">
+            <button type="button" class="ow" data-goto="1"><img src="img/lecture-owl-1.webp" alt="ינשוף מציאותי בסקיצה כחולה, עם נוצות מפורטות" width="325" height="563" loading="lazy"></button>
+            <button type="button" class="ow" data-goto="2"><img src="img/lecture-owl-2.webp" alt="ינשוף בסקיצה סגולה, עדיין מפורט אבל עם פחות נוצות" width="343" height="563" loading="lazy"></button>
+            <button type="button" class="ow" data-goto="3"><img src="img/lecture-owl-3.webp" alt="ינשוף בקו כחול מפושט, עם שתי שורות נוצות בלבד" width="360" height="561" loading="lazy"></button>
+            <button type="button" class="ow" data-goto="4"><img src="img/lecture-owl-4.webp" alt="ינשוף בסגנון ספר ילדים, בקו סגול עם כנף צבועה ונוצות בצורת זיגזג" width="337" height="563" loading="lazy"></button>
+            <button type="button" class="ow" data-goto="5"><img src="img/lecture-owl-5.webp" alt="ינשוף כחול מלא, צורה אחת עם שני זיגזגים לבנים" width="332" height="563" loading="lazy"></button>
+            <button type="button" class="ow" data-goto="6"><img src="img/lecture-owl-6.webp" alt="ינשוף סגול מלא, צורה זוויתית אחת עם זיגזג לבן אחד: אייקון" width="360" height="557" loading="lazy"></button>
+          </div>
+          <div class="ow-axis" aria-hidden="true"><i class="ow-fill"></i><b class="ow-dot"></b></div>
+          <div class="say" aria-live="polite">
+            <div data-s="1"><span class="k">מציאותי · רפרנס</span><p data-added>מתחילים מהדבר עצמו: תמונה, או ציור מתוך תמונה. כל הנוצות, כל הצללים. זה לא לוגו, זה מחקר. כאן לומדים איך ינשוף באמת בנוי: הראש בלי צוואר, האוזניים, העיניים הגדולות.</p></div>
+            <div data-s="2"><span class="k">סקיצה</span><p data-added>אותו ינשוף, כבר בלי חלק מהנוצות. מתחילים להחליט מה חשוב ומה רעש.</p></div>
+            <div data-s="3"><span class="k">קו מפושט</span><p data-added>נשארות שתי שורות נוצות, וקו המתאר נהיה שלם יותר. הינשוף עדיין מזוהה לגמרי, עם חצי מהפרטים.</p></div>
+            <div data-s="4"><span class="k">סגנון „ספר ילדים”</span><p data-added>הנוצות הופכות לזיגזג, הכנף לכתם צבע אחד. כאן הציור כבר מקבל אופי וסגנון משלו, אבל הוא עדיין איור ולא סימן.</p></div>
+            <div data-s="5"><span class="k">עיצוב לוגו</span><p data-added>צורה אחת מלאה, בצבע אחד. שני זיגזגים לבנים מספרים „נוצות”, והעיניים עושות את כל השאר. זה כבר עובד בשחור־לבן ובגודל קטן.</p></div>
+            <div data-s="6"><span class="k">אייקון · מסוגנן</span><p data-added>הקצה של הציר: זוויות ישרות, זיגזג אחד, שום קו מיותר. מה שנשאר הוא בדיוק מה שצריך כדי לזהות ינשוף. ומה שהשארנו בחוץ חשוב לא פחות ממה שהשארנו בפנים. <a class="xref" href="logo.html#simplicity">פשטות</a></p></div>
+          </div>
+        </div>
+        <figcaption>הינשופים חתוכים מהציור המקורי שלי. ככל שזזים שמאלה, יורדים פרטים ונשארת צורה.</figcaption>
+      </figure>
+      <figure class="fig owl-orig">
+        <a href="img/lecture-owl-axis.webp" data-lb data-cap="ציר ההפשטה: הציור המקורי מההרצאה, מינשוף מציאותי (רפרנס) ועד אייקון מסוגנן"><img src="img/lecture-owl-axis.webp" alt="שישה ינשופים בשורה על ציר ירוק: מימין ינשוף מציאותי בסקיצה ומתחתיו המילים מציאותי ורפרנס, באמצע סגנון ספר ילדים, ומשמאל ינשופים מלאים בכחול ובסגול עם המילים עיצוב לוגו, מסוגנן ואייקון" loading="lazy" width="1600" height="782"></a>
+        <figcaption>הציור המקורי מההרצאה, כמו שהוא. לחיצה פותחת אותו בגדול.</figcaption>
+      </figure>
+      <p data-added>תרגיל: קחו את החיה או החפץ שיצאו לכם ממפת החשיבה, ציירו אותם שש פעמים על אותו ציר, ועצרו בנקודה שבה הם עדיין מזוהים אבל כבר שלכם. <a class="xref" href="#mind-maps">מפות חשיבה</a></p>
+    </section>
+
+    <!-- ================= how to work: five steps ================= -->
+    <section class="sec" data-rail>
+      <h2 id="how-to-work" data-short="איך עובדים על לוגו">אז איך עובדים על לוגו: חמישה צעדים</h2>
+      <p>כל מה שראינו עד עכשיו, מסודר לפי סדר העבודה:</p>
+
+      <h3 id="step-notebook" data-rail-label="מחברת ואסוציאציות">1. מחברת, אסוציאציות והחלטות</h3>
+      <p>לוקחים מחברת ומתחילים לרשום את כל האסוציאציות שעולות בראש בנוגע לחברה, למותג, לעסק, למוצר או לשם: הרגשה, צבע, צורה, חומר. קשה או רך, עגול או זוויתי, בתנועה או סטטי, גדול או קטן, חזק, חמוד, מצחיק או רציני וכו’. בעצם, כל רעיון ואסוציאציה. <a class="xref" href="#mind-maps">מפות חשיבה</a></p>
+      <p>מבצעים את עבודת המחקר, ומחליטים על סגנון גרפי ועל סוג לוגו. <strong>המלצה: לעצב את הלוגו בכל חמשת הסוגים.</strong> <a class="xref" href="#graphic-style">שפה גרפית</a> <a class="xref" href="logo.html#logo-types">חמשת סוגי הלוגו</a></p>
+
+      <h3 id="step-sketch" data-rail-label="סקיצות קלילות">2. סקיצות קלילות, הרבה מהן</h3>
+      <p>מתחילים לצייר סקיצות קלילות, בלי יותר מדי פרטים, ומחפשים כמה שיותר אפשרויות וזוויות לאותו קונספט. מומלץ עם עיפרון. למי שמתקשה להתחייב ומרבה במחיקות, עדיף טוש או עט. <strong>העיקר שיהיה הרבה חיפוש והרבה ציורים</strong>: רק כך מגיעים לתוצאות. <a class="xref" href="#sketches">סקיצות</a></p>
+
+      <h3 id="step-computer" data-rail-label="מחשב, ובדיקה בסוף">3. עוברים למחשב, ובסוף מחפשים דומים</h3>
+      <p>עוברים למחשב ומתחילים לעבוד. בסיום העבודה מחפשים באינטרנט רעיונות דומים, ומוודאים שזה לא נעשה בעבר.</p>
+      <div class="note">
+        <span class="box-label">למה לחפש רק אחרי העבודה?</span>
+        <p>זה אמנם יכול להיראות כמו בזבוז זמן, אבל בגלל הטבע האנושי: אם נחפש דוגמאות לפני שנתחיל לעבוד, יש סיכוי טוב שנגמור בכך שנעתיק את העיצוב, <strong>אפילו אם לא נתכוון לזה</strong>. <a class="xref" href="logo.html#original">מקורי</a></p>
+      </div>
+
+      <h3 id="step-rest" data-rail-label="לעזוב לכמה ימים">4. לעזוב את הלוגו לכמה ימים</h3>
+      <p>לעזוב את הלוגו, לא לגעת בו כמה ימים ולא להראות ללקוח. לחכות. אחרי זמן מה חוזרים אליו, מתבוננים בו ושואלים את עצמכם:</p>
+      <ul class="dots">
+        <li>„האם יש משהו שאני יכול לשפר?”</li>
+        <li>„האם זה הכי טוב שאני יכול לעשות?”</li>
+      </ul>
+      <p>אם התשובה טובה, אפשר להתקדם ולשלוח ללקוח.</p>
+
+      <h3 id="step-mockup" data-rail-label="תמיד בהדמיה">5. תמיד לשלוח בהדמיה</h3>
+      <p>תמיד מומלץ לשלוח ללקוח את הלוגו <strong>בהדמיה</strong>. זה יוצר קישור טוב יותר בין הלקוח לעיצוב, ונותן לו המחשה אמיתית של איך הלוגו ייראה על המוצר, בהדפסה וכו’. יש אלפי אתרים שנותנים מוקאפים חינמיים כל שבוע! רק צריך להקדיש קצת זמן ולהוריד אותם. לא להתעצל. <a class="xref" href="mockups.html#sources">איפה מוצאים מוקאפים</a></p>
+    </section>
+
+    <!-- ================= process with the client ================= -->
+    <section class="sec">
+      <h2 id="client-process" data-short="התהליך עם הלקוח">תהליך העבודה, כולל הלקוח</h2>
+      <p>וכך זה נראה מהצד של הלקוח: שמונה תחנות, ושני תשלומים.</p>
+      <ol class="cflow">
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z M8.5 10l1.5 1.5 2.5-3 M8.5 15l1.5 1.5 2.5-3 M14 10h3M14 15h3"/></svg></span><b>בריף</b></li>
+        <li class="pay"><span class="coin" aria-hidden="true">₪</span><b>מקדמה</b><small><span class="ltr">50%</span></small></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="M14.5 14.5L20 20"/></svg></span><b>מחקר</b></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l3-1L19 7l-2-2L5 17z M15 7l2 2 M4 4l16 16"/></svg></span><b>סקיצות</b></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="7" width="15" height="11"/><path d="M3 15V4h14 M9 11h6M9 14h4"/></svg></span><b>מצגת</b><small>(קונספטים)</small></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H11l-4 4v-4H4z M8 9h8M8 12h5"/></svg></span><b>ביקורת</b></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v9 M9 12l3 4 3-4 M5 20h14 M5 17v3M19 17v3"/></svg></span><b>תיקונים</b><small>על הקונספט שנבחר</small></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="7" width="15" height="11"/><path d="M3 15V4h14 M9 11h6M9 14h4"/></svg></span><b>מצגת סופית</b></li>
+        <li class="pay"><span class="coin" aria-hidden="true">₪</span><b>תשלום סופי</b><small><span class="ltr">50%</span></small></li>
+        <li><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12"/><path d="M3 6l9 7 9-7"/></svg></span><b>הגשה</b></li>
+      </ol>
+      <p class="muted" style="font-size:15px">שרטטתי מחדש את התרשים מההרצאה. חצי מהתשלום לפני שמתחילים לחקור, וחצי לפני שמוסרים את הקבצים.</p>
+      <h3 id="what-to-present">ומה שמים במצגת?</h3>
+      <p>להציג לכל היותר שלושה פתרונות (מערכות) חזקים, כל אחד מנומק ומחובר לבריף ולקהל היעד. איך בונים את המצגת עצמה, שקופית אחר שקופית, יש בפרק ההצגה ללקוח. <a class="xref" href="presenting.html#options">פתרונות, לא אופציות</a> <a class="xref" href="presenting.html#structure">המצגת, 18 שקופיות</a></p>
+    </section>
+
+    <!-- ================= AI sketchbook ================= -->
+    <section class="sec">
+      <h2 id="ai-sketchbook" data-short="AI כסקצ'בוק">השתמשו ב־<span class="ltr">AI</span> כסקצ'בוק, לא כמחליף</h2>
+      <p>אל תתעלמו מ־<span class="ltr">AI</span> לחלוטין. השתמשו בו ככלי לחקר ולקונספטים. בקשו ממנו:</p>
+      <ul class="dots">
+        <li>„הראה לי 20 דרכים שבהן צורת מגן יכולה להרגיש רכה יותר.”</li>
+        <li>או: „הדגם איך צורת <span class="ltr">V</span> יכולה לרמוז על מהירות בלי לצייר כנפיים.”</li>
+      </ul>
+      <p><strong>התהליך:</strong> הרעיונות והכיוון האסטרטגי צריכים להגיע מכם. תנו ל־<span class="ltr">AI</span> לייצר את חומר הגלם, ואז קחו אותו ועצבו כמו בן אדם: עם מוח, אחריות וטעם.</p>
+      <figure class="anim skf" data-steps="3" data-no-bar>
+        <span class="anim__label">שלושה שלבים, ורק אחד מהם של המכונה</span>
+        <div class="anim__stage">
+          <div class="sk-nodes">
+            <button type="button" class="sk-n" data-goto="1"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M24 35v-5h4a3 3 0 0 0 3-3v-4l3-1-3-6A12 12 0 0 0 9 18c0 4 2 7 4 9v8"/><path d="M19 12a4.5 4.5 0 0 1 3 8v2h-4v-2a4.5 4.5 0 0 1 1-8z"/></svg><span>אסטרטגיה אנושית</span><small>הבריף, השבט, הרעיון והכיוון. שלכם.</small></button>
+            <span class="sk-ar" aria-hidden="true">←</span>
+            <button type="button" class="sk-n ai" data-goto="2"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="10" y="10" width="20" height="20" rx="3"/><path d="M15 4v6M20 4v6M25 4v6M15 30v6M20 30v6M25 30v6M4 15h6M4 20h6M4 25h6M30 15h6M30 20h6M30 25h6"/><path d="M15 24l2.5-8h1L21 24M16 21.5h4M24 16v8"/></svg><span>חומר גלם מ־<span class="ltr">AI</span></span><small>מהירות ויעילות: הרבה וריאציות, מהר.</small></button>
+            <span class="sk-ar" aria-hidden="true">←</span>
+            <button type="button" class="sk-n" data-goto="3"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 32l3-9L27 7l6 6-16 16z M24 10l6 6M8 32l9-3"/></svg><span>זיקוק אנושי</span><small>בחירה, עידון ביד, ואחריות על התוצאה.</small></button>
+          </div>
+          <div class="sk-cv">
+            <div>
+              <div class="sk-brief"><span class="k">הבריף (לקוח שהמצאתי)</span>
+                <dl><dt>המותג</dt><dd>אפליקציית ביטוח לצעירים</dd><dt>השבט</dt><dd>בני <span class="ltr">25</span> שלא סובלים בירוקרטיה</dd><dt>הרעיון</dt><dd>הגנה, בלי פחד</dd><dt>הכיוון</dt><dd>מגן, אבל רך ונגיש</dd></dl>
+              </div>
+            </div>
+            <div>
+              <div class="sk-pr"><span class="ltr on">show me 20 ways a shield shape can feel softer</span><span class="ltr">show how a V can hint at speed without drawing wings</span></div>
+              <div class="sk-grid" id="sk-grid" aria-hidden="true"></div>
+            </div>
+            <div>
+              <div class="sk-fin">
+                <svg viewBox="0 0 100 100" id="sk-big" aria-hidden="true"></svg>
+                <ul class="dots">
+                  <li>בוחרים כיוון אחד מתוך העשרים, זה שהכי מתאים לבריף.</li>
+                  <li>מציירים אותו מחדש ביד: רדיוס אחד לכל הפינות, קצה תחתון מעוגל ולא חד.</li>
+                  <li>בודקים אותו במבחני החובה, ולוקחים אחריות על התוצאה.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="say" aria-live="polite">
+            <p data-s="1"><strong>אסטרטגיה אנושית:</strong> הרעיונות והכיוון האסטרטגי באים מכם. ה־<span class="ltr">AI</span> לא יודע מה הלקוח צריך ולמי הוא מדבר, אז הוא לא מתחיל את העבודה.</p>
+            <p data-s="2"><strong>חומר גלם מ־<span class="ltr">AI</span>:</strong> עכשיו מבקשים ממנו לחקור, לא לעצב. כאן הוא חזק: מהירות ויעילות, הרבה וריאציות בדקות, והדמיות מציאותיות.</p>
+            <p data-s="3"><strong>זיקוק אנושי:</strong> לוקחים את חומר הגלם ומעצבים כמו בן אדם: עם מוח, אחריות וטעם. כל ההחלטות היצירתיות והאסטרטגיות שלכם, הכלי רק האיץ.</p>
+          </div>
+        </div>
+        <figcaption>לחצו על כל שלב. המגנים בשלב השני נוצרים כאן בקוד, מהחד ביותר לרך ביותר, כדי להראות מה „חומר גלם” אומר.</figcaption>
+      </figure>
+      <div class="warn">
+        <span class="box-label">השורה התחתונה</span>
+        <p>אם אתם מוסרים את כל העבודה ל־<span class="ltr">AI</span>, אתם הופכים למוצר חסר ערך. אם אתם משתמשים בו כדי להרחיב את החשיבה שלכם, קשה מאוד להחליף אתכם.</p>
+      </div>
+      <h3 id="ai-to-client">ומה אומרים על זה ללקוח</h3>
+      <p>אין מה להסתיר. ככה אני מציע להציג את זה: „אנחנו משתמשים בכלי <span class="ltr">AI</span> כדי לייעל תהליכים, לייצר וריאציות במהירות ולבנות הדמיות מציאותיות. זה כלי עבודה לגיטימי שמאפשר לנו להשקיע יותר זמן בחשיבה אסטרטגית ופחות בעבודה טכנית. <strong>כל ההחלטות היצירתיות והאסטרטגיות הן שלנו. הכלי רק מאיץ.</strong>”</p>
+      <p class="note" data-added>כמה כלים שכדאי להכיר: <span class="ltr">Midjourney</span> לאיכות אסתטית גבוהה, <span class="ltr">Adobe Firefly</span> שאומן על תוכן מורשה ולכן בטוח יותר לשימוש מסחרי, ו־<span class="ltr">Recraft</span> שמייצר ישירות קבצי וקטור <span class="ltr">(SVG)</span>. אבל זכרו: כל אחד מהם הוא סקצ'בוק, לא מעצב.</p>
+    </section>
+
+    <!-- ================= brief ================= -->
+    <section class="sec">
+      <h2 id="brief" data-short="בריף לוגו">בריף לוגו</h2>
+      <p>את השאלות ללקוח ריכזתי לתבנית אחת: בריף לוגו בקובץ <span class="ltr">Word</span>, שאפשר להוריד, למלא עם הלקוח בפגישה הראשונה ולשמור בתיק הפרויקט.</p>
+      <a class="brief-dl" href="https://www.misha.co.il/_files/ugd/21aa29_ef8476121f9148eebd332c72194963e9.docx?dn=%D7%91%D7%A8%D7%99%D7%A3%20%D7%9C%D7%95%D7%92%D7%95%20-%20%D7%97%D7%93%D7%A9%20%D7%A2%D7%9D%20%D7%98%D7%91%D7%9C%D7%94.docx" rel="noopener">
+        <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z M15 3v4h4 M9 12h6M9 15h6M9 18h4"/></svg></span>
+        <span><b>בריף לוגו</b><small>תבנית <span class="ltr">Word (.docx)</span>, נפתחת להורדה</small></span>
+      </a>
+      <p>ואם צריך בריף אסטרטגי רחב יותר, לכל המותג ולא רק ללוגו: <a class="xref" href="strategy.html#brief">בריף אסטרטגי בעמוד אחד</a></p>
+    </section>
+
+    <!-- ================= summary ================= -->
+    <section class="sec">
+      <h2 id="summary" data-short="אז מה למדנו">אז מה למדנו</h2>
+      <div class="sum2">
+        <div>
+          <h4>מה זה לוגו טוב <span class="muted">(הפרק הקודם)</span></h4>
+          <ul class="dots">
+            <li><a href="logo.html#what-is-logo">מה זה לוגו</a>, ו<a href="logo.html#why-logo">למה צריך לוגו</a>.</li>
+            <li>למדנו <a href="logo.html#logo-not-brand">להבדיל בין מותג לבין לוגו</a>.</li>
+            <li><a href="logo.html#symbol-vs-logo">ההבדל בין סמל לבין לוגו</a>, וההבנה של שימוש בסמלים מוכרים בלוגו.</li>
+            <li><a href="logo.html#three-jobs">התפקידים של הלוגו</a>: זיהוי, הבחנה, תקשורת.</li>
+            <li><a href="logo.html#principles">חמישה עקרונות שיוצרים לוגו חזק</a>: פשטות, החמיאו לשם החברה, נראה טוב בשחור ולבן, ניתן להרחבה, מקורי.</li>
+            <li><a href="logo.html#logo-types">חמשת סוגי הלוגואים</a>: לוגו סמל עם שם, לוגו טיפוגרפי, לוגו טיפוגרפי וסמל, לוגו מערכתי <span class="ltr">(Logo System)</span>, לוגו דמות <span class="ltr">(Brand Character)</span>.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>שלבי העבודה <span class="muted">(הפרק הזה)</span></h4>
+          <ol class="steps">
+            <li><a href="#client-questions">עבודת מחקר: לשאול שאלות</a>. לוגו חדש או רענון, דד ליין, תקציב והיקף עבודה, שם החברה, קהל היעד, יופי או אופי (ערכים, מסרים), מי המתחרים.</li>
+            <li><a href="#ideas">שיטות ליצירת רעיונות והשראה</a>: מפות חשיבה (שמש אסוציאציות), לוח מחשבות, רגשות, רוח <span class="ltr">(Mood Board)</span>.</li>
+            <li><a href="#graphic-style">שפה גרפית: החלטה על סגנון</a>. טיפוגרפיה וחלל נגטיבי, כתמים, קו מינימליסטי בעובי אחיד, קו פשוט, סגנון חתימה, פוליגון, דמות, קמע ספורט, שילוב של צורות, צורות גיאומטריות, וינטג'.</li>
+            <li><a href="#sketches">סקיצות ידניות על הנייר</a>.</li>
+            <li><a href="#fonts">החלטה על פונט</a>.</li>
+            <li><a href="#color-method">צבעוניות</a>: צבע קבוע, צבע משתנה, מונוכרומטי.</li>
+          </ol>
+        </div>
+      </div>
+      <h3 id="value-curve">הכלים השתנו, אבל המקצוע לא מת. הרף פשוט עלה.</h3>
+      <figure class="anim vcf" data-steps="3" data-step-labels="ערך ביצועי|ערך אסטרטגי|נקודת המפנה">
+        <span class="anim__label">שני קווים שמתחלפים</span>
+        <div class="anim__stage">
+          <svg class="vc-svg" viewBox="0 0 620 290" role="img" aria-label="גרף: הערך הביצועי יורד לאורך הזמן, הערך האסטרטגי עולה, והם נחצים באמצע">
+            <path class="gr" d="M80 110H570M80 180H570M200 30V250M320 30V250M440 30V250"/>
+            <path class="vc-area" d="M322.5 147.0L332.4 138.3L342.3 129.8L352.2 121.7L362.1 114.1L372.0 107.1L381.9 100.8L391.8 95.2L401.7 90.3L411.6 86.1L421.5 82.4L431.4 79.3L441.2 76.7L451.1 74.5L461.0 72.6L470.9 71.1L480.8 69.8L490.7 68.8L500.6 67.9L510.5 67.2L520.4 66.6L530.3 66.2L540.2 65.8L550.1 65.5L560.0 65.2L560.0 220.6L550.1 220.4L540.2 220.1L530.3 219.7L520.4 219.3L510.5 218.8L500.6 218.1L490.7 217.4L480.8 216.4L470.9 215.3L461.0 213.9L451.1 212.3L441.2 210.3L431.4 207.9L421.5 205.1L411.6 201.8L401.7 198.0L391.8 193.6L381.9 188.5L372.0 182.9L362.1 176.6L352.2 169.8L342.3 162.5L332.4 154.8L322.5 147.0Z"/>
+            <path class="ax" d="M80 26V250H574M74 34L80 24L86 34M566 244L576 250L566 256"/>
+            <text x="80" y="16" text-anchor="middle">ערך</text>
+            <text x="582" y="256">זמן</text>
+            <text x="92" y="274">פעם</text>
+            <text x="560" y="274" text-anchor="end">היום</text>
+            <path class="vc-ex" pathLength="1" d="M80.0 69.4L90.0 69.6L100.0 69.9L110.0 70.3L120.0 70.7L130.0 71.2L140.0 71.9L150.0 72.7L160.0 73.7L170.0 74.8L180.0 76.2L190.0 77.9L200.0 80.0L210.0 82.4L220.0 85.3L230.0 88.8L240.0 92.7L250.0 97.3L260.0 102.5L270.0 108.3L280.0 114.8L290.0 121.8L300.0 129.3L310.0 137.0L320.0 145.0L330.0 153.0L340.0 160.7L350.0 168.2L360.0 175.2L370.0 181.7L380.0 187.5L390.0 192.7L400.0 197.3L410.0 201.2L420.0 204.7L430.0 207.6L440.0 210.0L450.0 212.1L460.0 213.8L470.0 215.2L480.0 216.3L490.0 217.3L500.0 218.1L510.0 218.8L520.0 219.3L530.0 219.7L540.0 220.1L550.0 220.4L560.0 220.6"/>
+            <path class="vc-st" pathLength="1" d="M80.0 233.2L90.0 232.9L100.0 232.6L110.0 232.2L120.0 231.7L130.0 231.1L140.0 230.4L150.0 229.5L160.0 228.5L170.0 227.2L180.0 225.6L190.0 223.7L200.0 221.4L210.0 218.7L220.0 215.5L230.0 211.7L240.0 207.3L250.0 202.2L260.0 196.4L270.0 189.9L280.0 182.8L290.0 175.0L300.0 166.7L310.0 158.0L320.0 149.2L330.0 140.4L340.0 131.7L350.0 123.4L360.0 115.6L370.0 108.5L380.0 102.0L390.0 96.2L400.0 91.1L410.0 86.7L420.0 82.9L430.0 79.7L440.0 77.0L450.0 74.7L460.0 72.8L470.0 71.2L480.0 69.9L490.0 68.9L500.0 68.0L510.0 67.3L520.0 66.7L530.0 66.2L540.0 65.8L550.0 65.5L560.0 65.2"/>
+            <text class="vc-l ex lb" x="92" y="54">ערך ביצועי</text>
+            <text class="vc-l st lb" x="560" y="48" text-anchor="end">ערך אסטרטגי</text>
+            <g class="vc-x"><line x1="322.5" y1="147" x2="322.5" y2="250"/><circle class="r" cx="322.5" cy="147" r="13"/><circle class="d" cx="322.5" cy="147" r="6.5"/><text x="332" y="240">נקודת המפנה</text></g>
+          </svg>
+          <div class="say" aria-live="polite">
+            <p data-s="1"><strong>ערך ביצועי:</strong> לשרטט וקטור נקי, להכין עשר וריאציות, לייצא קבצים. את כל זה הכלים עושים היום מהר וכמעט בחינם, ולכן הערך שלו יורד.</p>
+            <p data-s="2"><strong>ערך אסטרטגי:</strong> להבין את הקהל, לבחור כיוון ולנמק אותו. את זה הכלים לא יודעים לעשות, ולכן הערך שלו עולה.</p>
+            <p data-s="3"><strong>נקודת המפנה:</strong> מכאן החשיבה שווה יותר מהביצוע. הכלים השתנו, אבל המקצוע לא מת. הרף פשוט עלה.</p>
+          </div>
+        </div>
+        <figcaption>הערך של הביצוע הטכני יורד, הערך של החשיבה האסטרטגית עולה. הגרף מראה כיוון, לא נתונים מדודים.</figcaption>
+      </figure>
+      <p>אם אתם יודעים לדבר שפה חזותית לקהל היעד, לעצב מערכות במקום סמלים בודדים, ולחשוב במונחים של פסיכולוגיית צורות וצבעים, אתם לא רק תשגשגו כמעצבי לוגו ב־<span class="ltr">2026</span>. אתם תהיו הכרחיים.</p>
+      <p class="lead"><strong>העתיד לא שייך למי שלוחץ על הכפתורים מהר יותר, אלא למי שיודע איזה כפתורים ללחוץ, ומדוע.</strong></p>
+      <p><a class="xref" href="logo.html#ai-era">לוגו בעידן ה־AI</a></p>
+    </section>
+
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* page widgets: association sun, font tester, AI sketchbook shields */
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* association sun: click a word to keep it, again to cross it out, again to reset */
+  (function () {
+    var w = document.getElementById("wsun"); if (!w) return;
+    var out = w.querySelector(".sun-out");
+    function upd() {
+      var keep = [], cross = 0;
+      Array.prototype.forEach.call(w.querySelectorAll(".sun-g button"), function (b) {
+        if (b.classList.contains("keep")) keep.push(b.textContent.trim());
+        if (b.classList.contains("cross")) cross++;
+      });
+      if (!keep.length && !cross) { out.innerHTML = "עוד לא סימנתם כלום. שום מילה לא נמחקת, רק מסמנים."; return; }
+      out.innerHTML = (keep.length ? "לסקיצה: <b>" + keep.join(" + ") + "</b>" : "עוד לא בחרתם מילים לסקיצה") + (cross ? " · " + cross + " מילים עם קו (הן נשארות על הדף)" : "");
+    }
+    w.addEventListener("click", function (e) {
+      var b = e.target.closest(".sun-g button"); if (!b) return;
+      if (b.classList.contains("keep")) { b.classList.remove("keep"); b.classList.add("cross"); b.setAttribute("aria-pressed", "mixed"); }
+      else if (b.classList.contains("cross")) { b.classList.remove("cross"); b.removeAttribute("aria-pressed"); }
+      else { b.classList.add("keep"); b.setAttribute("aria-pressed", "true"); }
+      upd();
+    });
+    upd();
+  })();
+
+  /* what the font */
+  (function () {
+    var w = document.getElementById("wtf"); if (!w) return;
+    var st = w.querySelector(".wtf-stage"), nm = w.querySelector(".wtf-name"), seg = w.querySelector(".seg");
+    var T = {
+      serif: "סריף: לאותיות יש „רגליים” קטנות בקצוות. קלאסי, מסורתי, אמין.",
+      sans: "סן סריף: בלי רגליים. נקי, מודרני, ישיר.",
+      slab: "סלאב: סריף עבה ומלבני. חזק, יציב, קצת תעשייתי.",
+      cursive: "כתב מחובר (Cursive): האותיות זורמות אחת לתוך השנייה. אלגנטי, אישי, רגשי. בעברית הבחירה מצומצמת, אז כאן ה„אלף” בכתב יד.",
+      hand: "כתב יד: כאילו מישהו כתב את זה עכשיו. חם, אנושי, לא רשמי."
+    };
+    function set(f) { st.setAttribute("data-f", f); nm.textContent = T[f]; }
+    seg.addEventListener("click", function (e) {
+      var b = e.target.closest("button"); if (!b) return;
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      set(b.getAttribute("data-f"));
+    });
+    set("serif");
+  })();
+
+
+
+  /* 05.18 twenty shields, from the sharpest to the softest, then one refined by hand */
+  (function () {
+  function shield(r) {
+    var f = function (v) { return Math.round(v * 10) / 10; };
+    var rc = 2 + 12 * r, dip = 8 - 14 * r, tr = 9 * r;
+    return "M" + f(14 + rc) + " 12Q50 " + f(12 + dip * 2) + " " + f(86 - rc) + " 12Q86 12 86 " + f(12 + rc) + "V44" +
+      "C86 " + f(68 + 6 * r) + " " + f(64 + 4 * r) + " " + f(84 + 2 * r) + " " + f(50 + tr) + " " + f(94 - .35 * tr) +
+      "Q50 94 " + f(50 - tr) + " " + f(94 - .35 * tr) +
+      "C" + f(36 - 4 * r) + " " + f(84 + 2 * r) + " 14 " + f(68 + 6 * r) + " 14 44" +
+      "V" + f(12 + rc) + "Q14 12 " + f(14 + rc) + " 12Z";
+  }
+  var sg = document.getElementById("sk-grid");
+  if (sg) {
+    var s = "";
+    for (var k = 0; k < 20; k++) {
+      var r = k / 19, extra = k % 3 === 1 ? '<path class="in" transform="translate(50 50) scale(.5) translate(-50 -50)" d="' + shield(r) + '"/>' : k % 3 === 2 ? '<circle class="dt" cx="50" cy="48" r="8"/>' : "";
+      s += '<svg viewBox="0 0 100 100" style="--i:' + k + '"><path class="sh" style="fill-opacity:' + (k % 2 ? ".9" : ".25") + '" d="' + shield(r) + '"/>' + extra + "</svg>";
+    }
+    sg.innerHTML = s;
+  }
+  var big = document.getElementById("sk-big");
+  if (big) {
+    var R = .78, rc = 2 + 12 * R;
+    big.innerHTML = '<path class="sh" d="' + shield(R) + '"/>' +
+      '<circle class="cl" cx="' + (14 + rc) + '" cy="' + (12 + rc) + '" r="' + rc + '"/><circle class="cl" cx="' + (86 - rc) + '" cy="' + (12 + rc) + '" r="' + rc + '"/>' +
+      '<circle class="cl" cx="50" cy="52" r="40"/><path class="cl" d="M50 2V100M2 46H98"/>';
+  }
+  })();
+});
+</script>
+</body>
+</html>

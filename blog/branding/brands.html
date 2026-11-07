@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>איך מותגים גדולים נבנים · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="קנבס המותג: למה 95% מהחלטות הקנייה רגשיות, למה לוגו אינו מותג, הרעיון המארגן, פילוח לפי תפיסת עולם, נכסים בחמשת החושים, עקביות רדיקלית, Top of Mind, ומקרה המבחן של טחינה ברכה.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="איך מותגים גדולים נבנים · מדריך המיתוג">
+<meta property="og:description" content="95% מההחלטות רגשיות. הרעיון המארגן, נכסים חושיים, עקביות רדיקלית ומותג Top of Mind.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/canvas-trains.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* ---- illustrations cropped from the lecture deck: they keep their own paper colour ---- */
+.illus.paper img { background: #efeee9; }
+.illus.narrow { max-width: 460px; }
+.paper-box { background: #efeee9; border-radius: var(--r); overflow: hidden; }
+
+/* ---- lecture credit ---- */
+.credit { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 220px); gap: 22px; align-items: center; margin: 24px 0; }
+.credit .illus { margin: 0; }
+.credit .illus img { border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line)); }
+@media (max-width: 640px) { .credit { grid-template-columns: 1fr; } .credit .illus { max-width: 260px; } }
+
+/* ---- 95 / 5 brain ---- */
+.e95 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+.e95 svg { width: 100%; max-width: 340px; display: block; margin-inline: auto; }
+.e95 .head { fill: none; stroke: var(--muted); stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.e95 .emo { fill: var(--accent); }
+.e95 .rat { fill: var(--fill); stroke: var(--muted); stroke-width: 1.2; }
+.e95 .gyri { fill: none; stroke: color-mix(in srgb, var(--on-accent) 35%, transparent); stroke-width: 2; stroke-linecap: round; }
+.e95 .n95 { font: 700 46px var(--display); fill: var(--on-accent); }
+.e95 .n5 { font: 500 13px var(--mono); fill: var(--ink); }
+.e95 .lead-l { stroke: var(--muted); stroke-width: 1; }
+.e95-legend { display: grid; gap: 14px; }
+.e95-legend div { border-inline-start: 4px solid var(--accent); padding: 4px 14px; }
+.e95-legend div.r { border-color: var(--muted); }
+.e95-legend b { display: block; font: 700 52px/1 var(--display); color: var(--accent-ink); }
+.e95-legend .r b { color: var(--muted); }
+.e95-legend span { font-size: 16px; line-height: 1.5; color: var(--ink); }
+@media (max-width: 640px) { .e95 { grid-template-columns: 1fr; } }
+
+/* ---- supermarket path (stepper) ---- */
+.sm-stage { position: relative; border-radius: 12px; overflow: hidden; background: #efeee9; }
+.sm-stage img { display: block; width: 100%; height: auto; }
+.sm-spot {
+  position: absolute; transform: translate(-50%, -50%); width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid #c41f2b; background: rgba(255, 255, 255, .86); color: #c41f2b;
+  font: 600 14px var(--mono); display: grid; place-items: center; padding: 0;
+  transition: background .25s, color .25s, box-shadow .25s, transform .25s;
+}
+.sm-spot.on { background: #c41f2b; color: #fff; box-shadow: 0 0 0 7px rgba(196, 31, 43, .22); transform: translate(-50%, -50%) scale(1.08); }
+.sm-tag {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+  background: #141414; color: #fff; font: 500 13px/1.3 var(--text); padding: 4px 10px; border-radius: 999px; white-space: nowrap;
+  opacity: 0; pointer-events: none; transition: opacity .25s;
+}
+.sm-spot.on .sm-tag { opacity: 1; }
+.sm-text { margin-top: 16px; min-height: 3.4em; }
+.sm-text p { display: none; margin: 0; font-size: 17px; line-height: 1.65; }
+.sm-text p b { color: var(--accent-ink); }
+.sm:not([data-step]) .sm-text [data-s="1"], .sm[data-step="1"] .sm-text [data-s="1"], .sm[data-step="2"] .sm-text [data-s="2"],
+.sm[data-step="3"] .sm-text [data-s="3"], .sm[data-step="4"] .sm-text [data-s="4"] { display: block; }
+@media (max-width: 560px) { .sm-spot { width: 28px; height: 28px; font-size: 12px; } .sm-tag { font-size: 12px; } }
+
+/* ---- product vs brand flip cards ---- */
+.flip-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; margin: 22px 0 12px; }
+.flip-top p { margin: 0; font-size: 15px; color: var(--muted); }
+.flips { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 26px; }
+.flip {
+  display: grid; text-align: start; cursor: pointer; font: inherit; color: var(--ink);
+  border: 1px solid var(--line); background: var(--paper); border-radius: var(--r); padding: 18px 18px 14px;
+  transition: border-color .3s, background .3s;
+}
+.flip:hover { border-color: var(--muted); }
+.flip .face { grid-area: 1 / 1; display: flex; flex-direction: column; gap: 6px; transition: opacity .35s, transform .35s, visibility .35s; }
+.flip .brand { opacity: 0; visibility: hidden; transform: translateY(8px); }
+.flip[aria-pressed="true"] { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 9%, var(--paper)); }
+.flip[aria-pressed="true"] .prod { opacity: 0; visibility: hidden; transform: translateY(-8px); }
+.flip[aria-pressed="true"] .brand { opacity: 1; visibility: visible; transform: none; }
+.flip .tag { align-self: flex-start; font: 600 12px var(--text); padding: 2px 10px; border-radius: 999px; background: var(--soft); border: 1px solid var(--line); color: var(--muted); }
+.flip .brand .tag { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.flip svg { width: 76px; height: 76px; margin: 6px 0 2px; }
+.flip svg .s { fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.flip svg .m { fill: none; stroke: var(--muted); stroke-width: 2; stroke-linecap: round; }
+.flip svg .a { fill: var(--accent); stroke: none; }
+.flip svg .as { fill: none; stroke: var(--accent); stroke-width: 2.4; stroke-linecap: round; }
+.flip b { font-size: 18px; line-height: 1.35; }
+.flip .d { font-size: 15px; line-height: 1.55; color: var(--muted); }
+.flip .hint { margin-top: auto; padding-top: 8px; font-size: 13px; color: var(--muted); }
+@media (max-width: 760px) { .flips { grid-template-columns: 1fr; } .flip { min-height: 0; } }
+
+/* ---- organizing idea ring ---- */
+.rf .ring-wrap { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: 26px; align-items: center; }
+.ring { position: relative; aspect-ratio: 1; width: 100%; }
+.ring svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.ring .orbit { fill: none; stroke: var(--line); stroke-width: .5; }
+.ring .ln { stroke: var(--line); stroke-width: .5; transition: stroke .3s, stroke-width .3s; }
+.rf[data-step="1"] .ln1, .rf[data-step="2"] .ln2, .rf[data-step="3"] .ln3, .rf[data-step="4"] .ln4, .rf[data-step="5"] .ln5 { stroke: var(--accent); stroke-width: 1.2; }
+.ring .core {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 38%; aspect-ratio: 1; border-radius: 50%;
+  background: var(--accent); color: var(--on-accent); display: grid; place-content: center; text-align: center;
+  font: 700 clamp(24px, 4.4vw, 32px)/.95 var(--display); box-shadow: 0 0 0 9px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+.ring .core small { display: block; font: 500 12px/1.3 var(--text); margin-top: 6px; }
+.ring .node {
+  position: absolute; transform: translate(-50%, -50%); width: 25%; aspect-ratio: 1; border-radius: 50%;
+  border: 2px solid var(--line); background: var(--paper); color: var(--ink); padding: 4px;
+  font: 600 clamp(12px, 1.5vw, 14px)/1.25 var(--text); display: grid; place-items: center; text-align: center;
+  transition: border-color .25s, background .25s, box-shadow .25s;
+}
+.ring .node:hover { border-color: var(--muted); }
+.ring .node.on { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent); }
+.ring-panel .seg { margin-bottom: 14px; }
+.ring-panel [data-p] { display: none; }
+.rf:not([data-step]) [data-p="1"], .rf[data-step="1"] [data-p="1"], .rf[data-step="2"] [data-p="2"], .rf[data-step="3"] [data-p="3"],
+.rf[data-step="4"] [data-p="4"], .rf[data-step="5"] [data-p="5"] { display: block; }
+.ring-panel h4 { margin: 0 0 4px; font: 700 34px/1.1 var(--display); color: var(--accent-ink); }
+.ring-panel .what { font-size: 15px; color: var(--muted); margin-bottom: 12px; }
+.ring-panel .ex { border-inline-start: 3px solid var(--accent2); padding: 2px 14px; font-size: 16px; line-height: 1.6; }
+.ring-panel .ex.ask { border-color: var(--line); color: var(--muted); font-style: normal; }
+.rf.tlv .b-apple, .rf:not(.tlv) .b-tlv { display: none; }
+@media (max-width: 760px) { .rf .ring-wrap { grid-template-columns: 1fr; } .ring { max-width: 360px; margin-inline: auto; } }
+
+/* ---- conceptual audience ---- */
+.aud { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 24px 0; }
+.aud-card { margin: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); overflow: hidden; }
+.aud-card .pic { position: relative; background: #efeee9; aspect-ratio: 4 / 3.4; display: grid; place-items: end center; overflow: hidden; }
+.aud-card .pic img { display: block; height: 100%; width: auto; max-width: 100%; object-fit: contain; object-position: bottom; }
+.aud-card .badge { position: absolute; top: 12px; left: 12px; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; }
+.aud-card .badge svg { width: 22px; height: 22px; fill: none; stroke: #fff; stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.aud-card.no .badge { background: #c4262d; }
+.aud-card.yes .badge { background: #12804a; }
+.aud-card figcaption { margin: 0; padding: 14px 16px 16px; font-size: 16px; line-height: 1.6; color: var(--ink); }
+.aud-card figcaption b { display: block; font: 700 30px/1.1 var(--display); margin-bottom: 4px; }
+.aud-card.no figcaption b { color: var(--warn); }
+.aud-card.yes figcaption b { color: var(--ok); }
+.demo-card { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 14px; color: var(--muted); }
+.demo-card span { text-decoration: line-through; text-decoration-color: var(--warn); }
+.demo-card span::before { content: "☑ "; text-decoration: none; display: inline-block; margin-inline-end: 2px; }
+.callout { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 14px; align-items: start; }
+.callout svg { width: 52px; height: 52px; fill: none; stroke: var(--accent-ink); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 640px) { .aud { grid-template-columns: 1fr; } }
+
+/* ---- five senses ---- */
+.sense-btns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.sense-btns button {
+  display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 12px 6px 10px; border-radius: 12px;
+  border: 1px solid var(--line); background: var(--soft); color: var(--ink); font: 600 15px/1.2 var(--text);
+  transition: border-color .25s, background .25s;
+}
+.sense-btns button:hover { border-color: var(--muted); }
+.sense-btns button.on { border-color: var(--accent); background: var(--accent-soft); }
+.sense-btns svg { width: 34px; height: 34px; fill: none; stroke: var(--muted); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke .25s; }
+.sense-btns button.on svg { stroke: var(--accent-ink); }
+.sense-btns small { font: 400 12px var(--mono); color: var(--muted); direction: ltr; }
+.sense-panel { margin-top: 18px; min-height: 7.5em; }
+.sense-panel [data-p] { display: none; }
+.sf:not([data-step]) [data-p="1"], .sf[data-step="1"] [data-p="1"], .sf[data-step="2"] [data-p="2"], .sf[data-step="3"] [data-p="3"],
+.sf[data-step="4"] [data-p="4"], .sf[data-step="5"] [data-p="5"] { display: block; }
+.sense-panel h4 { margin: 0 0 6px; font: 700 36px/1.1 var(--display); color: var(--accent-ink); }
+.sense-panel p { margin: 0 0 8px; font-size: 17px; line-height: 1.65; }
+@media (max-width: 560px) { .sense-btns { gap: 5px; } .sense-btns button { font-size: 13px; padding: 10px 2px 8px; } .sense-btns small { display: none; } .sense-btns svg { width: 28px; height: 28px; } }
+
+/* ---- iron rule ---- */
+.rails2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 20px 0; }
+.rails2 > div { border-radius: var(--r); padding: 16px 18px; background: var(--paper); border: 1px solid var(--line); }
+.rails2 h4 { margin: 0 0 4px; font: 700 30px/1.1 var(--display); }
+.rails2 .rl h4 { color: var(--accent-ink); }
+.rails2 .cr h4 { color: var(--accent2-ink); }
+.rails2 p { margin: 0; font-size: 16px; line-height: 1.6; }
+.quiz { list-style: none; padding: 0; margin: 14px 0 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); }
+.quiz li { margin: 0; }
+.quiz button {
+  width: 100%; text-align: start; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--soft); color: var(--ink); font: 500 15px/1.4 var(--text);
+}
+.quiz button:hover { border-color: var(--muted); }
+.quiz .ans { flex: none; font: 600 12px var(--text); padding: 2px 10px; border-radius: 999px; border: 1px dashed var(--line); color: var(--muted); }
+.quiz button.shown[data-a="rail"] { border-color: var(--accent); }
+.quiz button.shown[data-a="rail"] .ans { background: var(--accent); border: 1px solid var(--accent); color: var(--on-accent); }
+.quiz button.shown[data-a="car"] { border-color: var(--accent2); }
+.quiz button.shown[data-a="car"] .ans { background: var(--accent2); border: 1px solid var(--accent2); color: #141414; }
+@media (max-width: 560px) { .rails2 { grid-template-columns: 1fr; } }
+
+/* ---- top of mind ---- */
+.tom { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 20px; align-items: center; margin: 24px 0; }
+.drawer { position: relative; container-type: inline-size; margin: 0; }
+.drawer img { display: block; width: 100%; height: auto; border-radius: var(--r); background: #efeee9; }
+.drawer .t3 { position: absolute; left: 16.74%; top: 30.69%; transform: translate(-50%, -50%) rotate(12.7deg); font: 600 3.9cqw/1 var(--text); color: #141414; direction: ltr; white-space: nowrap; letter-spacing: -.01em; }
+.chart { margin: 0; }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart .ax { stroke: var(--muted); stroke-width: 1.4; fill: none; }
+.chart .bar { fill: var(--fill); stroke: var(--line); }
+.chart .up { fill: var(--accent); }
+.chart .lbl { font: 600 15px var(--mono); fill: var(--ink); }
+.chart .sub { font: 400 12px var(--text); fill: var(--muted); }
+.chart figcaption { margin-top: 6px; }
+@media (max-width: 640px) { .tom { grid-template-columns: 1fr; } }
+
+/* ---- bracha jar (stepper) ---- */
+.jf .jar-wrap { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 22px; align-items: center; }
+.jar-svg { background: #f4f1ea; border-radius: 12px; display: block; width: 100%; height: auto; }
+.jar-svg .bp { fill: none; stroke: #9fb0c8; stroke-width: 1; stroke-dasharray: 4 4; }
+.jar-svg .ln { fill: rgba(255, 255, 255, .55); stroke: #1f3a68; stroke-width: 2.4; stroke-linejoin: round; }
+.jar-svg .lid { fill: #dfe5ee; stroke: #1f3a68; stroke-width: 2.4; }
+.jar-svg .orange { fill: none; stroke: #e07b22; stroke-width: 2.4; stroke-linecap: round; }
+.jar-svg .name { font: 700 46px var(--display); fill: #1f3a68; }
+.jar-svg .g { transition: opacity .45s; }
+.jf .round, .jf .label { opacity: 0; }
+.jf[data-step="2"] .straight, .jf[data-step="3"] .straight { opacity: 0; }
+.jf[data-step="2"] .round, .jf[data-step="3"] .round, .jf[data-step="3"] .label { opacity: 1; }
+.jar-text [data-p] { display: none; }
+.jf:not([data-step]) [data-p="1"], .jf[data-step="1"] [data-p="1"], .jf[data-step="2"] [data-p="2"], .jf[data-step="3"] [data-p="3"] { display: block; }
+.jar-text h4 { margin: 0 0 4px; font: 700 32px/1.1 var(--display); color: var(--accent-ink); }
+.jar-text p { margin: 0; font-size: 17px; line-height: 1.65; }
+@media (max-width: 640px) { .jf .jar-wrap { grid-template-columns: 1fr; } .jar-svg { max-width: 300px; margin-inline: auto; } }
+.result-box { margin: 18px 0 0; padding: 20px 22px; border-radius: var(--r); background: var(--accent); color: var(--on-accent); font: 700 clamp(30px, 4.6vw, 44px)/1.1 var(--display); }
+.result-box small { display: block; font: 400 14px/1.5 var(--text); margin-top: 8px; }
+
+/* ---- the growth formula ---- */
+.formula {
+  margin: 26px 0 14px; padding: clamp(18px, 3vw, 34px); border-radius: var(--r); background: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, var(--line));
+  font: 700 clamp(34px, 6vw, 72px)/1.14 var(--display);
+}
+.formula .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 .28em; }
+.formula .op { color: var(--accent2-ink); display: inline-block; min-width: .9em; font: 600 .62em/1 var(--text); }
+.formula a { color: var(--ink); text-decoration: none; background-image: linear-gradient(var(--accent), var(--accent)); background-size: 0 4px; background-position: 100% 92%; background-repeat: no-repeat; transition: background-size .3s; }
+.formula a:hover, .formula a:focus-visible { background-size: 100% 4px; }
+.formula .res, .formula .res a { color: var(--accent-ink); }
+.formula-note { font-size: 14px; color: var(--muted); }
+
+/* ---- lab ---- */
+.lab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 22px 0; }
+.lab > div { border-radius: var(--r); padding: 20px 22px; border: 1px solid var(--line); background: var(--paper); }
+.lab > div.inv { background: var(--accent-soft); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.lab .lab-h { margin: 0 0 8px; display: flex; align-items: center; gap: 10px; font: 700 38px/1.1 var(--display); }
+.lab svg { width: 34px; height: 34px; fill: none; stroke: var(--accent-ink); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.lab ul { margin: 0; }
+@media (max-width: 640px) { .lab { grid-template-columns: 1fr; } }
+.flip img.cmp { display: block; height: 84px; width: auto; max-width: 170px; border-radius: 10px; margin: 6px 0 10px; }
+</style>
+</head>
+<body data-ch="brands">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">02 / 15</div>
+      <h1>איך מותגים גדולים נבנים</h1>
+      <p class="lede">לפני שמעצבים לוגו, כדאי להבין מה בעצם קורה בראש של מי שקונה. רוב ההחלטות שלנו רגשיות, ומותגים גדולים לא נשענים על לוגו יפה. הם בונים רעיון אחד, מתרגמים אותו לכל החושים, ושומרים עליו בעקביות עד שהם תופסים מגירה קבועה בזיכרון.</p>
+      <div class="ch-meta"><span>11 נושאים</span><span>6 הדגמות לחיצות</span><span>מקרה מבחן</span><span>תרגיל</span></div>
+    </header>
+    <figure class="illus hero"><img src="img/hero-brands.webp" alt="איור: ראש אדם בפרופיל שבתוכו חנות קטנה, לב זוהר במרכז, מגירה עליונה מוארת עם שלושה מוצרים אהובים, וחמשת החושים זורמים פנימה" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= intro ================= -->
+    <section class="sec">
+      <h2 id="canvas" data-short="קנבס המותג">קנבס המותג</h2>
+      <div class="credit">
+        <div>
+          <p>הפרק הזה מבוסס על ההרצאה של <strong>דוד אביטבול</strong>, „קנבס המותג: מהכוח הנסתר של הרגש ועד לשליטה במדף”, מ־<span class="ltr">16.09.2026</span>.</p>
+          <p>השאלה שבמרכז ההרצאה פשוטה: למה אנשים משלמים פי שניים על כוס קפה כמעט זהה? התשובה לא נמצאת בכוס, אלא בכל מה שסביבה: החוויה, הסיפור, הצבע, הריח, והמקום שהמותג כבר תפס לנו בראש.</p>
+        </div>
+        <figure class="illus paper"><img src="img/canvas-cup.webp" alt="שרטוט טכני של כוס קפה לקחת, עם קווי בנייה ושרוול כתום שעליו סמל מותג" width="496" height="472" loading="lazy"></figure>
+      </div>
+      <p>אם עוד לא קראתם את הפרק הראשון, שם יש את ההגדרה הבסיסית: מיתוג הוא שפה עיצובית שלמה, לא רק לוגו. כאן יורדים שכבה אחת עמוק יותר, אל הפסיכולוגיה שמתחת. <a class="xref" href="what-is-branding.html#definition">מה זה בעצם מיתוג</a></p>
+    </section>
+
+
+    <!-- ================= 95% emotional ================= -->
+    <section class="sec">
+      <h2 id="emotion" data-short="95% רגש">הכוח המניע: <span class="ltr">95%</span> מהחלטות הקנייה רגשיות</h2>
+      <p>לפי ההרצאה, <strong><span class="ltr">95%</span> מהחלטות הקנייה מתקבלות במוח הרגשי</strong>, ורק <span class="ltr">5%</span> במוח הרציונלי. ההיגיון לא מחליט. הוא רק מצדיק בדיעבד בחירה שהרגש כבר עשה.</p>
+
+      <div class="e95">
+        <svg viewBox="0 0 300 300" role="img" aria-label="ראש בפרופיל ובתוכו מוח: 95 אחוז ממנו אדום, החלק הרגשי, ורק פס צר בחזית אפור, החלק הרציונלי">
+          <defs>
+            <clipPath id="clipEmo"><rect x="89" y="40" width="160" height="160"/></clipPath>
+            <clipPath id="clipRat"><rect x="40" y="40" width="46" height="160"/></clipPath>
+            <path id="brainShape" d="M68 120 C64 82 98 56 138 56 C184 54 216 84 214 122 C214 152 194 172 164 172 C150 184 130 184 118 172 C88 172 70 152 68 120 Z"/>
+          </defs>
+          <path class="head" d="M206 292 C206 262 214 246 226 228 C246 198 252 168 246 134 C236 74 186 36 128 40 C72 44 36 92 38 146 C39 160 42 168 36 180 L22 206 C19 213 23 218 30 219 L38 220 L38 236 C38 246 44 251 54 251 L66 251 C76 251 82 257 82 267 L82 292"/>
+          <use href="#brainShape" class="emo" clip-path="url(#clipEmo)"/>
+          <use href="#brainShape" class="rat" clip-path="url(#clipRat)"/>
+          <path class="gyri" d="M108 78 C118 92 136 88 142 76 M160 70 C158 88 176 96 190 88 M112 140 C126 128 142 134 146 150 M170 126 C182 140 200 136 204 124 M128 104 C140 112 156 108 160 98"/>
+          <path d="M140 176 C142 190 150 198 158 204" fill="none" stroke="var(--muted)" stroke-width="2.4" stroke-linecap="round"/>
+          <text class="n95" x="150" y="138" text-anchor="middle">95%</text>
+          <line class="lead-l" x1="76" y1="104" x2="58" y2="78"/>
+          <text class="n5" x="56" y="72" text-anchor="middle">5%</text>
+        </svg>
+        <div class="e95-legend">
+          <div><b class="ltr">95%</b><span>המוח הרגשי. כאן נולדת ההחלטה: תחושה, זיכרון, שייכות, חשק.</span></div>
+          <div class="r"><b class="ltr">5%</b><span>המוח הרציונלי. הוא מגיע אחרון, ומסביר לעצמו למה הבחירה הייתה הגיונית.</span></div>
+        </div>
+      </div>
+
+      <h3 id="supermarket">למה החלב תמיד בסוף הסופר?</h3>
+      <p>זה לא מקרי. מסלול הקנייה בסופרמרקט מתוכנן מראש כדי להתיש את הצד הרציונלי ולעודד קניות דחף. לחצו על השלבים ועקבו אחרי הקו האדום:</p>
+
+      <figure class="anim sm" data-steps="4" data-step-labels="הכניסה|המעברים|החלב בסוף|הקופה">
+        <span class="anim__label">מסלול הקנייה, צעד אחר צעד</span>
+        <div class="anim__stage">
+          <div class="sm-stage">
+            <img src="img/canvas-store.webp" alt="תוכנית איזומטרית של סופרמרקט: קו מנוקד אדום נכנס מהפינה, מתפתל בין המעברים, מגיע למקרר החלב בקיר האחורי ומסתיים בקופה" width="470" height="338" loading="lazy">
+            <button type="button" class="sm-spot" data-goto="1" style="left:18.6%;top:74.7%" aria-label="שלב 1: הכניסה">1<span class="sm-tag">כניסה</span></button>
+            <button type="button" class="sm-spot" data-goto="2" style="left:42.6%;top:63.6%" aria-label="שלב 2: המעברים">2<span class="sm-tag">המעברים</span></button>
+            <button type="button" class="sm-spot" data-goto="3" style="left:56.9%;top:22.2%" aria-label="שלב 3: החלב">3<span class="sm-tag">חלב</span></button>
+            <button type="button" class="sm-spot" data-goto="4" style="left:78.1%;top:65.7%" aria-label="שלב 4: הקופה">4<span class="sm-tag">קופה וחטיפים</span></button>
+          </div>
+          <div class="sm-text" aria-live="polite">
+            <p data-s="1"><b>הכניסה.</b> נכנסים מפינה אחת של החנות, ולא מהאמצע. מהרגע הזה המסלול כבר מוביל אתכם.</p>
+            <p data-s="2"><b>המעברים.</b> הקו מתפתל בין המדפים. כל מעבר הוא עוד חשיפה, ועוד החלטה קטנה שהרגש מקבל לבד.</p>
+            <p data-s="3"><b>החלב בסוף.</b> המוצר שכמעט כולם באו בשבילו עומד בפינה האחורית, כדי שתעברו את כל החנות בדרך אליו.</p>
+            <p data-s="4"><b>הקופה.</b> בסוף הדרך, עייפים, מחכים בתור ליד חטיפים וקניות דחף. לפי ההרצאה, בערך <span class="ltr">20%</span> מהעגלה הם קניות שלא תוכננו מראש.</p>
+          </div>
+        </div>
+        <figcaption>האיור מתוך מצגת ההרצאה. המסלול מתוכנן כך שהרגש יעבוד שעות נוספות, והרציונל יתעייף.</figcaption>
+      </figure>
+    </section>
+
+
+    <!-- ================= a logo is not a brand ================= -->
+    <section class="sec">
+      <h2 id="not-a-logo" data-short="לוגו אינו מותג">האשליה: לוגו אינו מותג. מוצר אינו מותג.</h2>
+      <p>אפשר לעצב לוגו מושלם ועדיין לא להחזיק מותג. מוצר הוא מה שהלקוח מקבל ביד. מותג הוא מה שהוא <strong>מרגיש</strong> כשהוא מקבל אותו, ומה שהוא מספר אחר כך לאחרים.</p>
+
+      <div class="flip-top">
+        <p>לחצו על כרטיס כדי להפוך אותו: מאותו מוצר, למותג.</p>
+        <div class="seg" id="flip-all" role="group" aria-label="להציג את כל הכרטיסים כ">
+          <button type="button" data-v="prod" aria-pressed="true">מוצר חסר זהות</button>
+          <button type="button" data-v="brand" aria-pressed="false">מותג</button>
+        </div>
+      </div>
+      <div class="flips">
+        <button type="button" class="flip" aria-pressed="false">
+          <span class="face prod">
+            <span class="tag">מוצר חסר זהות</span>
+            <img class="cmp" src="img/canvas-cmp-cup.webp" alt="כוס נייר פשוטה בלי מיתוג" loading="lazy">
+            <b>כוס קפה ב־10 שקלים</b>
+            <span class="d">משקה פונקציונלי. מרווה, מעיר, נגמר.</span>
+          </span>
+          <span class="face brand">
+            <span class="tag">מותג</span>
+            <img class="cmp" src="img/canvas-cmp-starbucks.webp" alt="כוס של סטארבקס עם השרוול האדום והלוגו הירוק" loading="lazy">
+            <b>כוס קפה של סטארבקס ב־20 שקלים</b>
+            <span class="d">חוויה וסגנון חיים. משלמים פי שניים על אותו משקה, ומרגישים שזה שווה את זה.</span>
+          </span>
+          <span class="hint">↻ לחצו להפוך</span>
+        </button>
+        <button type="button" class="flip" aria-pressed="false">
+          <span class="face prod">
+            <span class="tag">מוצר חסר זהות</span>
+            <img class="cmp" src="img/canvas-cmp-car.webp" alt="מכונית אפורה בלי לוגו" loading="lazy">
+            <b>רכב בלי לוגו בחניון</b>
+            <span class="d">מגיע מנקודה א' לנקודה ב'. זהו.</span>
+          </span>
+          <span class="face brand">
+            <span class="tag">מותג</span>
+            <img class="cmp" src="img/canvas-cmp-bmw.webp" alt="מכונית אפורה בתנועה עם הלוגו של BMW" loading="lazy">
+            <b>BMW</b>
+            <span class="d">סטטוס, ביטחון עצמי ותחושת הצלחה. אותם ארבעה גלגלים, סיפור אחר לגמרי.</span>
+          </span>
+          <span class="hint">↻ לחצו להפוך</span>
+        </button>
+        <button type="button" class="flip" aria-pressed="false">
+          <span class="face prod">
+            <span class="tag">מוצר חסר זהות</span>
+            <img class="cmp" src="img/canvas-cmp-hot.webp" alt="סמל גאומטרי מבריק בשחור ואפור, בהשראת הלוגו של HOT" loading="lazy">
+            <b>עיצוב מדהים לחברת תקשורת</b>
+            <span class="d">לוגו מבריק, פרסומות יפות (הדוגמה בהרצאה: <span class="ltr">HOT</span>). על הנייר, זה נראה כמו מותג.</span>
+          </span>
+          <span class="face brand">
+            <span class="tag">מותג</span>
+            <img class="cmp" src="img/canvas-cmp-headset.webp" alt="אוזניות של מוקד שירות עם סימן אזהרה אדום" loading="lazy">
+            <b>מענה מהיר בטלפון</b>
+            <span class="d">אם השירות לא עומד בהבטחה הוויזואלית, המותג קורס. העיצוב מבטיח, החוויה צריכה לקיים.</span>
+          </span>
+          <span class="hint">↻ לחצו להפוך</span>
+        </button>
+      </div>
+
+      <blockquote class="quote">„המותג שלך הוא מה שאנשים אומרים עליך כשאתה לא בחדר.”<br><span class="muted" style="font-size:16px">ג'ף בזוס</span></blockquote>
+      <p>הלוגו הוא נכס אחד מתוך רבים. חשוב, אבל לא לבד. <a class="xref" href="logo.html">לוגו</a></p>
+    </section>
+
+
+    <!-- ================= organizing idea ================= -->
+    <section class="sec">
+      <h2 id="organizing-idea" data-short="הרעיון המארגן">המנוע: הרעיון המארגן <span class="ltr">(The Organizing Idea)</span></h2>
+      <p>הרעיון המארגן הוא ה־DNA של החברה: רעיון אחד, חד, שממנו נגזרות כל ההחלטות. לא רק העיצוב, אלא גם האריזה, השירות, המחיר, הקמפיינים וחוויית הקנייה. כשהרעיון ברור, אף אחד בחברה לא צריך לנחש איך „אנחנו” מתנהגים.</p>
+
+      <figure class="anim rf" data-steps="5" data-no-bar>
+        <span class="anim__label">לחצו על נקודת מגע כדי לראות איך הרעיון מתבטא בה</span>
+        <div class="anim__stage ring-wrap">
+          <div class="ring">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="orbit" cx="50" cy="50" r="38"/>
+              <line class="ln ln1" x1="50" y1="50" x2="50" y2="12"/>
+              <line class="ln ln2" x1="50" y1="50" x2="86.1" y2="38.3"/>
+              <line class="ln ln3" x1="50" y1="50" x2="72.3" y2="80.7"/>
+              <line class="ln ln4" x1="50" y1="50" x2="27.7" y2="80.7"/>
+              <line class="ln ln5" x1="50" y1="50" x2="13.9" y2="38.3"/>
+            </svg>
+            <div class="core">הרעיון<br>המארגן<small>ה־DNA של החברה</small></div>
+            <button type="button" class="node" data-goto="1" style="left:50%;top:12%">אריזה</button>
+            <button type="button" class="node" data-goto="2" style="left:86.1%;top:38.3%">שירות לקוחות</button>
+            <button type="button" class="node" data-goto="3" style="left:72.3%;top:80.7%">תמחור</button>
+            <button type="button" class="node" data-goto="4" style="left:27.7%;top:80.7%">קמפיינים</button>
+            <button type="button" class="node" data-goto="5" style="left:13.9%;top:38.3%">חוויית קנייה</button>
+          </div>
+          <div class="ring-panel" aria-live="polite">
+            <div class="seg" id="ring-brand" role="group" aria-label="דוגמה">
+              <button type="button" data-v="apple" aria-pressed="true"><span class="ltr">Apple</span></button>
+              <button type="button" data-v="tlv" aria-pressed="false">המכולת התל־אביבית</button>
+            </div>
+            <div data-p="1">
+              <h4>אריזה</h4>
+              <p class="what">הרגע הראשון שבו המוצר נוגע ביד.</p>
+              <p class="ex b-apple" data-added>קופסה לבנה, נקייה ומינימליסטית, שנפתחת לאט, כמעט כמו טקס. פשטות ושבירת מוסכמות, גם בקרטון.</p>
+              <p class="ex ask b-tlv">בהרצאה לא הובאה דוגמה לאריזה. נסו בעצמכם: איך תיראה שקית של מכולת שחיה את הלילה התל־אביבי?</p>
+            </div>
+            <div data-p="2">
+              <h4>שירות לקוחות</h4>
+              <p class="what">מה קורה כשמשהו לא עובד, או כשפשוט צריך עזרה.</p>
+              <p class="ex b-apple" data-added>ה־<span class="ltr">Genius Bar</span>: עמדת תמיכה בתוך החנות, עם אנשים מולכם במקום מוקד טלפוני.</p>
+              <p class="ex b-tlv">ליברליות, ושעות פתיחה <span class="ltr">24/7</span>. העיר לא ישנה, אז גם המכולת לא.</p>
+            </div>
+            <div data-p="3">
+              <h4>תמחור</h4>
+              <p class="what">גם המחיר מספר סיפור על המותג.</p>
+              <p class="ex b-apple" data-added>מחיר פרימיום, כמעט בלי מבצעים. המחיר עצמו אומר „זה לא עוד מחשב”.</p>
+              <p class="ex ask b-tlv">בהרצאה לא הובאה דוגמה לתמחור. שאלה למחשבה: האם מכולת כזו צריכה להיות הזולה בשכונה, או דווקא לא?</p>
+            </div>
+            <div data-p="4">
+              <h4>קמפיינים</h4>
+              <p class="what">מה המותג אומר, ומה הוא עושה כדי שידברו עליו.</p>
+              <p class="ex b-apple">שבירת הסטטוס קוו: <span class="ltr">Think Different</span>. <span data-added>זה גם היה שמו של קמפיין אמיתי של <span class="ltr">Apple</span>, מ־<span class="ltr">1997</span>.</span></p>
+              <p class="ex b-tlv">מהלכים שנולדים מהקהל: מטריות בחורף, ואפילו מטריות לכלבים.</p>
+            </div>
+            <div data-p="5">
+              <h4>חוויית קנייה</h4>
+              <p class="what">איך מרגישים בתוך החנות, או בתוך האתר.</p>
+              <p class="ex b-apple">עיצוב החנויות. <span data-added>מרחב פתוח, שולחנות ארוכים, ומוצרים שמותר לגעת בהם ולנסות.</span></p>
+              <p class="ex b-tlv">סלי קנייה קטנים, כי קונים מעט ובדרך. ובקיץ, הזמנה להיכנס להתקרר במזגן.</p>
+            </div>
+          </div>
+        </div>
+        <figcaption>חמש נקודות מגע, רעיון אחד במרכז. כשכל אחת מהן נגזרת מאותו רעיון, הלקוח מרגיש מותג אחד ולא חמש מחלקות.</figcaption>
+      </figure>
+
+      <div class="cards">
+        <div class="card">
+          <span class="k">Apple</span>
+          <h4>שבירת הסטטוס קוו <span class="ltr">(Think Different)</span></h4>
+          <p>הרעיון מתבטא בעיצוב החנויות, בהיעדר הכפתורים (באייפון הראשון), ובהכנסת צבע לעולם של מחשבים אפורים.</p>
+        </div>
+        <div class="card">
+          <span class="k">TEL AVIV</span>
+          <h4>סגנון החיים התל־אביבי</h4>
+          <p>ליברליות, פתוח <span class="ltr">24/7</span>, סלי קנייה קטנים, מטריות בחורף, מטריות לכלבים, והזמנה להיכנס למזגן בקיץ. הכל נגזר מתוך תובנה עמוקה על הקהל.</p>
+        </div>
+      </div>
+      <p>הרעיון המארגן הוא גם מה שמבדיל אתכם מהמתחרים, ומה שנותן למותג אישיות. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a> <a class="xref" href="strategy.html#archetypes">12 הארכיטיפים</a></p>
+    </section>
+
+
+    <!-- ================= conceptual audience ================= -->
+    <section class="sec">
+      <h2 id="audience" data-short="פילוח קונספטואלי">הסוף לדמוגרפיה: פילוח קונספטואלי</h2>
+      <p class="lead"><span class="hl">אנחנו לא מטרגטים גיל, מיקוד או הכנסה. אנחנו מטרגטים תפיסת עולם.</span></p>
+      <p>ההבדל נשמע קטן, אבל הוא משנה הכל. הדוגמה המוכרת היא הארלי־דייווידסון: מי שמדמיין את הקהל שלה רואה אופנוען עם בנדנה, אבל הקונים בפועל הם אנשים אחרים לגמרי.</p>
+
+      <div class="aud">
+        <figure class="aud-card no">
+          <div class="pic">
+            <img src="img/canvas-myth.webp" alt="איור אפור של אופנוען עם בנדנה, משקפי שמש, זקן תיש ומעיל עור" width="258" height="291" loading="lazy">
+            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+          </div>
+          <figcaption><b>המיתוס</b>הקהל הוא „מלאכי גיהנום” ואנרכיסטים. בפועל, הם רק <span class="ltr">9%</span> מהקונים.
+            <span class="demo-card" aria-label="כרטיס דמוגרפי שלא עובד"><span>גיל: <span class="ltr">25–35</span></span><span>הכנסה: נמוכה</span></span>
+          </figcaption>
+        </figure>
+        <figure class="aud-card yes">
+          <div class="pic">
+            <img src="img/canvas-reality.webp" alt="איור צבעוני של איש עסקים בחליפה ועניבה שפותח את החולצה, ומתחתיה מתגלה מעיל עור של אופנוען" width="374" height="308" loading="lazy">
+            <span class="badge" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7"/></svg></span>
+          </div>
+          <figcaption><b>המציאות</b>יותר מ־<span class="ltr">50%</span> מהקונים הם רואי חשבון ועורכי דין בני 50 ומעלה, שהיו ממושמעים כל חייהם, ורוצים לשחרר את המורד הפנימי.</figcaption>
+        </figure>
+      </div>
+
+      <div class="note callout">
+        <svg viewBox="0 0 52 52" aria-hidden="true"><path d="M10 30v-6a16 16 0 0 1 32 0v6"/><rect x="6" y="28" width="9" height="14" rx="3"/><rect x="37" y="28" width="9" height="14" rx="3"/></svg>
+        <div>
+          <span class="box-label">עוד דוגמה: אוזניות איכותיות</span>
+          <p>הן לא פונות „לבני 20 בגוש דן”. הן פונות, באופן קונספטואלי, למאמצי חדשנות <span class="ltr">(Early Adopters)</span>, לאוהבי מוזיקה אדוקים, או לאנשים שמחפשים בריחה (אסקפיזם) בסביבה רועשת. שלושה אנשים שאולי לא חולקים שום נתון דמוגרפי, אבל חולקים צורך.</p>
+        </div>
+      </div>
+      <p>איך מגדירים קהל יעד בתוך פרויקט מיתוג: <a class="xref" href="strategy.html#audience">למי המותג פונה</a></p>
+    </section>
+
+
+    <!-- ================= senses ================= -->
+    <section class="sec">
+      <h2 id="senses" data-short="אדריכלות חושית">אדריכלות חושית: לעקוף את המוח המודע</h2>
+      <p>ככל שהמותג מנכס לעצמו יותר נכסים בחושים שונים, כך הוא מקודד עמוק יותר בתת־מודע. מותג שרק „נראה” מסוים, תופס חוש אחד. מותג שגם נשמע, מריח ומרגיש ביד, תופס חמישה.</p>
+
+      <figure class="anim sf" data-steps="5" data-no-bar>
+        <span class="anim__label">בחרו חוש</span>
+        <div class="anim__stage">
+          <div class="sense-btns">
+            <button type="button" data-goto="1"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M3 17s5.5-9 14-9 14 9 14 9-5.5 9-14 9S3 17 3 17z"/><circle cx="17" cy="17" r="4.5"/></svg>ראייה<small>Sight</small></button>
+            <button type="button" data-goto="2"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M8 14a8 8 0 0 1 16 0c0 4-3 5-4 8s-1.5 7-5.5 7c-2.5 0-3.5-2-3.5-2"/><path d="M12 14a4 4 0 0 1 8 0c0 2.5-2.5 3-2.5 5.5"/><path d="M27 12c1.5 1.5 1.5 6 0 7.5M30 9.5c3 3 3 10 0 13"/></svg>שמיעה<small>Sound</small></button>
+            <button type="button" data-goto="3"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M18 4c-1 7-7 12-7 17.5 0 2.6 1.9 4 4 4 1.4 0 2-.8 3-.8s1.7.8 3 .8c2.1 0 3.5-1.6 3.5-3.4"/><path d="M14 30c0-1.5 1-2.5 2.5-2.5M20 30c0-1.5-1-2.5-2.5-2.5"/></svg>ריח<small>Smell</small></button>
+            <button type="button" data-goto="4"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M11 19V8a2 2 0 0 1 4 0v8M15 15V5.5a2 2 0 0 1 4 0V15M19 15V7.5a2 2 0 0 1 4 0V20c0 6-4 10-9 10-4 0-6-2.5-7.5-5.5L4.6 20.7a2 2 0 0 1 3.3-2.1L11 22"/></svg>מישוש<small>Touch</small></button>
+            <button type="button" data-goto="5"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M4 15c4-4 8.5-5 13-2.5C21.5 10 26 11 30 15c-4 7-8.5 10-13 10S8 22 4 15z"/><path d="M4 15h26"/><path d="M12.5 17c0 4.5 2 7 4.5 7s4.5-2.5 4.5-7"/></svg>טעם<small>Taste</small></button>
+          </div>
+          <div class="sense-panel" aria-live="polite">
+            <div data-p="1"><h4>ראייה</h4><p>הצבע האדום וצורת הבקבוק הרשומה של קוקה־קולה. <span data-added>או הלוגו של צ'ופה צ'ופס, שעיצב סלבדור דאלי, האיש עם השפם המפורסם.</span></p></div>
+            <div data-p="2"><h4>שמיעה</h4><p>ה„טא־דום” בפתיחה של נטפליקס, או הצפצוף של <span class="ltr">Intel Inside</span>. צליל קצר שמייצר ציפייה, כמו ממתק קטן למוח.</p></div>
+            <div data-p="3"><h4>ריח</h4><p>חתימת הריח בחנויות <span class="ltr">Laline</span>, ריח „הרכב החדש” של לקסוס, או הרגע שבו פותחים את מרכך הכביסה סוד באמצע הסופר.</p></div>
+            <div data-p="4"><h4>מישוש</h4><p>הקימורים של בקבוק הזכוכית ההיסטורי של קוקה־קולה, או המרקם של שקית <span class="ltr">Golden Ring</span>, שנותן תחושת פרימיום עוד לפני שפותחים אותה.</p></div>
+            <div data-p="5"><h4>טעם</h4><p>הצביטה הספציפית בגרון בלגימה הראשונה של קוקה־קולה. אפשר לזהות אותה בעיניים עצומות.</p></div>
+          </div>
+        </div>
+        <figcaption>שימו לב כמה פעמים קוקה־קולה מופיעה: ראייה, מישוש וטעם. מותג חזק מחזיק נכסים בכמה חושים בבת אחת.</figcaption>
+      </figure>
+      <p>הצבע הוא בדרך כלל הנכס החושי הראשון שמעצבים בונים. <a class="xref" href="color.html#psychology">פסיכולוגיה של צבעים</a></p>
+    </section>
+
+
+    <!-- ================= iron rule ================= -->
+    <section class="sec">
+      <h2 id="iron-rule" data-short="עקביות וחדשנות">חוק הברזל: עקביות רדיקלית פוגשת חדשנות</h2>
+      <figure class="illus paper"><img src="img/canvas-trains.webp" alt="שתי רכבות צבעוניות, אדומה־כתומה וכחולה, נוסעות על שתי מסילות ישרות שנמתחות אל האופק, ובצד שלט אזהרה משולש" width="809" height="564" loading="lazy"></figure>
+      <div class="rails2">
+        <div class="rl"><h4>המסילה = זהות המותג</h4><p>הצבע, הקול והערכים. <strong>המסילה לעולם לא משתנה.</strong></p></div>
+        <div class="cr"><h4>הקרונות = חדשנות</h4><p>מוצרים וקמפיינים. <strong>הקרונות מתחלפים כל הזמן</strong>, והם מה שמשאיר את המותג חי.</p></div>
+      </div>
+      <p><strong>שוקולד פרה של עלית</strong> הוא דוגמה מושלמת: הצבע האדום והפרה הם המסילה, והם נשארים. סוכריות קופצות וטעמים חדשים הם הקרונות, והם מתחלפים כל הזמן.</p>
+
+      <div class="widget" data-added>
+        <span class="box-label">נסו בעצמכם: מסילה או קרון?</span>
+        <p class="muted" style="font-size:15px;margin:0">לחצו על כל פריט כדי לגלות.</p>
+        <ul class="quiz" id="quiz">
+          <li><button type="button" data-a="rail">העטיפה האדומה של פרה <span class="ans">?</span></button></li>
+          <li><button type="button" data-a="car">פרה עם סוכריות קופצות <span class="ans">?</span></button></li>
+          <li><button type="button" data-a="rail">הפרה שעל העטיפה <span class="ans">?</span></button></li>
+          <li><button type="button" data-a="car">טעם חדש למהדורת חורף <span class="ans">?</span></button></li>
+          <li><button type="button" data-a="rail">טון הדיבור של המותג <span class="ans">?</span></button></li>
+          <li><button type="button" data-a="car">הקמפיין של הקיץ הזה <span class="ans">?</span></button></li>
+        </ul>
+      </div>
+
+      <div class="warn">
+        <span class="box-label">מה קורה כששוברים את המסילה</span>
+        <p>ב־<span class="ltr">1985</span> קוקה־קולה שינתה את הנוסחה וקראה למשקה החדש <span class="ltr">New Coke</span>. היא שברה את המסילה. המכירות התרסקו, והחברה נאלצה לחזור במהירות לנוסחה הישנה, תחת השם <span class="ltr">Coca-Cola Classic</span><span data-added>, אחרי 79 ימים בלבד</span>.</p>
+        <p><strong>אל תשתעממו מהמותג שלכם לפני שהלקוחות משתעממים ממנו.</strong> מה שנראה לכם „ישן” אחרי שנה, הלקוחות רק התחילו לזהות.</p>
+      </div>
+    </section>
+
+
+    <!-- ================= top of mind ================= -->
+    <section class="sec">
+      <h2 id="top-of-mind" data-short="Top of Mind">נדל״ן מנטלי: <span class="ltr">Top of Mind</span></h2>
+      <p>שאלו מישהו „איזה חומוס אתה מכיר?”. הוא לא יפרט את כל מדף הסופר. הוא ישלוף את המגירה העליונה: אחלה, צבר, אבו גוש. שלושה שמות, אולי ארבעה, וזהו.</p>
+
+      <div class="tom">
+        <figure class="drawer">
+          <img src="img/canvas-drawer.webp" alt="שרטוט של מוח בפרופיל, ומתוכו נשלפת מגירה כתומה זוהרת עם תווית" width="430" height="391" loading="lazy">
+          <span class="t3" aria-hidden="true">Top 3</span>
+        </figure>
+        <figure class="chart">
+          <svg viewBox="0 0 320 230" role="img" aria-label="גרף עמודות: ארבעה עמודים אפורים נמוכים ועמוד כתום גבוה בצורת חץ, עלייה של 30 עד 50 אחוז בסבירות לרכישה">
+            <path class="ax" d="M24 14v190h284"/>
+            <rect class="bar" x="40" y="182" width="36" height="22"/>
+            <rect class="bar" x="90" y="168" width="36" height="36"/>
+            <rect class="bar" x="140" y="150" width="36" height="54"/>
+            <rect class="bar" x="190" y="118" width="36" height="86"/>
+            <path class="up" d="M246 204V62h-14l30-48 30 48h-14v142z"/>
+            <text class="lbl" x="262" y="226" text-anchor="middle">TOP 3</text>
+          </svg>
+          <figcaption>לפי ההרצאה, הופעה בשלישייה הפותחת, בזכות מובחנות ונכסים מותגיים, מעלה את הסבירות לרכישה ב־<span class="ltr">30%-50%</span>.</figcaption>
+        </figure>
+      </div>
+
+      <div class="tip">
+        <span class="box-label">המטרה</span>
+        <p>לבנות נכסים שהם <strong>אך ורק שלכם</strong>, כמו הכיס הקטן ההיסטורי בג'ינס של ליווייס, כדי להבטיח את המקום שלכם במגירה.</p>
+        <p data-added>ליווייס הלכה עם זה עד הסוף: גם התפר המקושת על הכיס האחורי וגם התווית האדומה הקטנה <span class="ltr">(Red Tab)</span> רשומים אצלה כסימני מסחר. אף אחד אחר לא יכול להשתמש בהם.</p>
+      </div>
+      <p>כדי להיכנס לשלישייה, צריך קודם כל להיות שונים מכל מי שכבר שם. <a class="xref" href="strategy.html#competitors">מחקר מתחרים</a></p>
+    </section>
+
+
+    <!-- ================= case study: bracha ================= -->
+    <section class="sec" data-rail>
+      <h2 id="bracha" data-short="מקרה מבחן: ברכה">מקרה מבחן: פיצוח קטגוריית הטחינה (ברכה)</h2>
+      <p>כל מה שראינו עד עכשיו, במקרה אחד אמיתי. עקבו אחרי הציר: מנקודת הפתיחה ועד התוצאה.</p>
+
+      <h3 id="bracha-start" data-rail-label="נקודת הפתיחה">נקודת הפתיחה</h3>
+      <p>משפחה מהכפר עארה שייצרה טחינה לשוק הירדני, עם לוגו מיושן.</p>
+
+      <h3 id="bracha-goal" data-rail-label="המטרה">המטרה</h3>
+      <p>לכבוש את המדף הישראלי, מדף תחרותי שבו כל האריזות נראו אותו דבר: צנצנות עם דפנות ישרות, שנתפסו כאשכנזיות או כתעשייתיות.</p>
+      <figure class="illus paper"><img src="img/canvas-shelf.webp" alt="מדף סופרמרקט בשחור־לבן עם שורה ארוכה של צנצנות אפורות זהות" width="678" height="214" loading="lazy"><figcaption>המדף לפני: עשרות צנצנות זהות, ואף אחת לא בולטת.</figcaption></figure>
+
+      <h3 id="bracha-insight" data-rail-label="התובנה">התובנה</h3>
+      <p>מחקר עומק העלה שאנשים אוהבים לאכול טחינה דווקא במסעדות ערביות, כי שם היא נתפסת כ„דבר האמיתי”.</p>
+      <figure class="illus paper"><img src="img/canvas-table.webp" alt="שולחן במסעדה ערבית מלא בקערות חרס: חומוס וטחינה עם שמן זית, פיתות, חמוצים ותבלינים, באור חם" width="678" height="311" loading="lazy"><figcaption>השולחן שבראש של הלקוח: חם, צבעוני, אמיתי.</figcaption></figure>
+
+      <h3 id="bracha-idea" data-rail-label="הרעיון המארגן">הרעיון המארגן</h3>
+      <p class="lead"><strong>טחינה ערבית אסלית</strong> (אותנטית, מקורית).</p>
+      <p>מכאן והלאה, כל החלטה נגזרת מהמשפט הזה.</p>
+
+      <h3 id="bracha-name" data-rail-label="השם">השם: זהות</h3>
+      <p>השם <strong>ברקה</strong> (ברכה, בערבית): מילה שמתגלגלת נכון על הלשון, גם בעברית וגם בערבית.</p>
+
+      <h3 id="bracha-logo" data-rail-label="הלוגו">הלוגו: ראייה</h3>
+      <p>טיפוגרפיה שמזכירה כתב ערבי, ואייקון שנלקח מתוך פסיפסים ערביים מסורתיים.</p>
+
+      <h3 id="bracha-shape" data-rail-label="הצורה">הצורה: מישוש וראייה</h3>
+      <p>הדפנות הישרות הוחלפו בצורה מעוגלת של כד חרס ערבי היסטורי. התוצאה בולטת בצורה חריגה על המדף, ומרגישה אחרת ביד. לחצו על השלבים:</p>
+
+      <figure class="anim jf" data-steps="3" data-step-labels="המדף הגנרי|כד החרס|שם ולוגו">
+        <span class="anim__label">שחזור סכמטי של האריזה</span>
+        <div class="anim__stage jar-wrap">
+          <svg class="jar-svg" viewBox="0 0 300 340" role="img" aria-label="שרטוט של צנצנת: מצנצנת ישרה ורגילה לכד חרס מעוגל, ועליו השם ברקה וסמל פסיפס">
+            <path class="bp" d="M150 20v306M30 92h240M30 300h240M44 60v250M256 60v250"/>
+            <g class="g straight">
+              <rect class="lid" x="94" y="40" width="112" height="26" rx="4"/>
+              <rect class="ln" x="84" y="66" width="132" height="234" rx="14"/>
+            </g>
+            <g class="g round">
+              <rect class="lid" x="104" y="40" width="92" height="24" rx="4"/>
+              <path class="ln" d="M114 64v20C64 100 46 156 52 208c6 50 36 84 70 92h56c34-8 64-42 70-92 6-52-12-108-62-124V64z"/>
+              <path class="orange" d="M40 150c-6 54 10 108 52 144M260 150c6 54-10 108-52 144"/>
+            </g>
+            <g class="g label">
+              <text class="name" x="150" y="168" text-anchor="middle">ברקה</text>
+              <g transform="translate(150 226)">
+                <rect x="-24" y="-24" width="48" height="48" fill="#1f3a68"/>
+                <rect x="-24" y="-24" width="48" height="48" fill="#e07b22" transform="rotate(45)"/>
+                <circle r="18" fill="#f4f1ea"/>
+                <rect x="-11" y="-11" width="22" height="22" fill="#1f3a68"/>
+                <rect x="-11" y="-11" width="22" height="22" fill="#1f3a68" transform="rotate(45)"/>
+                <circle r="6" fill="#e07b22"/>
+              </g>
+            </g>
+          </svg>
+          <div class="jar-text" aria-live="polite">
+            <div data-p="1"><h4>כמו כולם</h4><p>צנצנת עם דפנות ישרות. על מדף של עשרות צנצנות זהות, היא פשוט נבלעת.</p></div>
+            <div data-p="2"><h4>כד חרס</h4><p>צורה מעוגלת של כד חרס ערבי היסטורי. היא בולטת על המדף (ראייה) ומרגישה אחרת ביד (מישוש). שני חושים, צורה אחת.</p></div>
+            <div data-p="3"><h4>השם והלוגו</h4><p>השם ברקה, באותיות שמזכירות כתב ערבי, ואייקון בהשראת פסיפס מסורתי. עכשיו האריזה עצמה אומרת „טחינה ערבית אסלית”.</p></div>
+          </div>
+        </div>
+        <figcaption>שרטוט סכמטי שמדגים את העיקרון, לא העתק של האריזה האמיתית.</figcaption>
+      </figure>
+
+      <h3 id="bracha-campaign" data-rail-label="הקמפיין">השפה התקשורתית</h3>
+      <p>סרטוני קמפיין שבהם הפחית נכנסת לפריים בתנועה של ריקודי בטן, עם קריינות עמוקה של השחקן אורי גבריאל. גם כאן: חוש השמיעה, והרעיון המארגן, בכל שנייה.</p>
+
+      <h3 id="bracha-result" data-rail-label="התוצאה">התוצאה</h3>
+      <div class="result-box">ממדף גנרי למותג מספר 1 בישראל, בתוך שנה אחת בלבד.<small>לפי ההרצאה.</small></div>
+    </section>
+
+
+    <!-- ================= formula ================= -->
+    <section class="sec">
+      <h2 id="formula" data-short="נוסחת הצמיחה">נוסחת הצמיחה: ממוצר לאימפריה מנטלית</h2>
+      <div class="formula">
+        <div class="row"><a href="#organizing-idea">(רעיון מארגן חד ומדויק)</a></div>
+        <div class="row"><span class="op">+</span><a href="#senses">(נכסים חושיים בלעדיים)</a></div>
+        <div class="row"><span class="op">×</span><a href="#iron-rule">(עקביות רדיקלית לאורך זמן)</a></div>
+        <div class="row res"><span class="op">=</span><a href="#top-of-mind">מותג <span class="ltr">Top of Mind</span></a><a href="#emotion">(השולט ב־<span class="ltr">95%</span> הרגשיים)</a></div>
+      </div>
+      <p class="formula-note">כל חלק בנוסחה הוא קישור לקטע שלו בפרק.</p>
+      <p class="lead">בניית מותג היא לא עיצוב לוגו. היא הנדסה פסיכולוגית של חוויה שחוזרת על עצמה במדויק, בכל נקודת מגע, עד שהיא הופכת לטבע שני של הלקוח.</p>
+    </section>
+
+
+    <!-- ================= lab ================= -->
+    <section class="sec">
+      <h2 id="lab" data-short="המעבדה שלכם">אתגר החדשנות: המעבדה שלכם</h2>
+      <p>שני תרגילים מסוף ההרצאה. מתאימים לבד, לזוגות, או לשיעור שלם.</p>
+      <div class="lab">
+        <div>
+          <h4 class="lab-h"><svg viewBox="0 0 34 34" aria-hidden="true"><circle cx="13" cy="19" r="5"/><path d="M13 9v3M13 26v3M3 19h3M20 19h3M6 12l2 2M18 24l2 2M6 26l2-2M18 14l2-2"/><circle cx="25" cy="9" r="3"/><path d="M25 3v2M25 13v2M19 9h2M29 9h2"/></svg>פירוק</h4>
+          <ul class="dots">
+            <li>בחרו מותג אייקוני אחד: <span class="ltr">Lego</span>, <span class="ltr">Apple</span>, טסלה, <span class="ltr">Nike</span> או <span class="ltr">Spotify</span>.</li>
+            <li>המשימה: פרקו אותו לגורמים, ומפו איך הוא בא לידי ביטוי בכל חמשת החושים.</li>
+            <li>אילו נכסים הם שלו בלבד?</li>
+          </ul>
+        </div>
+        <div class="inv">
+          <h4 class="lab-h"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M12 24c0-3-4-5-4-11a9 9 0 0 1 18 0c0 6-4 8-4 11z"/><path d="M13 28h8M14.5 31h5"/><path d="M17 1v2M4 6l1.5 1.5M30 6l-1.5 1.5"/></svg>המצאה</h4>
+          <ul class="dots">
+            <li>המציאו מוצר פיזי ביזארי וחסר היגיון. למשל: מגפי חורף בלי החלק העליון.</li>
+            <li>המשימה: בנו סביבו מותג שלם, והגדירו איך הלקוח יפגוש אותו דרך כל אחד מחמשת החושים.</li>
+            <li>ומי הקהל הקונספטואלי (ולא הדמוגרפי) שיאמץ אותו?</li>
+          </ul>
+        </div>
+      </div>
+      <p>רוצים לעבור מהפסיכולוגיה לעבודה עצמה? הפרק הבא מתחיל מהשאלות שעונים עליהן לפני שפותחים תוכנה. <a class="xref" href="strategy.html">אסטרטגיה, קול ומתחרים</a></p>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* page widgets: product/brand flip cards, the organizing-idea brand switch, rail-or-carriage quiz.
+   The steppers (supermarket, ring, senses, jar) are driven by guide.js; their states are pure CSS. */
+(function () {
+  "use strict";
+  function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
+
+  /* flip cards */
+  var flips = $$(".flip"), all = document.getElementById("flip-all");
+  function syncAll() {
+    if (!all) return;
+    var n = flips.filter(function (f) { return f.getAttribute("aria-pressed") === "true"; }).length;
+    $$("button", all).forEach(function (b) {
+      var v = b.getAttribute("data-v");
+      b.setAttribute("aria-pressed", String(v === "brand" ? n === flips.length : n === 0));
+    });
+  }
+  flips.forEach(function (f) {
+    f.addEventListener("click", function () {
+      f.setAttribute("aria-pressed", String(f.getAttribute("aria-pressed") !== "true"));
+      syncAll();
+    });
+  });
+  if (all) all.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    var on = b.getAttribute("data-v") === "brand";
+    flips.forEach(function (f) { f.setAttribute("aria-pressed", String(on)); });
+    syncAll();
+  });
+
+  /* organizing idea: Apple / Tel Aviv store */
+  var rb = document.getElementById("ring-brand"), rf = document.querySelector(".rf");
+  if (rb && rf) rb.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    var tlv = b.getAttribute("data-v") === "tlv";
+    rf.classList.toggle("tlv", tlv);
+    $$("button", rb).forEach(function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+  });
+
+  /* rail or carriage */
+  var quiz = document.getElementById("quiz");
+  if (quiz) quiz.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    b.classList.add("shown");
+    b.querySelector(".ans").textContent = b.getAttribute("data-a") === "rail" ? "מסילה" : "קרון";
+  });
+})();
+</script>
+</body>
+</html>

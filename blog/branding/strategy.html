@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>אסטרטגיה, קול ומתחרים · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="לפני שמעצבים: סיפור מותג, קהל יעד ומיצוב, מחקר מתחרים והחלל העיצובי, ארכיטיפים, טון דיבור, מה המותג לעולם לא יגיד, ומה הוא אומר ב־40 תווים.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="אסטרטגיה, קול ומתחרים · מדריך המיתוג">
+<meta property="og:description" content="מה המותג אומר ומה לעולם לא, למי הוא מדבר, ואיפה החלל העיצובי שאף אחד לא תפס.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/bp-we-are.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* ---- three things lecturers love ---- */
+.three { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 22px 0; }
+.three a { display: block; text-decoration: none; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
+.three a:hover { border-color: var(--accent); }
+.three .num { font: 700 46px/1 var(--display); color: var(--accent-ink); }
+.three .en { display: block; font: 500 13px var(--mono); color: var(--muted); direction: ltr; text-align: right; margin: 6px 0 2px; }
+.three b { font-size: 19px; }
+@media (max-width: 640px) { .three { grid-template-columns: 1fr; } }
+
+/* ---- storybrand chain ---- */
+.chain { list-style: none; padding: 0; margin: 20px 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; }
+.chain li { margin: 0; position: relative; background: var(--paper); border: 1px solid var(--line); border-radius: 10px; padding: 12px 8px; text-align: center; font-size: 14px; line-height: 1.4; }
+.chain li b { display: block; font-size: 15px; margin-bottom: 2px; }
+.chain li .muted { font-size: 13px; }
+.chain li.hero { border-color: var(--accent); }
+.chain li.guide { background: var(--accent-soft); }
+.chain li:not(:last-child)::after { content: "←"; position: absolute; left: -11px; top: 50%; transform: translateY(-50%); color: var(--accent-ink); font-size: 14px; z-index: 1; }
+@media (max-width: 760px) { .chain { grid-template-columns: 1fr 1fr; } .chain li::after { display: none; } }
+
+/* ---- formula builder ---- */
+.fx { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr)); gap: 10px 14px; }
+.fx label { display: flex; flex-direction: column; gap: 4px; font-size: 14px; }
+.fx input, .forty input { font: 400 16px var(--text); color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; }
+.fx input:focus, .forty input:focus { outline: none; border-color: var(--accent); }
+.fx-out { margin-top: 16px; padding: 16px 18px; border-radius: 12px; background: var(--soft); font-size: 19px; line-height: 1.7; }
+.fx-out em { font-style: normal; background: var(--accent-soft); color: var(--ink); border-bottom: 2px solid var(--accent); padding: 0 4px; border-radius: 3px; }
+
+/* ---- sliders ---- */
+.sl { display: grid; gap: 14px; }
+.sl-row { display: grid; grid-template-columns: 90px minmax(0, 1fr) 90px; align-items: center; gap: 12px; font-size: 15px; }
+.sl-row span:last-child { text-align: left; }
+.sl-out { margin-top: 16px; font-size: 18px; }
+.sl-out b { color: var(--accent-ink); }
+
+/* ---- golden circle ---- */
+.gc { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 24px; align-items: center; }
+.gc svg { width: 100%; height: auto; }
+.gc circle { transform-box: fill-box; transform-origin: center; }
+.gc .c3 { fill: var(--soft); stroke: var(--line); }
+.gc .c2 { fill: var(--fill); stroke: var(--line); }
+.gc .c1 { fill: var(--accent); }
+.gc text { font-family: var(--text); font-weight: 600; text-anchor: middle; fill: var(--ink); font-size: 17px; }
+.gc .t1 { fill: var(--on-accent); font-size: 20px; }
+.gc ol { margin: 0; }
+/* stepper: the reader moves inside-out, one ring at a time (all three rings are always on screen) */
+.gc circle, .gc text, .gc ol li { transition: opacity .5s, stroke .5s, stroke-width .5s, fill .5s, background .5s; }
+.gc .c2, .gc .c3 { stroke-width: 1; }
+.gc ol li { border-radius: 18px; padding-block: 2px; padding-inline-end: 10px; opacity: .45; }
+.anim[data-step="1"] .gc ol li:nth-child(1), .anim[data-step="2"] .gc ol li:nth-child(2), .anim[data-step="3"] .gc ol li:nth-child(3) { opacity: 1; background: var(--accent-soft); }
+.anim[data-step="1"] .gc .c1 { stroke: var(--ink); stroke-width: 3; }
+.anim[data-step="2"] .gc .c2, .anim[data-step="3"] .gc .c3 { stroke: var(--accent); stroke-width: 4; }
+.anim[data-step="1"] .gc .t2, .anim[data-step="1"] .gc .t3, .anim[data-step="2"] .gc .t3 { opacity: .4; }
+.anim[data-step="3"] .gc .c1, .anim[data-step="3"] .gc .c2 { opacity: .55; }
+.anim[data-step="2"] .gc .c1 { opacity: .7; }
+@media (max-width: 640px) { .gc { grid-template-columns: 1fr; } .gc svg { max-width: 280px; margin: 0 auto; display: block; } }
+
+/* ---- competitor test (js driven) ---- */
+.comp { position: relative; height: 340px; border-radius: 12px; background: var(--soft); overflow: hidden; }
+.cm, .cm-new { position: absolute; width: 56px; height: 56px; transform: translate(-50%, -50%); transition: left .8s cubic-bezier(.2,.8,.2,1), top .8s cubic-bezier(.2,.8,.2,1), opacity .5s; z-index: 2; }
+.cm svg, .cm-new svg { width: 100%; height: 100%; display: block; }
+.cm-new { left: 25%; top: 23%; width: 66px; height: 66px; opacity: 0; transform: translate(-50%, -50%) scale(.3); transition: opacity .4s, transform .6s cubic-bezier(.2,1.4,.4,1); z-index: 3; }
+.cmap { position: absolute; inset: 0; opacity: 0; transition: opacity .6s; }
+.cmap .ax-h { position: absolute; top: 50%; inset-inline: 4%; border-top: 1.5px solid var(--muted); }
+.cmap .ax-v { position: absolute; left: 50%; top: 6%; bottom: 6%; border-left: 1.5px solid var(--muted); }
+.cmap span { position: absolute; font-size: 13px; color: var(--muted); background: var(--soft); padding: 0 6px; }
+.cmap .r { right: 2%; top: calc(50% + 6px); } .cmap .l { left: 2%; top: calc(50% + 6px); }
+.cmap .t { top: 2%; left: calc(50% + 8px); } .cmap .b { bottom: 2%; left: calc(50% + 8px); }
+.space { position: absolute; left: 6%; top: 8%; width: 40%; height: 38%; border: 2px dashed var(--accent); border-radius: 12px; background: color-mix(in srgb, var(--accent) 12%, transparent); opacity: 0; transition: opacity .6s; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--accent-ink); z-index: 1; }
+.c-msg { position: absolute; top: 12px; right: 14px; z-index: 4; font-size: 14px; font-weight: 600; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
+.comp[data-step="3"] .cmap, .comp[data-step="4"] .cmap { opacity: 1; }
+.comp[data-step="4"] .space { opacity: 1; }
+.comp[data-step="4"] .cm-new { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.comp[data-step="3"] .cm, .comp[data-step="4"] .cm { opacity: .75; }
+@media (max-width: 560px) { .comp { height: 300px; } .cm { width: 44px; height: 44px; } .cm-new { width: 52px; height: 52px; } .space { font-size: 12px; } }
+
+/* ---- archetype wheel ---- */
+.aw { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; justify-items: center; }
+.aw > svg { max-width: 460px; }
+.aw-panel { width: 100%; }
+.aw svg { width: 100%; height: auto; display: block; }
+.aw .sl0 { fill: var(--soft); } .aw .sl1 { fill: var(--fill); }
+.aw .slice path { stroke: var(--bg); stroke-width: 2; transition: fill .2s; }
+.aw .slice { cursor: pointer; outline: none; }
+.aw .slice:hover path, .aw .slice:focus-visible path { fill: var(--raise); }
+.aw .slice.on path { fill: var(--accent); }
+.aw .slice text { font-family: var(--text); font-size: 16px; font-weight: 500; text-anchor: middle; fill: var(--ink); pointer-events: none; }
+.aw .slice.on text { fill: var(--on-accent); font-weight: 600; }
+.aw .quad path { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+.aw .quad text { font-family: var(--text); font-size: 14px; text-anchor: middle; fill: var(--muted); }
+.aw-panel { background: var(--soft); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; min-height: 200px; }
+.aw-panel .q { font-size: 13px; color: var(--muted); }
+.aw-panel h4 { font: 700 44px/1.05 var(--display); margin: 2px 0 2px; }
+.aw-panel .en { font: 500 13px var(--mono); color: var(--accent-ink); direction: ltr; text-align: right; display: block; margin-bottom: 10px; }
+.aw-panel dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 15px; line-height: 1.55; }
+.aw-panel dt { color: var(--muted); }
+.aw-panel dd { margin: 0; }
+
+/* ---- voice switcher ---- */
+.vs-card { margin-top: 16px; border-radius: 12px; padding: 22px 24px; min-height: 140px; transition: background .4s, color .4s; }
+.vs-card p { margin: 0; font-size: 21px; line-height: 1.6; }
+.vs-card small { display: block; margin-top: 12px; font-size: 14px; opacity: .85; }
+.vs-card[data-v="light"] { background: #ffd23f; color: #1d1a12; }
+.vs-card[data-v="light"] p { font-weight: 600; }
+.vs-card[data-v="elegant"] { background: #15171c; color: #e9e3d6; border: 1px solid #3a3d45; }
+.vs-card[data-v="elegant"] p { font-family: "Frank Ruhl Libre", "David", Georgia, serif; font-weight: 400; letter-spacing: .01em; }
+.vs-card[data-v="family"] { background: #f4e3cc; color: #4a2a17; }
+.vs-card[data-v="family"] p { font-weight: 500; }
+
+/* ---- never / always ---- */
+.na { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 20px 0; }
+.na > div { border: 1px solid var(--line); border-radius: var(--r); padding: 16px 18px; background: var(--paper); }
+.na h4 { margin: 0 0 4px; }
+.na .chips { margin-bottom: 4px; }
+@media (max-width: 600px) { .na { grid-template-columns: 1fr; } }
+
+/* ---- forty characters ---- */
+.forty input { width: 100%; font-size: 20px; padding: 12px 14px; }
+.forty .meter { height: 8px; border-radius: 999px; background: var(--fill); margin: 12px 0 8px; overflow: hidden; }
+.forty .meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .15s, background .2s; }
+.forty.over .meter i { background: var(--warn); }
+.forty .cnt { display: flex; justify-content: space-between; gap: 12px; font-size: 15px; color: var(--muted); flex-wrap: wrap; }
+.forty .cnt b { font: 500 18px var(--mono); color: var(--ink); direction: ltr; unicode-bidi: isolate; }
+.forty.over .cnt b { color: var(--warn); }
+.forty .ex { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.forty .ex button { border: 1px solid var(--line); background: var(--soft); color: var(--ink); border-radius: 999px; padding: 4px 12px; font: 400 14px var(--text); cursor: pointer; }
+.forty .ex button:hover { border-color: var(--accent); }
+
+/* ---- brief ---- */
+.brief-tools { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.btn { border: 1px solid var(--line); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 7px 16px; font: 500 14px var(--text); cursor: pointer; }
+.btn:hover { border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+</style>
+</head>
+<body data-ch="strategy">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">03 / 15</div>
+      <h1>אסטרטגיה, קול ומתחרים</h1>
+      <p class="lede">לפני שפותחים תוכנה: מה המותג מספר, למי הוא מדבר, במה הוא שונה, ואיך הוא נשמע. ואז, מה הוא לעולם לא יגיד, ואיפה החלל העיצובי שאף מתחרה עוד לא נגע בו.</p>
+      <div class="ch-meta"><span>7 נושאים</span><span>2 הדגמות</span><span>5 כלים לנסות</span><span>תבנית בריף</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-02.webp" alt="איור: אסטרטגית רוכנת עם זכוכית מגדלת מעל מפה מלאה סיכות אפורות צפופות, ובאמצע שטח פנוי שזוהר" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= story, audience, positioning ================= -->
+    <section class="sec">
+      <h2 id="story-audience-positioning" data-short="סיפור, קהל ומיצוב">סיפור, קהל ומיצוב</h2>
+      <p>אם אתם עושים פרויקט מיתוג <strong>לפורטפוליו או לפרויקט לימודי</strong>, יש גם 3 דברים שמרצים מאוד אוהבים לראות. הם לא „עוד עמוד” בהגשה: הם הסיבה שכל שאר ההחלטות העיצוביות נראות הגיוניות.</p>
+      <div class="three">
+        <a href="#story"><span class="num">1</span><span class="en">Brand Story</span><b>סיפור המותג</b></a>
+        <a href="#audience"><span class="num">2</span><span class="en">Target Audience</span><b>למי המותג פונה</b></a>
+        <a href="#positioning"><span class="num">3</span><span class="en">Brand Positioning</span><b>איך הוא שונה מהמתחרים</b></a>
+      </div>
+
+      <h3 id="story">1. סיפור המותג</h3>
+      <div data-added>
+        <p>מותגים חזקים מספרים סיפור, וסיפור יוצר חיבור רגשי שעובדות לבד לא יוצרות. הסיפור יכול להיות על <strong>מקור המותג</strong> (מי, איפה ולמה זה התחיל), על <strong>הבעיה שהוא פותר</strong>, או על <strong>הערכים שלו</strong>.</p>
+        <p>הטעות הנפוצה: לשים את המותג במרכז הסיפור. במסגרת <span class="ltr">StoryBrand</span> של דונלד מילר, <strong>הלקוח הוא הגיבור, והמותג הוא המדריך</strong>. כמו יודה, לא כמו לוק סקייווקר:</p>
+        <ol class="chain" aria-label="שבעת חלקי הסיפור">
+          <li class="hero"><b>דמות</b><span class="muted">הלקוח, הגיבור</span></li>
+          <li><b>בעיה</b><span class="muted">חיצונית, פנימית, עקרונית</span></li>
+          <li class="guide"><b>מדריך</b><span class="muted">המותג: אמפתיה וסמכות</span></li>
+          <li><b>תוכנית</b><span class="muted"><span class="ltr">3–4</span> צעדים פשוטים</span></li>
+          <li><b>קריאה לפעולה</b><span class="muted">ישירה וברורה</span></li>
+          <li><b>כישלון</b><span class="muted">מה קורה אם לא</span></li>
+          <li><b>הצלחה</b><span class="muted">השינוי בסוף</span></li>
+        </ol>
+        <p>וכלל הברזל של מילר: <strong>„אם אתם מבלבלים, אתם מפסידים.”</strong> סיפור טוב אפשר לספר בשני משפטים.</p>
+      </div>
+
+      <h3 id="audience">2. למי המותג פונה</h3>
+      <div data-added>
+        <p>מיתוג צריך לדבר לקהל מסוים. <strong>אי אפשר לפנות לכולם</strong>, ומותג שמנסה לא מדבר עם אף אחד. לפני שמעצבים, ענו בכתב על חמש שאלות:</p>
+        <ol class="steps">
+          <li>מה המותג עושה?</li>
+          <li>למי הוא פונה? (גיל, אורח חיים, מה מטריד אותם, מה הם כבר אוהבים)</li>
+          <li>איזו בעיה הוא פותר להם?</li>
+          <li>מה מבדל אותו מהמתחרים?</li>
+          <li>איזה רגש הוא רוצה ליצור?</li>
+        </ol>
+        <p>ואז תלכו עוד צעד: הלוגו בכלל לא בשביל הלקוח שלכם, הוא בשביל ה„שבט” שהלקוח רוצה להתחבר אליו. איך הם מתלבשים, מה הם גוללים, אילו מותגים הם כבר אוהבים. <a class="xref" href="logo-design.html#process">השבט ותהליך העבודה</a></p>
+      </div>
+
+      <h3 id="positioning">3. מיצוב: איך הוא שונה מהמתחרים</h3>
+      <div data-added>
+        <p>מיצוב הוא משפט אחד שמכריח אתכם להחליט. נוסחת המיצוב הקלאסית: <strong>„עבור [קהל יעד], [המותג] הוא [הקטגוריה] ש[נקודת הבידול], כי [הסיבה להאמין].”</strong> כל החלטה עיצובית אחר כך אמורה „להוכיח” את המשפט הזה. נסו:</p>
+        <div class="widget" id="wfx">
+          <div class="fx">
+            <label>קהל היעד<input data-f="aud" type="text" value="הורים צעירים בשכונה"></label>
+            <label>המותג<input data-f="brand" type="text" value="שקד"></label>
+            <label>הקטגוריה<input data-f="cat" type="text" value="מאפייה"></label>
+            <label>נקודת הבידול<input data-f="diff" type="text" value="אופה רק לחם שאור עם קמח מלא"></label>
+            <label>הסיבה להאמין<input data-f="why" type="text" value="המאפים יוצאים מהתנור מול העיניים כל בוקר"></label>
+          </div>
+          <div class="fx-out" aria-live="polite">עבור <em data-o="aud"></em>, <em data-o="brand"></em> היא <em data-o="cat"></em> ש<em data-o="diff"></em>, כי <em data-o="why"></em>.</div>
+          <p class="muted" style="font-size:15px;margin:12px 0 0">והגרסה הקצרה של מרטי נוימאייר, „מבחן הבלעדיות”: <strong>„המותג שלנו הוא ה־___ היחיד ש־___.”</strong> אם אי אפשר להשלים את המשפט בלי לשקר, עוד אין בידול.</p>
+        </div>
+        <p>עוד כלי מהיר: איפה המותג עומד על ארבעה צירים. אין תשובה נכונה, יש תשובה ברורה. מותג שעומד „באמצע” בכל הצירים, לרוב לא אומר כלום.</p>
+        <div class="widget" id="wsl">
+          <div class="sl">
+            <div class="sl-row"><span>יוקרתי</span><input type="range" min="0" max="100" value="70" data-a="יוקרתי" data-b="נגיש" aria-label="יוקרתי או נגיש"><span>נגיש</span></div>
+            <div class="sl-row"><span>צעיר</span><input type="range" min="0" max="100" value="35" data-a="צעיר" data-b="רציני" aria-label="צעיר או רציני"><span>רציני</span></div>
+            <div class="sl-row"><span>טכנולוגי</span><input type="range" min="0" max="100" value="80" data-a="טכנולוגי" data-b="טבעי" aria-label="טכנולוגי או טבעי"><span>טבעי</span></div>
+            <div class="sl-row"><span>שובב</span><input type="range" min="0" max="100" value="45" data-a="שובב" data-b="רשמי" aria-label="שובב או רשמי"><span>רשמי</span></div>
+          </div>
+          <p class="sl-out" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <h3 id="golden-circle" data-added>להתחיל מ„למה”</h3>
+      <div data-added>
+        <p>סיימון סינק הראה שמותגים שמעוררים נאמנות מספרים את הסיפור מבפנים החוצה: קודם <strong>למה</strong>, אחר כך <strong>איך</strong>, ורק בסוף <strong>מה</strong>. רוב העסקים עושים בדיוק הפוך.</p>
+        <figure class="anim" data-steps="3" data-step-labels="למה: המטרה|איך: הדרך|מה: המוצר">
+          <span class="anim__label">מבפנים החוצה</span>
+          <div class="anim__stage gc">
+            <svg viewBox="0 0 300 300" aria-hidden="true">
+              <circle class="c3" cx="150" cy="150" r="142"/>
+              <circle class="c2" cx="150" cy="150" r="96"/>
+              <circle class="c1" cx="150" cy="150" r="50"/>
+              <text class="t1" x="150" y="157">למה</text>
+              <text class="t2" x="150" y="80">איך</text>
+              <text class="t3" x="150" y="34">מה</text>
+            </svg>
+            <ol class="steps">
+              <li data-goto="1"><strong>למה</strong>: המטרה. למה המותג קיים, מעבר לכסף.</li>
+              <li data-goto="2"><strong>איך</strong>: הדרך. מה מיוחד באופן שבו הוא עושה את זה.</li>
+              <li data-goto="3"><strong>מה</strong>: המוצר. מה בפועל קונים.</li>
+            </ol>
+          </div>
+          <figcaption>„אנשים לא קונים את מה שאתם עושים, הם קונים את הסיבה שבגללה אתם עושים את זה.” (סיימון סינק)</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ================= competitors ================= -->
+    <section class="sec">
+      <h2 id="competitors">מחקר מתחרים</h2>
+      <p>לפני שמשרטטים סקיצה אחת, בודקים מה כבר יש בחוץ. התרגיל הזה לוקח שעה, וחוסך שבועות של עיצוב לוגו שנראה כמו של כולם.</p>
+      <ol class="steps">
+        <li>מצאו <span class="ltr">5–6</span> לוגואים של חברות מתחרות למותג שאתם עובדים עליו.</li>
+        <li>מקמו את כל הלוגואים שלהם על דף אחד (בלי השמות אם אפשר, רק האייקון) ובדקו האם יש מכנה משותף.</li>
+        <li>האם כולם „נכונים” לתעשייה שלהם ומנסים להיות דומים? והאם יש מיוחדים? מה מיוחד בחריגים?</li>
+        <li>בדקו האם להחליף מקומות בין לוגואים יוצר הרגשה שונה, או שהלוגואים כל כך דומים שזה לא משנה. זה סימן לדעת ממה להיזהר: סימן שהם עיצבו לנוחות וביטחון, לא לתעוזה וחדשנות.</li>
+      </ol>
+
+      <h3 id="design-space">החלל העיצובי</h3>
+      <p class="lead">שאלו את עצמכם: מה „החלל העיצובי” שאף מותג עדיין לא נגע בו?</p>
+
+      <figure class="anim" data-steps="5" data-step-labels="שישה מתחרים|מחליפים מקומות|ושוב מחליפים|על מפה|החלל הריק" id="comp-anim">
+        <span class="anim__label">מבחן החלפת המקומות</span>
+        <div class="anim__stage">
+          <div class="comp" data-step="0" aria-hidden="true">
+            <span class="c-msg">שישה מתחרים, דף אחד, בלי שמות</span>
+            <div class="cmap"><i class="ax-h"></i><i class="ax-v"></i><span class="r">מסורתי</span><span class="l">חדשני</span><span class="t">נועז</span><span class="b">רגוע</span></div>
+            <div class="space">החלל העיצובי</div>
+            <div class="cm" style="left:75%;top:30%"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#6b4a3a"/><path d="M19 25h18v9a9 9 0 0 1-18 0zM37 28h3a3 3 0 0 1 0 6h-3" fill="none" stroke="#f3e6cc" stroke-width="2.6" stroke-linejoin="round"/></svg></div>
+            <div class="cm" style="left:50%;top:30%"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#7a5643"/><ellipse cx="30" cy="30" rx="9" ry="13" fill="none" stroke="#f3e6cc" stroke-width="2.6" transform="rotate(30 30 30)"/><path d="M26 21c6 5 2 13 8 18" fill="none" stroke="#f3e6cc" stroke-width="2.2"/></svg></div>
+            <div class="cm" style="left:25%;top:30%"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#5e4032"/><circle cx="30" cy="30" r="20" fill="none" stroke="#e7d3b0" stroke-width="2"/><path d="M30 18v24M24 24l6 4 6-4M24 31l6 4 6-4" fill="none" stroke="#e7d3b0" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+            <div class="cm" style="left:75%;top:70%"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#806050"/><path d="M20 36c0-10 8-17 20-18-1 12-8 19-18 19zM20 40l10-10" fill="none" stroke="#f3e6cc" stroke-width="2.6" stroke-linecap="round"/></svg></div>
+            <div class="cm" style="left:50%;top:70%"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#6f4e3c"/><path d="M21 30h18v6a9 9 0 0 1-18 0zM26 17c-2 3 2 5 0 8M33 17c-2 3 2 5 0 8" fill="none" stroke="#f3e6cc" stroke-width="2.4" stroke-linecap="round"/></svg></div>
+            <div class="cm" style="left:25%;top:70%"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#745240"/><circle cx="30" cy="30" r="21" fill="none" stroke="#f3e6cc" stroke-width="1.6" stroke-dasharray="3 3"/><text x="30" y="37" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#f3e6cc">B</text></svg></div>
+            <div class="cm-new"><svg viewBox="0 0 60 60"><rect x="4" y="4" width="52" height="52" rx="6" fill="#2a4bff"/><path d="M4 44L44 4h12v12L16 56H4z" fill="#d7ff3a"/></svg></div>
+          </div>
+        </div>
+        <figcaption>שישה לוגואים של בתי קפה מומצאים. עברו בין השלבים: מחליפים להם מקומות פעמיים, ושום דבר לא משתנה: כולם חומים, עגולים, עם כוס או פול. כשמסדרים אותם על מפה, כולם יושבים באותה פינה. הפינה הריקה היא ההזדמנות.</figcaption>
+      </figure>
+
+      <h3 id="what-to-collect" data-added>מה עוד כדאי לאסוף, חוץ מלוגואים</h3>
+      <div data-added>
+        <p>הלוגו הוא ההתחלה. על אותו דף (או בורד) אספו גם:</p>
+        <ul class="chips"><li>פלטות צבעים</li><li>סגנון טיפוגרפי</li><li>שפה גרפית</li><li>סגנון צילום</li><li>טון דיבור באתר וברשתות</li></ul>
+        <p>ואז חפשו דפוסים: אם כל המתחרים כחולים, או כולם בפונט עגול, או כולם מצלמים באור לבן ושטוח, זה המקום לבחור כיוון אחר. אם המותג נראה כמו המתחרים שלו, הוא לא ייזכר.</p>
+        <p class="muted" style="font-size:15px">המפה מההדגמה היא כלי אמיתי: בוחרים שני צירים שחשובים לקהל (מסורתי־חדשני, רגוע־נועז, יוקרתי־נגיש) ומניחים עליה את כל המתחרים. הצירים צריכים להיות כאלה שהלקוח שלכם יכול לבחור בהם צד.</p>
+      </div>
+    </section>
+
+    <!-- ================= archetypes ================= -->
+    <section class="sec">
+      <h2 id="archetypes" data-added data-short="12 ארכיטיפים">אישיות: 12 הארכיטיפים</h2>
+      <div data-added>
+        <p>קרל יונג תיאר דפוסי אישיות אוניברסליים, ומרגרט מארק וקרול פירסון התאימו אותם למיתוג בספר <span class="ltr"><i>The Hero and the Outlaw</i></span> <span class="ltr">(2001)</span>. שנים־עשר ארכיטיפים, בארבע קבוצות לפי המניע. היתרון: כשבוחרים ארכיטיפ, כל החלטה, מהפונט ועד הטון במענה ללקוח, נגזרת מאותה אישיות.</p>
+        <div class="widget">
+          <div class="aw">
+            <svg id="aw-svg" viewBox="0 0 520 520" role="group" aria-label="גלגל הארכיטיפים: בחרו ארכיטיפ כדי לראות פרטים"></svg>
+            <div class="aw-panel" id="aw-panel" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="tip"><span class="box-label">איך משתמשים בזה</span><p>בחרו ארכיטיפ <strong>ראשי אחד</strong> (אפשר משני אחד לתיבול), הגדירו <span class="ltr">3–5</span> תארים שמתארים את המותג, ותנו להם להוביל את הקול, את השפה החזותית ואת התוכן בכל נקודת מגע. שני מותגים באותה תעשייה יכולים להיות ארכיטיפים הפוכים, וזה בדיוק הבידול.</p></div>
+      </div>
+    </section>
+
+    <!-- ================= voice ================= -->
+    <section class="sec">
+      <h2 id="voice" data-short="סיפור מותג וטון דיבור">סיפור מותג וטון דיבור</h2>
+      <figure class="illus"><img src="img/voice-02.webp" alt="איור: שלוש דמויות של בועות דיבור, רגועה, שובבה ורשמית, ומגפון קטן ביניהן" width="1344" height="752" loading="lazy"></figure>
+      <p>מיתוג שלם הוא לא רק איך זה <strong>נראה</strong>, אלא גם איך זה <strong>מדבר</strong>. הגדירו:</p>
+      <ul class="dots">
+        <li>אישיות המותג (קליל? אלגנטי? משפחתי?)</li>
+        <li>שלושה מסרים עיקריים שמלווים כל פרסום</li>
+        <li>התאמה בין ערכי המותג לבין הצבעים, האיורים והטיפוגרפיה</li>
+      </ul>
+
+      <h3 id="personality">אישיות המותג</h3>
+      <div data-added>
+        <p>אותו מסר בדיוק, שלוש אישיויות. שימו לב מה משתנה: אורך המשפטים, בחירת המילים, ההומור, ואפילו מה שהעין מצפה לראות סביב הטקסט.</p>
+        <div class="widget" id="wvs">
+          <div class="seg" role="group" aria-label="אישיות">
+            <button type="button" aria-pressed="true" data-v="light">קליל</button>
+            <button type="button" aria-pressed="false" data-v="elegant">אלגנטי</button>
+            <button type="button" aria-pressed="false" data-v="family">משפחתי</button>
+          </div>
+          <div class="vs-card" data-v="light"><p></p><small></small></div>
+        </div>
+      </div>
+
+      <h3 id="three-messages">שלושה מסרים, לא עשרה</h3>
+      <div data-added>
+        <p>למה דווקא שלושה? כי יותר מזה קשה לזכור. שלושה מסרים שחוזרים בכל פרסום, בניסוחים שונים, הופכים לזיכרון. עשרה מסרים הופכים לרעש. דוגמה למאפייה מהפרק: <strong>„שאור אמיתי”</strong>, <strong>„יוצא חם כל בוקר”</strong>, <strong>„המאפייה של השכונה”</strong>. כל פוסט, שלט או שקית אומרים לפחות אחד מהם.</p>
+      </div>
+
+      <h3 id="values-visual">מהערכים אל הצבע, האיור והטיפוגרפיה</h3>
+      <div data-added>
+        <p>ההתאמה בין הערכים לעיצוב היא לא „תחושה”, אפשר לכתוב אותה בטבלה. ככה נראית טבלה כזו (הדוגמאות כלליות, תתאימו למותג שלכם):</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>ערך</th><th>צבע</th><th>איור וצילום</th><th>טיפוגרפיה</th></tr></thead>
+            <tbody>
+              <tr><td>חמימות משפחתית</td><td>חומים, קרם, כתום אפוי</td><td>קו יד לא מושלם, אור טבעי, ידיים בפריים</td><td>סאנס מעוגל וידידותי</td></tr>
+              <tr><td>מקצועיות ודיוק</td><td>מעט צבעים, הרבה ריק, צבע הדגשה אחד</td><td>צילום נקי על רקע אחיד, אייקונים בקו אחיד</td><td>סאנס נקי, היררכיה חדה</td></tr>
+              <tr><td>חדשנות ותעוזה</td><td>צבע רווי אחד שאף מתחרה לא לקח</td><td>קומפוזיציות לא צפויות, גריד שנשבר בכוונה</td><td>תצוגה בולטת לכותרות</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><a class="xref" href="color.html#psychology">פסיכולוגיה של צבעים</a> <a class="xref" href="typography.html">טיפוגרפיה</a> <a class="xref" href="visual-language.html#illustration">שפה איורית</a></p>
+      </div>
+
+      <h3 id="voice-tone" data-added>קול מול טון</h3>
+      <div data-added>
+        <p>שני מושגים שכדאי להפריד: <strong>הקול</strong> הוא האישיות הקבועה של המותג. <strong>הטון</strong> הוא איך הקול מותאם לרגע. אתם אותו אדם בחתונה ובלוויה, אבל לא מדברים באותו טון. מחקר של <span class="ltr">Nielsen Norman Group</span> מצא שלטון באתר יש השפעה מדידה על כמה המותג נתפס ידידותי, אמין ורצוי.</p>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>מצב</th><th>מה הקהל מרגיש</th><th>מה המותג עושה</th><th>דוגמת ניסוח</th></tr></thead>
+            <tbody>
+              <tr><td>הצלחה</td><td>הקלה</td><td>מחזק ומראה צעד הבא</td><td>„מעולה, זה נשמר. עכשיו אפשר ___.”</td></tr>
+              <tr><td>שגיאה</td><td>לחץ, בלבול</td><td>הסבר קצר ופתרון</td><td>„לא הצלחנו לשמור כי ___. נסו ___.”</td></tr>
+              <tr><td>המתנה</td><td>חוסר סבלנות</td><td>שקיפות וזמן משוער</td><td>„זה לוקח עד ___ שניות. אפשר להמשיך לעבוד בינתיים.”</td></tr>
+              <tr><td>אזהרה</td><td>חשש</td><td>בהירות ואחריות</td><td>„שימו לב: הפעולה תמחק ___. להמשיך?”</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= voice lists ================= -->
+    <section class="sec">
+      <h2 id="voice-lists" data-short="שפה תקשורתית">שפה תקשורתית (קופי בקטנה)</h2>
+      <p>שלושה תרגילים קצרים שעושים יותר לאישיות של המותג מעמוד שלם של „חזון וערכים”:</p>
+      <ol class="steps">
+        <li>צרו רשימה של <strong>5 מסרים, מילים וקונספטים שהמותג לא יגיד לעולם</strong>. (דוגמאות: זול, משוגע, יקר, כיפי, חברותי)</li>
+        <li>בנוסף, רשימה של <strong>5 מסרים שהמותג יתקשר כל הזמן</strong>, באופן תדיר. זה יכול להיות מילים, משפטים וכו’. (דוגמאות: מדויק, בנוי, עשוי, חריג, קהילה וכו’)</li>
+        <li>אם המותג היה צריך לדבר, לתקשר לעולם <strong>ב־40 תווים</strong>: איך הוא יישמע, מה הוא היה אומר?</li>
+      </ol>
+
+      <h3 id="never-always">לעולם לא, כל הזמן</h3>
+      <div class="na">
+        <div><h4>המותג לא יגיד לעולם</h4><ul class="chips no"><li>זול</li><li>משוגע</li><li>יקר</li><li>כיפי</li><li>חברותי</li></ul></div>
+        <div><h4>המותג אומר כל הזמן</h4><ul class="chips yes"><li>מדויק</li><li>בנוי</li><li>עשוי</li><li>חריג</li><li>קהילה</li></ul></div>
+      </div>
+      <p data-added class="muted" style="font-size:16px">שימו לב שהרשימות תלויות במותג: מילים כמו „כיפי” ו„חברותי” הן „לעולם לא” למותג מדויק ובנוי כמו בדוגמה, אבל „כל הזמן” למותג גלידה לילדים. ורשימת ה„לעולם לא” היא לפעמים החשובה מבין השתיים: היא שומרת על המותג מלהישמע כמו כל המתחרים.</p>
+
+      <h3 id="forty">40 תווים</h3>
+      <div class="widget forty" id="w40">
+        <label for="t40">מה המותג שלכם היה אומר לעולם?</label>
+        <input id="t40" type="text" autocomplete="off" placeholder="כתבו כאן משפט אחד…">
+        <div class="meter" aria-hidden="true"><i></i></div>
+        <div class="cnt"><span aria-live="polite" class="msg">כתבו משפט, ונספור יחד.</span><b><span class="n">0</span> / 40</b></div>
+        <div class="ex" data-added><span class="muted" style="font-size:14px">דוגמאות:</span><button type="button">לחם אמיתי. כל בוקר. מול העיניים.</button><button type="button">אנחנו לא ממהרים. גם הבצק לא.</button><button type="button">המאפייה שהשכונה מריחה כבר משש בבוקר.</button></div>
+      </div>
+      <p>כשהרשימות והמשפט מוכנים, הם הופכים בהצגה ללקוח לעמוד „מה בחרנו להיות, ומה במכוון לא”. <a class="xref" href="presenting.html#we-are">אנחנו כן / אנחנו לא</a></p>
+    </section>
+
+    <!-- ================= naming ================= -->
+    <section class="sec">
+      <h2 id="naming" data-added data-short="שם וסלוגן">שם, סלוגן ומה שביניהם</h2>
+      <figure class="illus"><img src="img/naming-02.webp" alt="איור: סדנת שמות, תגיות ריקות על חוט, פתקים צבעוניים, זכוכית מגדלת ועיפרון" width="1344" height="752" loading="lazy"></figure>
+      <div data-added>
+        <p>לפעמים הלקוח מגיע עם שם, ולפעמים השם הוא חלק מהפרויקט. שישה סוגים נפוצים של שמות:</p>
+        <div class="cards">
+          <div class="card"><span class="k">Ford · Disney</span><h4>על שם המייסד</h4><p>אישי ומסורתי. קשה למכור את העסק בלי השם.</p></div>
+          <div class="card"><span class="k">General Motors</span><h4>תיאורי</h4><p>מובן מיד, אבל קשה להגן עליו ולרוב בלי רגש.</p></div>
+          <div class="card"><span class="k">Amazon · Nike</span><h4>מטאפורי</h4><p>אמזון כמו הנהר הגדול בעולם, נייקי אלת הניצחון.</p></div>
+          <div class="card"><span class="k">Kodak · Xerox</span><h4>מומצא</h4><p>מילה חדשה לגמרי. בעלות מלאה, אבל המשמעות נבנית מאפס.</p></div>
+          <div class="card"><span class="k">Spotify · Pinterest</span><h4>הלחם</h4><p>שתי מילים שהתאחדו: <span class="ltr">spot + identify</span>, <span class="ltr">pin + interest</span>.</p></div>
+          <div class="card"><span class="k">Apple · Uber</span><h4>מעורר אסוציאציה</h4><p>מילה קיימת שיוצאת מההקשר שלה, ומפתיעה.</p></div>
+        </div>
+        <p>כל שם צריך לעבור חמש בדיקות: <strong>זכיר, קל להגייה, יכול לגדול עם העסק, אפשר לרשום אותו כסימן מסחר, ויש לו דומיין פנוי</strong>. ובעברית עוד שלוש: איך הוא נשמע בעברית ובאנגלית, האם התעתיק שלו עקבי, והאם יש לו משמעות סלנג שלא תכננתם. לפני שמתאהבים בשם, חפשו אותו במאגר סימני המסחר של רשות הפטנטים.</p>
+        <h4>סוגי סלוגנים</h4>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>סוג</th><th>דוגמה</th></tr></thead>
+            <tbody>
+              <tr><td>תיאורי</td><td><span class="ltr">“The Ultimate Driving Machine” (BMW)</span></td></tr>
+              <tr><td>תועלת</td><td><span class="ltr">“Just Do It”</span> (נייקי)</td></tr>
+              <tr><td>שאיפה</td><td><span class="ltr">“Think Different”</span> (אפל)</td></tr>
+              <tr><td>רגשי</td><td><span class="ltr">“Because You’re Worth It”</span> (לוריאל)</td></tr>
+              <tr><td>שאלה</td><td><span class="ltr">“Got Milk?”</span> (מועצת החלב בקליפורניה)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="muted" style="font-size:15px">ההבדל: <strong>טאגליין</strong> שייך למותג ונשאר שנים. <strong>סלוגן</strong> שייך לקמפיין ומתחלף איתו.</p>
+      </div>
+    </section>
+
+    <!-- ================= brief ================= -->
+    <section class="sec">
+      <h2 id="brief" data-added data-short="תבנית בריף">תבנית: בריף אסטרטגי בעמוד אחד</h2>
+      <figure class="illus"><img src="img/brief-02.webp" alt="איור: דף בריף אחד נעוץ בלוח שעם, ומסביבו מטרה, קהל, מצפן ונורה מחוברים בחוט" width="1344" height="752" loading="lazy"></figure>
+      <div data-added>
+        <p>כל מה שבפרק הזה, בטבלה אחת. מלאו אותה לפני שפותחים תוכנה, ותחזרו אליה בכל פעם שאתם מתלבטים בין שני כיוונים. היא גם הבסיס לעמוד האסטרטגיה בהצגה ללקוח.</p>
+        <div class="tbl-wrap">
+          <table class="tbl" id="brief-tbl">
+            <thead><tr><th>שדה</th><th>שאלה מנחה</th><th>תבנית לניסוח</th></tr></thead>
+            <tbody>
+              <tr><td>במשפט אחד</td><td>מה עושים, בלי חפירות?</td><td>„אנחנו עוזרים ל־___ לעשות ___ בלי ___.”</td></tr>
+              <tr><td>קהל יעד ראשי</td><td>מי, ומה מניע או מפחיד אותו?</td><td>„___ בני ___; צריכים ___; נרתעים מ־___.”</td></tr>
+              <tr><td>ערך מעשי</td><td>מה התועלת בפועל?</td><td>„חוסך זמן / כסף / טעויות ב־___.”</td></tr>
+              <tr><td>ערך רגשי</td><td>איך זה גורם להרגיש?</td><td>שקט, ביטחון, שליטה, שייכות…</td></tr>
+              <tr><td>בידול</td><td>למה לבחור דווקא בנו?</td><td>„אנחנו היחידים ש־___ כי ___.”</td></tr>
+              <tr><td>הוכחות</td><td>מה מוכיח את ההבטחה?</td><td>נתונים, תהליך, תעודות, לקוחות</td></tr>
+              <tr><td>אישיות וארכיטיפ</td><td>מי המותג אם הוא אדם?</td><td><span class="ltr">3–5</span> תארים + ארכיטיפ ראשי</td></tr>
+              <tr><td>טון דיבור</td><td>איך מדברים במצבים שונים?</td><td>„ישיר, לא מתנשא; דחוף כשצריך; רגוע בשגרה.”</td></tr>
+              <tr><td>לעולם לא / כל הזמן</td><td>מה המותג לא יגיד לעולם?</td><td>5 מילים לכל רשימה</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="brief-tools"><button class="btn primary" type="button" id="brief-copy">העתקת התבנית</button><span class="muted" id="brief-msg" aria-live="polite" style="font-size:14px"></span></div>
+        <p style="margin-top:18px"><a class="xref" href="presenting.html#strategy">איך מציגים את זה ללקוח</a></p>
+      </div>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* page widgets: positioning formula, sliders, competitor test, archetype wheel, voice switcher, 40 chars, brief copy.
+   Runs at parse time (end of body) so the "anim:step" listener exists before guide.js starts the steppers. */
+(function () {
+  "use strict";
+  function $(s, el) { return (el || document).querySelector(s); }
+  function $$(s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); }
+
+  /* positioning formula */
+  var fx = $("#wfx");
+  if (fx) {
+    var upd = function () {
+      $$("input", fx).forEach(function (i) {
+        var o = $('[data-o="' + i.getAttribute("data-f") + '"]', fx);
+        if (o) o.textContent = i.value.trim() || "___";
+      });
+    };
+    fx.addEventListener("input", upd); upd();
+  }
+
+  /* personality sliders */
+  var sl = $("#wsl");
+  if (sl) {
+    var out = $(".sl-out", sl);
+    var sUpd = function () {
+      var words = [], mid = 0;
+      $$("input", sl).forEach(function (r) {
+        var v = Number(r.value);
+        if (v < 40) words.push(r.getAttribute("data-a"));
+        else if (v > 60) words.push(r.getAttribute("data-b"));
+        else mid++;
+      });
+      out.innerHTML = words.length ? "המותג שלכם: <b>" + words.join(", ") + "</b>." + (mid ? " ובציר אחד לפחות עוד לא החלטתם." : "")
+                                   : "באמצע בכל הצירים. זה בדיוק המקום שבו כל המתחרים כבר עומדים.";
+    };
+    sl.addEventListener("input", sUpd); sUpd();
+  }
+
+  /* competitor test: a stepper. Each step moves the marks to the next stage (CSS transitions do the motion) */
+  var cf = document.getElementById("comp-anim");
+  if (cf) {
+    var stage = $(".comp", cf), marks = $$(".cm", cf), msg = $(".c-msg", cf);
+    var G = [[75, 30], [50, 30], [25, 30], [75, 70], [50, 70], [25, 70]];
+    var A = [4, 2, 0, 5, 3, 1], B = [1, 5, 3, 0, 4, 2];
+    var M = [[61, 62], [74, 59], [87, 64], [65, 83], [78, 80], [90, 87]];
+    var pos = function (list, order) { marks.forEach(function (m, i) { var p = list[order ? order[i] : i]; m.style.left = p[0] + "%"; m.style.top = p[1] + "%"; }); };
+    var STEPS = [
+      function () { pos(G); return "שישה מתחרים, דף אחד, בלי שמות"; },
+      function () { pos(G, A); return "מחליפים מקומות. מרגישים הבדל?"; },
+      function () { pos(G, B); return "ושוב. שום דבר לא משתנה"; },
+      function () { pos(M); return "על המפה: כולם באותה פינה"; },
+      function () { pos(M); return "פה אפשר להיות שונים"; }
+    ];
+    var showStep = function (k) { k = Math.min(STEPS.length, Math.max(1, k || 1)); msg.textContent = STEPS[k - 1](); stage.setAttribute("data-step", String(k - 1)); };
+    cf.addEventListener("anim:step", function (e) { showStep(e.detail.step); });
+    showStep(Number(cf.getAttribute("data-step")) || 1);
+  }
+
+  /* archetype wheel */
+  var svg = document.getElementById("aw-svg"), panel = document.getElementById("aw-panel");
+  if (svg && panel) {
+    var Q = ["עצמאות והגשמה", "מצוינות וסיכון", "שייכות והנאה", "יציבות ושליטה"];
+    var AR = [
+      ["התמים", "The Innocent", 0, "ביטחון, טוהר ואופטימיות", "Coca-Cola, Dove", "פלטות פסטל, לבן נקי, צורות פשוטות ורכות שמשרות רוגע."],
+      ["החוקר", "The Explorer", 0, "חופש, גילוי והרפתקה", "Jeep, Patagonia", "צבעי אדמה, טקסטורות טבעיות, צילום בחוץ ובמרחבים פתוחים."],
+      ["החכם", "The Sage", 0, "ידע, הבנה ואמת", "Google, TED", "מבנה נקי ומסודר, טיפוגרפיה ברורה, הרבה אוויר בעמוד."],
+      ["הגיבור", "The Hero", 1, "להוכיח את עצמו ולהתגבר על מכשולים", "Nike, BMW", "טיפוגרפיה עבה ודחוסה, אלכסונים שמתקדמים קדימה, אדום, כתום וכחול פלדה."],
+      ["המורד", "The Outlaw", 1, "לשבור את הכללים ולשחרר", "Harley-Davidson, Virgin", "ניגודיות חדה, גריד שנשבר בכוונה, שחור ואדום, צילום מחוספס."],
+      ["הקוסם", "The Magician", 1, "טרנספורמציה, להפוך חלום למציאות", "Apple, Disney", "תחושת פלא, תנועה ומעברים, פשטות שמסתירה מורכבות."],
+      ["האדם הפשוט", "The Everyman", 2, "שייכות, להיות אחד מהחבר’ה", "IKEA, Target", "אור טבעי, צבעים חמים, טיפוגרפיה ברורה בלי התחכמויות."],
+      ["המאהב", "The Lover", 2, "אינטימיות, תשוקה וחוויה חושית", "Chanel, Häagen-Dazs", "צורות עגולות ורכות, אדום, ורוד ובורדו, צילום של פרטים ומרקמים."],
+      ["הליצן", "The Jester", 2, "הנאה, הומור ולחיות את הרגע", "Old Spice, M&M’s", "צבעים עזים, טיפוגרפיה משחקית, דמויות והרבה הומור."],
+      ["המטפל", "The Caregiver", 3, "לעזור, להגן ולדאוג", "Johnson & Johnson, UNICEF", "גוונים רכים וחמים, צורות מעוגלות, צילום אנושי וקרוב."],
+      ["היוצר", "The Creator", 3, "לבנות משהו בעל ערך, ביטוי עצמי", "LEGO, Adobe", "לרוב א־סימטרי ודינמי, צבעים עזים, מראה את התהליך ואת היד."],
+      ["השליט", "The Ruler", 3, "סדר, שליטה ויציבות", "Mercedes-Benz, Rolex", "מינימליסטי וסימטרי, זהב, שחור וכחול עמוק."]
+    ];
+    var NS = "http://www.w3.org/2000/svg", C = 260;
+    var pt = function (r, a) { var t = a * Math.PI / 180; return [C + r * Math.cos(t), C + r * Math.sin(t)]; };
+    var sector = function (r0, r1, a0, a1) {
+      var p0 = pt(r1, a0), p1 = pt(r1, a1), p2 = pt(r0, a1), p3 = pt(r0, a0);
+      var d = "M" + p0 + "A" + r1 + "," + r1 + " 0 0 1 " + p1 + "L" + p2;
+      d += r0 > 0 ? "A" + r0 + "," + r0 + " 0 0 0 " + p3 + "Z" : "Z";
+      return d.replace(/,/g, " ").replace(/ (?=[A-Z])/g, "");
+    };
+    var el = function (n, a) { var e = document.createElementNS(NS, n); for (var k in a) e.setAttribute(k, a[k]); return e; };
+    var txt = function (x, y, s) { var t = el("text", { x: x.toFixed(1), y: y.toFixed(1) }); t.textContent = s; return t; };
+    Q.forEach(function (q, i) {
+      var g = el("g", { "class": "quad" }), a0 = -90 + i * 90;
+      g.appendChild(el("path", { d: sector(0, 122, a0, a0 + 90) }));
+      var m = pt(70, a0 + 45), w = q.split(" ");
+      g.appendChild(txt(m[0], m[1] - 2, w[0])); g.appendChild(txt(m[0], m[1] + 15, w.slice(1).join(" ")));
+      svg.appendChild(g);
+    });
+    var slices = [];
+    AR.forEach(function (a, i) {
+      var a0 = -90 + i * 30, g = el("g", { "class": "slice", tabindex: "0", role: "button", "aria-label": a[0] });
+      g.appendChild(el("path", { d: sector(128, 252, a0, a0 + 30), "class": (a[2] % 2 ? "sl1" : "sl0") }));
+      var m = pt(190, a0 + 15), w = a[0].split(" ");
+      if (w.length > 1) { g.appendChild(txt(m[0], m[1] - 4, w[0])); g.appendChild(txt(m[0], m[1] + 15, w[1])); }
+      else g.appendChild(txt(m[0], m[1] + 5, a[0]));
+      g.addEventListener("click", function () { pick(i); });
+      g.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); pick(i); } });
+      svg.appendChild(g); slices.push(g);
+    });
+    var pick = function (i) {
+      var a = AR[i];
+      slices.forEach(function (s, k) { s.classList.toggle("on", k === i); s.setAttribute("aria-pressed", String(k === i)); });
+      panel.innerHTML = "";
+      var q = document.createElement("span"); q.className = "q"; q.textContent = Q[a[2]];
+      var h = document.createElement("h4"); h.textContent = a[0];
+      var en = document.createElement("span"); en.className = "en"; en.textContent = a[1];
+      var dl = document.createElement("dl");
+      [["מה מניע אותו", a[3]], ["דוגמאות", a[4]], ["בעיצוב", a[5]]].forEach(function (r) {
+        var dt = document.createElement("dt"), dd = document.createElement("dd");
+        dt.textContent = r[0]; dd.textContent = r[1]; if (r[0] === "דוגמאות") { dd.dir = "ltr"; dd.style.textAlign = "right"; }
+        dl.appendChild(dt); dl.appendChild(dd);
+      });
+      panel.appendChild(q); panel.appendChild(h); panel.appendChild(en); panel.appendChild(dl);
+    };
+    pick(3);
+  }
+
+  /* voice switcher */
+  var vs = $("#wvs");
+  if (vs) {
+    var V = {
+      light: ["מחר בבוקר יוצא מהתנור לחם שאור חדש. הוא ייגמר עד הצהריים, אז אל תגידו שלא אמרנו.", "משפטים קצרים, הומור, קריצה. סביבו: צבעים עזים ופונט עגול."],
+      elegant: ["לחם שאור חדש, שתסס ארבעים ושמונה שעות ונאפה על אבן. מחר בבוקר, בכמות מוגבלת.", "מעט מילים, פרטים מדויקים, בלי סימני קריאה. סביבו: סריף דק, הרבה אוויר ופלטה מאופקת."],
+      family: ["מחר בבוקר סבתא רחל מוציאה מהתנור את לחם השאור החדש שלנו. שמרנו לכם כיכר חמה.", "שמות, אנשים, חום. סביבו: צבעים חמים, איור ביד וצילום אנושי."]
+    };
+    var card = $(".vs-card", vs);
+    var setV = function (v) {
+      card.setAttribute("data-v", v); $("p", card).textContent = V[v][0]; $("small", card).textContent = V[v][1];
+      $$(".seg button", vs).forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-v") === v)); });
+    };
+    $(".seg", vs).addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) setV(b.getAttribute("data-v")); });
+    setV("light");
+  }
+
+  /* 40 characters */
+  var w40 = $("#w40");
+  if (w40) {
+    var inp = $("input", w40), bar = $(".meter i", w40), n = $(".n", w40), m40 = $(".msg", w40);
+    var u40 = function () {
+      var len = Array.from(inp.value).length;
+      n.textContent = len; bar.style.width = Math.min(100, len / 40 * 100) + "%";
+      w40.classList.toggle("over", len > 40);
+      m40.textContent = len === 0 ? "כתבו משפט, ונספור יחד."
+        : len > 40 ? "יותר מ־40 תווים. מה אפשר להוריד בלי לאבד את המותג?"
+        : "נכנס. עכשיו קראו את זה בקול: זה נשמע כמו המותג?";
+    };
+    inp.addEventListener("input", u40);
+    $$(".ex button", w40).forEach(function (b) { b.addEventListener("click", function () { inp.value = b.textContent; u40(); inp.focus(); }); });
+    u40();
+  }
+
+  /* brief copy */
+  var bc = document.getElementById("brief-copy"), bm = document.getElementById("brief-msg");
+  if (bc) bc.addEventListener("click", function () {
+    var rows = $$("#brief-tbl tbody tr").map(function (tr) { var c = tr.children; return c[0].textContent + "\n" + c[1].textContent + "\n" + c[2].textContent + "\n"; });
+    var text = "בריף אסטרטגי\n\n" + rows.join("\n");
+    var done = function () { bm.textContent = "הועתק. הדביקו במסמך ומלאו."; };
+    /* older browsers / pages opened from a file: copy through a hidden text box */
+    var fallback = function () {
+      var ta = document.createElement("textarea"), ok = false;
+      ta.value = text; ta.setAttribute("readonly", ""); ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;pointer-events:none";
+      document.body.appendChild(ta); ta.select();
+      try { ok = document.execCommand("copy"); } catch (e) {}
+      ta.remove();
+      if (ok) done(); else bm.textContent = "לא הצלחתי להעתיק. סמנו את הטבלה והעתיקו ידנית.";
+    };
+    try {
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  });
+})();
+</script>
+</body>
+</html>

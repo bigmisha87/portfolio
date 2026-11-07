@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>מדריך המיתוג · עקרונות מיתוג ועיצוב לסטודנטים | מישה קרץ'</title>
+<meta name="description" content="מדריך מיתוג מלא לסטודנטים לעיצוב, ב־15 פרקים: מה זה מיתוג, אסטרטגיה וקול, צבע, טיפוגרפיה, לוגו, שפה גרפית, גריד, מוקאפים, פרסום דיגיטלי, כללי זהב, הצגה ללקוח, רשימת בדיקה להגשה והשראה. עם חיפוש, הדגמות ואינפוגרפיקות.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="מדריך המיתוג · עקרונות מיתוג ועיצוב">
+<meta property="og:description" content="15 פרקים, מהגדרה ועד הגשה. מיתוג הוא לא לוגו, הוא שפה שלמה.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/board-papacito.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+.hub-hero h1 { font-size: clamp(76px, 9.5vw, 150px) !important; }
+.hub-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 56px); align-items: center; }
+@media (max-width: 900px) { .hub-hero { grid-template-columns: 1fr; } .sys { max-width: 420px; } }
+
+/* the "brand as a system" mark: a stepper. Click a component (or the logo) to read what it does */
+.sys { position: relative; aspect-ratio: 1; width: 100%; margin: 0 auto; }
+.sys svg { width: 100%; height: 100%; overflow: visible; }
+.sys .ring { fill: none; stroke: var(--line); stroke-width: 1.2; stroke-dasharray: 3 6; }
+.sys .spoke { stroke: var(--line); stroke-width: 1.2; transition: stroke .4s, stroke-width .4s; }
+.sys .core { fill: var(--accent); }
+.sys .core-t { fill: var(--on-accent); font: 700 46px var(--display); }
+.sys .node circle { fill: var(--paper); stroke: var(--line); stroke-width: 1.4; transition: fill .4s, stroke .4s; }
+.sys .node text { fill: var(--ink); font: 500 15px var(--text); text-anchor: middle; dominant-baseline: middle; transition: fill .4s; }
+.sys .node .ico { fill: none; stroke: var(--accent-ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; transition: stroke .4s; }
+.sys .node, .sys .core-g { transform-box: fill-box; transform-origin: center; transition: transform .45s cubic-bezier(.2,.8,.2,1), opacity .4s; outline: none; }
+.sys .node:hover circle, .sys .node:focus-visible circle { stroke: var(--accent); }
+.sys .core-g:focus-visible .core { stroke: var(--ink); stroke-width: 3; }
+/* step 1 = the whole system; steps 2-7 = one component in focus */
+.anim:not([data-step="1"]) .sys .node:not(.on) { opacity: .4; }
+.anim:not([data-step="1"]) .sys .core-g { transform: scale(.86); }
+.sys .node.on { transform: scale(1.14); }
+.sys .node.on circle { fill: var(--accent); stroke: var(--accent); }
+.sys .node.on text { fill: var(--on-accent); }
+.sys .node.on .ico { stroke: var(--on-accent); }
+.anim[data-step="2"] .spoke[style*="--i:0"], .anim[data-step="3"] .spoke[style*="--i:1"], .anim[data-step="4"] .spoke[style*="--i:2"],
+.anim[data-step="5"] .spoke[style*="--i:3"], .anim[data-step="6"] .spoke[style*="--i:4"], .anim[data-step="7"] .spoke[style*="--i:5"] { stroke: var(--accent); stroke-width: 2.4; }
+/* the one-line explanation under the mark: every line sits in the same cell, so the height never jumps */
+.sys-say { display: grid; margin: 10px auto 0; max-width: 460px; text-align: center; font-size: 16px; line-height: 1.55; min-height: 3.1em; }
+.sys-say > span { grid-area: 1 / 1; opacity: 0; transform: translateY(4px); transition: opacity .4s, transform .4s; pointer-events: none; }
+.sys-say b { color: var(--accent-ink); }
+.anim[data-step="1"] .sys-say > [data-s="1"], .anim[data-step="2"] .sys-say > [data-s="2"], .anim[data-step="3"] .sys-say > [data-s="3"],
+.anim[data-step="4"] .sys-say > [data-s="4"], .anim[data-step="5"] .sys-say > [data-s="5"], .anim[data-step="6"] .sys-say > [data-s="6"],
+.anim[data-step="7"] .sys-say > [data-s="7"] { opacity: 1; transform: none; pointer-events: auto; }
+.sys-hint { display: block; margin-top: 4px; font-size: 13px; color: var(--muted); text-align: center; }
+.hub-hero .anim { background: transparent; border: 0; padding: 0; margin: 0; }
+.hub-hero .anim figcaption { text-align: center; }
+
+.hub-chapters a .ic { width: 34px; height: 34px; color: var(--accent-ink); margin-bottom: 10px; }
+.hub-chapters a .ic svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.hub-chapters a.new::after { content: "חדש"; position: absolute; top: 16px; left: 16px; font: 600 11px var(--text); background: var(--accent); color: var(--on-accent); padding: 2px 9px; border-radius: 999px; }
+
+.howto { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr)); margin: 18px 0; }
+.howto div { padding: 18px; border-radius: var(--r); background: var(--soft); border: 1px solid var(--line); font-size: 16px; line-height: 1.6; }
+.howto b { display: block; margin-bottom: 4px; }
+.howto kbd { font: 500 12px var(--mono); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; background: var(--paper); }
+.stats { display: flex; flex-wrap: wrap; gap: 10px 28px; margin: 22px 0 0; color: var(--muted); font-size: 15px; }
+.stats b { font: 700 34px/1 var(--display); color: var(--ink); margin-inline-end: 6px; }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <div class="hub-hero">
+      <div>
+        <div class="kicker">מדריך לסטודנטים לעיצוב, מיתוג ופרסום</div>
+        <h1>מדריך <span>המיתוג.</span></h1>
+        <p>מיתוג הוא הרבה מעבר ללוגו, צבעים או פאטרן. אלה רק השכבה החיצונית. מיתוג הוא שפה עיצובית שלמה, ובמדריך הזה מפורקים כל החלקים שלה: מהשאלה „מה המותג אומר” ועד ההגשה ללקוח.</p>
+        <div class="hub-search">
+          <div class="g-search" role="search">
+            <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" placeholder="מה מחפשים? למשל: שחור, באנר, גריד, פונט" aria-label="חיפוש בכל המדריך" autocomplete="off">
+            <kbd>/</kbd>
+            <div class="g-results" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="stats"><span><b>15</b>פרקים</span><span><b>28</b>איורים</span><span><b>67</b>הדגמות וכלים לנסות</span></div>
+      </div>
+
+      <figure class="anim" data-steps="7" data-no-bar data-step-labels="המערכת כולה|צבע|טיפוגרפיה|שפה גרפית|צילום|טון דיבור|גריד" aria-label="מותג כמערכת: לוגו במרכז ושישה רכיבים סביבו. לחצו על רכיב כדי לקרוא מה הוא עושה">
+        <div class="anim__stage sys">
+          <svg viewBox="-260 -260 520 520" role="group" aria-label="הלוגו ושישה רכיבים">
+            <circle class="ring" r="190"/>
+            <g class="spokes">
+              <line class="spoke" style="--i:0" x1="0" y1="-62" x2="0" y2="-150"/>
+              <line class="spoke" style="--i:1" x1="54" y1="-31" x2="130" y2="-75"/>
+              <line class="spoke" style="--i:2" x1="54" y1="31" x2="130" y2="75"/>
+              <line class="spoke" style="--i:3" x1="0" y1="62" x2="0" y2="150"/>
+              <line class="spoke" style="--i:4" x1="-54" y1="31" x2="-130" y2="75"/>
+              <line class="spoke" style="--i:5" x1="-54" y1="-31" x2="-130" y2="-75"/>
+            </g>
+            <g class="core-g" data-goto="1" tabindex="0" role="button" aria-label="המערכת כולה"><circle class="core" r="62"/><text class="core-t" text-anchor="middle" dominant-baseline="central" y="4">לוגו</text></g>
+            <g transform="translate(0,-190)"><g class="node" data-goto="2" tabindex="0" role="button" aria-label="צבע"><circle r="46"/><path class="ico" d="M-12 -8h24M-12 0h16M-12 8h20" transform="translate(0,-10)"/><text y="16">צבע</text></g></g>
+            <g transform="translate(165,-95)"><g class="node" data-goto="3" tabindex="0" role="button" aria-label="טיפוגרפיה"><circle r="46"/><path class="ico" d="M-9 6 0-12 9 6M-5 -2h10" transform="translate(0,-10)"/><text y="16">טיפוגרפיה</text></g></g>
+            <g transform="translate(165,95)"><g class="node" data-goto="4" tabindex="0" role="button" aria-label="שפה גרפית"><circle r="46"/><path class="ico" d="M-10 0a10 10 0 1 0 20 0a10 10 0 1 0-20 0" transform="translate(0,-12) scale(.8)"/><text y="16">שפה גרפית</text></g></g>
+            <g transform="translate(0,190)"><g class="node" data-goto="5" tabindex="0" role="button" aria-label="צילום"><circle r="46"/><path class="ico" d="M-11 -6h22v14h-22zM-4 -6l2-4h4l2 4" transform="translate(0,-10)"/><text y="16">צילום</text></g></g>
+            <g transform="translate(-165,95)"><g class="node" data-goto="6" tabindex="0" role="button" aria-label="טון דיבור"><circle r="46"/><path class="ico" d="M-11 -8h22v12h-12l-6 5v-5h-4z" transform="translate(0,-10)"/><text y="16">טון דיבור</text></g></g>
+            <g transform="translate(-165,-95)"><g class="node" data-goto="7" tabindex="0" role="button" aria-label="גריד"><circle r="46"/><path class="ico" d="M-10 -10h20v20h-20zM-10 0h20M0 -10v20" transform="translate(0,-10) scale(.8)"/><text y="16">גריד</text></g></g>
+          </svg>
+        </div>
+        <figcaption>
+          <span class="sys-say" aria-live="polite">
+            <span data-s="1">הלוגו הוא רק שכבה אחת. מותג מתנהג כמערכת של רכיבים, לא כאלמנט בודד.</span>
+            <span data-s="2"><b>צבע</b>: פלטה קבועה, ראשי, משני והדגשה, שמזהים עוד לפני שקוראים מילה.</span>
+            <span data-s="3"><b>טיפוגרפיה</b>: שניים־שלושה פונטים עם היררכיה ברורה, מהכותרת ועד הכיתוב הקטן.</span>
+            <span data-s="4"><b>שפה גרפית</b>: אייקונים, פאטרנים ואיורים שנותנים למותג אופי משלו.</span>
+            <span data-s="5"><b>צילום</b>: אותו אור, אותו מרחק ואותה אווירה בכל תמונה.</span>
+            <span data-s="6"><b>טון דיבור</b>: איך המותג נשמע. אותו קול בשלט, בפוסט ובמענה ללקוח.</span>
+            <span data-s="7"><b>גריד</b>: השלד שמסדר כל עמוד, כדי שהכול ירגיש שייך לאותה משפחה.</span>
+          </span>
+          <span class="sys-hint">לחצו על רכיב כדי לקרוא מה הוא עושה, ועל הלוגו כדי לחזור לתמונה המלאה.</span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <section class="sec" style="max-width:none">
+      <h2 id="chapters">15 פרקים</h2>
+      <nav class="hub-chapters" aria-label="כל הפרקים">
+        <a href="what-is-branding.html" style="--c:var(--c-what);--ci:var(--i-what)"><span class="ic"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5"/><circle cx="16" cy="16" r="12" stroke-dasharray="3 4"/></svg></span><span class="n">01</span><b>מה זה בעצם מיתוג</b><span class="d">שפה עיצובית שלמה, לא רק לוגו. מה היא פותרת, ושבעה צעדים מעיצוב למיתוג.</span></a>
+        <a href="brands.html" style="--c:var(--c-brands);--ci:var(--i-brands)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M16 27c-6-4-10-8-10-13a6 6 0 0 1 10-4 6 6 0 0 1 10 4c0 5-4 9-10 13z"/><path d="M11 15h3l2-3 2 6 2-3h2"/></svg></span><span class="n">02</span><b>איך מותגים גדולים נבנים</b><span class="d">95% מההחלטות רגשיות. הרעיון המארגן, נכסים חושיים, עקביות רדיקלית ומותג Top of Mind.</span></a>
+        <a href="strategy.html" style="--c:var(--c-strategy);--ci:var(--i-strategy)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M5 8h22v13H14l-6 5v-5H5z"/><path d="M10 13h12M10 17h7"/></svg></span><span class="n">03</span><b>אסטרטגיה, קול ומתחרים</b><span class="d">מה המותג אומר ומה לעולם לא, למי הוא מדבר, ואיפה החלל העיצובי שאף אחד לא תפס.</span></a>
+        <a href="color.html" style="--c:var(--c-color);--ci:var(--i-color)"><span class="ic"><svg viewBox="0 0 32 32"><circle cx="12" cy="13" r="7"/><circle cx="20" cy="13" r="7"/><circle cx="16" cy="20" r="7"/></svg></span><span class="n">04</span><b>צבע</b><span class="d">פלטה, פסיכולוגיה, ניגודיות, שחור שהוא לא שחור, ולמה המסך משקר לדפוס.</span></a>
+        <a href="typography.html" style="--c:var(--c-type);--ci:var(--i-type)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M6 26 14 6h4l8 20M10 18h12"/></svg></span><span class="n">05</span><b>טיפוגרפיה</b><span class="d">פונט ראשי ומשני, היררכיה, סוגי פונטים, ועברית מול אנגלית.</span></a>
+        <a href="logo.html" style="--c:var(--c-logo);--ci:var(--i-logo)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M16 4 27 9v8c0 6-5 10-11 11C10 27 5 23 5 17V9z"/><path d="M12 16l3 3 6-6"/></svg></span><span class="n">06</span><b>לוגו</b><span class="d">מה זה לוגו ולמה צריך אותו, חמשת העקרונות, חמשת הסוגים, גרסאות, מרווח מגן ומבחני לחץ.</span></a>
+        <a href="logo-design.html" style="--c:var(--c-logodesign);--ci:var(--i-logodesign)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M6 26l4-1 14-14-3-3L7 22z"/><path d="M19 10l3 3M6 26h20"/></svg></span><span class="n">07</span><b>עיצוב לוגו: מהרעיון לסקיצה</b><span class="d">שאלות ללקוח, מפות חשיבה, לוח השראה, סגנונות, סקיצות, פונט וצבע, ושלבי העבודה.</span></a>
+        <a href="visual-language.html" style="--c:var(--c-visual);--ci:var(--i-visual)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M6 24c4-10 8-14 12-14s6 3 8 0"/><circle cx="9" cy="9" r="3"/><path d="M18 22l4 4 4-4"/></svg></span><span class="n">08</span><b>שפה גרפית, איור וצילום</b><span class="d">אייקונים, איורים, דמות, עקרונות עיצוב וסגנון צילום אחיד.</span></a>
+        <a href="grid.html" style="--c:var(--c-grid);--ci:var(--i-grid)"><span class="ic"><svg viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="2"/><path d="M12.3 5v22M19.6 5v22M5 16h22"/></svg></span><span class="n">09</span><b>גריד וריווח</b><span class="d">גרידים מתמטיים וחופשיים, מערכת ריווח של 8, ומרווח בין שורות.</span></a>
+        <a href="mockups.html" style="--c:var(--c-mockups);--ci:var(--i-mockups)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M9 11h14l-2 16H11z"/><path d="M12 11V8a4 4 0 0 1 8 0v3"/></svg></span><span class="n">10</span><b>יישומים ומוקאפים</b><span class="d">המותג בעולם האמיתי: אריזות, שילוט, דפוס ודיגיטל.</span></a>
+        <a href="digital.html" style="--c:var(--c-digital);--ci:var(--i-digital)"><span class="ic"><svg viewBox="0 0 32 32"><rect x="9" y="3" width="14" height="26" rx="3"/><path d="M13 24h6M12 9h8v8h-8z"/></svg></span><span class="n">11</span><b>פרסום דיגיטלי</b><span class="d">כל המידות לרשתות ולבאנרים, בקנה מידה אמיתי, ולמה זה לא מפוקסל.</span></a>
+        <a href="golden-rules.html" style="--c:var(--c-rules);--ci:var(--i-rules)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M16 4l3.5 7.2 7.9 1.1-5.7 5.6 1.3 7.9L16 22l-7 3.8 1.3-7.9-5.7-5.6 7.9-1.1z"/></svg></span><span class="n">12</span><b>כללי זהב</b><span class="d">לא למתוח, ניגודיות לפני אפקטים, בלי אנימציה ליד טקסט, ובלי חפירות.</span></a>
+        <a href="presenting.html" style="--c:var(--c-presenting);--ci:var(--i-presenting)"><span class="ic"><svg viewBox="0 0 32 32"><rect x="4" y="5" width="24" height="15" rx="2"/><path d="M16 20v6M11 27h10M9 15l5-4 4 3 5-5"/></svg></span><span class="n">13</span><b>הצגה ללקוח</b><span class="d">לא מוכרים לוגו, מוכרים ביטחון. איך מובילים להחלטה במקום לבקש דעה.</span></a>
+        <a href="checklist.html" style="--c:var(--c-checklist);--ci:var(--i-checklist)"><span class="ic"><svg viewBox="0 0 32 32"><rect x="6" y="4" width="20" height="24" rx="2"/><path d="M10 11l2 2 4-4M10 19l2 2 4-4M19 12h4M19 20h4"/></svg></span><span class="n">14</span><b>ההגשה: רשימת בדיקה</b><span class="d">מה חובה, מה בונוס, וספר מותג קצר. מסמנים תוך כדי עבודה.</span></a>
+        <a href="resources.html" style="--c:var(--c-resources);--ci:var(--i-resources)"><span class="ic"><svg viewBox="0 0 32 32"><path d="M16 26s-10-6-10-13a5.5 5.5 0 0 1 10-3 5.5 5.5 0 0 1 10 3c0 7-10 13-10 13z"/></svg></span><span class="n">15</span><b>השראה ומקורות</b><span class="d">פרויקטים שאהבתי, סטודיואים, ערוצי יוטיוב, ספרים וכלים.</span></a>
+      </nav>
+    </section>
+
+    <section class="sec">
+      <h2 id="how-to-use">איך להשתמש במדריך</h2>
+      <div class="howto">
+        <div><b>מחפשים משהו מסוים?</b>מקלידים בתיבת החיפוש מילה כמו „שחור” או „באנר”, ומקבלים את כל המקומות במדריך שבהם היא מופיעה. בכל עמוד אפשר לפתוח את החיפוש עם המקש <kbd>/</kbd>.</div>
+        <div><b>הגעתם מהחיפוש?</b>המילה מסומנת בצהוב בעמוד, ובתחתית המסך יש כפתורים לקפוץ בין המופעים שלה.</div>
+        <div><b>שולחים לסטודנט?</b>לכל נושא יש קישור משלו. לוחצים על הנושא בתפריט הצד, ומעתיקים את הכתובת מהדפדפן.</div>
+        <div><b>ההדגמות</b>שום דבר לא זז לבד. כל אינפוגרפיקה מתקדמת רק כשלוחצים: על הכפתורים הממוספרים, על החצים, או על החלקים שלה עצמה. אפשר גם עם מקשי החצים במקלדת.</div>
+      </div>
+      <p class="muted" style="font-size:15px">המדריך מבוסס על הסיכומים שאני כותב לסטודנטים שלי, ומתעדכן כל הזמן.</p>
+    </section>
+
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* the hero mark's components are SVG groups, not <button>s: let Enter / Space press them too */
+document.addEventListener("keydown", function (e) {
+  if (e.key !== "Enter" && e.key !== " ") return;
+  var g = e.target.closest && e.target.closest('svg [data-goto][role="button"]');
+  if (g) { e.preventDefault(); g.dispatchEvent(new MouseEvent("click", { bubbles: true })); }
+});
+</script>
+</body>
+</html>

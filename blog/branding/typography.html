@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>טיפוגרפיה · מדריך המיתוג | מישה קרץ'</title>
+<meta name="description" content="טיפוגרפיה למותג: פונט ראשי ומשני, שישה סוגי פונטים ומה כל אחד משדר, היררכיה טיפוגרפית וסולם גדלים, אורך שורה, ועברית מול אנגלית באותו מותג.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="he_IL">
+<meta property="og:title" content="טיפוגרפיה · מדריך המיתוג">
+<meta property="og:description" content="פונט ראשי ומשני, היררכיה, סוגי פונטים, ועברית מול אנגלית.">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/type-boards.webp">
+<meta name="theme-color" content="#0c0c0c">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Assistant:wght@400;700&family=Caveat:wght@700&family=Frank+Ruhl+Libre:wght@400;700&family=Heebo:wght@300;400;500;700;800&family=Noto+Sans+Hebrew:wght@400;700&family=Playfair+Display:wght@700&family=Roboto+Slab:wght@700&family=Rubik:wght@400;700&family=Rubik+Bubbles&family=Secular+One&family=Suez+One&display=swap">
+<link rel="stylesheet" href="assets/guide.css?v=7">
+<script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
+<style>
+/* font helpers (specimens only) */
+.f-heebo { font-family: "Heebo", sans-serif; }
+.f-rubik { font-family: "Rubik", sans-serif; }
+.f-assistant { font-family: "Assistant", sans-serif; }
+.f-noto { font-family: "Noto Sans Hebrew", sans-serif; }
+.f-frank { font-family: "Frank Ruhl Libre", serif; }
+.f-secular { font-family: "Secular One", sans-serif; }
+
+/* ---- weight family ---- */
+.weights { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 22px; }
+.weights span { flex: 1 1 110px; text-align: center; padding: 14px 8px 10px; border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--paper); font-family: "Heebo", sans-serif; font-size: 34px; line-height: 1.1; }
+.weights small { display: block; font: 500 12px var(--mono); color: var(--muted); margin-top: 6px; direction: ltr; }
+
+/* ---- morph: one word through 6 type families ---- */
+.mw { text-align: center; padding: 8px 0 4px; }
+.mw-word { min-height: 210px; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.mw-he { display: block; font-size: clamp(66px, 13vw, 128px); line-height: 1.12; color: var(--ink); }
+.mw-en { display: block; direction: ltr; font-size: clamp(34px, 6vw, 58px); line-height: 1.15; color: var(--muted); }
+.mw-word.swap { animation: mwswap .5s cubic-bezier(.2,.8,.2,1); }
+@keyframes mwswap { from { opacity: 0; transform: translateY(10px) scale(.97); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+.mw-feel { margin: 10px 0 18px; font-size: 18px; min-height: 2.8em; }
+.mw-feel .k { display: block; font: 500 13px var(--mono); color: var(--accent-ink); direction: ltr; }
+.mw .seg { justify-content: center; }
+.mw .seg button { direction: ltr; }
+.mw .seg button.seen:not([aria-pressed="true"]) { color: var(--ink); }
+
+/* table samples */
+.tsamp { display: block; font-size: 26px; line-height: 1.2; font-weight: 400; color: var(--accent-ink); margin-bottom: 4px; }
+.tbl td:first-child { min-width: 150px; }
+.tbl td .gl { display: block; font-size: 14px; font-weight: 400; color: var(--muted); }
+
+/* classification cards */
+.cls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+.cls > div { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 16px 18px; }
+.cls h4 { margin: 0 0 8px; }
+.cls dl { margin: 0; font-size: 15px; line-height: 1.55; }
+.cls dt { font-weight: 600; margin-top: 8px; }
+.cls dd { margin: 0; color: var(--muted); }
+@media (max-width: 640px) { .cls { grid-template-columns: 1fr; } }
+
+/* ---- pairing widget ---- */
+.pair-ctl { display: grid; gap: 10px; margin-bottom: 16px; }
+.pair-ctl b { font-size: 14px; font-weight: 500; color: var(--muted); display: block; margin-bottom: 4px; }
+.pair-card { border-radius: var(--r-sm); border: 1px solid var(--line); background: var(--raise); padding: 22px 24px; }
+.pair-card h4 { font-size: clamp(28px, 4vw, 38px); line-height: 1.15; margin: 0 0 10px; font-weight: 700; }
+.pair-card p { font-size: 17px; line-height: 1.7; margin: 0; color: var(--ink); }
+.pair-card .names { display: block; font: 500 12px var(--mono); color: var(--muted); direction: ltr; text-align: right; margin-top: 14px; }
+.pair-why { margin: 12px 0 0; font-size: 16px; color: var(--muted); min-height: 3.2em; }
+
+/* ---- hierarchy builder ---- */
+.hb-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: 18px; }
+.hb-ctrl > span { font-size: 14px; color: var(--muted); }
+.hb-ctrl .seg button { direction: ltr; }
+.hb-stack { display: flex; flex-direction: column; gap: 6px; }
+.hb-row { display: grid; grid-template-columns: minmax(0, 1fr) 128px; align-items: baseline; gap: 14px; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+.hb-row:last-child { border-bottom: 0; }
+.hb-txt { line-height: 1.25; transition: font-size .45s cubic-bezier(.2,.8,.2,1); color: var(--ink); overflow-wrap: anywhere; }
+.hb-txt.h { font-family: "Frank Ruhl Libre", serif; font-weight: 700; }
+.hb-txt.b { font-family: "Assistant", sans-serif; line-height: 1.6; }
+.hb-txt.c { font-family: "Assistant", sans-serif; color: var(--muted); }
+.hb-tag { font: 500 12px var(--mono); color: var(--muted); direction: ltr; text-align: left; white-space: nowrap; }
+.hb-tag b { color: var(--accent-ink); font-weight: 500; }
+.hb-note { margin: 14px 0 0; font-size: 15px; color: var(--muted); min-height: 1.6em; }
+@media (max-width: 560px) { .hb-row { grid-template-columns: 1fr; gap: 0; } .hb-tag { text-align: right; } }
+
+/* ---- designed page specimen ---- */
+.pg { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 0 22px; border: 1px solid var(--line); border-radius: var(--r); background: var(--raise); padding: clamp(18px, 3vw, 30px); }
+.pg > * { margin: 0; }
+.pg .el { padding: 6px 0; }
+.pg .an { font: 500 11px/1.5 var(--mono); color: var(--muted); text-align: left; padding: 8px 0 0; border-top: 1px solid var(--line); align-self: start; margin-top: 10px; }
+.pg .an b { color: var(--accent-ink); font: 600 12px var(--text); display: block; }
+.pg-eyebrow { font: 700 13px "Assistant", sans-serif; letter-spacing: .02em; color: var(--accent-ink); }
+.pg-h1 { font: 700 clamp(34px, 5vw, 46px)/1.1 "Frank Ruhl Libre", serif; }
+.pg-h2 { font: 700 24px/1.3 "Frank Ruhl Libre", serif; }
+.pg-body { font: 400 17px/1.7 "Assistant", sans-serif; }
+.pg-num { font: 700 44px/1 "Assistant", sans-serif; color: var(--accent-ink); }
+.pg-num small { font-size: 16px; font-weight: 400; color: var(--muted); margin-inline-start: 8px; }
+.pg-quote { font: 400 22px/1.5 "Frank Ruhl Libre", serif; border-inline-start: 3px solid var(--accent); padding-inline-start: 14px; }
+.pg-cap { font: 400 13px/1.5 "Assistant", sans-serif; color: var(--muted); }
+@media (max-width: 640px) { .pg { grid-template-columns: 1fr; } .pg .an { text-align: right; margin-top: 0; border-top: 0; padding-top: 0; margin-bottom: 8px; } }
+
+/* ---- measure widget ---- */
+.ms-box { border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--raise); padding: 18px; overflow: hidden; }
+.ms-txt { font: 400 17px/1.75 "Assistant", sans-serif; margin: 0 auto; transition: max-width .15s; border-inline: 2px dashed var(--line); padding: 0 12px; }
+.ms-out { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 14px; }
+.ms-n { font: 500 30px var(--mono); direction: ltr; }
+.badge { font: 600 13px var(--text); padding: 4px 10px; border-radius: 999px; }
+.badge.pass { background: var(--ok-soft); color: var(--ok); }
+.badge.fail { background: var(--warn-soft); color: var(--warn); }
+
+/* ---- Hebrew vs Latin heights ---- */
+.hx-svg { display: block; width: 100%; height: auto; direction: ltr; }
+.hx-svg text { fill: var(--ink); }
+.hx-svg .base rect { fill: var(--muted); }
+.hx-svg .gx rect { fill: var(--muted); opacity: .7; }
+.hx-svg .gc rect { fill: var(--ink); opacity: .55; }
+.hx-svg .gh rect { fill: var(--accent); }
+.hx-svg g.gl { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+.hx-svg g.gl rect { transform-box: fill-box; transform-origin: right center; }
+/* stepper: 1 = Latin lowercase (x-height), 2 = + the capital H, 3 = + the Hebrew letter and the measured result */
+.hx-svg g.gl rect { transition: transform .7s cubic-bezier(.2,.8,.2,1); }
+.hx-svg .hx-t { transition: opacity .5s; }
+.anim[data-step="1"] .hx-svg .gc rect, .anim[data-step="1"] .hx-svg .gh rect, .anim[data-step="2"] .hx-svg .gh rect { transform: scaleX(0); }
+.anim[data-step="1"] .hx-svg .t-h, .anim[data-step="1"] .hx-svg .t-m, .anim[data-step="2"] .hx-svg .t-m { opacity: .22; }
+.hx-legend li { transition: opacity .4s; }
+.anim[data-step="1"] .hx-legend li:not(:nth-child(2)), .anim[data-step="2"] .hx-legend li:nth-child(3) { opacity: .35; }
+.hx-out { transition: opacity .5s; }
+.anim:not([data-step="3"]) .hx-out { opacity: 0; }
+.hx-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; color: var(--muted); margin: 10px 0 0; padding: 0; list-style: none; }
+.hx-legend i { display: inline-block; width: 22px; height: 3px; vertical-align: middle; margin-inline-end: 6px; border-radius: 2px; }
+.hx-out { font-size: 17px; margin: 12px 0 0; }
+.hx-top { margin-bottom: 8px; }
+
+/* ---- Hebrew fonts ---- */
+.hfonts { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); margin: 20px 0; }
+.hf { border: 1px solid var(--line); border-radius: var(--r); background: var(--paper); padding: 16px 18px; }
+.hf .k { font: 500 12px var(--mono); color: var(--accent-ink); direction: ltr; text-align: right; display: block; }
+.hf .s { display: block; font-size: 28px; line-height: 1.2; margin: 6px 0 8px; color: var(--ink); }
+.hf p { font-size: 15px; line-height: 1.55; color: var(--muted); margin: 0; }
+</style>
+</head>
+<body data-ch="type">
+<a class="skip" href="#main">דלגו לתוכן</a>
+
+<header class="g-top">
+  <button class="g-iconbtn g-menu-btn" id="g-menu" type="button" aria-label="פרקים" aria-expanded="false" aria-controls="g-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <a class="g-back" href="../../blog.html"><span aria-hidden="true">→</span> <span class="lbl">לבלוג</span></a>
+  <a class="g-title" href="index.html">מדריך <b>המיתוג</b></a>
+  <span class="spacer"></span>
+  <div class="g-search" role="search">
+    <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" placeholder="חיפוש בכל המדריך" aria-label="חיפוש בכל המדריך" autocomplete="off">
+    <kbd>/</kbd>
+    <div class="g-results" aria-live="polite"></div>
+  </div>
+  <button class="g-iconbtn" id="g-theme" type="button" aria-label="מעבר למצב בהיר">☀</button>
+</header>
+<div class="g-progress" aria-hidden="true"><i></i></div>
+
+<div class="g-shell">
+  <aside class="g-nav" id="g-nav" aria-label="פרקי המדריך"></aside>
+
+  <main class="g-main" id="main" tabindex="-1">
+
+    <header class="ch-head">
+      <div class="ch-num">05 / 15</div>
+      <h1>טיפוגרפיה</h1>
+      <p class="lede">עוד לפני שמישהו קורא מילה, הפונט כבר אמר לו אם המותג רציני או שובב, יוקרתי או עממי. בפרק הזה: מה כל סוג פונט משדר, איך בוחרים זוג שעובד, איך בונים היררכיה, ואיך עברית ואנגלית חיות יחד באותו מותג.</p>
+      <div class="ch-meta"><span>5 נושאים</span><span>3 הדגמות</span><span>3 כלים לנסות</span></div>
+    </header>
+    <figure class="illus hero" aria-hidden="false"><img src="img/hero-04.webp" alt="איור: גושי אותיות דפוס גדולים מסודרים כמו עיר, עם מקל סדר וגליל דיו" width="1344" height="576" fetchpriority="high"></figure>
+
+
+    <!-- ================= voice ================= -->
+    <section class="sec">
+      <h2 id="voice" data-short="הקול של המותג">הפונט הוא הקול של המותג</h2>
+      <figure class="illus"><img src="img/voice-04.webp" alt="איור: שש דמויות קטנות, כל אחת לבושה בסגנון של סוג פונט אחר: עם עיטורים, עבה, נקי, כתב יד, מונוספייס ודקורטיבי" width="1344" height="752" loading="lazy"></figure>
+      <p>הטיפוגרפיה היא אחד המרכיבים החזקים ביותר בזהות של מותג: היא מעבירה <strong>אישיות, סגנון וטון דיבור</strong> עוד לפני שקוראים מילה אחת.</p>
+      <p>בחרו <strong>פונט ראשי</strong> שישמש לכותרות ולחומרים המרכזיים, ו<strong>פונט משני</strong> לטקסטים משלימים, או השתמשו בפונט אחד עם <strong>משפחת משקלים עשירה</strong> <span class="ltr">(Regular, Medium, Bold, Light)</span> וכו’.</p>
+      <div class="weights" aria-label="דוגמה למשפחת משקלים: אותה מילה בחמישה משקלים של הפונט Heebo">
+        <span style="font-weight:300">מותג<small>Light 300</small></span>
+        <span style="font-weight:400">מותג<small>Regular 400</small></span>
+        <span style="font-weight:500">מותג<small>Medium 500</small></span>
+        <span style="font-weight:700">מותג<small>Bold 700</small></span>
+        <span style="font-weight:800">מותג<small>ExtraBold 800</small></span>
+      </div>
+      <p>שמרו על <strong>אחידות טיפוגרפית</strong> בכל הפלטפורמות: לוגו, אתר, מודעות, מצגות ורשתות חברתיות, כדי ליצור חוויה עקבית ומקצועית.</p>
+      <div class="tip">
+        <span class="box-label">הפונט של הלוגו</span>
+        <p>אין צורך להשתמש בפונט של הלוגו בשפה העיצובית הכללית. לפעמים דווקא עדיף שהפונט בלוגו יהיה <strong>ייחודי וחד־פעמי</strong>, בעוד שיתר השפה הגרפית תישען על פונטים <strong>קריאים, מאוזנים ונגישים</strong> שמתאימים לשימוש יומיומי.</p>
+      </div>
+    </section>
+
+    <!-- ================= types ================= -->
+    <section class="sec">
+      <h2 id="types" data-short="סוגי פונטים">שישה סוגי פונטים, שש אישיויות</h2>
+      <p>אותה מילה, שישה פונטים. שימו לב כמה התחושה משתנה, עוד לפני שבכלל חשבתם על הצבע או על הלוגו.</p>
+
+      <figure class="anim" data-steps="6" data-no-bar data-step-labels="ללא עיטורים|עם עיטורים|עיטורים עבים|כתב יד|דקורטיבי|רוחב קבוע" id="morph">
+        <span class="anim__label">מילה אחת, שישה קולות</span>
+        <div class="anim__stage mw">
+          <div class="mw-word" aria-hidden="true"><span class="mw-he">מותג</span><span class="mw-en">Brand</span></div>
+          <p class="mw-feel" aria-live="polite"><span class="k">Sans Serif</span><span class="t">מודרני, נקי, טכנולוגי</span></p>
+          <div class="seg" role="group" aria-label="בחירת סוג פונט"></div>
+        </div>
+        <figcaption>לחצו על כל סוג (או על החצים במקלדת) והשוו בקצב שלכם: אותה מילה, אותו גודל, רק הפונט מתחלף.</figcaption>
+      </figure>
+
+      <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>סוג פונט</th><th>תחושה עיקרית</th><th>מתאים ל...</th><th>הערות</th></tr></thead>
+          <tbody>
+            <tr><td><span class="tsamp f-heebo" style="font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Sans Serif</span><small class="gl">ללא עיטורים</small></td><td>מודרני, נקי, טכנולוגי</td><td>הייטק, סטארטאפים, אפליקציות, מותגים צעירים, חינוך, בריאות, אופנה מודרנית, לייף־סטייל</td><td>קריא במיוחד במסכים ובשפה דיגיטלית. מתאים למיתוג עכשווי וחדשני.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Playfair Display','Frank Ruhl Libre',serif;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Serif</span><small class="gl">עם עיטורים</small></td><td>קלאסי, אמין, יוקרתי</td><td>מוסדות, עיתונות, עריכת דין, פיננסים, ייעוץ, חינוך, מותגים עם מסורת או יוקרה</td><td>משדר רצינות, אמינות ואלגנטיות. טוב למותגים עם עומק היסטורי.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Roboto Slab','Suez One',serif;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Slab Serif</span><small class="gl">עיטורים עבים</small></td><td>יציב, חזק, בולט</td><td>מותגים מסחריים, בנייה, תעשייה, ספורט, לוגיסטיקה, ביטוח, תחבורה</td><td>מעניק תחושת כוח ונוכחות. מתאים לעולמות פיזיים ו„כבדים”.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Caveat','Amatic SC',cursive;font-weight:700" aria-hidden="true">אב Ab</span><span class="ltr">Script / Handwritten</span></td><td>אישי, רגשי, יצירתי</td><td>אופנה, לייף־סטייל, טיפוח, קוסמטיקה, ילדים, אמנות, אוכל ובייקרי, אירועים</td><td>יוצר קשר רגשי וחמים. להשתמש במידה: פחות קריא בטקסטים ארוכים.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'Rubik Bubbles','Secular One',sans-serif" aria-hidden="true">אב Ab</span><span class="ltr">Display / Decorative</span></td><td>ייחודי, בולט, מזוהה</td><td>לוגואים, כותרות גדולות, פרסום, שלטי חוצות, אריזות, בידור, תרבות</td><td>מושך תשומת לב, אבל לא לקריאה ממושכת. טוב לשימוש ממוקד.</td></tr>
+            <tr><td><span class="tsamp" style="font-family:'IBM Plex Mono','Courier New',monospace;font-weight:500" aria-hidden="true">אב Ab</span><span class="ltr">Monospace</span></td><td>טכני, מקצועי, אנליטי</td><td>טכנולוגיה, פיתוח, עולמות קוד, דאטה, סייבר, חקר, מדע, גיימינג</td><td>משדר דיוק, סדר וחדשנות. טוב לעולמות טכנולוגיים ומדעיים.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="fig">
+        <a href="img/type-boards.webp" data-lb data-cap="עמודי טיפוגרפיה מספרי מותג"><img src="img/type-boards.webp" alt="חמישה עמודי טיפוגרפיה מספרי מותג: בכל אחד פונט ראשי ומשני, האלפבית, משקלים ודוגמה של כותרת וטקסט" loading="lazy" width="1600" height="362"></a>
+        <figcaption>ככה נראה עמוד טיפוגרפיה בספר מותג: שם הפונט, האלפבית, המשקלים, ודוגמה של כותרת מול טקסט רץ. לחיצה מגדילה.</figcaption>
+      </figure>
+
+      <h3 id="classification" data-added>בתוך כל סוג יש עוד משפחות</h3>
+      <div data-added>
+        <p>הטבלה למעלה היא המפה הגדולה. כשמתקרבים, גם הסריפים וגם הסנסים מתחלקים לתת־משפחות, וכל אחת מרגישה אחרת:</p>
+        <div class="cls">
+          <div>
+            <h4>סריף <span class="ltr">(Serif)</span></h4>
+            <dl>
+              <dt><span class="ltr">Old Style</span></dt><dd>קליגרפי ורך, הציר של האות נוטה באלכסון. <span class="ltr">Garamond, Caslon</span>.</dd>
+              <dt><span class="ltr">Transitional</span></dt><dd>עיטורים חדים יותר, יותר סדר. <span class="ltr">Baskerville, Georgia</span>.</dd>
+              <dt><span class="ltr">Modern / Didone</span></dt><dd>ניגוד קיצוני בין קו עבה לדק. אופנה ויוקרה. <span class="ltr">Bodoni, Didot</span>.</dd>
+              <dt><span class="ltr">Slab</span></dt><dd>עיטורים עבים ומרובעים. <span class="ltr">Rockwell, Clarendon</span>.</dd>
+            </dl>
+          </div>
+          <div>
+            <h4>ללא עיטורים <span class="ltr">(Sans Serif)</span></h4>
+            <dl>
+              <dt><span class="ltr">Grotesque</span></dt><dd>קצת עקום וקצת אופי, ניגוד מורגש בעובי. <span class="ltr">Franklin Gothic</span>.</dd>
+              <dt><span class="ltr">Neo-Grotesque</span></dt><dd>ניטרלי ומלוטש. <span class="ltr">Helvetica, Roboto</span>.</dd>
+              <dt><span class="ltr">Geometric</span></dt><dd>בנוי מעיגולים וריבועים. <span class="ltr">Futura, Montserrat, Poppins</span>.</dd>
+              <dt><span class="ltr">Humanist</span></dt><dd>הכי קריא, יש בו משהו מכתב היד. <span class="ltr">Gill Sans, Frutiger, Inter</span>.</dd>
+            </dl>
+          </div>
+        </div>
+        <p>בעברית החלוקה פחות חדה, אבל אותו היגיון עובד: פונט עם ניגוד בין קווים עבים לדקים (כמו <span class="f-frank" style="font-weight:700">פרנק רוהל</span>) מרגיש קלאסי, ופונט בעובי קו אחיד (כמו <span class="f-heebo" style="font-weight:700">היבו</span> או <span class="f-rubik" style="font-weight:700">רוביק</span>) מרגיש עכשווי.</p>
+      </div>
+    </section>
+
+    <!-- ================= choosing ================= -->
+    <section class="sec">
+      <h2 id="choosing" data-short="טיפים לבחירת פונטים">טיפים לבחירת פונטים</h2>
+      <ul class="dots">
+        <li>ודאו שהפונטים תומכים בשפה הדרושה (עברית, אנגלית וכו’) ושומרים על אחידות בין השפות. <a class="xref" href="#language">עברית ואנגלית</a></li>
+        <li>אל תערבבו יותר מדי פונטים: לרוב <strong>שניים מספיקים</strong> (אחד לכותרות, אחד לגוף הטקסט).</li>
+        <li>בחרו פונטים שמשקפים את <strong>אישיות המותג</strong>: יוקרתי, צעיר, מקצועי, טכנולוגי, טבעי וכו’.</li>
+        <li>שמרו על <strong>ניגודיות משקלית</strong> בין הפונטים (כותרת עבה מול טקסט רץ דק) כדי ליצור היררכיה ברורה.</li>
+        <li>הימנעו משימוש יתר באותיות רווחות מדי או דחוסות מדי. זה פוגע בקריאות.</li>
+      </ul>
+      <p class="note" data-added>במספרים: את הטקסט הרץ משאירים בריווח האותיות של הפונט עצמו. כותרות גדולות אפשר לצופף מעט. ובאנגלית, טקסט באותיות גדולות בלבד <span class="ltr">(ALL CAPS)</span> צריך דווקא ריווח נוסף, בערך <span class="ltr">+20</span> עד <span class="ltr">+100</span> ביחידות של אילוסטרייטור.</p>
+
+      <h3 id="pairing" data-added>איך מזווגים שני פונטים</h3>
+      <div data-added>
+        <p>הכלל הבסיסי: <strong>ניגוד עם הרמוניה</strong>. שני הפונטים צריכים להיות שונים מספיק כדי שהעין תבין מיד מי כותרת ומי טקסט, ודומים מספיק כדי להרגיש מאותה משפחה.</p>
+        <ul class="dots">
+          <li>סריף לכותרת וסנס לגוף (או להפך) הוא הזיווג הבטוח ביותר.</li>
+          <li>אל תזווגו שני פונטים כמעט זהים. זה נראה כמו טעות, לא כמו החלטה.</li>
+          <li>חפשו גובה אותיות דומה בשני הפונטים, כדי שישבו טוב באותה שורה.</li>
+          <li>שניים, לכל היותר שלושה פונטים. כל פונט נוסף מחליש את הקול של המותג.</li>
+        </ul>
+        <div class="widget" id="wpair">
+          <div class="pair-ctl">
+            <div><b>פונט לכותרת</b><div class="seg" role="group" aria-label="פונט לכותרת" data-role="h"></div></div>
+            <div><b>פונט לטקסט רץ</b><div class="seg" role="group" aria-label="פונט לטקסט רץ" data-role="b"></div></div>
+          </div>
+          <div class="pair-card">
+            <h4>קפה שקם מוקדם</h4>
+            <p>אנחנו קולים פולים פעם בשבוע, בכמויות קטנות, כדי שהקפה בכוס שלכם יהיה טרי. בבוקר מגיעים, בצהריים כבר יודעים את השם שלכם.</p>
+            <span class="names"></span>
+          </div>
+          <p class="pair-why" aria-live="polite"></p>
+        </div>
+        <p>זוגות לטיניים קלאסיים להתחלה: <span class="ltr">Playfair Display + Lato</span> (מגזיני ויוקרתי), <span class="ltr">Montserrat + Open Sans</span> (נוכח ושקט), <span class="ltr">Roboto + Lora</span> (מודרני וקלאסי). כלים שעוזרים: <a href="https://fontjoy.com/">FontJoy</a> מציע זוגות בעזרת בינה מלאכותית, <a href="https://www.typewolf.com/">Typewolf</a> מראה פונטים באתרים אמיתיים, ו<a href="https://www.fontpair.co/">Fontpair</a> מציג זוגות מוכנים.</p>
+      </div>
+    </section>
+
+    <!-- ================= hierarchy ================= -->
+    <section class="sec">
+      <h2 id="hierarchy" data-short="היררכיה טיפוגרפית">היררכיה: מי צועק ומי לוחש</h2>
+      <p>הגדירו פונטים לשימושים שונים: <strong>כותרת ראשית, משנה, טקסט רץ, מספרים וציטוטים</strong>. הראו דוגמה אמיתית לעמוד מעוצב שממחיש את ההיררכיה הזו. <a class="xref" href="what-is-branding.html#steps">צעד 3 מתוך שבעת הצעדים</a></p>
+      <p>בעמוד הטיפוגרפיה של הפרויקט צריך להראות:</p>
+      <ul class="dots">
+        <li>פונט כותרות</li>
+        <li>פונט גוף</li>
+        <li>היררכיה טיפוגרפית. לדוגמה: <span class="ltr">H1, H2, H3, Body text, Caption</span></li>
+      </ul>
+
+      <figure class="anim" data-steps="3" data-no-bar data-step-labels="הבטוח|המגזיני|הדרמטי" id="hier">
+        <span class="anim__label">אותה היררכיה, שלושה יחסים</span>
+        <div class="anim__stage">
+          <div class="hb-ctrl" data-added>
+            <span>יחס בין הגדלים:</span>
+            <div class="seg" role="group" aria-label="יחס הסולם">
+              <button type="button" aria-pressed="true" data-r="1.25" data-goto="1">1.25</button>
+              <button type="button" aria-pressed="false" data-r="1.333" data-goto="2">1.333</button>
+              <button type="button" aria-pressed="false" data-r="1.618" data-goto="3">1.618</button>
+            </div>
+          </div>
+          <div class="hb-stack">
+            <div class="hb-row" data-e="3"><span class="hb-txt h">לחם של בוקר</span><span class="hb-tag"><b>H1</b> · <i></i></span></div>
+            <div class="hb-row" data-e="2"><span class="hb-txt h">המאפייה פותחת סניף שני</span><span class="hb-tag"><b>H2</b> · <i></i></span></div>
+            <div class="hb-row" data-e="1"><span class="hb-txt h">שעות פתיחה חדשות</span><span class="hb-tag"><b>H3</b> · <i></i></span></div>
+            <div class="hb-row" data-e="0"><span class="hb-txt b">בכל בוקר מ־<span class="ltr">06:00</span> יוצאים מהתנור לחמי מחמצת וקרואסונים. מגיעים מוקדם, יוצאים עם שקית חמה.</span><span class="hb-tag"><b>Body</b> · <i></i></span></div>
+            <div class="hb-row" data-e="-1"><span class="hb-txt c">צילום: צוות המאפייה · <span class="ltr">12.03.2026</span></span><span class="hb-tag"><b>Caption</b> · <i></i></span></div>
+          </div>
+          <p class="hb-note" aria-live="polite"></p>
+        </div>
+        <figcaption>חמש רמות, שני פונטים: <span class="ltr">Frank Ruhl Libre</span> לכותרות ו־<span class="ltr">Assistant</span> לטקסט. כל רמה גדולה מזו שמתחתיה באותו יחס קבוע. נסו להחליף את היחס.</figcaption>
+      </figure>
+
+      <h3 id="scale" data-added>סולם גדלים: לא לנחש מספרים</h3>
+      <div data-added>
+        <p>במקום לבחור גדלים „לפי העין”, בוחרים גודל בסיס לטקסט הרץ (ברוב המסכים <span class="ltr">16px</span>) ויחס אחד קבוע. כל רמה בהיררכיה היא הבסיס כפול היחס, שוב ושוב. התוצאה: גדלים שמרגישים קשורים זה לזה, גם אם אף אחד לא יודע להסביר למה.</p>
+        <div class="cards">
+          <div class="card"><span class="k">Major Third · 1.25</span><h4>הבטוח</h4><p>ברירת המחדל לאתרים ולאפליקציות. ניגוד ברור בלי דרמה.</p></div>
+          <div class="card"><span class="k">Perfect Fourth · 1.333</span><h4>המגזיני</h4><p>יותר ניגוד בין כותרת לטקסט. טוב לעמודי תוכן ולמאמרים.</p></div>
+          <div class="card"><span class="k">Golden Ratio · 1.618</span><h4>הדרמטי</h4><p>הפרש ענק בין הרמות. מתאים לפוסטר ולעיצוב יצירתי, פחות למסך קטן.</p></div>
+        </div>
+        <p>וכלל אצבע: במובייל יחס קטן יותר, בדסקטופ יחס גדול יותר. כלים שעושים את החישוב בשבילכם: <a href="https://typescale.com/">Typescale</a> ו<a href="https://utopia.fyi/type/calculator/">Utopia</a>.</p>
+      </div>
+
+      <h3 id="page-example">ככה זה נראה בעמוד אמיתי</h3>
+      <p>ההיררכיה לא נגמרת בכותרות. גם <strong>מספרים</strong> (מחירים, נתונים, תאריכים) וגם <strong>ציטוטים</strong> צריכים סגנון קבוע משלהם, אחרת כל מעצב ימציא אותם מחדש:</p>
+      <figure>
+        <div class="pg">
+          <p class="el pg-eyebrow">המאפייה · עדכונים</p><p class="an"><b>תווית עליונה</b><span class="ltr">Assistant 700 · 13px</span></p>
+          <h4 class="el pg-h1">לחם של בוקר</h4><p class="an"><b>כותרת ראשית</b><span class="ltr">Frank Ruhl Libre 700 · 46px</span></p>
+          <h4 class="el pg-h2">המאפייה פותחת סניף שני</h4><p class="an"><b>כותרת משנה</b><span class="ltr">Frank Ruhl Libre 700 · 24px</span></p>
+          <p class="el pg-body">אחרי חמש שנים בפינה של הרחוב, אנחנו פותחים מאפייה נוספת. אותו תנור, אותם אופים, ואותה מחמצת שמגדלים אצלנו מהיום הראשון.</p><p class="an"><b>טקסט רץ</b><span class="ltr">Assistant 400 · 17px / 1.7</span></p>
+          <p class="el pg-num"><span class="ltr">₪18</span><small>כיכר מחמצת</small></p><p class="an"><b>מספרים</b><span class="ltr">Assistant 700 · 44px</span></p>
+          <p class="el pg-quote">„הריח של התנור בשש בבוקר הוא הפרסומת הכי טובה שלנו.”</p><p class="an"><b>ציטוט</b><span class="ltr">Frank Ruhl Libre 400 · 22px</span></p>
+          <p class="el pg-cap">צילום: צוות המאפייה · <span class="ltr">12.03.2026</span></p><p class="an"><b>כיתוב</b><span class="ltr">Assistant 400 · 13px</span></p>
+        </div>
+        <figcaption>דוגמה לעמוד מעוצב עם מפרט: ליד כל רמה כתוב בדיוק איזה פונט, משקל וגודל. זה מה שמעצב אחר צריך כדי להמשיך באותה שפה.</figcaption>
+      </figure>
+
+      <h3 id="measure" data-added>אורך שורה: <span class="ltr">45–75</span> תווים</h3>
+      <div data-added>
+        <p>שורה קצרה מדי מקפיצה את העין כל רגע לשורה הבאה. שורה ארוכה מדי מאבדת אותה בדרך חזרה. הטווח הנוח הוא <span class="ltr">45–75</span> תווים בשורה, ובערך 66 הוא האידיאל. גררו ובדקו:</p>
+        <div class="widget" id="wmeasure">
+          <label for="ms-range">רוחב הטור</label>
+          <input type="range" id="ms-range" min="200" max="760" value="440" step="10">
+          <div class="ms-box" style="margin-top:12px">
+            <p class="ms-txt">מיתוג טוב הוא לא רק עיצוב יפה, אלא מערכת שמספרת סיפור שלם. כשהטקסט נוח לקריאה, הקורא נשאר עם הסיפור ולא נאבק בשורות. שורה באורך נכון מרגישה כמו נשימה רגועה: העין רצה עד הסוף, חוזרת בלי לחפש, וממשיכה הלאה בלי להתאמץ.</p>
+          </div>
+          <div class="ms-out"><span class="ms-n" id="ms-n">–</span><span>תווים בשורה, בערך</span><span class="badge" id="ms-b"></span></div>
+        </div>
+        <p>ואת הריווח בין השורות <span class="ltr">(Leading)</span> מגדירים יחד עם הגריד, כי הוא חלק ממערכת הריווחים של כל העמוד. <a class="xref" href="grid.html#leading">ריווח בין שורות</a></p>
+      </div>
+    </section>
+
+    <!-- ================= language ================= -->
+    <section class="sec">
+      <h2 id="language" data-short="עברית או אנגלית">עברית, אנגלית, או שתיהן</h2>
+      <p>החליטו על שפת התקשורת המרכזית:</p>
+      <ul class="dots">
+        <li>מותג בינלאומי ← אנגלית</li>
+        <li>מותג מקומי ← עברית</li>
+        <li>שילוב מושכל בין השתיים</li>
+      </ul>
+      <p>השפה משפיעה גם על <strong>הטון והאישיות של המותג</strong>.</p>
+      <div class="tip">
+        <span class="box-label">טיפ לבחירת פונט</span>
+        <p>אם המותג ישראלי ובנוסף בינלאומי, אז בחרו פונט לעברית ופונט לאנגלית, ובדקו שהם שומרים על אחידות זה לצד זה.</p>
+      </div>
+
+      <h3 id="bilingual" data-added>למה עברית ואנגלית לא יוצאות באותו גודל</h3>
+      <div data-added>
+        <p>באותו גודל נקודה, אותיות עבריות ולטיניות לא יושבות באותו גובה. רוב האותיות בטקסט לטיני הן אותיות קטנות, בגובה ה־<span class="ltr">x</span>, ואילו האות העברית גבוהה יותר וקרובה לגובה האות הגדולה. לכן באותו גודל העברית נראית גדולה וכבדה יותר. הנה מדידה אמיתית בתוך הפונטים עצמם:</p>
+
+        <figure class="anim" data-steps="3" data-step-labels="האותיות הקטנות|האות הגדולה|האות העברית" id="hx">
+          <span class="anim__label">גובה האות, נמדד בדפדפן שלכם</span>
+          <div class="anim__stage">
+            <div class="hx-top"><div class="seg" role="group" aria-label="בחירת פונט למדידה"></div></div>
+            <svg class="hx-svg" viewBox="0 60 600 180" aria-hidden="true">
+              <g class="gl base"><rect x="20" y="0" width="560" height="2"></rect></g>
+              <g class="gl gx"><rect x="20" y="0" width="560" height="2"></rect></g>
+              <g class="gl gc"><rect x="20" y="0" width="560" height="2"></rect></g>
+              <g class="gl gh"><rect x="20" y="0" width="560" height="3"></rect></g>
+              <text class="hx-t t-h" x="140" y="215" text-anchor="middle" font-size="170">H</text>
+              <text class="hx-t t-x" x="290" y="215" text-anchor="middle" font-size="170">x</text>
+              <text class="hx-t t-m" x="450" y="215" text-anchor="middle" font-size="170">מ</text>
+            </svg>
+            <ul class="hx-legend">
+              <li><i style="background:var(--ink);opacity:.55"></i>גובה האות הגדולה <span class="ltr">H</span></li>
+              <li><i style="background:var(--muted)"></i>גובה ה־<span class="ltr">x</span></li>
+              <li><i style="background:var(--accent)"></i>גובה האות העברית</li>
+            </ul>
+            <p class="hx-out" aria-live="polite"></p>
+          </div>
+          <figcaption>כל הקווים נמדדים מהפונט האמיתי, באותו גודל נקודה. עברו בין השלבים, ואז החליפו פונט וראו שהיחס משתנה מפונט לפונט.</figcaption>
+        </figure>
+
+        <p>מה עושים עם זה:</p>
+        <ul class="dots">
+          <li><strong>מכוונים לפי העין, לא לפי המספר.</strong> נקודת התחלה מקובלת: העברית בכ־<span class="ltr">85%</span> מגודל האנגלית, ומשם מכוונים עד שהשורות נראות באותו משקל.</li>
+          <li><strong>שימו לב לכיוון של העובי.</strong> בעברית הקווים האופקיים הם העבים, בלטינית האנכיים. פונטים בעובי קו אחיד מקטינים את ההתנגשות הזו.</li>
+          <li><strong>בחרו משפחות שתוכננו לשתי השפות</strong>, כמו <span class="ltr">Heebo</span>, <span class="ltr">Rubik</span> או <span class="ltr">Noto Sans Hebrew</span>, שבהן העברית והלטינית צוירו כדי לעבוד יחד.</li>
+          <li><strong>השאירו מקום.</strong> אותו מסר יכול להיות ארוך או קצר ב־<span class="ltr">30%–50%</span> בין השפות, אז עמוד שמתוכנן בדיוק לטקסט העברי עלול להישבר באנגלית.</li>
+          <li><strong>ניקוד מגדיל את גובה השורה.</strong> בטקסט מנוקד הגדירו ריווח שורות קבוע, אחרת השורות יקפצו.</li>
+        </ul>
+      </div>
+
+      <h3 id="hebrew-fonts" data-added>פונטים עבריים טובים להתחלה</h3>
+      <div data-added>
+        <p>כולם חינמיים ב<a href="https://fonts.google.com/?subset=hebrew">גוגל פונטס</a>, וכולם כוללים גם לטינית:</p>
+        <div class="hfonts">
+          <div class="hf"><span class="k">Heebo</span><span class="s f-heebo" style="font-weight:700">שפה עיצובית שלמה</span><p>סנס נקי ומאוזן עם הרבה משקלים. בחירה בטוחה לממשקים ולטקסט רץ.</p></div>
+          <div class="hf"><span class="k">Rubik</span><span class="s f-rubik" style="font-weight:700">שפה עיצובית שלמה</span><p>פינות מעוגלות שנותנות תחושה ידידותית ונגישה.</p></div>
+          <div class="hf"><span class="k">Assistant</span><span class="s f-assistant" style="font-weight:700">שפה עיצובית שלמה</span><p>קריא מאוד גם בגדלים קטנים. מצוין לגוף הטקסט.</p></div>
+          <div class="hf"><span class="k">Noto Sans Hebrew</span><span class="s f-noto" style="font-weight:700">שפה עיצובית שלמה</span><p>חלק ממשפחת <span class="ltr">Noto</span> של גוגל, מתואם עם עשרות כתבים אחרים.</p></div>
+          <div class="hf"><span class="k">Frank Ruhl Libre</span><span class="s f-frank" style="font-weight:700">שפה עיצובית שלמה</span><p>גרסה חופשית של פרנק־רוהל הקלאסי. ניגוד עובי, תחושה ספרותית ומכובדת.</p></div>
+          <div class="hf"><span class="k">Secular One</span><span class="s f-secular">שפה עיצובית שלמה</span><p>עבה וחזק, לכותרות, לשלטים ולאריזות. לא לטקסט ארוך.</p></div>
+        </div>
+        <p>ומעבר לגוגל: הסטודיו <a href="https://alefalefalef.co.il/">אאא (AlefAlefAlef)</a> מציע פונטים עבריים חינמיים כמו „גברת לוין” ו„מערבון”, לצד מאמרים מקצועיים על טיפוגרפיה עברית, ו<a href="https://fontbit.co.il/">פונטביט</a> היא ספרייה גדולה של פונטים עבריים מסחריים.</p>
+      </div>
+    </section>
+
+    <nav class="ch-pager" id="ch-pager" aria-label="מעבר בין פרקים"></nav>
+  </main>
+</div>
+
+<footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
+
+<script src="assets/guide.js?v=9" defer></script>
+<script>
+/* page widgets: type morph, hierarchy scale, pairing, line length, Hebrew/Latin heights */
+document.addEventListener("DOMContentLoaded", function () {
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+
+  /* ---- morph: one word through the six type families ---- */
+  var mf = document.getElementById("morph");
+  if (mf) {
+    var T = [
+      { n: "Sans Serif", fh: '"Heebo", sans-serif', wh: 700, fe: '"Heebo", sans-serif', we: 700, t: "מודרני, נקי, טכנולוגי" },
+      { n: "Serif", fh: '"Frank Ruhl Libre", serif', wh: 700, fe: '"Playfair Display", serif', we: 700, t: "קלאסי, אמין, יוקרתי" },
+      { n: "Slab Serif", fh: '"Suez One", serif', wh: 400, fe: '"Roboto Slab", serif', we: 700, t: "יציב, חזק, בולט" },
+      { n: "Script", fh: '"Amatic SC", cursive', wh: 700, fe: '"Caveat", cursive', we: 700, t: "אישי, רגשי, יצירתי" },
+      { n: "Display", fh: '"Rubik Bubbles", "Secular One", sans-serif', wh: 400, fe: '"Rubik Bubbles", sans-serif', we: 400, t: "ייחודי, בולט, מזוהה" },
+      { n: "Monospace", fh: '"IBM Plex Mono", "Courier New", monospace', wh: 700, fe: '"IBM Plex Mono", monospace', we: 500, t: "טכני, מקצועי, אנליטי" }
+    ];
+    var word = mf.querySelector(".mw-word"), he = mf.querySelector(".mw-he"), en = mf.querySelector(".mw-en");
+    var fk = mf.querySelector(".mw-feel .k"), ft = mf.querySelector(".mw-feel .t"), seg = mf.querySelector(".seg");
+    T.forEach(function (o, i) {
+      var b = document.createElement("button"); b.type = "button"; b.textContent = o.n; b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      b.setAttribute("data-goto", String(i + 1)); // a stepper step: guide.js handles the click and fires "anim:step"
+      seg.appendChild(b);
+    });
+    var btns = seg.querySelectorAll("button");
+    function show(i, fx) {
+      var o = T[i];
+      he.style.fontFamily = o.fh; he.style.fontWeight = o.wh; en.style.fontFamily = o.fe; en.style.fontWeight = o.we;
+      fk.textContent = o.n; ft.textContent = o.t;
+      each(btns, function (b, j) { b.setAttribute("aria-pressed", String(i === j)); if (j <= i) b.classList.add("seen"); });
+      if (fx) { word.classList.remove("swap"); void word.offsetWidth; word.classList.add("swap"); }
+    }
+    mf.addEventListener("anim:step", function (e) { show(e.detail.step - 1, true); });
+    show((Number(mf.getAttribute("data-step")) || 1) - 1, false);
+  }
+
+  /* ---- hierarchy: modular scale ---- */
+  var hf = document.getElementById("hier");
+  if (hf) {
+    var notes = {
+      "1.25": "יחס 1.25: סולם רגוע ובטוח. כל הרמות קריאות, וההבדל ביניהן ברור.",
+      "1.333": "יחס 1.333: יותר ניגוד. הכותרת מתחילה להוביל את העמוד.",
+      "1.618": "יחס הזהב: דרמטי. הכותרת ענקית והכיתוב יורד מתחת ל־10 פיקסלים, קטן מדי לקריאה במסך. מתאים לפוסטר, לא לאתר."
+    };
+    var note = hf.querySelector(".hb-note");
+    function scale(r) {
+      each(hf.querySelectorAll(".hb-row"), function (row) {
+        var e = Number(row.getAttribute("data-e")), px = 16 * Math.pow(Number(r), e);
+        row.querySelector(".hb-txt").style.fontSize = px.toFixed(1) + "px";
+        row.querySelector(".hb-tag i").textContent = (Math.round(px * 10) / 10) + "px";
+        row.querySelector(".hb-tag i").style.fontStyle = "normal";
+      });
+      each(hf.querySelectorAll(".hb-ctrl button"), function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-r") === r)); });
+      note.textContent = notes[r];
+    }
+    // the ratio buttons are the stepper's steps (data-goto): guide.js handles the click and fires "anim:step"
+    var ratioOf = function (k) { var b = hf.querySelector('.hb-ctrl [data-goto="' + k + '"]'); return b ? b.getAttribute("data-r") : "1.25"; };
+    hf.addEventListener("anim:step", function (e) { scale(ratioOf(e.detail.step)); });
+    scale(ratioOf(Number(hf.getAttribute("data-step")) || 1));
+  }
+
+  /* ---- pairing ---- */
+  var wp = document.getElementById("wpair");
+  if (wp) {
+    var H = [{ f: "Frank Ruhl Libre", l: "פרנק רוהל", k: "serif" }, { f: "Secular One", l: "סקולר", k: "display" }, { f: "Suez One", l: "סואץ", k: "serif" }, { f: "Rubik", l: "רוביק", k: "sans" }];
+    var B = [{ f: "Assistant", l: "אסיסטנט", k: "sans" }, { f: "Heebo", l: "היבו", k: "sans" }, { f: "Noto Sans Hebrew", l: "נוטו", k: "sans" }, { f: "Frank Ruhl Libre", l: "פרנק רוהל", k: "serif" }];
+    var st = { h: 0, b: 0 };
+    var card = wp.querySelector(".pair-card"), why = wp.querySelector(".pair-why");
+    function build(role, list) {
+      var s = wp.querySelector('.seg[data-role="' + role + '"]');
+      list.forEach(function (o, i) {
+        var b = document.createElement("button"); b.type = "button"; b.textContent = o.l; b.style.fontFamily = '"' + o.f + '"';
+        b.addEventListener("click", function () { st[role] = i; upd(); });
+        s.appendChild(b);
+      });
+    }
+    function upd() {
+      var h = H[st.h], b = B[st.b];
+      card.querySelector("h4").style.fontFamily = '"' + h.f + '", serif';
+      card.querySelector("h4").style.fontWeight = (h.f === "Secular One" || h.f === "Suez One") ? 400 : 700;
+      card.querySelector("p").style.fontFamily = '"' + b.f + '", sans-serif';
+      card.querySelector(".names").textContent = h.f + "  +  " + b.f;
+      var t;
+      if (h.f === b.f) t = "אותו פונט לשניהם: עובד רק אם יש ניגוד משקלים חזק בין הכותרת לטקסט. בלי זה אין היררכיה.";
+      else if (b.k === "serif") t = "טקסט רץ בסריף: נוח לקריאה ארוכה, בעיקר בדפוס, ומרגיש ספרותי ומכובד. על מסך קטן בדקו אותו בגודל אמיתי.";
+      else if (h.k === "serif") t = "עיטורים בכותרת מול טקסט נקי: ניגוד ברור, וזה הזיווג הקלאסי. הכותרת מכובדת, הגוף קל לקריאה.";
+      else if (h.k === "display") t = "כותרת עבה ונוכחת מול טקסט שקט: ניגוד חזק באופי ובמשקל. מתאים למותג צעיר, קולני ושמח.";
+      else t = "שני פונטים ללא עיטורים: עובד כשהם שונים באופי. כאן הכותרת מעוגלת ורכה, והגוף ניטרלי. אם הם נראים כמעט אותו דבר, בחרו אחד.";
+      why.textContent = t;
+      each(wp.querySelectorAll('.seg[data-role="h"] button'), function (x, i) { x.setAttribute("aria-pressed", String(i === st.h)); });
+      each(wp.querySelectorAll('.seg[data-role="b"] button'), function (x, i) { x.setAttribute("aria-pressed", String(i === st.b)); });
+    }
+    build("h", H); build("b", B); upd();
+  }
+
+  /* ---- line length ---- */
+  var wm = document.getElementById("wmeasure");
+  if (wm) {
+    var range = wm.querySelector("#ms-range"), p = wm.querySelector(".ms-txt"), out = wm.querySelector("#ms-n"), bd = wm.querySelector("#ms-b");
+    var cv = document.createElement("canvas").getContext("2d");
+    function cpl() {
+      p.style.maxWidth = range.value + "px";
+      var cs = getComputedStyle(p);
+      cv.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+      var txt = p.textContent.replace(/\s+/g, " ").trim();
+      var avg = cv.measureText(txt).width / txt.length;
+      // the column's width animates (max-width transition), so measuring it now would give the OLD width.
+      // Work out the width it is heading to instead: the slider value, capped by the room in the box.
+      var box = p.parentNode, bcs = getComputedStyle(box);
+      var room = box.clientWidth - parseFloat(bcs.paddingLeft) - parseFloat(bcs.paddingRight);
+      var inner = Math.min(Number(range.value), room) - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - parseFloat(cs.borderLeftWidth) - parseFloat(cs.borderRightWidth);
+      var n = Math.round(inner / avg);
+      out.textContent = n;
+      if (n < 45) { bd.className = "badge fail"; bd.textContent = "קצר מדי: העין קופצת כל רגע"; }
+      else if (n > 75) { bd.className = "badge fail"; bd.textContent = "ארוך מדי: קשה למצוא את השורה הבאה"; }
+      else { bd.className = "badge pass"; bd.textContent = "טווח נוח לקריאה"; }
+    }
+    range.addEventListener("input", cpl);
+    addEventListener("resize", cpl);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(cpl);
+    cpl();
+  }
+
+  /* ---- Hebrew vs Latin heights (measured with canvas) ---- */
+  var hx = document.getElementById("hx");
+  if (hx) {
+    var F = ["Rubik", "Heebo", "Assistant", "Frank Ruhl Libre", "Noto Sans Hebrew"];
+    var cur = 0, BASE = 215, SIZE = 170;
+    var hseg = hx.querySelector(".seg"), houtp = hx.querySelector(".hx-out");
+    var ctx = document.createElement("canvas").getContext("2d");
+    F.forEach(function (f, i) {
+      var b = document.createElement("button"); b.type = "button"; b.textContent = f; b.style.direction = "ltr";
+      b.setAttribute("aria-pressed", i === 0 ? "true" : "false");
+      b.addEventListener("click", function () { cur = i; apply(); });
+      hseg.appendChild(b);
+    });
+    function line(cls, asc) { hx.querySelector(".hx-svg ." + cls).style.transform = "translateY(" + (BASE - asc).toFixed(1) + "px)"; }
+    function apply() {
+      var f = F[cur], spec = "700 " + SIZE + "px \"" + f + "\"";
+      each(hseg.querySelectorAll("button"), function (b, i) { b.setAttribute("aria-pressed", String(i === cur)); });
+      each(hx.querySelectorAll(".hx-t"), function (t) { t.style.fontFamily = '"' + f + '"'; t.style.fontWeight = 700; });
+      var go = function () {
+        ctx.font = spec;
+        var cap = ctx.measureText("H").actualBoundingBoxAscent, xh = ctx.measureText("x").actualBoundingBoxAscent, hb = ctx.measureText("מ").actualBoundingBoxAscent;
+        if (!cap || !xh || !hb) { houtp.textContent = ""; return; }
+        line("base", 0); line("gx", xh); line("gc", cap); line("gh", hb);
+        houtp.innerHTML = "בפונט <span class=\"ltr\">" + f + "</span>: גובה האות מ הוא <strong><span class=\"ltr\">" + Math.round(hb / cap * 100) + "%</span></strong> מגובה <span class=\"ltr\">H</span>, ו<strong><span class=\"ltr\">" + Math.round(hb / xh * 100) + "%</span></strong> מגובה ה־<span class=\"ltr\">x</span>.";
+      };
+      if (document.fonts && document.fonts.load) document.fonts.load(spec, "Hxמ").then(go, go); else go();
+    }
+    apply();
+  }
+});
+</script>
+</body>
+</html>
