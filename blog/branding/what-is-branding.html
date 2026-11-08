@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karantina:wght@700&family=IBM+Plex+Sans+Hebrew:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="assets/guide.css?v=10">
+<link rel="stylesheet" href="assets/guide.css?v=12">
 <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.setAttribute("data-theme", "light"); } catch (e) {}</script>
 <style>
 /* ---- brand as a system (svg) ---- */
@@ -50,7 +50,7 @@
 .sys-n .chip text { font-size: 16px; }
 .sys-n .tp text { font-size: 16px; }
 .sys-n .core text { font-size: 21px; }
-.anim[data-step="3"] .sys-n .chip.odd { transform: translate(-8px, 30px) rotate(9deg); }
+.anim[data-step="3"] .sys-n .chip.odd { transform: translate(-16px, 30px) rotate(9deg); }
 @media (max-width: 740px) { .sys.sys-w { display: none; } .sys.sys-n { display: block; } }
 .sys-state { display: grid; margin-top: 12px; text-align: center; font-weight: 600; font-size: 16px; line-height: 1.5; }
 .sys-state span { grid-area: 1 / 1; opacity: 0; transition: opacity .4s; }
@@ -174,30 +174,30 @@
 
       <h3 id="components">המרכיבים העיקריים של שפה עיצובית</h3>
       <ul class="dots">
-        <li><strong>לוגו</strong>: הסמל המזוהה שמרכז את הזהות הוויזואלית.</li>
+        <li><strong>טון דיבור</strong>: אופי התקשורת עם הקהל: רשמי, קליל, משפחתי, שנון וכו’.</li>
         <li><strong>צבעים</strong>: פלטה מוגדרת הכוללת צבעי בסיס, צבעי משנה וצבעי הדגשה <span class="ltr">(Accent)</span>.</li>
         <li><strong>טיפוגרפיה</strong>: מערכת פונטים עם היררכיה ברורה: כותרות ראשיות, משנה, טקסט רץ ושימושים מיוחדים.</li>
+        <li><strong>לוגו</strong>: הסמל המזוהה שמרכז את הזהות הוויזואלית.</li>
         <li><strong>אלמנטים גרפיים</strong>: אייקונים, פאטרנים, טקסטורות או איורים שמוסיפים אופי וייחודיות.</li>
         <li><strong>שפה צילומית או איורית</strong>: קו עקבי בצילומים ובאיורים. נקי? טבעי? דרמטי? הומוריסטי?</li>
-        <li><strong>טון דיבור</strong>: אופי התקשורת עם הקהל: רשמי, קליל, משפחתי, שנון וכו’.</li>
       </ul>
 
       <figure class="anim" data-steps="3" data-step-labels="שישה מרכיבים, רעיון אחד|יוצאים לכל נקודת מגע|מרכיב אחד בשפה אחרת">
         <span class="anim__label">מותג הוא מערכת</span>
         <div class="anim__stage">
-          <svg class="sys sys-w" viewBox="0 0 800 460" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: לוגו, צבעים, טיפוגרפיה, אלמנטים גרפיים, שפה צילומית או איורית וטון דיבור. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
+          <svg class="sys sys-w" viewBox="0 0 800 460" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: טון דיבור, צבעים, טיפוגרפיה, לוגו, אלמנטים גרפיים ושפה צילומית או איורית. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
             <path class="ln" style="--i:0" d="M400 230 L90 74" pathLength="1"/>
             <path class="ln" style="--i:1" d="M400 230 L710 62" pathLength="1"/>
             <path class="ln" style="--i:2" d="M400 230 L710 384" pathLength="1"/>
             <path class="ln" style="--i:3" d="M400 230 L90 392" pathLength="1"/>
-            <polygon class="ring" points="400,80 530,155 530,305 400,380 270,305 270,155"/>
+            <polygon class="ring" points="490,95 580,230 490,365 310,365 220,230 310,95"/>
 
-            <g class="orb" style="--i:0"><g class="chip"><rect x="320" y="62" width="160" height="36" rx="18"/><text x="400" y="86">לוגו</text></g></g>
-            <g class="orb" style="--i:1"><g class="chip"><rect x="450" y="137" width="160" height="36" rx="18"/><text x="530" y="161">צבעים</text></g></g>
-            <g class="orb" style="--i:2"><g class="chip odd"><rect x="450" y="287" width="160" height="36" rx="18"/><text x="530" y="311">טיפוגרפיה</text></g></g>
-            <g class="orb" style="--i:3"><g class="chip"><rect x="320" y="362" width="160" height="36" rx="18"/><text x="400" y="386">טון דיבור</text></g></g>
-            <g class="orb" style="--i:4"><g class="chip"><rect x="185" y="287" width="170" height="36" rx="18"/><text x="270" y="311">שפה צילומית / איורית</text></g></g>
-            <g class="orb" style="--i:5"><g class="chip"><rect x="190" y="137" width="160" height="36" rx="18"/><text x="270" y="161">אלמנטים גרפיים</text></g></g>
+            <g class="orb" style="--i:0"><g class="chip"><rect x="410" y="77" width="160" height="36" rx="18"/><text x="490" y="101">טון דיבור</text></g></g>
+            <g class="orb" style="--i:1"><g class="chip"><rect x="500" y="212" width="160" height="36" rx="18"/><text x="580" y="236">צבעים</text></g></g>
+            <g class="orb" style="--i:2"><g class="chip odd"><rect x="410" y="347" width="160" height="36" rx="18"/><text x="490" y="371">טיפוגרפיה</text></g></g>
+            <g class="orb" style="--i:3"><g class="chip"><rect x="230" y="347" width="160" height="36" rx="18"/><text x="310" y="371">לוגו</text></g></g>
+            <g class="orb" style="--i:4"><g class="chip"><rect x="140" y="212" width="160" height="36" rx="18"/><text x="220" y="236">אלמנטים גרפיים</text></g></g>
+            <g class="orb" style="--i:5"><g class="chip"><rect x="225" y="77" width="170" height="36" rx="18"/><text x="310" y="101">שפה צילומית / איורית</text></g></g>
 
             <g class="core"><circle cx="400" cy="230" r="54"/><text x="400" y="238">המותג</text></g>
 
@@ -218,19 +218,19 @@
               <text x="90" y="442">שקית</text>
             </g>
           </svg>
-          <svg class="sys sys-n" viewBox="0 0 360 540" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: לוגו, צבעים, טיפוגרפיה, אלמנטים גרפיים, שפה צילומית או איורית וטון דיבור. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
+          <svg class="sys sys-n" viewBox="0 0 360 540" role="img" aria-label="במרכז המותג, סביבו שישה מרכיבים: טון דיבור, צבעים, טיפוגרפיה, לוגו, אלמנטים גרפיים ושפה צילומית או איורית. מהמרכז יוצאים קווים לכוס, לשלט, לטלפון ולשקית.">
             <path class="ln" style="--i:0" d="M180 270 L50 42" pathLength="1"/>
             <path class="ln" style="--i:1" d="M180 270 L288 35" pathLength="1"/>
-            <path class="ln" style="--i:2" d="M180 270 L310 458" pathLength="1"/>
+            <path class="ln" style="--i:2" d="M180 270 L322 458" pathLength="1"/>
             <path class="ln" style="--i:3" d="M180 270 L50 471" pathLength="1"/>
-            <polygon class="ring" points="180,150 290,210 290,330 180,390 70,330 70,210"/>
+            <polygon class="ring" points="252,150 300,270 252,390 108,390 60,270 108,150"/>
 
-            <g class="orb" style="--i:0"><g class="chip"><rect x="114" y="132" width="132" height="36" rx="18"/><text x="180" y="156">לוגו</text></g></g>
-            <g class="orb" style="--i:1"><g class="chip"><rect x="224" y="192" width="132" height="36" rx="18"/><text x="290" y="216">צבעים</text></g></g>
-            <g class="orb" style="--i:2"><g class="chip odd"><rect x="224" y="312" width="132" height="36" rx="18"/><text x="290" y="336">טיפוגרפיה</text></g></g>
-            <g class="orb" style="--i:3"><g class="chip"><rect x="114" y="372" width="132" height="36" rx="18"/><text x="180" y="396">טון דיבור</text></g></g>
-            <g class="orb" style="--i:4"><g class="chip"><rect x="4" y="302" width="132" height="56" rx="20"/><text x="70" y="326">שפה צילומית</text><text x="70" y="346">או איורית</text></g></g>
-            <g class="orb" style="--i:5"><g class="chip"><rect x="4" y="192" width="132" height="36" rx="18"/><text x="70" y="216">אלמנטים גרפיים</text></g></g>
+            <g class="orb" style="--i:0"><g class="chip"><rect x="190" y="132" width="124" height="36" rx="18"/><text x="252" y="156">טון דיבור</text></g></g>
+            <g class="orb" style="--i:1"><g class="chip"><rect x="236" y="252" width="112" height="36" rx="18"/><text x="292" y="276">צבעים</text></g></g>
+            <g class="orb" style="--i:2"><g class="chip odd"><rect x="190" y="372" width="124" height="36" rx="18"/><text x="252" y="396">טיפוגרפיה</text></g></g>
+            <g class="orb" style="--i:3"><g class="chip"><rect x="46" y="372" width="124" height="36" rx="18"/><text x="108" y="396">לוגו</text></g></g>
+            <g class="orb" style="--i:4"><g class="chip"><rect x="12" y="242" width="112" height="56" rx="20"/><text x="68" y="266">אלמנטים</text><text x="68" y="286">גרפיים</text></g></g>
+            <g class="orb" style="--i:5"><g class="chip"><rect x="46" y="122" width="124" height="56" rx="20"/><text x="108" y="146">שפה צילומית</text><text x="108" y="166">או איורית</text></g></g>
 
             <g class="core"><circle cx="180" cy="270" r="46"/><text x="180" y="277">המותג</text></g>
 
@@ -242,7 +242,7 @@
               <rect class="ico" x="670" y="40" width="80" height="42" rx="4"/><path class="ico" d="M710 82v26M700 62h36"/><circle class="dot" cx="688" cy="61" r="8"/>
               <text x="710" y="128">שלט</text>
             </g></g>
-            <g transform="translate(-400,80)"><g class="tp" style="--i:2">
+            <g transform="translate(-388,80)"><g class="tp" style="--i:2">
               <rect class="ico" x="690" y="348" width="40" height="72" rx="8"/><path class="ico" d="M702 402h16"/><circle class="dot" cx="710" cy="378" r="8"/>
               <text x="710" y="442">טלפון</text>
             </g></g>
@@ -258,11 +258,11 @@
 
       <p class="muted" style="font-size:16px">לכל אחד מהמרכיבים יש פרק משלו במדריך:</p>
       <div class="comp-links">
-        <a class="xref" href="logo.html">לוגו</a>
+        <a class="xref" href="strategy.html#voice">טון דיבור</a>
         <a class="xref" href="color.html">צבע</a>
         <a class="xref" href="typography.html">טיפוגרפיה</a>
+        <a class="xref" href="logo.html">לוגו</a>
         <a class="xref" href="visual-language.html">שפה גרפית, איור וצילום</a>
-        <a class="xref" href="strategy.html#voice">טון דיבור</a>
       </div>
       <p class="note" data-added>במותגים שחיים הרבה על מסך מוסיפים לרשימה עוד שני מרכיבים: <strong>שפת תנועה</strong> (איך דברים זזים, באיזו מהירות ובאיזה אופי) ו<strong>מבנה פריסה</strong> (הגריד והריווחים שמסדרים כל עמוד). <a class="xref" href="grid.html">גריד וריווח</a> <a class="xref" href="checklist.html#cl-motion">תנועה ואנימציה</a></p>
 
@@ -338,11 +338,8 @@
       <h3 id="step-voice" data-rail-label="סיפור וטון">1. סיפור מותג וטון דיבור</h3>
       <p>מותג צריך גם לדבר, לא רק להיראות: אישיות, מסרים קבועים, וקשר בין הערכים לבין הצבע, האיור והפונט.</p>
       <p class="step-more"><a class="xref" href="strategy.html#voice">סיפור מותג וטון דיבור לעומק</a></p>
-      <h3 id="step-illustration" data-rail-label="שפה איורית או צילומית">2. פיתוח שפה איורית או צילומית</h3>
-      <p>דמות, סמל או סגנון איור הם לא אלמנט אחד שחוזר, אלא עולם שמתפתח לסדרה שלמה של סצנות ושימושים. בפרק השפה הגרפית יש גם תרגיל.</p>
-      <p class="step-more"><a class="xref" href="visual-language.html#illustration">שפה איורית וצילומית לעומק</a></p>
 
-      <h3 id="step-color" data-rail-label="מערכת צבעים">3. בניית מערכת צבעים</h3>
+      <h3 id="step-color" data-rail-label="מערכת צבעים">2. בניית מערכת צבעים</h3>
       <p>מותג זקוק לפלטת צבעים מגוונת:</p>
       <ul class="dots">
         <li>2 צבעי בסיס</li>
@@ -351,13 +348,17 @@
       <p>הציגו דף צבעוניות עם דוגמאות שימוש אמיתיות (אריזה, אתר, מודעה), כולל גרסה בשחור־לבן.</p>
       <p class="step-more"><a class="xref" href="color.html#palette">פרק הצבע</a></p>
 
-      <h3 id="step-type" data-rail-label="היררכיה טיפוגרפית">4. טיפוגרפיה עם היררכיה</h3>
+      <h3 id="step-type" data-rail-label="היררכיה טיפוגרפית">3. טיפוגרפיה עם היררכיה</h3>
       <p>לכל תפקיד בעמוד יש פונט ומשקל משלו, מהכותרת הראשית ועד הציטוט, וצריך להראות את זה על עמוד אמיתי.</p>
       <p class="step-more"><a class="xref" href="typography.html#hierarchy">היררכיה טיפוגרפית</a></p>
 
-      <h3 id="step-language" data-rail-label="עברית או אנגלית">5. בחירת שפה: עברית או אנגלית</h3>
+      <h3 id="step-language" data-rail-label="עברית או אנגלית">4. בחירת שפה: עברית או אנגלית</h3>
       <p>מקומי, בינלאומי או שניהם: ההחלטה על שפת התקשורת המרכזית משפיעה גם על האישיות של המותג, וגם על הפונטים שאפשר לבחור.</p>
       <p class="step-more"><a class="xref" href="typography.html#language">עברית, אנגלית ושתיהן יחד</a></p>
+
+      <h3 id="step-illustration" data-rail-label="שפה איורית או צילומית">5. פיתוח שפה איורית או צילומית</h3>
+      <p>דמות, סמל או סגנון איור הם לא אלמנט אחד שחוזר, אלא עולם שמתפתח לסדרה שלמה של סצנות ושימושים. בפרק השפה הגרפית יש גם תרגיל.</p>
+      <p class="step-more"><a class="xref" href="visual-language.html#illustration">שפה איורית וצילומית לעומק</a></p>
 
       <h3 id="step-applications" data-rail-label="הרחבת יישומים">6. הרחבת יישומים</h3>
       <p>המבחן האמיתי של שפה עיצובית: האם היא נשמרת גם על כוס, על שלט וגם בבאנר קטן.</p>
@@ -385,6 +386,6 @@
 
 <footer class="g-foot">מדריך המיתוג · <a href="../../index.html">מישה קרץ'</a> · <a href="../../blog.html">לכל הבלוג</a></footer>
 
-<script src="assets/guide.js?v=12" defer></script>
+<script src="assets/guide.js?v=14" defer></script>
 </body>
 </html>

@@ -159,7 +159,14 @@ a:hover { text-decoration-thickness: 2px; }
 .g-nav li.cur > a .n { color: var(--accent-ink); }
 .g-nav .subs { margin: 2px 0 8px; padding-inline-start: 30px; border-inline-start: 1px solid var(--line); margin-inline-start: 19px; }
 .g-nav .subs a { font-size: 14px; padding: 5px 10px; }
-.g-nav .subs a.on { color: var(--ink); box-shadow: inset -2px 0 0 var(--accent); border-radius: 0 10px 10px 0; }
+.g-nav .subs a { transition: color .25s; }
+/* the section in view: its name in the chapter colour, and the line beside the topics fills in that colour
+   down to where the reader is (guide.js sets --fill in px as they scroll) */
+.g-nav .subs { position: relative; }
+.g-nav .subs::before { content: ""; position: absolute; inset-inline-start: -2px; top: 0; width: 3px; height: var(--fill, 0px); border-radius: 3px; background: var(--c, var(--accent)); transition: height .12s linear; }
+.g-nav .subs a.on { color: var(--c, var(--accent)); font-weight: 600; }
+:root[data-theme="light"] .g-nav .subs::before { background: var(--ci, var(--accent)); }
+:root[data-theme="light"] .g-nav .subs a.on { color: var(--ci, var(--accent)); }
 .g-nav .home a { margin-bottom: 10px; }
 
 .g-main { min-width: 0; padding: 40px 0 80px; }

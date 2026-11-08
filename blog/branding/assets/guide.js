@@ -91,16 +91,28 @@
     nav.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
     doc.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
 
-    // highlight the section in view
+    // the section in view: its name takes the chapter colour, and a bar beside it fills as the reader scrolls through it
     var links = $$(".subs a", nav);
-    if (links.length && "IntersectionObserver" in window) {
+    if (links.length) {
+      var heads = $$("h2[id]", $("#main"));
       var map = {}; links.forEach(function (a) { map[a.getAttribute("data-sec")] = a; });
-      var io = new IntersectionObserver(function (ents) {
-        ents.forEach(function (en) {
-          if (en.isIntersecting) { links.forEach(function (a) { a.classList.remove("on"); }); var a = map[en.target.id]; if (a) a.classList.add("on"); }
-        });
-      }, { rootMargin: "-20% 0px -70% 0px" });
-      $$("h2[id]", $("#main")).forEach(function (h) { io.observe(h); });
+      var cur = null, tick = false;
+      var upd = function () {
+        tick = false;
+        var line = innerHeight * 0.3, idx = -1;
+        heads.forEach(function (h, i) { if (h.getBoundingClientRect().top <= line) idx = i; });
+        var a = idx >= 0 ? map[heads[idx].id] : null;
+        if (a !== cur) { if (cur) cur.classList.remove("on"); if (a) a.classList.add("on"); cur = a; }
+        var subs = links[0].closest(".subs");
+        if (!a) { subs.style.setProperty("--fill", "0px"); return; }
+        var sec = heads[idx].closest("section") || heads[idx].parentElement, r = sec.getBoundingClientRect();
+        var p = Math.max(0, Math.min(1, (line - r.top) / Math.max(1, r.height)));
+        // the line grows down to the current topic, and through it as the reader moves through that section
+        subs.style.setProperty("--fill", Math.round(a.offsetTop + p * a.offsetHeight) + "px");
+      };
+      addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+      addEventListener("resize", upd);
+      upd();
     }
   }
   function buildPager() {
