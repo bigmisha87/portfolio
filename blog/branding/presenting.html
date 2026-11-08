@@ -38,6 +38,7 @@
 .fun-h { position: absolute; top: 12px; right: 14px; z-index: 6; font-size: 14px; font-weight: 600; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
 .fm { position: absolute; width: 38px; height: 38px; transform: translate(-50%, -50%) scale(1); transition: left .8s cubic-bezier(.2,.8,.2,1), top .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), opacity .5s; z-index: 4; }
 .fm svg { width: 100%; height: 100%; display: block; }
+.fm img { width: 100%; height: 100%; display: block; object-fit: contain; padding: 2px; border-radius: 8px; background: #efeeea; }
 .fm.out { opacity: 0; transform: translate(-50%, -50%) scale(.2); }
 .fm.big { transform: translate(-50%, -50%) scale(1.25); }
 .s3 { position: absolute; top: 58%; width: 28%; height: 62%; transform: translate(-50%, -50%) scale(.85); opacity: 0; transition: opacity .6s, transform .6s cubic-bezier(.2,1.2,.4,1), border-color .4s; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); padding: 66px 12px 12px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
@@ -110,15 +111,24 @@
 .concept .blank { display: inline; border-bottom: 2px dashed var(--accent); padding: 0 6px; color: var(--muted); }
 
 /* ---- reveal ---- */
-.rv { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background-color: #eeece6; background-image: linear-gradient(#dcd9d1 1px, transparent 1px), linear-gradient(90deg, #dcd9d1 1px, transparent 1px); background-size: 28px 28px; display: grid; place-items: center; }
-.rv svg { width: 34%; height: auto; }
-.rv .lbl { position: absolute; top: 9%; left: 0; right: 0; text-align: center; font: 700 clamp(22px, 4vw, 40px)/1 var(--display); color: #0e3a63; }
-.rv ellipse { transition: stroke .8s ease; }
-.rv .lbl { opacity: 0; transform: translateY(-6px); transition: opacity .6s ease, transform .6s ease; }
-/* step 1: black and white · step 2: colour · step 3: one word, then silence */
-.rvf[data-step="1"] .rv .e1 { stroke: #a9a9a9; }
-.rvf[data-step="1"] .rv .e2 { stroke: #1d1d1d; }
-.rvf[data-step="3"] .rv .lbl { opacity: 1; transform: none; }
+/* the real example logo, cut from the deck's own slides (bp-concept / bp-every-size); the stage is the slide's paper colour */
+.rv { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #efeeea; }
+.rv img { position: absolute; left: 50%; top: 50%; height: auto; transform: translate(-50%, -50%);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(transparent, #000 6%, #000 94%, transparent);
+  mask-composite: intersect;
+  transition: opacity .8s ease, filter .8s ease, transform .8s ease; }
+.rv .sym { width: auto; height: 84%;
+  /* the slide's grid fades out in a soft circle instead of ending in a hard square; the logo itself stays fully opaque */
+  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000 72%, transparent 100%); -webkit-mask-composite: source-over;
+  mask-image: radial-gradient(70% 70% at 50% 50%, #000 72%, transparent 100%); mask-composite: add; }
+.rv .full { width: 50%; opacity: 0; transform: translate(-50%, -44%); }
+/* step 1: black and white · step 2: colour · step 3: the full logo with its name, then silence */
+.rvf[data-step="1"] .rv .sym { filter: grayscale(1) contrast(1.12); }
+.rvf[data-step="3"] .rv .sym { opacity: 0; }
+.rvf[data-step="3"] .rv .full { opacity: 1; transform: translate(-50%, -50%); }
+@media (max-width: 600px) { .rv .full { width: 76%; } }
 .rv-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
 .rv-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
 .rvf[data-step="1"] .rv-note [data-s="1"], .rvf[data-step="2"] .rv-note [data-s="2"], .rvf[data-step="3"] .rv-note [data-s="3"] { opacity: 1; visibility: visible; }
@@ -376,12 +386,12 @@
         <span class="anim__label">רגע החשיפה</span>
         <div class="anim__stage">
           <div class="rv" aria-hidden="true">
-            <span class="lbl">הפתרון</span>
-            <svg viewBox="0 0 200 200"><ellipse class="e1" cx="100" cy="100" rx="58" ry="84" transform="rotate(-38 100 100)" fill="none" stroke="#b9c0c9" stroke-width="22" opacity=".85"/><ellipse class="e2" cx="100" cy="100" rx="58" ry="84" transform="rotate(38 100 100)" fill="none" stroke="#004e89" stroke-width="22"/></svg>
+            <img class="sym" src="img/bp-reveal-symbol.webp" width="490" height="505" alt="" loading="lazy">
+            <img class="full" src="img/bp-reveal-logo.webp" width="406" height="121" alt="" loading="lazy">
           </div>
           <p class="rv-note" aria-live="polite"><span data-s="1">קודם בשחור־לבן: מוכיחים שהצורה עובדת גם בלי צבע.</span><span data-s="2">ואז בצבע. בלי להסביר, בלי למהר. שנייה של שקט.</span><span data-s="3">רק עכשיו מילה אחת: זה הפתרון. ואז מקשיבים ללקוח.</span></p>
         </div>
-        <figcaption>שנייה של שקט לפני, ושנייה של שקט אחרי. אל תמהרו לדבר: תנו ללקוח לראות. (הסימן כאן הוא דוגמה בהשראת המצגת.)</figcaption>
+        <figcaption>שנייה של שקט לפני, ושנייה של שקט אחרי. אל תמהרו לדבר: תנו ללקוח לראות. (הלוגו כאן הוא הלוגו לדוגמה מתוך המצגת.)</figcaption>
       </figure>
     </section>
 
@@ -491,7 +501,6 @@
   var CHOSEN = { 6: [83, 39], 12: [50, 39], 13: [17, 39] };
   var CHOSEN_SVG = {
     6: '<circle cx="20" cy="20" r="16" fill="#e2462b"/><path d="M12 24l8-12 8 12z" fill="#f3e6d6"/>',
-    12: '<ellipse cx="20" cy="20" rx="10" ry="15" transform="rotate(-38 20 20)" fill="none" stroke="#b9c0c9" stroke-width="5"/><ellipse cx="20" cy="20" rx="10" ry="15" transform="rotate(38 20 20)" fill="none" stroke="#004e89" stroke-width="5"/>',
     13: '<path d="M6 30C10 12 24 6 34 8 30 22 20 32 6 30z" fill="#2fbf71"/>'
   };
   var marks = [], grid = [];
@@ -500,8 +509,13 @@
     grid.push([14 + c * 18, 22 + r * 21]);
     var d = document.createElement("div"); d.className = "fm";
     var rot = (i * 47) % 360;
-    var inner = CHOSEN_SVG[i] || SH[(i * 3) % SH.length](COLORS[(i * 7) % COLORS.length]);
-    d.innerHTML = '<svg viewBox="0 0 40 40"><g transform="rotate(' + (CHOSEN_SVG[i] ? 0 : rot) + ' 20 20)">' + inner + "</g></svg>";
+    if (i === 12) {
+      /* the recommended option is the deck's real example logo, not a redrawing of it */
+      d.innerHTML = '<img src="img/bp-reveal-symbol.webp" width="490" height="505" alt="">';
+    } else {
+      var inner = CHOSEN_SVG[i] || SH[(i * 3) % SH.length](COLORS[(i * 7) % COLORS.length]);
+      d.innerHTML = '<svg viewBox="0 0 40 40"><g transform="rotate(' + (CHOSEN_SVG[i] ? 0 : rot) + ' 20 20)">' + inner + "</g></svg>";
+    }
     stage.appendChild(d); marks.push(d);
   }
   function s0() {
