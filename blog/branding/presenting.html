@@ -9,7 +9,7 @@
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="הצגה ללקוח · מדריך המיתוג">
 <meta property="og:description" content="לא מוכרים לוגו, מוכרים ביטחון. איך מובילים להחלטה במקום לבקש דעה.">
-<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/bp-concept.webp">
+<meta property="og:image" content="https://www.misha.co.il/blog/branding/img/bp-concept-v2.webp">
 <meta name="theme-color" content="#0c0c0c">
 <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,7 +38,7 @@
 .fun-h { position: absolute; top: 12px; right: 14px; z-index: 6; font-size: 14px; font-weight: 600; background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; }
 .fm { position: absolute; width: 38px; height: 38px; transform: translate(-50%, -50%) scale(1); transition: left .8s cubic-bezier(.2,.8,.2,1), top .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1), opacity .5s; z-index: 4; }
 .fm svg { width: 100%; height: 100%; display: block; }
-.fm img { width: 100%; height: 100%; display: block; object-fit: contain; padding: 2px; border-radius: 8px; background: #efeeea; }
+.fm img { width: 100%; height: 100%; display: block; object-fit: contain; }
 .fm.out { opacity: 0; transform: translate(-50%, -50%) scale(.2); }
 .fm.big { transform: translate(-50%, -50%) scale(1.25); }
 .s3 { position: absolute; top: 58%; width: 28%; height: 62%; transform: translate(-50%, -50%) scale(.85); opacity: 0; transition: opacity .6s, transform .6s cubic-bezier(.2,1.2,.4,1), border-color .4s; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); padding: 66px 12px 12px; display: flex; flex-direction: column; gap: 8px; z-index: 3; }
@@ -111,24 +111,13 @@
 .concept .blank { display: inline; border-bottom: 2px dashed var(--accent); padding: 0 6px; color: var(--muted); }
 
 /* ---- reveal ---- */
-/* the real example logo, cut from the deck's own slides (bp-concept / bp-every-size); the stage is the slide's paper colour */
-.rv { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #efeeea; }
-.rv img { position: absolute; left: 50%; top: 50%; height: auto; transform: translate(-50%, -50%);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(transparent, #000 6%, #000 94%, transparent);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent), linear-gradient(transparent, #000 6%, #000 94%, transparent);
-  mask-composite: intersect;
-  transition: opacity .8s ease, filter .8s ease, transform .8s ease; }
-.rv .sym { width: auto; height: 84%;
-  /* the slide's grid fades out in a soft circle instead of ending in a hard square; the logo itself stays fully opaque */
-  -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000 72%, transparent 100%); -webkit-mask-composite: source-over;
-  mask-image: radial-gradient(70% 70% at 50% 50%, #000 72%, transparent 100%); mask-composite: add; }
-.rv .full { width: 50%; opacity: 0; transform: translate(-50%, -44%); }
-/* step 1: black and white · step 2: colour · step 3: the full logo with its name, then silence */
-.rvf[data-step="1"] .rv .sym { filter: grayscale(1) contrast(1.12); }
-.rvf[data-step="3"] .rv .sym { opacity: 0; }
-.rvf[data-step="3"] .rv .full { opacity: 1; transform: translate(-50%, -50%); }
-@media (max-width: 600px) { .rv .full { width: 76%; } }
+.cap-note { font-size: 14px; line-height: 1.55; color: var(--muted); margin-top: 6px; }
+/* the guide's example logo (flat, transparent background) on a quiet paper-coloured "slide" */
+.rv { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #f4f3ef; }
+.rv .sym { position: absolute; left: 50%; top: 50%; width: auto; height: 66%; transform: translate(-50%, -50%) scale(.94); opacity: 0;
+  transition: opacity 1.1s ease, transform 1.4s cubic-bezier(.2,.8,.2,1); }
+/* step 1: an empty, silent slide · step 2: the logo, alone, in full colour */
+.rvf[data-step="2"] .rv .sym { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 .rv-note { display: grid; margin: 14px 0 0; font-size: 15px; line-height: 1.55; }
 .rv-note span { grid-area: 1 / 1; opacity: 0; visibility: hidden; transition: opacity .4s ease, visibility .4s; }
 .rvf[data-step="1"] .rv-note [data-s="1"], .rvf[data-step="2"] .rv-note [data-s="2"], .rvf[data-step="3"] .rv-note [data-s="3"] { opacity: 1; visibility: visible; }
@@ -205,7 +194,7 @@
           <div class="fun" data-step="0" aria-hidden="true">
             <span class="fun-h">20 אופציות אקראיות</span>
             <div class="s3" style="left:83%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#e2462b"></i><i style="background:#2c3a45"></i><i style="background:#f3e6d6"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">אנרגיה, לקהל צעיר</span></div>
-            <div class="s3 pick" style="left:50%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#004e89"></i><i style="background:#222222"></i><i style="background:#e0e0e0"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">ביטחון ונגישות, בדיוק לפי הבריף</span></div>
+            <div class="s3 pick" style="left:50%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#034f85"></i><i style="background:#5ba4ce"></i><i style="background:#141414"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">ביטחון ונגישות, בדיוק לפי הבריף</span></div>
             <div class="s3" style="left:17%"><span class="rec">מומלץ</span><div class="sw3"><i style="background:#2fbf71"></i><i style="background:#1f3d2b"></i><i style="background:#f2efe8"></i></div><span class="aa">Aa כותרת</span><i class="ln"></i><i class="ln s"></i><span class="why">טבעי ורגוע</span></div>
           </div>
         </div>
@@ -320,7 +309,7 @@
       <div class="note" data-added>
         <span class="box-label">ועוד ארבעה הרגלים מהשטח</span>
         <ul class="dots">
-          <li>בחשיפת הלוגו הראו אותו <strong>קודם בשחור־לבן</strong>, כדי להוכיח שהצורה עובדת בלי צבע, ורק אחר כך בצבע.</li>
+          <li>בחשיפה הראו את הלוגו <strong>בצבע המלא שלו</strong>, בגרסה הכי חזקה. את ההוכחה שהוא עובד גם בשחור בלבד שומרים לשקף הוורסטיליות.</li>
           <li>תכננו <strong><span class="ltr">4–8</span> שקפים של הדמיות</strong> בעולם האמיתי. פחות מזה לא משכנע, יותר מזה מעייף.</li>
           <li><strong>תמיד מציגים בשיחה</strong>, פנים מול פנים או בווידאו. לא שולחים לוגו בדוא"ל בלי להסביר אותו.</li>
           <li><strong>שולטים בקצב</strong>: חושפים שלב אחרי שלב, ולא שולחים את הקובץ לפני הפגישה.</li>
@@ -375,23 +364,22 @@
         העיקרון המוביל הוא <span class="blank">זרימה ופשטות</span>.<br>
         המסר שהלוגו ישדר, עוד לפני שקוראים את שם המותג, הוא <span class="blank">קלות שימוש ושותפות</span>.
       </div>
-      <a class="slide-img" href="img/bp-concept.webp" data-lb data-cap="מהסיפור אל הצורה: הקונספט העיצובי"><img src="img/bp-concept.webp" width="1376" height="733" loading="lazy" alt="שקף: טקסט הקונספט ליד שתי טבעות משולבות, כחולה ואפורה שקופה"></a>
+      <a class="slide-img" href="img/bp-concept-v2.webp" data-lb data-cap="מהסיפור אל הצורה: הקונספט העיצובי"><img src="img/bp-concept-v2.webp" width="1376" height="733" loading="lazy" alt="שקף: טקסט הקונספט ליד הסמל, שתי טבעות שנכרכות זו בזו, בכחול כהה ובתכלת"></a>
     </section>
 
     <!-- ================= 5. reveal ================= -->
     <section class="sec">
       <h2 id="reveal" data-short="החשיפה">הפתרון: החשיפה</h2>
       <p>ואז, ורק אז: הלוגו. לבד, גדול, על רקע שקט. בלי טקסט, בלי הסברים, בלי עוד שלושה דברים מסביב.</p>
-      <figure class="anim rvf" id="rv-fig" data-steps="3" data-step-labels="שחור־לבן|בצבע|הפתרון">
+      <figure class="anim rvf" id="rv-fig" data-steps="2" data-step-labels="שנייה של שקט|החשיפה">
         <span class="anim__label">רגע החשיפה</span>
         <div class="anim__stage">
-          <div class="rv" aria-hidden="true">
-            <img class="sym" src="img/bp-reveal-symbol.webp" width="490" height="505" alt="" loading="lazy">
-            <img class="full" src="img/bp-reveal-logo.webp" width="406" height="121" alt="" loading="lazy">
+          <div class="rv">
+            <img class="sym" src="img/ex-logo-color.webp" width="592" height="640" alt="הלוגו לדוגמה: שתי טבעות שנכרכות זו בזו, בכחול כהה ובתכלת" loading="lazy">
           </div>
-          <p class="rv-note" aria-live="polite"><span data-s="1">קודם בשחור־לבן: מוכיחים שהצורה עובדת גם בלי צבע.</span><span data-s="2">ואז בצבע. בלי להסביר, בלי למהר. שנייה של שקט.</span><span data-s="3">רק עכשיו מילה אחת: זה הפתרון. ואז מקשיבים ללקוח.</span></p>
+          <p class="rv-note" aria-live="polite"><span data-s="1">רגע לפני: מסך ריק ושקט. בלי כותרת, בלי „ועכשיו…”.</span><span data-s="2">ואז הלוגו, לבד, גדול ובצבע המלא שלו. לא מסבירים ולא ממהרים. נותנים לו שנייה, ומקשיבים ללקוח.</span></p>
         </div>
-        <figcaption>שנייה של שקט לפני, ושנייה של שקט אחרי. אל תמהרו לדבר: תנו ללקוח לראות. (הלוגו כאן הוא הלוגו לדוגמה מתוך המצגת.)</figcaption>
+        <figcaption>שנייה של שקט לפני, ושנייה של שקט אחרי. אל תמהרו לדבר: תנו ללקוח לראות.</figcaption>
       </figure>
     </section>
 
@@ -400,19 +388,19 @@
       <h2 id="meaning" data-short="משמעות לכל החלטה">מאחורי כל החלטה עומדת משמעות</h2>
       <p>מיד אחרי החשיפה, מפרקים את הלוגו להחלטות. כל החלטה מקבלת משפט אחד:</p>
       <div class="mean">
-        <div><h4>הצורה</h4><p>הקווים המעוגלים משדרים נגישות ואנושיות, בעוד המבנה היציב משקף אמינות טכנולוגית.</p></div>
-        <div><h4>הצבעוניות</h4><p>הכחול הכהה מייצר תחושת ביטחון ומקצועיות, והאפור השקוף מוסיף טאץ’ מודרני ועומק.</p></div>
-        <div><h4>הטיפוגרפיה</h4><p>הפונט הנקי והגיאומטרי מבטיח קריאות, ורסטיליות ומראה מודרני.</p></div>
+        <div><h4>הצורה</h4><p>שתי טבעות שנכרכות זו בזו: חיבור ושותפות. הקווים המעוגלים משדרים נגישות, והמבנה הסימטרי משדר אמינות.</p></div>
+        <div><h4>הצבעוניות</h4><p>הכחול הכהה מייצר תחושת ביטחון ומקצועיות, והתכלת מוסיפה קלילות ופתיחות.</p></div>
+        <div><h4>הפשטות</h4><p>צבע שטוח, בלי תלת־ממד ובלי אפקטים. הסמל עובד באותה מידה על שלט ענק ובאייקון של 16 פיקסלים.</p></div>
       </div>
-      <a class="slide-img" href="img/bp-meaning.webp" data-lb data-cap="מאחורי כל החלטה עומדת משמעות"><img src="img/bp-meaning.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו עם שלושה חיצים להסברים על הצורה, הצבעוניות והטיפוגרפיה"></a>
+      <a class="slide-img" href="img/bp-meaning-v2.webp" data-lb data-cap="מאחורי כל החלטה עומדת משמעות"><img src="img/bp-meaning-v2.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו עם שלושה קווים להסברים על הצורה, הצבעוניות והפשטות"></a>
       <p data-added>שימו לב שכל נימוק מחזיר לאסטרטגיה: „נגישות”, „אמינות”, „ביטחון” הן בדיוק המילים מהערכים ומעמוד ה„אנחנו כן”. ככה „אני לא אוהב כחול” הופך לשיחה על ביטחון ומקצועיות, ולא על טעם.</p>
     </section>
 
     <!-- ================= 7. versatility ================= -->
     <section class="sec">
       <h2 id="versatility" data-short="עובד בכל מצב">הוכחת ורסטיליות: הלוגו עובד בכל מצב</h2>
-      <p>לוגו חזק חייב להיות גמיש. הראו איך הוא שומר על הזהות שלו בכל קנה מידה ובכל פורמט: אופקי, סמל זעיר, על רקע בהיר, על רקע כהה, על הצבע של המותג, עם מסגרות המרווח המגן, בגרסה שחורה, וסמל בלבד.</p>
-      <a class="slide-img" href="img/bp-every-size.webp" data-lb data-cap="הוכחת ורסטיליות: הלוגו עובד בכל מצב"><img src="img/bp-every-size.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו בשמונה מצבים, אופקי, זעיר, על רקעים בהירים, כהים וכחולים, בשחור וסמל בלבד"></a>
+      <p>לוגו חזק חייב להיות גמיש. הראו איך הוא שומר על הזהות שלו בכל קנה מידה ועל כל רקע: בצבע מלא, בגדלים שיורדים עד 16 פיקסלים, בלבן על רקע כהה, על הכחול ועל התכלת של המותג, בשחור בלבד, ועם מסגרת המרווח המגן. כאן גם המקום להוכיח שהצורה עובדת בלי צבע.</p>
+      <a class="slide-img" href="img/bp-every-size-v2.webp" data-lb data-cap="הוכחת ורסטיליות: הלוגו עובד בכל מצב"><img src="img/bp-every-size-v2.webp" width="1376" height="733" loading="lazy" alt="שקף: הלוגו בשמונה מצבים, צבע מלא, ארבעה גדלים, לבן על כהה, על כחול ועל תכלת, שחור בלבד, מרווח מגן ועל רקע בהיר"></a>
       <p>איך בונים את המערכת הזו מלכתחילה, ומה הן כל הגרסאות: <a class="xref" href="logo.html#system">מערכת הלוגו</a></p>
     </section>
 
@@ -421,15 +409,16 @@
       <h2 id="system" data-short="מערכת זהות שלמה">יותר מלוגו: מערכת זהות שלמה</h2>
       <p>לוגו לבד זה לא מותג. בנינו מערכת חוקים עקבית שמבטיחה שהמותג ידבר בקול אחד בכל מקום: פלטת צבעים, טיפוגרפיה, אלמנטים גרפיים, גריד ומבנה.</p>
       <div class="swatches">
-        <div class="sw"><i style="background:#222222"></i><div><b>שחור מותג</b><code>#222222</code></div></div>
-        <div class="sw"><i style="background:#004e89"></i><div><b>כחול מותג</b><code>#004E89</code></div></div>
-        <div class="sw"><i style="background:#e0e0e0"></i><div><b>אפור בהיר</b><code>#E0E0E0</code></div></div>
+        <div class="sw"><i style="background:#034f85"></i><div><b>כחול מותג</b><code>#034F85</code></div></div>
+        <div class="sw"><i style="background:#5ba4ce"></i><div><b>תכלת</b><code>#5BA4CE</code></div></div>
+        <div class="sw"><i style="background:#141414"></i><div><b>שחור</b><code>#141414</code></div></div>
+        <div class="sw"><i style="background:#f4f3ef"></i><div><b>נייר</b><code>#F4F3EF</code></div></div>
       </div>
       <div class="spec">
-        <div><small>Assistant Bold</small><div class="h">כותרת ראשית</div></div>
+        <div><small>Assistant ExtraBold</small><div class="h">כותרת ראשית</div></div>
         <div><small>Frank Ruhl Libre Regular</small><div class="b">זהו טקסט דמה קלאסי שמשמש בעיצוב גרפי. המטרה היא להדגים את מראה הגופן.</div></div>
       </div>
-      <a class="slide-img" href="img/bp-system.webp" data-lb data-cap="יותר מלוגו: מערכת זהות שלמה"><img src="img/bp-system.webp" width="1376" height="733" loading="lazy" alt="שקף: פלטת שלושה צבעים, דוגמת טיפוגרפיה, אלמנטים גרפיים עגולים וגריד"></a>
+      <a class="slide-img" href="img/bp-system-v2.webp" data-lb data-cap="יותר מלוגו: מערכת זהות שלמה"><img src="img/bp-system-v2.webp" width="1376" height="733" loading="lazy" alt="שקף: פלטה של ארבעה צבעים, דוגמת טיפוגרפיה, שלושה אלמנטים גרפיים שנגזרים מהסמל, וגריד של 12 עמודות"></a>
       <p>זה בעצם תקציר של ספר המותג. מה נכנס לספר המלא: <a class="xref" href="checklist.html#brand-book">ספר מותג</a></p>
     </section>
 
@@ -437,13 +426,18 @@
     <section class="sec">
       <h2 id="worlds" data-short="בדיגיטל ובמציאות">איך המותג חי בעולם</h2>
       <h3 id="digital-world">בעולם הדיגיטלי</h3>
-      <p>המערכת העיצובית מותאמת למסכים, עם דגש על קריאות, נגישות ואימפקט: פרופיל אינסטגרם, אתר, מסך פתיחה של אפליקציה, מסך טעינה ו־<span class="ltr">GIF</span> מונפש קצר. אם רלוונטי, מציגים גם דוגמאות של תנועה עדינה.</p>
-      <a class="slide-img" href="img/bp-digital.webp" data-lb data-cap="איך המותג חי בעולם הדיגיטלי"><img src="img/bp-digital.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על פרופיל אינסטגרם, אתר, מסך פתיחה וטעינה של אפליקציה, ואנימציה קצרה"></a>
+      <p>המערכת העיצובית מותאמת למסכים, עם דגש על קריאות, נגישות ואימפקט: אתר, מסך פתיחה של אפליקציה, פרופיל ברשתות ואייקונים. שימו לב שהסמל עובד פעמיים: כאייקון זעיר בפינת האתר, וכגרפיקה ענקית שחתוכה בתוך המסך. אם רלוונטי, מציגים גם דוגמאות של תנועה עדינה.</p>
+      <a class="slide-img" href="img/bp-digital-v2.webp" data-lb data-cap="איך המותג חי בעולם הדיגיטלי"><img src="img/bp-digital-v2.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על אתר במחשב נייד, על מסך פתיחה של אפליקציה ופרופיל ברשתות בשני טלפונים, ושורה של אייקונים בגדלים שונים"></a>
       <p><a class="xref" href="digital.html">כל המידות לרשתות ולבאנרים</a> <a class="xref" href="golden-rules.html#no-gifs">תנועה, אבל לא ליד טקסט</a></p>
 
       <h3 id="physical-world">בעולם הפיזי</h3>
-      <p>הזהות הוויזואלית עובדת לא רק על מסך, אלא גם במרחב הפיזי, על חומרים שונים ובקני מידה משתנים: שלט קיר בקבלה, תיק בד, כרטיס ביקור.</p>
-      <a class="slide-img" href="img/bp-real-world.webp" data-lb data-cap="איך המותג חי בעולם הפיזי"><img src="img/bp-real-world.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על שלט בקיר הקבלה, על תיק בד ועל כרטיס ביקור"></a>
+      <p>הזהות הוויזואלית עובדת לא רק על מסך, אלא גם במרחב הפיזי, על חומרים שונים ובקני מידה משתנים: שלט קיר בקבלה, כרטיס ביקור, תיק בד ושקיות.</p>
+      <a class="slide-img" href="img/bp-real-world-v2.webp" data-lb data-cap="איך המותג חי בעולם הפיזי"><img src="img/bp-real-world-v2.webp" width="1376" height="733" loading="lazy" alt="שקף: המותג על שלט תלת־ממדי בקיר הקבלה, על כרטיסי ביקור, על תיק בד ועל שקיות וקופסה"></a>
+      <p>ועוד שתי הדמיות מאותה סדרה, לשקפי השילוט וההלבשה:</p>
+      <div class="gallery g2 natural">
+        <a href="img/ex-mock-sign.webp" data-lb data-cap="שילוט חוץ: שלט עגול מואר על חזית הבניין"><img src="img/ex-mock-sign.webp" alt="שלט עגול ומואר בכחול עם הסמל בלבן, תלוי על חזית בניין בשעת דמדומים" loading="lazy" width="1400" height="930"></a>
+        <a href="img/ex-mock-apparel.webp" data-lb data-cap="הלבשה: חולצה וכובע עם הסמל בלבן"><img src="img/ex-mock-apparel.webp" alt="חולצה וכובע בכחול כהה, עם הסמל מודפס בלבן על החזה ורקום על הכובע" loading="lazy" width="1400" height="930"></a>      </div>
+      <p class="cap-note">ההדמיות נוצרו בעזרת <span class="ltr">AI</span>, מקובץ הלוגו עצמו. בדיוק השימוש שמתואר בשקף 13.</p>
       <p><a class="xref" href="mockups.html">יישומים ומוקאפים</a></p>
     </section>
 
@@ -511,7 +505,7 @@
     var rot = (i * 47) % 360;
     if (i === 12) {
       /* the recommended option is the deck's real example logo, not a redrawing of it */
-      d.innerHTML = '<img src="img/bp-reveal-symbol.webp" width="490" height="505" alt="">';
+      d.innerHTML = '<img src="img/ex-logo-color.webp" width="592" height="640" alt="">';
     } else {
       var inner = CHOSEN_SVG[i] || SH[(i * 3) % SH.length](COLORS[(i * 7) % COLORS.length]);
       d.innerHTML = '<svg viewBox="0 0 40 40"><g transform="rotate(' + (CHOSEN_SVG[i] ? 0 : rot) + ' 20 20)">' + inner + "</g></svg>";
