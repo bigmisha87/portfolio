@@ -181,11 +181,7 @@ mark.hit { background: color-mix(in srgb, var(--accent-2) 40%, transparent); col
 .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-2xs); max-width: 1000px; }
 .tags li { padding: var(--space-3xs) var(--space-xs); border-radius: 99px; background: var(--card); border: 1px solid var(--line-2); font-size: var(--t-xs); }
 
-/* "prompts only" button: a toggle that sits before the model filter, set apart by a thin line */
-.chip--pr { border-color: var(--accent-2); color: var(--ink); font-weight: 600; }
-.chip--pr[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+/* "prompt library" link: sits before the model filter, set apart by a thin line, and jumps to that chapter */
+.chip--lib { display: inline-flex; align-items: center; gap: var(--space-3xs); text-decoration: none; border-color: var(--accent-2); color: var(--ink); font-weight: 600; }
+.chip--lib:hover { background: var(--accent-2); color: var(--accent-2-ink); border-color: var(--accent-2); }
 .chips__sep { flex: none; width: 1px; align-self: stretch; margin: var(--space-3xs) var(--space-3xs); background: var(--line-2); }
-/* in that mode each topic shows only its prompt cards and the pictures right after them */
-.only-prompts .sec__b > *, .only-prompts .chap__lead { display: none; }
-.only-prompts .sec__b > .pr { display: grid; }
-.only-prompts .sec__b > .pr + .gal, .only-prompts .sec__b > .pr + .pr + .gal, .only-prompts .sec__b > .pr + .pr + .pr + .gal { display: flex; }
