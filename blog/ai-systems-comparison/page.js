@@ -105,7 +105,7 @@
     [at + 1, at - 1].forEach(function (k) { var n = group[(k + group.length) % group.length]; if (n) (new Image()).src = n.dataset.full; });
   }
   function open(btn) {
-    var scope = btn.closest(".grid, .rcards, .old__imgs");
+    var scope = btn.closest(".grid, .rcards, .old__imgs, .task");
     group = $$("[data-full]", scope).filter(function (b) { return !b.closest("[hidden]"); });
     at = Math.max(0, group.indexOf(btn));
     opener = btn;

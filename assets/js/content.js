@@ -5828,13 +5828,24 @@ window.MG = {
  ],
  "posts": [
   {
+   "slug": "ai-sale-ad",
+   "title": "מודעת מבצע בעברית: איך 26 מודלי AI מתמודדים",
+   "excerpt": "תמונה אחת ופרומפט אחד עם טקסט בעברית ובאנגלית, בלי הנחיות עיצוב. מי כותב עברית נכון, מי מעצב מודעה אמיתית, ומי שובר את הטקסט.",
+   "tag": "AI",
+   "date": "10.11.2026",
+   "read": "בדיקה · 26 מודלים",
+   "cover": "media/blog/ai-sale-ad/205-sm.webp",
+   "href": "blog/ai-sale-ad/index.html",
+   "body": []
+  },
+  {
    "slug": "ai-systems-comparison",
    "title": "השוואת מחוללי תמונות: 30 מודלי AI על אותם פרומפטים",
    "excerpt": "כל המודלים של Higgsfield ו-Adobe Firefly על אותם פרומפטים: חתול בלש בבר, שישה לוגואים ודלת של משרד חקירות. GPT Image, Nano Banana, Seedream, FLUX, Grok, Firefly ועוד, עם הגודל בפיקסלים ומגבלות של כל מודל.",
    "tag": "AI",
    "date": "10.11.2026",
    "read": "בדיקה · 30 מודלים",
-   "cover": "media/blog/ai-2026/gpt-image-2-6-bar.webp",
+   "cover": "media/blog/covers/ai-systems-comparison.webp",
    "body": [],
    "href": "blog/ai-systems-comparison/index.html"
   },
@@ -5845,7 +5856,7 @@ window.MG = {
    "tag": "AI",
    "date": "07.11.2026",
    "read": "מדריך + הורדות",
-   "cover": "blog/mishas-motion/img/hero.jpg",
+   "cover": "media/blog/covers/mishas-motion.webp",
    "href": "blog/mishas-motion/index.html",
    "body": []
   },
@@ -5856,7 +5867,7 @@ window.MG = {
    "tag": "Resources",
    "date": "07.11.2026",
    "read": "מדריך · 15 פרקים",
-   "cover": "blog/branding/img/board-papacito.webp",
+   "cover": "media/blog/covers/branding.webp",
    "href": "blog/branding/index.html",
    "body": []
   },
@@ -5867,7 +5878,7 @@ window.MG = {
    "tag": "Resources",
    "date": "30.10.2026",
    "read": "מדריך + PDF",
-   "cover": "blog/midot-media/img/citylight-photo.jpg",
+   "cover": "media/blog/covers/midot-media.webp",
    "href": "blog/midot-media/index.html",
    "body": []
   },
@@ -5878,7 +5889,7 @@ window.MG = {
    "tag": "AI",
    "date": "28.10.2026",
    "read": "תיעוד תהליך",
-   "cover": "blog/ain-brief/img/hero.jpg",
+   "cover": "media/blog/covers/ain-brief.webp",
    "href": "blog/ain-brief/index.html",
    "body": []
   },

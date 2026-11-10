@@ -264,3 +264,4 @@ h2 { font-size: clamp(36px, 2.4vw, 80px); }
 /* research cards: three pictures (cat, logos, door), two for Firefly */
 .rc__imgs { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
 .rc__imgs--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.series a { color: var(--accent); }
