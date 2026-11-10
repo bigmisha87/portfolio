@@ -227,19 +227,6 @@ html { scroll-behavior: auto; }
 .pr__d .pr__x { margin-top: var(--space-2xs); }
 @media (max-width: 560px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs); } .pr--card .pr__head { flex-direction: column; align-items: stretch; } .pr--card .copy { align-self: start; } }
 
-/* 4. galleries of 4 or more: one sliding row (swipe, or the arrows), "show all" opens the full grid */
-.gal--strip { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; padding-bottom: var(--space-3xs); --strip-h: 15rem; }
-.gal--strip::after { display: none; }
-.gal--strip .gi, .gal--strip.gal--many .gi { flex: 0 0 auto; width: calc(var(--r) * var(--strip-h)); scroll-snap-align: start; }
-@media (max-width: 560px) { .gal--strip { --strip-h: 11rem; } }
-.gal__bar { display: flex; align-items: center; gap: var(--space-2xs); margin-top: calc(-1 * var(--space-2xs)); }
-.gal__n { color: var(--muted); font-size: var(--t-xs); }
-.gal__all { margin-inline-start: auto; min-height: 34px; padding: 0 var(--space-s); border-radius: 99px; border: 1px solid var(--line-2); background: transparent; color: var(--ink); cursor: pointer; font-size: var(--t-xs); }
-.gal__all:hover { border-color: var(--ink); }
-.gal__arr { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--card); color: var(--ink); cursor: pointer; font-size: var(--t-s); display: grid; place-items: center; }
-.gal__arr:hover { border-color: var(--accent-2); color: var(--accent-2); }
-.gal__arr:disabled { opacity: .35; cursor: default; }
-@media (hover: none) { .gal__arr { display: none; } }
 /* cards show one cover picture (the second one is still in the viewer) */
 .pr--card .gi:nth-child(n + 2) { display: none; }
 .cards { align-items: stretch; }
@@ -248,13 +235,13 @@ html { scroll-behavior: auto; }
 @media (max-width: 899px) { .prg__m .gal:not(.gal--one) .gi { flex: var(--r) 1 0; } }
 /* small galleries (1-3 pictures) no longer grow huge: every picture is capped at a row height,
    and the viewer still opens it full size */
-.gal:not(.gal--strip) .gi { max-width: calc(var(--r) * 17rem); }
+.gal .gi { max-width: calc(var(--r) * 17rem); }
 .gal--one .gi { flex: 0 1 calc(var(--r) * 22rem); max-width: 100%; }
 .prg__m .gi, .prg__m .gal--one .gi { flex: 0 1 auto; width: min(100%, calc(var(--r) * 22rem)); max-width: 100%; }
 .prg__m .gal { justify-content: flex-start; }
 .pr--card .gi { max-width: none; }
 @media (max-width: 899px) {
-  .gal:not(.gal--strip) .gi { max-width: calc(var(--r) * 13rem); }
+  .gal .gi { max-width: calc(var(--r) * 13rem); }
   .gal--one .gi, .prg__m .gal--one .gi { flex: 0 1 auto; width: min(100%, calc(var(--r) * 34svh)); }
   .prg__m .gal:not(.gal--one) .gi { width: auto; flex: var(--r) 1 0; max-width: calc(var(--r) * 13rem); }
 }

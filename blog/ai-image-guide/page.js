@@ -147,38 +147,6 @@
     });
   });
 
-  // ---------- galleries of 4 or more: one sliding row with arrows, "show all" opens the full grid ----------
-  $$(".gal").forEach(function (g) {
-    if (g.closest(".prg__m, .pr--card")) return;
-    var n = $$(".gi", g).length;
-    if (n < 4) return;
-    g.classList.add("gal--strip");
-    var bar = document.createElement("div"); bar.className = "gal__bar";
-    bar.innerHTML = '<button class="gal__arr" type="button" data-d="1" aria-label="התמונות הקודמות">→</button>' +
-      '<button class="gal__arr" type="button" data-d="-1" aria-label="התמונות הבאות">←</button>' +
-      '<span class="gal__n">' + n + ' תמונות</span>' +
-      '<button class="gal__all" type="button" aria-expanded="false">הצג הכל</button>';
-    g.after(bar);
-    var prev = bar.children[0], next = bar.children[1], all = $(".gal__all", bar);
-    function ends() {
-      var x = Math.abs(g.scrollLeft), max = g.scrollWidth - g.clientWidth;
-      prev.disabled = x < 2; next.disabled = x > max - 2;
-    }
-    [prev, next].forEach(function (b) {
-      // right-to-left row: "next" moves the row towards the left; the jump is instant, no animation
-      b.addEventListener("click", function () { g.scrollBy({ left: +b.dataset.d * g.clientWidth * 0.85, behavior: "instant" }); ends(); });
-    });
-    g.addEventListener("scroll", ends, { passive: true });
-    all.addEventListener("click", function () {
-      var open = g.classList.toggle("gal--strip") === false;
-      all.textContent = open ? "להציג בשורה אחת" : "הצג הכל";
-      all.setAttribute("aria-expanded", open ? "true" : "false");
-      prev.hidden = next.hidden = open;
-      if (!open) { g.scrollLeft = 0; ends(); }
-    });
-    ends();
-  });
-
   // ---------- picture viewer: steps through the pictures of the same section ----------
   var lb = $(".lb"), lbImg = $(".lb__fig img"), lbCap = $(".lb__fig figcaption"), list = [], at = 0, back = null;
   function show(i) {
