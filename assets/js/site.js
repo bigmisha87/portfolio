@@ -1199,7 +1199,10 @@
           if (y < list.scrollTop + 40 || y > list.scrollTop + list.clientHeight - 60) list.scrollTo({ top: y - list.clientHeight / 2, behavior: "smooth" });
         }
       }
-      toc.classList.toggle("is-hidden", r.bottom < innerHeight * 0.4);
+      // the menu steps aside once the article's text is over: before the "next post" card and the footer reach it
+      const end = ($(".post-body", host) || host).getBoundingClientRect().bottom;
+      const ftr = $("#ftr");
+      toc.classList.toggle("is-hidden", end < innerHeight * 0.75 || (ftr && ftr.getBoundingClientRect().top < innerHeight));
     };
     scrollFeed.add(update);
     addEventListener("resize", update);

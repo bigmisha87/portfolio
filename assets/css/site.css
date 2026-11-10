@@ -911,3 +911,7 @@ html { font-size: clamp(100%, 0.45vw + 9px, 175%); }
 }
 /* every line of the side menu sits on the right edge, including English names and group labels */
 .post-toc__list li, .post-toc__list a { text-align: right; }
+/* logo wall: the model's name (a link to its section) and its grade under each sheet */
+.post-gal__item figcaption a { color: var(--ink); text-decoration: none; margin-inline-end: 6px; }
+@media (hover: hover) { .post-gal__item figcaption a:hover { color: var(--accent); } }
+.post-gal__item figcaption .post-score { font-size: 0.72rem; padding: 0 8px; }
