@@ -144,3 +144,7 @@ html.sv-open { overflow: hidden; }
   .sv__side { max-height: none; } .sv__prompt { max-height: none; }
   .sv__prev { right: 0; } .sv__next { left: 52px; }
 }
+
+/* no top filter row (the side menu is the navigation): the bar holds only the search, on the right */
+.bar { justify-content: flex-start; }
+@media (max-width: 700px) { .find { flex: 1; } }
