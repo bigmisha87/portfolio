@@ -114,3 +114,13 @@ html.bn-locked .bn { position: sticky; top: 0; z-index: 51; }
 }
 @media (prefers-reduced-motion: reduce) { .bn-menu, .bn-menu.is-open { transition: none; } }
 @media print { .bn, .bn-menu { display: none !important; } }
+
+/* 10.11.2026: theme switch without a frame ("Light mode / Dark mode" with a joker or a bat), and a quieter "דברו איתי":
+   smaller (the scale's --t-s), no frame, turquoise on hover. Sizes only from type-scale.css. */
+.bn__theme { border: 0 !important; padding: 0 var(--space-3xs) !important; gap: var(--space-2xs); color: var(--bn-muted) !important; transition: color .3s; }
+@media (hover: hover) { .bn__theme:hover { color: var(--bn-ink) !important; } }
+.bn__ic { width: 22px; height: 22px; flex: none; color: var(--bn-ink); }
+.bn__tl { display: inline-flex; gap: var(--space-3xs); }
+.bn__cta { border: 0 !important; padding: 0 !important; min-height: 44px; font-size: var(--t-s); color: var(--bn-ink); }
+@media (hover: hover) { .bn__cta:hover { background: transparent !important; color: var(--bn-accent-2); } }
+@media (max-width: 560px) { .bn__theme { width: 40px; padding: 0 !important; } .bn__tl { display: none; } }

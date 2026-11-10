@@ -929,3 +929,9 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   opacity: 0.07;
 }
+
+/* 10.11.2026: "דברו איתי" in the header: smaller (the scale's --t-s), no frame, turquoise on hover (no fill) */
+.hdr .btn { min-height: 44px; padding: 0; border: 0; font-size: var(--t-s); }
+.hdr .btn .btn__fill { display: none; }
+.hdr .btn.is-filled, .hdr .btn:active { color: var(--ink); }
+@media (hover: hover) { .hdr .btn:hover { color: var(--accent-2); } }

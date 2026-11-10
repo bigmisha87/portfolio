@@ -77,7 +77,12 @@
   function paint() {
     if (!tb) return;
     var light = html.getAttribute("data-theme") === "light";
-    tb.innerHTML = light ? '<span aria-hidden="true">☾</span><span class="bn__tl"> מצב כהה</span>' : '<span aria-hidden="true">☀</span><span class="bn__tl"> מצב בהיר</span>';
+    // dark mode offers "Light mode, for the insane" with a joker grin; light mode offers "Dark mode, because Batman" with a bat
+    var JOKER = '<svg class="bn__ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M7.6 9.2l2.4 1M16.4 9.2l-2.4 1M6.4 13c1.8 4 9.4 4 11.2 0M6.4 13l-1.2-1.3M17.6 13l1.2-1.3"/></svg>';
+    var BAT = '<svg class="bn__ic" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M1.5 8.6c2.2.3 3.9 1.2 5 2.5.5-.9 1.4-1.4 2.5-1.4.3-1.1.8-2.1 1.4-2.8l.7 1.6h1.8l.7-1.6c.6.7 1.1 1.7 1.4 2.8 1.1 0 2 .5 2.5 1.4 1.1-1.3 2.8-2.2 5-2.5-1.3 1.3-2 2.8-1.9 4.5-1.1-.7-2.4-.8-3.5-.4-1 .4-1.8 1.3-2.2 2.5-.7-.7-1.8-1-3.3-1s-2.6.3-3.3 1c-.4-1.2-1.2-2.1-2.2-2.5-1.1-.4-2.4-.3-3.5.4.1-1.7-.6-3.2-1.9-4.5z"/></svg>';
+    tb.innerHTML = light
+      ? BAT + '<span class="bn__tl"><span dir="ltr">Dark mode</span> <span>כי בטמן</span></span>'
+      : JOKER + '<span class="bn__tl"><span dir="ltr">Light mode</span> <span>לחולי נפש</span></span>';
     tb.setAttribute("aria-label", light ? "מעבר למצב כהה" : "מעבר למצב בהיר");
   }
   if (tb) tb.addEventListener("click", function () {
