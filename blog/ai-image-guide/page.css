@@ -185,3 +185,6 @@ mark.hit { background: color-mix(in srgb, var(--accent-2) 40%, transparent); col
 .chip--lib { display: inline-flex; align-items: center; gap: var(--space-3xs); text-decoration: none; border-color: var(--accent-2); color: var(--ink); font-weight: 600; }
 .chip--lib:hover { background: var(--accent-2); color: var(--accent-2-ink); border-color: var(--accent-2); }
 .chips__sep { flex: none; width: 1px; align-self: stretch; margin: var(--space-3xs) var(--space-3xs); background: var(--line-2); }
+
+/* every jump (contents, prompt library, links to a topic) lands at once, with no scrolling animation */
+html { scroll-behavior: auto; }

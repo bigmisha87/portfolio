@@ -74,7 +74,7 @@
       apply();
     }
     var t = $(libBtn.hash), y = t.getBoundingClientRect().top + window.scrollY - bar.offsetHeight - 12;
-    window.scrollTo({ top: y, behavior: "smooth" });
+    window.scrollTo({ top: y, behavior: "instant" });
     try { history.replaceState(null, "", libBtn.hash); } catch (err) {}
   });
   // after filtering, if the bar was stuck at the top, show the results from their start
@@ -114,7 +114,7 @@
     toc.classList.toggle("is-open", open); shade.hidden = !open;
     tocBtn.setAttribute("aria-expanded", open ? "true" : "false");
     document.documentElement.classList.toggle("toc-open", open);
-    if (open) { var a = $(".toc a.is-on"); if (a) a.scrollIntoView({ block: "center" }); }
+    if (open) { var a = $(".toc a.is-on"); if (a) a.scrollIntoView({ block: "center", behavior: "instant" }); }
   }
   tocBtn.addEventListener("click", function () { tocOpen(true); });
   shade.addEventListener("click", function () { tocOpen(false); });
@@ -125,7 +125,7 @@
       var t = $(a.hash); if (!t) return;
       e.preventDefault(); tocOpen(false);
       var y = t.getBoundingClientRect().top + window.scrollY - bar.offsetHeight - 12;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      window.scrollTo({ top: y, behavior: "instant" });
       try { history.replaceState(null, "", a.hash); } catch (err) {}
     });
   });
@@ -181,6 +181,6 @@
   apply();
   // a link to a section (#angles) lands under the sticky bar
   if (location.hash && $(location.hash)) setTimeout(function () {
-    var t = $(location.hash); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - bar.offsetHeight - 12 });
+    var t = $(location.hash); window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - bar.offsetHeight - 12, behavior: "instant" });
   }, 60);
 })();
