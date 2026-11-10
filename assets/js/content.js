@@ -5834,7 +5834,7 @@ window.MG = {
    "tag": "AI",
    "date": "10.11.2026",
    "read": "בדיקה · 26 מודלים",
-   "cover": "media/blog/ai-sale-ad/205-sm.webp",
+   "cover": "media/blog/covers/ai-sale-ad.webp",
    "href": "blog/ai-sale-ad/index.html",
    "body": []
   },

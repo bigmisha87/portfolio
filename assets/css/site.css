@@ -915,3 +915,11 @@ html { font-size: clamp(100%, 0.45vw + 9px, 175%); }
 .post-gal__item figcaption a { color: var(--ink); text-decoration: none; margin-inline-end: 6px; }
 @media (hover: hover) { .post-gal__item figcaption a:hover { color: var(--accent); } }
 .post-gal__item figcaption .post-score { font-size: 0.72rem; padding: 0 8px; }
+
+/* ---------- blog list (blog.html): the whole width of the screen ----------
+   No 1600px cap: the list fills the screen and simply fits more cards in a row on a wider screen.
+   The cards keep their original size (at least 320px wide); Misha asked for more room, not bigger cards. */
+.blog-head, .blog-grid { max-width: none; }
+/* The site caps its width at 16:9 of the window height (--page), which suits the reel on the home page.
+   On a wide, short window that left the blog list in a strip in the middle, so the blog page uses the full width. */
+body[data-page="blog"] { --page: 100vw; }

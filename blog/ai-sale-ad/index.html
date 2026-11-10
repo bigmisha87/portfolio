@@ -9,7 +9,7 @@
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="מודעת מבצע בעברית: איך 26 מודלי AI מתמודדים">
 <meta property="og:description" content="תמונה אחת, פרומפט אחד עם טקסט בעברית ובאנגלית, בלי שום הנחיית עיצוב. מי כותב עברית נכון, מי מעצב מודעה אמיתית, ומי שובר את הטקסט.">
-<meta property="og:image" content="https://www.misha.co.il/media/blog/ai-sale-ad/205.webp">
+<meta property="og:image" content="https://www.misha.co.il/media/blog/covers/ai-sale-ad.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0b0b0c">
 <link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
@@ -36,7 +36,7 @@
     <p class="lead">נתתי לכל מודל אותה תמונה ואותו פרומפט: לעצב מודעת מבצע לרשתות, עם טקסט בעברית ובאנגלית באותה מודעה. בלי לומר מה גדול, מה קטן ומה נכנס לפלאח. ככה רואים גם מי כותב עברית נכון, וגם למי יש חוש עיצובי.</p>
     <ul class="stats">
       <li><b>26</b><span>מודלים</span></li>
-      <li><b>6</b><span>מצוינים</span></li>
+      <li><b>8</b><span>מצוינים</span></li>
       <li><b>11</b><span>נכשלו</span></li>
       <li><b>1</b><span>פרומפט</span></li>
     </ul>
@@ -47,27 +47,29 @@
     <h2 id="task-h">המשימה</h2>
     <div class="task">
       <figure class="task__fig">
-        <button class="task__img" type="button" data-full="../../media/blog/ai-sale-ad/source-photo.webp" data-name="התמונה שקיבלו המודלים" data-meta="2000 × 1125"><img src="../../media/blog/ai-sale-ad/source-photo-sm.webp" alt="בחורה בכובע קש יושבת על מזוודה אדומה, רקע צהוב" loading="eager"></button>
+        <button class="task__img" type="button" data-full="../../media/blog/ai-sale-ad/source-photo.webp?v=2" data-name="התמונה שקיבלו המודלים" data-meta="2000 × 1125"><img src="../../media/blog/ai-sale-ad/source-photo-sm.webp?v=2" alt="בחורה בכובע קש יושבת על מזוודה אדומה, רקע צהוב" loading="eager"></button>
         <figcaption>מה קיבלו המודלים: התמונה בלבד</figcaption>
       </figure>
       <figure class="task__fig">
-        <button class="task__img" type="button" data-full="../../media/blog/ai-sale-ad/original-ad.webp" data-name="המודעה המקורית" data-meta="עיצוב אנושי · 736 × 724"><img src="../../media/blog/ai-sale-ad/original-ad-sm.webp" alt="המודעה המקורית: עד 60%+, TAX FREE" loading="eager"></button>
+        <button class="task__img" type="button" data-full="../../media/blog/ai-sale-ad/original-ad.webp?v=2" data-name="המודעה המקורית" data-meta="עיצוב אנושי · 736 × 724"><img src="../../media/blog/ai-sale-ad/original-ad-sm.webp?v=2" alt="המודעה המקורית: עד 60%+, TAX FREE" loading="eager"></button>
         <figcaption>המודעה המקורית, כפי שעוצבה ביד (המודלים לא ראו אותה)</figcaption>
       </figure>
       <article class="prompt">
         <header><span class="prompt__n">1</span><h3>הפרומפט</h3></header>
-        <p>טקסט בעברית ובאנגלית באותה מודעה. בלי הנחיות עיצוב, ובלי לומר שעברית נכתבת מימין לשמאל.</p>
+        <p>טקסט בעברית ובאנגלית באותה מודעה, וה-+ בשורה משלו. בלי הנחיות עיצוב, ובלי לומר שעברית נכתבת מימין לשמאל.</p>
         <pre dir="ltr"><code>Create a 3:4 social media sale ad for the brand MASHBIR, using the attached photo of the woman sitting on a red suitcase. Keep the woman, her outfit and the suitcase exactly as in the photo.
 The ad must include exactly this text, spelled exactly as written:
 MASHBIR
-עד 60%+
+עד 60%
++
 TAX FREE
 ללא מע&quot;מ על היתרה
 על מגוון מותגי האופנה</code></pre>
         <button class="btn btn--ghost" type="button" data-copy="Create a 3:4 social media sale ad for the brand MASHBIR, using the attached photo of the woman sitting on a red suitcase. Keep the woman, her outfit and the suitcase exactly as in the photo.
 The ad must include exactly this text, spelled exactly as written:
 MASHBIR
-עד 60%+
+עד 60%
++
 TAX FREE
 ללא מע&quot;מ על היתרה
 על מגוון מותגי האופנה"><span aria-hidden="true">⧉</span> <span>העתקת הפרומפט</span></button>
@@ -86,138 +88,138 @@ TAX FREE
       <p class="muted">מהטוב לחלש. לחיצה על מודעה פותחת אותה בגדול, ואפשר לדפדף עם החצים.</p>
     </div>
     <div class="tools" role="group" aria-label="סינון לפי ציון">
-      <div class="chips"><button type="button" class="chip" data-maker="all" aria-pressed="true">הכל</button><button type="button" class="chip" data-maker="מצוין" aria-pressed="false">מצוין · 6</button><button type="button" class="chip" data-maker="טוב" aria-pressed="false">טוב · 6</button><button type="button" class="chip" data-maker="בינוני" aria-pressed="false">בינוני · 3</button><button type="button" class="chip" data-maker="חלש" aria-pressed="false">חלש · 11</button></div>
+      <div class="chips"><button type="button" class="chip" data-maker="all" aria-pressed="true">הכל</button><button type="button" class="chip" data-maker="מצוין" aria-pressed="false">מצוין · 8</button><button type="button" class="chip" data-maker="טוב" aria-pressed="false">טוב · 5</button><button type="button" class="chip" data-maker="בינוני" aria-pressed="false">בינוני · 2</button><button type="button" class="chip" data-maker="חלש" aria-pressed="false">חלש · 11</button></div>
     </div>
     <div class="gal" id="gal-ads">
       <h3 class="gal__h"><span class="prompt__n">1</span>מודעת המבצע<span class="gal__count muted" aria-live="polite"></span></h3>
       <ul class="grid grid--tall"><li class="card" data-maker="מצוין">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/200.webp" data-name="GPT Image 2.6 (Sunburst)" data-meta="OpenAI · 2480 × 3312" data-score="מצוין" data-id="m-gpt-image-2-6" aria-label="GPT Image 2.6 (Sunburst): הגדלה">
-    <img src="../../media/blog/ai-sale-ad/200-sm.webp" alt="GPT Image 2.6 (Sunburst): מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/200.webp?v=2" data-name="GPT Image 2.6 (Sunburst)" data-meta="OpenAI · 2480 × 3312" data-score="מצוין" data-id="m-gpt-image-2-6" aria-label="GPT Image 2.6 (Sunburst): הגדלה">
+    <img src="../../media/blog/ai-sale-ad/200-sm.webp?v=2" alt="GPT Image 2.6 (Sunburst): מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
   </button>
   <p class="card__cap"><a href="#m-gpt-image-2-6" data-open>GPT Image 2.6 (Sunburst)</a><span class="score score--a">מצוין</span></p>
 </li><li class="card" data-maker="מצוין">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/201.webp" data-name="GPT Image 2.6 Flare" data-meta="OpenAI · 2480 × 3312" data-score="מצוין" data-id="m-gpt-image-2-6-flare" aria-label="GPT Image 2.6 Flare: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/201-sm.webp" alt="GPT Image 2.6 Flare: מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/201.webp?v=2" data-name="GPT Image 2.6 Flare" data-meta="OpenAI · 2480 × 3312" data-score="מצוין" data-id="m-gpt-image-2-6-flare" aria-label="GPT Image 2.6 Flare: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/201-sm.webp?v=2" alt="GPT Image 2.6 Flare: מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
   </button>
   <p class="card__cap"><a href="#m-gpt-image-2-6-flare" data-open>GPT Image 2.6 Flare</a><span class="score score--a">מצוין</span></p>
 </li><li class="card" data-maker="מצוין">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/202.webp" data-name="GPT Image 2.5 (Flare)" data-meta="OpenAI · 2480 × 3312" data-score="מצוין" data-id="m-gpt-image-2-5" aria-label="GPT Image 2.5 (Flare): הגדלה">
-    <img src="../../media/blog/ai-sale-ad/202-sm.webp" alt="GPT Image 2.5 (Flare): מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/202.webp?v=2" data-name="GPT Image 2.5 (Flare)" data-meta="OpenAI · 2480 × 3312" data-score="מצוין" data-id="m-gpt-image-2-5" aria-label="GPT Image 2.5 (Flare): הגדלה">
+    <img src="../../media/blog/ai-sale-ad/202-sm.webp?v=2" alt="GPT Image 2.5 (Flare): מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
   </button>
   <p class="card__cap"><a href="#m-gpt-image-2-5" data-open>GPT Image 2.5 (Flare)</a><span class="score score--a">מצוין</span></p>
 </li><li class="card" data-maker="מצוין">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/205.webp" data-name="Nano Banana 2.1" data-meta="Google · 3584 × 4800" data-score="מצוין" data-id="m-nano-banana-2-1" aria-label="Nano Banana 2.1: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/205-sm.webp" alt="Nano Banana 2.1: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/205.webp?v=2" data-name="Nano Banana 2.1" data-meta="Google · 3584 × 4800" data-score="מצוין" data-id="m-nano-banana-2-1" aria-label="Nano Banana 2.1: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/205-sm.webp?v=2" alt="Nano Banana 2.1: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
   </button>
   <p class="card__cap"><a href="#m-nano-banana-2-1" data-open>Nano Banana 2.1</a><span class="score score--a">מצוין</span></p>
 </li><li class="card" data-maker="מצוין">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/208.webp" data-name="Nano Banana Pro" data-meta="Google · 3584 × 4800" data-score="מצוין" data-id="m-nano-banana-pro" aria-label="Nano Banana Pro: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/208-sm.webp" alt="Nano Banana Pro: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/208.webp?v=2" data-name="Nano Banana Pro" data-meta="Google · 3584 × 4800" data-score="מצוין" data-id="m-nano-banana-pro" aria-label="Nano Banana Pro: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/208-sm.webp?v=2" alt="Nano Banana Pro: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
   </button>
   <p class="card__cap"><a href="#m-nano-banana-pro" data-open>Nano Banana Pro</a><span class="score score--a">מצוין</span></p>
 </li><li class="card" data-maker="מצוין">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/215.webp" data-name="FLUX 3" data-meta="Black Forest Labs · 3552 × 4736" data-score="מצוין" data-id="m-flux-3-image" aria-label="FLUX 3: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/215-sm.webp" alt="FLUX 3: מודעת מבצע" loading="lazy" decoding="async" width="3552" height="4736">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/219.webp?v=2" data-name="Grok Image 2.0" data-meta="xAI · 1776 × 2368" data-score="מצוין" data-id="m-grok-image-2-0" aria-label="Grok Image 2.0: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/219-sm.webp?v=2" alt="Grok Image 2.0: מודעת מבצע" loading="lazy" decoding="async" width="1776" height="2368">
   </button>
-  <p class="card__cap"><a href="#m-flux-3-image" data-open>FLUX 3</a><span class="score score--a">מצוין</span></p>
+  <p class="card__cap"><a href="#m-grok-image-2-0" data-open>Grok Image 2.0</a><span class="score score--a">מצוין</span></p>
+</li><li class="card" data-maker="מצוין">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/220.webp?v=2" data-name="Grok Image" data-meta="xAI · 1776 × 2368" data-score="מצוין" data-id="m-grok-image" aria-label="Grok Image: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/220-sm.webp?v=2" alt="Grok Image: מודעת מבצע" loading="lazy" decoding="async" width="1776" height="2368">
+  </button>
+  <p class="card__cap"><a href="#m-grok-image" data-open>Grok Image</a><span class="score score--a">מצוין</span></p>
+</li><li class="card" data-maker="מצוין">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/225.webp?v=2" data-name="Cinema Studio Image 2.5" data-meta="Higgsfield · 3584 × 4800" data-score="מצוין" data-id="m-cinematic-studio-2-5" aria-label="Cinema Studio Image 2.5: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/225-sm.webp?v=2" alt="Cinema Studio Image 2.5: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
+  </button>
+  <p class="card__cap"><a href="#m-cinematic-studio-2-5" data-open>Cinema Studio Image 2.5</a><span class="score score--a">מצוין</span></p>
 </li><li class="card" data-maker="טוב">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/203.webp" data-name="GPT Image 2" data-meta="OpenAI · 2480 × 3312" data-score="טוב" data-id="m-gpt-image-2" aria-label="GPT Image 2: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/203-sm.webp" alt="GPT Image 2: מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/203.webp?v=2" data-name="GPT Image 2" data-meta="OpenAI · 2480 × 3312" data-score="טוב" data-id="m-gpt-image-2" aria-label="GPT Image 2: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/203-sm.webp?v=2" alt="GPT Image 2: מודעת מבצע" loading="lazy" decoding="async" width="2480" height="3312">
   </button>
   <p class="card__cap"><a href="#m-gpt-image-2" data-open>GPT Image 2</a><span class="score score--b">טוב</span></p>
 </li><li class="card" data-maker="טוב">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/204.webp" data-name="OpenAI Hazel" data-meta="OpenAI · 1024 × 1536" data-score="טוב" data-id="m-openai-hazel" aria-label="OpenAI Hazel: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/204-sm.webp" alt="OpenAI Hazel: מודעת מבצע" loading="lazy" decoding="async" width="1024" height="1536">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/207.webp?v=2" data-name="Nano Banana 2 Lite" data-meta="Google · 896 × 1200" data-score="טוב" data-id="m-nano-banana-2-lite" aria-label="Nano Banana 2 Lite: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/207-sm.webp?v=2" alt="Nano Banana 2 Lite: מודעת מבצע" loading="lazy" decoding="async" width="896" height="1200">
   </button>
-  <p class="card__cap"><a href="#m-openai-hazel" data-open>OpenAI Hazel</a><span class="score score--b">טוב</span></p>
+  <p class="card__cap"><a href="#m-nano-banana-2-lite" data-open>Nano Banana 2 Lite</a><span class="score score--b">טוב</span></p>
 </li><li class="card" data-maker="טוב">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/206.webp" data-name="Nano Banana 2" data-meta="Google · 3584 × 4800" data-score="טוב" data-id="m-nano-banana-2" aria-label="Nano Banana 2: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/206-sm.webp" alt="Nano Banana 2: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/206.webp?v=2" data-name="Nano Banana 2" data-meta="Google · 3584 × 4800" data-score="טוב" data-id="m-nano-banana-2" aria-label="Nano Banana 2: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/206-sm.webp?v=2" alt="Nano Banana 2: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
   </button>
   <p class="card__cap"><a href="#m-nano-banana-2" data-open>Nano Banana 2</a><span class="score score--b">טוב</span></p>
 </li><li class="card" data-maker="טוב">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/220.webp" data-name="Grok Image" data-meta="xAI · 1776 × 2368" data-score="טוב" data-id="m-grok-image" aria-label="Grok Image: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/220-sm.webp" alt="Grok Image: מודעת מבצע" loading="lazy" decoding="async" width="1776" height="2368">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/215.webp?v=2" data-name="FLUX 3" data-meta="Black Forest Labs · 3552 × 4736" data-score="טוב" data-id="m-flux-3-image" aria-label="FLUX 3: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/215-sm.webp?v=2" alt="FLUX 3: מודעת מבצע" loading="lazy" decoding="async" width="3552" height="4736">
   </button>
-  <p class="card__cap"><a href="#m-grok-image" data-open>Grok Image</a><span class="score score--b">טוב</span></p>
+  <p class="card__cap"><a href="#m-flux-3-image" data-open>FLUX 3</a><span class="score score--b">טוב</span></p>
 </li><li class="card" data-maker="טוב">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/221.webp" data-name="Ideogram 4.5" data-meta="Ideogram · 1728 × 2304" data-score="טוב" data-id="m-ideogram-4-5" aria-label="Ideogram 4.5: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/221-sm.webp" alt="Ideogram 4.5: מודעת מבצע" loading="lazy" decoding="async" width="1728" height="2304">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/221.webp?v=2" data-name="Ideogram 4.5" data-meta="Ideogram · 1728 × 2304" data-score="טוב" data-id="m-ideogram-4-5" aria-label="Ideogram 4.5: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/221-sm.webp?v=2" alt="Ideogram 4.5: מודעת מבצע" loading="lazy" decoding="async" width="1728" height="2304">
   </button>
   <p class="card__cap"><a href="#m-ideogram-4-5" data-open>Ideogram 4.5</a><span class="score score--b">טוב</span></p>
-</li><li class="card" data-maker="טוב">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/225.webp" data-name="Cinema Studio Image 2.5" data-meta="Higgsfield · 3584 × 4800" data-score="טוב" data-id="m-cinematic-studio-2-5" aria-label="Cinema Studio Image 2.5: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/225-sm.webp" alt="Cinema Studio Image 2.5: מודעת מבצע" loading="lazy" decoding="async" width="3584" height="4800">
-  </button>
-  <p class="card__cap"><a href="#m-cinematic-studio-2-5" data-open>Cinema Studio Image 2.5</a><span class="score score--b">טוב</span></p>
 </li><li class="card" data-maker="בינוני">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/207.webp" data-name="Nano Banana 2 Lite" data-meta="Google · 1024 × 1024" data-score="בינוני" data-id="m-nano-banana-2-lite" aria-label="Nano Banana 2 Lite: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/207-sm.webp" alt="Nano Banana 2 Lite: מודעת מבצע" loading="lazy" decoding="async" width="1024" height="1024">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/204.webp?v=2" data-name="OpenAI Hazel" data-meta="OpenAI · 1024 × 1536" data-score="בינוני" data-id="m-openai-hazel" aria-label="OpenAI Hazel: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/204-sm.webp?v=2" alt="OpenAI Hazel: מודעת מבצע" loading="lazy" decoding="async" width="1024" height="1536">
   </button>
-  <p class="card__cap"><a href="#m-nano-banana-2-lite" data-open>Nano Banana 2 Lite</a><span class="score score--c">בינוני</span></p>
+  <p class="card__cap"><a href="#m-openai-hazel" data-open>OpenAI Hazel</a><span class="score score--c">בינוני</span></p>
 </li><li class="card" data-maker="בינוני">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/210.webp" data-name="Seedream 5.5" data-meta="ByteDance · 1760 × 2352" data-score="בינוני" data-id="m-seedream-5-5" aria-label="Seedream 5.5: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/210-sm.webp" alt="Seedream 5.5: מודעת מבצע" loading="lazy" decoding="async" width="1760" height="2352">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/210.webp?v=2" data-name="Seedream 5.5" data-meta="ByteDance · 1760 × 2352" data-score="בינוני" data-id="m-seedream-5-5" aria-label="Seedream 5.5: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/210-sm.webp?v=2" alt="Seedream 5.5: מודעת מבצע" loading="lazy" decoding="async" width="1760" height="2352">
   </button>
   <p class="card__cap"><a href="#m-seedream-5-5" data-open>Seedream 5.5</a><span class="score score--c">בינוני</span></p>
-</li><li class="card" data-maker="בינוני">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/219.webp" data-name="Grok Image 2.0" data-meta="xAI · 1776 × 2368" data-score="בינוני" data-id="m-grok-image-2-0" aria-label="Grok Image 2.0: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/219-sm.webp" alt="Grok Image 2.0: מודעת מבצע" loading="lazy" decoding="async" width="1776" height="2368">
-  </button>
-  <p class="card__cap"><a href="#m-grok-image-2-0" data-open>Grok Image 2.0</a><span class="score score--c">בינוני</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/209.webp" data-name="Nano Banana" data-meta="Google · 864 × 1184" data-score="חלש" data-id="m-nano-banana" aria-label="Nano Banana: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/209-sm.webp" alt="Nano Banana: מודעת מבצע" loading="lazy" decoding="async" width="864" height="1184">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/209.webp?v=2" data-name="Nano Banana" data-meta="Google · 864 × 1184" data-score="חלש" data-id="m-nano-banana" aria-label="Nano Banana: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/209-sm.webp?v=2" alt="Nano Banana: מודעת מבצע" loading="lazy" decoding="async" width="864" height="1184">
   </button>
   <p class="card__cap"><a href="#m-nano-banana" data-open>Nano Banana</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/211.webp" data-name="Seedream 5.0 Pro" data-meta="ByteDance · 1760 × 2352" data-score="חלש" data-id="m-seedream-v5-pro" aria-label="Seedream 5.0 Pro: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/211-sm.webp" alt="Seedream 5.0 Pro: מודעת מבצע" loading="lazy" decoding="async" width="1760" height="2352">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/211.webp?v=2" data-name="Seedream 5.0 Pro" data-meta="ByteDance · 1760 × 2352" data-score="חלש" data-id="m-seedream-v5-pro" aria-label="Seedream 5.0 Pro: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/211-sm.webp?v=2" alt="Seedream 5.0 Pro: מודעת מבצע" loading="lazy" decoding="async" width="1760" height="2352">
   </button>
   <p class="card__cap"><a href="#m-seedream-v5-pro" data-open>Seedream 5.0 Pro</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/212.webp" data-name="Seedream 5.0 Flash" data-meta="ByteDance · 1776 × 2368" data-score="חלש" data-id="m-seedream-5-0-flash" aria-label="Seedream 5.0 Flash: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/212-sm.webp" alt="Seedream 5.0 Flash: מודעת מבצע" loading="lazy" decoding="async" width="1776" height="2368">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/212.webp?v=2" data-name="Seedream 5.0 Flash" data-meta="ByteDance · 1776 × 2368" data-score="חלש" data-id="m-seedream-5-0-flash" aria-label="Seedream 5.0 Flash: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/212-sm.webp?v=2" alt="Seedream 5.0 Flash: מודעת מבצע" loading="lazy" decoding="async" width="1776" height="2368">
   </button>
   <p class="card__cap"><a href="#m-seedream-5-0-flash" data-open>Seedream 5.0 Flash</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/213.webp" data-name="Seedream 5.0 Lite" data-meta="ByteDance · 2688 × 3584" data-score="חלש" data-id="m-seedream-v5-lite" aria-label="Seedream 5.0 Lite: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/213-sm.webp" alt="Seedream 5.0 Lite: מודעת מבצע" loading="lazy" decoding="async" width="2688" height="3584">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/213.webp?v=2" data-name="Seedream 5.0 Lite" data-meta="ByteDance · 2688 × 3584" data-score="חלש" data-id="m-seedream-v5-lite" aria-label="Seedream 5.0 Lite: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/213-sm.webp?v=2" alt="Seedream 5.0 Lite: מודעת מבצע" loading="lazy" decoding="async" width="2688" height="3584">
   </button>
   <p class="card__cap"><a href="#m-seedream-v5-lite" data-open>Seedream 5.0 Lite</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/214.webp" data-name="Seedream 4.5" data-meta="ByteDance · 3456 × 4608" data-score="חלש" data-id="m-seedream-v4-5" aria-label="Seedream 4.5: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/214-sm.webp" alt="Seedream 4.5: מודעת מבצע" loading="lazy" decoding="async" width="3456" height="4608">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/214.webp?v=2" data-name="Seedream 4.5" data-meta="ByteDance · 3456 × 4608" data-score="חלש" data-id="m-seedream-v4-5" aria-label="Seedream 4.5: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/214-sm.webp?v=2" alt="Seedream 4.5: מודעת מבצע" loading="lazy" decoding="async" width="3456" height="4608">
   </button>
   <p class="card__cap"><a href="#m-seedream-v4-5" data-open>Seedream 4.5</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/216.webp" data-name="FLUX.2 [max]" data-meta="Black Forest Labs · 1440 × 1920" data-score="חלש" data-id="m-flux-2" aria-label="FLUX.2 [max]: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/216-sm.webp" alt="FLUX.2 [max]: מודעת מבצע" loading="lazy" decoding="async" width="1440" height="1920">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/216.webp?v=2" data-name="FLUX.2 [max]" data-meta="Black Forest Labs · 1440 × 1920" data-score="חלש" data-id="m-flux-2" aria-label="FLUX.2 [max]: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/216-sm.webp?v=2" alt="FLUX.2 [max]: מודעת מבצע" loading="lazy" decoding="async" width="1440" height="1920">
   </button>
   <p class="card__cap"><a href="#m-flux-2" data-open>FLUX.2 [max]</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/217.webp" data-name="FLUX.1 Kontext" data-meta="Black Forest Labs · 880 × 1184" data-score="חלש" data-id="m-flux-kontext" aria-label="FLUX.1 Kontext: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/217-sm.webp" alt="FLUX.1 Kontext: מודעת מבצע" loading="lazy" decoding="async" width="880" height="1184">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/217.webp?v=2" data-name="FLUX.1 Kontext" data-meta="Black Forest Labs · 880 × 1184" data-score="חלש" data-id="m-flux-kontext" aria-label="FLUX.1 Kontext: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/217-sm.webp?v=2" alt="FLUX.1 Kontext: מודעת מבצע" loading="lazy" decoding="async" width="880" height="1184">
   </button>
   <p class="card__cap"><a href="#m-flux-kontext" data-open>FLUX.1 Kontext</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/218.webp" data-name="Kling O1 Image" data-meta="Kling · 1760 × 2336" data-score="חלש" data-id="m-kling-omni-image" aria-label="Kling O1 Image: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/218-sm.webp" alt="Kling O1 Image: מודעת מבצע" loading="lazy" decoding="async" width="1760" height="2336">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/218.webp?v=2" data-name="Kling O1 Image" data-meta="Kling · 1760 × 2336" data-score="חלש" data-id="m-kling-omni-image" aria-label="Kling O1 Image: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/218-sm.webp?v=2" alt="Kling O1 Image: מודעת מבצע" loading="lazy" decoding="async" width="1760" height="2336">
   </button>
   <p class="card__cap"><a href="#m-kling-omni-image" data-open>Kling O1 Image</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/223.webp" data-name="Higgsfield Soul 2.0" data-meta="Higgsfield · 1536 × 2048" data-score="חלש" data-id="m-soul-2" aria-label="Higgsfield Soul 2.0: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/223-sm.webp" alt="Higgsfield Soul 2.0: מודעת מבצע" loading="lazy" decoding="async" width="1536" height="2048">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/223.webp?v=2" data-name="Higgsfield Soul 2.0" data-meta="Higgsfield · 1536 × 2048" data-score="חלש" data-id="m-soul-2" aria-label="Higgsfield Soul 2.0: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/223-sm.webp?v=2" alt="Higgsfield Soul 2.0: מודעת מבצע" loading="lazy" decoding="async" width="1536" height="2048">
   </button>
   <p class="card__cap"><a href="#m-soul-2" data-open>Higgsfield Soul 2.0</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/224.webp" data-name="Soul Cinema" data-meta="Higgsfield · 1536 × 2048" data-score="חלש" data-id="m-soul-cinematic" aria-label="Soul Cinema: הגדלה">
-    <img src="../../media/blog/ai-sale-ad/224-sm.webp" alt="Soul Cinema: מודעת מבצע" loading="lazy" decoding="async" width="1536" height="2048">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/224.webp?v=2" data-name="Soul Cinema" data-meta="Higgsfield · 1536 × 2048" data-score="חלש" data-id="m-soul-cinematic" aria-label="Soul Cinema: הגדלה">
+    <img src="../../media/blog/ai-sale-ad/224-sm.webp?v=2" alt="Soul Cinema: מודעת מבצע" loading="lazy" decoding="async" width="1536" height="2048">
   </button>
   <p class="card__cap"><a href="#m-soul-cinematic" data-open>Soul Cinema</a><span class="score score--d">חלש</span></p>
 </li><li class="card" data-maker="חלש">
-  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/firefly-5.webp" data-name="Firefly Image 5 (preview)" data-meta="Adobe · 1360 × 768" data-score="חלש" data-id="m-firefly-image-5" aria-label="Firefly Image 5 (preview): הגדלה">
-    <img src="../../media/blog/ai-sale-ad/firefly-5-sm.webp" alt="Firefly Image 5 (preview): מודעת מבצע" loading="lazy" decoding="async" width="1360" height="768">
+  <button class="card__img card__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/firefly-5.webp?v=2" data-name="Firefly Image 5 (preview)" data-meta="Adobe · 1360 × 768" data-score="חלש" data-id="m-firefly-image-5" aria-label="Firefly Image 5 (preview): הגדלה">
+    <img src="../../media/blog/ai-sale-ad/firefly-5-sm.webp?v=2" alt="Firefly Image 5 (preview): מודעת מבצע" loading="lazy" decoding="async" width="1360" height="768">
   </button>
   <p class="card__cap"><a href="#m-firefly-image-5" data-open>Firefly Image 5 (preview)</a><span class="score score--d">חלש</span></p>
 </li></ul>
@@ -228,12 +230,12 @@ TAX FREE
   <section class="sec" id="verdict" aria-labelledby="verdict-h">
     <h2 id="verdict-h">השורה התחתונה</h2>
     <div class="verdict">
-      <article class="v"><h3>כתבו עברית נכונה ועיצבו טוב</h3><p class="muted">הטקסט נכון, והמודעה נראית אמיתית.</p><div class="pills"><a class="pill" href="#m-gpt-image-2-6" data-open>GPT Image 2.6 (Sunburst)</a><a class="pill" href="#m-gpt-image-2-6-flare" data-open>GPT Image 2.6 Flare</a><a class="pill" href="#m-gpt-image-2-5" data-open>GPT Image 2.5 (Flare)</a><a class="pill" href="#m-nano-banana-2-1" data-open>Nano Banana 2.1</a><a class="pill" href="#m-nano-banana-pro" data-open>Nano Banana Pro</a><a class="pill" href="#m-flux-3-image" data-open>FLUX 3</a></div></article>
-      <article class="v"><h3>טובים, עם הסתייגות</h3><p class="muted">טקסט נכון או כמעט נכון, עיצוב פחות חזק.</p><div class="pills"><a class="pill" href="#m-gpt-image-2" data-open>GPT Image 2</a><a class="pill" href="#m-openai-hazel" data-open>OpenAI Hazel</a><a class="pill" href="#m-nano-banana-2" data-open>Nano Banana 2</a><a class="pill" href="#m-grok-image" data-open>Grok Image</a><a class="pill" href="#m-ideogram-4-5" data-open>Ideogram 4.5</a><a class="pill" href="#m-cinematic-studio-2-5" data-open>Cinema Studio Image 2.5</a></div></article>
-      <article class="v v--mid"><h3>טעות אחת או שתיים</h3><p class="muted">אות שגויה, מילה חסרה או שורה מוסתרת.</p><div class="pills"><a class="pill" href="#m-nano-banana-2-lite" data-open>Nano Banana 2 Lite</a><a class="pill" href="#m-seedream-5-5" data-open>Seedream 5.5</a><a class="pill" href="#m-grok-image-2-0" data-open>Grok Image 2.0</a></div></article>
+      <article class="v"><h3>כתבו עברית נכונה ועיצבו טוב</h3><p class="muted">הטקסט נכון, והמודעה נראית אמיתית.</p><div class="pills"><a class="pill" href="#m-gpt-image-2-6" data-open>GPT Image 2.6 (Sunburst)</a><a class="pill" href="#m-gpt-image-2-6-flare" data-open>GPT Image 2.6 Flare</a><a class="pill" href="#m-gpt-image-2-5" data-open>GPT Image 2.5 (Flare)</a><a class="pill" href="#m-nano-banana-2-1" data-open>Nano Banana 2.1</a><a class="pill" href="#m-nano-banana-pro" data-open>Nano Banana Pro</a><a class="pill" href="#m-grok-image-2-0" data-open>Grok Image 2.0</a><a class="pill" href="#m-grok-image" data-open>Grok Image</a><a class="pill" href="#m-cinematic-studio-2-5" data-open>Cinema Studio Image 2.5</a></div></article>
+      <article class="v"><h3>טובים, עם הסתייגות</h3><p class="muted">טקסט נכון או כמעט נכון, עיצוב פחות חזק.</p><div class="pills"><a class="pill" href="#m-gpt-image-2" data-open>GPT Image 2</a><a class="pill" href="#m-nano-banana-2-lite" data-open>Nano Banana 2 Lite</a><a class="pill" href="#m-nano-banana-2" data-open>Nano Banana 2</a><a class="pill" href="#m-flux-3-image" data-open>FLUX 3</a><a class="pill" href="#m-ideogram-4-5" data-open>Ideogram 4.5</a></div></article>
+      <article class="v v--mid"><h3>טעות אחת או שתיים</h3><p class="muted">אות שגויה, מילה חסרה או שורה מוסתרת.</p><div class="pills"><a class="pill" href="#m-openai-hazel" data-open>OpenAI Hazel</a><a class="pill" href="#m-seedream-5-5" data-open>Seedream 5.5</a></div></article>
       <article class="v v--miss"><h3>שברו את העברית</h3><p class="muted">אותיות מומצאות, בלי טקסט, או בלי עברית בכלל.</p><div class="pills"><a class="pill" href="#m-nano-banana" data-open>Nano Banana</a><a class="pill" href="#m-seedream-v5-pro" data-open>Seedream 5.0 Pro</a><a class="pill" href="#m-seedream-5-0-flash" data-open>Seedream 5.0 Flash</a><a class="pill" href="#m-seedream-v5-lite" data-open>Seedream 5.0 Lite</a><a class="pill" href="#m-seedream-v4-5" data-open>Seedream 4.5</a><a class="pill" href="#m-flux-2" data-open>FLUX.2 [max]</a><a class="pill" href="#m-flux-kontext" data-open>FLUX.1 Kontext</a><a class="pill" href="#m-kling-omni-image" data-open>Kling O1 Image</a><a class="pill" href="#m-soul-2" data-open>Higgsfield Soul 2.0</a><a class="pill" href="#m-soul-cinematic" data-open>Soul Cinema</a><a class="pill" href="#m-firefly-image-5" data-open>Firefly Image 5 (preview)</a></div></article>
     </div>
-    <p class="note">התגלית: FLUX 3 כתב עברית מלאה ונכונה, ו-Firefly Image 5 לא כתב עברית בכלל. המודלים של Higgsfield עצמה (Soul) לא כתבו טקסט בכלל.</p>
+    <p class="note">8 מודלים כתבו את כל הטקסט נכון: שלושה של GPT, Nano Banana 2.1 ו-Pro, שני מודלי Grok ו-Cinema Studio 2.5. כל משפחת Seedream (חוץ מ-5.5) וכל FLUX חוץ מ-FLUX 3 שברו את העברית. Firefly Image 5 לא כתב עברית בכלל, והמודלים של Higgsfield עצמה (Soul) לא כתבו טקסט בכלל.</p>
   </section>
 
   <section class="sec" id="research" aria-labelledby="research-h">
@@ -255,10 +257,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/200.webp" data-name="GPT Image 2.6 (Sunburst)" data-meta="2480 × 3312" data-score="מצוין" aria-label="GPT Image 2.6 (Sunburst): הגדלה"><img src="../../media/blog/ai-sale-ad/200-sm.webp" alt="GPT Image 2.6 (Sunburst): מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/200.webp?v=2" data-name="GPT Image 2.6 (Sunburst)" data-meta="2480 × 3312" data-score="מצוין" aria-label="GPT Image 2.6 (Sunburst): הגדלה"><img src="../../media/blog/ai-sale-ad/200-sm.webp?v=2" alt="GPT Image 2.6 (Sunburst): מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון, כולל מע&quot;מ בגרשיים והסימן +.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>היררכיה חזקה: 60% גדול באדום, TAX FREE בפלאח, קו ואייקון שקית מתחת ל-MASHBIR.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון, וה-+ בשורה משלו כמו שביקשתי.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>&quot;עד 60%&quot; בפלאח אדום, ה-+ בין שני קווים, TAX FREE בפלאח שחור. היררכיה חזקה.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הבחורה והמזוודה נשמרו.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">2480 × 3312</dd></div>
     </dl>
@@ -269,10 +271,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/201.webp" data-name="GPT Image 2.6 Flare" data-meta="2480 × 3312" data-score="מצוין" aria-label="GPT Image 2.6 Flare: הגדלה"><img src="../../media/blog/ai-sale-ad/201-sm.webp" alt="GPT Image 2.6 Flare: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/201.webp?v=2" data-name="GPT Image 2.6 Flare" data-meta="2480 × 3312" data-score="מצוין" aria-label="GPT Image 2.6 Flare: הגדלה"><img src="../../media/blog/ai-sale-ad/201-sm.webp?v=2" alt="GPT Image 2.6 Flare: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
       <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>נראית כמו מודעת רשת אמיתית: TAX FREE בפלאח אדום, &quot;ללא מע&quot;מ&quot; בתגית לבנה, קו מברשת מתחת.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>&quot;עד&quot; בתגית אדומה, 60% שחור ענק, + ו-TAX FREE בפלאח אדום. נראית כמו מודעת רשת אמיתית.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">2480 × 3312</dd></div>
     </dl>
@@ -283,10 +285,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/202.webp" data-name="GPT Image 2.5 (Flare)" data-meta="2480 × 3312" data-score="מצוין" aria-label="GPT Image 2.5 (Flare): הגדלה"><img src="../../media/blog/ai-sale-ad/202-sm.webp" alt="GPT Image 2.5 (Flare): מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/202.webp?v=2" data-name="GPT Image 2.5 (Flare)" data-meta="2480 × 3312" data-score="מצוין" aria-label="GPT Image 2.5 (Flare): הגדלה"><img src="../../media/blog/ai-sale-ad/202-sm.webp?v=2" alt="GPT Image 2.5 (Flare): מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
       <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>60% בתוך משיחת מכחול אדומה, נקי וברור.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>60% בתוך משיחת מכחול אדומה, TAX FREE על משיחת מכחול לבנה. נקי ותוסס.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">2480 × 3312</dd></div>
     </dl>
@@ -297,10 +299,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/205.webp" data-name="Nano Banana 2.1" data-meta="3584 × 4800" data-score="מצוין" aria-label="Nano Banana 2.1: הגדלה"><img src="../../media/blog/ai-sale-ad/205-sm.webp" alt="Nano Banana 2.1: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/205.webp?v=2" data-name="Nano Banana 2.1" data-meta="3584 × 4800" data-score="מצוין" aria-label="Nano Banana 2.1: הגדלה"><img src="../../media/blog/ai-sale-ad/205-sm.webp?v=2" alt="Nano Banana 2.1: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
       <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>הכי מכירתית: קונפטי, דגלונים, 60% בתלת ממד ופלאח אדום. נראית כמו קמפיין אמיתי.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>הכי מכירתית: &quot;עד 60%&quot; ענק באדום עם קו מתאר, + גדול, TAX FREE אדום עם ניצוצות.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">3584 × 4800</dd></div>
     </dl>
@@ -311,152 +313,152 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/208.webp" data-name="Nano Banana Pro" data-meta="3584 × 4800" data-score="מצוין" aria-label="Nano Banana Pro: הגדלה"><img src="../../media/blog/ai-sale-ad/208-sm.webp" alt="Nano Banana Pro: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/208.webp?v=2" data-name="Nano Banana Pro" data-meta="3584 × 4800" data-score="מצוין" aria-label="Nano Banana Pro: הגדלה"><img src="../../media/blog/ai-sale-ad/208-sm.webp?v=2" alt="Nano Banana Pro: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון, והוסיף מעצמו תגית SALE.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>MASHBIR ענק באדום ו-60% שחור גדול. חזק וברור.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הבחורה הוזזה הצידה, הפוזה נשמרה.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>MASHBIR ענק באדום, &quot;עד 60%&quot; ו-+ באדום, TAX FREE בפונט דק. מאוזן וברור.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">3584 × 4800</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-flux-3-image" data-maker="מצוין" data-order="5" data-mp="0" data-score="4" data-search="flux 3 black forest labs">
+</article><article class="rc rc--ad" id="m-grok-image-2-0" data-maker="מצוין" data-order="5" data-mp="0" data-score="4" data-search="grok image 2.0 xai">
   <header class="rc__head">
-    <div><h3>FLUX 3</h3><p class="rc__by">Black Forest Labs</p></div>
+    <div><h3>Grok Image 2.0</h3><p class="rc__by">xAI</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/215.webp" data-name="FLUX 3" data-meta="3552 × 4736" data-score="מצוין" aria-label="FLUX 3: הגדלה"><img src="../../media/blog/ai-sale-ad/215-sm.webp" alt="FLUX 3: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/219.webp?v=2" data-name="Grok Image 2.0" data-meta="1776 × 2368" data-score="מצוין" aria-label="Grok Image 2.0: הגדלה"><img src="../../media/blog/ai-sale-ad/219-sm.webp?v=2" alt="Grok Image 2.0: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון, עברית מלאה. ההפתעה של הבדיקה.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>MASHBIR דק, 60% אדום גדול, נקי ומסודר.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
-      <div><dt>גודל</dt><dd class="mono" dir="ltr">3552 × 4736</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>&quot;עד 60%&quot; שחור ענק, TAX FREE אדום, הבחורה מתחת. ברור ומכירתי.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה, קטנה יותר.</dd></div>
+      <div><dt>גודל</dt><dd class="mono" dir="ltr">1776 × 2368</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-gpt-image-2" data-maker="טוב" data-order="6" data-mp="0" data-score="3" data-search="gpt image 2 openai">
+</article><article class="rc rc--ad" id="m-grok-image" data-maker="מצוין" data-order="6" data-mp="0" data-score="4" data-search="grok image xai">
+  <header class="rc__head">
+    <div><h3>Grok Image</h3><p class="rc__by">xAI</p></div>
+    <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
+  </header>
+  <div class="rc__ad">
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/220.webp?v=2" data-name="Grok Image" data-meta="1776 × 2368" data-score="מצוין" aria-label="Grok Image: הגדלה"><img src="../../media/blog/ai-sale-ad/220-sm.webp?v=2" alt="Grok Image: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <dl class="rc__notes">
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>כמו Grok 2.0: &quot;עד 60%&quot; שחור, TAX FREE אדום. ברור.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה, קטנה יותר.</dd></div>
+      <div><dt>גודל</dt><dd class="mono" dir="ltr">1776 × 2368</dd></div>
+    </dl>
+  </div>
+</article><article class="rc rc--ad" id="m-cinematic-studio-2-5" data-maker="מצוין" data-order="7" data-mp="0" data-score="4" data-search="cinema studio image 2.5 higgsfield">
+  <header class="rc__head">
+    <div><h3>Cinema Studio Image 2.5</h3><p class="rc__by">Higgsfield</p></div>
+    <div class="rc__grade"><small>ציון</small><span class="score score--a">מצוין</span></div>
+  </header>
+  <div class="rc__ad">
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/225.webp?v=2" data-name="Cinema Studio Image 2.5" data-meta="3584 × 4800" data-score="מצוין" aria-label="Cinema Studio Image 2.5: הגדלה"><img src="../../media/blog/ai-sale-ad/225-sm.webp?v=2" alt="Cinema Studio Image 2.5: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <dl class="rc__notes">
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>כל הטקסט בטור אחד בשחור, פשוט וחזק, והבחורה בגודל מלא.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
+      <div><dt>גודל</dt><dd class="mono" dir="ltr">3584 × 4800</dd></div>
+    </dl>
+  </div>
+</article><article class="rc rc--ad" id="m-gpt-image-2" data-maker="טוב" data-order="8" data-mp="0" data-score="3" data-search="gpt image 2 openai">
   <header class="rc__head">
     <div><h3>GPT Image 2</h3><p class="rc__by">OpenAI</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--b">טוב</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/203.webp" data-name="GPT Image 2" data-meta="2480 × 3312" data-score="טוב" aria-label="GPT Image 2: הגדלה"><img src="../../media/blog/ai-sale-ad/203-sm.webp" alt="GPT Image 2: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/203.webp?v=2" data-name="GPT Image 2" data-meta="2480 × 3312" data-score="טוב" aria-label="GPT Image 2: הגדלה"><img src="../../media/blog/ai-sale-ad/203-sm.webp?v=2" alt="GPT Image 2: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>הכל נכון, אבל &quot;עד&quot; נדחק צמוד ל-60.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>TAX FREE ענק בשחור עם קו מפריד. ברור, קצת כבד.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>דק ואלגנטי, MASHBIR בפונט רחב. פחות &quot;מכירתי&quot; מהאחרים.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">2480 × 3312</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-openai-hazel" data-maker="טוב" data-order="7" data-mp="0" data-score="3" data-search="openai hazel openai">
+</article><article class="rc rc--ad" id="m-nano-banana-2-lite" data-maker="טוב" data-order="9" data-mp="0" data-score="3" data-search="nano banana 2 lite google">
   <header class="rc__head">
-    <div><h3>OpenAI Hazel</h3><p class="rc__by">OpenAI</p></div>
+    <div><h3>Nano Banana 2 Lite</h3><p class="rc__by">Google</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--b">טוב</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/204.webp" data-name="OpenAI Hazel" data-meta="1024 × 1536" data-score="טוב" aria-label="OpenAI Hazel: הגדלה"><img src="../../media/blog/ai-sale-ad/204-sm.webp" alt="OpenAI Hazel: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/207.webp?v=2" data-name="Nano Banana 2 Lite" data-meta="896 × 1200" data-score="טוב" aria-label="Nano Banana 2 Lite: הגדלה"><img src="../../media/blog/ai-sale-ad/207-sm.webp?v=2" alt="Nano Banana 2 Lite: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כתב מע'ם עם גרש אחד במקום גרשיים. השאר נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>כל הטקסט בתחתית והבחורה קטנה למעלה. יחס 2:3, כי אין לו 3:4.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
-      <div><dt>גודל</dt><dd class="mono" dir="ltr">1024 × 1536</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>מסודר אבל קטן, והבחורה קטנה מאוד בתחתית.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה, קטנה.</dd></div>
+      <div><dt>גודל</dt><dd class="mono" dir="ltr">896 × 1200</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-nano-banana-2" data-maker="טוב" data-order="8" data-mp="0" data-score="3" data-search="nano banana 2 google">
+</article><article class="rc rc--ad" id="m-nano-banana-2" data-maker="טוב" data-order="10" data-mp="0" data-score="3" data-search="nano banana 2 google">
   <header class="rc__head">
     <div><h3>Nano Banana 2</h3><p class="rc__by">Google</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--b">טוב</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/206.webp" data-name="Nano Banana 2" data-meta="3584 × 4800" data-score="טוב" aria-label="Nano Banana 2: הגדלה"><img src="../../media/blog/ai-sale-ad/206-sm.webp" alt="Nano Banana 2: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/206.webp?v=2" data-name="Nano Banana 2" data-meta="3584 × 4800" data-score="טוב" aria-label="Nano Banana 2: הגדלה"><img src="../../media/blog/ai-sale-ad/206-sm.webp?v=2" alt="Nano Banana 2: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>הטקסט קטן ודחוס בתחתית, בלי היררכיה. נראה כמו כיתוב ולא כמו מודעה.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>הטקסט שביקשתי נכון, אבל הוסיף מעצמו סלוגן, פס &quot;המבצע בחנויות ובאתר&quot;, כתובת אתר וחשבונות רשת.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>מסגרת לבנה וטור טקסט ימני. נראה כמו מודעת עיתון.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">3584 × 4800</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-grok-image" data-maker="טוב" data-order="9" data-mp="0" data-score="3" data-search="grok image xai">
+</article><article class="rc rc--ad" id="m-flux-3-image" data-maker="טוב" data-order="11" data-mp="0" data-score="3" data-search="flux 3 black forest labs">
   <header class="rc__head">
-    <div><h3>Grok Image</h3><p class="rc__by">xAI</p></div>
+    <div><h3>FLUX 3</h3><p class="rc__by">Black Forest Labs</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--b">טוב</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/220.webp" data-name="Grok Image" data-meta="1776 × 2368" data-score="טוב" aria-label="Grok Image: הגדלה"><img src="../../media/blog/ai-sale-ad/220-sm.webp" alt="Grok Image: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/215.webp?v=2" data-name="FLUX 3" data-meta="3552 × 4736" data-score="טוב" aria-label="FLUX 3: הגדלה"><img src="../../media/blog/ai-sale-ad/215-sm.webp?v=2" alt="FLUX 3: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>השמיט את &quot;עד&quot;. השאר נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>60% אדום ענק למעלה, שאר הטקסט בתחתית.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כתב מע&quot;ם (מ סופית) במקום מע&quot;מ, ו&quot;עד&quot; זעיר ליד ה-60%. השאר נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>60% אדום ענק, TAX FREE בפלאח. נקי וברור.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
-      <div><dt>גודל</dt><dd class="mono" dir="ltr">1776 × 2368</dd></div>
+      <div><dt>גודל</dt><dd class="mono" dir="ltr">3552 × 4736</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-ideogram-4-5" data-maker="טוב" data-order="10" data-mp="0" data-score="3" data-search="ideogram 4.5 ideogram">
+</article><article class="rc rc--ad" id="m-ideogram-4-5" data-maker="טוב" data-order="12" data-mp="0" data-score="3" data-search="ideogram 4.5 ideogram">
   <header class="rc__head">
     <div><h3>Ideogram 4.5</h3><p class="rc__by">Ideogram</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--b">טוב</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/221.webp" data-name="Ideogram 4.5" data-meta="1728 × 2304" data-score="טוב" aria-label="Ideogram 4.5: הגדלה"><img src="../../media/blog/ai-sale-ad/221-sm.webp" alt="Ideogram 4.5: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/221.webp?v=2" data-name="Ideogram 4.5" data-meta="1728 × 2304" data-score="טוב" aria-label="Ideogram 4.5: הגדלה"><img src="../../media/blog/ai-sale-ad/221-sm.webp?v=2" alt="Ideogram 4.5: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
       <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>נקי, אבל הבחורה הוקטנה ונדחקה לתחתית.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הוקטנה מאוד.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>נקי, אבל הטקסט קטן והבחורה הוקטנה.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הוקטנה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1728 × 2304</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-cinematic-studio-2-5" data-maker="טוב" data-order="11" data-mp="0" data-score="3" data-search="cinema studio image 2.5 higgsfield">
+</article><article class="rc rc--ad" id="m-openai-hazel" data-maker="בינוני" data-order="13" data-mp="0" data-score="2" data-search="openai hazel openai">
   <header class="rc__head">
-    <div><h3>Cinema Studio Image 2.5</h3><p class="rc__by">Higgsfield</p></div>
-    <div class="rc__grade"><small>ציון</small><span class="score score--b">טוב</span></div>
-  </header>
-  <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/225.webp" data-name="Cinema Studio Image 2.5" data-meta="3584 × 4800" data-score="טוב" aria-label="Cinema Studio Image 2.5: הגדלה"><img src="../../media/blog/ai-sale-ad/225-sm.webp" alt="Cinema Studio Image 2.5: מודעת מבצע" loading="lazy" decoding="async"></button>
-    <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כל הטקסט נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>טקסט גדול ונקי בצד. פשוט, אבל עובד.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
-      <div><dt>גודל</dt><dd class="mono" dir="ltr">3584 × 4800</dd></div>
-    </dl>
-  </div>
-</article><article class="rc rc--ad" id="m-nano-banana-2-lite" data-maker="בינוני" data-order="12" data-mp="0" data-score="2" data-search="nano banana 2 lite google">
-  <header class="rc__head">
-    <div><h3>Nano Banana 2 Lite</h3><p class="rc__by">Google</p></div>
+    <div><h3>OpenAI Hazel</h3><p class="rc__by">OpenAI</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--c">בינוני</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/207.webp" data-name="Nano Banana 2 Lite" data-meta="1024 × 1024" data-score="בינוני" aria-label="Nano Banana 2 Lite: הגדלה"><img src="../../media/blog/ai-sale-ad/207-sm.webp" alt="Nano Banana 2 Lite: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/204.webp?v=2" data-name="OpenAI Hazel" data-meta="1024 × 1536" data-score="בינוני" aria-label="OpenAI Hazel: הגדלה"><img src="../../media/blog/ai-sale-ad/204-sm.webp?v=2" alt="OpenAI Hazel: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>הטקסט נכון, אבל &quot;ללא מע&quot;מ&quot; מוסתר מאחורי הכובע.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>60% אדום ענק, ברור. השורה התחתונה לבנה ונבלעת. יצא ריבועי (1024 × 1024) למרות שביקשתי 3:4.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה. בניסיון הראשון המסנן חסם את התמונה כ&quot;תוכן לא הולם&quot;, בטעות.</dd></div>
-      <div><dt>גודל</dt><dd class="mono" dir="ltr">1024 × 1024</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>מע'ם עם גרש אחד במקום גרשיים, שורה משובשת (&quot;מגוגי על היתרה&quot;), והטקסט חוזר פעמיים.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>הבחורה במרכז והטקסט מפוזר מעליה ומתחתיה. יחס 2:3, כי אין לו 3:4.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
+      <div><dt>גודל</dt><dd class="mono" dir="ltr">1024 × 1536</dd></div>
     </dl>
   </div>
-</article><article class="rc rc--ad" id="m-seedream-5-5" data-maker="בינוני" data-order="13" data-mp="0" data-score="2" data-search="seedream 5.5 bytedance">
+</article><article class="rc rc--ad" id="m-seedream-5-5" data-maker="בינוני" data-order="14" data-mp="0" data-score="2" data-search="seedream 5.5 bytedance">
   <header class="rc__head">
     <div><h3>Seedream 5.5</h3><p class="rc__by">ByteDance</p></div>
     <div class="rc__grade"><small>ציון</small><span class="score score--c">בינוני</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/210.webp" data-name="Seedream 5.5" data-meta="1760 × 2352" data-score="בינוני" aria-label="Seedream 5.5: הגדלה"><img src="../../media/blog/ai-sale-ad/210-sm.webp" alt="Seedream 5.5: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/210.webp?v=2" data-name="Seedream 5.5" data-meta="1760 × 2352" data-score="בינוני" aria-label="Seedream 5.5: הגדלה"><img src="../../media/blog/ai-sale-ad/210-sm.webp?v=2" alt="Seedream 5.5: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כתב &quot;לעא&quot; במקום &quot;ללא&quot;. השאר נכון.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>אלגנטי ומינימלי, 60% לבן ענק.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>כתב &quot;לא מע&quot;מ&quot; במקום &quot;ללא מע&quot;מ&quot; (חסרה ל'). השאר נכון.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>&quot;עד 60%&quot; גדול למעלה, + ו-TAX FREE בטור, והשורה החשובה בתחתית.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1760 × 2352</dd></div>
-    </dl>
-  </div>
-</article><article class="rc rc--ad" id="m-grok-image-2-0" data-maker="בינוני" data-order="14" data-mp="0" data-score="2" data-search="grok image 2.0 xai">
-  <header class="rc__head">
-    <div><h3>Grok Image 2.0</h3><p class="rc__by">xAI</p></div>
-    <div class="rc__grade"><small>ציון</small><span class="score score--c">בינוני</span></div>
-  </header>
-  <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/219.webp" data-name="Grok Image 2.0" data-meta="1776 × 2368" data-score="בינוני" aria-label="Grok Image 2.0: הגדלה"><img src="../../media/blog/ai-sale-ad/219-sm.webp" alt="Grok Image 2.0: מודעת מבצע" loading="lazy" decoding="async"></button>
-    <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>השמיט את &quot;עד&quot; וכתב &quot;נגוון&quot; במקום &quot;מגוון&quot;.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>60% אדום גדול ו-TAX FREE בפלאח. טוב.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
-      <div><dt>גודל</dt><dd class="mono" dir="ltr">1776 × 2368</dd></div>
     </dl>
   </div>
 </article><article class="rc rc--ad" id="m-nano-banana" data-maker="חלש" data-order="15" data-mp="0" data-score="1" data-search="nano banana google">
@@ -465,10 +467,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/209.webp" data-name="Nano Banana" data-meta="864 × 1184" data-score="חלש" aria-label="Nano Banana: הגדלה"><img src="../../media/blog/ai-sale-ad/209-sm.webp" alt="Nano Banana: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/209.webp?v=2" data-name="Nano Banana" data-meta="864 × 1184" data-score="חלש" aria-label="Nano Banana: הגדלה"><img src="../../media/blog/ai-sale-ad/209-sm.webp?v=2" alt="Nano Banana: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>עברית שבורה: &quot;בת&quot; במקום &quot;עד&quot;, ושורות של אותיות מומצאות.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>פשוט.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>&quot;בת&quot; במקום &quot;עד&quot;, ושורות של עברית מומצאת.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>סביר.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">864 × 1184</dd></div>
     </dl>
@@ -479,10 +481,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/211.webp" data-name="Seedream 5.0 Pro" data-meta="1760 × 2352" data-score="חלש" aria-label="Seedream 5.0 Pro: הגדלה"><img src="../../media/blog/ai-sale-ad/211-sm.webp" alt="Seedream 5.0 Pro: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/211.webp?v=2" data-name="Seedream 5.0 Pro" data-meta="1760 × 2352" data-score="חלש" aria-label="Seedream 5.0 Pro: הגדלה"><img src="../../media/blog/ai-sale-ad/211-sm.webp?v=2" alt="Seedream 5.0 Pro: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>שגיאות: &quot;ער יר&quot; במקום &quot;עד&quot;, &quot;הייררה&quot;, ושורה תחתונה משובשת.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>מסודר.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>השמיט &quot;עד&quot;, ושתי השורות בעברית משובשות.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>פשוט.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1760 × 2352</dd></div>
     </dl>
@@ -493,11 +495,11 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/212.webp" data-name="Seedream 5.0 Flash" data-meta="1776 × 2368" data-score="חלש" aria-label="Seedream 5.0 Flash: הגדלה"><img src="../../media/blog/ai-sale-ad/212-sm.webp" alt="Seedream 5.0 Flash: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/212.webp?v=2" data-name="Seedream 5.0 Flash" data-meta="1776 × 2368" data-score="חלש" aria-label="Seedream 5.0 Flash: הגדלה"><img src="../../media/blog/ai-sale-ad/212-sm.webp?v=2" alt="Seedream 5.0 Flash: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>עברית משובשת.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>רקע לבן במקום הצהוב, והטקסט קטן.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הרקע הוחלף.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>&quot;פכ&quot; במקום &quot;עד&quot;, ושתי שורות של עברית מומצאת.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>קטן וחלש.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1776 × 2368</dd></div>
     </dl>
   </div>
@@ -507,9 +509,9 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/213.webp" data-name="Seedream 5.0 Lite" data-meta="2688 × 3584" data-score="חלש" aria-label="Seedream 5.0 Lite: הגדלה"><img src="../../media/blog/ai-sale-ad/213-sm.webp" alt="Seedream 5.0 Lite: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/213.webp?v=2" data-name="Seedream 5.0 Lite" data-meta="2688 × 3584" data-score="חלש" aria-label="Seedream 5.0 Lite: הגדלה"><img src="../../media/blog/ai-sale-ad/213-sm.webp?v=2" alt="Seedream 5.0 Lite: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>עברית משובשת לגמרי, גם בשורה התחתונה.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>עברית מומצאת לגמרי.</dd></div>
       <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>סביר.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">2688 × 3584</dd></div>
@@ -521,11 +523,11 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/214.webp" data-name="Seedream 4.5" data-meta="3456 × 4608" data-score="חלש" aria-label="Seedream 4.5: הגדלה"><img src="../../media/blog/ai-sale-ad/214-sm.webp" alt="Seedream 4.5: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/214.webp?v=2" data-name="Seedream 4.5" data-meta="3456 × 4608" data-score="חלש" aria-label="Seedream 4.5: הגדלה"><img src="../../media/blog/ai-sale-ad/214-sm.webp?v=2" alt="Seedream 4.5: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>עברית מומצאת, ושורה תחתונה של אותיות לטיניות בלי משמעות.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>סביר.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה. הצליח רק בניסיון השני.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>טקסט מומצא, סימן € במקום &quot;עד&quot;, והדביק חלק מהפרומפט (&quot;and at the bottom center is&quot;).</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>הטקסט מודבק על המזוודה.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">3456 × 4608</dd></div>
     </dl>
   </div>
@@ -535,11 +537,11 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/216.webp" data-name="FLUX.2 [max]" data-meta="1440 × 1920" data-score="חלש" aria-label="FLUX.2 [max]: הגדלה"><img src="../../media/blog/ai-sale-ad/216-sm.webp" alt="FLUX.2 [max]: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/216.webp?v=2" data-name="FLUX.2 [max]" data-meta="1440 × 1920" data-score="חלש" aria-label="FLUX.2 [max]: הגדלה"><img src="../../media/blog/ai-sale-ad/216-sm.webp?v=2" alt="FLUX.2 [max]: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>עברית משובשת (&quot;שת&quot;, &quot;הקלאש&quot;).</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>סביר.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה. הצליח רק בניסיון השני.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>&quot;שת&quot; במקום &quot;עד&quot;, TAX FREE פעמיים, ושורות מומצאות.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>צפוף.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1440 × 1920</dd></div>
     </dl>
   </div>
@@ -549,10 +551,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/217.webp" data-name="FLUX.1 Kontext" data-meta="880 × 1184" data-score="חלש" aria-label="FLUX.1 Kontext: הגדלה"><img src="../../media/blog/ai-sale-ad/217-sm.webp" alt="FLUX.1 Kontext: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/217.webp?v=2" data-name="FLUX.1 Kontext" data-meta="880 × 1184" data-score="חלש" aria-label="FLUX.1 Kontext: הגדלה"><img src="../../media/blog/ai-sale-ad/217-sm.webp?v=2" alt="FLUX.1 Kontext: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>לא כתב עברית בכלל, ובתחתית יש טקסט מומצא.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>חלש.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>השמיט את &quot;עד&quot; ואת שתי השורות בעברית, ובתחתית יש עברית מומצאת.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>MASHBIR לבן גדול.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">880 × 1184</dd></div>
     </dl>
@@ -563,11 +565,11 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/218.webp" data-name="Kling O1 Image" data-meta="1760 × 2336" data-score="חלש" aria-label="Kling O1 Image: הגדלה"><img src="../../media/blog/ai-sale-ad/218-sm.webp" alt="Kling O1 Image: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/218.webp?v=2" data-name="Kling O1 Image" data-meta="1760 × 2336" data-score="חלש" aria-label="Kling O1 Image: הגדלה"><img src="../../media/blog/ai-sale-ad/218-sm.webp?v=2" alt="Kling O1 Image: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>MASHBTR, 600% ושורות מומצאות.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>חלש.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הבחורה הוגדלה וחתוכה.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>MASHBIR פעמיים, ושורות מומצאות באנגלית. בלי עברית.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>כרטיס לבן במרכז, הבחורה קטנה.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה, קטנה.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1760 × 2336</dd></div>
     </dl>
   </div>
@@ -577,11 +579,11 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/223.webp" data-name="Higgsfield Soul 2.0" data-meta="1536 × 2048" data-score="חלש" aria-label="Higgsfield Soul 2.0: הגדלה"><img src="../../media/blog/ai-sale-ad/223-sm.webp" alt="Higgsfield Soul 2.0: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/223.webp?v=2" data-name="Higgsfield Soul 2.0" data-meta="1536 × 2048" data-score="חלש" aria-label="Higgsfield Soul 2.0: הגדלה"><img src="../../media/blog/ai-sale-ad/223-sm.webp?v=2" alt="Higgsfield Soul 2.0: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
       <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>לא כתב טקסט בכלל.</dd></div>
       <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>רק תמונה.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הפוזה השתנתה.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הבחורה והפוזה השתנו.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1536 × 2048</dd></div>
     </dl>
   </div>
@@ -591,11 +593,11 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/224.webp" data-name="Soul Cinema" data-meta="1536 × 2048" data-score="חלש" aria-label="Soul Cinema: הגדלה"><img src="../../media/blog/ai-sale-ad/224-sm.webp" alt="Soul Cinema: מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/224.webp?v=2" data-name="Soul Cinema" data-meta="1536 × 2048" data-score="חלש" aria-label="Soul Cinema: הגדלה"><img src="../../media/blog/ai-sale-ad/224-sm.webp?v=2" alt="Soul Cinema: מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
       <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>לא כתב טקסט בכלל.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>רק תמונה.</dd></div>
-      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הבחורה והפוזה השתנו לגמרי.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>רק תמונה, חתוכה מקרוב.</dd></div>
+      <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>הבחורה השתנתה לגמרי.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1536 × 2048</dd></div>
     </dl>
   </div>
@@ -605,10 +607,10 @@ TAX FREE
     <div class="rc__grade"><small>ציון</small><span class="score score--d">חלש</span></div>
   </header>
   <div class="rc__ad">
-    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/firefly-5.webp" data-name="Firefly Image 5 (preview)" data-meta="1360 × 768" data-score="חלש" aria-label="Firefly Image 5 (preview): הגדלה"><img src="../../media/blog/ai-sale-ad/firefly-5-sm.webp" alt="Firefly Image 5 (preview): מודעת מבצע" loading="lazy" decoding="async"></button>
+    <button class="rc__img rc__img--tall" type="button" data-full="../../media/blog/ai-sale-ad/firefly-5.webp?v=2" data-name="Firefly Image 5 (preview)" data-meta="1360 × 768" data-score="חלש" aria-label="Firefly Image 5 (preview): הגדלה"><img src="../../media/blog/ai-sale-ad/firefly-5-sm.webp?v=2" alt="Firefly Image 5 (preview): מודעת מבצע" loading="lazy" decoding="async"></button>
     <dl class="rc__notes">
-      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>לא כתב עברית בכלל, ובמקום הטקסט הדביק חלק מהפרומפט כמלל מומצא.</dd></div>
-      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>MASHBIR ו-TAX FREE גדולים.</dd></div>
+      <div><dt><span class="dot dot--logo" aria-hidden="true"></span>טקסט</dt><dd>&quot;נשת&quot; במקום &quot;עד&quot;, ושורות של אותיות מומצאות. בלי עברית אמיתית.</dd></div>
+      <div><dt><span class="dot dot--bar" aria-hidden="true"></span>עיצוב</dt><dd>MASHBIR ו-60% גדולים.</dd></div>
       <div><dt><span class="dot dot--door" aria-hidden="true"></span>שמירה על התמונה</dt><dd>נשמרה. עם תמונת רפרנס Firefly נועל את היחס לתמונה, ולכן יצא 16:9 ולא 3:4.</dd></div>
       <div><dt>גודל</dt><dd class="mono" dir="ltr">1360 × 768</dd></div>
     </dl>
