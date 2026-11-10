@@ -841,3 +841,73 @@ html { font-size: clamp(100%, 0.45vw + 9px, 175%); }
 .post-body h2 { font-size: 3.5rem; font-size: max(1.9rem, 6.8cqi); text-wrap: balance; }
 .post-body blockquote { font-size: 1.4rem; }
 @media (max-width: 560px) { .post-head__lead, .post-body blockquote { font-size: 1.2rem; } }
+
+/* ---------- a post: galleries, facts, tables ----------
+   Pictures that belong to one heading sit in one grid instead of a long column; a click opens them large. */
+.post-gal { display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr)); gap: 10px; margin-block: 0.2em; }
+.post-gal__item { margin: 0; display: grid; gap: 6px; align-content: start; }
+.post-body .post-gal__btn { display: block; width: 100%; aspect-ratio: var(--ar, 1 / 1); padding: 0; border: 0; overflow: clip; border-radius: var(--radius); background: var(--card); cursor: zoom-in; }
+.post-body .post-gal__btn img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; transition: scale 0.6s var(--ease-out); }
+@media (hover: hover) { .post-gal__btn:hover img { scale: 1.035; } }
+.post-gal__btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.post-gal__item figcaption { color: var(--muted); font-size: var(--t-s); line-height: 1.4; }
+@media (max-width: 560px) { .post-gal { grid-template-columns: repeat(var(--cols-m, 2), minmax(0, 1fr)); gap: 8px; } }
+
+.post-body h2[id], .post-body h3[id] { scroll-margin-top: calc(var(--hdr) + 24px); }
+.post-body .post-h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.35; margin-top: 0.3em; }
+.post-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 0 28px; margin: 0; font-size: 1rem; line-height: 1.5; }
+.post-facts > div { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid var(--line); }
+.post-facts dt { color: var(--muted); }
+.post-facts dd { margin: 0; color: var(--ink); font-weight: 500; text-align: end; }
+.post-note { font-size: 1rem; line-height: 1.65; padding: 14px 18px; border-radius: var(--radius); background: var(--card); border-inline-start: 3px solid var(--accent); }
+.post-body .post-note { color: var(--ink); }
+.post-table { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
+.post-table:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.post-table table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.45; }
+.post-table th, .post-table td { padding: 10px 14px; text-align: start; vertical-align: top; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.post-table th { color: var(--muted); font-weight: 500; font-size: var(--t-s); background: var(--card); position: sticky; top: 0; }
+.post-table tr:last-child td { border-bottom: 0; }
+.post-table td a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 0.2em; }
+.post-hr { border: 0; border-top: 1px solid var(--line); margin: 1.6em 0 0.4em; }
+/* the settings column may wrap so the whole table fits the column; sizes and names stay on one line */
+.post-table td:nth-child(2) { white-space: normal; }
+.post-table td small { color: var(--muted); font-size: 0.82rem; }
+.post-table td span[dir="ltr"] { unicode-bidi: isolate; }
+@media (max-width: 560px) { .post-table th, .post-table td { padding: 8px 10px; } }
+/* on a phone the settings column is dropped from the table (each model's own section lists them) */
+@media (max-width: 560px) { .post-table th:nth-child(2), .post-table td:nth-child(2) { display: none; } }
+/* a small grade tag (excellent / good / fair / weak) used in comparison posts */
+.post-score { display: inline-block; padding: 2px 10px; border-radius: 99px; font-size: 0.82rem; font-weight: 600; line-height: 1.5; white-space: nowrap; border: 1px solid currentColor; }
+.post-score--a { color: #7fd99a; }
+.post-score--b { color: #b9d77a; }
+.post-score--c { color: #f0c26a; }
+.post-score--d { color: #ff7a6e; }
+@media (max-width: 560px) { .post-table td:first-child { white-space: normal; } .post-table td .mono { font-size: 0.85rem; } }
+
+/* ---------- a post: side menu + red reading line (post.nav) ----------
+   Sits in the empty space to the right of the text column; the red line fills as you read.
+   Below ~1420px wide there is no room for the menu, so only the red line stays, on the screen's right edge. */
+.post-kicker { margin-top: 1.6em; padding-top: 18px; border-top: 1px solid var(--line); color: var(--accent); font-size: var(--t-s); font-weight: 600; scroll-margin-top: calc(var(--hdr) + 24px); }
+.post-body .post-kicker { color: var(--accent); }
+.post-toc {
+  position: fixed; z-index: 30; top: calc(var(--hdr-offset, var(--hdr)) + 28px); bottom: 28px;
+  right: max(16px, calc((100vw - 51.25rem) / 2 - 15rem - 48px)); width: 15rem;
+  display: flex; gap: 14px; transition: opacity 0.4s var(--ease-soft, ease), top 0.45s var(--ease-out);
+}
+.post-toc.is-hidden { opacity: 0; pointer-events: none; }
+.post-toc__track { flex: none; position: relative; width: 2px; border-radius: 2px; background: var(--line); overflow: hidden; }
+.post-toc__track i { position: absolute; inset: 0; background: var(--accent); transform: scaleY(var(--p, 0)); transform-origin: top; }
+.post-toc__list { list-style: none; margin: 0; padding: 0 0 24px; overflow-y: auto; scrollbar-width: none; display: grid; align-content: start; font-size: 0.86rem; line-height: 1.35; }
+.post-toc__list::-webkit-scrollbar { display: none; }
+.post-toc__group { margin-top: 14px; padding-bottom: 2px; color: var(--accent); font-size: 0.74rem; font-weight: 600; }
+.post-toc__list a { display: block; padding: 4px 0; color: var(--muted); transition: color 0.2s; }
+.post-toc__list a.is-on { color: var(--ink); font-weight: 600; }
+@media (hover: hover) { .post-toc__list a:hover { color: var(--ink); } }
+.post-toc__list a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@media (max-width: 1419px) {
+  .post-toc { top: var(--hdr-offset, var(--hdr)); bottom: 0; right: 0; width: 3px; gap: 0; pointer-events: none; }
+  .post-toc__track { width: 3px; border-radius: 0; background: rgba(242, 239, 233, 0.08); }
+  .post-toc__list { display: none; }
+}
+/* every line of the side menu sits on the right edge, including English names and group labels */
+.post-toc__list li, .post-toc__list a { text-align: right; }

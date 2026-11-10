@@ -5828,6 +5828,2997 @@ window.MG = {
  ],
  "posts": [
   {
+   "slug": "ai-systems-comparison",
+   "title": "השוואה בין מחוללי תמונות AI: 30 מודלים, אותם פרומפטים",
+   "excerpt": "כל המודלים של Higgsfield ו-Adobe Firefly על אותם שני פרומפטים: חתול בלש בבר ושישה לוגואים. GPT Image, Nano Banana, Seedream, FLUX, Grok, Firefly ועוד, עם הגודל בפיקסלים ומגבלות של כל מודל.",
+   "tag": "AI",
+   "date": "10.11.2026",
+   "read": "בדיקה · 30 מודלים",
+   "cover": "media/blog/ai-2026/gpt-image-2-6-bar.webp",
+   "body": [
+    {
+     "type": "p",
+     "text": "<b>רענון · 10.11.2026.</b> עברתי על כל מודלי יצירת התמונה שיש היום ב-Higgsfield (27 מודלים), ועל 3 המודלים של Adobe Firefly, והרצתי בכל אחד את אותם שני פרומפטים, ברזולוציה ובאיכות הגבוהות ביותר שהמודל מאפשר. ליד כל מודל רשומים ההגדרות, הגודל בפיקסלים שקיבלתי, ומה שחשוב לדעת עליו."
+    },
+    {
+     "type": "p",
+     "text": "המודלים מסודרים לפי יצרן: קודם GPT, אחר כך Nano Banana, Seedream, Grok ו-FLUX, ואחריהם כל השאר. בתוך כל יצרן, מהחדש לישן. הבדיקה המקורית מ-2024 (Firefly 3, Midjourney, DALL·E ועוד) נשארה בסוף הפוסט."
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "תאריך בדיקה",
+       "10.11.2026"
+      ],
+      [
+       "מודלים",
+       "30 (27 ב-Higgsfield, 3 ב-Adobe Firefly)"
+      ],
+      [
+       "תמונות",
+       "60"
+      ],
+      [
+       "יחס תמונה",
+       "16:9 (חוץ מ-Hazel, שאין לו 16:9)"
+      ],
+      [
+       "עלות ב-Higgsfield",
+       "כ-400 קרדיטים לכל הבדיקה"
+      ]
+     ]
+    },
+    {
+     "type": "h",
+     "id": "prompts",
+     "text": "שני הפרומפטים"
+    },
+    {
+     "type": "h3",
+     "text": "פרומפט 1 · החתול הבלש בבר (אותו פרומפט מ-2024)"
+    },
+    {
+     "type": "quote",
+     "dir": "ltr",
+     "text": "hyper real, photo real, 3d render. a cat detective, anthropomorphic, human like character, sitting in bar, drinking whisky, working on his case, gloomy, dark bar, night scene. cinematic, volumetric. Hyper realistic. digital art. warm tone. low lighting. closeup."
+    },
+    {
+     "type": "p",
+     "text": "המטרה: תמונה כמה שיותר אמיתית של חתול בלש \"אנושי\" שיושב בבר, שותה ויסקי ועובד על התיק שלו."
+    },
+    {
+     "type": "h3",
+     "text": "פרומפט 2 · שישה לוגואים ל-CAT EYE, חברת חקירות"
+    },
+    {
+     "type": "quote",
+     "dir": "ltr",
+     "text": "A logo design presentation sheet for a private investigation agency called \"CAT EYE\". Six different logo concepts arranged in a clean 3 by 2 grid on a plain neutral mid-gray background. Every logo combines a cat's eye with a vertical slit pupil and the wordmark \"CAT EYE\". Six distinct styles: 1) minimal geometric line mark, 2) vintage art deco badge, 3) bold modern monogram, 4) film noir emblem with a fedora hat, 5) negative-space cat head with one eye, 6) elegant serif wordmark with a small eye icon. Flat vector graphic design, professional branding, black, white and one gold accent color, crisp clean edges, correct spelling, no mockups, no photos, no extra text."
+    },
+    {
+     "type": "p",
+     "text": "המטרה: לוגו אמיתי ולא סצנה. שישה כיווני עיצוב שונים לאותה חברת חקירות, על רקע אפור ניטרלי. כך רואים מי יודע לכתוב טקסט נכון, מי מבין סגנונות עיצוב, ומי מקשיב להוראות כמו \"רקע אפור\" ו\"בלי טקסט נוסף\"."
+    },
+    {
+     "type": "h",
+     "id": "verdict",
+     "text": "השורה התחתונה"
+    },
+    {
+     "type": "p",
+     "text": "<b>הכי מציאותי:</b> Cinema Studio Image 2.5, GPT Image 2.6, Grok Image 2.0 ו-Nano Banana Pro. התמונות שלהם נראות כמו צילום ולא כמו AI."
+    },
+    {
+     "type": "p",
+     "text": "<b>הכי טוב בלוגואים:</b> כל משפחת GPT Image, Grok Image 2.0 ו-Grok Image, Seedream 5.5, Nano Banana 2.1 ו-Firefly Image 5. שישה סגנונות שונים, איות נכון ורקע אפור כמו שביקשתי."
+    },
+    {
+     "type": "p",
+     "text": "<b>הרזולוציה הכי גבוהה:</b> Nano Banana 2, 2.1 ו-Pro, ו-Cinema Studio 2.5 (5504 × 3072), ואחריהם FLUX 3 (5456 × 3072) ו-Seedream 4.5 (5120 × 2880)."
+    },
+    {
+     "type": "p",
+     "text": "<b>פספסו:</b> Soul 2.0 שבר את הטקסט (CAT-EYS), Z Image כתב CATINE, Kling O1 נתן לחתול ידיים אנושיות, ו-Firefly Image 4 Ultra הוסיף אותיות מומצאות מתחת לכל לוגו."
+    },
+    {
+     "type": "h",
+     "id": "table",
+     "text": "טבלת השוואה"
+    },
+    {
+     "type": "table",
+     "head": [
+      "מודל",
+      "הגדרות",
+      "גודל שהתקבל",
+      "לוגואים"
+     ],
+     "rows": [
+      [
+       "<a href=\"#m-gpt-image-2-6\">GPT Image 2.6 (Sunburst)</a><br><small>OpenAI</small>",
+       "<span dir=\"ltr\">quality: max · resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-gpt-image-2-6-flare\">GPT Image 2.6 Flare</a><br><small>OpenAI</small>",
+       "<span dir=\"ltr\">quality: max · resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-gpt-image-2-5\">GPT Image 2.5 (Flare)</a><br><small>OpenAI</small>",
+       "<span dir=\"ltr\">variant: flare · quality: max · resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-gpt-image-2\">GPT Image 2</a><br><small>OpenAI</small>",
+       "<span dir=\"ltr\">quality: high · resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-openai-hazel\">OpenAI Hazel</a><br><small>OpenAI</small>",
+       "<span dir=\"ltr\">quality: high</span>",
+       "<span class=\"mono\" dir=\"ltr\">1536 × 1024</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-nano-banana-2-1\">Nano Banana 2.1</a><br><small>Google</small>",
+       "<span dir=\"ltr\">resolution: 4k · thinking_level: high</span>",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-nano-banana-2-lite\">Nano Banana 2 Lite</a><br><small>Google</small>",
+       "<span dir=\"ltr\">resolution: 1k · thinking: HIGH</span>",
+       "<span class=\"mono\" dir=\"ltr\">1376 × 768</span>",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ],
+      [
+       "<a href=\"#m-nano-banana-2\">Nano Banana 2</a><br><small>Google</small>",
+       "<span dir=\"ltr\">resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-nano-banana-pro\">Nano Banana Pro</a><br><small>Google</small>",
+       "<span dir=\"ltr\">resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-nano-banana\">Nano Banana</a><br><small>Google</small>",
+       "<span dir=\"ltr\">אין הגדרות</span>",
+       "<span class=\"mono\" dir=\"ltr\">1344 × 768</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-seedream-5-5\">Seedream 5.5</a><br><small>ByteDance</small>",
+       "<span dir=\"ltr\">resolution: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">2720 × 1536</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-seedream-v5-pro\">Seedream 5.0 Pro</a><br><small>ByteDance</small>",
+       "<span dir=\"ltr\">resolution: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">2720 × 1536</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ],
+      [
+       "<a href=\"#m-seedream-5-0-flash\">Seedream 5.0 Flash</a><br><small>ByteDance</small>",
+       "<span dir=\"ltr\">resolution: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">2816 × 1584</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-seedream-v5-lite\">Seedream 5.0 Lite</a><br><small>ByteDance</small>",
+       "<span dir=\"ltr\">quality: high</span>",
+       "<span class=\"mono\" dir=\"ltr\">4096 × 2304</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ],
+      [
+       "<a href=\"#m-seedream-v4-5\">Seedream 4.5</a><br><small>ByteDance</small>",
+       "<span dir=\"ltr\">quality: high</span>",
+       "<span class=\"mono\" dir=\"ltr\">5120 × 2880</span>",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ],
+      [
+       "<a href=\"#m-grok-image-2-0\">Grok Image 2.0</a><br><small>xAI</small>",
+       "<span dir=\"ltr\">resolution: 2k · quality: medium</span>",
+       "<span class=\"mono\" dir=\"ltr\">2816 × 1584</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-grok-image\">Grok Image</a><br><small>xAI</small>",
+       "<span dir=\"ltr\">resolution: 2k · mode: quality</span>",
+       "<span class=\"mono\" dir=\"ltr\">2816 × 1584</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-flux-3-image\">FLUX 3</a><br><small>Black Forest Labs</small>",
+       "<span dir=\"ltr\">resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">5456 × 3072</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-flux-2\">FLUX.2 [max]</a><br><small>Black Forest Labs</small>",
+       "<span dir=\"ltr\">variant: max · resolution: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">1920 × 1088</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-flux-kontext\">FLUX.1 Kontext</a><br><small>Black Forest Labs</small>",
+       "<span dir=\"ltr\">אין הגדרות</span>",
+       "<span class=\"mono\" dir=\"ltr\">1392 × 752</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ],
+      [
+       "<a href=\"#m-firefly-image-5\">Firefly Image 5 (preview)</a><br><small>Adobe · Firefly</small>",
+       "<span dir=\"ltr\">resolution: 2K · aspect: 16:9</span>",
+       "<span class=\"mono\" dir=\"ltr\">1344 × 768</span>",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ],
+      [
+       "<a href=\"#m-firefly-image-4-ultra\">Firefly Image 4 Ultra</a><br><small>Adobe · Firefly</small>",
+       "<span dir=\"ltr\">aspect: 16:9 · content type: auto</span>",
+       "<span class=\"mono\" dir=\"ltr\">2688 × 1536</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ],
+      [
+       "<a href=\"#m-firefly-image-4\">Firefly Image 4</a><br><small>Adobe · Firefly</small>",
+       "<span dir=\"ltr\">aspect: 16:9 · content type: auto</span>",
+       "<span class=\"mono\" dir=\"ltr\">2688 × 1536</span>",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ],
+      [
+       "<a href=\"#m-ideogram-4-5\">Ideogram 4.5</a><br><small>Ideogram</small>",
+       "<span dir=\"ltr\">resolution: 2k · quality: high · magic_prompt: off</span>",
+       "<span class=\"mono\" dir=\"ltr\">2560 × 1440</span>",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ],
+      [
+       "<a href=\"#m-recraft-v4-1\">Recraft V4.1</a><br><small>Recraft</small>",
+       "<span dir=\"ltr\">resolution: 2k · model_type: standard</span>",
+       "<span class=\"mono\" dir=\"ltr\">2688 × 1536</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-cinematic-studio-2-5\">Cinema Studio Image 2.5</a><br><small>Higgsfield</small>",
+       "<span dir=\"ltr\">resolution: 4k</span>",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ],
+      [
+       "<a href=\"#m-soul-2\">Higgsfield Soul 2.0</a><br><small>Higgsfield</small>",
+       "<span dir=\"ltr\">quality: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">2048 × 1152</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ],
+      [
+       "<a href=\"#m-soul-cinematic\">Soul Cinema</a><br><small>Higgsfield</small>",
+       "<span dir=\"ltr\">quality: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">2048 × 1152</span>",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ],
+      [
+       "<a href=\"#m-kling-omni-image\">Kling O1 Image</a><br><small>Kling</small>",
+       "<span dir=\"ltr\">resolution: 2k</span>",
+       "<span class=\"mono\" dir=\"ltr\">2720 × 1536</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ],
+      [
+       "<a href=\"#m-z-image\">Z Image</a><br><small>Tongyi-MAI (Alibaba)</small>",
+       "<span dir=\"ltr\">אין הגדרות</span>",
+       "<span class=\"mono\" dir=\"ltr\">2048 × 1152</span>",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "kicker",
+     "id": "g-openai",
+     "text": "OpenAI · GPT Image"
+    },
+    {
+     "type": "h",
+     "id": "m-gpt-image-2-6",
+     "text": "GPT Image 2.6 (Sunburst)"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "OpenAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: max · resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס. Higgsfield לא מפרסם מספר מקסימלי."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "GPT Image 2.6 (Sunburst)",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-6-bar-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-6-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "GPT Image 2.6 (Sunburst): חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-6-logo-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-6-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "GPT Image 2.6 (Sunburst): שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> הבר הכי עשיר בפרטים בבדיקה: פרווה, כוס, סיגריה ומאפרה, ותאורה חמה ונכונה."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים נקיים, כל סגנון כמו שביקשתי, איות מושלם ורקע אפור נכון. כמעט מוכן להצגה ללקוח."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> יודע לייצא גם GIF מונפש ו-SVG. בייצוא SVG אי אפשר לצרף תמונות רפרנס. הגדרת האיכות היא העיקר כאן: low (ברירת המחדל) נותנת תוצאה חלשה בהרבה מ-max."
+    },
+    {
+     "type": "h",
+     "id": "m-gpt-image-2-6-flare",
+     "text": "GPT Image 2.6 Flare"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "OpenAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: max · resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס. Higgsfield לא מפרסם מספר מקסימלי."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "GPT Image 2.6 Flare",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-6-flare-bar-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-6-flare-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "GPT Image 2.6 Flare: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-6-flare-logo-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-6-flare-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "GPT Image 2.6 Flare: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> קרוב מאוד ל-Sunburst, עם מראה קולנועי ומעט יותר רך. הופיע שלט ניאון BAR שלא ביקשתי."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים מדויקים, עם מונוגרם חזק וסמל פילם נואר מצוין."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אותן אפשרויות כמו 2.6 (GIF, SVG, רקע שקוף). SVG בלי רפרנסים."
+    },
+    {
+     "type": "h",
+     "id": "m-gpt-image-2-5",
+     "text": "GPT Image 2.5 (Flare)"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "OpenAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">variant: flare · quality: max · resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס. Higgsfield לא מפרסם מספר מקסימלי."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "GPT Image 2.5 (Flare)",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-5-bar-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-5-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "GPT Image 2.5 (Flare): חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-5-logo-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-5-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "GPT Image 2.5 (Flare): שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> כהה יותר ופחות חד מ-2.6."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים מדויקים, ברמה של 2.6."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> יש לו גם גרסת sunburst. בדקתי רק את flare, שהיא ברירת המחדל."
+    },
+    {
+     "type": "h",
+     "id": "m-gpt-image-2",
+     "text": "GPT Image 2"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "OpenAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: high · resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">3840 × 2160</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "GPT Image 2",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-bar-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "GPT Image 2: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/gpt-image-2-logo-sm.webp",
+       "full": "media/blog/ai-2026/gpt-image-2-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "GPT Image 2: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חתול מציאותי, אבל התמונה שטוחה יותר מ-2.6."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים מדויקים ונקיים, כמעט זהה ל-2.6."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> האיכות המקסימלית היא high (בגרסאות 2.5 ו-2.6 נוספו xhigh ו-max)."
+    },
+    {
+     "type": "h",
+     "id": "m-openai-hazel",
+     "text": "OpenAI Hazel"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "OpenAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: high</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">1536 × 1024</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "3 / 2",
+     "title": "OpenAI Hazel",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/openai-hazel-bar-sm.webp",
+       "full": "media/blog/ai-2026/openai-hazel-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "OpenAI Hazel: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/openai-hazel-logo-sm.webp",
+       "full": "media/blog/ai-2026/openai-hazel-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "OpenAI Hazel: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חם ונעים, עם זכוכית מגדלת ומאפרה."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים נכונים בתוך רשת, אבל קטנים יחסית לתמונה."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אין בחירת רזולוציה: הגבול הוא 1536 × 1024. אין 16:9, רק 1:1, 3:2 ו-2:3, ולכן בדקתי ב-3:2."
+    },
+    {
+     "type": "kicker",
+     "id": "g-google",
+     "text": "Google · Nano Banana"
+    },
+    {
+     "type": "h",
+     "id": "m-nano-banana-2-1",
+     "text": "Nano Banana 2.1"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Google"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 4k · thinking_level: high</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס וגם רפרנס של וידאו, ומסכה לעריכה של אזור מסוים."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Nano Banana 2.1",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/nano-banana-2-1-bar-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-2-1-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Nano Banana 2.1: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/nano-banana-2-1-logo-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-2-1-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Nano Banana 2.1: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> קומפוזיציה של צלם: חתול על שולחן עם תמונות מהתיק, אנשים ברקע ומים על החלון."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> תג הארט דקו הכי מפורט בבדיקה. כל הטקסטים נכונים, והרקע אפור."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הרזולוציה הגבוהה ביותר בבדיקה, יחד עם Nano Banana 2 ו-Pro. מאפשר יחסי צלע קיצוניים (עד 8:1) וחיפוש ברשת כדי לדייק פרטים אמיתיים."
+    },
+    {
+     "type": "h",
+     "id": "m-nano-banana-2-lite",
+     "text": "Nano Banana 2 Lite"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Google"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 1k · thinking: HIGH</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">1376 × 768</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 14 תמונות רפרנס (לפי Higgsfield)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Nano Banana 2 Lite",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/nano-banana-2-lite-bar-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-2-lite-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Nano Banana 2 Lite: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/nano-banana-2-lite-logo-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-2-lite-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Nano Banana 2 Lite: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> יפה מאוד, עם מחברת וכוס."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> הפך את הבקשה ללוח הצגה: כותרת, כיתוב מתחת לכל לוגו וכרטיסים לבנים. נראה טוב, אבל זה בדיוק הטקסט הנוסף שביקשתי בלי."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> רק 1K (1376 × 768). המודל הזול והמהיר של המשפחה."
+    },
+    {
+     "type": "h",
+     "id": "m-nano-banana-2",
+     "text": "Nano Banana 2"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Google"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 14 תמונות רפרנס (לפי Higgsfield)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Nano Banana 2",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/nano-banana-2-bar-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-2-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Nano Banana 2: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/nano-banana-2-logo-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-2-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Nano Banana 2: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> בר מלא חיים, עם ברמן, אנשים ומסמכים כתובים (CASE FILE)."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים טובים, עם סמל פילם נואר חזק. בתג הוסיף שורה קטנה PRIVATE INVESTIGATION."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אפשר לערוך רק אזור מסוים בעזרת מסכה."
+    },
+    {
+     "type": "h",
+     "id": "m-nano-banana-pro",
+     "text": "Nano Banana Pro"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Google"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 14 תמונות רפרנס (לפי Higgsfield)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Nano Banana Pro",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/nano-banana-pro-bar-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-pro-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Nano Banana Pro: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/nano-banana-pro-logo-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-pro-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Nano Banana Pro: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חתול עם כובע ומעיל בהיר ליד חלון גשום. מציאותי מאוד."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים טובים. תג הארט דקו קצת דהוי, השאר חד ונכון."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> נחשב חזק בטקסט, אינפוגרפיקה ודיאגרמות."
+    },
+    {
+     "type": "h",
+     "id": "m-nano-banana",
+     "text": "Nano Banana"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Google"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">אין הגדרות</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">1344 × 768</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 8 תמונות רפרנס (לפי Higgsfield)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Nano Banana",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/nano-banana-bar-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Nano Banana: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/nano-banana-logo-sm.webp",
+       "full": "media/blog/ai-2026/nano-banana-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Nano Banana: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> בר חמוד עם פרטים. על הבקבוק יש טקסט מומצא, והניאון בחלון כתוב הפוך."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים קטנים ופשוטים יותר, אבל נכונים."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אין בחירת רזולוציה: 1344 × 768 בלבד."
+    },
+    {
+     "type": "kicker",
+     "id": "g-bytedance",
+     "text": "ByteDance · Seedream"
+    },
+    {
+     "type": "h",
+     "id": "m-seedream-5-5",
+     "text": "Seedream 5.5"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "ByteDance"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2720 × 1536</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Seedream 5.5",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/seedream-5-5-bar-sm.webp",
+       "full": "media/blog/ai-2026/seedream-5-5-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Seedream 5.5: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/seedream-5-5-logo-sm.webp",
+       "full": "media/blog/ai-2026/seedream-5-5-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Seedream 5.5: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> תמונה יפה, אבל כל הטקסט בתמונה (שלט הוויסקי, הדפים) יצא בסינית, בלי שביקשתי."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים עשירים ומפורטים, עם בלש עם כובע ותג ארט דקו יפים. הכול כתוב נכון."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K (2720 × 1536 ב-16:9). יודע לייצר רקע שקוף. הפלט תמיד PNG."
+    },
+    {
+     "type": "h",
+     "id": "m-seedream-v5-pro",
+     "text": "Seedream 5.0 Pro"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "ByteDance"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2720 × 1536</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 10 תמונות רפרנס (לפי רוב המקורות)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Seedream 5.0 Pro",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/seedream-v5-pro-bar-sm.webp",
+       "full": "media/blog/ai-2026/seedream-v5-pro-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Seedream 5.0 Pro: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/seedream-v5-pro-logo-sm.webp",
+       "full": "media/blog/ai-2026/seedream-v5-pro-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Seedream 5.0 Pro: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> החתול קיבל כובע של שרלוק הולמס במקום כובע בלש אמריקאי."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> הלוגואים קטנים ולא מסודרים ברשת, והמונוגרם יצא שבור."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K. יש אפשרות להסרת רקע אוטומטית."
+    },
+    {
+     "type": "h",
+     "id": "m-seedream-5-0-flash",
+     "text": "Seedream 5.0 Flash"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "ByteDance"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2816 × 1584</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Seedream 5.0 Flash",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/seedream-5-0-flash-bar-sm.webp",
+       "full": "media/blog/ai-2026/seedream-5-0-flash-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Seedream 5.0 Flash: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/seedream-5-0-flash-logo-sm.webp",
+       "full": "media/blog/ai-2026/seedream-5-0-flash-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Seedream 5.0 Flash: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> נקי, מהיר ומציאותי, בלי הפתעות."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים טובים ותג ארט דקו יפה. בלוגו הראשון יש כתמי זהב על האותיות."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K."
+    },
+    {
+     "type": "h",
+     "id": "m-seedream-v5-lite",
+     "text": "Seedream 5.0 Lite"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "ByteDance"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: high</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">4096 × 2304</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Seedream 5.0 Lite",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/seedream-v5-lite-bar-sm.webp",
+       "full": "media/blog/ai-2026/seedream-v5-lite-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Seedream 5.0 Lite: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/seedream-v5-lite-logo-sm.webp",
+       "full": "media/blog/ai-2026/seedream-v5-lite-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Seedream 5.0 Lite: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חתול חמוד עם עט ומשקה."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> הוסיף כיתוב מתחת לכל לוגו (1. MINIMAL וכו'), הרקע כמעט לבן, והמונוגרם יצא משובש."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אין בחירת רזולוציה, רק איכות basic או high. ב-high קיבלתי 4096 × 2304."
+    },
+    {
+     "type": "h",
+     "id": "m-seedream-v4-5",
+     "text": "Seedream 4.5"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "ByteDance"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: high</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">5120 × 2880</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Seedream 4.5",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/seedream-v4-5-bar-sm.webp",
+       "full": "media/blog/ai-2026/seedream-v4-5-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Seedream 4.5: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/seedream-v4-5-logo-sm.webp",
+       "full": "media/blog/ai-2026/seedream-v4-5-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Seedream 4.5: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חתול עם מקטרת, מראה קצת מצויר."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> רקע לבן במקום אפור, תשעה לוגואים במקום שישה, ומונוגרם CAT&EYE מוזר."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> ב-high הוא מגיע ל-5120 × 2880, הרבה מעבר ל-4K."
+    },
+    {
+     "type": "kicker",
+     "id": "g-xai",
+     "text": "xAI · Grok"
+    },
+    {
+     "type": "h",
+     "id": "m-grok-image-2-0",
+     "text": "Grok Image 2.0"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "xAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k · quality: medium</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2816 × 1584</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "לפי דיווחים, עד 5 תמונות מקור בעריכה. לא אישרתי את זה במסמכים של xAI."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Grok Image 2.0",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/grok-image-2-0-bar-sm.webp",
+       "full": "media/blog/ai-2026/grok-image-2-0-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Grok Image 2.0: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/grok-image-2-0-logo-sm.webp",
+       "full": "media/blog/ai-2026/grok-image-2-0-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Grok Image 2.0: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> אחד המציאותיים בבדיקה: פרווה, כוס קריסטל ועשן."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> מהטובים בבדיקה: שישה לוגואים מלוטשים, איות מושלם ורקע אפור."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> האיכות המקסימלית היא medium, אין הגדרת high. הגבול הוא 2K."
+    },
+    {
+     "type": "h",
+     "id": "m-grok-image",
+     "text": "Grok Image"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "xAI"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k · mode: quality</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2816 × 1584</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Grok Image",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/grok-image-bar-sm.webp",
+       "full": "media/blog/ai-2026/grok-image-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Grok Image: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/grok-image-logo-sm.webp",
+       "full": "media/blog/ai-2026/grok-image-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Grok Image: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> תוצאה טובה ומציאותית, קרובה ל-2.0."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים נכונים ונקיים על אפור, קרוב מאוד ל-Grok 2.0."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K."
+    },
+    {
+     "type": "kicker",
+     "id": "g-black-forest-labs",
+     "text": "Black Forest Labs · FLUX"
+    },
+    {
+     "type": "h",
+     "id": "m-flux-3-image",
+     "text": "FLUX 3"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Black Forest Labs"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">5456 × 3072</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 10 תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "FLUX 3",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/flux-3-image-bar-sm.webp",
+       "full": "media/blog/ai-2026/flux-3-image-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "FLUX 3: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/flux-3-image-logo-sm.webp",
+       "full": "media/blog/ai-2026/flux-3-image-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "FLUX 3: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> הרבה פרטים: מפה, תמונות, עשן ומשקה."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> כל ששת הסגנונות נכונים ונקיים, אבל הרקע יצא בז' ולא אפור, ונוספו קווי הפרדה בין הלוגואים."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> יכול להוציא עד 4 תמונות בבקשה אחת."
+    },
+    {
+     "type": "h",
+     "id": "m-flux-2",
+     "text": "FLUX.2 [max]"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Black Forest Labs"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">variant: max · resolution: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">1920 × 1088</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "FLUX.2 [max]",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/flux-2-bar-sm.webp",
+       "full": "media/blog/ai-2026/flux-2-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "FLUX.2 [max]: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/flux-2-logo-sm.webp",
+       "full": "media/blog/ai-2026/flux-2-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "FLUX.2 [max]: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> בר טוב ומציאותי."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים נכונים וחזקים, אבל הרקע כמעט לבן ולא אפור."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> ב-Higgsfield הגבול הוא 2K, ובפועל ב-16:9 קיבלתי רק 1920 × 1088. יש גם גרסאות pro ו-flex."
+    },
+    {
+     "type": "h",
+     "id": "m-flux-kontext",
+     "text": "FLUX.1 Kontext"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Black Forest Labs"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">אין הגדרות</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">1392 × 752</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונת רפרנס. בנוי בעיקר לעריכה של תמונה קיימת."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "FLUX.1 Kontext",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/flux-kontext-bar-sm.webp",
+       "full": "media/blog/ai-2026/flux-kontext-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "FLUX.1 Kontext: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/flux-kontext-logo-sm.webp",
+       "full": "media/blog/ai-2026/flux-kontext-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "FLUX.1 Kontext: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> נראה כמו דור קודם: רך ופחות חד."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> במקום תג ארט דקו יצא סמל עם האות B, ורוב הלוגואים כמעט זהים."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אין בחירת רזולוציה: 1392 × 752 בלבד."
+    },
+    {
+     "type": "kicker",
+     "id": "g-adobe",
+     "text": "Adobe · Firefly"
+    },
+    {
+     "type": "h",
+     "id": "m-firefly-image-5",
+     "text": "Firefly Image 5 (preview)"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Adobe"
+      ],
+      [
+       "איפה בדקתי",
+       "Adobe Firefly (באתר של Adobe)"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2K · aspect: 16:9</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">1344 × 768</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "תמונת רפרנס אחת."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--a\">מצוין</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Firefly Image 5 (preview)",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/firefly-image-5-bar-sm.webp",
+       "full": "media/blog/ai-2026/firefly-image-5-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Firefly Image 5 (preview): חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/firefly-image-5-logo-sm.webp",
+       "full": "media/blog/ai-2026/firefly-image-5-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Firefly Image 5 (preview): שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חתול עם סיגר, כוס ויסקי ותמונות מהתיק. תאורה חמה ואמינה, אבל התמונה קטנה ולכן פחות חדה."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים נקיים ונכונים על רקע אפור, עם מונוגרם E גדול. המפתיע לטובה מבין מודלי Adobe."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> בחרתי 2K, אבל הקובץ שהורד היה 1344 × 768 בלבד. יחסי צלע: 16:9, 4:3, 1:1, 3:4, 9:16. תמונה אחת בכל יצירה, 10 קרדיטים של Adobe (כפי שהופיע במסך). עדיין בגרסת preview."
+    },
+    {
+     "type": "h",
+     "id": "m-firefly-image-4-ultra",
+     "text": "Firefly Image 4 Ultra"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Adobe"
+      ],
+      [
+       "איפה בדקתי",
+       "Adobe Firefly (באתר של Adobe)"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">aspect: 16:9 · content type: auto</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2688 × 1536</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "רפרנס אחד למבנה (Composition) ואחד לסגנון (Style)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Firefly Image 4 Ultra",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/firefly-image-4-ultra-bar-sm.webp",
+       "full": "media/blog/ai-2026/firefly-image-4-ultra-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Firefly Image 4 Ultra: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/firefly-image-4-ultra-logo-sm.webp",
+       "full": "media/blog/ai-2026/firefly-image-4-ultra-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Firefly Image 4 Ultra: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חתול בחליפה משובצת עם כוס ויסקי ועט. מלוטש, אבל נראה כמו \"תמונת AI\" ופחות כמו צילום."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שבעה לוגואים על רקע לבן במקום אפור, ומתחת לכל אחד שורה של אותיות מומצאות (SEGDI HIRE)."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אין בחירת רזולוציה: 2688 × 1536. תמונה אחת בכל יצירה, 20 קרדיטים של Adobe (כפי שהופיע במסך)."
+    },
+    {
+     "type": "h",
+     "id": "m-firefly-image-4",
+     "text": "Firefly Image 4"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Adobe"
+      ],
+      [
+       "איפה בדקתי",
+       "Adobe Firefly (באתר של Adobe)"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">aspect: 16:9 · content type: auto</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2688 × 1536</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "רפרנס אחד למבנה (Composition) ואחד לסגנון (Style)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Firefly Image 4",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/firefly-image-4-bar-sm.webp",
+       "full": "media/blog/ai-2026/firefly-image-4-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Firefly Image 4: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/firefly-image-4-logo-sm.webp",
+       "full": "media/blog/ai-2026/firefly-image-4-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Firefly Image 4: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> מייצר 4 גרסאות בכל לחיצה (כאן הראשונה). בכולן חתול עם כובע מול כוס ויסקי, מראה מצויר ודומה מאוד בין הגרסאות."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שמונה לוגואים על אפור, עם שורת אותיות מומצאות מתחת לשם."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> אין בחירת רזולוציה: 2688 × 1536. ארבע תמונות בכל יצירה."
+    },
+    {
+     "type": "kicker",
+     "id": "g-ideogram",
+     "text": "Ideogram"
+    },
+    {
+     "type": "h",
+     "id": "m-ideogram-4-5",
+     "text": "Ideogram 4.5"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Ideogram"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k · quality: high · magic_prompt: off</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2560 × 1440</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 5 תמונות מקור, ומסכה לעריכה."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Ideogram 4.5",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/ideogram-4-5-bar-sm.webp",
+       "full": "media/blog/ai-2026/ideogram-4-5-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Ideogram 4.5: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/ideogram-4-5-logo-sm.webp",
+       "full": "media/blog/ai-2026/ideogram-4-5-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Ideogram 4.5: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> נקי ומאופק. כיביתי את magic_prompt (השיפור האוטומטי של הפרומפט) כדי שכל המודלים יקבלו בדיוק את אותו פרומפט."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים פשוטים ונכונים, אבל הרקע שמנת ולא אפור, ובתג נכתב INVETIGATION (חסרה S)."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K. האיכות הנמוכה ביותר (very_low) עובדת רק עם תמונת מקור."
+    },
+    {
+     "type": "kicker",
+     "id": "g-recraft",
+     "text": "Recraft"
+    },
+    {
+     "type": "h",
+     "id": "m-recraft-v4-1",
+     "text": "Recraft V4.1"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Recraft"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k · model_type: standard</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2688 × 1536</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "לא מקבל תמונות רפרנס בכלל."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Recraft V4.1",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/recraft-v4-1-bar-sm.webp",
+       "full": "media/blog/ai-2026/recraft-v4-1-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Recraft V4.1: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/recraft-v4-1-logo-sm.webp",
+       "full": "media/blog/ai-2026/recraft-v4-1-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Recraft V4.1: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> יצאו לחתול ידיים אנושיות עם שעון."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שבעה לוגואים במקום שישה. ברובם הטקסט נכון, אבל בתג הארט דקו הוא כמעט לא קריא."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> החוזק שלו בלוגואים, אייקונים ווקטורים (model_type: vector / utility_vector). בדקתי במצב standard. אפשר להגדיר פלטת צבעים של עד 10 צבעים. הגבול הוא 2K."
+    },
+    {
+     "type": "kicker",
+     "id": "g-higgsfield",
+     "text": "Higgsfield · Cinema Studio & Soul"
+    },
+    {
+     "type": "h",
+     "id": "m-cinematic-studio-2-5",
+     "text": "Cinema Studio Image 2.5"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Higgsfield"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 4k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">5504 × 3072</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--b\">טוב</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Cinema Studio Image 2.5",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/cinematic-studio-2-5-bar-sm.webp",
+       "full": "media/blog/ai-2026/cinematic-studio-2-5-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Cinema Studio Image 2.5: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/cinematic-studio-2-5-logo-sm.webp",
+       "full": "media/blog/ai-2026/cinematic-studio-2-5-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Cinema Studio Image 2.5: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> נראה כמו פריים מסרט ולא כמו תמונת AI: עומק שדה, אנשים אמיתיים ברקע ודפים עם שרטוטים. לדעתי התמונה הכי \"צילומית\" בבדיקה."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> שישה לוגואים מצוינים, אבל כל אחד בתוך מסגרת עם מספר קטן, תוספת שלא ביקשתי."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> יחסי צלע רבים, כולל 21:9 ו-4:5."
+    },
+    {
+     "type": "h",
+     "id": "m-soul-2",
+     "text": "Higgsfield Soul 2.0"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Higgsfield"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2048 × 1152</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "תמונת רפרנס אחת בלבד. אי אפשר לשלב רפרנס עם סגנון מוכן (style)."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Higgsfield Soul 2.0",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/soul-2-bar-sm.webp",
+       "full": "media/blog/ai-2026/soul-2-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Higgsfield Soul 2.0: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/soul-2-logo-sm.webp",
+       "full": "media/blog/ai-2026/soul-2-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Higgsfield Soul 2.0: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> בר מציאותי עם אנשים, אבל החתול פחות \"אנושי\"."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> הכישלון הגדול בבדיקה: CAT-EYS, ושורות של אותיות מומצאות מתחת ללוגואים."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K. נבנה לאופנה, UGC ודיוקנאות, ולא לטקסט."
+    },
+    {
+     "type": "h",
+     "id": "m-soul-cinematic",
+     "text": "Soul Cinema"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Higgsfield"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">quality: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2048 × 1152</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "תמונת רפרנס אחת בלבד."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--c\">בינוני</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Soul Cinema",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/soul-cinematic-bar-sm.webp",
+       "full": "media/blog/ai-2026/soul-cinematic-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Soul Cinema: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/soul-cinematic-logo-sm.webp",
+       "full": "media/blog/ai-2026/soul-cinematic-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Soul Cinema: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> חשוך מאוד, וראש של חתול על ידיים אנושיות."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> חצי טוב וחצי לא: תג הארט דקו נכון, אבל המינימליסטי והמונוגרם יצאו מטושטשים."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K. תומך ב-21:9."
+    },
+    {
+     "type": "kicker",
+     "id": "g-kling",
+     "text": "Kling"
+    },
+    {
+     "type": "h",
+     "id": "m-kling-omni-image",
+     "text": "Kling O1 Image"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Kling"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">resolution: 2k</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2720 × 1536</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "עד 10 תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Kling O1 Image",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/kling-omni-image-bar-sm.webp",
+       "full": "media/blog/ai-2026/kling-omni-image-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Kling O1 Image: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/kling-omni-image-logo-sm.webp",
+       "full": "media/blog/ai-2026/kling-omni-image-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Kling O1 Image: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> פספס: יצא ראש חתול על גוף של איש בחליפה, עם ידיים אנושיות."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> פשוטים מדי, כמעט אייקונים, ואחד כתוב CAT YE."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> הגבול הוא 2K."
+    },
+    {
+     "type": "kicker",
+     "id": "g-tongyi-mai-alibaba",
+     "text": "Alibaba · Z Image"
+    },
+    {
+     "type": "h",
+     "id": "m-z-image",
+     "text": "Z Image"
+    },
+    {
+     "type": "facts",
+     "items": [
+      [
+       "חברה",
+       "Tongyi-MAI (Alibaba)"
+      ],
+      [
+       "איפה בדקתי",
+       "Higgsfield"
+      ],
+      [
+       "הגדרות",
+       "<span dir=\"ltr\">אין הגדרות</span>"
+      ],
+      [
+       "גודל שהתקבל",
+       "<span class=\"mono\" dir=\"ltr\">2048 × 1152</span>"
+      ],
+      [
+       "תמונות רפרנס",
+       "לא מקבל תמונות רפרנס."
+      ],
+      [
+       "לוגואים",
+       "<span class=\"post-score post-score--d\">חלש</span>"
+      ]
+     ]
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 1,
+     "ratio": "16 / 9",
+     "title": "Z Image",
+     "items": [
+      {
+       "src": "media/blog/ai-2026/z-image-bar-sm.webp",
+       "full": "media/blog/ai-2026/z-image-bar.webp",
+       "caption": "פרומפט 1 · החתול בבר",
+       "alt": "Z Image: חתול בלש בבר"
+      },
+      {
+       "src": "media/blog/ai-2026/z-image-logo-sm.webp",
+       "full": "media/blog/ai-2026/z-image-logo.webp",
+       "caption": "פרומפט 2 · שישה לוגואים",
+       "alt": "Z Image: שישה לוגואים ל-CAT EYE"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "<b>החתול בבר:</b> יצא חתול מצויר בסגנון פיקסאר ולא מציאותי."
+    },
+    {
+     "type": "p",
+     "text": "<b>הלוגואים:</b> בלוגו האחרון נכתב CATINE במקום CAT EYE, ובתג הארט דקו אין טקסט בכלל."
+    },
+    {
+     "type": "note",
+     "text": "<b>מגבלות:</b> מהיר וזול מאוד. אין בחירת רזולוציה או איכות (2048 × 1152)."
+    },
+    {
+     "type": "p",
+     "text": "באתר של Firefly אפשר להפעיל גם מודלים של חברות אחרות (GPT Image, Nano Banana, FLUX ועוד). את אלה בדקתי ב-Higgsfield, ולכן הם לא מופיעים פעמיים."
+    },
+    {
+     "type": "hr"
+    },
+    {
+     "type": "h",
+     "id": "test-2024",
+     "text": "הבדיקה המקורית · 24.04.2024"
+    },
+    {
+     "type": "p",
+     "text": "זו הבדיקה הראשונה, כמו שפורסמה ב-2024, עם אותו פרומפט של החתול הבלש."
+    },
+    {
+     "type": "img",
+     "src": "media/blog/21aa29_926cca0f6d2745cb8299024ad89f6123.png"
+    },
+    {
+     "type": "p",
+     "text": "בדיקה של כמה מערכות בינה מלאכותית ליצירת תמונות.<br>הפקודה - PROMPT",
+     "dir": "rtl"
+    },
+    {
+     "type": "quote",
+     "dir": "ltr",
+     "text": "hyper real, photo real, 3d render. a cat detective, anthropomorphic, human like character, sitting in bar, drinking whisky, working on his case, gloomy, dark bar, night scene. cinematic, volumetric. Hyper realistic. digital art. warm tone. low lighting. closeup."
+    },
+    {
+     "type": "p",
+     "text": "המטרה להגיע לתמונה כמה שיותר אמיתית של חתול בלש \"אנושי\" יושב בבר, שותה וויסקי ועובד על פיענוח התיק הנוכחי שהוא עובד עליו.<br>24.04.2024",
+     "dir": "rtl"
+    },
+    {
+     "type": "h",
+     "text": "Adobe Firefly Image 3 (preview)"
+    },
+    {
+     "type": "p",
+     "text": "בתשלום - חלק מתכניות Creative Cloud"
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://firefly.adobe.com/\" target=\"_blank\" rel=\"noopener\">https://firefly.adobe.com/</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 5,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Adobe Firefly Image 3 (preview)",
+     "items": [
+      {
+       "src": "media/blog/21aa29_8587bddf25054a018b669e508322c893.png",
+       "alt": "Adobe Firefly Image 3 (preview)"
+      },
+      {
+       "src": "media/blog/21aa29_a12408f8998c447da9eb8c7fc185f381.jpg",
+       "alt": "Adobe Firefly Image 3 (preview)"
+      },
+      {
+       "src": "media/blog/21aa29_a728e96775d5403f9da2a5a625255f00.jpg",
+       "alt": "Adobe Firefly Image 3 (preview)"
+      },
+      {
+       "src": "media/blog/21aa29_82bd647f7fec4192ab4b05d1932fc624.jpg",
+       "alt": "Adobe Firefly Image 3 (preview)"
+      },
+      {
+       "src": "media/blog/21aa29_bedf8ad37ade4a33994c7fbfd247e644.jpg",
+       "alt": "Adobe Firefly Image 3 (preview)"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Midjourney V6"
+    },
+    {
+     "type": "p",
+     "text": "בתשלום - יש חבילות מ 10$ ומעלה"
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://alpha.midjourney.com/\" target=\"_blank\" rel=\"noopener\">https://alpha.midjourney.com/</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 5,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Midjourney V6",
+     "items": [
+      {
+       "src": "media/blog/21aa29_f1db2fa9a3a9430d8cdf92998c1e932c.png",
+       "alt": "Midjourney V6"
+      },
+      {
+       "src": "media/blog/21aa29_b452f23ba7e440a0b54108e477c40822.png",
+       "alt": "Midjourney V6"
+      },
+      {
+       "src": "media/blog/21aa29_5d3d048c76e740a8b9e67b44aef307d9.png",
+       "alt": "Midjourney V6"
+      },
+      {
+       "src": "media/blog/21aa29_d8def7efc29e4cb58878d5f794a39862.png",
+       "alt": "Midjourney V6"
+      },
+      {
+       "src": "media/blog/21aa29_04496b54786249eda6318c20a91d8915.png",
+       "alt": "Midjourney V6"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Dalle3 (Microsoft Bing Image Creator)"
+    },
+    {
+     "type": "p",
+     "text": "כרגע חינמי לגמרי ומותר לשימוש מסחרי אפילו שזה ללא תשלום. המגבלה היחידה שאפשר ליצור 15 יצירות מהירות, תוך פחות מדקה ולאחר מכן המערכת עובדת לאט."
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://www.bing.com/images/create\" target=\"_blank\" rel=\"noopener\">https://www.bing.com/images/create</a>"
+    },
+    {
+     "type": "p",
+     "text": "המערכת של Copilot זה בדיוק אותו הדבר - אז אין מה להשוות ביניהם."
+    },
+    {
+     "type": "gallery",
+     "cols": 5,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Dalle3 (Microsoft Bing Image Creator)",
+     "items": [
+      {
+       "src": "media/blog/21aa29_ede349075f0e4e4b87b3ac7df353eb4a.png",
+       "alt": "Dalle3 (Microsoft Bing Image Creator)"
+      },
+      {
+       "src": "media/blog/21aa29_b9b9dca00caa451c9a261fbed6e69549.jpg",
+       "alt": "Dalle3 (Microsoft Bing Image Creator)"
+      },
+      {
+       "src": "media/blog/21aa29_0342ba46294a463eb38d31f39642a7be.jpg",
+       "alt": "Dalle3 (Microsoft Bing Image Creator)"
+      },
+      {
+       "src": "media/blog/21aa29_b7f506b7fda9409abe2f5b7bda3008d5.jpg",
+       "alt": "Dalle3 (Microsoft Bing Image Creator)"
+      },
+      {
+       "src": "media/blog/21aa29_f56380bce12948478279de47e3915413.jpg",
+       "alt": "Dalle3 (Microsoft Bing Image Creator)"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Ideogram"
+    },
+    {
+     "type": "p",
+     "text": "עד 25 תמונות בחינם ביום. מנוי של 7-8$ - מאפשר 400 יצירות (שזה כמו 1600 תמונות סה\"כ)"
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://ideogram.ai/\" target=\"_blank\" rel=\"noopener\">https://ideogram.ai/</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 5,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Ideogram",
+     "items": [
+      {
+       "src": "media/blog/21aa29_b20f38f29a7f4a369c72cfebefecd6e7.png",
+       "alt": "Ideogram"
+      },
+      {
+       "src": "media/blog/21aa29_4a66d77b15ef464aa716d7e1eaaec21d.jpeg",
+       "alt": "Ideogram"
+      },
+      {
+       "src": "media/blog/21aa29_eaa228808e4a47f495311b1418687c01.jpeg",
+       "alt": "Ideogram"
+      },
+      {
+       "src": "media/blog/21aa29_3092daf0a3c44897a688d4c1ae19f0f7.jpeg",
+       "alt": "Ideogram"
+      },
+      {
+       "src": "media/blog/21aa29_c12622e9b5a54ec58b5383747dc56a0e.jpeg",
+       "alt": "Ideogram"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Freepink Pikaso"
+    },
+    {
+     "type": "p",
+     "text": "למנויים בתשלום בלבד - ₪375 לשנה, בכנות אחד המנויים השווים כי האתר מכיל הרבה יותר מאשר יצירה של תמונות."
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://www.freepik.com/pikaso/ai-image-generator\" target=\"_blank\" rel=\"noopener\">https://www.freepik.com/pikaso/ai-image-generator</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 5,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Freepink Pikaso",
+     "items": [
+      {
+       "src": "media/blog/21aa29_91e0e1fb53e747c1ba1a75e842540437.png",
+       "alt": "Freepink Pikaso"
+      },
+      {
+       "src": "media/blog/21aa29_f45d21730e3a4196989e5d25ca14d7f4.jpeg",
+       "alt": "Freepink Pikaso"
+      },
+      {
+       "src": "media/blog/21aa29_70e507fbca564e91bdf5c3be8f1b8dad.jpeg",
+       "alt": "Freepink Pikaso"
+      },
+      {
+       "src": "media/blog/21aa29_e6e1fbc53c1a4014bff4f6dc67f055f2.jpeg",
+       "alt": "Freepink Pikaso"
+      },
+      {
+       "src": "media/blog/21aa29_269a0bfd22df4a02a3611cfd19758810.jpeg",
+       "alt": "Freepink Pikaso"
+      }
+     ]
+    },
+    {
+     "type": "p",
+     "text": "מאז היציאה של המודל FLUX היו שיפורים אצל PIKASO"
+    },
+    {
+     "type": "h",
+     "text": "Flux Beta"
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Flux Beta",
+     "items": [
+      {
+       "src": "media/blog/21aa29_7058736a8855488a9635795ad78e98a6.jpeg",
+       "alt": "Flux Beta"
+      },
+      {
+       "src": "media/blog/21aa29_422f3c6f0134422f874dba9a06e34979.jpeg",
+       "alt": "Flux Beta"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Flux Fast"
+    },
+    {
+     "type": "gallery",
+     "cols": 4,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Flux Fast",
+     "items": [
+      {
+       "src": "media/blog/21aa29_47d233ae652a43ba8e3a0298eda9f35c.jpeg",
+       "alt": "Flux Fast"
+      },
+      {
+       "src": "media/blog/21aa29_8a1435e332c04a678a8495e15a4be5fa.jpeg",
+       "alt": "Flux Fast"
+      },
+      {
+       "src": "media/blog/21aa29_a758d9a2416f4aacbae57138e0f29411.jpeg",
+       "alt": "Flux Fast"
+      },
+      {
+       "src": "media/blog/21aa29_f9e6593f94b442cfa5c9d4f25a2156e9.jpeg",
+       "alt": "Flux Fast"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Flux Realism"
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Flux Realism",
+     "items": [
+      {
+       "src": "media/blog/21aa29_e858678ddb00410d8b4316659a25eaa6.jpeg",
+       "alt": "Flux Realism"
+      },
+      {
+       "src": "media/blog/21aa29_38bc195fae1545699bcd03a1b26f7fff.jpeg",
+       "alt": "Flux Realism"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "ועוד מודל חדש שלהם בשם Mystic Alpha"
+    },
+    {
+     "type": "gallery",
+     "cols": 2,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "ועוד מודל חדש שלהם בשם Mystic Alpha",
+     "items": [
+      {
+       "src": "media/blog/21aa29_c9219577b7c14a72a83284c72dfd4009.png",
+       "alt": "ועוד מודל חדש שלהם בשם Mystic Alpha"
+      },
+      {
+       "src": "media/blog/21aa29_efe102fc8de446c18fa2438f64def61e.jpeg",
+       "alt": "ועוד מודל חדש שלהם בשם Mystic Alpha"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "Promai"
+    },
+    {
+     "type": "p",
+     "text": "התוכניות מנוי שלהם קצת מורכבות להסבר כי זה מורכב מקרדיטים (מטבעות)... משתמש חינמי מקבל 10 מטבעות שזה בערך כ 30 יצירות בחודש! מנוי בתשלום בסיסי 16-19$ בחודש מקבל 500 מטבעות ועוד הרבה מאוד אפשרויות שנעולות מאחורי מנוי."
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://www.promeai.pro/ai-image-generation\" target=\"_blank\" rel=\"noopener\">https://www.promeai.pro/ai-image-generation</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 4,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "Promai",
+     "items": [
+      {
+       "src": "media/blog/21aa29_d26502ac741746dba3150922ee5415ee.png",
+       "alt": "Promai"
+      },
+      {
+       "src": "media/blog/21aa29_f19661dd65134262a361253fe11a642b.png",
+       "alt": "Promai"
+      },
+      {
+       "src": "media/blog/21aa29_280c125c2f494c299bad9d376ef97b8f.png",
+       "alt": "Promai"
+      },
+      {
+       "src": "media/blog/21aa29_425fe36c871448da97c1122204173d3e.png",
+       "alt": "Promai"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "ClipDrop"
+    },
+    {
+     "type": "p",
+     "text": "נעול מאחורי מנוי (שכרגע אין לי) מכיל 3 מודלים שונים של Stable Diffusion: Stable Diffusion 0.9, Stable Diffusion 1.0, Stable Diffusion 3"
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://clipdrop.co/stable-diffusion\" target=\"_blank\" rel=\"noopener\">https://clipdrop.co/stable-diffusion</a>"
+    },
+    {
+     "type": "h",
+     "text": "Krea"
+    },
+    {
+     "type": "p",
+     "text": "מציע כמה אפשרויות של יצירה של תמונות אבל פונקצית HD נעולה מאחורי מנוי. יצירתי תמונה אחת > ושיפרתי אותה עם המערכת שלהם - אבל זה היה כל כך מאכזב שהחלטתי לא לשתף."
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://www.krea.ai/apps/image/enhancer\" target=\"_blank\" rel=\"noopener\">https://www.krea.ai/apps/image/enhancer</a>"
+    },
+    {
+     "type": "h",
+     "text": "FLUX"
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://fal.ai/models/fal-ai/flux-pro\" target=\"_blank\" rel=\"noopener\">https://fal.ai/models/fal-ai/flux-pro</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 4,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "FLUX",
+     "items": [
+      {
+       "src": "media/blog/21aa29_0529abd0055c40e89863b3b3421af2d7.jpg",
+       "alt": "FLUX"
+      },
+      {
+       "src": "media/blog/21aa29_d80931cf32594e3eab5784b2a9a32d2b.jpg",
+       "alt": "FLUX"
+      },
+      {
+       "src": "media/blog/21aa29_3d558f080e574f619ea4c5e8218df15d.jpg",
+       "alt": "FLUX"
+      },
+      {
+       "src": "media/blog/21aa29_2c97d3ef4bc54cfaa471e9b42a2865cc.jpg",
+       "alt": "FLUX"
+      }
+     ]
+    },
+    {
+     "type": "h",
+     "text": "יצירות ש- AI עדיין לא יכול לבצע"
+    },
+    {
+     "type": "p",
+     "text": "מודעה לנעל ספורט: ראש של עז שעשוי מקולאז' של אותה נעל בדיוק בזוויות שונות.<br>עבודה מדוייקת מאוד המשתמשת במוצר של המוצג בכיוונים שונים - אתגר בלתי אפשרי עבור Ai.",
+     "dir": "rtl"
+    },
+    {
+     "type": "p",
+     "text": "<a href=\"https://www.taylorjames.com/merrell\" target=\"_blank\" rel=\"noopener\">https://www.taylorjames.com/merrell</a>"
+    },
+    {
+     "type": "gallery",
+     "cols": 1,
+     "colsMobile": 2,
+     "ratio": "1 / 1",
+     "title": "יצירות ש- AI עדיין לא יכול לבצע",
+     "items": [
+      {
+       "src": "media/blog/21aa29_df220ec959544cc59dd637e3381ae9f8.jpeg",
+       "alt": "יצירות ש- AI עדיין לא יכול לבצע"
+      }
+     ]
+    }
+   ],
+   "nav": [
+    {
+     "text": "שני הפרומפטים",
+     "id": "prompts"
+    },
+    {
+     "text": "השורה התחתונה",
+     "id": "verdict"
+    },
+    {
+     "text": "טבלת השוואה",
+     "id": "table"
+    },
+    {
+     "group": "OpenAI · GPT Image"
+    },
+    {
+     "text": "GPT Image 2.6",
+     "id": "m-gpt-image-2-6"
+    },
+    {
+     "text": "GPT Image 2.6 Flare",
+     "id": "m-gpt-image-2-6-flare"
+    },
+    {
+     "text": "GPT Image 2.5",
+     "id": "m-gpt-image-2-5"
+    },
+    {
+     "text": "GPT Image 2",
+     "id": "m-gpt-image-2"
+    },
+    {
+     "text": "OpenAI Hazel",
+     "id": "m-openai-hazel"
+    },
+    {
+     "group": "Google · Nano Banana"
+    },
+    {
+     "text": "Nano Banana 2.1",
+     "id": "m-nano-banana-2-1"
+    },
+    {
+     "text": "Nano Banana 2 Lite",
+     "id": "m-nano-banana-2-lite"
+    },
+    {
+     "text": "Nano Banana 2",
+     "id": "m-nano-banana-2"
+    },
+    {
+     "text": "Nano Banana Pro",
+     "id": "m-nano-banana-pro"
+    },
+    {
+     "text": "Nano Banana",
+     "id": "m-nano-banana"
+    },
+    {
+     "group": "ByteDance · Seedream"
+    },
+    {
+     "text": "Seedream 5.5",
+     "id": "m-seedream-5-5"
+    },
+    {
+     "text": "Seedream 5.0 Pro",
+     "id": "m-seedream-v5-pro"
+    },
+    {
+     "text": "Seedream 5.0 Flash",
+     "id": "m-seedream-5-0-flash"
+    },
+    {
+     "text": "Seedream 5.0 Lite",
+     "id": "m-seedream-v5-lite"
+    },
+    {
+     "text": "Seedream 4.5",
+     "id": "m-seedream-v4-5"
+    },
+    {
+     "group": "xAI · Grok"
+    },
+    {
+     "text": "Grok Image 2.0",
+     "id": "m-grok-image-2-0"
+    },
+    {
+     "text": "Grok Image",
+     "id": "m-grok-image"
+    },
+    {
+     "group": "Black Forest Labs · FLUX"
+    },
+    {
+     "text": "FLUX 3",
+     "id": "m-flux-3-image"
+    },
+    {
+     "text": "FLUX.2 [max]",
+     "id": "m-flux-2"
+    },
+    {
+     "text": "FLUX.1 Kontext",
+     "id": "m-flux-kontext"
+    },
+    {
+     "group": "Adobe · Firefly"
+    },
+    {
+     "text": "Firefly Image 5",
+     "id": "m-firefly-image-5"
+    },
+    {
+     "text": "Firefly Image 4 Ultra",
+     "id": "m-firefly-image-4-ultra"
+    },
+    {
+     "text": "Firefly Image 4",
+     "id": "m-firefly-image-4"
+    },
+    {
+     "group": "Ideogram"
+    },
+    {
+     "text": "Ideogram 4.5",
+     "id": "m-ideogram-4-5"
+    },
+    {
+     "group": "Recraft"
+    },
+    {
+     "text": "Recraft V4.1",
+     "id": "m-recraft-v4-1"
+    },
+    {
+     "group": "Higgsfield · Cinema Studio & Soul"
+    },
+    {
+     "text": "Cinema Studio Image 2.5",
+     "id": "m-cinematic-studio-2-5"
+    },
+    {
+     "text": "Higgsfield Soul 2.0",
+     "id": "m-soul-2"
+    },
+    {
+     "text": "Soul Cinema",
+     "id": "m-soul-cinematic"
+    },
+    {
+     "group": "Kling"
+    },
+    {
+     "text": "Kling O1 Image",
+     "id": "m-kling-omni-image"
+    },
+    {
+     "group": "Alibaba · Z Image"
+    },
+    {
+     "text": "Z Image",
+     "id": "m-z-image"
+    },
+    {
+     "group": "ארכיון"
+    },
+    {
+     "text": "הבדיקה מ-2024",
+     "id": "test-2024"
+    }
+   ]
+  },
+  {
    "slug": "mishas-motion",
    "title": "מ־PDF לסרטון · אנימציה עם Claude והסקיל שלי",
    "excerpt": "נותנים ל־Claude קובץ PDF של עיצוב, והוא מפרק אותו לשכבות, מציע סיפור, בונה סטוריבורד שאתם מאשרים, ומנפיש. סרטון הסבר, הסקיל להורדה וקובץ לתרגול.",
@@ -6329,356 +9320,6 @@ window.MG = {
      "type": "file",
      "text": "להורדת קבצי התרגול (במאמר המקורי)",
      "href": "https://www.misha.co.il/post/blender-v4-2"
-    }
-   ]
-  },
-  {
-   "slug": "ai-systems-comparison",
-   "title": "השוואה בין מערכות AI שונות",
-   "excerpt": "Midjourney, Firefly ו-Runway — מתי כל אחת מנצחת.",
-   "tag": "AI",
-   "date": "24.04.2024",
-   "read": "2 דקות קריאה",
-   "cover": "media/blog/21aa29_8587bddf25054a018b669e508322c893.png",
-   "body": [
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_926cca0f6d2745cb8299024ad89f6123.png"
-    },
-    {
-     "type": "p",
-     "text": "בדיקה של כמה מערכות בינה מלאכותית ליצירת תמונות.<br>הפקודה - PROMPT",
-     "dir": "rtl"
-    },
-    {
-     "type": "p",
-     "text": "hyper real, photo real, 3d render. a cat detective, anthropomorphic, human like character, sitting in bar, drinking whisky, working on his case, gloomy, dark bar, night scene. cinematic, volumetric. Hyper realistic. digital art. warm tone. low lighting. closeup."
-    },
-    {
-     "type": "p",
-     "text": "המטרה להגיע לתמונה כמה שיותר אמיתית של חתול בלש \"אנושי\" יושב בבר, שותה וויסקי ועובד על פיענוח התיק הנוכחי שהוא עובד עליו.<br>24.4.2024",
-     "dir": "rtl"
-    },
-    {
-     "type": "h",
-     "text": "Adobe Firefly Image 3 (preview)"
-    },
-    {
-     "type": "p",
-     "text": "בתשלום - חלק מתכניות Creative Cloud"
-    },
-    {
-     "type": "p",
-     "text": "https://firefly.adobe.com/"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_8587bddf25054a018b669e508322c893.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_a12408f8998c447da9eb8c7fc185f381.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_a728e96775d5403f9da2a5a625255f00.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_82bd647f7fec4192ab4b05d1932fc624.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_bedf8ad37ade4a33994c7fbfd247e644.jpg"
-    },
-    {
-     "type": "h",
-     "text": "Midjourney V6"
-    },
-    {
-     "type": "p",
-     "text": "בתשלום - יש חבילות מ 10$ ומעלה"
-    },
-    {
-     "type": "p",
-     "text": "https://alpha.midjourney.com/"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_f1db2fa9a3a9430d8cdf92998c1e932c.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_b452f23ba7e440a0b54108e477c40822.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_5d3d048c76e740a8b9e67b44aef307d9.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_d8def7efc29e4cb58878d5f794a39862.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_04496b54786249eda6318c20a91d8915.png"
-    },
-    {
-     "type": "h",
-     "text": "Dalle3 (Microsoft Bing Image Creator)"
-    },
-    {
-     "type": "p",
-     "text": "כרגע חינמי לגמרי ומותר לשימוש מסחרי אפילו שזה ללא תשלום. המגבלה היחידה שאפשר ליצור 15 יצירות מהירות, תוך פחות מדקה ולאחר מכן המערכת עובדת לאט."
-    },
-    {
-     "type": "p",
-     "text": "https://www.bing.com/images/create"
-    },
-    {
-     "type": "p",
-     "text": "המערכת של Copilot זה בדיוק אותו הדבר - אז אין מה להשוות ביניהם."
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_ede349075f0e4e4b87b3ac7df353eb4a.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_b9b9dca00caa451c9a261fbed6e69549.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_0342ba46294a463eb38d31f39642a7be.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_b7f506b7fda9409abe2f5b7bda3008d5.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_f56380bce12948478279de47e3915413.jpg"
-    },
-    {
-     "type": "h",
-     "text": "Ideogram"
-    },
-    {
-     "type": "p",
-     "text": "עד 25 תמונות בחינם ביום. מנוי של 7-8$ - מאפשר 400 יצירות (שזה כמו 1600 תמונות סה\"כ)"
-    },
-    {
-     "type": "p",
-     "text": "https://ideogram.ai/"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_b20f38f29a7f4a369c72cfebefecd6e7.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_4a66d77b15ef464aa716d7e1eaaec21d.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_eaa228808e4a47f495311b1418687c01.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_3092daf0a3c44897a688d4c1ae19f0f7.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_c12622e9b5a54ec58b5383747dc56a0e.jpeg"
-    },
-    {
-     "type": "h",
-     "text": "Freepink Pikaso"
-    },
-    {
-     "type": "p",
-     "text": "למנויים בתשלום בלבד - ₪375 לשנה, בכנות אחד המנויים השווים כי האתר מכיל הרבה יותר מאשר יצירה של תמונות."
-    },
-    {
-     "type": "p",
-     "text": "https://www.freepik.com/pikaso/ai-image-generator"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_91e0e1fb53e747c1ba1a75e842540437.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_f45d21730e3a4196989e5d25ca14d7f4.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_70e507fbca564e91bdf5c3be8f1b8dad.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_e6e1fbc53c1a4014bff4f6dc67f055f2.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_269a0bfd22df4a02a3611cfd19758810.jpeg"
-    },
-    {
-     "type": "p",
-     "text": "מאז היציאה של המודל FLUX היו שיפורים אצל PIKASO"
-    },
-    {
-     "type": "h",
-     "text": "Flux Beta"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_7058736a8855488a9635795ad78e98a6.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_422f3c6f0134422f874dba9a06e34979.jpeg"
-    },
-    {
-     "type": "h",
-     "text": "Flux Fast"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_47d233ae652a43ba8e3a0298eda9f35c.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_8a1435e332c04a678a8495e15a4be5fa.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_a758d9a2416f4aacbae57138e0f29411.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_f9e6593f94b442cfa5c9d4f25a2156e9.jpeg"
-    },
-    {
-     "type": "h",
-     "text": "Flux Realism"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_e858678ddb00410d8b4316659a25eaa6.jpeg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_38bc195fae1545699bcd03a1b26f7fff.jpeg"
-    },
-    {
-     "type": "h",
-     "text": "ועוד מודל חדש שלהם בשם Mystic Alpha"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_c9219577b7c14a72a83284c72dfd4009.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_efe102fc8de446c18fa2438f64def61e.jpeg"
-    },
-    {
-     "type": "h",
-     "text": "Promai"
-    },
-    {
-     "type": "p",
-     "text": "התוכניות מנוי שלהם קצת מורכבות להסבר כי זה מורכב מקרדיטים (מטבעות)... משתמש חינמי מקבל 10 מטבעות שזה בערך כ 30 יצירות בחודש! מנוי בתשלום בסיסי 16-19$ בחודש מקבל 500 מטבעות ועוד הרבה מאוד אפשרויות שנעולות מאחורי מנוי."
-    },
-    {
-     "type": "p",
-     "text": "https://www.promeai.pro/ai-image-generation"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_d26502ac741746dba3150922ee5415ee.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_f19661dd65134262a361253fe11a642b.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_280c125c2f494c299bad9d376ef97b8f.png"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_425fe36c871448da97c1122204173d3e.png"
-    },
-    {
-     "type": "h",
-     "text": "ClipDrop"
-    },
-    {
-     "type": "p",
-     "text": "נעול מאחורי מנוי (שכרגע אין לי) מכיל 3 מודלים שונים של Stable Diffusion: Stable Diffusion 0.9, Stable Diffusion 1.0, Stable Diffusion 3"
-    },
-    {
-     "type": "p",
-     "text": "https://clipdrop.co/stable-diffusion"
-    },
-    {
-     "type": "h",
-     "text": "Krea"
-    },
-    {
-     "type": "p",
-     "text": "מציע כמה אפשרויות של יצירה של תמונות אבל פונקצית HD נעולה מאחורי מנוי. יצירתי תמונה אחת > ושיפרתי אותה עם המערכת שלהם - אבל זה היה כל כך מאכזב שהחלטתי לא לשתף."
-    },
-    {
-     "type": "p",
-     "text": "https://www.krea.ai/apps/image/enhancer"
-    },
-    {
-     "type": "h",
-     "text": "FLUX"
-    },
-    {
-     "type": "p",
-     "text": "https://fal.ai/models/fal-ai/flux-pro"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_0529abd0055c40e89863b3b3421af2d7.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_d80931cf32594e3eab5784b2a9a32d2b.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_3d558f080e574f619ea4c5e8218df15d.jpg"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_2c97d3ef4bc54cfaa471e9b42a2865cc.jpg"
-    },
-    {
-     "type": "h",
-     "text": "יצירות ש- AI עדיין לא יכול לבצע"
-    },
-    {
-     "type": "p",
-     "text": "מודעה לנעל ספורט: ראש של עז שעשוי מקולאז' של אותה נעל בדיוק בזוויות שונות.<br>עבודה מדוייקת מאוד המשתמשת במוצר של המוצג בכיוונים שונים - אתגר בלתי אפשרי עבור Ai.",
-     "dir": "rtl"
-    },
-    {
-     "type": "p",
-     "text": "https://www.taylorjames.com/merrell"
-    },
-    {
-     "type": "img",
-     "src": "media/blog/21aa29_df220ec959544cc59dd637e3381ae9f8.jpeg"
-    },
-    {
-     "type": "p",
-     "text": "---"
     }
    ]
   },

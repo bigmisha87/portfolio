@@ -1105,9 +1105,28 @@
       b.italic && "font-style:italic", b.underline && "text-decoration:underline", b.color && `color:${b.color}`].filter(Boolean).join(";"));
     const dir = (b) => esc(b.dir && b.dir !== "auto" ? b.dir : "auto");
     const embed = (u) => { const y = ytId(u); if (y) return `https://www.youtube-nocookie.com/embed/${y}?rel=0`; const m = String(u || "").match(/vimeo\.com\/(?:video\/)?(\d+)/); return m ? `https://player.vimeo.com/video/${m[1]}` : ""; };
+    // every picture in a post gallery, in order, so the lightbox can step through them
+    const media = [];
+    const anchor = (b) => (b.id ? ` id="${esc(b.id)}"` : "");
+    const gallery = (b) => {
+      const cols = Math.max(1, parseInt(b.cols, 10) || 3);
+      const colsM = Math.max(1, parseInt(b.colsMobile, 10) || Math.min(cols, 2));
+      const items = (b.items || []).filter((x) => x && x.src).map((x) => {
+        const i = media.push({ image: x.full || x.src, ratio: x.ratio, title: x.title || b.title || "", note: x.caption || "" }) - 1;
+        return `<figure class="post-gal__item"><button class="post-gal__btn" type="button" data-g="${i}" aria-label="הגדלת התמונה"><img src="${esc(x.src)}" alt="${esc(x.alt || x.caption || "")}" loading="lazy" decoding="async"></button>${x.caption ? `<figcaption dir="auto">${x.caption}</figcaption>` : ""}</figure>`;
+      });
+      return items.length ? `<div class="post-gal" style="--cols:${cols};--cols-m:${colsM};--ar:${esc(b.ratio || "1 / 1")}">${items.join("")}</div>` : "";
+    };
     // headings and paragraphs are the owner's own markup (links, bold words), so they go in as written
     const block = (b) => {
-      if (b.type === "h") return `<h2 dir="${dir(b)}" style="${look(b)}">${b.text || ""}</h2>`;
+      if (b.type === "h") return `<h2${anchor(b)} dir="${dir(b)}" style="${look(b)}">${b.text || ""}</h2>`;
+      if (b.type === "h3") return `<h3${anchor(b)} class="post-h3" dir="${dir(b)}">${b.text || ""}</h3>`;
+      if (b.type === "gallery") return gallery(b);
+      if (b.type === "facts") return `<dl class="post-facts">${(b.items || []).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join("")}</dl>`;
+      if (b.type === "table") return `<div class="post-table" tabindex="0"><table><thead><tr>${(b.head || []).map((h) => `<th scope="col">${h}</th>`).join("")}</tr></thead><tbody>${(b.rows || []).map((r) => `<tr>${r.map((c) => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      if (b.type === "hr") return `<hr class="post-hr">`;
+      if (b.type === "kicker") return `<p${anchor(b)} class="post-kicker" dir="auto">${esc(b.text || "")}</p>`;
+      if (b.type === "note") return `<p class="post-note" dir="${dir(b)}">${b.text || ""}</p>`;
       if (b.type === "p") return `<p dir="${dir(b)}" style="${look(b)}">${b.text || ""}</p>`;
       if (b.type === "quote") return `<blockquote dir="${dir(b)}">${b.text || ""}</blockquote>`;
       if (b.type === "img") return b.src ? `<figure><img src="${esc(b.src)}" alt="${esc(b.alt || "")}" loading="lazy" decoding="async"></figure>` : "";
@@ -1133,6 +1152,58 @@
         </span>
         <span class="post-next__go" aria-hidden="true">←</span>
       </a>` : ""}`;
+    if (media.length) host.onclick = (e) => {
+      const b = e.target.closest("[data-g]");
+      if (b) LB.open(media, +b.dataset.g, b);
+    };
+    if (p.nav && p.nav.length) postToc(p.nav);
+  }
+
+  /* a long post can carry a side menu (post.nav: links to heading ids, and group labels) with a red line that
+     fills as you read. On narrow screens only the red line stays, at the screen's edge. */
+  function postToc(nav) {
+    const host = $("#post");
+    const toc = document.createElement("nav");
+    toc.className = "post-toc";
+    toc.setAttribute("aria-label", "תוכן הפוסט");
+    toc.innerHTML = `<span class="post-toc__track" aria-hidden="true"><i></i></span>
+      <ol class="post-toc__list">${nav.map((n) => n.group
+        ? `<li class="post-toc__group" dir="auto">${esc(n.group)}</li>`
+        : `<li><a href="#${esc(n.id)}" dir="auto">${esc(n.text)}</a></li>`).join("")}</ol>`;
+    document.body.appendChild(toc);
+    const list = $(".post-toc__list", toc);
+    const links = $$("a", toc);
+    const targets = links.map((a) => document.getElementById(decodeURIComponent(a.hash.slice(1))));
+    toc.addEventListener("click", (e) => {
+      const a = e.target.closest("a");
+      if (!a) return;
+      e.preventDefault();
+      const t = targets[links.indexOf(a)];
+      if (t) scrollToEl(t, 90);
+      history.replaceState(null, "", a.hash);
+    });
+    let cur = -1;
+    const update = () => {
+      const r = host.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight)));
+      toc.style.setProperty("--p", p.toFixed(4));
+      let i = -1;
+      for (let k = 0; k < targets.length; k++) if (targets[k] && targets[k].getBoundingClientRect().top < innerHeight * 0.3) i = k;
+      if (i !== cur) {
+        if (links[cur]) links[cur].classList.remove("is-on");
+        cur = i;
+        if (links[i]) {
+          links[i].classList.add("is-on");
+          // keep the current item in view inside the menu
+          const y = links[i].offsetTop;
+          if (y < list.scrollTop + 40 || y > list.scrollTop + list.clientHeight - 60) list.scrollTo({ top: y - list.clientHeight / 2, behavior: "smooth" });
+        }
+      }
+      toc.classList.toggle("is-hidden", r.bottom < innerHeight * 0.4);
+    };
+    scrollFeed.add(update);
+    addEventListener("resize", update);
+    update();
   }
 
   function render404() {
