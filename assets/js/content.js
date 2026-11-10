@@ -5828,12 +5828,23 @@ window.MG = {
  ],
  "posts": [
   {
+   "slug": "ai-styles",
+   "title": "סגנונות צילום ואילוסטרציה: 120 סגנונות לפרומפט",
+   "excerpt": "סצנה אחת ב-120 סגנונות של צילום, ציור, קומיקס, אנימה, תלת-ממד ועוד. לחיצה על תמונה פותחת אותה עם הפרומפט, מוכן להעתקה.",
+   "tag": "AI",
+   "date": "10.11.2026",
+   "read": "120 סגנונות",
+   "cover": "media/blog/covers/ai-styles.webp",
+   "href": "blog/ai-styles/index.html",
+   "body": []
+  },
+  {
    "slug": "ai-sale-ad",
    "title": "מודעת מבצע בעברית: איך 26 מודלי AI מתמודדים",
    "excerpt": "תמונה אחת ופרומפט אחד עם טקסט בעברית ובאנגלית, בלי הנחיות עיצוב. מי כותב עברית נכון, מי מעצב מודעה אמיתית, ומי שובר את הטקסט.",
    "tag": "AI",
    "date": "10.11.2026",
-   "read": "בדיקה · 26 מודלים",
+   "read": "בדיקה של 26 מודלים",
    "cover": "media/blog/covers/ai-sale-ad.webp",
    "href": "blog/ai-sale-ad/index.html",
    "body": []
@@ -5844,7 +5855,7 @@ window.MG = {
    "excerpt": "כל המודלים של Higgsfield ו-Adobe Firefly על אותם פרומפטים: חתול בלש בבר, שישה לוגואים ודלת של משרד חקירות. GPT Image, Nano Banana, Seedream, FLUX, Grok, Firefly ועוד, עם הגודל בפיקסלים ומגבלות של כל מודל.",
    "tag": "AI",
    "date": "10.11.2026",
-   "read": "בדיקה · 30 מודלים",
+   "read": "בדיקה של 30 מודלים",
    "cover": "media/blog/covers/ai-systems-comparison.webp",
    "body": [],
    "href": "blog/ai-systems-comparison/index.html"
