@@ -188,3 +188,77 @@ mark.hit { background: color-mix(in srgb, var(--accent-2) 40%, transparent); col
 
 /* every jump (contents, prompt library, links to a topic) lands at once, with no scrolling animation */
 html { scroll-behavior: auto; }
+
+/* ---------- layout pass (10.11.2026): a centred reading column, prompts beside their results, sliding galleries ---------- */
+
+/* 1. one centred column: chapters and topics sit in the middle of the space beside the contents */
+.content { --col: 62rem; }
+.chap { max-width: var(--col); margin-inline: auto; }
+.sec { max-width: none; }
+.pr, .ocr, .shot, .tbl, .gal__cap { max-width: none; }
+.end { max-width: var(--col); margin-inline: auto; }
+.empty { max-width: var(--col); margin-inline: auto; }
+
+/* 2. a prompt and its 1-2 pictures side by side on wider screens, stacked on phones */
+.prg { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-xs); align-items: start; }
+.prg__p, .prg__m { display: flex; flex-direction: column; gap: var(--space-xs); min-width: 0; }
+.prg__m .gal { flex-wrap: wrap; }
+.prg__m .gal::after { display: none; }
+.prg__m .gi, .prg__m .gal--one .gi { flex: 1 1 100%; max-width: 100%; }
+@media (min-width: 900px) {
+  .prg { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--space-s); }
+  .prg__m { position: sticky; top: calc(var(--toc-top, 120px) + var(--space-2xs)); }
+}
+@media (max-width: 899px) {
+  /* a phone: the result under the prompt, but not taller than half the screen */
+  .prg__m .gal--one .gi { flex: 0 1 calc(var(--r) * 46svh); margin-inline: auto; }
+}
+
+/* 3. long runs of prompt + picture as cards: picture, title, copy; the full prompt opens in place */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)); gap: var(--space-xs); align-items: start; }
+.pr--card { padding: var(--space-2xs) var(--space-2xs) var(--space-xs); gap: var(--space-2xs); }
+.pr--card .gal { gap: var(--space-3xs); }
+.pr--card .gal::after { display: none; }
+.pr--card .gi { flex: 1 1 0; }
+.pr--card .gi__b { aspect-ratio: 16 / 10; border-radius: 6px; }
+.pr--card .pr__head { padding-inline: var(--space-3xs); }
+.pr__d { padding-inline: var(--space-3xs); font-size: var(--t-xs); }
+.pr__d summary { cursor: pointer; color: var(--accent-2); width: fit-content; }
+.pr__d .pr__x { margin-top: var(--space-2xs); }
+@media (max-width: 560px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-2xs); } .pr--card .pr__head { flex-direction: column; align-items: stretch; } .pr--card .copy { align-self: start; } }
+
+/* 4. galleries of 4 or more: one sliding row (swipe, or the arrows), "show all" opens the full grid */
+.gal--strip { flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; scrollbar-width: thin; padding-bottom: var(--space-3xs); --strip-h: 15rem; }
+.gal--strip::after { display: none; }
+.gal--strip .gi, .gal--strip.gal--many .gi { flex: 0 0 auto; width: calc(var(--r) * var(--strip-h)); scroll-snap-align: start; }
+@media (max-width: 560px) { .gal--strip { --strip-h: 11rem; } }
+.gal__bar { display: flex; align-items: center; gap: var(--space-2xs); margin-top: calc(-1 * var(--space-2xs)); }
+.gal__n { color: var(--muted); font-size: var(--t-xs); }
+.gal__all { margin-inline-start: auto; min-height: 34px; padding: 0 var(--space-s); border-radius: 99px; border: 1px solid var(--line-2); background: transparent; color: var(--ink); cursor: pointer; font-size: var(--t-xs); }
+.gal__all:hover { border-color: var(--ink); }
+.gal__arr { width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line-2); background: var(--card); color: var(--ink); cursor: pointer; font-size: var(--t-s); display: grid; place-items: center; }
+.gal__arr:hover { border-color: var(--accent-2); color: var(--accent-2); }
+.gal__arr:disabled { opacity: .35; cursor: default; }
+@media (hover: none) { .gal__arr { display: none; } }
+/* cards show one cover picture (the second one is still in the viewer) */
+.pr--card .gi:nth-child(n + 2) { display: none; }
+.cards { align-items: stretch; }
+.pr--card { align-content: start; }
+/* phones: two result pictures share one row instead of stacking */
+@media (max-width: 899px) { .prg__m .gal:not(.gal--one) .gi { flex: var(--r) 1 0; } }
+/* small galleries (1-3 pictures) no longer grow huge: every picture is capped at a row height,
+   and the viewer still opens it full size */
+.gal:not(.gal--strip) .gi { max-width: calc(var(--r) * 17rem); }
+.gal--one .gi { flex: 0 1 calc(var(--r) * 22rem); max-width: 100%; }
+.prg__m .gi, .prg__m .gal--one .gi { flex: 0 1 auto; width: min(100%, calc(var(--r) * 22rem)); max-width: 100%; }
+.prg__m .gal { justify-content: flex-start; }
+.pr--card .gi { max-width: none; }
+@media (max-width: 899px) {
+  .gal:not(.gal--strip) .gi { max-width: calc(var(--r) * 13rem); }
+  .gal--one .gi, .prg__m .gal--one .gi { flex: 0 1 auto; width: min(100%, calc(var(--r) * 34svh)); }
+  .prg__m .gal:not(.gal--one) .gi { width: auto; flex: var(--r) 1 0; max-width: calc(var(--r) * 13rem); }
+}
+/* long prompts fold shorter (the copy button always copies the whole prompt) */
+.pr.is-long .pr__x { max-height: 11em; }
+@media (max-width: 560px) { .pr.is-long .pr__x { max-height: 8em; } }
+.ocr .txt + .txt, .ocr pre + pre, .ocr .txt + pre, .ocr pre + .txt { margin-top: var(--space-2xs); }
