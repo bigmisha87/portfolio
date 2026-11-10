@@ -3,7 +3,8 @@
   "use strict";
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
-  var secs = $$(".sec"), chaps = $$(".chap"), chips = $$(".chip"), input = $(".find input"), bar = $(".bar");
+  var secs = $$(".sec"), chaps = $$(".chap"), chips = $$(".chip[data-m]"), input = $(".find input"), bar = $(".bar");
+  var onlyBtn = $(".chip[data-only]"), content = $(".content"), onlyPrompts = false;
   var toc = $(".toc"), tocLinks = $$(".toc__ch ol a"), tocChs = $$(".toc__ch");
 
   // ---------- search index: each section's own text, flattened (no niqqud, no quotes) ----------
@@ -18,13 +19,17 @@
       var okM = model === "all" || (" " + s.dataset.models + " ").indexOf(" " + model + " ") > -1;
       var hay = s._q + " " + s.closest(".chap")._q;
       var okQ = words.every(function (w) { return hay.indexOf(w) > -1; });
-      s.hidden = !(okM && okQ); if (!s.hidden) shown++;
+      var okP = !onlyPrompts || !!s.querySelector(".pr");
+      s.hidden = !(okM && okQ && okP); if (!s.hidden) shown++;
     });
+    // "prompts only": inside each topic, only the prompt cards and the pictures right after them stay
+    content.classList.toggle("only-prompts", onlyPrompts);
     chaps.forEach(function (c) { c.hidden = !$$(".sec", c).some(function (s) { return !s.hidden; }); });
     tocLinks.forEach(function (a) { a.parentNode.hidden = $(a.hash).hidden; });
     tocChs.forEach(function (li) { li.hidden = $("#" + li.dataset.ch).parentNode.hidden; });
-    var filtered = q || model !== "all";
-    $(".count").textContent = filtered ? shown + " נושאים" : "";
+    var filtered = q || model !== "all" || onlyPrompts;
+    var nPr = onlyPrompts ? secs.filter(function (s) { return !s.hidden; }).reduce(function (n, s) { return n + $$(".pr", s).length; }, 0) : 0;
+    $(".count").textContent = !filtered ? "" : onlyPrompts ? nPr + " פרומפטים" : shown + " נושאים";
     $(".empty").hidden = shown > 0;
     toc.classList.toggle("is-searching", !!filtered);
     highlight(words);
@@ -63,6 +68,11 @@
       chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
       apply(); jumpToStart();
     });
+  });
+  onlyBtn.addEventListener("click", function () {
+    onlyPrompts = !onlyPrompts;
+    onlyBtn.setAttribute("aria-pressed", onlyPrompts ? "true" : "false");
+    apply(); jumpToStart();
   });
   // after filtering, if the bar was stuck at the top, show the results from their start
   function jumpToStart() {
