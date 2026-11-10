@@ -827,3 +827,17 @@ html { font-size: clamp(100%, 0.45vw + 9px, 175%); }
 .yt-wrap { white-space: nowrap; }
 /* the line-reveal masks only need to clip top and bottom; a one-line title that runs wider than its column must not lose its last letters */
 .sl-mask { overflow: visible clip !important; }
+
+/* ---------- a post: the same look on every screen ----------
+   The base text size grows on wide screens (see "reading size"), but the post column was a fixed 820px
+   and the headings followed the screen width, so a big monitor broke the title into 5 short lines.
+   Now the column is measured in the same unit as the text (51.25rem = 820px on a laptop), and the
+   headings are a share of the column, so every screen shows the same layout, only larger or smaller.
+   The four newest posts are their own pages under blog/ and are not affected. */
+.post-head, .post-body, .post-cover, .post-next { max-width: 51.25rem; }
+.post-head, .post-body { container-type: inline-size; }
+.post-head__title { font-size: 6.6rem; font-size: max(2.5rem, 13cqi); line-height: 1.02; text-wrap: balance; }
+.post-head__lead { font-size: 1.45rem; }
+.post-body h2 { font-size: 3.5rem; font-size: max(1.9rem, 6.8cqi); text-wrap: balance; }
+.post-body blockquote { font-size: 1.4rem; }
+@media (max-width: 560px) { .post-head__lead, .post-body blockquote { font-size: 1.2rem; } }
