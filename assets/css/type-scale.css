@@ -1,0 +1,104 @@
+/* The site's type scale and space scale: the only font sizes and spacing the site uses (10.11.2026).
+   One file, read by site.css and by blog-nav.css, so the main site and the bar on designed blog posts
+   always use exactly the same sizes. Edit sizes here only.
+
+   Sizes are measured from --t-root, not from rem, so they come out the same on a designed post
+   whose own CSS sets a different base size for its page. --t-root is the site's base size:
+   16px up to ~1550px wide, then growing with the screen (about 18 at 1920, 28 at most).
+   Only size and spacing variables live here (named --t-* and --space-*), so nothing clashes with a post's own colours.
+
+   Every size is rounded to an even whole pixel (12, 14, 16, 18, 24, 40...), never 15.2 or 17:
+   the formulas below are the raw curve, and the --t-* names are that curve rounded to 2px steps.
+   Laptop (1440) / phone (375): mega 172/62, xl 106/48, big 66/38, l 56/36, mid 40/36,
+   m 24/18, body 18/16, s 16/16, xs 14/14, xxs 12/12. */
+
+:root {
+  --t-root: clamp(16px, 0.45vw + 9px, 28px);
+
+  --t-mega-raw: clamp(calc(3.9 * var(--t-root)), calc(1.4 * var(--t-root) + 10.4vw), calc(12.5 * var(--t-root))); /* the biggest heading */
+  --t-xl-raw:   clamp(calc(3 * var(--t-root)), calc(1.4 * var(--t-root) + 5.8vw), calc(7.5 * var(--t-root)));    /* main headings, phone menu */
+  --t-big-raw:  clamp(calc(2.4 * var(--t-root)), calc(1.4 * var(--t-root) + 3vw), calc(5 * var(--t-root)));      /* page headings */
+  --t-l-raw:    clamp(calc(2.25 * var(--t-root)), calc(1.3 * var(--t-root) + 2.4vw), calc(3.5 * var(--t-root)));  /* never under 36 */
+  --t-mid-raw:  clamp(calc(2.25 * var(--t-root)), calc(1.6 * var(--t-root) + 1vw), calc(3 * var(--t-root)));      /* never under 36: small display headings, the logo */
+  --t-m-raw:    clamp(calc(1.15 * var(--t-root)), calc(1.02 * var(--t-root) + 0.5vw), calc(1.5 * var(--t-root))); /* openings, quotes */
+  --t-body-raw: clamp(var(--t-root), calc(0.96 * var(--t-root) + 0.2vw), calc(1.125 * var(--t-root)));           /* regular text, menu links */
+  --t-s-raw:    calc(0.95 * var(--t-root));   /* buttons, cards, filters */
+  --t-xs-raw:   calc(0.82 * var(--t-root));   /* dates, captions */
+  --t-xxs-raw:  calc(0.75 * var(--t-root));   /* the smallest labels */
+
+  /* browsers without CSS round() (before ~2024) get the raw curve */
+  --t-mega: var(--t-mega-raw); --t-xl: var(--t-xl-raw); --t-big: var(--t-big-raw); --t-l: var(--t-l-raw); --t-mid: var(--t-mid-raw);
+  --t-m: var(--t-m-raw); --t-body: var(--t-body-raw); --t-s: var(--t-s-raw); --t-xs: var(--t-xs-raw); --t-xxs: var(--t-xxs-raw);
+}
+
+@supports (width: round(1px, 2px)) {
+  :root {
+    --t-mega: round(var(--t-mega-raw), 2px);
+    --t-xl:   round(var(--t-xl-raw), 2px);
+    --t-big:  round(var(--t-big-raw), 2px);
+    --t-l:    round(var(--t-l-raw), 2px);
+    --t-mid:  round(var(--t-mid-raw), 2px);
+    --t-m:    round(var(--t-m-raw), 2px);
+    --t-body: round(var(--t-body-raw), 2px);
+    --t-s:    round(var(--t-s-raw), 2px);
+    --t-xs:   round(var(--t-xs-raw), 2px);
+    --t-xxs:  round(var(--t-xxs-raw), 2px);
+  }
+}
+
+/* ---------- space scale (Utopia method, utopia.fyi) ----------
+   Every padding, margin and gap uses one of these. Built on the body text size, like Utopia:
+   s = body size, and the rest are fixed multiples of it (x0.25 ... x8), rounded to even pixels.
+   Phone (375) / laptop (1440):
+     3xs 4/4   2xs 8/10   xs 12/14   s 16/18   m 24/28   l 32/36   xl 48/54   2xl 64/72   3xl 96/108   4xl 128/144
+   The pairs grow from the first size on a phone to the second on a laptop, for space that should open up
+   on big screens (section padding, page gutters):
+     xs-s 12/18   s-m 16/26   m-l 24/36   l-xl 32/54   xl-2xl 48/72   2xl-3xl 64/108   s-l 16/36   l-2xl 32/72   2xl-4xl 64/144
+   Under 4px (hairlines, 1-2px nudges) and em spacing tied to the text stay as they are. */
+:root {
+  --space-unit: var(--t-body-raw);
+  --space-3xs-raw: calc(0.25 * var(--space-unit));
+  --space-2xs-raw: calc(0.5 * var(--space-unit));
+  --space-xs-raw: calc(0.75 * var(--space-unit));
+  --space-s-raw: calc(1 * var(--space-unit));
+  --space-m-raw: calc(1.5 * var(--space-unit));
+  --space-l-raw: calc(2 * var(--space-unit));
+  --space-xl-raw: calc(3 * var(--space-unit));
+  --space-2xl-raw: calc(4 * var(--space-unit));
+  --space-3xl-raw: calc(6 * var(--space-unit));
+  --space-4xl-raw: calc(8 * var(--space-unit));
+  --space-xs-s-raw: clamp(calc(0.75 * var(--space-unit)), calc(0.6464 * var(--space-unit) + 0.4420vw), calc(1 * var(--space-unit)));
+  --space-s-m-raw: clamp(calc(1 * var(--space-unit)), calc(0.7928 * var(--space-unit) + 0.8840vw), calc(1.5 * var(--space-unit)));
+  --space-m-l-raw: clamp(calc(1.5 * var(--space-unit)), calc(1.2928 * var(--space-unit) + 0.8840vw), calc(2 * var(--space-unit)));
+  --space-l-xl-raw: clamp(calc(2 * var(--space-unit)), calc(1.5856 * var(--space-unit) + 1.7680vw), calc(3 * var(--space-unit)));
+  --space-xl-2xl-raw: clamp(calc(3 * var(--space-unit)), calc(2.5856 * var(--space-unit) + 1.7680vw), calc(4 * var(--space-unit)));
+  --space-2xl-3xl-raw: clamp(calc(4 * var(--space-unit)), calc(3.1713 * var(--space-unit) + 3.5359vw), calc(6 * var(--space-unit)));
+  --space-s-l-raw: clamp(calc(1 * var(--space-unit)), calc(0.5856 * var(--space-unit) + 1.7680vw), calc(2 * var(--space-unit)));
+  --space-l-2xl-raw: clamp(calc(2 * var(--space-unit)), calc(1.1713 * var(--space-unit) + 3.5359vw), calc(4 * var(--space-unit)));
+  --space-2xl-4xl-raw: clamp(calc(4 * var(--space-unit)), calc(2.3425 * var(--space-unit) + 7.0718vw), calc(8 * var(--space-unit)));
+
+  --space-3xs: var(--space-3xs-raw); --space-2xs: var(--space-2xs-raw); --space-xs: var(--space-xs-raw); --space-s: var(--space-s-raw); --space-m: var(--space-m-raw); --space-l: var(--space-l-raw); --space-xl: var(--space-xl-raw); --space-2xl: var(--space-2xl-raw); --space-3xl: var(--space-3xl-raw); --space-4xl: var(--space-4xl-raw); --space-xs-s: var(--space-xs-s-raw); --space-s-m: var(--space-s-m-raw); --space-m-l: var(--space-m-l-raw); --space-l-xl: var(--space-l-xl-raw); --space-xl-2xl: var(--space-xl-2xl-raw); --space-2xl-3xl: var(--space-2xl-3xl-raw); --space-s-l: var(--space-s-l-raw); --space-l-2xl: var(--space-l-2xl-raw); --space-2xl-4xl: var(--space-2xl-4xl-raw);
+}
+@supports (width: round(1px, 2px)) {
+  :root {
+    --space-3xs: round(var(--space-3xs-raw), 2px);
+    --space-2xs: round(var(--space-2xs-raw), 2px);
+    --space-xs: round(var(--space-xs-raw), 2px);
+    --space-s: round(var(--space-s-raw), 2px);
+    --space-m: round(var(--space-m-raw), 2px);
+    --space-l: round(var(--space-l-raw), 2px);
+    --space-xl: round(var(--space-xl-raw), 2px);
+    --space-2xl: round(var(--space-2xl-raw), 2px);
+    --space-3xl: round(var(--space-3xl-raw), 2px);
+    --space-4xl: round(var(--space-4xl-raw), 2px);
+    --space-xs-s: round(var(--space-xs-s-raw), 2px);
+    --space-s-m: round(var(--space-s-m-raw), 2px);
+    --space-m-l: round(var(--space-m-l-raw), 2px);
+    --space-l-xl: round(var(--space-l-xl-raw), 2px);
+    --space-xl-2xl: round(var(--space-xl-2xl-raw), 2px);
+    --space-2xl-3xl: round(var(--space-2xl-3xl-raw), 2px);
+    --space-s-l: round(var(--space-s-l-raw), 2px);
+    --space-l-2xl: round(var(--space-l-2xl-raw), 2px);
+    --space-2xl-4xl: round(var(--space-2xl-4xl-raw), 2px);
+  }
+}

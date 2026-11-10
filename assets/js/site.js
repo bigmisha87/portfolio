@@ -302,8 +302,9 @@
       }
       $(".lb__title", el).textContent = it.title || "";
       $(".lb__title", el).dir = dirOf(it.title);
-      const sub = [it.client, it.group, it.note].filter(Boolean).join(" · ");
-      $(".lb__sub", el).textContent = sub;
+      const subParts = [it.client, it.group, it.note].filter(Boolean);
+      const subEl = $(".lb__sub", el); subEl.textContent = "";
+      subParts.forEach((part) => { const sp = document.createElement("span"); sp.textContent = part; subEl.appendChild(sp); });
       $(".lb__count", el).textContent = list.length > 1 ? `${idx + 1} / ${list.length}` : "";
       const one = list.length < 2;
       $(".lb__next", el).hidden = one;
@@ -1089,12 +1090,12 @@
     if (!host) return;
     const slug = new URLSearchParams(location.search).get("slug") || "";
     // posts that moved off the blog: keep their old addresses working
-    const MOVED = { "tips-and-tricks": "tools.html#learning" };
+    const MOVED = { "tips-and-tricks": "tools.html#learning", "pc-for-art-studies": "post.html?slug=mac-for-design-students-2026" };
     if (MOVED[slug]) { location.replace(MOVED[slug]); return; }
     const posts = D.posts || [];
     const k = posts.findIndex((p) => p.slug === slug);
     if (k < 0) {
-      host.innerHTML = `<header class="post-head"><h1 class="post-head__title display">הפוסט לא נמצא.</h1><p><a class="draw" href="blog.html">לכל הפוסטים</a></p></header>`;
+      host.innerHTML = `<header class="post-head"><h1 class="post-head__title display">הפוסט לא נמצא.</h1><p><a class="draw" href="blog.html"><span aria-hidden="true">→</span> לכל הפוסטים</a></p></header>`;
       return;
     }
     const p = posts[k], next = posts[(k + 1) % posts.length];

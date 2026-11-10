@@ -2,43 +2,45 @@
    It copies the site header (post.html) so every post opens with the same navigation,
    plus a row with "→ לכל הפוסטים" and the page's own actions (theme, downloads).
    Everything is scoped under .bn and sized in px, so a post's own CSS cannot bend it.
-   The bar is the site's chrome: it stays dark in both themes, like the rest of the site. */
+   The bar is the site's chrome: it stays dark in both themes, like the rest of the site.
+   Font sizes come from type-scale.css, the same file the site uses, so the bar always matches the site header. */
+@import url("type-scale.css?v=3");
 
 .bn, .bn *, .bn *::before, .bn *::after { box-sizing: border-box; margin: 0; }
 .bn {
   --bn-ground: #0b0b0c; --bn-ink: #f2efe9; --bn-muted: #a19d95;
-  --bn-line: rgba(242, 239, 233, 0.14); --bn-accent: #ff3b2f;
-  --bn-gutter: clamp(16px, 2.2vw, 32px);
+  --bn-line: rgba(242, 239, 233, 0.14); --bn-accent: #ff3b2f; --bn-accent-2: #1d9cc3;
+  --bn-gutter: var(--space-s-l);
   --bn-page: min(100vw, max(1100px, 177.78svh));
   --bn-ease: cubic-bezier(0.16, 1, 0.3, 1);
   position: relative; z-index: 50;
   direction: rtl; text-align: right;
   background: var(--bn-ground); color: var(--bn-ink);
   border-bottom: 1px solid var(--bn-line);
-  font: 400 16px/1.5 "IBM Plex Sans Hebrew", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font: 400 var(--t-body)/1.5 "IBM Plex Sans Hebrew", system-ui, -apple-system, "Segoe UI", sans-serif;
   letter-spacing: normal; color-scheme: dark;
   padding-top: env(safe-area-inset-top);
 }
 .bn a { color: inherit; text-decoration: none; background: none; border: 0; }
 .bn button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-.bn :focus-visible { outline: 2px solid var(--bn-accent); outline-offset: 3px; border-radius: 4px; }
+.bn :focus-visible { outline: 2px solid var(--bn-accent-2); outline-offset: 3px; border-radius: 4px; }
 
 .bn__row {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-s);
   padding-inline: max(var(--bn-gutter), calc((100vw - var(--bn-page)) / 2 + var(--bn-gutter)));
 }
 .bn__hdr { height: 84px; }
 
 /* brand */
-.bn__brand { display: inline-flex; align-items: baseline; gap: 10px; white-space: nowrap; }
-.bn__he { font: 700 41.6px/1 "Karantina", "IBM Plex Sans Hebrew", system-ui, sans-serif; letter-spacing: normal; transition: color .3s; }
-.bn__en { font: 400 11.8px/1 "IBM Plex Mono", ui-monospace, monospace; color: var(--bn-muted); letter-spacing: 0.08em; transition: color .3s; }
-@media (hover: hover) { .bn__brand:hover .bn__he { color: var(--bn-accent); } .bn__brand:hover .bn__en { color: var(--bn-ink); } }
+.bn__brand { display: inline-flex; align-items: baseline; gap: var(--space-2xs); white-space: nowrap; }
+.bn__he { font: 700 var(--t-mid)/1 "Karantina", "IBM Plex Sans Hebrew", system-ui, sans-serif; letter-spacing: normal; transition: color .3s; }
+.bn__en { font: 400 var(--t-xxs)/1 "IBM Plex Mono", ui-monospace, monospace; color: var(--bn-muted); letter-spacing: 0.08em; transition: color .3s; }
+@media (hover: hover) { .bn__brand:hover .bn__he { color: var(--bn-accent-2); } .bn__brand:hover .bn__en { color: var(--bn-ink); } }
 
 /* links */
-.bn__nav { display: flex; align-items: center; gap: clamp(18px, 2.4vw, 40px); }
+.bn__nav { display: flex; align-items: center; gap: var(--space-s-l); }
 .bn__link {
-  font-size: 18px; font-weight: 500; padding-block: 8px;
+  font-size: var(--t-body); font-weight: 500; padding-block: var(--space-2xs);
   background: linear-gradient(currentColor 0 0) right bottom / 0% 1px no-repeat !important;
   transition: background-size .45s var(--bn-ease);
 }
@@ -47,47 +49,47 @@
 
 .bn__cta {
   display: inline-flex; align-items: center; justify-content: center;
-  min-height: 48px; padding: 0 24px; border-radius: 99px;
+  min-height: 48px; padding: 0 var(--space-m); border-radius: 99px;
   border: 1px solid var(--bn-ink) !important;
-  font-size: 16.8px; font-weight: 600; white-space: nowrap;
+  font-size: var(--t-body); font-weight: 600; white-space: nowrap;
   transition: background-color .35s, color .35s;
 }
 @media (hover: hover) { .bn__cta:hover { background: var(--bn-ink) !important; color: var(--bn-ground); } }
 
-.bn__menu { display: none; align-items: center; min-height: 48px; padding: 0 4px; font-weight: 600; font-size: 16.8px; }
-.bn__lines { display: inline-grid; gap: 5px; margin-inline-start: 8px; }
+.bn__menu { display: none; align-items: center; min-height: 48px; padding: 0 var(--space-3xs); font-weight: 600; font-size: var(--t-body); }
+.bn__lines { display: inline-grid; gap: var(--space-3xs); margin-inline-start: var(--space-2xs); }
 .bn__lines i { display: block; width: 20px; height: 1.5px; background: currentColor; transition: rotate .4s var(--bn-ease), translate .4s var(--bn-ease); }
 .bn__menu[aria-expanded="true"] .bn__lines i:first-child { translate: 0 3.25px; rotate: 45deg; }
 .bn__menu[aria-expanded="true"] .bn__lines i:last-child { translate: 0 -3.25px; rotate: -45deg; }
 
 /* second row: back to all posts + the page's own actions */
-.bn__sub { min-height: 52px; padding-bottom: 8px; flex-wrap: wrap; gap: 8px 16px; }
-.bn__back { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--bn-muted); font-size: 16px; font-weight: 500; transition: color .3s; }
+.bn__sub { min-height: 52px; padding-bottom: var(--space-2xs); flex-wrap: wrap; gap: var(--space-2xs) var(--space-s); }
+.bn__back { display: inline-flex; align-items: center; gap: var(--space-2xs); min-height: 44px; color: var(--bn-muted); font-size: var(--t-body); font-weight: 500; transition: color .3s; }
 @media (hover: hover) { .bn__back:hover { color: var(--bn-ink); } }
-.bn__acts { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.bn__acts { display: flex; align-items: center; gap: var(--space-2xs); flex-wrap: wrap; }
 .bn__act, .bn__theme {
-  display: inline-flex; align-items: center; gap: 8px;
-  min-height: 40px; padding: 0 16px; border-radius: 99px;
+  display: inline-flex; align-items: center; gap: var(--space-2xs);
+  min-height: 40px; padding: 0 var(--space-s); border-radius: 99px;
   border: 1px solid var(--bn-line) !important; background: transparent !important; color: var(--bn-ink) !important;
-  font: 500 15px/1 "IBM Plex Sans Hebrew", system-ui, sans-serif !important; white-space: nowrap;
+  font: 500 var(--t-s)/1 "IBM Plex Sans Hebrew", system-ui, sans-serif !important; white-space: nowrap;
   transition: border-color .3s;
 }
 @media (hover: hover) { .bn__act:hover, .bn__theme:hover { border-color: var(--bn-ink) !important; } }
 .bn__act svg { width: 17px; height: 17px; flex: none; }
-.bn__act .sz { font: 400 12px/1 "IBM Plex Mono", monospace; color: var(--bn-muted); direction: ltr; unicode-bidi: isolate; }
+.bn__act .sz { font: 400 var(--t-xxs)/1 "IBM Plex Mono", monospace; color: var(--bn-muted); direction: ltr; unicode-bidi: isolate; }
 
 /* phone menu */
 .bn-menu {
   position: fixed; inset: 0; z-index: 49;
   direction: rtl; background: #0b0b0c; color: #f2efe9;
   display: flex; flex-direction: column; justify-content: flex-end;
-  padding: calc(84px + 24px + env(safe-area-inset-top)) clamp(16px, 2.2vw, 32px) calc(32px + env(safe-area-inset-bottom));
+  padding: calc(84px + var(--space-m) + env(safe-area-inset-top)) var(--space-s-l) calc(var(--space-l) + env(safe-area-inset-bottom));
   clip-path: inset(0 0 100% 0); visibility: hidden;
   transition: clip-path .7s cubic-bezier(0.87, 0, 0.13, 1), visibility 0s linear .7s;
 }
 .bn-menu.is-open { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path .7s cubic-bezier(0.87, 0, 0.13, 1), visibility 0s; }
 .bn-menu ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
-.bn-menu a { display: block; color: inherit; text-decoration: none; font: 700 clamp(54px, 15vw, 96px)/1.12 "Karantina", "IBM Plex Sans Hebrew", sans-serif; letter-spacing: normal; }
+.bn-menu a { display: block; color: inherit; text-decoration: none; font: 700 var(--t-xl)/1.12 "Karantina", "IBM Plex Sans Hebrew", sans-serif; letter-spacing: normal; }
 .bn-menu a[aria-current="page"] { color: #ff3b2f; }
 html.bn-locked, html.bn-locked body { overflow: hidden; }
 html.bn-locked .bn { position: sticky; top: 0; z-index: 51; }
@@ -98,12 +100,11 @@ html.bn-locked .bn { position: sticky; top: 0; z-index: 51; }
 }
 @media (max-width: 699px) {
   .bn__hdr { height: 64px; }
-  .bn__he { font-size: 33.6px; }
-  .bn-menu { padding-top: calc(64px + 24px + env(safe-area-inset-top)); }
+  .bn-menu { padding-top: calc(64px + var(--space-m) + env(safe-area-inset-top)); }
 }
 @media (max-width: 560px) {
   .bn__sub { flex-wrap: nowrap; }
-  .bn__acts { flex-wrap: nowrap; gap: 8px; }
+  .bn__acts { flex-wrap: nowrap; gap: var(--space-2xs); }
   .bn__theme { width: 40px; padding: 0; justify-content: center; }
   .bn__tl { display: none; }
 }

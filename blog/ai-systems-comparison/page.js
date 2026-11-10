@@ -94,7 +94,9 @@
     lbImg.src = b.dataset.full;
     lbImg.alt = b.dataset.name || "";
     lbName.textContent = b.dataset.name || "";
-    lbMeta.textContent = b.dataset.meta || "";
+    // maker and pixel size as two separate items, spaced apart (no separator dot)
+    lbMeta.innerHTML = "";
+    (b.dataset.meta || "").split(" · ").forEach(function (part) { var sp = document.createElement("span"); sp.textContent = part; lbMeta.appendChild(sp); });
     var s = b.dataset.score;
     lbScore.innerHTML = s ? '<span class="score score--' + SC[s] + '">' + s + "</span>" : "";
     lbMore.hidden = !b.dataset.id;

@@ -4,17 +4,17 @@
 /* hero without the picture mosaic */
 .hero--plain { grid-template-columns: minmax(0, 1fr); }
 .hero--plain > * { grid-column: 1; }
-.hero--plain a { color: var(--accent); }
+.hero--plain a { color: var(--accent-2); }
 
 /* the task: the photo, the original ad, the prompt */
-.task { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: clamp(12px, 1vw, 22px); align-items: start; }
+.task { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: var(--space-xs-s); align-items: start; }
 .task > .prompt { grid-column: span 2; }
 @media (max-width: 900px) { .task > .prompt { grid-column: auto; } }
-.task__fig { margin: 0; display: grid; gap: 8px; }
-.task__fig figcaption { color: var(--muted); font-size: 0.86rem; }
+.task__fig { margin: 0; display: grid; gap: var(--space-2xs); }
+.task__fig figcaption { color: var(--muted); font-size: var(--t-xs); }
 .task__img { display: block; width: 100%; padding: 0; border: 0; border-radius: var(--r); overflow: hidden; background: var(--card); cursor: zoom-in; }
 .task__img img { width: 100%; height: auto; }
-.howto { margin: 4px 0 0; padding-inline-start: 1.1em; display: grid; gap: 4px; font-size: 0.9rem; color: var(--muted); }
+.howto { margin: var(--space-3xs) 0 0; padding-inline-start: 1.1em; display: grid; gap: var(--space-3xs); font-size: var(--t-xs); color: var(--muted); }
 .howto b { color: var(--ink); font-weight: 600; }
 
 /* ads are 3:4 portraits, so the gallery shows them whole */
@@ -25,10 +25,10 @@
 
 /* verdict: a yellow edge for "one or two mistakes", and a closing note */
 .v--mid { border-top-color: var(--s-c); }
-#verdict .note { margin-top: 14px; max-width: 90ch; padding: 12px 16px; border-radius: 8px; background: var(--card); border-inline-start: 3px solid var(--accent); }
+#verdict .note { margin-top: var(--space-xs); max-width: 90ch; padding: var(--space-xs) var(--space-s); border-radius: 8px; background: var(--card); border-inline-start: 3px solid var(--accent-2); }
 
 /* research cards: the ad on one side, the notes on the other */
-.rc__ad { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 14px; align-items: start; }
+.rc__ad { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--space-xs); align-items: start; }
 .rc__img--tall { aspect-ratio: 3 / 4; }
 .rc__img--tall img { object-fit: contain; }
 @media (max-width: 420px) { .rc__ad { grid-template-columns: 1fr; } }
