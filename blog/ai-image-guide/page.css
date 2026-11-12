@@ -239,6 +239,9 @@ html { scroll-behavior: auto; }
 .gal--one .gi { flex: 0 1 calc(var(--r) * 22rem); max-width: 100%; }
 .prg__m .gi, .prg__m .gal--one .gi { flex: 0 1 auto; width: min(100%, calc(var(--r) * 22rem)); max-width: 100%; }
 .prg__m .gal { justify-content: flex-start; }
+/* several pictures beside a prompt sit side by side as a gallery row (same height), never stacked one under another */
+.prg__m .gal:not(.gal--one) { flex-wrap: nowrap; }
+.prg__m .gal:not(.gal--one) .gi { width: auto; flex: var(--r) 1 0; max-width: none; }
 .pr--card .gi { max-width: none; }
 @media (max-width: 899px) {
   .gal .gi { max-width: calc(var(--r) * 13rem); }
